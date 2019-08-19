@@ -1,0 +1,7 @@
+# latex
+*.aux
+*.log
+*.out
+*.synctex.gz
+*.toc
+.fuse_*
