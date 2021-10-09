@@ -1,0 +1,877 @@
+\documentstyle{article}
+
+\input epsf
+
+%These are the macros which are in common with all of the
+% sections in the paper mmr
+% Each section, for now, should begin with \documentstyle[11pt,cd]{article}
+% and then have \input{mmrmacros} followed by \begin{document}
+% The only exception is that the \Label macro is slightly different
+% in each file and should be put in separately.
+%New CD macros
+\newcommand{\cdrl}{\cd\rightleftarrows}
+\newcommand{\cdlr}{\cd\leftrightarrows}
+\newcommand{\cdr}{\cd\rightarrow}
+\newcommand{\cdl}{\cd\leftarrow}
+\newcommand{\cdu}{\cd\uparrow}
+\newcommand{\cdd}{\cd\downarrow}
+\newcommand{\cdud}{\cd\updownarrows}
+\newcommand{\cddu}{\cd\downuparrows}
+% (S) Proofs.
+% (S-1) Head is automatically supplied by \proof.
+
+\def\proof{\vspace{2ex}\noindent{\bf Proof.} }
+\def\tproof#1{\vspace{2ex}\noindent{\bf Proof of Theorem #1.} }
+\def\pproof#1{\vspace{2ex}\noindent{\bf Proof of Proposition #1.} }
+\def\lproof#1{\vspace{2ex}\noindent{\bf Proof of Lemma #1.} }
+\def\cproof#1{\vspace{2ex}\noindent{\bf Proof of Corollary #1.} }
+\def\clproof#1{\vspace{2ex}\noindent{\bf Proof of Claim #1.} }
+% End of Proof Symbol at the end of an equation must precede $$.
+
+\def\endproof{\relax\ifmmode\expandafter\endproofmath\else
+  \unskip\nobreak\hfil\penalty50\hskip.75em\hbox{}\nobreak\hfil\bull
+  {\parfillskip=0pt \finalhyphendemerits=0 \bigbreak}\fi}
+\def\endproofmath$${\eqno\bull$$\bigbreak}
+\def\bull{\vbox{\hrule\hbox{\vrule\kern3pt\vbox{\kern6pt}\kern3pt\vrule}\hrule}
+}
+\addtolength{\textwidth}{1in}                  % Margin-setting commands
+\addtolength{\oddsidemargin}{-.5in}
+\addtolength{\evensidemargin}{.5in}
+\addtolength{\textheight}{.5in}
+\addtolength{\topmargin}{-.3in}
+\addtolength{\marginparwidth}{-.32in}
+\renewcommand{\baselinestretch}{1.6}
+\def\hu#1#2#3{\hbox{$H^{#1}(#2;{\bf #3})$}}          % #1-Cohomology of #2
+\def\hl#1#2#3{\hbox{$H_{#1}(#2;{\bf #3})$}}          % #1-Homology of #2
+\def\md#1{\ifmmode{\cal M}_\delta(#1)\else  % moduli space, delta decay of #1
+{${\cal M}_\delta(#1)$}\fi}
+\def\mb#1{\ifmmode{\cal M}_\delta^0(#1)\else  %moduli space, based, delta
+                                              %decay of #1
+{${\cal M}_\delta^0(#1)$}\fi}
+\def\mdc#1#2{\ifmmode{\cal M}_{\delta,#1}(#2)\else    %moduli space, delta
+                                                      %decay, chern class #1
+                                                      %of #2
+{${\cal M}_{\delta,#1}(#2)$}\fi}
+\def\mbc#1#2{\ifmmode{\cal M}_{\delta,#1}^0(#2)\else   %as before, based
+{${\cal M}_{\delta,#1}^0(#2)$}\fi}
+\def\mm{\ifmmode{\cal M}\else {${\cal M}$}\fi}
+\def\ad{{\rm ad}}
+\def\msigma{\ifmmode{\cal M}^\sigma\else {${\cal M}^\sigma$}\fi}
+\def\cancel#1#2{\ooalign{$\hfil#1\mkern1mu/\hfil$\crcr$#1#2$}}
+\def\dirac{\mathpalette\cancel\partial}
+\newtheorem{thm}{Theorem}
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{D}[theorem]{Definition}
+\newenvironment{defn}{\begin{D} \rm }{\end{D}}
+\newtheorem{addendum}[theorem]{Addendum}
+\newtheorem{R}[theorem]{Remark}
+\newenvironment{remark}{\begin{R}\rm }{\end{R}}
+\newcommand{\note}[1]{\marginpar{\scriptsize #1 }} 
+\newenvironment{comments}{\smallskip\noindent{\bf Comments:}\begin{enumerate}}{
+\end{enumerate}\smallskip}
+
+\renewcommand{\thesection}{\Roman{section}}
+\def\eqlabel#1{\addtocounter{theorem}{1}
+\write1{\string\newlabel{#1}{{\thetheorem}{\thepage}}}
+\leqno(\rm\thetheorem)}
+\def\cS{{\cal S}}
+\def\ov{\overline}
+
+
+
+
+
+
+
+
+
+
+
+
+\title{Lecture II-13:  $N=2$ SUSY theories in Dimension Two, Part II:
+Chiral Rings and Twisted Theories} 
+
+\author{Edward Witten\thanks{\tt{Lecture notes by John Morgan}}}
+\date{April 16, 1997}
+
+\begin{document}
+\maketitle
+
+This lecture is again concerned with $N=2$ supersymmetric theories in
+dimension $2$.
+Using one of the  supersymmetries $Q$, we shall define the
+chiral ring of local operators and the $Q$-cohomology of states for
+theories defined in flat Minkowski or Euclidean space.
+We then discuss how to twist theories so that the supersymmetry $Q$
+has global meaning at least over  a large class of 
+$2|4$ supermanifolds. Once $Q$ has been globalized in a theory over
+$\Sigma$ we 
+have the notions of the ring of chiral local operators for that
+theory.
+We  can define what are called descendants of $Q$-invariant operators,
+and we show that the integrals of these descendants over cycles in the
+manifolds lead to correlation functions which have
+topological meaning.
+To compute these functions one does integrals over the $Q$-invariant
+fields.
+
+We then consider in detail two examples of twisted theories with a
+global supersymmetry $Q$. The first is pure $N=2$ gauge theory in
+dimension $2$ with a simple Lie group $G$. Here, we see that the
+ring of chiral functions is identified with the invariant polynomials
+on the Lie algebra.  Classically, the space of
+$Q$-invariant states is the usual space of flat connections (plus
+an extra parallel section of the adjoint bundle in the case of
+reducible connections). The   correlation functions of the $Q$-invariant
+operators are
+identified with the  integrals over the moduli space of flat connections
+ of the usual classes
+ derived from the invariant
+polynomials in the Lie algebra. (There are extra complications from 
+reducible connections.)
+
+The second example is $N=2$ supersymmetric
+two-dimensional $\sigma$-models  into a K\"ahler manifold.
+It turns out that there is one way of twisting that leads to a chiral
+ring which is the topological cohomology of the K\"ahler manifold.
+The space of $Q$-invariant states is the space of holomorphic maps
+from the riemann surface into $X$. In this twisted theory the
+path integrals which commute the topological correlation  functions
+are the integrals in quantum cohomology.
+When the K\"ahler manifold is Calabi-Yau, there is a second,
+inequivalent way of twisting which leads to a different theory.  In this
+theory the chiral ring is $H^*(X,\wedge^*T^{1,0}(X))$ and the
+$Q$-invariant fields are constant maps from the riemann surface to
+$X$.
+Thus, the path integrals which compute the topological correlation
+functions are integrals of these objects over $X$ --  these integrals
+are related to variation of Hodge structures on $X$.
+
+\section{$R$-symmetry revisited}
+Most of the $N=2$ supersymmetric examples we shall consider will have
+(at least classically) both left- and right-moving $R$-symmetries --
+the $R$-symmetries denoted by $J_L$ and $J_R$ in the last lecture.
+It is possible to carry out today's  discussion with only one of
+these $R$-symmetries, but we must have at least one.
+But we will suppose that the group of $R$-symmetries is $U(1)\times U(1)$
+so that we have both $J_R$ and $J_L$.  The supermanifold on
+which the theory is defined in ${\bf R}^{2|4}$. We shall also
+eventually allow a certain class of split $2|4$
+super-riemann surfaces with a Euclidean metric (and
+$2|4$-supermanifolds with a flat Minkowski metric). The space of odd 
+directions is a copy of the two-dimensional representation for $J_L$
+and the two dimensional representation for $J_R$.
+We expect a symmetry between $J_L$ and $J_R$ obtained by reversing the
+orientation of the worldsheet.
+
+One operation we can attempt to do to a symmetry of a Lagrangian is to
+gauge it. 
+If the symmetry group to be gauged is $H$, then the new Lagrangian
+will involve gauge fields  with gauge group $ H$ times the  gauge
+group (if any) of the original theory.
+Intuitively, the process of gauging  involves replacing fields with
+values in a constant space by fields with values in an $H$-bundle and
+adding a new field --  the $H$-connection. In order to carry out this
+program the original Lagrangian must be a local expression in the
+fields and the symmetry must be also be local in the sense that it
+maps local fields to local fields at the same point.
+With these reasonable assumptions on the Lagrangian and its symmetry,
+it is always possible to form a new, gauged, Lagrangian.
+We replace ordinary derivatives in the Lagrangian by covariant
+derivatives. 
+Quite often there is a natural way to carry out this process, but in
+any case different choices for gauging the symmetry lead to
+Lagrangians which differ by gauge invariant terms up to a total
+derivative. 
+There is however the issue of whether the gauged theory makes sense as
+a quantum theory.  If the original theory has this property then the
+necessary and sufficient condition that the gauged theory does as well
+is that the symmetry being gauged be anomaly-free. 
+
+In our case it is never possible to gauge the entire
+$U(1)\times U(1)$ group of $R$-symmetries to produce a theory that
+makes sense as a quantum theory.
+In fact the only 
+combinations of $J_L$ and $J_R$ that can be gauged in this way are
+$J_L\pm J_R$.
+These are referred to as the vector and axial currents  
+$$J_V=J_L+J_R$$
+$$J_A=J_L-J_R.$$
+If one of these is gauged, then the other develops anomalies
+and stops being a symmetry of the quantum theory.
+To explain this, we need some general observations about anomalies.
+The statement that a theory has a symmetry, generated by a current
+$J_L$, means that correlation funcions obey the identity
+$$d_x\langle J_L(x){\cal O}(y_1)\dots\rangle =0  ~~(*)$$
+as long as $x$ is distinct from the $y_i$.  
+Here $d_x$ is the exterior derivative in the $x$ variable.
+If one extends the correlation functions (as distributions) across
+the diagonal, this identity will pick up extra terms supported
+on the diagonal.  A very important special case is the two point function
+of the current itself (or, in $2k$ spacetime dimensions, the $k+1$ point
+function).   For this the general structure is 
+$$d_x\langle J_L(x)J_L(y)\rangle ={k\over 2 \pi }d_y\delta(x-y)~~~ (**)$$
+with some constant $k$, which may or may not be zero.  The condition
+that the global symmetry generated by $J_L$ can be gauged is precisely
+that $k=0$.  To see this, let us try to gauge the symmetry by adding
+to the theory a $U(1)$ gauge field $A$.  The Lagrangian obtains an extra
+term $\int A\wedge J_L$.  (There may be more terms, higher order in $A$,
+if $J_L$ itself contains derivatives of charged fields.)
+Now, let us try to determine whether the theory with this coupling
+actually has the symmetry generated by $J_L$, that is whether
+the identity of equation $(*)$ holds for this theory.
+For this we must look, in the original theory, at
+$$d_x\langle J_L(x){\cal O}(y_1)\dots\exp(\int A\wedge J_L)\rangle $$
+The exponential is included to express correlation functions of the
+new theory in terms of the old theory.  If we expand this in powers
+of $A$, the term linear in $A$ will contribute, upon using $(**)$:
+$$\langle {\cal O}(y_1)\dots \cdot kF(x)\rangle $$
+with $F$ the curvature.
+This can be expressed as an operator relation
+$$ dJ_L={k\over 2\pi}F,$$
+asserting that after gauging $J_L$ no longer generates a symmetry.
+
+More generally, if there are several currents $J^1,\dots, J^s$, generating
+a Lie group $G$ of dimension $s$, with Lie algebra ${\cal G}$,
+then the two point functions obey
+$$d_x\langle J^a(x)J^b(y)\rangle ={k^{ab}\over 2\pi}d_y\delta(x-y)$$
+with $k^{ab}$ some invariant quadratic form on ${\cal G}$.
+The quadratic form $k$ has no positivity (since for instance
+left and right moving
+massless fermions make contributions of opposite signs) but does
+obey an integrality condition.
+If we gauge a subgroup $H$ of $G$, with Lie algebra ${\cal H}$,
+then by a reasoning along the lines of the above, the quantum theory
+only makes sense if the quadratic form $k$ vanishes when restricted to
+${\cal H}$.  If this is so, then the ``global symmetries'' are generated
+by currents in ${\cal G}$, not in ${\cal H}$, that are orthogonal
+to ${\cal H}$ with respect to $k$.
+
+In our problem, with the two currents $J_L,J_R$, the structure of $k$
+is typically that $k^{LL}=-k^{RR}\not= 0$, $k^{LR}=0$.  This quadratic
+form has two null vectors, $J_L\pm J_R$, so either of those two
+linear combinations of the $R$-symmetries can be gauged.  If one
+is gauged, the second becomes ``anomalous'' -- it ceases to be conserved --
+since the two null vectors are, of course, not orthogonal to each other.
+``Luckily,'' these options agree with the choices that we will need
+below for other reasons.
+
+What we are really interested in is not just gauging but
+twisting theories by
+$R$-symmetries.
+This process requires first gauging the $R$-symmetry and then twisting
+it using a homomorphism from the orthogonal group determined by the
+metric  to the symmetry group. It turns out that there will be two
+equivalent ways of going about this process.
+But before we embark on twisting, we must understand the local
+story.
+That is the subject of the next section.
+
+
+\section{$Q$-cohomology of operators}
+We consider ${\bf R}^{2|4}$ with its standard Euclidean or Minkowski
+metric. 
+Suppose that our $N=2$ supersymmetry theory in dimension two has the
+following supersymmetries: 
+\begin{center}
+\begin{tabular}{c|c}
+ characters of $U(1)_L$ &  characters of $U(1)_R$ \\ \hline
+$Q_-$ & $Q_+$ \\ 
+$\overline Q_-$ & $\overline Q_+$. \\
+\end{tabular}
+\end{center}
+These supersymmetries obey the relations
+$$Q_+^2=\overline Q_+^2=0$$
+$$\{Q_+,\overline Q_+\}=P_+$$
+with symmetric relations with $+$ replaced by $-$.
+Also,
+$$\{Q_+,Q_-\}=\{\overline Q_+,Q_-\}=\{Q_+,\overline Q_-\}=\{\overline
+Q_+,\overline Q_-\}=0.$$
+We will consider at the same time four closely related possibilities.  We
+let $Q$ be one of the following:
+$$Q_++Q_-, \ \ 
+Q_++\overline Q_-,\ \ 
+\overline Q_++Q_-,\ \ 
+\overline Q_++\overline Q_-.$$
+(The first two possibilities are inequivalent and the last two are
+hermitian conjugate to the first two and would give equivalent theories.)
+To fix notation let us choose the generators so that $Q=Q_++Q_-$.
+Letting $\mu=\pm$ we see that $P_\mu$ can be written as a commutator
+\begin{equation}\label{T}
+P_\mu=\{Q,T_\mu\}
+\end{equation}
+where $T_\mu$ is a linear combination of $Q_\pm,\overline Q_\pm$.
+We are interested in the cohomology of $Q$ acting as a differential
+(by superbracketing) on
+the space of local operators (and more generally on products of such
+operators). Thus, a local operator $\phi(x)$ will 
+define a $Q$-cohomology class if $\phi(x)$ is $Q$-closed, i.e., if
+$\{Q,\phi(x)\}=0$. 
+A simple computation using Equation~\ref{T} shows that for a $Q$-closed
+operator $\phi(x)$ we have
+$$d_\mu\phi=\{Q,[T_\mu,\phi]\}.$$
+(This derivative is interpreted to be the covariant derivative if the
+super-riemann surface is not flat.)
+This equation means that the
+operator $d\phi$ is $Q$-exact, and hence that the class of
+$d\phi$ in  the space of $Q$-cohomology classes of operators is
+trivial. 
+This means that as we vary the point $x$ in the riemann surface the
+$Q$-cohomology class of the local operator $\phi(x)$ is unchanged.
+It then follows that in  $Q$-cohomology
+such $Q$-closed local operators commute -- simply move the points to
+be space-like separated.
+That is to say, the space $Q$-cohomology of operators is a ${\bf
+Z}/2{\bf Z}$-graded commutative ring.
+We can always represent these operators by $0$-form
+operators. This is an easy consequence of the independence of the
+$Q$-cohomology class on the metric and diffeomorphism
+invariance of the $Q$-cohomology class. These facts will be
+established later.
+
+Let us recall a construction that we have seen before\note{Cross
+reference?}. Given a $Q$-invariant $0$-form local operator
+$\phi=\phi^{(0)}$ we define 
+a $1$-form local operator by 
+$$\phi_\mu^{(1)}=[T_\mu,\phi^{(0)}]$$
+and
+$$\phi^{(1)}=\phi_\mu^{(1)}dx^\mu.$$
+The same computation as we did in the previous paragraph shows that
+$$d\phi^{(0)}=\{Q,\phi^{(1)}\}.$$
+This means that if $\Sigma_1$ is a one-cycle in the super-riemann
+surface then
+$$\int_{\Sigma_1}\phi^{(1)}$$
+is $Q$-invariant.
+Let $\phi^{(2)}=[T,\phi^{(1)}]$. Then
+$$d\phi^{(1)}=\{Q,\phi^{(2)}\}.$$
+So in this way, beginning with a $Q$-invariant $0$-form  local operator
+$\phi^{(0)}$, 
+we can build a tower of $k$-form local operators
+$\phi^{(k)}$, called the descendants of $\phi^{(0)}$, and
+hence produce more general $Q$-invariant operators of the form
+$$\int_{\Sigma_k}\phi^{(k)}.$$
+Our computations show that
+for any $Q$-invariant local operator $\phi^{(0)}$ the operator
+$\phi^{(0)}+\phi^{(1)}+\phi^{(2)}$ is closed for the total differential   
+$d-Q$. 
+
+
+\section{Twisting the theory to give it global meaning}
+
+So far we have been working on $R^{2|4}$ with fixed coordinates. If we
+rotate space, then $Q=Q_++Q_-$ is not invariant. Our goal is to modify
+things until $Q$ is invariant under rotations and hence can be defined
+on more general Euclidean $2|4$-manifolds. Let us denote by $SO(2)_E$ the  
+Euclidean rotation group. The entire group of symmetries at our
+disposal for the Euclidean theory is $SO(2)_E\times U(1)_L\times
+U(1)_R$.
+This group has the obvious projection onto $SO(2)_E$ with a splitting
+back into the first factor. We wish to find another splitting of this
+projection map, i.e., a group $SO(2)_E'$ inside the product projecting
+isomorphically onto $SO(2)_E$ but which has the extra property that it
+commutes with $Q$. It is easy to see that there exists a unique such
+splitting and it is given on the Lie algebra level by
+$$K'=K\pm\frac{1}{2}J_L\pm \frac{1}{2}J_R$$
+where $K$ is the generator for $SO(2)_E$ and the signs depend on which
+of the four possibilities we have chosen for $Q$. In the case that we
+are concentrating on when $Q=Q_++Q_-$ we have
+$$K'=K+\frac{1}{2}J_L-\frac{1}{2} J_R.$$
+The fact that $1/2$ appears in these formulas means that the twisting
+actually involves the spin form of $SO(2)_E$.
+
+Notice that in order to make such twisting in dimension $n$ there must
+be non-trivial homomorphisms from $Spin(n)$ to the $R$-symmetry group.
+In dimension two it is possible to do this when the $R$-symmetry group
+is $U(1)$, e.g., for $N=1$ supersymmetry. But for $n=4$ it is
+necessary to have $N=2$ supersymmetry so that the $R$-symmetry group
+is $SU(2)\times U(1)$  which has a non-trivial homomorphism from $Spin(4)$.
+
+With this preliminary discussion in place, we are now ready to
+globalize our theory of $Q$-cohomology classes of local operators.
+Suppose that we have a $2|4$ super-riemann surface locally modeled on
+${\bf R}^{2|4}$.
+The hypothesis we have in mind for the super-riemann surface is that
+it be a split $2|4$-manifold complex with the odd directions being
+$$\left(\Pi K^{1/2}\oplus \Pi \overline K^{1/2}\right)\oplus \left(\Pi
+\overline K^{1/2}\oplus \Pi K^{1/2}\right).$$
+Here $\theta^+,\overline\theta^+$ are sections of the first two line
+bundles and $\theta^-,\overline\theta^-$ are sections of the last two.
+The process of twisting changes the odd part of the  underlying
+supermanifold of the theory. 
+We twist the spinor bundles containing $\theta^\pm$ by the
+square root of the canonical bundle to the power $\pm 1/2$.
+The result of
+twisting replaces the above line bundles by
+$$\left({\Pi\cal O}\oplus \Pi K\right)\oplus \left(\Pi{\cal O}\oplus
+\Pi\overline K\right).$$
+and makes the supersymmetry
+$$Q=\frac{\partial}{\partial \theta^+}+\frac{\partial}{\partial
+\theta^-}$$
+which is a global symmetry. Locally, this symmetry agrees with
+the symmetry $Q$ on ${\bf R}^{2|4}$ that we have been discussing.
+
+Once we have globalized the supersymmetry $Q$, all the previous
+discussion globalizes. In particular, for a $Q$-closed local operator
+${\cal O}(p)$ the $Q$-cohomology class of
+${\cal O}(p)$ is independent of the point $p$. Thus, the $Q$-cohomology
+classes of local operators on this global super-riemann surface
+generate a ${\bf Z}/2{\bf Z}$-graded commutative ring    
+called the {\sl chiral ring} of the theory. 
+
+
+
+\subsection{Certain Correlation Functions and Their Basic Properties}
+
+
+We will consider path integrals of the following types of path
+integrals:
+$$Z_{({\cal O}_\alpha)}=\int{\cal D}\Phi e^{-{\cal
+L}}\prod_{\alpha=1}^n\int_{\Sigma_\alpha}{\cal O}_\alpha^{(k_\alpha)} $$
+where for each $\alpha$ the operator ${\cal O}_\alpha$ is a $Q$-closed
+local operator, $k_\alpha=0,1,2$ and $\Sigma_\alpha$ 
+is a $k_\alpha$-cycle in the super-riemann surface $\Sigma$.
+
+Here are the basic properties of $Z_{({\cal O}_\alpha)}$:
+
+\noindent
+1). It is independent of the metric on the super-riemann surface.
+
+The reason is that as you vary the metric by $\delta g$ you get an
+insertion of $\int_\Sigma\delta g\cdot T$, where $T$ is the
+stress-energy tensor.
+But as we have seen before\note{cross ref?} $T$ is $Q$-exact in the sense
+that there is a field $S_{\mu\nu}$ with  $T_{\mu\nu}=\{Q,S_{\mu\nu}\}$.  We
+then see that  this insertion produces a term of the form $\{Q,\cdot\}$.
+The path integral of such a term is zero since since the fields are
+$Q$-invariant. (Notice also that it is necessary to assume that $Q$
+preserves the measure in the path integral.  This will be so
+if the original theory was supersymmetric and the current $\frac{1}{2} J_L-
+\frac{1}{2} J_R$ was gaugeable.   An important
+ corollary of the fact that the correlation
+function is metric-independent is that the zero-form operators
+${\cal O}_\alpha^{(0)}$ must be scalar operators, of spin zero;
+objects of higher spin would not be invariant under local rotations,
+and their insertion in a correlation could not be metric-independent.)
+
+
+
+
+
+\bigskip
+\noindent
+2). It is independent of most of the parameters in ${\cal L}$.
+
+First, the correlation function is independent of any term
+$\int d^2yd^4\theta(\cdots)$. The reason is that to evaluate such a
+term we differentiate by all four of the $Q$'s.
+For the same reason, only one of the terms
+$$\int d^2yd\theta^+d\theta^-W+{\rm c.\ c.}$$
+and
+$$\int d^2yd\overline\theta^+d\theta^-\tilde W+{\rm c. c.}$$
+can be non-trivial depending on which combination of $Q_+,Q_-,\overline
+Q_+,\overline Q_-$ we are using.
+In fact the correlation function is independent of one of these terms
+and varies holomorphically with the other.
+
+\bigskip
+\noindent
+3). We can calculate $Z_{({\cal O}_\alpha)}$ by using a fixed point
+theorem applied to the action of $Q$. We consider $Q$ as acting
+(infinitessimally) on the
+function space of all the fields in the theory.
+If this action has no fixed points, then the value of the path
+integral would be zero. In general, we can reduce the computation to
+an integral over the fixed point set of $Q$.  These of course are the
+field configurations which are invariant under the supersymmetry $Q$.
+
+\subsection{$Q$-cohomology of States}
+
+Now we pass from the local operators, path integrals and correlation
+functions world to the Hamiltonian framework.
+Our riemann surface is now a cylinder $S^1\times {\bf R}$. We
+trivialize all the relevant spin bundles over the $S^1$. We have the
+Hilbert space ${\cal H}$ of states of the quantum theory over the
+circle and the Hamiltonian operator $H$ on ${\cal H}$ associated with
+time translation. Since $Q$ is acting on the theory it produces an
+operator, which we also call $Q$, on ${\cal H}$ commuting with
+$H$. Also, from the commutation 
+relations in the superalgebra we see that
+$$H=\{Q,\tilde Q\}$$
+where $\tilde Q$ is the adjoint of $Q$. Of course, we still have the
+relation $Q^2=0$, so that we can 
+take the cohomology of the action of $Q$ on ${\cal H}$:
+$$H^*(Q)={\rm ker}\,Q/{\rm Im}\,Q.$$
+If our theory is sufficiently well-behaved so that $H$ has a discrete
+spectrum, then $H^*(Q)$ is identified with $\{\psi|H\psi=0\}$.
+(This is not the case for the gauge theory example we discuss later
+today but it is true for the sigma models.)
+In general $H^*(Q)$ is bigraded by the action of the $U(1)\times U(1)$
+$R$-symmetry group.
+
+\subsection{Comparison of $Q$-cohomology of local operators and
+$Q$-cohomology of states} 
+
+We have seen two types of $Q$-cohomology -- the first involving local
+operators and yielding the chiral ring and the second involving states
+on the circle. 
+Let us construct a map between these $Q$-cohomologies. 
+We consider a hemisphere
+
+\centerline{\quad}
+\centerline{\epsfxsize=1.5in\epsfbox{hemi.eps}}
+\centerline{\quad}
+
+
+Let ${\cal O}$ be a local operator at $p$. Doing the path
+integral for the hemisphere over the space of fields with a given
+boundary value produces a number, and hence a
+function  of the  state on the boundary. This 
+function is an element  in the Hilbert space of
+the boundary.  This then gives a map  from  local
+operators at $p$ to ${\cal H}$. One sees easily that it commutes with
+the action of $Q$ and hence induces a map from the $Q$-cohomology of
+local operators to the $Q$-cohomology of states on the circle:
+$$\psi\colon ({\rm chiral\ ring})\to H^*(Q).$$
+
+In examples we shall see that if the spectrum of $Q$ on ${\cal H}$ (at
+least near zero) is discrete then $\psi$ is an isomorphism.
+
+If $J_L$ and $J_R$ are both $R$-symmetries classically, then the
+chiral ring and ${\rm ker}\,H$ are both bigraded by these
+symmetries. Because of the anomaly, the map $\psi$ shifts the
+bigrading
+$$\psi\colon H^{p,q}(Q)\to {\rm ker}\,H^{p\pm k,q\pm k},$$
+where $k$ is a measure of the anomaly.
+Notice that the bigrading need not be by integers, only by rational
+numbers whose denominators divide the order of the covering of
+$U(1)\times U(1)$ that actually acts.
+
+
+\section{A Gauge Theory Example}
+
+The first example we take is that of gauge theory of a simple Lie
+group $G$. We begin with $N=1$ supersymmetric gauge theory in four
+dimensions and dimensionally reduce to an $N=2$ supersymmetric theory
+in dimension two. As we saw in the last lecture, the basic field
+strength is the field 
+$$\Sigma=\{\overline{\cal D}_+,{\cal D}_-\},$$
+which is a twisted chiral superfield with values in the adjoint bundle
+of the principal bundle.
+We use the expansion
+$$\Sigma=\sigma+\cdots+\overline\theta^+\theta^-(F+iD).$$
+The bosonic fields are the connection $A_\mu$ and  $\sigma,\overline
+\sigma$.
+Remember that the connection on four-space is
+$$A^{(4)}=\sum_{\mu=0}^1A_\mu dy^\mu
++\sigma(dy^2-idy^3)+\overline\sigma(dy^2+idy^3).$$    
+The two $R$-symmetries are:
+$$J_A=J_L-J_R;\ \ J_V=J_L+J_R.$$
+The first is induced by rotation in the $(y^2,y^3)$-plane and the second
+comes from the chiral $U(1)$ $R$-symmetry in four dimensions.
+(This symmetry is anomalous in four  dimensions but not in two
+dimensions -- see the superhomework.)
+We now twist by $J_V$, so that $SO(2)_E'$ is generated by $K'=K\pm
+\frac{1}{2}J_V$.  Then $A_\mu$ remains a connection one-form and
+$\sigma,\overline\sigma$ become $0$-forms. In general, this twist
+eliminates spin bundles and turns  sections of the spin bundles with
+differential forms. Then four spinor fields
+$\lambda_\pm,\overline\lambda_\pm$ get twisted into
+a $0$-form
+$\eta=\psi_{(0)}$, a one form $\psi=\psi_{(1)}$ and a two-form
+$\chi=\psi_{(2)}$. 
+(This new theory is of course a topological theory existing on a
+compact surface.  It is not a physical theory in the sense that there
+is a Poincar\'e group action on the theory.)
+
+
+In this example $J_A$ is twice the rotation of $(y^2,y^3)$-space,
+normalized so that $[J_A,Q]=Q$.
+Let us give the $J_A$ degrees of the various propagating fields in the
+Lagrangian, cf. Formulae 7.15 of the superhomework. (The reference to
+propagating fields, means that we have 
+in mind using the equations of motion to set the auxiliary field
+$F+iD$ equal to some expression in the other fields ($F$ is set
+equal to the curvature of $A$ and $D$ is set equal to zero since there
+are no matter fields.)
+\begin{center}
+\begin{tabular}{|l|c|c|c|c|c|}\hline
+$J_A$-degree & $-2$ & $-1$ & $0$ & $1$ & $2$ \\ \hline
+field & $\overline\sigma$ & $\psi_{(0)},\psi_{(2)}$ & $A_\mu$ &
+$\psi_{(1)}$ & $\sigma$\\ \hline
+\end{tabular}
+\end{center}
+Actually, the $J_A$-degree $-1$ and $+1$  terms could be reversed, but
+after appropriately normalizing things the degrees will be as
+indicated.
+
+Recall from Lecture II-10\footnote{In that lecture we had a real field
+$\phi$ instead of the complex field $\sigma$ here, but that changes
+nothing.}  that
+the super symmetry $Q$ lifts to a supersymmetry $\delta$ of the space
+of super connections. It is not the case that $\delta^2=0$, but only
+that $\delta^2$ is a gauge transformation. In fact,
+$\delta^2=[\sigma,\cdot]$. In terms of the
+coordinate fields  it is given by:
+$$\delta  A=\psi_{(1)}$$
+$$\delta\psi_{(1)}=-D_A\sigma$$
+$$\delta\sigma=0.$$
+The symbol $D_A$ of course refers to covariant derivative with respect
+to the connection $A$.
+
+In Lecture II-10  using the analogous symmetry led us to the
+equivariant cohomology of the 
+moduli space of connections, via the standard model of forms.  We let
+${\cal G}$ be the Lie algebra of the gauge group $G$
+and $M$ the space on which this group acts. Then we have the complex
+$$\left(\Omega^*(M)\otimes Func({\cal G})\right)^G$$
+with differential
+$$D=d_M+i_{V(\phi)}.$$
+Here, we use another closely related model which is not as well known
+but should be.
+We replace the Lie algebra ${\cal G}$ by its complexification ${\cal
+G}_{\bf C}$ and we form the complex
+$$\left(\Omega^*(M)\otimes \Omega^{0,*}({\cal G}_{\bf C})\right)^G.$$
+Here complex linear function $\phi$ on ${\cal G}_{\bf C}$ have degree
+$2$, the functions $\overline\phi$ have degree $-2$ and the
+$(0,1)$-form $d\overline\phi$ has degree $-1$. The differential in
+this complex is
+$$\tilde D=d_M+i_{\tilde V(\phi)}+\overline\partial_{{\cal G}_{\bf
+C}}$$
+where $\tilde V$ is a vector field on $M\times {\cal G}_{\bf C}$
+giving the action. To see that this complex also computes the
+equivariant cohomology we view $\tilde D$ as a sum of  $(d_M+i_{\tilde
+V(\phi)})$ and $\overline\partial_{{\cal G}_{\bf C}}$. We apply the
+usual spectral sequence for the double complex, doing
+$\overline\partial_{{\cal G}_{\bf C}}$ first.
+Since this cohomology vanishes except in degree zero, where it
+produces the polynomial functions on ${\cal G}_{\bf C}$, we see that
+one recovers the same answer as for the first complex.
+(Notice that this second approach leads to a Hodge theory
+version of equivariant cohomology, using the operator $\tilde D^*\tilde D$
+as a ``Laplacian''; it would be interesting to understand
+ the resulting ${\bf L}^2$  version of equivariant cohomology.)
+
+
+Let us complete the table describing the action of the supersymmetry
+$\delta$ on the space of propagating fields.
+The above model of equivariant cohomology translates into the
+following formulae for the supersymmetry:
+$$\delta  A=\psi_{(1)}$$
+$$\delta\psi_{(1)}=-D_A\sigma$$
+$$\delta\sigma=0$$
+$$\delta\overline\sigma=\psi_{(0)}$$
+$$\delta\psi_{(0)}=[\sigma,\overline\sigma]$$
+$$\delta\psi_{(2)}=F_A.$$
+It follows from the last equation that the fixed points of $\delta$
+will be field configurations where the connection is flat,  the
+section $\sigma$ is covariantly constant and commutes with
+$\overline\sigma$. 
+Next we see that the anomaly of $J_A$ is ${\rm dim}{G}\cdot
+(-\chi(\Sigma))=(2g-2)\cdot {\rm dim}(G)$. The reason for this is that
+the term that contributes to the anomaly in the measure of integration
+for the path integral is ${\cal D}\psi_{(0)}{\cal D}\psi_{(1)}{\cal
+D}\psi_{(2)}$. The symmetry $J_A$ of the Lagrangian acts by $-1$ on
+$\psi_{(0)}$ and $\psi_{(2)}$ and by $+1$ on $\psi_{(1)}$. Thus, the
+index computation for the anomaly becomes the dimension of the adjoint
+representation times $-\chi(\Sigma)$. 
+By invariance the correlation function
+$$\langle
+\prod_\alpha\int_{\Sigma_\alpha}{\cal O}_\alpha^{(k_\alpha)}\rangle=0$$  
+unless $\sum_\alpha n_\alpha=(2g-2){\rm dim}(G)$ where $n_\alpha$ is 
+the $J_A$-degree of ${\cal O}_\alpha^{(k_\alpha)}$. 
+Let us consider a local operator which is of the form $P(\sigma)$ for
+some gauge invariant polynomial on the Lie algebra of $G$.
+The ring structure on  these operators is just the usual ring
+structure on invariant polynomials.
+It is easy to see that if $P$ is of degree  $r$, then the operator
+${\cal O}_P^{(0)}$ has $J_A$-degree $2r$, and the descendants ${\cal
+O}_P^{(k)}$ have $J_A$-degree equal to $2r-k$. Notice that these
+degrees agree with the usual dimension of the analogous classes in
+Donaldson theory.) 
+
+Now let us calculate $\langle\prod_\alpha\int_{\Sigma_\alpha}{\cal
+O}_\alpha^{(k_\alpha)}\rangle $ via  fixed point theory.
+Recall that the Lagrangian is
+$${\cal L}=\frac{1}{4e^2}\int d^2yd^4\theta{\rm
+Tr}\overline\Sigma\Sigma.$$ 
+We will recover a theoretical formula for this correlation function.
+(We actually calculated the answer in Lecture
+II-10.) 
+In coordinates we have
+\begin{equation}\label{lag}
+{\cal L}=\frac{1}{4e^2}\int d^2y\left({\rm Tr}F^2+{\rm Tr}D\sigma
+D\overline\sigma +{\rm
+Tr}([\sigma,\overline\sigma]^2)+\cdots\right).
+\end{equation}
+By the fixed point theorem we need only calculate at points where the
+curvature is zero and $D_A\sigma=[\sigma,\overline\sigma]=0$. 
+There are two cases.
+If $A$ is irreducible and $D_A\sigma=0$ then $\sigma=0$. These
+solutions give  smooth points in the moduli space of classical
+solutions to the equations of motion and this part of the
+moduli space of classical $\delta$-invariant solutions is simply the
+space of of 
+irreducible representations of
+$\pi_1(\Sigma)\to G$. The other possibility is that $A$ is reducible
+and $\sigma\not=0$. These points produce singular points of the moduli
+space of classical solutions.  Recall that $\sigma$
+takes values in the 
+complexified adjoint bundle.  Since $D_A\sigma=0$, $\sigma$ is
+covariantly constant, and it suffices to study its structure over one
+point of $\Sigma$. Since $\sigma$ and
+$\overline\sigma$ commute, the $\sigma$ can be diagonalized
+(conjugated into the Cartan subalgebra of the complexification of the
+Lie algebra of $G$) by an element of $G$.
+
+Now let us examine how perturbation theory will compute these
+topological correlation functions. We will restrict to the smooth case
+where $\sigma=0$. Of course, we are taking the  coupling
+constant  $e$ in the Lagrangian, Equation~\ref{lag}  to be small. We
+are reduced to 
+computing an integral over the moduli space, taken in the supersense,
+of classical solutions. Let us consider
+integrating out the odd variables at a point $[\rho]$ of the ordinary
+moduli space of flat connections.  The fermion
+space is the space of zero modes of the $\psi_{(k)}$.  These are the
+spaces of harmonic forms and hence are identified with the spaces 
+$H^k(\Sigma,{\rm ad}(\rho))$. Since we are
+assuming that $\rho$ is irreducible and that the moduli space is
+smooth at $[\rho]$ we have that $H^0(\Sigma,{\rm
+ad}(\rho))=H^2(\Sigma,{\rm ad}(\rho))=0$ and $H^1(\Sigma,{\rm
+ad}(\rho))$ is the tangent space to the moduli space at $[\rho]$.
+So in fact the space of odd directions at $[\rho]$ is identified with
+$\Pi T{\cal M}_{[\rho]}$.  Thus, at the open subset of irreducible
+connections, the supermanifold of classical 
+solutions is $\Pi T{\cal M}$, the parity reversed 
+tangent bundle over the moduli space of flat connection. 
+As we have seen, the Berezinian of such a supermanifold is naturally
+trivialized so that one integrates functions over this
+supermanifold. We have also seen that  a function on this
+supermanifold is the same thing as 
+a differential form on ${\cal M}$ and integration of a function  over $\Pi
+T{\cal M}$ is the same thing as the integral of the corresponding
+differential form over ${\cal M}$. (This requires an orientation of
+${\cal M}$ which is determined by an orientation of $\Sigma$.)
+
+Of course, we wish to compute correlation functions involving the
+operators $\int_{\Sigma_\alpha}{\cal O}_\alpha^{(k_\alpha)}$.
+These operators determine functions on $\Pi T{\cal M}$ and the
+correlation function of a product of them becomes the integral of the
+product of the functions.
+In this manner gauge invariant polynomials in $\sigma$ are mapped to
+functions on $\Pi T{\cal M}$ and hence to differential forms on ${\cal
+M}$. 
+A crucial step in the reduction from polynomials to differential forms
+is the observation
+that with fermions present, it is no longer the case that
+$\sigma=0$. Rather the equations of motion give
+$$\Box \sigma=-[\psi_{(1)},\psi_{(1)}].$$
+This is important because the right hand side is directly interpreted
+as a two-form on moduli space (as the zero modes of $\psi_{(1)}$
+represent one-forms on the moduli space), so the formula enables
+us to express the function $\sigma$, which is formally of degree two
+in the quantum field theory formalism, in terms of an ordinary two-form
+on the moduli space.  One evaluates the correlation functions by 
+integrating the differential forms obtained in this way over the moduli 
+space.  (Of course, these computations have to be augmented by
+computations at the components given by reducible connections and a
+non-zero but parallel field $\sigma$.)
+
+
+In this gauge theory example, because of the presence of reducible
+connections, the Hamiltonian has a continuous
+spectrum beginning at zero energy.  As a result
+ the map from $Q$-cohomology of operators
+to $Q$-cohomology of states is not very useful.
+
+
+\section{A $\sigma$-model example}
+
+Let us consider the $N=2$ supersymmetric $\sigma$-model 
+$$\Phi\colon \Sigma\to X$$
+where $X$ is a K\"ahler manifold and where $\Sigma$ is a split $2|4$
+manifold as in the previous gauge theory example.
+With this assumption, the fermions of the $\sigma$-model lie in
+$$K_\Sigma ^{\pm 1/2}\otimes T^\pm X$$
+where $K_\Sigma$ is the canonical bundle of $\Sigma$,
+$T^+X=T^{1,0}X$ and $T^-X=T^{0,1}X$ are the holomorphic and
+anti-holomorphic tangent bundle of $X$.
+We denote these fermions by $\chi^{\pm,\pm}$.
+The first sign refers to whether the fermion is left- or right-moving
+(i.e., in whether it is a section of $K_\Sigma^+$ or $K_\Sigma^-$) and
+the second sign refers to the type of the section 
+(holomorphic or anti-holomorphic) on $X$.
+Once again we twist the theory for it to exist globally on $\Sigma$
+replacing $K$ by
+$$K'=K\pm \frac{1}{2}J_L\pm \frac{1}{2} J_R.$$
+Depending on the choice of signs in this twisting we get two possible
+cases called the $A$-model (using $-\frac{1}{2}J_L+\frac{1}{2}J_R$) or
+the $B$-model (using $\frac{1}{2}J_L+\frac{1}{2}J_R$).
+
+\subsection{The $A$-model}
+
+The zero-forms are $\chi^{++}\in K^{1/2}\otimes T^{1,0}X$ and
+$\chi^{--}\in K^{-1/2}\otimes T^{0,1}$. The ring of $0$-form
+operators is
+$$F(\Phi,\chi^{++},\chi^{--})=F(\Phi,\partial \phi,\overline\partial
+\phi).$$
+This is simply the ring of functions on $\Pi TX$ which  is identified
+with the ring of differential forms on the K\"ahler manifold.
+Furthermore, with this identification of a differential form $F$ with
+a corresponding operator ${\cal O}_F$, we have
+$$Q{\cal O}_F={\cal O}_{dF},$$
+so that 
+$Q$ becomes the ordinary differential.
+The chiral ring is then $H^*(X)$, the usual topological cohomology of
+$X$, and the bigrading induced by $J_L$ and $J_R$ is the usual Hodge
+bigrading.
+In the space of maps the $Q$-fixed points are the holomorphic curves
+$$\phi\colon \Sigma\to X.$$
+Thus, to compute correlation functions in this model we must do integrals
+over the spaces of holomorphic curves in $X$. This will lead, as we
+shall see in the next lecture, to quantum cohomology.
+
+\subsection{The $B$-model}
+It is possible to construct this model only  in the case $X$ is
+Calabi-Yau, for 
+this is the only case when the symmetry ($J_L+J_R$) by which we wish  to
+twist  is not anomalous.\footnote{In other words, if $c_1(X)$ is nonzero,
+then $J_L+J_R$ is simply not a symmetry of the quantum theory, even
+before gauging.  The discussion of the obstruction to gauging in the
+first part of this lecture assumed that $J_L$ and $J_R$ both generated
+symmetries prior to gauging, and thus does not apply to this case.}
+We fix a non-zero holomorphic $n$-form $\omega$ on $X$.
+In this case the zero-forms are
+$\chi^{+-}\in K^{1/2}\otimes T^{1,0}X$ and $\chi^{--}\in
+K^{-1/2}\otimes T^{0,1}X$. The ring of $0$-form operators is
+$$F(\Phi,\chi^{+-},\chi^{--})$$
+which is the ring 
+$$\Omega^{0,*}(X)\otimes
+\Omega^{0,*}(X)=\Omega^{0,*}\left(X,\wedge^*T^{1,0}(X)\right).$$
+Under this identification we have
+$$Q{\cal O}_F={\cal O}_{\overline\partial F},$$
+so that the chiral ring is
+$$\oplus_{q,p}H^q(X;\wedge^pT^{1,0}X).$$
+
+The $Q$-fixed points in the space of fields are the constant maps
+$\Sigma\to X$. Thus, the computations of correlation functions 
+in this model will become integrals over $X$ 
+$$\langle \prod_{i=1}^s{\cal
+O}_{F_i}\rangle=\int_X\left(\wedge_{i=1}^sF_i\right)\cdot
+\omega^{\otimes 2}.$$ 
+These integrals lie squarely in classical mathematics; they have to do
+with variation of Hodge structures under deformation of complex
+structure.  
+\end{document}
+
+
+
+
+
+
+

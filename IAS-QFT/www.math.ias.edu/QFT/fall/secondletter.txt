@@ -1,0 +1,22 @@
+                    IAS QUANTUM FIELD THEORY PROGRAM
+
+As mentioned in a previous message, the first lectures in the IAS quantum
+field theory program will be delivered by Joseph Bernstein, on
+super-geometry (``how to write Lagrangians with fermionic variables'').
+These lectures will begin in mid-September (precise dates to be announced
+later).
+
+We asked Joseph if there was some background reading that the participants
+could do to prepare themselves for his lectures.  Here is his response:
+
+     One paper, which David Kazhdan found and sent me, proved very useful.
+     This is a review by M. Sohnius " Introducing Supersymmetry" in
+     Review section of Physics letters v.128, Numbers 2,3 (1985), p.39-204.
+
+     The book of Bagger and Wess is also rather useful.
+
+(That book is entitled ``Supersymmetry and Supergravity'', and is published
+by Princeton University Press.)
+
+  -- Dave Morrison and Dan Freed
+

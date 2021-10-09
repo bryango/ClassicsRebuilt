@@ -1,0 +1,802 @@
+ 
+
+%% This is an AMS-TeX file.
+%% The command to compile it is: amstex <file>
+%%
+\input amstex
+\documentstyle{amsppt}
+\loadeusm
+\magnification=1200
+\pagewidth{6.5 true in}
+\pageheight{8.9 true in}
+
+\catcode`\@=11
+\def\logo@{}
+\catcode`\@=13
+
+\NoRunningHeads
+
+\font\boldtitlefont=cmb10 scaled\magstep1
+\font\bigboldtitlefont=cmb10 scaled\magstep2
+
+\def\dspace{\lineskip=2pt\baselineskip=18pt\lineskiplimit=0pt}
+
+%\def\oplusop{\operatornamewithlimits{\oplus}\limits}
+%\def\Piop{\operatornamewithlimits{\Pi}\limits}
+\def\prodop{\operatornamewithlimits{\prod}\limits}
+%\def\w{{\mathchoice{\,{\scriptstyle\wedge}\,}
+%  {{\scriptstyle\wedge}}
+%  {{\scriptscriptstyle\wedge}}{{\scriptscriptstyle\wedge}}}}
+\def\Le{{\mathchoice{\,{\scriptstyle\le}\,}
+  {\,{\scriptstyle\le}\,}
+  {\,{\scriptscriptstyle\le}\,}{\,{\scriptscriptstyle\le}\,}}}
+\def\Ge{{\mathchoice{\,{\scriptstyle\ge}\,}
+  {\,{\scriptstyle\ge}\,}
+  {\,{\scriptscriptstyle\ge}\,}{\,{\scriptscriptstyle\ge}\,}}}
+\def\vrulesub#1{\hbox{\,\vrule height7pt depth5pt\,}_{#1}}
+%\def\rightsubsetarrow#1{\subset\kern-6.50pt\lower2.85pt
+%     \hbox to #1pt{\rightarrowfill}}
+%\def\mapright#1{\smash{\mathop{\,\longrightarrow\,}\limits^{#1}}}
+%\def\arrowsim{\smash{\mathop{\to}\limits^{\lower1.5pt
+%  \hbox{$\scriptstyle\sim$}}}}
+
+\def\eps{{\varepsilon}}
+\def\plus{{\sssize +}}
+\def\Mbar{\overline{M}}
+\def\Qbar{\overline{Q}}
+\def\Ebar{\overline{E}}
+\def\fbar{\overline{f}}
+\def\gbar{\overline{g}}
+\def\Sbar{\overline{S}}
+\def\Vbar{\overline{V}}
+\def\scrRbar{\overline{\scrR}}
+\def\scrSbar{\overline{\scrS}}
+\def\grSbar{\overline{\grS}}
+\def\Vspace{V_{\space}} \def\QFT{\text{\rm QFT}}
+\def\Stil{\widetilde{S}}
+\def\scrEtil{\widetilde{\scrE}}
+\def\scrStil{\widetilde{\scrS}}
+\def\scrTtil{\widetilde{\scrT}}
+\def\rhotil{\tilde{\rho}}
+\def\grStil{\widetilde{\grS}}
+
+\def\uhat{\widehat{u}}
+\def\Phat{\widehat{P}}
+\def\Ghat{\widehat{G}}
+
+%\def\Stab{\text{\rm Stab}}
+\def\Hom{\text{\rm Hom}}
+\def\Map{\text{\rm Map}}
+%\def\Vbarspace{\overline {V}_{space}}
+%\def\Vspace{ V_{space}}
+\def\SO{\text{\rm SO}} 
+\def\Spin{\text{\rm Spin}}
+%\def\Res{\text{\rm Res}}
+%\def\Aut{\text{\rm Aut}}
+%\def\Out{\text{\rm Aut}}
+\def\End{\text{\rm End}}
+\def\supp{\text{\rm supp}}
+\def\spin{\text{\rm spin}}
+%\def\SU{\text{\rm SU}} \def\Lie{\text{\rm Lie}}
+%\def\SL{\text{\rm SL}} \def\Sym{\text{\rm Sym}}
+
+\def\dbC{{\Bbb C}} 
+\def\dbR{{\Bbb R}}
+%\def\dbZ{{\Bbb Z}} 
+
+\def\gr#1{{\fam\eufmfam\relax#1}}
+
+%Euler Fraktur letters (German)
+\def\grA{{\gr A}}	\def\gra{{\gr a}}
+\def\grB{{\gr B}}	\def\grb{{\gr b}}
+\def\grC{{\gr C}}	\def\grc{{\gr c}}
+\def\grD{{\gr D}}	\def\grd{{\gr d}}
+\def\grE{{\gr E}}	\def\gre{{\gr e}}
+\def\grF{{\gr F}}	\def\grf{{\gr f}}
+\def\grG{{\gr G}}	\def\grg{{\gr g}}
+\def\grH{{\gr H}}	\def\grh{{\gr h}}
+\def\grI{{\gr I}}	\def\gri{{\gr i}}
+\def\grJ{{\gr J}}	\def\grj{{\gr j}}
+\def\grK{{\gr K}}	\def\grk{{\gr k}}
+\def\grL{{\gr L}}	\def\grl{{\gr l}}
+\def\grM{{\gr M}}	\def\grm{{\gr m}}
+\def\grN{{\gr N}}	\def\grn{{\gr n}}
+\def\grO{{\gr O}}	\def\gro{{\gr o}}
+\def\grP{{\gr P}}	\def\grp{{\gr p}}
+\def\grQ{{\gr Q}}	\def\grq{{\gr q}}
+\def\grR{{\gr R}}	\def\grr{{\gr r}}
+\def\grS{{\gr S}}	\def\grs{{\gr s}}
+\def\grT{{\gr T}}	\def\grt{{\gr t}}
+\def\grU{{\gr U}}	\def\gru{{\gr u}}
+\def\grV{{\gr V}}	\def\grv{{\gr v}}
+\def\grW{{\gr W}}	\def\grw{{\gr w}}
+\def\grX{{\gr X}}	\def\grx{{\gr x}}
+\def\grY{{\gr Y}}	\def\gry{{\gr y}}
+\def\grZ{{\gr Z}}	\def\grz{{\gr z}}
+
+\def\so{{\frak {so}}}
+
+\def\v{\underline v}
+
+\def\scr#1{{\fam\eusmfam\relax#1}}
+
+\def\scrA{{\scr A}}   \def\scrB{{\scr B}}
+\def\scrC{{\scr C}}   \def\scrD{{\scr D}}
+\def\scrE{{\scr E}}   \def\scrF{{\scr F}}
+\def\scrG{{\scr G}}   \def\scrH{{\scr H}}
+\def\scrI{{\scr I}}   \def\scrJ{{\scr J}}
+\def\scrK{{\scr K}}   \def\scrL{{\scr L}}
+\def\scrM{{\scr M}}   \def\scrN{{\scr N}}
+\def\scrO{{\scr O}}   \def\scrP{{\scr P}}
+\def\scrQ{{\scr Q}}   \def\scrR{{\scr R}}
+\def\scrS{{\scr S}}   \def\scrT{{\scr T}}
+\def\scrU{{\scr U}}   \def\scrV{{\scr V}}
+\def\scrW{{\scr W}}   \def\scrX{{\scr X}}
+\def\scrY{{\scr Y}}   \def\scrZ{{\scr Z}}
+
+\def\gr#1{{\fam\eufmfam\relax#1}}
+
+%Euler Fraktur letters (German)
+\def\grg{{\frak g}}
+\def\grp{{\frak p}}
+
+
+\def\spinact{s}
+\def\spinel{\tau}
+
+\NoBlackBoxes
+\document
+
+\centerline{\bigboldtitlefont Lecture 2}
+
+
+\centerline{\boldtitlefont Eucledian formulation of Wightman QFT}
+
+\bigskip
+\centerline{David Kazhdan}
+
+
+\dspace
+\bigskip\bigskip
+
+
+
+\bigskip
+
+
+\subhead{2.1} {Analytic continuation of Wightman functions}\endsubhead
+In lecture 1 we were working with Minkowski space-time $V$. However it is
+often desirable to be
+able to work with Euclidean (Riemannian rather than pseudo-Riemannian)
+space-time as well. In this lecture we explain what data over the Euclidean
+space-time $E= \dbR^d$ corresponds to a QFT in Wightman 
+axioms.
+
+More precisely, let $V_\dbC=V\otimes \dbC$, $V_n^\dbC=V_n\otimes \dbC$, and
+consider the Euclidean affine space $E=i\dbR\times \dbR^{d-1}\subset V_\dbC$. 
+
+Going between QFT data on Minkowski space-time $V=\dbR\times (\dbR)^{d-1}$
+and the one on $E=i\dbR\times (\dbR)^{d-1}$ is often called {\it Wick
+rotation}.
+
+The plan is to obtain  Euclidean counterparts of Wightman functions
+by analytically continuing $\scrW_n$ to an open domain in $V_n^\dbC$ and
+then restricting the obtained analytic functions to $E$. 
+ 
+
+We need some notations.
+Let $G_\dbC$ be complexification of $G$.
+We set: 
+$\scrT=V-iV_+\subset V_{\dbC}$ (the {\it backward tube});
+ $\scrT_n=(\scrT)^n\subset
+V_n^\dbC$ (the {\it extended tube});
+ $\scrTtil_n=G_\dbC(\scrTtil_n)\subset V_n^\dbC$ (the {\it permuted 
+extended tube}) ;
+$J_n=\scrTtil_n\cap V_n$.
+Recall that we identified $V_n=\Vbar_{n+1}$, so we have an
+action of the symmetric group $\Sigma_{n+1}$ on $V_n$.
+
+\proclaim{Proposition} 
+
+\roster
+\runinitem"{\rm a)}"
+Assume $d>2$. Then for any $\sigma \in \Sigma_{n+1}$ the subset
+$J_n\cap \sigma (J_n)\subset V_n$ is open and nonempty.
+
+\smallskip
+\item"{\rm b)}"
+If $d>2$ then for any $\sigma \in \Sigma_{n+1}$ the subset $\scrTtil_n\cap
+\sigma (\scrTtil_n)$ is connected. 
+
+\smallskip
+\item"{\rm c)}"
+Put $E=i\dbR\times \dbR^{d-1}\subset V_\dbC$;
+$E_n=E\times\cdots\times E\subset V_n^\dbC$.
+Also let $E_n^0\subset E_n$ be the complement to all
+diagonals, and:
+$\Ebar_n=E_n/\Delta(E)$; $\Ebar_n^0=E_n^0/\Delta(E)$.
+Then $\operatornamewithlimits{\cup}\limits_{\sigma\in\Sigma_{n+1}}
+\sigma(\scrTtil_n)\supset\overline{E_{n+1}^0}$.
+\endroster
+\endproclaim
+
+\demo{Proof}
+We start with the following result.
+\enddemo
+
+\proclaim{Lemma} (Jost's theorem)
+$J_n=\{(v_1,\dotsc,v_n)\in V_n\vert
+\forall\,(\lambda_1,\dotsc,\lambda_n)\in\dbR_+^n-\{0\}$:
+$(\lambda_1 v_1+\cdots+\lambda_n v_n)\in V_{space}\}$.
+\endproclaim
+
+\demo{Proof of the Lemma}
+Assume that $(v_1,\dotsc,v_n)\in J_n$.
+Then for some $g\in G_\dbC$:\break
+ $g(v_1), g(v_2),\dotsc,
+g(v_n)\in\scrT$, hence $g(\lambda_1 v_1+\cdots+\lambda_n
+v_n)\in\scrT$ for $(\vec {\lambda} )\in\dbR_+^n-\{0\}$.
+Let us write $\sum\lambda_k v_k=\xi-i\eta$, where $\eta\in
+V_+$.
+Then $(\sum\lambda_k v_k)^2=(\xi)^2-(\eta)^2-2i(\xi,\eta)$.
+The L.H.S. is real, hence $(\xi,\eta)=0$, and $(\xi)^2\Le
+0$, i.e. $(\sum \lambda_k v_k)^2<0$.
+
+Let us prove the converse statement. So assume that the 
+(convex) cone generated by $v_1,\dotsc,v_n$ does not intersect 
+$\Vbar_+\cup \Vbar _-$. Then  this cone can be 
+separated from $V_\pm$ by a hyperplane tangent to  $\Vbar_\pm$.
+This means that there exist $\alpha \in \Vbar_+ $ 
+and $\beta \in \Vbar _-$
+such that: $(\alpha)^2=(\beta)^2=0,\, 
+(\alpha , v_k)<0,\,(\beta,v_k)<0$
+for $k=1,\dotsc,n$
+and $(\alpha, w)>0$ for $w\in V_+$; $(\beta,w)>0 $ for $w\in V_-$. 
+Then $(\alpha, \beta)\not = 0$, and it is easy to  show that there exists 
+ $g\in G_\dbC$ such that 
+$g(\alpha)=i\alpha$, $g(\beta)=-i\beta$
+and $g$ is identity on the subspace orthogonal to
+ $\langle \alpha, \beta \rangle$. This $g$ satisfies the condition
+$g(v_k)\in \scrT$ for $k=1,\dotsc,n$.
+\enddemo
+
+\demo{Proof of the Proposition}
+a)\enspace
+It is obvious that this subset is open.
+So we must show it is nonempty, i.e. we are to find a point 
+$\underline v=(v_1,\dotsc,v_n)$ such that $(v_1,\dotsc,v_n)$
+and $(v_{\sigma(1)},\dotsc,v_{\sigma(n)})$
+satisfy the conditions of the last lemma.
+We can choose two linearly independent  vectors
+$\ell_1,\ell_2\in\dbR^{d-1}\subset V$ (since $d>2$) and put
+$\underline v=(\ell_1,\dotsc,\ell_1)+
+\sigma^{-1}(\ell_2,\dotsc,\ell_2)$. Then it is 
+immediate to check the conditions. 
+
+
+
+\smallskip
+b)\enspace 
+It is enough to show that $\sigma (\scrTtil_n)\cap \scrT_n$ is connected
+for any $\sigma$. 
+
+
+We have a standard
+
+\proclaim{Lemma} Generic element of $G_\dbC$ can be written as $g= g'\cdot 
+g_\dbR$, where $g_\dbR \in G$ and $g'$ preserves an orthogonal
+decomposition of $V_\dbC$
+ into sum of subspace of dimension not greater than 2  defined
+over $\dbR$. 
+Here by generic we mean an element belonging to an open (in fact
+real Zariski open) dense subset.
+\endproclaim
+
+%%%%%%%%%%\demo{Proof of the Lemma} For an element $g\in \SO(V_\dbC)$ its
+%%%%%%%%%%class in $ \SO(V_\dbC)/ \SO(V)$ is determined by the subspace
+%%%%%%%%%%$g(V)\subset V_\dbC$. For generic $g$ this subspace is a graph of
+%%%%%%%%%%a  map $L:V\to iV\cong V$. Since imaginary part of
+%%%%%%%%%%$(\quad,\quad)|_{g(V)}$ vanishes  we see that $L\in \so (V)$. For
+%%%%%%%%%%generic $g$ the element $L\in \so (V)$ is generic, hence is a
+%%%%%%%%%%direct sum of standard 2-dimensional blocks, and possibly a
+%%%%%%%%%%1-dimensional block. The condition that the real part of
+%%%%%%%%%%$(\quad,\quad)|_{g(V)}$ has signature $(1,d-1)$ implies that the
+%%%%%%%%%%imaginary eigenvalues of $L$ have absolute value less than 1.
+%%%%%%%%%%Consider now  the element $g'\in G_\dbC$ which acts on $V_\dbC$
+%%%%%%%%%%with the same  eigenspaces as $L$, and eigenvalues given by
+%%%%%%%%%%$\lambda'= \frac{1+i\lambda}{\sqrt{ 1+ \lambda^2 }}$ where
+%%%%%%%%%%$\lambda$ is the corresponding eigenvalue of $L$. Then
+%%%%%%%%%%$g'(V)=g(V)$, i.e. $g^{-1}g'$ projects to a real element of
+%%%%%%%%%%$\SO(V)$. After possibly changing the sign of the action of $g'$
+%%%%%%%%%%on one of the 2-dimensional blocks we will  achieve that
+%%%%%%%%%%$g^{-1}g'\in G$ is  itself real.  By construction $g'$ preserves
+%%%%%%%%%%complex eigenspaces of $L$, so the proof is finished.
+%%%%%%%%%%\enddemo
+
+Let us now finish the proof of b). 
+Fix $\sigma\in \Sigma_{n+1}$ and  consider  $S=\{( g\in G_\dbC,\,
+\v\in V_n^{\dbC})\  | \  g(\sigma(\v))\in \scrT_n\}$.
+Take a point $(g,\v)\in S$.
+
+ Moving $(g,\v)$ slightly inside $S$ we can
+achieve that
+ $g$ is generic as in the last lemma. We can now take $g'$, $g_\dbR$
+as in the Lemma. Obviously
+ $(g', g_\dbR^{-1}(\v))$ and $(g,\v)$ lie in one connected component of
+$S$. Set $\v'= g_\dbR^{-1}(\v)$.
+
+Let $V_0\subset V$ be the unique block in the decomposition corresponding
+to $g'$ on which $(\quad,\quad)$ is not negative, and let $\pi:V_n^\dbC\to
+(V_0^\dbC)^n$ be the orthogonal projection. One sees immediately that for
+$\v\in \scrT_n$ the segment connecting $\v$ with $\pi(\v)$ lies in
+$\scrT_n$. Also $\pi$ commutes with $g'$ and $\sigma$; it follows that
+ this segment also lies in $\sigma^{-1}( {g'}^{-1}(\scrT_n))$,
+hence $(g',\v')$ and
+$(g',\pi(\v'))$ are connected  inside $S$. 
+
+
+If $\dim(V_0)=1$ then $g'|_{V_0}=\pm Id$. So in that case we have
+$\pi(\v')\in \scrT_n$, $\pm \sigma (\pi(\v'))\in \scrT_n$, which is only
+possible if $\sigma=1$ or $\sigma=w_0$ is the ``long'' permutation
+($w_0(i)=n+2-i$). But in these two cases $\sigma
+(\scrTtil_n)\supset \scrT_n $, so there is nothing to prove anyway. 
+
+Suppose now that $\dim(V_0)=2$. Set $G^0=\Spin(V_0)$,
+ $G^0_\dbC=\Spin(V_0\otimes\dbC)$, $\scrT_n^0=V_0+iV_0^+$.
+  Then $G^0_\dbC/G^0$ is the circle $S^1$, and
+ one can show that for $\sigma \ne 1, \, w_0$  the set  $\{g\in
+ G^0_\dbC/G^0\ |\ g(\sigma(\scrT_n^0))\cap \scrT_n^0 \ne \emptyset
+ \}$ coincides with $S^1-\{1,-1\}$.
+ For given $g$ the set $g(\sigma(\scrT_n^0)) \cap \scrT_n^0$ is convex and
+ hence connected; thus the set $S_{V_0}:= \{( g\in G_\dbC^0,\,
+\v\in \scrT_n^0\ |\  g(\sigma(\v))\in \scrT_n\}$ has 2 connected components.
+It is easily seen that these 2 components are permuted by conjugation by an
+element of $G$, hence they lie in the same connected component of $S$. But
+we have  shown that any point in $S$ is connected to a point  in
+$(Stab_{V_0}\times V_0) \cap S$, and hence to a point in $S_{V_0} \subset
+S$. (Here we use that the action of $g'$ on $V_0$ has determinant
+1, because otherwise it has  eigenvalues 1, $-1$, which does not happen for
+generic  $g$.)
+
+Since $G$  transitively permutes
+ 2-dimensional subspaces of $V$ of signature $(1,1)$ we see that $S$ is
+connected, which implies the statement.
+
+\smallskip
+c)\enspace
+For $v\in V_\dbC$ let us write $v=(v^0,\vec{v}\,)$,
+$v_0\in\dbC,\,\vec{v}\in\dbC^{d-1}$.
+It is clear that for $(v_1,\dotsc,v_{n+1})\in E_{n+1}^0$
+there exists $g\in\SO(n+1)$, such that $(gv_i)^0\not=(gv_j)^0$
+for $i\not=j$.
+Then we can permute $(v_1,\dotsc,v_{n+1})$ so as to get:
+$(v_i)^0>(v_j)^0$ for $i>j$.
+But this implies that the corresponding vector in $\Vbar_{n+1}$
+lies in $\scrTtil_n$.
+
+\enddemo
+
+Now we are ready to prove
+
+\proclaim{Theorem} Let $d>2$.
+Then $W_n$ extends to an analytic function on
+$\operatornamewithlimits{\cup}\limits_{\sigma\in\Sigma_{n+1}}
+\sigma(\scrTtil_n)$.
+These functions are $\Sigma_{n+1}$ and $G_\dbC$-equivariant.
+(The $\Sigma_{n+1}$-equivariance is understood as usually in the
+``super'' sense.)
+\endproclaim
+
+\demo{Proof}
+Since $\scrF(W_n)$ is supported in  $V_+$ it follows
+that $W_n$ extends to an analytic function on $\scrT$
+(which will be denoted by the same letter).
+Since $W_n$ is $G$-equivariant, this analytic function is
+$G$-equivariant.
+
+To ensure that $W_n$  extends to a single-valued analytic 
+function on $\scrTtil$, which  then is automatically $G_\dbC$-equivariant,
+ it is enough to check that $W_n(x)=W_n(g(x))$
+for $g\in G_\dbC$, $x\in \scrT _n$ and $g(x)\in \scrT_n$.
+
+If $g^{-1}\scrT_n \cap \scrT_n \not = \emptyset$ then also
+$ g^{-1}\scrT \cap \scrT \not = \emptyset$. Let us take
+$v \in  g^{-1}\scrT \cap \scrT$. It is easy to see that 
+for $v\in \scrT$ the set $\{h\in G_\dbC | h(v)\in \scrT \}$
+is connected. Hence there exists a neighborhood $U\subset \scrT_n\cap
+g^{-1}\scrT_n$
+of the point $(v,\dotsc,v)$ such that $g^{-1}$ lies in the connected
+component of 1 of  $\{h\in G_\dbC | h(U)\subset \scrT \}$.
+From $G$-invariance of $W_n$ it follows that for fixed
+$x\in V_n^\dbC$ the function 
+$W_n(g(x))$ defined on some open subset of $G_\dbC$ is locally
+constant. Hence  $W_n(x)=W_n(g(x))$ for $x\in U$.
+Since $U$ is  open in the connected set $ g^{-1}\scrT_n \cap \scrT_n$
+we can conclude that  $W_n(x)=W_n(g(x))$ for all
+ $x\in  g^{-1}\scrT_n \cap \scrT_n$, so analyticity of $W_n$ in  $\scrTtil$
+is proved.
+
+
+
+
+Now by Proposition a)  for any $\sigma \in \Sigma_{n+1}$
+the set $\sigma^{-1}(\scrTtil)\cap\scrTtil$ contains
+an open non-empty subset of $V_n$.
+Moreover,
+ from the Jost's theorem it follows that
+$$
+\sigma^{-1}(\scrTtil)\cap\scrTtil\cap V_n\subset (V_{space})^n.
+$$
+But $W_n\vrulesub{(V_{space})^n}$ is $\Sigma_{n+1}$
+(super)equivariant.
+Hence $W_n$ and $\sigma^*(W_n)$ agree on a neighborhood of the set of real
+points in
+$\sigma^{-1}(\scrTtil)\cap\scrTtil$, and hence
+on the whole of $\sigma^{-1}(\scrTtil)\cap\scrTtil$ by Proposition b). 
+So
+the collection of functions $\sigma^* (W_n)$ for all $\sigma \in \Sigma_n$
+ give a well-defined analytic 
+function on $\operatornamewithlimits{\cup}\limits_{\sigma\in\Sigma_{n+1}}
+\sigma(\scrTtil_n)$, which is obviously $\Sigma_{n+1}$-(super)equivariant. 
+The theorem is proven.
+\enddemo
+
+We denote the restriction of these functions  to $\overline{E_n^0}$
+by  $\overline {\grS}_n$. We also put ${\grS}_n=\pi^*(\overline {\grS}_n)$
+where $\pi :E_n^0 \to  \overline{E_n^0}$ is the projection. 
+
+\definition{Definition} The functions ${\grS}_n$
+ are called {\it Schwinger functions}.
+\enddefinition
+
+From the theorem it follows that $\grS_n$ is a real-analytic
+$\SO(n)\ltimes E$ and $\Sigma_n$ equivariant function.
+
+
+\remark{Remark}
+The theorem (and its proof) relies only on weak Wightman's
+axioms. Hence Schwinger functions can be constructed from a
+set of $\scrW _n \in \scrStil_n '$ which satisfy weak Wightman
+axioms. 
+\endremark
+
+\remark{Remark} The assumption that $d>2$ is not essential in the Theorem.
+A  method which allows to treat also the case $d=2$ and  furhter extend
+the analyticity domain (the so called ``edge of the wedge Theorem'')
+ is explained e.g. in [Streater-Wightman], \S 3.3. 
+\endremark
+
+\remark{Remark}
+It was explained that QFT has two formulations: Minkowski
+and Euclidean.
+The experience says that it is more convenient to work
+technically with Euclidean picture, though the basic
+notions are naturally formulated in Minkowski one.
+\endremark
+
+\remark{Remark}
+The analytic Schwinger functions on $\Sigma_{n+1}(\scrTtil_n)$  seem to
+be the correct object of consideration.
+So it is natural to ask whether they can be further
+extended to some larger domain.
+
+The domain $\Sigma_{n+1}(\scrTtil_n)$ is not
+holomorphically convex.
+
+It may be worthwhile to describe its convex hull and
+look at the extension of Schwinger functions to it.
+
+\endremark
+
+\subhead{2.2} {Euclidean formulation of Wightman QFT}\endsubhead
+Recall that decomposition $E=(i\dbR)\times \dbR ^{d-1}$ is fixed. 
+Let $\theta$ denote reflection at the hyperplane $\{0\}\times \dbR^{d-1}$;
+put: $E^+= (i\dbR_{>0})\times \dbR^{d-1}$; $E_n^+=E^+\times
+E^+\times\cdots\times E^+\subset E_n$. Let $\scrE _n$ denote the space of
+Schwartz sections of $\scrR _n^\dbC|_{E_n}$, and $\scrE_n^0\subset
+\scrE_n$ be the subspace of sections with support in $E_n^0$.
+
+
+\proclaim{Claim}
+
+\roster
+\runinitem"a)" 
+ Schwinger functions satisfy the following properties:
+
+\smallskip
+\itemitem"{i)}" $\grS_n$ is a real-analytic $\Phat$-invariant 
+and $\Sigma_n$
+(super) invariant real valued function on $E_n^0$ where
+$\Phat=\Ghat\ltimes E$,  $\,\Ghat=\Spin(E)$;
+
+\noindent
+ If moreover 
+$\grS_n$ come from a strong (as opposed to weak) QFT then
+they satisfy:
+
+\smallskip
+\itemitem"{ii)}"
+$\grS_n$ is of moderate growth; i.e. $\grS_n$ defines a tempered 
+distribution on $\scrE_n^0$.
+
+\smallskip
+\itemitem"{iii)}"
+Reflection positivity.
+
+\noindent
+Put: $\scrE_n^+=\{F\in \scrE_n^0\vert \supp\,F\subset E_n^+\}$.
+Also let $\scrE^+=\oplus \scrE_n^+$,
+$\scrEtil=\oplus\scrE_n^0$, and $\grStil=\Pi \grS_n\in
+(\scrEtil)'$.
+Then for $F\in \scrE^+$ we have: $\grStil(\theta(F)
+\boxtimes F)\Ge 0$.
+
+\smallskip
+\itemitem"{iv)}" 
+Let $\overline {\scrE} _n$ be the space of Schwartz sections
+of $\overline {\scrR_n^\dbC}|_{\overline E _n}$, and let 
+$\overline{\scrE_n ^+}\subset  \overline {\scrE} _n$ be the subspace
+of sections with support in $E^+_{n-1}\subset 
+\overline E_n \cong E_{n-1}$.
+For $r\in \dbR^+$ and a differential 
+operator $D$ consider the seminorm on 
+$\overline {\scrE_n ^+} $ defined by: 
+$$
+|f|_{r,D} = \sup \limits 
+_{x\in (\dbR_{>0}\times \dbR^{d-1})^n} |(1+|x|^2)^{r/2}D
+\scrF(f)(x)|
+$$
+(here for $x\in V,\, x=(x_0, \vec x)$ 
+we put $|x|^2= x_0^2+|\vec x^2|$).
+Then $\overline \grS _n$ defines a 
+distribution on $\overline {\scrE_n ^+}$
+which is continuous with respect to the seminorms $|\quad|_{r,D}$.
+
+\smallskip
+\item"b)"  The construction of \S {2.1} provides a bijection
+between Wightman QFT's and collections of functions $\grS_n$
+satisfying the conditions i)--iv) above.
+\endroster
+\endproclaim
+
+\demo{Proof} 
+See [Osterwalder-Schrader(1975)].
+\enddemo
+
+It should be mentioned that this theorem is 
+not really useful, because
+the property iv) of the list is impossible to check in practice. 
+
+A more useful list is obtained by replacing the property iv)
+by the following axiom:
+
+\remark{Axiom $\operatorname {iv}')$} 
+(Linear growth condition) There exist
+$\alpha, \beta, r \in \dbR _{>0} $ such that 
+$$
+|\grS _n (f)| < \alpha (n!)^\beta  |f|_{nr}
+$$
+for all $f\in \scrE_n^0$ 
+where the seminorm $|f|_{nr}$ is given by 
+$|f|_{nr}=\sup\limits_{x\in E_n^0,D} 
+|(1-x^2)^{r/2}Df(x)|$ and $D$ runs over the  
+set of differential monomials of degree less then $nr$. 
+\endremark
+
+This property is more tractable, but it is more restrictive than iv).
+
+Some remarks are in order. 
+For Schwinger functions constructed from a (strong) Wightman
+QFT the reflection positivity property is equivalent to the
+positivity property (5) of Wightman axioms.
+However, to formulate it we do not have to assume anything
+about the behavior of $\grS_n$ on diagonals.
+(Note that if $F_1,F_2\in\scrE^+$ then $\theta(F_1)\boxtimes
+F_2$ automatically vanishes on diagonals, so
+$(F_1)\boxtimes F_2\in\scrEtil)$.
+So it can be formulated for Schwinger functions of weak QFT.
+It is not clear how to restate this property directly in
+Minkowski picture  (which is
+more intuitive from the physical point of view) for weak Wightman QFT.
+
+\subhead{2.3} {Schwinger functions and measures on the map-spaces}\endsubhead
+In fact, the following picture should stand behind the
+formalism of Schwinger functions.
+Assume we have a (quasi) measure $\nu$ on $\scrE'$ (where
+$\scrE$ is the space of Schwartz sections of
+$\scrR^\dbC\vrulesub{E}$), such that if
+$F_1,\dotsc,F_n\in\scrE$ and
+$\supp(F_i)\cap\supp(F_j)=\emptyset$ for $i\not=j$ then the
+function $\alpha\to \alpha(F_1)\ldots\alpha(F_n)$ is
+measurable.
+Then we can define a distribution in $(\scrE_n^0)'$ for any
+$n$ by requirement that its value on
+$F_1\boxtimes\ldots\boxtimes F_n$ equals
+$\int\limits_{\scrE'}\alpha(F_1)\ldots\alpha(F_n)$.
+This distribution should coincide with $\grS_n$; thus $\grS_n$ describes 
+$n$-th moment of  $\nu$.
+If the measure $\nu$ exists, it 
+is uniquely determined by its moments $\grS_n$.
+However it does not necessarily exist for given
+$\grS_n$ coming from a Wightman QFT. 
+
+
+So working with $\grS_n$ is a way to talk about the
+properties of a measure when the measure itself is not
+defined.
+
+
+
+The formulation of QFT involving a measure on $\scrE '$ has another
+serious drawback. 
+In general one is interested in field theories where
+the fields are not  sections of a vector bundle, but rather  
+maps from a manifold to another manifold (no linear structure on the
+target space). Then we can not even say on what space the measure 
+$\nu$ is defined. Indeed, in the linear case the measure lives
+on the space of generalized sections of a vector bundle. 
+But there is no
+notion of a generalized map from a manifold to another manifold. The
+formalism of Schwinger functions also does not work in this setting:
+to define moments of a measure one needs linear structure on the underlying
+space.
+
+The difficulty can be overcome if $d=1$. 
+In this case for a linear QFT
+the measure is actually defined and is concentrated 
+on the subspace of
+continuous  sections. 
+So one gets a reasonable theory considering
+the space of continuous maps from $V=\dbR$ to $M$ and 
+introducing a measure on this space. 
+This is illustrated in the next two examples. 
+
+\example{Example 1}
+(Wightman QFT for $d=1$)\enspace
+In this case QFT is equivalent to usual quantum mechanics.
+Precisely, let us put: $\scrH=L^2(\dbR)$, let
+$A\in\dbC[u,\partial_u]$ be a Hamiltonian.
+Let $A$ be of the form $A=-\frac{d^2}{du^2}+r(u)$, where
+$r(u)\to+\infty$ for $u\to \pm\infty$.
+Then $A$ has the smallest eigenvalue, and the corresponding
+eigenspace is one dimensional.
+Assume that the smallest eigenvalue of $A$ is $0$.
+Let $\Omega$ be the corresponding eigenfunction.
+Also put: $\scrD=\scrS(R)$, then $\Omega\in \scrD\subset\scrH$.
+Finally, let $\uhat\in\End(\scrD)$ be the operator of
+multiplication by the function $f(u)=u$.
+We define the action of $P=\dbR$ on $\scrH$ by $t\to
+e^{iAt}$ and put:
+$$
+\phi(f)=\int f(t)e^{iAt}\uhat e^{-iAt}dt.
+$$
+Let us describe the corresponding measure on $\scrS'(\dbR)$.
+We start with Gaussian measure $\nu_0$ with covariance
+$(-(\frac{d}{dt})^2+m^2)^{-1}$, where $m^2>0$ is such that $r(u)-m^2u^2>0$
+for $|u|\gg 0$. 
+(So for $f\in\scrS$ we have
+$\scrF(\nu_0)(f)=e^{((-(d/dt)^2+m^2)^{-1} f,f)}$.)
+We look for $\nu$ of the form $\nu=a\nu_0$ where $a$ is a
+function. It is enough to define $a$ on a set of measure 1.
+We define $a$ by the formula: 
+$$a(\alpha)= e^{ \int\limits _{-\infty}^{\infty}( r(\alpha
+(t))-m^2\alpha(t)^2)dt}$$
+Using Sobolev theorem one can show that $\nu _0$ is essentially
+concentrated on the set of such continuous functions $\alpha$ 
+that the above integral converges. Hence the measure $\nu = a\nu_0$
+is correctly defined. 
+
+ The fact that the measure $\nu$ and the field operators defined above give
+the same set of Schwinger functions follows from the so-called Feynman-Kac
+formula, see Gawedzki's lecture 1, \S 1.3.
+\endexample
+
+\example{Example 2} (Abstract QFT for $d=1$)
+\enspace
+Let $M$ be an arbitrary compact Riemannian manifold, $\scrH=L^2(M)$,
+$\Delta$ is the Laplacian, $A=-\Delta+r(m)$. 
+In this case one still can describe a measure $\nu$ on
+the space of continuous maps $\Map(\dbR,M)$ (one can get rid of the
+compactness assumption by introducing requirements on asymptotic behavior
+of $r$; Example 1 is a particular case of this situation).
+
+
+
+The measure can be characterized as follows.
+Let $t_1,\dotsc,t_k$ be points in $\dbR$, and
+$U_1,\dotsc,U_k\subset M$ be open subsets.
+Put $X_{U_1,\dotsc,U_k}^{t_1,\dotsc,t_k}=\{f\in\Hom(\dbR,M)\vert
+f(t_i)\in U_i$ for $i=1,\dotsc,k\}$.
+Let $K_t(m_1,m_2)$, $m_1,m_2\in M$, $t\in\dbR_{>0}$ be the
+fundamental solution of the differential equation
+$\frac{df}{dt}=Af$.
+Then $\nu$ is the unique measure, such that:
+$$
+\nu(X_{U_1,\dotsc,U_k}^{t_1,\dotsc,t_k})=
+\int\limits_{U_1\times\ldots\times U_k}
+\prodop_{i=1}^{k-1}K_{t_{i+1}- t_i}(m_i,m_{i+1})
+dm_1\ldots dm_k.
+$$
+
+But  there is no easy way to translate it to a
+Wightman-type picture.
+% unless an embedding of  $M$ into $\dbR^N$ for some $N$ is chosen.
+\endexample
+
+
+We finish by a technical variation on the definition of Wightman functions
+which will be used later.
+
+\subhead{2.4} {Time-ordering}\endsubhead
+Let $\theta_0\in \SO(1,d-1)$ be reflection at the hyperplane
+$\dbR^{d-1}\subset V$ (change of time direction). Then $\theta_0$
+can be lifted to an element $\theta\in G_\dbC$, but not to an element of
+$G$. Hence the analytic continuations of $\scrW_n$
+ we constructed in section 1 are
+$\theta$-invariant, though Wightman functions themselves 
+ are not. 
+
+We will now present a variant of the definition of $\scrW_n$
+which does not have this drawback.
+ 
+Namely, the time-ordered Wightman function $\scrW_n^T$ is given
+by: $\scrW_n^T(v)=\lim\limits_{\eps\to \plus 0}$ $\grS_n(v+i\eps
+v)$.
+For $pr(v)\in J_{n-1}$  we have:
+$\scrW_n^T(v)=\scrW_n(v)$, where $pr$ is the projection $V_n\to \Vbar_n$.
+The function $\scrW_n^T$ is $\theta$ and $\Sigma_{n}$-invariant (unlike
+$W_n$).
+
+Like a usual Wightman function, $\scrW_n^T$ is lifted from a unique 
+ function $W_n^T$ on $\Vbar_n$.
+
+Let us describe $W_2^T$ for the free scalar $\QFT$ of mass
+$m$; we will denote it by $\Delta_F(\,\,,m^2)$, where $F$
+stands for Feynman.
+It can be expressed through functions
+$\Delta_\plus(\,\,,m^2)=\scrF(\delta_{\sigma_m^\plus})$, and
+$\Delta_-(\,\,,m^2)=\scrF(\delta _{\sigma_m^-})$. 
+
+\proclaim{Claim} 
+We have:
+
+ a)\enspace
+$\Delta_F(v,m^2)\!=\!\Delta_\pm(v,m^2)$ for
+$v\in\Vbar\!_\pm$;
+$\Delta_F(v,m^2)\!=\!\Delta_+(v,m^2)\!=\!\Delta_-(v,m^2)$ for
+$v\in\Vspace$;
+
+\medskip
+b)\enspace
+$(-\square+m^2)(\Delta_F(\,\,,m^2))=2\pi i\,\delta_0$,
+i.e. 
+$W_2^T$ is the fundamental solution of
+$\left(-\square+m^2\right)$;
+
+\smallskip
+c)\enspace 
+$\scrF(\Delta_F(\,\,,m^2))=\frac{1}{2\pi i (p^2+m^2+i0)}\,\,
+{\overset {\text {def}}\to=}\lim\limits_{\eps\to \plus 0}
+\frac{1}{2\pi i(p^2+m^2+i\eps)}$
+(this is a well-defined distribution).
+\endproclaim
+
+\noindent
+[Just to remind how such things look, we recall that
+$\frac{1}{x+i0}$ and $\frac{1}{x-i0}$ are well-defined
+distributions on $\dbR$ and we have:
+$\frac{1}{2\pi i}
+\bigl(\frac{1}{x-i0}-\frac{1}{x+i0}\bigr)=\delta_0$
+and $\frac12\bigl(\frac{1}{x+i 0}+\frac{1}{x-i 0}\bigr)
+=\fracwithdelims()1x_{\text {p.v.}}$, where
+$\bigl<\fracwithdelims()1x_{\text {p.v.}},f\bigr>\,\,{\overset
+ {\text {def}}\to=}
+\lim\limits_{\eps\to +0}
+\int\limits_{-\infty}^{-\eps}\frac1x\,f(x)dx
++\int\limits^{\infty}_{\eps}\frac1x\,f(x)dx$.]
+
+
+\enddocument
+
+
+

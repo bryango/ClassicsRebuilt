@@ -1,0 +1,910 @@
+%% This is a plain TeX file
+%%
+\magnification=1200
+\hsize=6.5 true in
+\vsize=8.7 true in
+\input epsf.tex
+
+\input amssym.def
+\input amssym.tex
+
+\font\dotless=cmr10 %for the roman i or j to be
+                    %used with accents on top.
+                    %(\dotless\char'020=i)
+                    %(\dotless\char'021=j)
+\font\itdotless=cmti10
+\def\itumi{{\"{\itdotless\char'020}}}
+\def\itumj{{\"{\itdotless\char'021}}}
+\def\umi{{\"{\dotless\char'020}}}
+\def\umj{{\"{\dotless\char'021}}}
+\font\smaller=cmr5
+\font\boldtitlefont=cmb10 scaled\magstep2
+\font\smallboldtitle=cmb10 scaled \magstep1
+\font\ninerm=cmr9
+\font\dun=cmdunh10 scaled\magstep1
+
+\footline={\hfil {\tenrm V.\folio}\hfil}
+
+\def\eps{{\varepsilon}}
+\def\Eps{{\epsilon}}
+\def\kap{{\kappa}}
+\def\lam{{\lambda}}
+\def\Lam{{\Lambda}}
+\def\mynabla{{\nabla\!}}
+
+\def\undertext#1{$\underline{\vphantom{y}\hbox{#1}}$}
+\def\nspace{\lineskip=1pt\baselineskip=12pt%
+     \lineskiplimit=0pt}
+\def\dspace{\lineskip=2pt\baselineskip=18pt%
+     \lineskiplimit=0pt}
+
+\def\half{{\textstyle 1\over\textstyle 2}}
+\def\w{{\mathchoice{\,{\scriptstyle\wedge}\,}
+  {{\scriptstyle\wedge}}
+  {{\scriptscriptstyle\wedge}}{{\scriptscriptstyle\wedge}}}}
+\def\Le{{\mathchoice{\,{\scriptstyle\le}\,}
+{\,{\scriptstyle\le}\,}
+{\,{\scriptscriptstyle\le}\,}{\,{\scriptscriptstyle\le}\,}}}
+\def\Ge{{\mathchoice{\,{\scriptstyle\ge}\,}
+{\,{\scriptstyle\ge}\,}
+{\,{\scriptscriptstyle\ge}\,}{\,{\scriptscriptstyle\ge}\,}}}
+\def\plus{{\hbox{$\scriptscriptstyle +$}}}
+\def\xdot{\dot{x}}
+\def\Condition#1{\item{#1}}
+\def\Firstcondition#1{\hangindent\parindent{#1}\enspace
+     \ignorespaces}
+\def\Proclaim#1{\medbreak
+  \medskip\noindent{\bf#1\enspace}\it\ignorespaces}
+  %the way to use this is:
+  %"\Proclaim{Theorem 1.1.}" for instance.
+\def\finishproclaim{\par\rm
+     \ifdim\lastskip<\medskipamount\removelastskip
+     \penalty55\medskip\fi}
+\def\Item#1{\par\smallskip\hang\indent%
+  \llap{\hbox to\parindent {#1\hfill\enspace}}\ignorespaces}
+
+\def\im{{\rm Im}}  
+\def\Pic{{\rm Pic}} \def\Sp{{\rm Sp}}
+\def\Diff{{\rm Diff}}  
+\def\Map{{\rm Map}}  
+\def\spurious{{\rm spurious}}
+\def\Tr{{\rm Tr\,}}
+\def\SL{{\rm SL}} \def\prim{{\rm primitive}}
+\def\Det{{\rm Det}} 
+\def\Weil-Peterson{{\rm Weil-Peterson}}
+
+\def\fbar{\bar{f}}  \def\mubar{\bar{\mu}}
+\def\barh{\bar{h}}  \def\gammabar{\bar{\gamma}}
+\def\kbar{\bar{k}}  \def\lambar{\bar{\lambda}}
+\def\mbar{\bar{m}}  \def\phibar{\bar{\phi}}
+\def\wbar{\bar{w}}  \def\etabar{\bar{\eta}}
+\def\vbar{\bar{v}}  \def\partialbar{\bar{\partial}}
+\def\xbar{\bar{x}}  \def\cbar{\bar{c}}
+\def\zbar{\bar{z}}  \def\bbar{\bar{b}}
+\def\Abar{\bar{A}}
+\def\Kbar{\bar{K}}
+\def\Pbar{\bar{P}}
+\def\Sbar{\bar{S}}
+\def\Tbar{\bar{T}}
+
+\def\scrFbc{{\scrF^{(bc)}}}
+\def\scrFbcbar{{\scrF^{(\bbar\cbar)}}}
+
+\def\ghat{\hat{g}}
+\def\muhat{\hat{\mu}}
+
+\def\htil{\tilde{h}}
+\def\xtil{\tilde{x}}
+\def\Ctil{\widetilde{C}}
+\def\Dtil{\widetilde{D}}
+\def\Ltil{\tilde{L}}
+\def\Ntil{\widetilde{N}}
+\def\Ttil{\widetilde{T}}
+\def\scrFtil{\widetilde{\scrF}}
+\def\epstil{\tilde{\eps}}
+\def\psitil{\tilde{\psi}}
+
+\def\dbR{{\Bbb R}}
+\def\dbZ{{\Bbb Z}}
+
+%These two files (in this order!!) are necessary
+%in order to use AMS Fonts 2.0 with Plain TeX
+
+\input amssym.def
+\input amssym.tex
+
+%Capital roman double letters(Blackboard bold)
+\def\db#1{{\fam\msbfam\relax#1}}
+
+\def\dbA{{\db A}} \def\dbB{{\db B}}
+\def\dbC{{\db C}} \def\dbD{{\db D}}
+\def\dbE{{\db E}} \def\dbF{{\db F}}
+\def\dbG{{\db G}} \def\dbH{{\db H}}
+\def\dbI{{\db I}} \def\dbJ{{\db J}}
+\def\dbK{{\db K}} \def\dbL{{\db L}}
+\def\dbM{{\db M}} \def\dbN{{\db N}}
+\def\dbO{{\db O}} \def\dbP{{\db P}}
+\def\dbQ{{\db Q}} \def\dbR{{\db R}}
+\def\dbS{{\db S}} \def\dbT{{\db T}}
+\def\dbU{{\db U}} \def\dbV{{\db V}}
+\def\dbW{{\db W}} \def\dbX{{\db X}}
+\def\dbY{{\db Y}} \def\dbZ{{\db Z}}
+
+\font\teneusm=eusm10  \font\seveneusm=eusm7 
+\font\fiveeusm=eusm5 
+\newfam\eusmfam 
+\textfont\eusmfam=\teneusm 
+\scriptfont\eusmfam=\seveneusm 
+\scriptscriptfont\eusmfam=\fiveeufm 
+\def\scr#1{{\fam\eusmfam\relax#1}}
+
+
+%Upper-case Script Letters:
+
+\def\scrA{{\scr A}}   \def\scrB{{\scr B}}
+\def\scrC{{\scr C}}   \def\scrD{{\scr D}}
+\def\scrE{{\scr E}}   \def\scrF{{\scr F}}
+\def\scrG{{\scr G}}   \def\scrH{{\scr H}}
+\def\scrI{{\scr I}}   \def\scrJ{{\scr J}}
+\def\scrK{{\scr K}}   \def\scrL{{\scr L}}
+\def\scrM{{\scr M}}   \def\scrN{{\scr N}}
+\def\scrO{{\scr O}}   \def\scrP{{\scr P}}
+\def\scrQ{{\scr Q}}   \def\scrR{{\scr R}}
+\def\scrS{{\scr S}}   \def\scrT{{\scr T}}
+\def\scrU{{\scr U}}   \def\scrV{{\scr V}}
+\def\scrW{{\scr W}}   \def\scrX{{\scr X}}
+\def\scrY{{\scr Y}}   \def\scrZ{{\scr Z}}
+
+\def\gr#1{{\fam\eufmfam\relax#1}}
+
+%Euler Fraktur letters (German)
+\def\grA{{\gr A}}	\def\gra{{\gr a}}
+\def\grB{{\gr B}}	\def\grb{{\gr b}}
+\def\grC{{\gr C}}	\def\grc{{\gr c}}
+\def\grD{{\gr D}}	\def\grd{{\gr d}}
+\def\grE{{\gr E}}	\def\gre{{\gr e}}
+\def\grF{{\gr F}}	\def\grf{{\gr f}}
+\def\grG{{\gr G}}	\def\grg{{\gr g}}
+\def\grH{{\gr H}}	\def\grh{{\gr h}}
+\def\grI{{\gr I}}	\def\gri{{\gr i}}
+\def\grJ{{\gr J}}	\def\grj{{\gr j}}
+\def\grK{{\gr K}}	\def\grk{{\gr k}}
+\def\grL{{\gr L}}	\def\grl{{\gr l}}
+\def\grM{{\gr M}}	\def\grm{{\gr m}}
+\def\grN{{\gr N}}	\def\grn{{\gr n}}
+\def\grO{{\gr O}}	\def\gro{{\gr o}}
+\def\grP{{\gr P}}	\def\grp{{\gr p}}
+\def\grQ{{\gr Q}}	\def\grq{{\gr q}}
+\def\grR{{\gr R}}	\def\grr{{\gr r}}
+\def\grS{{\gr S}}	\def\grs{{\gr s}}
+\def\grT{{\gr T}}	\def\grt{{\gr t}}
+\def\grU{{\gr U}}	\def\gru{{\gr u}}
+\def\grV{{\gr V}}	\def\grv{{\gr v}}
+\def\grW{{\gr W}}	\def\grw{{\gr w}}
+\def\grX{{\gr X}}	\def\grx{{\gr x}}
+\def\grY{{\gr Y}}	\def\gry{{\gr y}}
+\def\grZ{{\gr Z}}	\def\grz{{\gr z}}
+
+%\overfullrule=0pt
+
+\parindent=18pt
+\line{\dun --- DRAFT ---\hfill{\rm IASSNS-HEP-97/72}}
+
+\bigskip\bigskip
+\centerline{\boldtitlefont Lecture 8}
+\medskip
+\centerline{\smallboldtitle V. Moduli Dependence of
+Determinants and Green Functions}
+
+\medskip
+\centerline{Eric D'Hoker}
+
+\frenchspacing
+
+\dspace
+\bigskip
+In \S{III} and \S{IV}, we have reduced the calculation of
+string transition amplitudes to integrals of
+combinations involving certain determinants and Green
+functions over the
+finite-dimensional moduli spaces $\scrM_h$.
+In this section, we complete the analysis by producing
+explicit formulas for these determinants and Green
+functions.
+We shall begin by collecting results on surfaces with
+constant curvature metrics.
+Then, we proceed and exploit the complex structure of
+$\scrM_h$ to obtain explicit expressions in terms of
+Jacobi theta functions.
+(Derivations of the results stated in this section will
+not be given here; they may be found in E. D'Hoker, D. H.
+Phong, Rev. Mod. Phys. Vol. 60 (1988), p. 917--1065, and
+references therein.)
+
+\bigskip\noindent
+\Item{A)} {\bf Worldsheets with constant curvature metric
+($h\Ge 2$)}
+
+Let $\Sigma$ be a compact surface of genus $h\Ge 2$.
+By the uniformization theorem, the simply connected cover
+of $\Sigma$ is the upper half plane $H$, and
+$\Sigma=H/\Gamma$, where $\Gamma=\pi_1(\Sigma)$ is the
+fundamental group of $\Sigma$.
+For any metric $g$ on $\Sigma$, there is a unique Weyl
+transformation $\sigma$ such that $g=e^{2\sigma}\ghat$
+with $\ghat$ of constant curvature $R_{\ghat}=-1$.
+The metric $\ghat$ lifts to the Poincar\'e metric on $H$
+and $\Gamma$ is a discrete subgroup of $\SL(2,\dbR)$
+acting on $H$, with compact quotient $\Sigma=H/\Gamma$.
+Moduli space may now be identified as follows:
+$$
+\scrM_h=\left\{\ghat,R_{\ghat}=-1\right\}/\Diff(\Sigma)\,\,.
+\eqno{(5.1)}
+$$
+We now have the following results for determinants and
+for the measure on $\scrM_h$ arising in string
+amplitudes:
+$$
+\eqalignno{
+{\scriptstyle\bullet} &\qquad 
+  \Det\,\Delta_{(n)}^{\plus}=S(n+1)\,;\quad
+  \Det'\Delta_{(0)}=S'(1)&{(5.2)}\cr
+{\scriptstyle\bullet} &\qquad 
+  \prod\limits_{j}dm_jd\mbar_j \vert\det(\mu_j,
+  \phi_k)\vert^2\det(\phi_j,\phi_k)^{-1}=d
+  (\Weil-Peterson)\,\,.&{(5.3)}\cr}
+$$
+Here $S(s)$ is the {\it Selberg zeta function}, defined
+by
+$$
+S(s)\equiv \prod\limits_{\gamma\,\, \prim}
+\prod\limits_{k=1}^\infty (1-e^{-(s+k)\ell_\gamma})
+\eqno{(5.4)}
+$$
+for $\ell_\gamma$ the lengths of the {\it simple closed
+$($i.e. primitive$)$ geodesics} $\gamma$ on $\Sigma=H/\Gamma$.
+
+\bigskip
+\Item{B)} {\bf Holomorphicity in Moduli}
+
+The most powerful results on Green functions and
+determinants are obtained by exploiting the fact that
+$\scrM_h$ is a complex orbifold, and that Green functions
+and determinants primarily involve complex analytic
+dependence on $\scrM_h$.
+
+To examine this complex dependence, we first work locally
+on $\scrM_h$, in a neighborhood of a point
+$m^0\in\scrM_h$, represented by a metric $g^0$.
+We now parametrize the neighborhood $U_\alpha$ of $m^0$
+and thus of $g^0$ by Beltrami differentials
+$\mu=\mu_{\zbar}^z$, which provide complex coordinates
+on $\scrM_h$, as established in \S{III}.
+We have a general metric $g$ in the neighborhood of
+$g^0$:
+$$
+g =2g_{z\zbar}\vert dz+\mu d\zbar\vert^2
+\qquad \hbox{where}\qquad
+g^0 =2g_{z\zbar}\vert dz\vert^2\,\,.\eqno{(5.6)}
+$$
+We retain the Weyl factor $g_{z\zbar}$ for now, since we
+shall also study the interplay of Weyl dependence and
+moduli dependence.
+$$
+\vbox{\epsfxsize=2.5in\epsfbox{fig1.eps}}
+$$
+
+The dependence of the functional determinant combinations
+$Z_{(n)}^{\pm}(g)$ on the complex coordinates of $\scrM_h$
+is simple, and may be evaluated explicitly.
+This result is the content of the so-called {\it
+Belavin-Knizhnik theorem}; or holomorphic anomaly
+theorem:
+$$
+\delta_\mu\delta_{\mubar}\ln Z_{(n)}^{\pm}(g)=-
+{c_{(n)}^{\pm}\over 12\pi}\int\nolimits_{\Sigma}
+d\mu_g\left(\nabla_z\delta\mu
+\nabla_{\zbar}\delta\mubar-R_g \delta\mu
+\delta\mubar\right)
+\eqno{(5.7)}
+$$
+where the coefficients $c_{(n)}^{\pm}=6n^2\pm 6n+1$ are
+the same as those entering the Weyl anomaly.
+
+It follows immediately from the Belavin-Knizhnik
+theorem that Weyl
+invariant combinations of $Z_{(n)}^{\pm}(g)$'s are also
+especially simple in their dependence on moduli.
+Indeed, the $\delta_\mu\delta_{\mubar}$ variation of any
+Weyl invariant combination vanishes, so that such a
+combination is a sum of a holomorphic and an
+anti-holomorphic part.
+We have, e.g.
+$$
+Z_{(n)}^{\pm}(g)\,Z_{(0)}(g)^{-c_{(n)}^{\pm}}=
+\vert\scrZ_{(n)}^{\pm}(m_j)\vert^2\,\,.
+\eqno{(5.8)}
+$$
+where $\scrZ_{(n)}^{\pm}(m_j)$ is holomorphic inside
+$\scrM_h$.
+In particular, the combination entering the integrand of
+the bosonic string amplitudes is precisely of this form,
+for superscript $-$ and $n=-1$:
+$$
+Z_{(-1)}^-(g)\,Z_{(0)}(g)^{-13}=\vert
+\scrZ_{(-1)}^-(m_j)\vert^2\,\,.
+\eqno{(5.9)}
+$$
+We shall make use of this powerful result in string
+theory in \S{C}.
+
+The BK Theorem may be understood geometrically in the
+language of determinant line bundles over $\scrM_h$,
+where the right hand side of BK --- the holomorphic
+anomaly --- arises as a non-zero curvature of the
+determinant line bundles $\Det(\nabla_{(n)}^z)$ and
+$\Det(\nabla_z^{(n)})$ with certain hermitian metrics,
+the so-called Quillen metrics.
+The vanishing of the BK anomaly 
+$\scrZ_{(n)}^{\pm}$ then indicates that the corresponding
+line bundles
+$$
+\Det\nabla_{(n)}^z\otimes(\Det\nabla_{(1)}^z)^{-\otimes
+c_{(n)}^-}\,\,,
+\eqno{5.10}
+$$
+are flat.
+In string theory, the case is $n=2$, and this case is
+related to the flatness of $\scrK\otimes\lam^{-13}$,
+where $\scrK$ is the canonical bundle of $\scrM_h$ and
+$\lam$ is the Hodge bundle.
+
+We shall not prove the BK Theorem here (it can be proven
+using heat-kernel methods, just as in the derivation of
+the Weyl anomaly), but only indicate the origin of the
+holomorphic anomaly.
+The key observation is that the covariant derivatives
+$\nabla_{(n)}^z$ depend only on $\delta\mu$, but not
+on $\delta\mubar$ to first order in $\delta\mu$ and 
+$\delta\mubar$; thus
+$\nabla_{(n)}^z$ is holomorphic in $\delta\mu$ to first order.
+$$
+\cases{
+\delta_\mu\nabla_{(n)}^z=\delta\mu\nabla_{(n)}^{\zbar}+
+  n(\nabla^{\zbar}\delta\mu) &\cr
+\noalign{\medskip}
+\delta_{\mubar}\nabla_{(n)}^z=0\,\,. &\cr}
+\eqno{(5.11)}
+$$
+Functional determinants of Laplace operators would then
+naively be expected to be products of a holomorphic times
+anti-holomorphic factor:
+$$
+\Det\Delta_{(n)}^{-}\,
+{\buildrel ?\over\sim}\,
+\Det\nabla_z^{(n-1)}\Det\nabla_{(n)}^z\,\,,
+\eqno{(5.12)}
+$$
+with $\Det\nabla_{(n)}^z$ holomorphic on $\scrM_h$ and
+$\Det\nabla_z^{(n-1)}$ anti-holomorphic.
+Actually, determinants must be properly defined (e.g.
+using $\zeta$-function techniques, as in \S{III}.), in a
+fashion that preserves their $\Diff(\Sigma)$ invariance.
+When this analysis is carried out, anomalies, such as the
+Weyl anomaly, may appear.
+Here, the above holomorphic factorization of determinants
+is also beset by an anomaly.
+In fact, these anomalies are intimately related, as can
+be seen from the argument below.
+As was explained in \S{III}, the variations of $\mu$,
+$\mubar$ and Weyl rescalings are independent.
+Hence, using the Weyl anomaly of $Z_{(n)}^{\pm}(g)$:
+$$
+\eqalign{
+\delta_\sigma\delta_\mu\delta_{\mubar}\ln\,
+Z_{(n)}^{\pm}(g) &=\delta_\mu\delta_{\mubar}
+\delta_\sigma\ln\,Z_{(n)}^{\pm}(g)\cr
+&=-{c_{(n)}^{\pm}\over 6\pi}\,\delta_\mu\delta_{\mubar}
+\int\nolimits_{\Sigma}d\mu_g\,R_g\,\,.\cr}
+\eqno{(5.13)}
+$$
+But, the variation of the Gaussian curvature is easily
+computed
+$$
+\delta_\mu\delta_{\mubar}(d\mu_g\,R_g)=(\nabla_z
+\delta\mu\nabla_{\zbar}\delta\mubar)d\mu_g\not=0\,\,.
+\eqno{(5.14)}
+$$
+Thus, clearly, the holomorphic anomaly
+$\delta_\mu\delta_{\mubar}\ln\,Z_{(n)}^{\pm}(g)$ cannot
+cancel unless also the Weyl anomaly cancels.
+
+\bigskip
+\Item{C)} {\bf The Chiral Splitting Theorem}
+
+In critical string theory, we also have strong results on
+the holomorphicity properties of the correlation
+functions for vertex operators of physical on-shell
+states, given by the Chiral Splitting Theorem.
+We begin by assembling the data we need to formulate
+this theorem.
+
+Let $V_i=\int\nolimits_{\Sigma}d^2z_i\,W_i(z_i,\zbar_i)$
+be vertex operators of physical on-shell states whose
+polarization tensors are factorized in left and right
+movers.
+Let $A_I$, $B_I$, $I=1,\ldots,h$ be a canonical basis
+of homology $1$-cycles on $\Sigma$, with
+$$
+\#(A_I,A_J)=\#(B_I,B_J)=0\qquad\qquad\qquad
+\#(A_I,B_J)=\delta_{IJ}\,\,.
+\eqno{(5.15)}
+$$
+We define internal loop momenta $p_I\in\dbR^{26}$
+associated with each $A_I$ cycle.
+Because the $A_I$ cycles have trivial interaction
+numbers, these internal loop momenta are independent.
+$$
+\vbox{\epsfxsize=3.5in\epsfbox{fig2.eps}}
+$$
+The correlation function of unintegrated vertex operators
+$W_i(z_i,\zbar_i)$ at fixed internal loop momenta $p_I$
+are defined by
+$$
+\eqalign{
+\left<W_1\ldots W_N\right>_g(p_I) \equiv
+\int\nolimits_{\Map(\Sigma,M)}
+&Dx\,W_1(z_1,\zbar_1)\ldots W_N(z_N,\zbar_N)\cr
+&\prod\limits_{I=1}^h \delta\left(p_I^\mu-
+\int\nolimits_{A_I}{dz\over 2\pi i}\,\partial_z
+x^\mu\right)e^{-S[x,g]}\cr}
+\eqno{(5.16)}
+$$
+The {\it Chiral Splitting Theorem} states that
+$$
+\left<W_1\ldots W_N\right>_g(p_I)=
+\delta(k)Z_0(g)^{-13}\scrF\scrFtil
+\eqno{(5.17)}
+$$
+where $\scrF(z_i,m_j;\,p_I,k_i)$ is a complex analytic
+function of $z_i$ and $m_j$, and $\scrFtil$ is its
+complex conjugate
+$$
+\scrFtil(\zbar_i,\mbar_j;\,p_I,k_i)=
+\scrF(z_i,m_j;\,p_I,k_i)^*\,\,.
+\eqno{(5.18)}
+$$
+Here, we have suppressed the dependence of $W$ and
+$\scrF$ on polarization tensors occurring in the
+construction of $W$.
+Also, the function $\scrF$ depends upon the choice of
+curves representing the $A_I$ boundary cycles, and
+this dependence has been subsumed in the definition of
+the internal momenta $p_I$.
+
+An outline of the proof of this Theorem will be given in
+\S{E}.
+Let us simply remark here that the proper conformal field
+theory interpretation of the integration over loop
+momenta is the following.
+At fixed values of the internal loop momenta, $p_I$ through
+all $A_I$ cycles, only a single conformal family
+traverses each $A_I$-cycle.
+The contributions from left and right movers are
+factorized, so that the entire amplitude --- at fixed
+momenta $p_I$ --- is factorized.
+
+Mathematically, we have gained considerably through the
+Belavin-Knizhnik and Chiral Splitting Theorems, since we
+may now apply techniques of complex function theory,
+theta-functions and algebraic geometry to study
+amplitudes.
+
+Physically, we have uncovered a method for separating the
+contributions of left and right movers in the integrand of
+transition amplitudes, via the holomorphic versus
+anti-holomorphic dependence on $\scrM_h$ and $\Sigma$.
+(This will be crucial in the study of superstrings.)
+
+An immediate result from the combination of the
+Belavin-Knizhnik and Chiral Splitting Theorems is that
+the full transition amplitude at genus $h$ is an integral
+over a product of a holomorphic times anti-holomorphic
+function.
+$$
+A_h=\delta(k)\int\nolimits_{\dbR^{26h}}\prod\limits_{I}
+d\,p_I^{26}
+\int\nolimits_{\scrM_h}\prod\limits_{j}d\,m_j\mbar_j
+\int\nolimits_{\Sigma}d^2z_1\ldots\,\,
+\int\nolimits_{\Sigma}d^2z_N\,C\,\Ctil\,\,,
+\eqno{(5.19)}
+$$
+where
+$$
+\eqalignno{
+&C(z_i,m_j;\,p_I,k_i)=\det(\mu_j,\phi_k)\scrZ_{(-1)}^-
+  (m_j)\scrF(z_i,m_j;\,p,k) &{(5.20)}\cr
+\noalign{\hbox{and}}
+&\Ctil(\zbar_i,\mbar_j;\,p_I,k_i)
+=C(z_i,m_j;\,p_I,k_i)^*\,\,. &{(5.21)}\cr}
+$$
+(Of course, for $h\Ge 1$, these expressions are only
+formal, since the integration ultimately diverges.
+The generalization to the case of the superstring on the
+other hand will be well-defined.)
+
+\vfill\eject
+
+\noindent
+\Item{D)} {\bf Holomorphic and Meromorphic Differentials}
+(a brief review of basics)
+
+We begin by recalling some basic tools of complex
+fucntion theory on Riemann surfaces.
+The space of holomorphic line bundles of degree $d$ is
+the {\it Picard variety}
+$$
+\Pic_d(\Sigma)=\{\hbox{holomorphic line bundles $L$
+on $\Sigma\,,$ $c_1(L)=d$}\}\,\,.
+$$
+The subspace of line bundles $L$ of degree $0$ is the
+{\it Jacobian variety}: $J(\Sigma)=\Pic_0(\Sigma)$, which
+may also be viewed as
+$$
+J(\Sigma)=H^1(\Sigma,\dbR)/H^1(\Sigma,\dbZ)\,\,.
+\eqno{(5.22)}
+$$
+Choosing a reference $L_0\in\Pic_d(\Sigma)$, any other
+$L\in\Pic_d(\Sigma)$ may be obtained as a tensor product
+$L=L_0\otimes\ell$, $\ell\in J(\Sigma)$.
+
+A completely explicit realization is obtained by making a
+choice of homology basis $(A_I,B_I)$, $I=1,\ldots,h$, with
+canonial intersection matrix:
+$$
+\#(A_I,A_J)=\#(B_I,B_J)=0\qquad\qquad
+\#(A_I,B_J)=-\#(B_J,A_I)=\delta_{IJ}\,\,.
+\eqno{(5.23)}
+$$
+$$
+\vbox{\epsfxsize=4.5in\epsfbox{fig3.eps}}
+$$
+To this choice corresponds a unique basis of holomorphic
+Abelian differentials (holomorphic sections of $K$), 
+$(\omega_1,\ldots,\omega_h)=\vec{\omega}$ or denoted
+simply $\omega$ by
+$$
+\oint\nolimits_{A_I}\omega_J=\delta_{IJ}\,,\qquad\qquad\qquad
+I,J=1,\ldots,h\,\,.\eqno{(5.24)}
+$$
+The {\it period matrix} is then defined by
+$$
+\oint\nolimits_{B_I}\omega_J=\Omega_{IJ}\eqno{(5.25)}
+$$
+and the Jacobian is a complex torus of dimension $h$:
+$$
+J(\Sigma)=\dbC^h/(\dbZ^h+\Omega\,\dbZ^h)\,\,.
+\eqno{(5.26)}
+$$
+The intersection from $\#(\,\,,\,\,)$ is left invariant
+under the action of the {\it modular group} on the
+homology cycles
+$$
+\pmatrix{B\cr A\cr}_I\longrightarrow
+\pmatrix{B'\cr A'\cr}_I=
+\underbrace{\pmatrix{a &b\cr c &d\cr}_{IJ}}_{\in\,\Sp(2h;\,\dbZ)}
+\quad \pmatrix{B\cr A\cr}_J
+\eqno{(5.27)}
+$$
+under which
+$$
+\Omega\to\Omega'=(a\Omega+b)(c\Omega+d)^{-1}\,\,.
+\eqno{(5.28)}
+$$
+The Riemann bilinear relations guarantee that $\Omega$
+lies in the {\it Siegel upper half space}:
+$\Omega\in\scrH_h$, where
+$$
+\scrH_h=\{h\times h\hbox{ complex }\Omega;\,
+\Omega_{IJ}=\Omega_{JI};\,\im\,\Omega>0\}\,\,.
+\eqno{(5.29)}
+$$
+In fact, Torelli's theorem guarantees that to each
+Riemann surface in $\scrM_h$ there corresponds a unique
+point in the fundamental domain of the modular group
+$$
+\scrA_h\equiv \scrH_h/\Sp(2h;\,\dbZ)\,\,,
+\eqno{(5.30)}
+$$
+(the converse holds for the torus, but not for $h\Ge 2$.)
+
+$\scrH_h$ carries a $\Sp(2h;\,\dbZ)$-invariant metric
+$$
+ds^2=\Tr((\im\,\Omega)^{-1}d\Omega(\im\,\Omega)^{-1}
+d\Omega^*)\,\,.
+\eqno{(5.31)}
+$$
+Since $\omega_I$ depends holomorphically on $\scrM_h$, so
+does $\Omega_{IJ}$; in fact, we have an explicit formula
+for the variation of $\Omega_{IJ}$ with holomorphic
+Beltrami differentials $\mu_{\zbar}^z$ associated with a
+Riemann surface deformation:
+$$
+\delta\Omega_{IJ}=-i\int\nolimits_{\Sigma}d^2z\,
+\mu_{\zbar}^z\,\omega_{Iz}\,\omega_{Jz}
+\eqno{(5.32)}
+$$
+The induced complex structure on $\scrM_h$ is the one
+associated with the metric $ds^2$ of (5.31).
+
+The {\it Jacobi $\vartheta$-function}, with
+characteristics $\delta=(\delta',\delta'')\in[0,1]^{2h}$,
+is defined as a function on $\dbC^h\times\scrH_h$:
+$$
+\vartheta[\delta](\zeta,\Omega)\equiv\sum\limits_{n\in\dbZ^h
++\delta'}
+e^{\pi\,i n^T\Omega n+2\pi i\,n^T(\zeta+\delta'')}\,\,.
+\eqno{(5.33)}
+$$
+It obeys, for any $M,N\in\dbZ^h$:
+$$
+\vartheta[\delta](\zeta+M+\Omega N,\Omega)=
+\vartheta[\delta](\zeta,\Omega)
+e^{-i\pi\,N^T\Omega\,N-2\pi i\,N^T(\zeta+\delta'')
++2\pi i\delta' M}\,\,,
+\eqno{(5.34)}
+$$
+and this property may be used to define $\vartheta$ as
+the unique (up to constant factor) holomorphic section of
+a holomorphic line bundle on $J(\Sigma)$, with the above
+transition functions.
+One also often uses $\vartheta(\zeta,\Omega)\equiv
+\vartheta[0](\zeta,\Omega)$.
+
+Using the Jacobi $\vartheta$-functions, and the Riemann
+vanishing theorem (which yields the zeros of $\vartheta$
+as a function of $\zeta$, but which we shall not discuss
+here), one may uniquely (up to constant factor)
+reconstruct a meromorphic function on $\Sigma$ from its
+divisor $D=z_1+\cdots+ z_d-w_1-\cdots- w_d$:
+$$
+f_D(z)=\prod\limits_{i=1}^d \vartheta\left(\zeta+
+\int\nolimits_{z_i}^z \omega,\Omega\right)\vartheta
+\left(\zeta+\int\nolimits_{w_i}^z
+\omega,\Omega\right)^{-1}\,\,.
+\eqno{(5.35)}
+$$
+Here $\zeta$ is such that $\vartheta(\zeta,\Omega)=0$,
+but so that the above $\vartheta$ functions do not vanish
+identically; $f_D(z)$ is then independent of $\zeta$.
+
+Spin bundles on $\Sigma$ belong to $\Pic_{h-1}(\Sigma)$,
+and may be described in terms of their spin structure, of
+which there are $2^{2h}$.
+A choice of homology basis singles out a particular spin
+bundle $S_0$, and all other spin structures may be
+labeled by points in the Jacobian, as indicated earlier:
+$$
+S=S_0\otimes\left[\matrix{\delta'\cr \delta''\cr}\right]
+\qquad\qquad\qquad\qquad
+\delta''+\Omega\delta'\in J(\Sigma)\,\,,
+\eqno{(5.36)}
+$$
+where $\delta'$ and $\delta''$ are half-points, i.e. 
+$\delta'_I,\,\delta''_I\in\left\{0,\,{1\over 2}\right\}$.
+Spin structures are partitioned into {\it even} or {\it
+odd spin structures}, according to the parity of the
+$\vartheta$-function
+$$
+\vartheta[\delta](-\zeta,\Omega)=(-)^{4\delta'\cdot\delta''}
+\vartheta[\delta](\zeta,\Omega)\,\,.
+\eqno{(5.37)}
+$$
+Thus, there are $2^{h-1}(2^h\pm 1)$ even/odd spin
+structure with $4\delta'\cdot\delta''$ even/odd, and the
+number of holomorphic sections is then even/odd as well,
+in fact generally $0/1$.
+The generic holomorphic section $h_\delta(z)$
+ for an odd spin structure
+$\delta$ is obtained from the square root of an Abelian
+differential with exactly $h-1$ double zeros, (this
+$h_\delta(z)$ is a Dirac zero mode)
+$$
+h_\delta(z)\equiv\biggl(\sum\limits_{I}
+\partial_I\vartheta[\delta](0,\Omega)\quad
+\omega_I(z)\biggr)^{1/2}\,\,.
+\eqno{(5.38)}
+$$
+
+Finally, we define one of the fundamental objects that
+enter Green functions and determinants in string theory.
+The {\it prime form} is a function on the universal cover
+of $\Sigma\times\Sigma$ and $\scrH_h$, given by
+$$
+E(z,w)\equiv{\vartheta
+[\delta]\left(\int_w^z\omega,\Omega\right)
+\over h_\delta(z)\,\,h_\delta(w)}
+\eqno{(5.39)}
+$$
+where $\delta$ is any {\it odd} half characteristic.
+$E(z,w)$ is a holomorphic $\left(-{1\over 2},0\right)$
+differential form in both $z$ and $w$, with a single zero
+at $z=w$.
+As such, $E(z,w)$ generalizes the function
+ $z-w$ on $\dbC$ to higher
+genus surfaces.
+On the torus, we have the well-known expression
+$$
+E(z,w)={\vartheta_1(z-w,\Omega)\over
+\vartheta'_1(0,\Omega)}\,\,.
+\eqno{(5.40)}
+$$
+The monodromies of $E(z,w)$ around $A_I$ homology
+cycles are simple:
+$E(z,w)$ picks up a $-$ sign; the monodromy as $z$ moves
+around $B_I$ once is:
+$$
+E(z,w)\to -\exp\left[-i\pi\Omega_{II}-2\pi i\int\nolimits_z^w
+\omega_I\right]E(z,w)\,\,.
+\eqno{(5.41)}
+$$
+Under modular transformations (represented by their
+action on the homology cycles as in (5.27)), we have
+$$
+E(z,w)\to \exp\left[\pi i\int\nolimits_z^w
+\omega^T(c\Omega+d)^{-1}c\int\nolimits_z^w\omega\right]
+E(z,w)\,\,.
+\eqno{(5.42)}
+$$
+Meromorphic Abelian differentials (meromorphic sections
+of $K$) are readily obtained
+$$
+\eqalign{
+\omega_{xy}(z) &=\partial_z\ln\,{E(z,x)\over E(z,y)}\,dz\cr
+\omega_w(z) &=\partial_z\partial_w\ln\,E(z,w)dz\,\,.\cr}
+\eqno{(5.43)}
+$$
+Meromorphic ${1\over 2}$ differentials (meromorphic
+sections of $S_\delta$) are
+$$
+\eqalign{
+\hbox{$\delta$ even} \qquad
+S_\delta(z,w) &= {1\over E(z,w)}\quad {\vartheta[\delta]
+  \left(\int\nolimits_z^w \omega,\Omega\right)\over
+  \vartheta[\delta](0,\Omega)}\cr
+\noalign{\bigskip}
+\hbox{$\delta$ odd}\qquad
+S_\delta(z,w) &= {1\over E(z,w)}\quad {\partial_I
+\vartheta[\delta]\left(\int\nolimits_z^w \omega,\Omega\right)
+  \omega_I(y)\over \partial_I\vartheta[\delta](0,\Omega)
+\omega_I(y)}\cr}
+\eqno{(5.44)}
+$$
+For $\delta$ even, $S_\delta$ is the Szeg\"o kernel,
+while for $\delta$ odd, $\S_\delta$ is not single-valued on
+$\Sigma$ as defined.  
+
+\bigskip
+\Item{E)} {\bf Green Functions, Determinants and Chiral
+Splitting}
+
+The Green function of scalar fields on $\Sigma$ is simply
+expressed in terms of the prime form and Abelian
+differentials
+$$
+G(z,w)=-\ln\,\vert
+E(z,w)\vert^2+2\pi\,\im\int\nolimits_w^z\,\omega_I
+(\im\,\Omega)_{IJ}^{-1}\,\im\int\nolimits_w^z \omega_J
+\eqno{(5.45)}
+$$
+The second term on the right hand side is required to
+render $G(z,w)$ single-valued on $\Sigma\times\Sigma$, as
+well as to render it modular invariant.
+This expression is readily seen to generalize the
+$1$-loop result (and of course the $0$-loop result as
+well.)
+
+We use this result to prove the Chiral Splitting theorem
+for the case of vertex operators for tachyon states.
+(Higher mass states and their vertex operators may be
+obtained by factorization or equivalently by using the
+OPE for exponential operators.)
+To restrict the loop momenta and bring out an integration
+over them, we can insert the identity (as we did in
+\S{III} for one loop amplitudes)
+$$
+1=\prod\limits_{I}
+\int\limits_{\dbR^{26}}dp_I\,\delta\left(p_I^\mu
+-{1\over 2\pi i}\int\limits_{A_I}dz\,\partial_z
+x^\mu\right)
+\eqno{(5.46)}
+$$
+into the correlation function
+$\left<W_1(z_1,\zbar_1)\ldots W_N(z_N,\zbar_N)\right>_g$.
+In fact, here, we may use a short-cut, yielding the same
+result, carried out as follows.
+If $W_i(z_i,\zbar_i)=\exp ik_i\cdot x(z_i,\zbar_i)$
+then we have
+$$
+\eqalign{
+\Bigl<\prod\limits_{i=1}^N e^{ik_i\cdot x(z_i,\zbar_i)}
+\Bigr>_g &=\delta(k)\left({\Det'\Delta_{(0)}\over
+\int\nolimits_{\Sigma}d\mu_g}\right)^{-13}
+\prod\limits_{i<j}e^{-k_i\cdot k_jG(z_i,z_j)}\cr
+&=\delta(k) Z_{(0)}(g)^{-13}\prod\limits_{i<j}
+\vert E(z_i,z_j)\vert^{2k_i\cdot k_j}X\cr}
+\eqno{(5.47)}
+$$
+where
+$$
+X=\det(\omega_I,\omega_J)^{-13}\prod\limits_{i<j}
+e^{-2\pi k_i\cdot k_j\,\im\int\nolimits_w^z \omega\,
+(\im\,\Omega)^{-1}\,\im\int\nolimits_w^z \omega}\,\,.
+\eqno{(5.48)}
+$$
+Using the Riemann bilinear relations, we have
+$$
+\det(\omega_I,\omega_J)=\det(2\im\,\Omega_{IJ})
+\eqno{(5.49)}
+$$
+and we may now represent $X$ by a single Gaussian
+integral over real parameters $p_I^\mu$, which are just
+the internal loop momenta:
+$$
+X=\prod\limits_{I}\int\limits_{\dbR^{26}}d^{26}p_I
+\bigl\vert e^{i\pi p_I^\mu\Omega_{IJ}p_J^\mu+2\pi ip_I^\mu
+k_i^\mu\int\nolimits_P^{z_i}\omega_I}\bigr\vert^2\,\,.
+\eqno{(5.50)}
+$$
+
+It is now straightforward to read off the function
+$\scrF$ that enters the Chiral Splitting Theorem:
+$$
+\scrF(z_i,m_j;\,p_I,k_i)=\prod\limits_{i<j}
+E(z_i,z_j)^{k_i\cdot k_j}\cdot\exp
+\left[i\pi p_I^\mu\Omega_{IJ}p_j^\mu+
+2\pi i p_I^\mu k_i^\mu\int\nolimits_P^{z_i}
+\omega_I\right]
+\eqno{(5.51)}
+$$
+The point $P$ is arbitrary in view of the momentum
+conservation $\delta(k)$-function factor.
+$\scrF$ above is determined only up to phases. 
+In particular, $\scrF$ is multiple-valued, with
+monodromies that may be easily computed from the
+monodromies of $E(z,w)$, as given in (5.41).
+$\scrF$ also has branch cuts along the homology
+cycles: the effect of letting vertex insertion point
+$z_i$ cross a cycle $A_I$ is to add the external
+momentum $k_i$ to the loop momentum $p_I$.
+Modular transformation properties of $\scrF$ are also
+non-trivial, and may be read off from (5.42) and
+(5.28).
+
+It remains to express the functional determinant
+combinations $\scrZ_{(n)}^- (m_j)$ in terms of
+$\vartheta$-functions and differentials.
+This may be achieved by a variety of techniques, inducing
+bosonization and integration over $\scrM_h$ of the stress
+tensor.
+We shall not develop these techniques here but limit
+ourselves to stating the result for $\scrZ_{(-1)}^-$:
+$$
+\scrZ_{(-1)}^-(m_j)=
+{\vartheta(3\Delta_w\vert\Omega)\over
+\det\partial_w^i\phi_j(w)}\left(
+{\partial_w^h\vartheta(\Delta_w\vert\Omega)\over
+\det\partial_w^I\omega_J(w)}\right)^{-9}\,\,.
+$$
+Here, $w$ is an arbitrary point on $\Sigma$,
+$\partial_w^\alpha$ stands for the derivative of order
+$\alpha$ in $w$ and $\Delta_w$ is the Riemann vector
+$$
+\Delta_w^I=\half-\half\Omega_{II}+\sum\limits_{J\not= I}
+\oint\nolimits_{A_J}\omega_J(z)\int\nolimits_w^z\omega_I\,\,.
+$$
+
+\bye
+
+
+

@@ -1,0 +1,17 @@
+%Date: Mon, 14 Oct 1996 14:16:16 EDT
+%From: Edward Witten <witten@sns.ias.edu>
+
+
+The following has been pointed out about exercise 5 in problem
+set 2.
+
+(a) I omitted to state that a connection on the SO(n) bundle
+Q over M is part of the data.  It is certainly needed later.
+
+(b) there is a slip in part (b) of the problem - it was meant
+to be said that the odd part of lambda is left-moving 
+(as is implied correctly later in part (c) ) 
+
+Extra credit to anyone who points out additional errors!
+
+

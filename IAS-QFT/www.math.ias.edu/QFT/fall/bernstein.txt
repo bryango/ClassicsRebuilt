@@ -1,0 +1,105 @@
+
+			INSTITUTE FOR ADVANCED STUDY
+			  School of Mathematics
+			  Princeton, NJ  08540
+
+
+
+
+
+QUANTUM FIELD THEORY SEMINARS
+
+SPEAKER:   Joseph Bernstein, Tel Aviv University
+
+TIME:  2:00 P.M. TO 4:00 P.M.
+
+LOCATION:  M-101
+
+			TENTATIVE AGENDA
+
+
+Tuesday, September 17, 1996
+
+Lecture 1. What physicists have in mind when they talk about SUSY 
+(supersymmetry).                
+
+1. Bosons and fermions - Z_2 grading on the Hilbert space  of states.
+2. General idea about groups of symmetries. Symmetries of 
+Lagrangian and symmetries of Hilbert space.
+   Groups of symmetries containing Poincare group P.
+3. Coleman Mandula theorem. Possibility to discover supersymmetries.
+4.Supergroups containing P. 
+5.N-extended supersymmetry algebra.
+
+
+Thursday, September 19, 1996
+
+Lecture 2.  Basics of super mathematics.
+
+1.Super linear algebra. ( Example: Lie superalgebras).
+2. Definition of superscheme and supermanifold
+3. Differential geometry on supermanifolds:
+   Tangent bundle.              
+   DeRham complex
+4. Frobenius pairing and Frobenius theorem
+5. Construction of supermanifolds. Families
+   Example: V(F).
+6. Variety M~. Two constructions. Connection with DeRham theory.
+7. Supergroups and super Lie algebras. Lie theory.
+
+
+Tuesday, September 24, 1996
+
+Lecture 3. Integration theory and \sigma-models
+
+I. Integration theory.
+
+1. Definition of volume forms
+2. Definition of integral
+3. How to compute super integral?
+
+II. \sigma-models
+
+1. Usual 2-dimensional \sigma model
+2. Supersymmetric 2-dimensional \sigma model
+3. Reduction to classical integrals - component analisys and 
+elimination of auxiliery fields.
+4. Off-shell and on-shell SUSY
+
+
+September 26, 1996
+
+Thursday, Lecture 4. Wess-Zumino model on flat space ( d = 4, N = 1).
+
+1. Construction of the flat SUSY space. Structures.
+2. Chiral functions.
+3. Chiral fields and Young-Mills Lagrangian.
+4. General Lagrangian.
+5. Reduction to the classical integral
+6. Of shell and on-shell SUSY.
+7. Generaliztion to \sigma model in Kahler manifolds
+8. Dimensional reduction and extended N = 2 off shell theory for d = 2.
+
+
+Tuesday, October 1, 1996
+
+Lecture 5. Simple supergravity ( d = 4, N = 1).
+
+1. Conformal structure
+2. Connection between volume bundles
+3. Supergravity
+4. Partial connection. Decomposition into direct sum
+5. Definition in terms of connection and constrains.
+
+
+Thursday, October 3, 1996
+
+Lecture 6. Higher dimensional theories.
+
+1. Nahm's theorem
+2. 10-dimensional Young-Mills.
+3. Dimensional reduction - N = 4 Young-Mills theory in dimension 4
+4. 11-dimensional supergravity. reduction to extended 
+   (d=4,N=8)-gravity.
+
+.

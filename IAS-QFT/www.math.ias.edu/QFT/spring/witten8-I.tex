@@ -1,0 +1,496 @@
+%Date: Mon, 19 May 1997 17:00:31 -0400 (EDT)
+%From: Pavel Etingof <etingof@abel.math.harvard.edu>
+
+\input amstex
+\documentstyle{amsppt}
+\magnification 1200
+\NoRunningHeads
+\NoBlackBoxes
+\document
+
+\def\opsi{\overrightarrow{\psi}}
+\def\h{\frak h}
+\def\tW{\tilde W}
+\def\Aut{\text{Aut}}
+\def\tr{{\text{tr}}}
+\def\ell{{\text{ell}}}
+\def\Ad{\text{Ad}}
+\def\u{\bold u}
+\def\m{\frak m}
+\def\O{\Cal O}
+\def\tA{\tilde A}
+\def\qdet{\text{qdet}}
+\def\k{\kappa}
+\def\RR{\Bbb R}
+\def\be{\bold e}
+\def\bR{\overline{R}}
+\def\tR{\tilde{\Cal R}}
+\def\hY{\hat Y}
+\def\tDY{\widetilde{DY}(\g)}
+\def\R{\Bbb R}
+\def\h1{\hat{\bold 1}}
+\def\hV{\hat V}
+\def\deg{\text{deg}}
+\def\hz{\hat \z}
+\def\hV{\hat V}
+\def\Uz{U_h(\g_\z)}
+\def\Uzi{U_h(\g_{\z,\infty})}
+\def\Uhz{U_h(\g_{\hz_i})}
+\def\Uhzi{U_h(\g_{\hz_i,\infty})}
+\def\tUz{U_h(\tg_\z)}
+\def\tUzi{U_h(\tg_{\z,\infty})}
+\def\tUhz{U_h(\tg_{\hz_i})}
+\def\tUhzi{U_h(\tg_{\hz_i,\infty})}
+\def\hUz{U_h(\hg_\z)}
+\def\hUzi{U_h(\hg_{\z,\infty})}
+\def\Uoz{U_h(\g^0_\z)}
+\def\Uozi{U_h(\g^0_{\z,\infty})}
+\def\Uohz{U_h(\g^0_{\hz_i})}
+\def\Uohzi{U_h(\g^0_{\hz_i,\infty})}
+\def\tUoz{U_h(\tg^0_\z)}
+\def\tUozi{U_h(\tg^0_{\z,\infty})}
+\def\tUohz{U_h(\tg^0_{\hz_i})}
+\def\tUohzi{U_h(\tg^0_{\hz_i,\infty})}
+\def\hUoz{U_h(\hg^0_\z)}
+\def\hUozi{U_h(\hg^0_{\z,\infty})}
+\def\hg{\hat\g}
+\def\tg{\tilde\g}
+\def\Ind{\text{Ind}}
+\def\pF{F^{\prime}}
+\def\hR{\hat R}
+\def\tF{\tilde F}
+\def\tg{\tilde \g}
+\def\tG{\tilde G}
+\def\hF{\hat F}
+\def\bg{\overline{\g}}
+\def\bG{\overline{G}}
+\def\Spec{\text{Spec}}
+\def\tlo{\hat\otimes}
+\def\hgr{\hat Gr}
+\def\tio{\tilde\otimes}
+\def\ho{\hat\otimes}
+\def\ad{\text{ad}}
+\def\Hom{\text{Hom}}
+\def\hh{\hat\h}
+\def\a{\frak a}
+\def\t{\hat t}
+\def\Ua{U_q(\tilde\g)}
+\def\U2{{\Ua}_2}
+\def\g{\frak g}
+\def\n{\frak n}
+\def\hh{\frak h}
+\def\sltwo{\frak s\frak l _2 }
+\def\Z{\Bbb Z}
+\def\C{\Bbb C}
+\def\d{\partial}
+\def\i{\text{i}}
+\def\ghat{\hat\frak g}
+\def\gtwisted{\hat{\frak g}_{\gamma}}
+\def\gtilde{\tilde{\frak g}_{\gamma}}
+\def\Tr{\text{\rm Tr}}
+\def\l{\lambda}
+\def\I{I_{\l,\nu,-g}(V)}
+\def\z{\bold z}
+\def\Id{\text{Id}}
+\def\<{\langle}
+\def\>{\rangle}
+\def\o{\otimes}
+\def\e{\varepsilon}
+\def\RE{\text{Re}}
+\def\Ug{U_q({\frak g})}
+\def\Id{\text{Id}}
+\def\End{\text{End}}
+\def\gg{\tilde\g}
+\def\b{\frak b}
+\def\S{\Cal S}
+\def\L{\Lambda}
+\def\tl{\tilde\lambda}
+
+\topmatter
+\title Lecture II-8, Part I: Solitons 
+\endtitle
+\author {\rm {\bf Edward Witten} }\endauthor
+\endtopmatter
+
+\centerline{Notes by Pavel Etingof and David Kazhdan}
+
+\vskip .1in
+
+{\bf 8.1. What is a soliton?}
+
+In classical 
+mathematical physics, by a soliton one usually means a ``traveling wave'' 
+solution of a nonlinear PDE $u_t=F(u,u_x,...)$, i.e. a solution 
+of the form $u(x,t)=f(x-vt)$.   
+Solitons play a very important role in the theory of integrable systems, 
+where any solution can be approximated by a superposition of solitons, 
+moving at different velocities. As a result, the theory of integrable systems 
+is sometimes called soliton theory. 
+
+Today we will be interested in solitons arising in field theory 
+(as traveling wave solutions of the classical field equations) and primarily 
+in the role they play in quantization of field theories. This is 
+a different point of view from the one in soliton theory. 
+In particular, no claim is made about nonlinear superposition of solitons, 
+and the models we consider will not, in general, be exactly integrable. 
+
+We will consider solitons for Poincare invariant field theories on
+Minkowski space. By a soliton for a particular field theory we will mean 
+a traveling wave solution of the field equations (i.e. a solution which 
+depends on $x-vt$), which is localized in space and has finite energy.
+By Poincare invariance, we can always assume that $v=0$, i.e. that the 
+solution is time-independent. We will be mostly interested in solitons which 
+provide the global minimum for the energy in the corresponding homotopy class. 
+
+{\bf Remark.} It is important to distinguish solitons from instantons. 
+Instantons are localized in Euclidean spacetime 
+(i.e. only exist for an instant) and have finite action,
+while solitons are localized in space (of Minkowski spacetime), exist 
+eternally, and have finite energy. 
+
+{\bf 8.2. Solitons and components of the space of classical solutions}
+
+Classically, existence of solitons is related with existence of different 
+components of the space of classical solutions of finite energy.
+In a connected component which does not contain a zero energy solution, 
+the minimum of energy is often attained at a soliton. As an example of this, 
+you may recall the situation discussed in Lecture II-1: a 2-dimensional 
+scalar field theory with the potential $U=(\phi^2-a^2)^2$.
+In this case, the space of t-independent classical solutions
+of finite energy has 4 components: $X_{++},X_{-+},X_{+-},X_{--}$, 
+where $X_{+-}=\{\phi:\phi(-\infty)=a,\phi(\infty)=-a\}$ etc.
+On two of these components, $X_{+-}$ and $X_{-+}$, the energy 
+is strictly positive, and its minimum is attained at 2 solitons, 
+$\phi=f(x)$ and $\phi=-f(x)$, where $f(x)$ is the solution of the 
+Newton equation $f''=U'(f)$ for the potential $-U$, with boundary  
+values $a$ at $-\infty$ and $-a$ at $\infty$
+(such a solution is defined uniquely up to translations).  
+
+Notice that solitons are not invariant under the Poincare group. But 
+one often encounters
+ solitons which have rotational symmetry in space, around some
+``center of mass''. In a scalar field theory, this would mean that 
+the group of symmetry of such a soliton is $P_s=SO(d-1)\times \R$. 
+Since the Poincare group is $P=SO(d-1,1)\ltimes \R^{d-1,1}$, the 
+P-orbit $\O$ of the soliton in the space of solutions, i.e. the quotient
+$P/P_s$, is a $d-1$-dimensional vector bundle over the upper part 
+of a 2-sheeted hyperboloid. It is easy to check the following.
+
+1. This bundle is naturally isomorphic to the cotangent bundle. 
+
+2. The restriction of the symplectic structure on the space of solutions 
+$\O$ is nondegenerate, and thus defines a symplectic structure on $\O$. 
+
+3 (normalization of symplectic form) Let $m$ be the mass 
+(i.e. the energy in the center of mass frame) of the 
+soliton. Then there exists a P-equivariant symplectic diffeomorphism 
+$\O\to T^*\O_m^+$, where $\O_m^+$ is the 
+upper part of the hyperboloid $x^2=-m^2$ in $\R^{d-1,1}$.
+    
+{\bf 8.3. Solitons and quantization}
+
+Since classically solitons correspond to components in the space of 
+solutions, quantum mechanically they should correspond to 
+direct summands in the Hilbert space. As an example, consider a scalar 
+field theory with the space $X$ of classical solutions of finite energy,
+in which there is a component $X_s$ containing a soliton $s\in X_s$. 
+Then we have a symplectic embedding $T^*\O_m^+\to X_s$, where 
+$m$ is the mass of $s$. Let us assume that the minimum of energy 
+at the image of this map is nondegenerate, in the sense that there is no other 
+solutions of energy $m$, and the second derivative of the energy in a 
+direction  transversal to the image is positive. 
+
+In this case, in the weak coupling region we should expect that 
+
+1. The component $\Cal H_s$ of the Hilbert space $\Cal H$ of the quantum 
+theory has no vacuum (because classically there is no P-invariant solution).
+
+2. The Hamiltonian $H$ on $\Cal H_s$ satisfies the inequality $H\ge m'$,
+where $m'$ is some positive mass parameter, such that $m'\to m$ in the weak 
+coupling limit (in general, we should expect $m$ to get quantum corrections).
+If the theory has a mass gap, we should expect that     
+the states with $H=m$ form a space which is a quantization of $T^*\O_m^+$, 
+i.e. the irreducible representation of $P$ of the form $L^2(\O_m^+)$. 
+We should also expect that the spectrum near $m$ is discrete since the second 
+derivative is positive. 
+
+Note that if the action (or energy) functional of the theory is multiplied 
+by a constant $C$, the mass of the soliton is also multiplied by $C$, while
+masses of usual particles do not change. This means that in the classical 
+approximation ($C\to\infty$), solitons are much heavier    
+than usual particles. Therefore, a soliton cannot be seen in perturbation 
+theory: the contribution to the correlation 
+functions of an intermediate state 
+containing a soliton is exponentially small 
+(compared to the coupling constant) in the weak coupling limit.
+
+{\bf 8.4. Solitons in theories with fermions}
+
+In theories with fermions, the orbit of a soliton under $P$ 
+is often not the whole 
+space of lowest energy states in the corresponding connected component 
+of the space of solutions. 
+For example, if the model is supersymmetric, 
+it is clear apriori that the orbit is not the whole space
+of lowest energy solutions: the space of lowest energy states 
+is the orbit of the superPoincare and not just the Poincare group. 
+
+Let us consider an example of such a situation. Consider 
+the theory in 2 dimensions with a scalar and a pair of fermions:
+$$
+\Cal L=\frac{1}{2\l}\int d^2x(|d\phi|^2+(\phi^2-a^2)^2)+
+i\int d^2x (\psi_+\d_-\psi_++\psi_-\d_+\psi_--g\phi\psi_+\psi_-).\tag 8.1
+$$
+
+{\bf Remark 1.} For a suitable value of $g$ this model is supersymmetric.
+
+{\bf Remark 2.} This model has a chiral symmetry $\phi\to -\phi$, 
+$\psi_\pm\to \pm \psi_\pm$, which prohibits a mass term $m\psi_+\psi_-$ 
+for the fermions.  
+
+Consider the soliton $\phi(x,t)=f(x)$ for the bosonic part of the theory.
+Fermionic extensions of this solution are functions of finite energy 
+$\psi(x)=\left(\matrix\psi_+(x)\\ \psi_-(x)\endmatrix\right)$ satisfying 
+the Euler-Lagrange equations
+$$
+\left[\d_x\psi+\left(\matrix 0&-gf(x)\\ -gf(x)&0\endmatrix\right)\right]
+\psi=0.\tag 8.2
+$$
+Thus, 
+$$
+\psi=\left(\matrix \e\\ \e\endmatrix\right)e^{g\int_0^xf(y)dy}+
+\left(\matrix \e'\\ -\e'\endmatrix\right)e^{-g\int_0^xf(y)dy},\tag 8.3
+$$
+where 
+$\e,\e'$ are odd variables. 
+It is easy to see that only the solutions with $\e'=0$ 
+are in $L^2$, so the space of solutions of finite energy is 
+1-dimensional.
+
+Thus, each pair of fermions $\psi_+,\psi_-$ interacting with $\phi$ via
+(8.1) creates a fermionic degree of freedom in the space of configurations
+of minimal energy in the connected component of $f(x)$. Namely, if the number
+of such pairs is $n$ then the space of minimal energy configurations is 
+not $T^*\O_m^+$, but the supermanifold $T^*\O_m^+\times \R^{0|n}$. 
+
+Therefore, if $n$ is even, in quantum theory the space of 
+lowest energy states in the corresponding component of the Hilbert space 
+is $L^2(\O_m^+)\o S$, where $S=S_++S_-$ is the spin representation of
+$Spin(n)$. 
+
+{\bf 8.5. Solitons in 2+1 and 3+1 dimensions.}
+
+In spite of the difference between instantons and solitons, 
+there is a connection between them.  
+Namely, often an instanton in a Euclidean field theory in $d-1$ dimensions
+gives rise to a soliton in the Minkowski version of the same theory in $d$ 
+dimensions. Consider for example the 2+1-dimensional $U(1)$ gauge theory 
+with a complex scalar:
+$$
+\Cal L=\int d^3x(\frac{F_A^2}{e^2}+\frac{1}{\l}(|d_A\phi|^2+(|\phi|^2-a^2)^2)).
+\tag 8.4
+$$
+In Lecture II-6 we saw that the 2-dimensional version of this theory 
+has instantons with Chern classes $1$ and $-1$. 
+In the 2+1-dimensional theory, these instantons become solitons, and 
+govern the lowest energy modes in the corresponding components 
+of the Hilbert space as described above. 
+
+Now consider nonabelian gauge theory in 3+1 dimensions. 
+Namely, consider an $SO(3)$ gauge theory with a boson in the 3-dimensional 
+representation, and the Lagrangian 
+$$
+\Cal L=\int d^4x(\frac{F_A^2}{4e^2}+
+\frac{1}{2\l}(|d_A\phi|^2+(|\phi|^2-a^2)^2)).
+\tag 8.5
+$$   
+We considered in Lecture II-7 the 3-dimensional version of this theory.
+For convenience, we identified the spacetime $\R^3$ 
+with the Lie algebra of the gauge group and with the space of values of 
+$\phi$ (the bracket in the Lie algebra is the cross-product). 
+This allows to write the scalar field $\phi$ and infinitesimal gauge
+transformations as vector fields on $\R^3$.
+
+We found that in 3 dimensions this theory   
+has an instanton in which $\phi$ is
+of the form $\phi=\frac{x}{r}f(r)$, $r=|x|$ (as we have explained, 
+we identify the spacetime and the space of values of $\phi$). 
+In 4 dimensions this instanton will become a soliton. 
+Such solitons are called magnetic monopoles. 
+
+In fact, we have not one soliton, 
+but infinitely many, since the center of the soliton can be any point in 
+$\R^3$. So the space of time-independent solitons is at least $\R^3$. 
+In fact, this space is not $\R^3$ but $\R^3\times S^1$. 
+The reason is that there are some gauge symmetries compatible with 
+spherical symmetry, which allow to produce new solitons out of old ones. 
+Let us see how it happens. 
+
+First of all, recall that
+any field configuration $(A,\phi)$ of finite energy 
+defines an integer 
+topological invariant -- ``the first Chern class at infinity''
+$c_1$. Indeed, in order for the energy to be finite, we must have 
+$|\phi|=a$ at infinity, so $\phi$ defines a map from a
+sphere at infinity in $\R^3$ to the sphere of radius $a$, and $c_1$ is
+the degree of this map. Another definition of $c_1$:  
+the section $\phi$ defines 
+at infinity a splitting of our 3-dimensional vector bundle into a direct sum 
+$\phi\oplus\phi^\perp$ of a 1-dimensional and a 2-dimensional vector bundle. 
+Thus, $\phi$ defines a reduction of the structure group to $SO(2)=U(1)$ at 
+infinity. The number $c_1$ is the first Chern class of this bundle restricted
+to the infinite 2-sphere in $\R^3$. 
+
+For example, the soliton configuration discussed above has $c_1=1$. 
+
+In physical language, this topological phenomenon means that
+at spacial infinity the $SO(3)$ gauge symmetry is broken to $U(1)$.  
+However, the remaining group $U(1)$ of transformations at infinity acts
+nontrivially on the space of classical solutions.
+In particular, it produces new solitons. 
+To understand this action, let us consider the solitons $(A,\phi)$ 
+with $c_1=1$, discussed above.  
+Let us represent the infinitesimal 
+operator of the group $U(1)$ by a spherically symmetric gauge symmetry: 
+$\e=\frac{x}{r}g(r)$, where $g$ is some function. 
+If the function $g(r)$ satisfies $g(r)\sim c_0r$ at $r\to 0$ and 
+$g(+\infty)=c$, then this formula defines a smooth gauge transformation 
+which is ``constant'' at infinity (with respect to the reduction 
+of structure group defined by the soliton). 
+Then the action of $\e$ is
+$$
+A\to A-d_A\e, \phi\to \phi.\tag 8.6
+$$
+It is clear that $d_A\e$ cannot be identically zero, since 
+the soliton connection $A$ is not flat. 
+On the other hand, if $c\in 2\pi \bold Z$, the connection 
+$A-d_A\e$ is equivalent to $A$ by the gauge transformation 
+$e^{i\e}$ which vanishes at infinity, so the solutions 
+$(A,\phi)$ and $(A-d_A\e,\phi)$ are the same in this case. 
+
+This shows that the space of 
+time-dependent solitons with Chern class 1 at infinity 
+is at least $\R^3\times S^1$
+(with no canonical zero on either $\R^3$ or $S^1$). 
+One can show that in fact it is exactly 
+that. We will denote the circle coordinate on this space by $\alpha$.
+
+By using the Poincare group transformations, we can 
+generate solutions which are time-dependent and propagate 
+at a constant speed. We can also perform a 
+time dependent gauge transformation, which will make  
+the $\alpha$-coordinate time dependent, i.e. $\alpha=\alpha_0+st$, $s\in \R$. 
+As a result, the space of 
+time dependent solitons is the product $T^*\O\times T^*S^1$.
+
+{\bf 8.6. The 3+1-dimensional theory with the $\theta$-angle}
+
+Consider the 3+1-dimensional theory of the previous section with the 
+$\theta$-angle, i.e. let us add to the (Minkowski) Lagrangian a term
+$$
+-\frac{\theta}{16\pi^2}\int \text{Tr}(F\wedge F).\tag 8.7
+$$
+
+To give this term a topological interpretation, let us compactify the time
+and consider the theory on the spacetime $\R^3\times S^1$. 
+In this case, for any field configuration of finite energy, 
+besides the first Chern class $c_1$ at infinity 
+(which is also called the monopole number, or the hedgehog number),
+we can define another integer topological invariant -- 
+the second Chern class $c_2$, which is given by the integral 
+$\frac{1}{8\pi}\int Tr(F\wedge F)$. Thus, 
+classically, term (8.7) just counts the second Chern class 
+of the bundle. Therefore,  
+quantum mechanically, it weights the contribution 
+from bundles with $c_2=k$ to the path integral with $e^{ik\theta}$.
+
+It is clear that this theory has the same time-independent 
+solitons as the theory 
+without $\theta$, since the added term is topological. 
+However, since time has been compactified, the time dependent solitons 
+which were discussed in the previous section have to 
+satisfy the equality $\alpha=\alpha_0+\frac{n}{T}t$, where $n$ is an integer,
+which we will call the winding number,  
+and $T$ is the circumference of the compactified time axis. In other words, the
+parameter $s$ defined in the previous section has 
+to have the form $s=n/T$. 
+
+\proclaim{Claim} If the monopele number of a soliton configuration 
+is $k$ and the winding number is $n$ then $c_2=kn$. 
+\endproclaim
+
+The proof is by a direct calculation. 
+
+Now 
+consider 3 operators in our theory:
+
+1. $\frac{\d}{\d\alpha}$. (This operator is 
+the generator of the Lie algebra of the unbroken 
+$U(1)$). 
+
+2. The electric charge 
+$$
+Q_{el}=\frac{1}{ae^2}\int_{\R^3} Tr(d_A\phi\wedge *F_A).\tag 8.8
+$$
+
+3. The magnetic charge
+$$
+Q_{mag}=\frac{1}{4\pi a}\int_{\R^3} Tr(d_A\phi\wedge F_A).\tag 8.9
+$$
+
+In perturbation theory, $Q_{mag}=0$ (as nonzero $c_2$ requires big action), 
+and $Q_{el}=-i\frac{\d}{\d\alpha}$. Thus, in perturbation theory 
+$Q_{el}$ has integer eigenvalues. 
+
+Let us see, however, what happens nonperturbatively, i.e. 
+when we take into account field configurations with nonzero $c_2$. 
+
+We compute in the gauge where $A_0=0$. 
+It is easy to compute that 
+classically we have $\frac{\d}{\d\alpha}=\int Tr(d_A\phi\frac{\delta}
+{\delta A})$. Therefore,   
+the operator $-i\frac{\d}{\d\alpha}$ is the charge for 
+the current $J=Tr(d_A\phi\wedge \pi_A)$, where 
+$\pi_A$ is the conjugate (momentum) variable for $A$.
+
+Now compute $\pi_A$:
+$$
+\pi_A=\frac{\delta \Cal L}{\delta A_t}=\frac{A_t\wedge dt}{e^2}-
+\frac{\theta}{8\pi^2}F_A.\tag 8.10
+$$    
+Thus, we get
+$$
+-i\frac{\d}{\d \alpha}=Q_{el}-\frac{\theta}{2\pi}Q_{mag}.\tag 8.11
+$$ 
+
+Since the spectrum of $-i\frac{\d}{\d\alpha}$ is integer, we 
+get
+$Q_{el}=\frac{\theta}{2\pi}Q_{mag}\text{ mod }\Bbb Z$. 
+But $Q_{mag}$ is also an integer, since it is a topological invariant 
+classically. Thus, $Q_{el}$ need not be an integer beyond perturbation 
+theory. In other words, there exist states (of 
+very high energy $\sim 1/\hbar$) on which $Q_{el}$ is not an integer. 
+So the electric charge is discretized, but in presence of magnetic monopoles 
+we do not expect an integral electric charge. 
+
+It is not hard to show that operators $Q_{el},Q_{mag}$ commute.
+(Classically, it is obvious, as $Q_{mag}$ is a locally constant function). 
+Thus, the joint spectrum of them is a lattice in $\R^2$. If we consider 
+the family of theories parametrized by $\theta\in S^1$, the monodromy 
+transformation of this lattice around the circle is 
+given by the matrix $\left(\matrix 1&1\\ 0&1\endmatrix\right)$ 
+in the basis $Q_{mag},Q_{el}$. 
+
+In the second part of this lecture we will explain
+(in the free theory) how to 
+extend this monodromy representation to an action of $SL_2(\Bbb Z)$. 
+I.e. how to construct a family of theories parametrized by a complex
+parameter $\tau=\frac{\theta}{2\pi}+ir$ modulo modular transformations, 
+such that the monodromy representation is the standard action of 
+$SL_2(\Bbb Z)$ on a 2-dimensional lattice. 
+
+
+
+\end
+
+

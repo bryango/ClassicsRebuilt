@@ -1,0 +1,895 @@
+%Date: Mon, 20 Jan 1997 13:55:46 -0500 (EST)
+%From: Pavel Etingof <etingof@abel.math.harvard.edu>
+
+\input amstex
+\documentstyle{amsppt}
+\magnification 1200
+\NoRunningHeads
+\NoBlackBoxes
+\document
+
+\def\tW{\tilde W}
+\def\Aut{\text{Aut}}
+\def\tr{{\text{tr}}}
+\def\ell{{\text{ell}}}
+\def\Ad{\text{Ad}}
+\def\u{\bold u}
+\def\m{\frak m}
+\def\O{\Cal O}
+\def\tA{\tilde A}
+\def\qdet{\text{qdet}}
+\def\k{\kappa}
+\def\RR{\Bbb R}
+\def\be{\bold e}
+\def\bR{\overline{R}}
+\def\tR{\tilde{\Cal R}}
+\def\hY{\hat Y}
+\def\tDY{\widetilde{DY}(\g)}
+\def\R{\Bbb R}
+\def\h1{\hat{\bold 1}}
+\def\hV{\hat V}
+\def\deg{\text{deg}}
+\def\hz{\hat \z}
+\def\hV{\hat V}
+\def\Uz{U_h(\g_\z)}
+\def\Uzi{U_h(\g_{\z,\infty})}
+\def\Uhz{U_h(\g_{\hz_i})}
+\def\Uhzi{U_h(\g_{\hz_i,\infty})}
+\def\tUz{U_h(\tg_\z)}
+\def\tUzi{U_h(\tg_{\z,\infty})}
+\def\tUhz{U_h(\tg_{\hz_i})}
+\def\tUhzi{U_h(\tg_{\hz_i,\infty})}
+\def\hUz{U_h(\hg_\z)}
+\def\hUzi{U_h(\hg_{\z,\infty})}
+\def\Uoz{U_h(\g^0_\z)}
+\def\Uozi{U_h(\g^0_{\z,\infty})}
+\def\Uohz{U_h(\g^0_{\hz_i})}
+\def\Uohzi{U_h(\g^0_{\hz_i,\infty})}
+\def\tUoz{U_h(\tg^0_\z)}
+\def\tUozi{U_h(\tg^0_{\z,\infty})}
+\def\tUohz{U_h(\tg^0_{\hz_i})}
+\def\tUohzi{U_h(\tg^0_{\hz_i,\infty})}
+\def\hUoz{U_h(\hg^0_\z)}
+\def\hUozi{U_h(\hg^0_{\z,\infty})}
+\def\hg{\hat\g}
+\def\tg{\tilde\g}
+\def\Ind{\text{Ind}}
+\def\pF{F^{\prime}}
+\def\hR{\hat R}
+\def\tF{\tilde F}
+\def\tg{\tilde \g}
+\def\tG{\tilde G}
+\def\hF{\hat F}
+\def\bg{\overline{\g}}
+\def\bG{\overline{G}}
+\def\Spec{\text{Spec}}
+\def\tlo{\hat\otimes}
+\def\hgr{\hat Gr}
+\def\tio{\tilde\otimes}
+\def\ho{\hat\otimes}
+\def\ad{\text{ad}}
+\def\Hom{\text{Hom}}
+\def\hh{\hat\h}
+\def\a{\frak a}
+\def\t{\hat t}
+\def\Ua{U_q(\tilde\g)}
+\def\U2{{\Ua}_2}
+\def\g{\frak g}
+\def\n{\frak n}
+\def\hh{\frak h}
+\def\sltwo{\frak s\frak l _2 }
+\def\Z{\Bbb Z}
+\def\C{\Bbb C}
+\def\d{\partial}
+\def\i{\text{i}}
+\def\ghat{\hat\frak g}
+\def\gtwisted{\hat{\frak g}_{\gamma}}
+\def\gtilde{\tilde{\frak g}_{\gamma}}
+\def\Tr{\text{\rm Tr}}
+\def\l{\lambda}
+\def\I{I_{\l,\nu,-g}(V)}
+\def\z{\bold z}
+\def\Id{\text{Id}}
+\def\<{\langle}
+\def\>{\rangle}
+\def\o{\otimes}
+\def\e{\varepsilon}
+\def\RE{\text{Re}}
+\def\Ug{U_q({\frak g})}
+\def\Id{\text{Id}}
+\def\End{\text{End}}
+\def\gg{\tilde\g}
+\def\b{\frak b}
+\def\S{\Cal S}
+\def\L{\Lambda}
+
+\topmatter
+\title Lecture 3: Renormalization groups (continued)
+\endtitle
+\author {\rm {\bf David Gross} }\endauthor
+\endtopmatter
+
+\centerline{Notes by P.Etingof and D.Kazhdan}
+\vskip .1in
+
+{\bf 3.1. Dynamical patterns of the renormalization group flow.} 
+
+In the last lecture we saw that the renormalization group equation
+for the $\phi^4$-theory in the one-loop approximation had the form
+$g_*'=Ag_*^2$. This equation has a fixed point at $g_*=0$, which is attracting
+for $g_*<0$ and repelling at $g_*>0$, so it looks like
+$$
+>>>>>>*>>>>>> 
+$$
+The fact that this fixed point is repelling for $g_*>0$ allowed us to 
+show that $\phi^4$ theory is not asymptotically free in the region $g_*>0$. 
+
+Now consider  what happens for an arbitrary renormalizable field theory
+with a single renormalizable coupling $\l$. 
+Let us write down the renormalization group equation for $\l$ based on
+some mass-independent finite renormalization prescription:
+$$
+\mu\frac{d\l}{d\mu}=\beta(\l).
+$$
+This equation always has a fixed point at $\l=0$ (the free theory). 
+The behavior of solutions of this equation near the fixed point can be 
+determined by looking at the sign of 
+the first nontrivial term of the Taylor expansion 
+of $\beta(\l)$. There can be two patterns of behaviour. 
+
+1. An attracting, or
+ultraviolet (UV) stable fixed point ($\beta(\l)$ and $\l$ have 
+opposite signs for small $\l$):
+$$
+*<<<<<<<
+$$
+In this case, 
+$\l(\mu)$ is driven to the fixed point $\l=0$ 
+in the UV limit $\mu\to \infty$, which implies 
+asymptotic freedom. More precisely, if $\beta(\l)\sim A\l^{k+1}$, $\l\to 0$, 
+then, as one finds by solving the renormalization group equation, 
+$$
+|\l(\mu)|\sim (|A|k)^{-1/k}|\ln(\mu/\mu_0)|^{-1/k}, \mu\to\infty.\tag 3.1
+$$
+However, in the limit $\mu\to 0$ 
+$\l(\mu)$ is driven away from the fixed point. 
+
+2. A repelling, or infrared (IR) stable 
+fixed point ($\beta(\l)$ has the same sign as $\l$ for small $\l$).
+$$
+*>>>>>>>
+$$
+In this case $\l(\mu)$ is driven away from the fixed point $\l=0$
+in the UV limit $\mu\to \infty$, so there is no asymptotic freedom. 
+However, in the IR limit $\mu\to 0$ the coupling $\l(\mu)$ approaches the 
+point $\l=0$, at the rate given by (3.1).  
+
+Now we face a question: what happens if $\l(\mu)$ is 
+driven away from the fixed point? What will be its behavior 
+when $\l$ is not very small? 
+
+The answer to this question cannot be given within the framework 
+of perturbation theory. If the field theory which we are considering 
+actually exists non-perturbatively, then there could be two options:
+
+Option 1. $\l(\mu)$ is driven to a fixed point $\l_0\ne 0$:
+$$
+*>>>>>*
+$$
+
+Option 2. $\l(\mu)$ is driven to infinity. 
+
+{\bf Remark.} In general, it could happen that the differential
+equation $\l'=\beta(\l)$ has no nonzero solutions which are 
+defined globally for all $\mu$. (Example: $\beta(\l)=A\l^2$). 
+This means, the coupling $\l(\mu)$ becomes infinite
+at some finite value of $\mu$ (e.g. $\l=\frac{\l_0}{1-A\l_0\ln(\mu/\mu_0)}$).
+This kind of singularity is called a renormalon. We will discuss this topic 
+later in more detail. For now let us just say that the appearance of
+a renormalon does not necessarily 
+mean that the theory does not exist but may just mean 
+that we are doing perturbation expansion around a wrong vacuum state
+(see the next lecture). 
+
+Let us consider some examples. 
+
+{\bf Example 1: $\phi^4$ theory}. In this case, as we saw above, 
+the fixed point $g=0$ is UV stable for $g<0$ and IR stable for $g>0$, so 
+we have asymptotic freedom in the unphysical region $g<0$. 
+For $g>0$, there is no asymptotic freedom, and
+in the 1-loop approximation $\l(\mu)$ becomes infinite
+at finite $\mu$: $\mu=\mu_0e^{\frac{1}{Ag_*^0}}$. 
+Whether this singularity survives non-perturbatively, 
+provided that $\phi^4$-theory exists non-perturbatively -- 
+cannot be determined in perturbation theory. 
+
+{\bf Example 2: QED}. In QED, the beta-function has the form
+$$
+\beta(e)=\frac{e^3}{12\pi^2}+O(e^5),\tag 3.2
+$$
+where $e$ is the dimensionless electric charge. 
+This can be inferred from computing the 1-loop correction to 
+the 3-point function $\<\psi(x)A(y)\psi(z)\>$ 
+where $A$ is the electromagnetic field and $\psi$ represents a charged 
+particle, e.g. an electron
+(see also the solution of problem 2 in Witten's problem set 6). 
+Therefore, the free fixed point 
+$e=0$ is IR stable in both regions $e<0$, $e>0$ 
+(which are both physically meaningful). 
+Thus QED is not asymptotically free. 
+
+So what happens 
+in the UV limit? Solving the renormalization group equation
+in the 1-loop approximation, we get
+$$
+e^2=\frac{e_0^2}{1-\frac{e_0^2}{6\pi^2}\ln(\mu/\mu_0)}.\tag 3.3
+$$
+Thus, if we trust the 1-loop approximation, the electric charge 
+grows as $\mu\to\infty$, and becomes infinite at 
+$\mu=\mu_0\exp(6\pi^2/e_0^2)$ (the so-called Landau singularity). 
+
+One can wonder whether this singularity exists nonperturbatively.
+This is a rather academic question, since QED is not proved and 
+generally not believed to exist nonperturbatively. However, 
+let us estimate how big $\mu$ is. We have $e_0^2/4\pi\sim 1/137$, and
+$\mu_0\sim 1 \text{MeV}$. So we get
+$\mu\sim e^{3\pi\times 137/2}\mu_0\sim 10^{250}\text{MeV}$. 
+Such energy is not contained in the whole observable part of the universe. 
+So even if the singularity occured at $\mu$, it does not concern us, since we
+are studying physics at much lower energy scales. 
+This is the reason why, although QED is not asymptotically free, and its 
+perturbation expansion is not valid at high energies, it gives a 
+good approximation to reality in a certain range of energies, and 
+can be used to make predictions which can be checked experimentally. 
+
+In formula (3.3), $e_0$ has the meaning of the 
+observed (effective) charge when the measurements are made at an 
+experimentally accessible scale of energies $\mu_0$, 
+while $e$ has the meaning of the actual charge (i.e. the charge computed 
+on the basis of a very precise theory which describes physics at 
+a very high scale of energies $\mu$). Passage from $e$ to $e_0$ by moving down
+with the renormalization group flow from $\mu$ to $\mu_0$ has the  
+meaning of averaging out degrees of freedom between $\mu_0$ and $\mu$. 
+The inequality $e_0<e$ for $\mu_0<\mu$, which follows from (3.3),
+has the meaning of {\it screening} of charges: the observed charge 
+is less than the actual charge. 
+
+{\bf Remark.} This screening phenomenon is known 
+already in classical physics (screening of charges by medium): 
+$e_0=e/\e$, where $\e>1$ is the dielectric permeability of the medium. 
+To explain this, one should model the medium as a collection 
+of very small dipoles. In the presence of 
+a charged particle with charge $e$ (say $e>0$) 
+they will align in such a way that the negative parts will face
+the particle. If we draw a sphere $S$ centered at the particle, it will cut 
+some of the dipoles in half, so that negative parts will be inside of the 
+sphere and the positive parts outside. Now we can use Newton's theorem:
+the field of a uniformly charged sphere with charge $q$ is zero
+inside of the sphere, and is the same as the field of a point charge $q$ 
+situated at the center,  outside of the sphere.  
+This theorem implies that the total contribution 
+ of the outside parts of the dipoles 
+to the electric field at a point of $S$ is zero, while the total contribution 
+of the negative parts is the same as that of 
+a negative point charge $q$ at the center. So the effective
+value of the charge is $e-q$. 
+(We should note that $q$ depends on $e$, since the 
+number of dipoles which will align depends on the strength of the electric 
+field. In fact, $q$ is proportional to $e$.)
+
+{\bf Example 3: Nonabelian gauge theory in 4 dimensions}. 
+Before 1970-s, it was believed that all field theories 
+are IR stable but not asymptotically free. However, in the 70-s it was found 
+that pure non-abelian gauge theories are asymptotically free. 
+Moreover, they remain asymptotically free even if 
+fermions are added, as long as the number of fermions
+does not exceed a certain limit. 
+
+Namely, one can show that the $\beta$-function
+for a non-abelian gauge theory with gauge group $G$
+and fermions $\psi_i$.  
+(a compact simple Lie group) has the following form
+in the 1-loop approximation:
+$$
+\beta(g)=-\frac{1}{48\pi^2}(11C_{\g}-4\sum_i C_{V_i})g^3,\tag 3.4
+$$
+where $\g$ is the Lie algebra of $G$, $V_i$ are the representations of $G$ 
+where the fermions $\psi_i$ 
+live, and $C_{V}$ is the Casimir $C$ of $\g$ acting 
+in a representation $V$. Here the Casimir is normalized in such a way that
+$C_{\g}=h^\vee$, where $h^\vee$ is the dual Coxeter number of $\g$
+($h^\vee=N$ for $SU(N)$).  
+The proof of formula (3.4) can be found it textbooks on QFT, for example
+in P.Ramond's textbook. 
+
+Formula (3.4) tells us that the pure gauge theory is asymptotically free,
+so that $g(\mu)$ is a decreasing function for small $g$ 
+(so-called ``antiscreening''), 
+and gives us the bound on the number of fermions which can be added
+without destruction of asymptotic freedom. 
+
+For example, consider QCD (quantum chromodynamics), which is believed to
+describe strong interactions. In QCD, $G=SU(3)$, and $V_i=\C^3$, 
+so $C_{\g}=3$ and $C_{V_i}=1/2$, so we get
+$$
+\beta(g)=-\frac{1}{48\pi^2}(33-2N_f)g^3,\tag 3.4
+$$
+where $N_f$ is the number of fermions. So, in order for this theory 
+to be asymptotically free, we have to have $N_f\le 16$. 
+
+Asymptotic freedom of QCD can be checked experimentally. 
+One of the possible experiments is described in a simplified way 
+in the appendix to Witten's Lecture 4.  
+
+{\bf 3.2. Are there any asymptotically free theories 
+without nonabelian gauge fields?}
+
+Example 3 in the previous section raises the question whether 
+there can be an asymptotically free theory 
+without nonabelian gauge fields. 
+The answer is the following. 
+
+In two dimensions, there are many asymptotically free theories without  
+nonabelian gauge fields. For example, the 2-dimensional theory with 
+$N$ fermions and interaction $\sum_j(\bar\psi_j\psi_j)^2$, which we will 
+consider in the next lecture, is asymptotically free. 
+
+In four dimensions, this is not the case. Namely, there is
+the following result.
+
+\proclaim{Coleman-Gross Theorem} Let $\Cal L(\phi_i,\psi_j)$ be a 
+Poincare invariant, renormalizable Lagrangian 
+of scalar fields $\phi_k$ and spinor fields $\psi_j$:
+$$
+\Cal L=\int d^4x\biggl(
+\frac{1}{2}\sum_k (\nabla\phi_k)^2+
+\sum_j(\psi_j,(iD+M_j)\psi_j) 
++V(\phi)+Y(\phi,\psi)\biggr),\tag 3.5
+$$
+where $V(\phi)$ is a quartic polynomial, and 
+$Y(\phi,\psi)$ are Yukawa interaction terms of the form 
+$\phi\psi\psi$. Suppose that the function 
+$V(\phi)$ is bounded from below. Then the quantum field theory 
+defined by $\Cal L$ is not asymptotically free. 
+\endproclaim
+
+It is clear that this theorem generalizes to the case where $\Cal L$ 
+is allowed to contain Abelian gauge fields: in example 2 we saw that 
+this would make the theory even ``less'' asymptotically free. 
+
+The condition that $V(\phi)$ is bounded from below 
+cannot be dropped: we have seen 
+that the $\phi^4$ theory with $g<0$ is asymptotically 
+free. However, one can show that 
+such a theory cannot exist nonperturbatively. 
+Namely, one can show that if such a theory had existed, 
+its spectrum of energy would not be bounded from below, 
+which contradicts the existence of the theory
+(the energy positivity axiom would be violated).
+
+Let us show this for the case of $\phi^4$ theory. 
+We consider the $\phi^4$ theory with negative coupling constant $g$. 
+In this case, the classical potentail $V_0(\phi)=\frac{g\phi^4}{4!}
++\frac{m^2}{2}\phi^2$ is not bounded from below. Apriori, it does not 
+imply that the theory makes no sense, since 
+this problem could be cured in the quantum theory. 
+In order to see what happens in the quantum theory, we should 
+compute the effective potential, $V_{\text{eff}}(\phi)$,
+which represents the effective classical theory for the quantum theory 
+defined by $V_0(\phi)$. If this potential is not bounded from below, 
+we can conclude that the theory does not exist quantum-mechanically.
+
+As we know, the 
+effective classical action is computed as 
+a sum of amplitudes of 1-particle 
+irreducible Feynman diagrams (see the end of 
+Kazhdan's lecture on Feynman graphs):
+$$
+S_{\text{eff}}(\phi)=
+\sum_{k\ge 1}\int_{\sum p_i=0}\Gamma_{2k}(p_1,...,p_{2k})
+\tilde\phi(p_1)...\tilde\phi(p_{2k})dp,\tag 3.6
+$$
+where $\Gamma_{2k}$ are 1-particle irreducible correlations functions,
+and $\tilde\phi$ denotes the Fourier transform of $\phi$. 
+By the definition, the effective potential $V_{\text{eff}}(\phi)$ is 
+the function of one variable defined by the formula
+$$
+V_{\text{eff}}(\phi)=S_{\text{eff}}(\phi),\tag 3.7 
+$$
+where $\phi$ is a constant function.
+That is,
+$$
+V_{\text{eff}}(\phi)=\sum_{k\ge 2} \Gamma_{2k}(0)\phi^{2k}.\tag 3.8
+$$
+In general, it is not easy to see whether this function is bounded 
+from below or not. However, the fact that the $\phi^4$ theory
+with $g<0$ is asymptotically free allows to figure this out. 
+The demonstration that $V_{eff}(\phi)$ is not bounded
+from below is contained in Weinberg's textbook in Chapter 18, 
+Section 18.2. 
+This unboundedness implies that
+at large scales of $\phi$ there exist states of arbitrarily low energy,
+i.e. that the corresponding quantum theory in fact does not exist. 
+
+Thus, we have seen that a sensible 
+4-dimensional quantum field theory which is asymptotically free 
+must contain nonabelian gauge fields. But theories which are 
+not asymptotically free are usually not believed to exist
+nonperturbatively. Does this mean that theories without nonabelian 
+gauge fields, like QED, do not make any physical sense? 
+(This would really be very 
+strange, since QED was used to make some predictions, 
+which were in a very good agreement with experiment). 
+
+The answer of course is no. Even though QED may not exist nonperturbatively
+as a separate theory, its Lagrangian may be a part of a bigger Lagrangian, 
+which contains other fields (in particular, nonabelian gauge fields),
+and define a theory which is asymptotically free and perhaps exists 
+nonperturbatively. However, at low energies, when considering electromagnetic 
+interactions, we can ignore all the additional terms in the Lagrangian, and
+use the Lagrangian of QED. 
+
+In fact, the real situation is the following. There is the so called
+``Standard model'', which is a field theory with many different 
+fields, and includes QED as a subtheory. This theory is believed to 
+exist nonperturbatively, and to describe all interactions except 
+gravity in the real world. Now, if we want to compute the scattering 
+data for two electrons in this theory, the answer will be of the order
+$e^2$, where $e$ is the charge of the electron, and 
+corrections due to terms in the Lagrangian not contained in the 
+Lagrangian of QED are of order $e^4$ and higher
+(see appendix to Witten's lecture 4). Therefore, at
+low energies, where $e$ is small, QED in the 1-loop approximation is still 
+valid.  
+
+{\bf 3.3. Renormalization group equations with many couplings.}
+
+So far we have considered the renormalization group flow only for 
+theories with one critical coupling. Similarly one can define 
+the renormalization group flow in the case when there are many such couplings,
+$g_1,...,g_n$. We will assume that the renormalization group flow
+is defined by a mass independent family of renormalization prescriptions
+$\pi_\mu$ parametrized by $\mu\in M$ (for example, dimensional regularization 
+-- minimal subtraction). In this case, subcritical couplings 
+do not enter in the renormalization group equation for $g_i$, so it has the 
+form
+$$
+\mu\frac{d g_i}{\d \mu}=\beta_i(g_1,...,g_n).\tag 3.9
+$$
+In general, we know nothing about the flow defined by (3.9), except that 
+the point $g_i=0$ (the free theory) is a fixed point of this flow. 
+However, there is the following conjecture, which says that 
+this flow behaves as a gradient flow. 
+
+\proclaim{Conjecture 3.1} There exists a function $F(g_1,...,g_n)$ such that
+its total derivative with respect to $\mu$ is positive at any nonsingular 
+point of the flow (3.9). 
+\endproclaim
+
+{\bf Remark.} Here we, of course, assume that the theory we are considering 
+exists nonperturbatively. 
+
+Conjecture 3.1 prohibits various complicated dynamical patterns which could 
+occur in a multidimensional dynamical system (limiting cycles, 
+ergodicity, attractors, etc.), and implies that any trajectory is 
+either driven to a fixed point or to infinity. 
+
+The intuition behind conjecture 3.1 is the Wilsonian point of view 
+that the (backward) renormalization group flow comes from erasing 
+degrees of freedom. The meaning of the function $F$ is ``the measure 
+of the number of degrees of freedom''. Unfortunately, it is unknown 
+how make mathematical sense of this idea in general, so conjecture 3.1 remains 
+open. It is proved, however, in many special cases, 
+for example, in 2-dimensional field theories. 
+
+{\bf Remark.} In 2-dimensional theories with bosonic fields 
+the space of couplings is infinite-dimensional, since the classical 
+dimension of elementary bosonic fields vanishes
+(couplings are arbitrary functions). Therefore, the renormalization group
+equations are equations in the space of functions. 
+
+{\bf 3.4. The renormalization group equation for composite operators.} 
+
+Suppose we are given a renormalizable field theory $T$ 
+given by some Lagrangian 
+$\Cal L$.  
+Recall from Witten's lecture 3 that every local operator $\O(x)$ in the 
+classical field theory defined by $\Cal L$ can be quantized (non-canonically), 
+and that the space $A_l^0(T)$ of classical operators of 
+scaling dimension $\le l$ admits a canonical quantization,
+which we will denote by $A_l(T)$. 
+
+Recall that for
+ any operator $\O\in A_l(T)$, the correlation functions of $\Cal O$
+are defined to be the $\e$-coefficients of the correlation functions
+of the Lagrangian
+$$
+\Cal L_\e=\Cal L+\e\O(y),\tag 3.10
+$$
+where $\e^2=0$. 
+
+Let $Z=\cup_{l\ge 0}Z_l$ be a subspace in the space of differential 
+polynomials of fields (with complex coefficients), 
+invariant under the orthogonal group, 
+and the groups $G_1$, $G_2$ of scaling the values of
+fields and scalings of spacetime, and such 
+that the natural map $Z_l\to A_l^0(T)$ is an isomorphism 
+for all theories $T$ of a given type. 
+We will call $V$ the set of representative differential 
+polynomials, and will always represent a classical local functional 
+by its unique preimage in $Z_l$. Abusing language, we will call elements of 
+$Z$ ``operators''. 
+
+{\bf Remark.} The need to introduce $Z$ is caused by the fact that in any
+field theory, there are nontrivial relations between differential monomials
+(field equations), and therefore each local functional has many
+representations as a differential polynomial of elementary fields. 
+
+Now we will define the renormalization group flow on the space of operators. 
+We will use the notations of Lecture 2 and Witten's lecture 3. 
+
+Let $Y$ be the space of renormalizable theories of the corresponding type, 
+and $Y_l$ be the space of Lagrangians of the form 
+(3.10), where $\O$ is of dimension $\le l$. The space $Y_l$ is 
+a vector bundle over $Y$: $Y_l\to Y$, whose fiber at a point $T\in Y$
+is the space $A_l(T)$ of operators of dimension $\le l$
+for the theory $T$. 
+
+Let $\pi_\mu: Y\to P$ be a renormalization prescription. 
+Let  
+$P_l=P\times Z_l$ be the total space of the trivial bundle
+over $P$ with fiber $Z_l$, and 
+and $\pi_\mu^l: Y_l\to P_l$ 
+be an isomophism of vector bundles which descends to $\pi_\mu:Y\to P$. 
+$\pi_\mu^l$ is called an extension of the renormalization prescription
+$\pi_\mu$ to operators of dimension $\le l$ (this extension is 
+not, in general, 
+defined by $\pi_\mu$, and has to be defined additionally;
+below we will give one of such definitions).
+Let $R_{\mu_1\mu_2}^l=\pi_{\mu_2}\circ \pi_{\mu_1}^{-1}: P_l\to P_l$.
+The transformation $R_{\mu_1\mu_2}^l$ is called the remormalization 
+group transformation for composite operators
+for the renormalization prescription $\pi_\mu^l$. It defines a flow
+on $P_l\times M$ by $t(z,\mu)=
+(R_{\mu,t\mu}z,\mu)$. 
+
+As before, it is convenient to represent the renormalization group flow 
+as a vector field. Denote this vector field on $P_l$ by $W_l$. 
+It is clear that $W_l$ projects to $W$ under the projection $P_l\to P$, 
+and preserves the structure of a vector bundle on $P_l$.
+Therefore, 
+$$
+W_l(z,\mu)=W(z,\mu)+\tilde\gamma_l(z,\mu),\tag 3.11
+$$
+where $\tilde\gamma_l: P\times M\to \End Z_l$ is an operator-valued function
+(regarded as a vertical vector field on $P_l$). 
+
+If $\O_i$ is a basis of $Z_l$, homogeneous with respect to both $G_1,G_2$,
+and $\O=\sum f_i\O_i$,
+then the renormalization group equations
+can be written explicitly as
+$$
+\mu\frac{d f_i(z,\mu)}{d \mu}=\sum_j\tilde\gamma_l^{ij}(z,\mu)f_j(z,\mu),
+\tag 3.12
+$$
+where $\tilde\gamma_l^{ij}$ is the matrix of the operator $\tilde\gamma_l$ in the basis 
+$\O_i$, and $z=z(\mu)$ is a solution of the renormalization 
+group equation for parameters of the theory.   
+
+Now we should explain how to extend the map $\pi_\mu$ to $\pi_\mu^l$. 
+As usual, there are many ways to do it. However, if $\pi_\mu$ is 
+the dimensional regularization prescription, there is the following 
+natural way of extending $\pi_\mu$ to $\pi_\mu^l$.
+
+We will consider the $\phi^4$ theory. 
+Let $T\in Y$, $\pi_\mu(T)=\Cal L$ be the Lagrangian which
+describes $T$ at scale $\mu$ (in the sense of dimensional 
+regularization) and  
+$\O\in A_l(T)$. 
+
+\proclaim{Proposition 3.2} There exists a unique 
+differential polynomial  
+$F_\O\in Z_l$ such that the correlation functions of the operator 
+$\O$ in the theory $T$ are equal to the $\e$-coefficients of the correlation 
+functions of the Lagrangian $\Cal L_\e=\Cal L+\e F_\O$ computed using
+dimensional regularization and minimal subtraction at scale $\mu$ 
+(see Section 2.2 of Lecture 2).
+\endproclaim
+
+\demo{Proof} The statement follows from the fact that
+classical field equations survive quantization, which was explained 
+(for $\phi^4$ theory),
+and checked in the simplest case in Witten's lecture 3, Section 3.7.
+\enddemo
+ 
+Now we define the map $\pi_\mu^l$ by the formula $\pi_\mu^l(T,\O)=
+(\pi_\mu(T),F_\O)$. As was explained above, this defines a renormalization
+group flow on the space of operators. Moreover, since our renormalization 
+prescription is mass-independent, the function $\tilde\gamma_l(z,\mu)$ does not
+explicitly depend on $\mu$.
+
+{\bf Remark.} 
+The mass independence of the dimensional regularization prescription
+implies that 
+the map $\tilde\gamma_l(z)$ respects not only
+the filtration of the space $Z_l$ of operators by classical 
+scaling dimension, but also 
+the grading by scaling dimension. That is, operators mix only with operators 
+of the same dimension. This may be false for a mass-dependent prescription.  
+
+Let us now consider the example of the $\phi^4$ theory. 
+In this case, 
+equation (3.12) has the form
+$$
+\mu\frac{d f_i}{d \mu}=\sum_j\tilde\gamma_l^{ij}(g_*(\mu),a(\mu))f_j
+\tag 3.13
+$$
+(there is no dependence on $m_*$ due to mass independence of the 
+renormalization
+prescription).
+Let $\Delta_i$ be the degree of $\O_i$ with respect to scaling of $\phi$. 
+It is clear from the scale-of-$\phi$-invariance of (3.13) that
+$\gamma_l^{ij}(g_*,a)=\hat\gamma_{l}^{ij}(g_*)a^{(\Delta_i-\Delta_j)/2}$.
+Therefore, if we conjugate equation (3.13) by 
+$a^{-D_\phi/2}$, where $D_\phi$ is the scale-of-$\phi$-degree 
+operator, and introduce functions $h_i=f_ia^{-\Delta_i/2}$, we will get
+the following equations:
+$$
+\mu\frac{d h_i}{d \mu}=\sum_j\gamma_l^{ij}(g_*(\mu))h_j,
+\tag 3.14
+$$
+where $$
+\gamma_l=\hat\gamma_l-\frac{D_\phi\delta}{2}.\tag 3.15
+$$ 
+The operator $\gamma_l$ is already a function only of one variable
+$g_*$. 
+
+{\bf 3.5. Anomalous dimension.}
+
+{\bf Definition.} The operator $\gamma_l$ is called the 
+operator of anomalous dimensions at $g_*$,
+for operators of degree $\le l$. The matrix $\gamma_l^{ij}(g_*)$
+is called the matrix of anomalous dimensions at $g_*$. 
+
+For the simplest operators one can define scalar-valued
+anomalous dimension. Namely, Let $F\in Z_l[a^{\pm 1/2}]$  
+be a generalized eigenvector of $\gamma_l(g_*)$ with eigenvalue 
+$\gamma_F(g_*)$ for all $g_*$. In this case we will say 
+that $\gamma_F(g_*)$ is the anomalous dimension of 
+the operator $F$ at $g_*$. In general, any quantity $X$ 
+depending on $\mu$ and obeying the equation
+$\mu\frac{d X}{d\mu}=\gamma_X(g_*(\mu))X$, where
+$\gamma_X$ is a scalar function, will be said to have 
+anomalous dimension $\gamma_X$. 
+
+Now let us explain the name ``anomalous dimension''.
+Let $F$ be a (real) operator (with $a$-dependent coefficients) of 
+engineering dimension $d_F$,
+scale-of-$\phi$ degree $0$, 
+ and scalar anomalous dimension $\gamma_F(g_*)$.
+For simplicity we assume that it is a true (not only generalized) eigenvector
+of $\gamma_l$.   
+Let 
+$$
+\<F(x)F(0)\>=G_2^F(x^2,\mu,m_*,a,g_*)\tag 3.16
+$$ 
+be the 2-point function 
+of $F$ in position space. Using the renormalization group flow, we conclude
+that
+$$
+\mu\frac{d G_2^F(x^2,\mu,m_*(\mu),a(\mu),g_*(\mu))}{d\mu}=
+2\gamma_F(g_*(\mu))G_2^F(x^2,\mu,m_*(\mu),a(\mu),g_*(\mu)).\tag 3.17
+$$
+But the engineering dimension of $G_2^F$ is $2d_F$, so (3.17) can be rewritten
+in the form
+$$
+\gather
+s\frac{d}{ds}G_2^F((x/s)^2,\mu_0,m_*(s\mu_0),a(s\mu_0),g_*(s\mu_0))=\\
+2(d_F+\gamma_F(g_*(s\mu_0)))G_2^F((x/s)^2,\mu_0,m_*(s\mu_0),a(s\mu_0),
+g_*(s\mu_0)).\tag 3.18
+\endgather
+$$
+Integrating this equation, we get
+$$
+\gather
+G_2^F((x/s)^2,\mu_0,m_*(s\mu_0),a(s\mu_0),g_*(s\mu_0))=\\
+s^{2(d_F+\int_{\mu_0}^{s\mu_0}\gamma_F(g_*(r\mu_0))d\ln r)}
+G_2^F(x^2,\mu_0,m_*(\mu_0),a(\mu_0),g_*(\mu_0)).\tag 3.19
+\endgather
+$$
+If $m_*,a,g_*$ did not depend on $\mu$ for large $\mu$, 
+we would get 
+$$
+G_2^F(x^2)\sim |x|^{-2(d_F+\gamma_F)},\tag 3.20 
+$$
+which shows that the operator 
+$F$ has ``quantum scaling dimension'' $d_F+\gamma_F$. 
+Thus, anomalous dimension is just the difference between the
+quantum and the classical scaling dimension. 
+
+In general, formula (3.20) does not hold, because there is a nontrivial 
+renormalization group flow on the space of parameters. If 
+this flow does not have an UV stable fixed point, there is usually no hope
+to derive a scaling law of the form (3.20). However, if
+the flow has an UV stable fixed point $g_*^f$, and 
+$\gamma_F(g_*^f)=\gamma_F$, then up to logarithmic factors formula (3.20) 
+is true. 
+
+Furthermore, if there is an UV stable fixed point $g_*^f$, 
+one can replace matrix anomalous dimensions by scalar ones. 
+Namely, one should bring the matrix $\gamma_l(g_*^f)$ to Jordan normal form.
+The generalized eigenvectors of $\gamma_l(g_*^f)$ with eigenvalue
+$\nu$ are then called ``operators of pure anomalous dimension $\nu$''.
+
+Unfortunately, the only type of an UV stable fixed point that we 
+can study successfully in perturbation theory is the fixed point
+$g_*^f=0$ for an asymptotically free theory. In this case, the anomalous 
+dimensions $\gamma_F(g_*^f)$ in the above sense vanish, because
+$\gamma_l(0)=0$.  
+However, for $g_*$ close to zero anomalous dimensions are nonzero, 
+and the knowledge of them helps get a very sharp UV asymptotics 
+of operators and correlation functions. The most remarkable thing is 
+that in order to compute the exact asymptotics of 
+operators, up to multiplication by a constant, it is enough to know
+anomalous dimensions only in the first order approximation, which 
+are obtained by an easy explicit calculation. 
+Let us show how this works. 
+
+We will consider $\phi^4$ theory with $g<0$ (never mind that 
+it does not exist nonperturbatively; the results will apply to any 
+asymptotically free theory).
+
+Let $F$ be a
+scale-of-$\phi$-independent (i.e. $G_1$-nvariant)
+ eigenvector of $\gamma_l$ with eigenvalue $\gamma_F(g_*)$, and
+$$
+\gamma_F(g_*)=\gamma_F^1g_*+O(g_*^2),\tag 3.21
+$$
+We will assume that $F$ is scale of $\phi$-independent
+We have seen above that because of asymptotic freedom for large $\mu$ 
+one has $g_*(e^t\mu_0)=-\frac{16\pi^2}{3t}
++o(t^{-2+\alpha})$, for any $\alpha>0$. 
+Therefore, using the fact that $a$ is constant modulo $g_*^2$, 
+we obtain from formula (3.19):
+$$
+G_2^F(x^2)\sim \text{const} |x|^{-2d_F}|\ln|x||^{32\pi^2\gamma_F^1/3}.
+\tag 3.22
+$$
+This remarkable formula is actually the exact asymptotics (!!!), except that
+in order to compute the constant on the right hand side we of 
+course have to know the function $\gamma_F$ to all orders. 
+However, if we are not interested in the constant, we only need to know 
+the first order approximation. 
+
+Formula (3.22) can be generalized to the case of an arbitrary 
+correlation function. Namely, if $F_1,...,F_n$ are any 
+scale-of-$\phi$-independent operators 
+which are eigenvectors of the operator $\gamma_l^1$, 
+with eigenvalues $\gamma_{F_1}^1,...,\gamma_{F_1}^n$, then 
+$$
+\<F_1(e^{-t}x_1)...F_n(e^{-t}x_n)\>\sim 
+C(x_1,...,x_n) e^{-t(\sum d_{F_i})}t^{16\pi^2(\sum \gamma_{F_i}^1)/3}.\tag
+3.23
+$$
+
+In order to compute the anomalous dimension of an operator, 
+it is enough to study the dynamics of its 2-point function. 
+Let us show how to do it in examples. 
+
+{\bf Examples.} 1. $F=\phi$. The anomalous dimension of $\phi$ is zero in
+the 1-loop approximation, since there is no 1-loop 
+contributions to the 2-point function at $x\ne 0$. 
+However, in the 2-loop approximation, computing the only 
+nontrivial 2-loop diagram, one gets a nontrivial correction. 
+Of course, this correction does not enter in formula (3.23), so that 
+correlation functions scale asymptotically by the naive classical rule. 
+
+In fact, it is easy to see that 
+$$
+\gamma_\phi=-\delta/2\tag 3.24
+$$ 
+This is true because
+ by the definition $\hat\gamma_\phi=0$, since Schwinger functions
+do not change along the renormalization group flow. 
+
+2. $F=\phi^2$. In this case, analyzing the function 
+$\<\phi^2(x)\phi^2(0)\>$, which was computed in Witten's lecture 3, 
+it is easy to find that 
+in the 1-loop approximation
+$$
+\gamma_{\phi^2}(g_*)=-\frac{g_*}{16\pi^2}+O(g_*^2).\tag 3.25
+$$
+
+In fact, it is easy to see that $\gamma_{\phi^2}=-2\gamma-\delta$. 
+This follows from the fact that the anomalous dimension of
+the Lagrangian by definition vanishes. Therefore, 
+the anomalous dimension of $m^2\phi^2/2$ vanishes, because it occurs 
+in the Lagrangian, and cannot mix with other terms. Thus, 
+$\gamma_{\phi^2}=-2\gamma_m$. Since $m=m_*a^{1/2}\mu$, 
+$\gamma_m=\gamma_{m_*}+\gamma_a/2=\gamma+\delta/2$, as desired. 
+
+Since we know that $\gamma=\frac{g_*}{32\pi^2}+O(g_*^2)$, we obtain another 
+proof of (3.25).
+
+Formula (3.25) allows us to write down the asymptotics of the 2-point function
+of $\phi^2$ in the asymptotically free case. Indeed, using (3.22), we get
+$$
+G_2^{\phi^2}(x^2)\sim \text{const} |x|^{-4}|\ln |x||^{-2/3}.\tag 3.26
+$$
+
+Finally, let us discuss to what extent the notion of anomalous dimension 
+is canonical. The problem is, we have made a lot of choices (renormalization 
+prescription, the space $Z$), and of course the anomalous dimension operator
+$\gamma_l$ will depend on them. So what is choice independent?
+The answer: 1) if $g_*^f$ is a nonzero UV stable fixed point, then 
+the eigenvalues of $\gamma_*^f(g_*)$ are invariantly defined, and 
+they are anomalous dimensions of fields in the quantum theory 
+corresponding to $g_*^f$; 2) the eigenvalues of the first order coeffients 
+of $\gamma_l$ at $g_*=0$ are also invariantly defined; in the asymptotically 
+free case they give the logarithmic part of the short-distance asymptotics of
+the correlation functions. 
+
+{\bf 3.6. The canonical part of the $\beta$-function.}
+
+Suppose we have a quantum field theory with a single renormalizable 
+coupling $\l$. In this case, we saw that the renormalization group 
+flow is defined by the equation
+$$
+\mu\frac{d\l}{d\mu}=\beta(\l), \tag 3.27
+$$
+where $\beta(\l)=A\l^{k+1}+...$ is the beta-function. 
+Clearly, we can redefine the coupling $\l$ by using 
+a change of variable $\l_1=f(\l)$. 
+This redefinition should be trivial for small 
+values of the coupling in order to make physical sense, 
+so we should impose the condition 
+$f'(0)=1$; that is, $f(\l)=\l+a_2\l^2+...$
+Of course, under this transformation the beta-function will change. 
+So to what extent is the beta-function defined canonically?
+
+This question reduces to the following mathematical problem
+from the theory of ``normal forms''.
+
+{\bf Problem.} Let $S_A^k$ be the set of all formal vector fields 
+of the form $A\l^{k+1}\frac{d}{d\l}+...$ with real coefficients $(k>0$), and 
+$G$ be the group of formal diffeomorphisms of the form 
+$\l\to f(\l)$, $f'(0)=1$. Compute the quotient $S_A^k/G$, where
+$G$ acts by conjugation.
+In other words, find the normal form of a vector field 
+$\beta(\l)\frac{d}{d\l}$, where $\beta$ is as above. 
+
+This problem is easily solved by recursion, and the answer is the following.
+
+{\bf Answer.} $S_A^k/G=\{(A\l^{k+1}+B\l^{2k+1})\frac{d}{d\l},B\in \Bbb R\}$.
+In particular, any vector field of the form $\beta(\l)\frac{d}{d\l}$ 
+as above can be reduced by conjugation to the normal form
+$(A\l^{k+1}+B\l^{2k+1})\frac{d}{d\l}$, while different normal forms 
+are not equivalent. 
+
+Thus, we see that 
+it is not only the coefficient $A$ that is defined canonically 
+in the beta-function, but also the coefficient $B$. 
+In particular, in $\phi^4$-theory, the beta-function  
+has the form $A\l^2+B\l^3+...$, and 
+in QED the form $A\l^3+B\l^5+...$, where $A,B$ are defined canonically. 
+
+Let us explain the meaning of the coefficient $B$ on the example of $\phi^4$ 
+theory. Consider this equation in the region $\l<0$,
+where we have asymptotic freedom. 
+Solving the equation $\l'=A\l^2+B\l^3+...$, we get
+$$
+\l(t)=\frac{1}{At}+\frac{B}{A^2t^2}\ln t+O(1/t^2),\tag 3.28
+$$
+where $t=\ln(\mu/\mu_0)$. Thus, the coefficient $B$ encodes the second term
+of the asymptotic expansion of $\l(t)$, which characterizes 
+the singularity of $\l$, as a function of $z=1/t$, at $z=0$. 
+
+\end
+
+We will split $A^l_0$ in a direct sum of invariant subspace of $\gamma_l$ 
+with eigenvalues $\gamma^i(g_*)$: $Z_l=\oplus Z_l[\gamma^i]$. 
+The operators from $A^l_0(\gamma_i)$ are said to have anomalous domension 
+$\gamma_i$. 
+
+\end
+

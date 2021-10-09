@@ -1,0 +1,742 @@
+%From: Lisa C Jeffrey <jeffrey@IAS.EDU>
+%Date: Mon, 25 Nov 1996 08:54:53 -0500
+%Subject: Faddeev lecture 4
+
+
+\documentstyle[12pt]{article}
+\input amssym.def
+\input amssym.tex
+\newcommand{\Tr}{\,{\rm Tr}\,}
+\newcommand{\tr}{{\rm tr}\,}
+
+%L. Jeffrey preamble, 5 April 1996
+
+\newcommand{\nc}{\newcommand}
+
+
+\nc{\isq}{{i}}
+\newcommand{\colvec}[2]{\left  ( \begin{array}{cc} #1  \\
+     #2  \end{array} \right ) }
+
+%%%%%\newcommand{\Tr}{\,{\rm Tr}\,}
+\newcommand{\End}{\,{\rm End}\,}
+\newcommand{\Hom}{\,{\rm Hom}\,}
+
+\newcommand{\Ker}{ \,{\rm Ker} \,}
+
+\newcommand{\bla}{\phantom{bbbbb}}
+\newcommand{\onebl}{\phantom{a} }
+\newcommand{\eqdef}{\;\: {\stackrel{ {\rm def} }{=} } \;\:}
+\newcommand{\sign}{\: {\rm sign}\: }
+\newcommand{\sgn}{ \:{\rm sgn}\:}
+\newcommand{\half}{ {\frac{1}{2} } }
+\newcommand{\vol}{ \,{\rm vol}\, }
+
+
+% define abbreviations for most common commands
+%
+
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\beqst}{\begin{equation*}}
+\newcommand{\eeqst}{\end{equation*}}
+\newcommand{\barr}{\begin{array}}
+\newcommand{\earr}{\end{array}}
+\newcommand{\beqar}{\begin{eqnarray}}
+\newcommand{\eeqar}{\end{eqnarray}}
+\newtheorem{theorem}{Theorem}[section]
+%\newtheorem{conjecture}{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+%\newtheorem{problem}{Problem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{prop}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remit}[theorem]{Remark}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\newtheorem{example}[theorem]{Example}
+
+\newcommand{\matr}[4]{\left \lbrack \begin{array}{cc} #1 & #2 \\
+     #3 & #4 \end{array} \right \rbrack}
+
+
+
+\newenvironment{rem}{\begin{remit}\rm}{\end{remit}}
+
+
+
+
+% black board bold face
+%note \AA is already defined!
+\newcommand{\aff}{{ \Bbb A }}
+\newcommand{\RR}{{{\bf  R }}}
+\newcommand{\CC}{{{\bf  C }}}
+\nc{\FF}{ {\Bbb F} } 
+\newcommand{\ZZ}{{{\bf   Z }}}
+\newcommand{\PP}{ {\Bbb P } }
+\newcommand{\QQ}{{\Bbb Q }}
+\newcommand{\UU}{{\Bbb U }}
+
+
+
+
+
+
+
+
+%***************************
+
+
+
+
+%
+
+
+%
+
+
+%Replace greek letters by their roman equivalents with \
+%Slightly nonstandard:  theta is \t, tau is \ta, no omicron
+\def\a{\alpha}
+\def\b{\beta}
+\def\g{\gamma}
+\def\d{\delta}
+\def\e{\epsilon}
+\def\z{\zeta}
+\def\h{\eta}
+\def\t{\theta}
+%\def\i{\iota}
+\def\k{\kappa}
+\def\l{\lambda}
+\def\m{\mu}
+\def\n{\nu}
+\def\x{\xi}
+\def\p{\pi}
+\def\r{\rho}
+\def\s{\sigma}
+\def\ta{\tau}
+\def\u{\upsilon}
+\def\ph{\phi}
+\def\c{\chi}
+\def\ps{\psi}
+\def\o{\omega}
+
+\def\G{\Gamma}
+\def\D{\Delta}
+\def\T{\Theta}
+\def\L{\Lambda}
+\def\X{\Xi}
+\def\P{\Pi}
+\def\S{\Sigma}
+\def\U{\Upsilon}
+\def\Ph{\Phi}
+\def\Ps{\Psi}
+\def\O{\Omega}
+
+
+
+
+% calligraphic letters
+\newcommand{\calA}{{\mbox{$\cal A$}}}
+\newcommand{\calB}{{\mbox{$\cal B$}}}
+\newcommand{\calC}{{\mbox{$\cal C$}}}
+\newcommand{\calD}{{\mbox{$\cal D$}}}
+\newcommand{\calE}{{\mbox{$\cal E$}}}
+\newcommand{\calF}{{\mbox{$\cal F$}}}
+\newcommand{\calG}{{\mbox{$\cal G$}}}
+\newcommand{\calH}{{\mbox{$\cal H$}}}
+\newcommand{\calI}{{\mbox{$\cal I$}}}
+\newcommand{\calJ}{{\mbox{$\cal J$}}}
+\newcommand{\calK}{{\mbox{$\cal K$}}}
+\newcommand{\calL}{{\mbox{$\cal L$}}}
+\newcommand{\calM}{{\mbox{$\cal M$}}}
+\newcommand{\calN}{{\mbox{$\cal N$}}}
+\newcommand{\calO}{{\mbox{$\cal O$}}}
+\newcommand{\calP}{{\mbox{$\cal P$}}}
+\newcommand{\calQ}{{\mbox{$\cal Q$}}}
+\newcommand{\calR}{{\mbox{$\cal R$}}}
+\newcommand{\calS}{{\mbox{$\cal S$}}}
+\newcommand{\calT}{{\mbox{$\cal T$}}}
+\newcommand{\calU}{{\mbox{$\cal U$}}}
+\newcommand{\calV}{{\mbox{$\cal V$}}}
+\newcommand{\calW}{{\mbox{$\cal W$}}}
+\newcommand{\calX}{{\mbox{$\cal X$}}}
+\newcommand{\calY}{{\mbox{$\cal Y$}}}
+\newcommand{\calZ}{{\mbox{$\cal Z$}}}
+
+%% To load script letters:
+
+\font\teneusm=eusm10  \font\seveneusm=eusm7 
+\font\fiveeusm=eusm5 
+\newfam\eusmfam 
+\textfont\eusmfam=\teneusm 
+\scriptfont\eusmfam=\seveneusm 
+\scriptscriptfont\eusmfam=\fiveeusm 
+\def\Scr#1{{\fam\eusmfam\relax#1}}
+
+% Script letters
+\newcommand{\ScrA}{{\Scr A}} \newcommand{\ScrB}{{\Scr B}}
+\newcommand{\ScrC}{{\Scr C}} \newcommand{\ScrD}{{\Scr D}}
+\newcommand{\ScrE}{{\Scr E}} \newcommand{\ScrF}{{\Scr F}}
+\newcommand{\ScrG}{{\Scr G}} \newcommand{\ScrH}{{\Scr H}}
+\newcommand{\ScrI}{{\Scr I}} \newcommand{\ScrJ}{{\Scr J}}
+\newcommand{\ScrK}{{\Scr K}} \newcommand{\ScrL}{{\Scr L}}
+\newcommand{\ScrM}{{\Scr M}} \newcommand{\ScrN}{{\Scr N}}
+\newcommand{\ScrO}{{\Scr O}} \newcommand{\ScrP}{{\Scr P}}
+\newcommand{\ScrQ}{{\Scr Q}} \newcommand{\ScrR}{{\Scr R}}
+\newcommand{\ScrS}{{\Scr S}} \newcommand{\ScrT}{{\Scr T}}
+\newcommand{\ScrU}{{\Scr U}} \newcommand{\ScrV}{{\Scr V}}
+\newcommand{\ScrW}{{\Scr W}} \newcommand{\ScrX}{{\Scr X}}
+\newcommand{\ScrY}{{\Scr Y}} \newcommand{\ScrZ}{{\Scr Z}}
+
+%German (Faktur) letters
+
+\newcommand{\grA}{{\frak A}}
+
+
+
+\def\eps{\varepsilon}
+
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.1in}
+\setlength{\evensidemargin}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\topmargin}{-.75in}
+\setlength{\parskip}{0.3\baselineskip}
+
+%\renewcommand{\theequation}{\thesection.\arabic{equation}}
+%\newcommand{\renorm}{{ \setcounter{equation}{0} }}
+
+\newcommand{\Le}{{{\mathchoice{\,{\scriptstyle\le}\,}
+  {\,{\scriptstyle\le}\,}
+  {\,{\scriptscriptstyle\le}\,}{\,{\scriptscriptstyle\le}\,}}}}
+\newcommand{\Ge}{{{\mathchoice{\,{\scriptstyle\ge}\,}
+  {\,{\scriptstyle\ge}\,}
+  {\,{\scriptscriptstyle\ge}\,}{\,{\scriptscriptstyle\ge}\,}}}}
+
+
+%\renewcommand{\baselinestretch}{1.5}
+
+
+%more newcommands
+\nc{\bra}{  < }
+\nc{\ket}{ > }
+%\nc{\isq}{ { \sqrt{-1} } }
+%\nc{\isq}{{ i }}
+%\nc{\hbar}{{ h}}
+\nc{\triang}{ { \bigtriangleup} }
+
+\nc{\astar}{{ a^*}}
+\nc{\hata}{ { \hat{a} }}
+\nc{\hatastar}{{ \hat{\astar} }}
+\nc{\normfac}{{\frac{1}{\sqrt{2 \omega} } }}
+
+\begin{document}
+
+\title{Lecture 4:\\
+Singular Lagrangians}
+\author{Ludwig Faddeev}
+\date{7  November  1996}
+
+\maketitle
+
+%\renorm
+\nc{\dphi}{\tilde{\phi}} 
+\nc{\vac}{{ \sl v}}
+\nc{\basvec}[1]{\Phi_{#1} (\astar) } 
+\nc{\basvecn}{\basvec{n} } 
+\nc{\kn}{(\vec{k})_{n}} 
+\nc{\vk}{\vec{k} }
+\nc{\vx}{{ \vec{x} } }
+\nc{\vy}{{ \vec{y} } }
+
+In other lectures, considerable attention has been focused on how to construct
+the symplectic structure on the space of classical solutions, 
+starting from the Lagrangian. 
+In this lecture we will instead focus on the
+fixed time  Hamiltonian formalism,
+and we will see that the transformation which maps the Lagrangian 
+into the Hamiltonian is simply a change of variables. The lecture will 
+chiefly treat the case of singular Lagrangians. Our aim is to present
+the first order formalism, in which the Lagrangian depends linearly 
+on time derivatives of the dynamical variables.
+
+
+\nc{\qdot}{{\dot{q} }}
+In the usual Lagrangian formalism, we begin with the configuration space $M$:
+coordinates on $M$ will be denoted $q$. Coordinates on the tangent 
+bundle $TM $ are then given by $q$ and $\dot{q}$, and the Lagrangian is 
+a function $\calL(q, \qdot)$. 
+The action is then defined by 
+$$ A = \int \calL  (q(t), \qdot(t) ) \, dt. $$
+Applying the standard variational  principle we see that the extrema
+of the action are given by the {\em Euler-Lagrange equation}
+\beq \label{el}  \frac{d}{dt}  \frac{\partial \calL}{\partial \qdot} - 
+\frac{\partial \calL}{\partial q} = 0. \eeq
+This is ordinarily a system of 
+equations of {\em second order} 
+since the Euler-Lagrange equation involves the term 
+$\ddot{q} {\partial^2 \calL}/{\partial \qdot \partial \qdot}$. 
+The Lagrangian is said to be {\em nondegenerate} if the Hessian
+${\partial^2 \calL}/{\partial \qdot \partial \qdot}$ is 
+invertible. 
+
+In the Hamiltonian formalism, on the other hand, we work with 
+$T^* M \times \RR$ (where 
+ $T^* M$  is the   cotangent bundle of configuration space, or the 
+ phase space).
+On this there is a natural 1-form 
+\beq \label{oneform} p dq - H(p,q) dt, \eeq
+ where we 
+have introduced $(q, p )$ as  natural  coordinates on $T^* M$. 
+The corresponding Lagrangian is written as 
+\beq \label{lagstd} l = p \qdot - H(p,q), \eeq
+and the action is 
+$$ A = \int  (p \qdot - H(p,q)) dt. $$
+The Euler-Lagrange equation applied to $A$  then gives Hamilton's 
+equations:
+\beq \dot{p} = - \frac{\partial H}{\partial q}, 
+~~~~\dot{q} = \frac{\partial H}{\partial p}. \eeq
+Note that 
+ the Lagrangian $l$ is linear  in time derivatives, and the Hessian 
+of $l$ is identically zero. Thus our system is of first order.
+In the standard fashion, we have converted a system of second order 
+differential equations into a system of first order differential 
+equations, at the expense of increasing the number of variables.
+To explicitly see how the Hamiltonian formalism
+is derived from the Lagrangian formalism, we introduce 
+$v = \qdot$ and treat $q$ and $v$ as independent variables. 
+The Lagrangian then depends on $q$, $v$, 
+$\qdot$ and $\dot{v}$, and has the following form: 
+\beq l = \frac{\partial \calL}{\partial v} (\qdot - v) + \calL(q, v). \eeq
+Comparing with (\ref{lagstd})
+one finds that the Hamiltonian   is given by 
+$$ H = v \frac{\partial \calL}{\partial v} - \calL, $$
+and we obtain the Hamiltonian formalism by performing the Legendre 
+transformation 
+$$ (q, v) \mapsto (q,p) $$
+where we have defined 
+$$ p = \frac{\partial \calL}{\partial v}. $$
+
+
+On a general manifold $\Gamma$ with coordinates $\xi$, we would 
+write the Lagrangian as 
+\beq l = \sum_a f_a(\xi) \dot{\xi}^a - \phi(\xi). \eeq
+The one-form on $\Gamma \times \RR$ corresponding to (\ref{oneform}) 
+would be written as 
+$$  \sum_a f_a(\xi) d \xi^a  - \phi dt = \omega - 
+\phi dt, $$
+and it gives rise to a two-form $ \Omega = d \omega$. (Here $d$ denotes
+the de Rham differential on $\Gamma$, rather than   on $\Gamma \times \RR$.) 
+The equation of motion becomes 
+$$ \Omega \dot{\xi} = \frac{\partial \phi}{\partial \xi}. $$
+The condition that the Lagrangian is nonsingular is equivalent to the 
+condition that the 
+two-form $\Omega$ is invertible: for this to hold, it is 
+necessary that $\Gamma$ be even dimensional.    For   important Lagrangians
+in physics (for instance the Yang-Mills Lagrangian and the 
+Lagrangian for electrodynamics) the two-form $\Omega$ is in fact not
+invertible. Let us investigate this situation in more detail.
+
+Invoking the Darboux theorem, 
+on  $\Gamma $ we write the coordinates
+$\xi$ as $(p, q, z)$ in such a way that the one-form $\omega$ becomes
+$$ \omega = p dq + d \theta.$$
+The total derivative $d \theta$ may be discarded, and after this the 
+one-form corresponding to the 
+Lagrangian becomes
+$$ l = p dq - \phi(p,q, z) dt, $$
+where
+$\frac{\partial \phi}{\partial z} = 0 . $ 
+The variables $z$ may be divided into ``excludable'' variables (which will
+ultimately be discarded) and others which enter linearly. After 
+eliminating the excludable variables, the Lagrangian becomes
+\beq \label{elimexcl} l = p dq - \phi(p, q) dt - \sum_\alpha \lambda^\alpha 
+\varphi_\alpha (p,q). \eeq
+Here, the $\lambda^\alpha $ play the role of {\em Lagrange multipliers}
+while the $\varphi_\alpha(p,q)$ are constraints. Among the 
+equations of motion we now obtain the 
+constraints
+$$\varphi_\alpha(p,q) = 0, $$
+so we may substitute $p = p(\eta), $ $ q = q(\eta)$ where
+$\eta$ are coordinates on the manifold 
+$$ \Gamma^l = \{ (p,q):  \varphi_\alpha(p,q) = 0 \} . $$
+
+We thus obtain a new phase space $\Gamma^l $ on which the 
+excludable variables and the Lagrange multipliers have been eliminated,
+so that the variables $z$ no longer appear and we are left with
+a subspace parametrized by   the variables $(p,q)$  where the 
+constraints $\varphi_\alpha(p,q) = 0 $ have been imposed. 
+The new phase space $\Gamma^l$ may have a nondegenerate symplectic 
+form, and then our
+Hamiltonian reduction is done.  
+If not, we repeat the above process until Lagrange multipliers
+ no longer appear, 
+in which case we have reduced to  a phase space with a 
+nondegenerate symplectic form. 
+
+Explicit solution of the constraints could be complicated, 
+so it is instructive to understand what properties of the 
+singular Lagrangian (\ref{elimexcl}) guarantee that it will 
+become nonsingular after the constraints are imposed. There are two 
+important instances of this. 
+We can distinguish two different types of constraints. A collection 
+of constraints $\{ \varphi_a \}$ are called 
+{\em first class} if the Poisson brackets of all constraints
+vanish on the zero locus of the constraints: in other words, if 
+\beq \{ \varphi_a, \varphi_b \}|_{\varphi = 0 } = 0 . \eeq
+We claim that if $\{ \phi, \varphi_a\}|_{\varphi = 0 }  = 0  $ for 
+all $a$, then in the next step of the procedure one obtains a proper
+nondegenerate Lagrangian. More precisely, the submanifold 
+$\Gamma|_{\varphi = 0 } $ may be fibered so that the base is symplectic 
+and the fibers are isotropic with respect to the Poisson bracket 
+$\{ \cdot, \cdot \}$. One may summarize the procedure by saying that
+``first class constraints kill twice'': when one restricts to the 
+zero locus of the constraints $\varphi_a$,
+ one must also set to zero the variables
+which are canonically conjugate to the $\varphi_a$, in 
+other words one must set to zero all Poisson brackets with 
+the $\varphi_a$.  If there are 
+$N$ constraint equations $\varphi_a, $ $ a = 1, \dots, N$, 
+then imposing the constraints reduces
+the  dimension of the phase space by $2N$. 
+
+The  second type of constraints $\varphi_a$  are those  for which
+$\det \{ \varphi_a, \varphi_b \} \ne 0 $: a system of constraints
+for which this condition holds is called a system of {\em second
+class constraints}. If a Lagrangian 
+gives rise to  a system of second class constraints, the next
+step of reduction leads to a nondegenerate Lagrangian. The number of
+$\phi_a$ must be  $2N$ and the dimension of the phase space is then 
+reduced by $N$ through imposition of the constraints. 
+Constrained quantization was originally considered by 
+Dirac \cite{Dirac}. 
+
+
+
+\noindent{\bf Example 1: the free scalar field} 
+
+Given a field $\varphi(t, \vx) $, and the free field
+Lagrangian \beq \label{lagr1} 
+\calL = \frac{1}{2}(\partial_\mu \varphi)^2, \eeq
+canonical quantization normally
+specifies that one should introduce the canonically conjugate
+momentum $\pi(t, \vx)  = \partial_0 \varphi (t, \vx)$, where
+$x_0 = t $ and $(x_1, x_2, x_3) = \vx$. The points $\vx$ in space
+should be thought of as labelling the field. Notice that the momentum
+$\pi$ is not Lorentz invariant.
+
+ We may alternatively replace the
+ Lagrangian (\ref{lagr1}) (which is second order in 
+time derivatives) by a first order Lagrangian: we do this by 
+introducing a vector field $\varphi_\mu$ (in other words a 
+collection of four fields $(\varphi_0, \varphi_1, \varphi_2, \varphi_3)$
+ which transform according to the standard action of the Lorentz group on 
+$\RR^4$) and write
+\beq \label{lagr2}
+l = (\partial_\mu \varphi ) \varphi^\mu - \frac{1}{2} (\varphi^\mu)^2. \eeq
+Of course under the substitution 
+$\varphi_\mu = \partial \varphi/\partial x^\mu $ the Lagrangian in 
+(\ref{lagr2}) reduces to that in (\ref{lagr1}): however if
+we regard $\varphi_\mu$ as independent of $\varphi$,  (\ref{lagr2}) is 
+first order in time derivatives. 
+(We have introduced the Einstein summation convention, summing over
+ pairs of repeated indices $\mu$, where 
+$\mu = \{ 0, k \} $ and $k = 1, 2, 3$ correspond to space coordinates
+while $\mu = 0 $ corresponds to  the time coordinate.)
+We may rewrite (\ref{lagr2}) as 
+\beq l = (\partial_0 \varphi ) \varphi^0 - (\partial_k \varphi ) \varphi^k
+ - \frac{1}{2} \varphi_0^2 +\frac{1}{2} \varphi_k^2. \eeq
+Under the substitution 
+$\pi = \varphi_0  $, and solving for $\varphi_k, $ 
+$\varphi_k = \partial_k \varphi$, we obtain 
+\beq \calL 
+= (\partial^0 \varphi) \pi - \frac{1}{2} (\pi^2 + (\partial_k \varphi)^2 ),
+\eeq 
+which indeed shows that $\pi$ and $\varphi$ are 
+canonically conjugate and that the Hamiltonian $H$ has the usual 
+form 
+$$ H = \half (\pi^2 + (\partial_k \varphi)^2. ) $$
+The variables $\varphi_k$ can be eliminated because they enter
+(\ref{lagr2}) quadratically and without time derivatives.
+
+\noindent{\bf Example 2: electromagnetism}
+
+In this example it is important that spacetime has dimension 4. 
+We start with a vector field $A_\mu(x) $ (the photon field),
+ which should be thought of as 
+a 1-form or a connection:
+$$ A = \sum_\mu A_\mu dx^\mu. $$
+The associated curvature is
+$$F = dA,$$ or as a two-form $F_{\mu \nu} dx^\mu \wedge dx^\nu, $ where
+\beq \label{curv} 
+F_{\mu \nu} = \partial_\mu A_\nu - \partial_\nu A_\mu. \eeq
+The Lagrangian is 
+\beq \label{lagel1} \calL = \int |F|^2, \eeq
+which is second  order in time derivatives. A trick due to 
+J. Schwinger enables us to replace it with a Lagrangian which 
+is first order in time derivatives: this is to regard
+$A$ and $F$ as independent variables. By analogy with our procedure
+ in Example 1, we write
+\beq  \label{lagel2} 
+\calL = (\partial_\mu A_\nu - \partial_\nu A_\mu) F^{\mu \nu} 
+- \frac{1}{2} F_{\mu \nu}^2. \eeq
+Of course (\ref{lagel2}) reduces to (\ref{lagel1}) by restoring 
+the functional dependence (\ref{curv}) of $F$ on $A$. However 
+the Lagrangian in (\ref{lagel2})  is linear in time derivatives of the 
+fields, and also introduces some constraints. 
+
+We rewrite (\ref{lagel2}) as 
+\beq \label{lagel3} 
+\calL = (\partial_0 A_k) F^{0k} + A_0 (\partial_k F^{0k}) - 
+F^{ik} (\partial_i A_k - \partial_k A_i) - \frac{1}{2} (F^{0k})^2 
++ \frac{1}{2} (F^{ik})^2. \eeq
+Here, $F^{0k} = E^k$ are the components of 
+the {\em electric field } $\vec{E}$, while
+$A_k$ are the components of 
+ the {\em vector potential}.
+ Up to the Hodge star operator $*$ 
+which converts two-forms  on $\RR^3$ into one-forms,
+the quantity $F^{ik}$ is the 
+{\em magnetic field} $\vec{H}$: we substitute 
+\beq \label{magdef}  \vec{H} = \nabla \times \vec{A}, \eeq
+or 
+$H_i = \epsilon_{ijk} \nabla_j A_k $
+in terms of the totally antisymmetric 
+ tensor $\epsilon$ in three indices which
+represents the Hodge star operator in $\RR^3$. 
+Thus the Lagrangian becomes
+\beq \label{lagel4}
+\calL = (\partial_0 A_k) E^k - \frac{1}{2} (\vec{E}^2 - \vec{H}^2) + 
+A_0 \partial_k E^k, \eeq
+where we already excluded the independent variables $\vec{H}$, so that
+$\vec{H}$  in (\ref{lagel4}) is given by (\ref{magdef}). 
+On the other hand, $A_k$  and $E^k$ are canonically conjugate variables 
+(appearing in a term which is first order in time derivatives), and 
+$A_0$ is a Lagrange multiplier multiplying the 
+constraint
+\beq G = \nabla \cdot E = \partial_k E^k . \eeq
+The constraint $G = 0 $ is called {\em Gauss's law}: it tells us
+that the divergence of the electric field is zero. This is a first 
+class constraint, $ \{ G(\vx), G(\vy) \} = 0 $, and we have also 
+\beq \{ G, \vec{E} \} = \{ G, \vec{H} \} = 0 . \eeq
+For any function $\lambda$ on $\RR^3$ 
+we have 
+$$ \{ A_k, \int G(\vx) \lambda (\vx) d \vx \} = \partial_k \lambda(\vx); $$
+equivalently $G$ is a generator of $U(1)$ gauge transformations: 
+the gauge group $\calG$ is the group of maps from $\RR^3$ to $U(1)$, and 
+its Lie algebra is the group of maps from $\RR^3$ to $\RR$. An element
+$\lambda \in {\rm Lie} (\calG) $ 
+sends $A_k $ to $A_k  + \partial_k 
+ \lambda$. The imposition of Gauss's law may be viewed
+as symplectic reduction  with respect to the action of the $U(1)$ gauge
+group $\calG$.
+
+Since the constraint $G$ is  of first class, it reduces the degrees
+of freedom from three functions $A_k(\vx)$ to two. Thus
+(in physical language) light has two polarizations. 
+
+
+
+The above treats the situation of the electromagnetic field in the 
+absence of sources. If on the other hand the electric field 
+interacts with a charged field $J^\mu$, Gauss's law becomes  
+\beq \label{gaussmod}  G = \nabla \cdot E + J_0(\vx) \eeq
+where $J_0 $ is the {\em charge density}. If we define
+$$ Q = \int_{\RR^3}  J_0 dx $$ 
+if we express $Q$ as a flux of the electromagnetic field 
+via a  surface in $\RR^3$ (for instance a sphere $S^2(R)$ of 
+radius $R$) 
+we obtain 
+$$ Q = \lim_{R \to \infty} \int_{S^2(R)} \epsilon_{ikj }
+E^k dS_{ij}. $$
+Thus the equation 
+(\ref{gaussmod})   leads to {\em Coulomb's law}, 
+according to which the electromagnetic force from a point
+charge  at distance $r$ is proportional to 
+$1/r^2$. 
+
+
+
+\noindent{\bf Example 4: Gravitation}
+
+In this example we introduce a metric $g^{\mu \nu}$ with the associated
+{\em affine connection} $\Gamma_{ij}^k$ and the scalar curvature 
+(we omit indices for clarity)
+$$ R = \partial  \Gamma + \Gamma^2. $$
+To write  a Lagrangian that is  first order in time derivatives, 
+we take $g$ and $\Gamma$ as independent variables: more precisely we write
+$$ h ^{\mu \nu} = \sqrt{g} g^{\mu \nu},$$  and write the Lagrangian as 
+\beq \label{laggrav1} \calL = h (\partial \Gamma + \Gamma^2). \eeq
+The connection $\Gamma$ contains first order time derivatives of $h$, so 
+$\partial \Gamma$ contains second order time derivatives of $h$. 
+This may be altered by integrating by parts, so that we obtain
+\beq \label{laggrav2}
+\calL = - \Gamma \partial h + h \Gamma^2. \eeq
+This Lagrangian is not manifestly  covariant, however it is  this
+form which is to be 
+used in the so called {\em asymptotically flat} case. 
+
+The definition of asymptotic flatness can be given on different levels of 
+sophistication; we shall use the most na\"{\i}ve but practical 
+way of introducing the admissible coordinates. In such 
+coordinates we have in  the vicinity of space infinity 
+$$ g = g_0 + O (\frac{1}{r} ), $$ 
+$$ \partial g = O (\frac{1}{r^2} )$$ 
+$$\Gamma  = O (\frac{1}{r^2}) $$
+where $g_0$ is the Minkowski metric. 
+%Dottie: please insert the  text here. -- Lisa Jeffrey
+An admissible change of variables is of the form
+\beq \label{coords}
+X_\mu\to \Lambda_{\mu v}X_r+a_\mu+
+b_\mu(x),
+\eeq
+where $\Lambda_{\mu v}$ is a Lorentz rotation, $a_\mu$
+defines  a translation  and
+$$
+b_\mu(X)= O\left(\frac{1}{r} \right),\quad
+\partial b=O\left(\frac{1}{r^2}\right).
+$$
+In these coordinates the density (\ref{laggrav2}) is of
+order $O\left(\frac{1}{r^4}\right)$ and the action
+$$
+A=\int\calL\,dx
+$$
+is invariant with respect to the change of coordinates
+(\ref{coords}).
+
+Inspection of the density (\ref{laggrav2}) cubic in the 
+variables $(h,\Gamma)$, shows that out of
+$ 10 + 40 = 50$  variables, the  $\Gamma_{00}^\mu$ enter
+linearly and 26 other components $\Gamma$ enter
+quadratically without time derivatives.
+So the Lagrangian (\ref{laggrav2}) takes the form $(\ref{elimexcl})$, 
+however the 
+constraints do not commute with the corresponding $\phi$.
+So we must solve them explicitly.
+Fortunately this is possible and altogether solving the
+constraints and eliminating the excludable variables
+allows one to express 30 components of $\Gamma$ via the metric
+$h^{\mu \nu}$ and 6 components $\Gamma_{ik}^0$.
+Let 
+\begin{eqnarray*}
+q^{ik} &=& h^{00}h^{ik}-h^{in}h^{nk}\\
+\Pi_{ik} &=& \frac{\Gamma_{ik}^0}{h^{00}}
+\end{eqnarray*}
+be a (density of weight $+2$) of the first
+quadratic form and (a density of weight $-1$) of the
+second quadratic form of the surface ${x}_0=0$ embedded
+into space-time.
+After solving for $\Gamma$, mentioned above, the
+Lagrangian (\ref{laggrav2}) reduces to the form
+$$
+\Pi_{ik}\partial_0 q^{ik}+\frac{1}{h^{00}}C_0(\Pi,q)+
+\frac{h^{0k}}{h^{00}}C_k(\Pi,q)+\partial_i\partial_k
+q^{ik}
+$$
+where $C_0$ and $C_k$ are some functionals of $\Pi$,
+$q$ and  derivatives.
+The term $\partial_i\partial_k q^{ik}$ cannot be
+discarded in spite of the fact that it is a pure divergence as its
+flux through infinity does not vanish.
+Indeed this flux
+$$
+\calM=\lim_{R \to \infty}\int\limits_{S_R}
+\epsilon_{k\ell m}\partial_{ik}q^{ik}dS^{\ell n}
+$$
+defines the full energy $\calM$ of the gravitational
+field and a very nontrivial theorem states  that
+$\calM$ is positive unless the metric is not flat.
+
+Four constraints $C_0$, $C_k$ are of the first class;
+let $\eta_k(x)$, $\eta_0(x)$ be the vector field and the 
+function on the space slice.
+We put
+\begin{eqnarray*}
+C_0(\eta_0) &=& \int C_0(\Pi(x),q(x))\eta_0(x)d^3 x\\
+C(\eta) &=& \int C_k(\Pi(x),q(x))\eta^k(x)d^3x
+\end{eqnarray*}
+to get the brackets
+$$
+\{C(\eta''),C(\eta')\}=
+C([\eta^n,\eta'])
+$$
+where $[\quad,\quad]$ is the commutator of vector
+fields.
+This means that $C(\eta)$ are generators of
+diffeomorphisms of our space slice.
+Furthermore
+$$
+\{C(\eta),C_0(\eta_0)\}=
+C_0(\eta\eta_0)
+$$
+where $\eta\eta_n$ is the  result of the action of the vector
+field $\eta$ on the function $\eta_0$.
+Finally
+$$
+\{C_0(\eta''_0),C_0(\eta'_0)\}=
+C(\hat{\eta}),
+$$
+where the vector field $\hat{\eta}$ is given by
+$$
+\hat{\eta}^n=q^{in}(\partial_i 
+\eta''_0\eta'_0-\eta''_0\partial_i \,
+\eta'_0)
+$$
+What about the Hamiltonian?
+Taking into account the asymptotic condition, it is
+more natural to consider
+$\left(\frac{1}{h^{0n}}+1\right)$ rather than
+$1/h^{nm}$ to be a lagrangian multiplier; thus, the
+Hamiltonian
+$$
+H=C_0 + \partial_i \partial_n q^{in}
+$$
+differs from the constraint $C_{0}$ only by  a term  which is a 
+total divergence.
+The explicit expression for $C_0$ shows that $H$ is
+quadratic in $\Pi$ and first derivatives of $q$, like  all 
+other Hamiltonians in previous examples.
+The $4$ constraints kill $4$ degrees of freedom from the 6
+in $q^{ik}$, so gravitons (like photons above) have two
+polarizations.
+
+The reduction above is associated with the names
+of Dirac  and Arnowitt-Deser-Misner [ADM].
+The explicit forms of all expressions above in the
+coordinates $q^{ik}$, $\Pi_{ik}$ can be found in my
+survey \cite{F:grav}.
+
+
+%% end of inserted text
+\noindent{\bf Example 4: the Dirac equation} 
+
+In this lecture, lack of time prevents us from 
+treating   the case of the Dirac equation,
+in which the field is  a spin $1/2$ fermion, and the Lagrangian is 
+first order in time derivatives from the beginning and is nondegenerate.
+
+
+
+
+
+
+
+\begin{thebibliography}{99}
+\bibitem{Dirac} P.A.M.  Dirac, {\em Proc. Roy. Soc.} {\bf A 246}, 
+326, 1958; P.A.M. Dirac, {\em Lectures on Quantum Mechanics}, New York
+(Yeshiva University), 1964. 
+\bibitem{F:grav} L.D. Faddeev, Sov. Phys. Uspekhi {\bf 25} (1982) %poss 92?
+130.
+\bibitem{FS} L.D. Faddeev, A.A.  Slavnov, {\em Gauge Fields: An Introduction 
+to Quantum Theory}, Addison-Wesley (Frontiers in Physics vol. 83), (second 
+edition), 1991. 
+\end{thebibliography}
+
+
+\end{document}
+
+
+
+
+

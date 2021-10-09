@@ -1,0 +1,477 @@
+%From: Lisa C Jeffrey <jeffrey@math.ias.edu>
+%Date: Wed, 16 Apr 1997 16:26:54 -0400
+
+
+%Latex file
+
+\documentclass[12pt]{article} 
+
+\newcommand{\printname}[1]
+        {\smash{\makebox[0pt]{\hspace{-1.0in}\raisebox{8pt}{\tiny #1}}}}
+
+\newcommand{\labell}[1] {\label{#1}}
+
+\setlength{\textwidth}{6.5 truein}
+\setlength{\textheight}{8.0 truein}
+\begin{document}
+
+
+
+
+
+
+
+
+
+
+\vfill\eject
+
+
+
+
+
+
+\noindent
+{\bf Fall Term Exam, N$^{\rm{0}}$. 1}\qquad\qquad\qquad
+\qquad\qquad\qquad(solution by L. Jeffrey and S. Wu)
+
+\smallskip
+\hbox to \hsize{\hrulefill}
+
+\bigskip
+\noindent
+{\bf Problem:}
+\medskip
+
+
+
+\noindent Prove via path integrals the character valued index theorem for
+the Dirac operator. 
+\medskip
+
+\noindent That is, let $M$ be a spin manifold and 
+let $g$ be an isometry of $M$, with a lift to the spin bundles. 
+Calculate 
+$$
+Tr  (-1)^F g
+$$
+by path integrals. 
+
+\medskip
+\noindent That is, write down the path integral for sections of a suitable $M$ 
+bundle over a circle. Taking the circumference of the circle to be small,
+compute the integral explicitly and obtain the Atiyah-Bott formula 
+for (1).
+
+\newcommand{\RR}{{\mathbf{R}}}
+\newcommand{\CC}{{\mathbf{C}}}
+\newcommand{\ZZ}{{\mathbf{Z}}}
+\newcommand{\calh}{ { \cal H} } 
+\newcommand{\cals}{ { \cal S} } 
+\newcommand{\cald}{ { \cal D} } 
+\newcommand{\norm}{{\cal N}}
+
+
+\bigskip
+\noindent
+{\bf Solution:}
+\medskip 
+
+
+We use a supersymmetric quantum field theory where the fields
+are maps $X: \RR^{1,1} \to M$ satisfying a periodicity condition.
+We write the maps as $X (t, \theta)$ where $t$ is the even variable 
+and $\theta$ the odd variable: decomposing into bosonic and fermionic
+fields we write
+$$ X(t,\theta) = x(t) + \theta \psi(t).$$
+The Lagrangian is
+$$ L(X) = \int dt d\theta g_{IJ} \frac{dX^I }{dt} D X^J $$
+where we have introduced a metric $g_{IJ}$ on $M$ and the 
+ operator
+$$ D = \frac{\partial}{\partial \theta} - i \theta \frac{\partial}{\partial t}
+. $$
+In components the action becomes
+$$ L(X) = \int dt \{ g_{IJ}  \frac{dx^I}{dt} \frac{dx^J}{dt} 
++ \frac{i}{2} g_{IJ} \psi^I \frac{D\psi^J}{Dt} \}, $$
+where $D \psi^J/Dt$ denotes the covariant derivative (with respect
+to the Levi-Civita connection) in the direction of 
+the tangent vector $x_* (d/dt)$ in  $M$.
+The supersymmetry operator is 
+$$Q = \frac{\partial }{\partial \theta} +i \theta \frac{\partial }{\partial t}.
+$$
+\newcommand{\dbar}{{ \cal D} }
+Upon quantization the space of states is identified
+with the sections $\calh_{\pm} $ of the 
+spin bundle $\cals_{\pm} $ on $M$ and the operator $Q$ is identified
+with the Dirac operator $\dbar$ on $M$.
+We introduce the operator $(-1)^F$ on $\calh_{\pm}$ which is defined
+to have the values $+1$ on $\calh_+$
+(states with an even number of fermions) and $(-1)$ on 
+$\calh_-$ (states with an 
+odd number of fermions). The index of the Dirac operator 
+$\dbar$ is then
+\begin{equation} \labell{dirac}
+{\rm Index} (\dbar) = {\rm Trace} (-1)^F  = 
+{\rm Trace } (-1)^F e^{- \beta H}, 
+\end{equation}
+where we have introduced the Hamiltonian $H$ and a positive parameter
+$\beta$. 
+Notice that since the Dirac operator $\dbar$ gives an 
+isomorphism between the
+eigenspaces $\calh_+^\lambda$ of $H$ on $\calh_+$ with a positive
+eigenvalue $\lambda$ and the corresponding
+eigenspaces $\calh_-^\lambda$ of the action of $H$ on $\calh_-$,
+the trace of $(-1)^F e^{- \beta H} $ is in fact independent of 
+$\beta$. 
+This can be computed by the path integral 
+\begin{equation} \labell{lagrangian}
+{\rm Trace } (-1)^F e^{- \beta H} = \int \cald X e^{ - \int_{0}^\beta
+L(X) dt},
+\end{equation}
+where we integrate over fields $X(t) $ satisfying periodic
+boundary conditions $X(t+1) = X(t)$. 
+
+The corresponding character valued index is
+\begin{equation} \labell{diracg}
+{\rm Index}_g (\dbar) = {\rm Trace}  (-1)^Fg  = 
+{\rm Trace } (-1)^Fg e^{- \beta H}.
+\end{equation}
+Since the isometry $g$ commutes with the Dirac operator, the trace 
+${\rm Trace } (-1)^Fg e^{- \beta H}$ is again independent of $\beta$.
+It  is given by  the path integral 
+\begin{equation} \labell{lagrangiang}
+{\rm Trace } (-1)^F g e^{- \beta H} = \int \cald X e^{ - \int_{0}^\beta
+L(X) dt},
+\end{equation}
+which is the same as
+(\ref{lagrangian}) but with the boundary 
+conditions on the fields 
+changed to 
+\begin{equation} \labell{bc}
+x(t+1) = g x(t), ~~~ \psi(t+1) = g \psi(t). 
+\end{equation}
+
+We now rescale the time variable $t $  by replacing it by 
+$t' = \beta t$ where $t \in [0,1]$:
+this is equivalent to replacing
+the action $\int_{0}^\beta L(X) dt$ by 
+\begin{equation}\labell{resclag}
+\frac{1}{\beta}   \int_0^1 \Biggl \{ g_{IJ} \frac{dx^I}{dt} \frac{dx^J}{dt} 
++ \frac{i}{2} g_{IJ}\psi^I \frac{D\psi^J}{Dt}\Biggr \} , 
+\end{equation}
+where we have also rescaled the fermionic variables $\psi^I$ by
+multiplying them by a factor $1/\sqrt{\beta}$.
+
+
+\newcommand{\bose}{{\alpha } }
+\newcommand{\bosep}{ { \bose}^{\parallel} }
+\newcommand{\bosen}{ { \bose}^{\perp} }
+\newcommand{\etap}{ { \eta}^{\parallel} }
+\newcommand{\etan}{ { \eta}^{\perp} }
+
+
+We must first identify the solutions of the Euler-Lagrange equation.
+This equation is 
+$$dX^I/dt = 0 ; $$
+given the twisted periodicity condition  (\ref{bc}) the only solutions
+are constant paths
+$x_0(t) = x_0$ which send $\RR $ to  a point $x_0$ in the fixed point set 
+$Z = M^g$ of $g$, and constant paths
+$\psi_0(t) = \psi_0 $ which send
+$\RR$ to  a point $\psi_0$ in the tangent space $\Pi T_{x_0} M$. 
+
+If $X_0 = (x_0, \psi_0)$ is a solution of the Euler-Lagrange equation,
+we write an infinitesimal variation
+$\delta X $ at $X_0$ as 
+$$ \delta X = (\bose, \eta)$$ 
+(where $\bose$ is the bosonic piece, a path in 
+$T_{x_0} M$,  and $\eta$ is the fermionic piece, a path in 
+$\Pi T_{x_0} M$).
+To avoid overcounting
+ infinitesimal variations $\delta X$ which are simply deformations
+within the class of solutions $X_0$ of the Euler-Lagrange equation, we 
+impose the conditions 
+\begin{equation} \labell{overcount}
+  \int_0^1 \bose(t) dt = 0, ~~\int_0^1 \eta (t) dt = 0.
+\end{equation}
+
+
+
+We decompose the infinitesimal variations
+$(\bose, \eta)$  further into 
+$$ \bose = \bosep + \bosen, ~~ \eta = \etap + \etan $$
+where $\bosep$ is a path in the tangent space $T_{x_0} Z$ at $x_0$
+to the 
+fixed point set $Z$, while
+$\bosen$ is a path in the fibre $\norm_{x_0} $  of the normal 
+bundle $\norm$ to $Z$ in $M$.
+The fermionic piece $\eta$ is similarly decomposed into a path
+$\etap$ in the tangent space $T_{x_0} Z$ and a path 
+$\etan$ in the fibre $\norm_{x_0}$ of the normal bundle.
+These components separately satisfy the condition 
+(\ref{overcount}).
+The endpoint conditions become
+\begin{equation} \labell{endp}
+\bosep(1) = \bosep(0), ~~ \etap(1) = \etap(0)
+\end{equation}
+\begin{equation} \labell{endn}
+\bosen(1) = g \bosen(0), ~~ \etan(1) = g\etan(0)
+\end{equation}
+where in (\ref{endn}) $g$  acts as an automorphism
+of the fibres of  the normal bundle to $Z$ in $M$.
+
+\newcommand{\opbose}{{D_B}}
+\newcommand{\opferm}{{D_F}}
+
+Expanding the Lagrangian to second order in $(\bose, \eta)$ we find
+$L = L^\parallel + L^\perp, $ where 
+\begin{equation} \labell{lpar}
+L^\parallel = \frac{1}{\beta} \int_{0}^1 dt 
+\Biggl ( \frac{1}{2} |\frac{d\bosep}{dt}|^2 
+- \frac{i}{4} \psi_0^I \psi_0^J R_{IJKL} (\bosep)^K \frac{d (\bosep)^L}{dt}
++ \frac{i}{2} 
+(\etap, \frac{d\etap}{dt})  \Biggr )
+\end{equation}
+while 
+\begin{equation} \labell{lperp}
+L^\perp = \frac{1}{\beta} \int_{0}^1 dt 
+\Biggl ( \frac{1}{2} |\frac{d\bosen}{dt}|^2 
+- \frac{i}{4} \psi_0^I \psi_0^J R_{IJKL} (\bosen)^K \frac{d (\bosen)^L}{dt}
++ \frac{i}{2} 
+(\etan, \frac{d \etan}{dt})  
+\Biggr ).
+\end{equation}
+(Because the isometry $g$ preserves the Levi-Civita
+connection, the fixed 
+point set $Z$ is totally geodesic. The solutions 
+$\psi_0 $ to the Euler-Lagrange equation are tangent
+to the fixed point set $Z$.
+Thus, in  (\ref{lpar}) the indices $I,J,K,L$ run over a basis for
+the tangent bundle to the fixed point set $Z$, while in 
+(\ref{lperp}) the indices $I,J$
+ run over a basis for the tangent space to $Z$ 
+while the indices $K,L$ run over a basis for the normal bundle $\norm$ to 
+the fixed point set.)
+
+The bosonic parts of these
+Lagrangians are given by a differential operator $(1/\beta)\opbose$ 
+of order 2 acting on $\bosep$ (resp. $\bosen$), where $\opbose$ is defined
+by
+\begin{equation} \labell{opbose}
+(\opbose)_{KL}  =   - \frac{d^2}{dt^2} \delta_{KL} -  F_{KL} 
+\frac{d}{dt}, 
+\end{equation}
+where $F = (F_{KL})$  is the curvature 
+$(i/2)\psi_0^I \psi_0^J R_{IJKL} $ of the
+Levi-Civita connection on $M$. 
+Similarly the fermionic Lagrangians are given by a differential
+operator $(1/\beta)$ $\opferm$ (where $\opferm= i\frac{D}{Dt}$
+has order 1)
+ acting on $\etap $ (resp. $\etan$).
+(At this point we may use normal coordinates to identify the 
+covariant derivative $D/Dt$ with the ordinary
+derivative $d/dt$.)
+
+We compute the path integral (\ref{lagrangiang}) perturbatively.
+Since the result is independent of $\beta$, we may evaluate the
+integral in the limit $\beta \to 0$: however, since the propagator is
+multiplied by a factor $\beta$, this means that in the 
+limit $\beta \to 0 $ the exact answer is given by  the leading order
+term in perturbation theory (i.e. the ratio 
+of determinants arising from the Gaussian integral). 
+In other words, the path integral (\ref{lagrangiang}) becomes  
+\begin{equation} \label{pathintres}
+\frac{ {\rm Pf}(\opferm )}{\sqrt{\det \opbose} }. 
+\end{equation}
+Since the operators $\opbose$ and $\opferm$ preserve the tangent
+bundle to $Z$ and the normal bundle to $Z$
+(in other words $\opbose$  decomposes into operators 
+$$\opbose = 
+\opbose^\parallel \oplus \opbose^\perp,$$ and 
+similarly for $\opferm$: this
+will follow from the decomposition (\ref{lpar})-(\ref{lperp})
+of the Lagrangian given below) 
+ our path integral decomposes as 
+$$\int_Z \frac{ {\rm Pf}(\opferm^\parallel )}{\sqrt{\det \opbose^\parallel} }
+\frac{ {\rm Pf}(\opferm^\perp )}{\sqrt{\det \opbose^\perp} }. $$
+
+The computation of 
+$$\frac{ {\rm Pf}(\opferm^\parallel )}{\sqrt{\det \opbose^\parallel} } $$
+is identical to the computation presented in the lecture and yields
+\begin{equation} \labell{intpar}
+\hat{A}(F^\parallel) = \frac{1}{(2\pi)^{\dim Z/2}}
+ \prod_{a= 1}^{\dim Z/2}  \frac{F^\parallel_a/2}{\sinh F^\parallel_a/2}.
+\end{equation}
+$\hat{A}(Z)=\hat{A}(F^\parallel/(2\pi))$ represents the A-hat genus 
+of the fixed point set $Z$.
+Here, we have decomposed the curvature $F^\parallel$ of the Levi-Civita
+connection of $Z$ (which is a matrix valued two-form on $Z$ with values
+in skew-symmetric  square matrices of dimension $\dim Z$)
+into its Chern roots: in other words  we have skew diagonalized it and 
+written it in the form
+\begin{equation} \labell{diagcurv} F^{\parallel} = 
+\left ( \begin{array}{lccccr} 
+0 & F^1 & 0  & 0 & 0 \dots& 0   \\
+ - F^1 & 0 & 0  & 0& 0 \dots & 0 \\
+0& 0& 0  & F^2 & 0 \dots & 0\\ 
+0& 0& -F^2  & 0 & 0 \dots & 0\\ 
+\vdots& \vdots& \vdots & \vdots & \dots & \dots \\
+\end{array} \right ) \end{equation}
+
+\newcommand{\eig}{\vartheta}
+
+The computation of the determinants for $\opbose^\perp$ and
+$\opferm^\perp$ differs from the computation presented in the lecture
+only because new  periodicity conditions (\ref{bc}) for the fields  have
+been introduced. 
+We first observe that since $g$ is orientation preserving,
+the normal bundle $\norm$ to each component
+of the fixed point set $Z$ of $g$ is even dimensional.
+Moreover, the multiplicity of the eigenvalue $-1$ is even.
+Therefore the fiber $\norm_{x_0}$ over $x_0\in Z$ decomposes into
+subspaces $V_b$ invariant under $g$, $b = 1,\dots,(\dim_\RR\norm)/2$.
+Each $V_b$ has real dimension 2 and $g$ acts on $V_b$ as
+\begin{equation}
+g = \left (\begin{array}{lr} \cos \eig_b & \sin \eig_b \\
+       - \sin \eig_b & \cos \eig_b \end{array} \right )
+\end{equation}
+Here a pair of eigenspaces of eigenvalue $-1$ corresponds to one $V_b$
+with $\eig_b=\pi$.
+(Alternatively, identifying each eigenspace 
+$V_b$ with $\CC$ the isometry  $g$ acts as multiplication by 
+$e^{i \eig_b}$. Of course, here the $\eig_b$ need not be distinct.)
+Since the isometry $g$ preserves the Levi-Civita connection,
+the basis of the normal bundle which skew-diagonalizes the curvature
+(as in (\ref{diagcurv}))
+may be chosen to coincide with the basis of eigenspaces of $g$.
+Thus we may compute the action of 
+$\opbose^\perp$ and $\opferm^\perp$  acting on paths 
+$\bosen_b, \etan_b$ taking
+values in one eigenspace $V_b$. 
+
+
+In fact, it is convenient to  replace $\bosen_b$ 
+and $\etan_b$ by  paths $\bosen_{b,\pm}, \etan_{b,\pm}$ in the 
+complexification $V_b \otimes \CC$: this decomposes naturally 
+as $V_b \otimes \CC = V_b^+ \oplus V_b^-$, where
+$g$ acts on $V_b^\pm$ with the eigenvalue $e^{\pm i \eig_b}$.
+Thus we 
+may convert the endpoint conditions (\ref{bc}) to periodic endpoint
+conditions by writing
+\begin{equation} \label{transbose}
+ \bosen_{b,\pm} (t) = \exp (\pm i t \eig_b) \zeta^\pm_b(t), 
+\end{equation}
+\begin{equation} \label{transferm}
+ \etan_{b,\pm} (t) = \exp (\pm i t \eig_b) \xi^\pm_b(t), 
+\end{equation}
+where $\zeta^\pm_b: \RR \to V_b^\pm$ and
+$\xi^\pm_b: \RR \to \Pi V_b^\pm$ satisfy the usual periodic
+boundary conditions
+$\zeta^\pm_b(t+1) = \zeta^\pm_b(t), $
+$\xi^\pm_b(t+1) = \xi^\pm_b(t). $
+
+
+If we substitute (\ref{transbose}) into the definition of $\opbose$ 
+we find that the operator $\opbose$ acting on the 
+variables $ \zeta^\pm_b$ becomes instead (using  the decomposition
+of $F^\perp$ corresponding to 
+(\ref{diagcurv}), where the eigenspaces are the eigenspaces
+$V_b^\pm$: the subspaces which diagonalize the curvature coincide
+with the eigenspaces of $g$ because the isometry $g$ is assumed to 
+preserve the Riemannian metric on $M$)
+\begin{equation} \labell{bosop}
+(\opbose)^\pm_b = -  (\frac{d}{dt} \pm i \eig_b)^2 
+\pm  F_b (\frac{d}{dt} \pm i \eig_b). 
+\end{equation}
+Since the eigenvalues of $\frac{d}{dt}$ on the 
+$\zeta_b$ are $2 \pi i n$ for $n \in \ZZ$, we find that the eigenvalues
+are given by 
+\begin{equation} \labell{eigval}
+(2 \pi i n \pm i \eig_b)^2 \pm F_b (2 \pi i n \pm i \eig_b). 
+\end{equation}
+To compute the determinant of $\opbose$ we take the product over all
+the eigenvalues.
+
+The computation of the character-valued index differs from the ordinary
+index in that the fermionic Pfaffian now depends on the values
+of the eigenvalues $\eig_b$ for the isometry.
+Substituting  (\ref{transferm}) into $\opferm = id/dt$ we find
+that the eigenvalues of $\opferm$ acting on  the 
+periodic fermionic   paths
+$\xi^\pm_b$ are
+$$ 2 \pi  n \pm  \eig_b.$$
+We shall make use of the identity
+\begin{equation} \label{fundid}
+\prod_{n \ge 1} (1 - \frac{z^2}{4 \pi^2 n^2} ) = 
+\frac{\sin z/2 }{z/2} 
+\end{equation} 
+Combining all factors we find
+\begin{equation} \labell{detbos}
+\det \opbose = \prod_{\pm} \prod_{n  \in \ZZ } \prod_b 
+(2 \pi in + i\eig_b)^2 \pm {F_b }(2 \pi in \pm i\eig_b) 
+\end{equation}
+while the fermionic Pfaffian is given by 
+\begin{equation} \labell{detferm}
+({\rm Pf} \opferm)^2 = \prod_{\pm} \prod_b \prod_n 
+(2 \pi n \pm \eig_b). 
+\end{equation}
+Combining (\ref{detbos}) and (\ref{detferm}) we see that
+(up to a multiplicative constant from regularization)
+\begin{equation} \labell{detcomb}
+\frac{({\rm Pf} \opferm)^2}{\det \opbose} = 
+\prod_{n \in \ZZ} \prod_{b, \pm} \frac{1}{ 2 \pi n \pm (\eig_b + iF_b)},
+\end{equation}
+$$ = 
+\prod_{b} \frac{1}{\eig_b + i F_b} \prod_{\pm} \prod_{n \ge 1} 
+\frac{1}{4 \pi^2 n^2 - (\eig_b + i F_b)^2 } $$
+$$ = \prod_b \frac{1}{2 \sin \Bigl (  (\theta_b + i F_b)/2\Bigr ) }. $$
+The final answer for the character-valued index of the Dirac operator 
+is then 
+\begin{eqnarray} \label{finans}
+{\rm Index}_g(\dbar)&=&
+\frac{1}{(2\pi)^{\dim Z/2}}\int_Z \hat{A} (F^\parallel) 
+\prod_{b= 1}^{\dim_{\RR} \norm/2}
+\frac{1} {2 \sin \Bigl ( (\eig_b + i F_b)/2\Bigr ) }	\nonumber \\
+&=& \int_Z \hat{A} (Z) 
+\prod_{b= 1}^{\dim_{\RR} \norm/2}
+\frac{1} {2 \sin \Bigl ( (\eig_b + i F_b/(2\pi))/2\Bigr ) }.
+\end{eqnarray}
+
+
+
+
+
+
+ 
+
+
+
+
+\noindent{\bf References:}
+
+1. L. Alvarez-Gaum\'e, Supersymmetry and the Atiyah-Singer
+index theorem, \emph{Commun. Math. Phys.} \textbf{90} (1983) 161-173.
+
+2. D. Friedan, P. Windey, Supersymmetric
+derivation of the Atiyah-Singer index
+theorem and the chiral anomaly, \emph{Nucl. Phys.} {\bf B 235} (1984) 385-416.
+
+3. M. Goodman, Proof of character-valued index theorems,
+\emph{Commun. Math. Phys.} \textbf{107} (1986) 391-409.
+
+4. M. Goodman, E. Witten, Global symmetries in four and higher
+dimensions, \emph{Nucl. Phys. B} \textbf{271} (1986) 21-52.
+
+
+
+
+
+
+
+
+
+
+\end{document}
+
+
+

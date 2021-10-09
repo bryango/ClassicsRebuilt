@@ -1,0 +1,125 @@
+% I am sending you a revised copy of Problem Set 2, where
+% I simplified the question in Problem 2 section b), first
+% sentence. Can you replace the one on the homepage with
+% this version ? Thanks,
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%
+%%%%    STRING THEORY : Problem Set 2, January 30, 1997
+%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\magnification=\magstep1
+\overfullrule=0pt
+\baselineskip=17pt
+
+\def\12{{1 \over 2}}
+
+\centerline{{\bf STRING THEORY}}
+\centerline{ Problem Set \# 2}
+\centerline{January 30, 1997}
+
+\bigskip
+\bigskip
+
+The purpose of this problem set is to establish that the singular
+parts of the OPE of two stress tensors 
+$$
+T(z) T(w) \sim {c/2 \over (z-w)^4} + {2 \over (z-w)^2} T(w)
++ {1 \over z-w} \partial _w T(w).
+\eqno (1)
+$$
+and of a stress tensor and a primary field,
+are valid for any worldsheet metric $g$ in 
+any complex coordinate system in which $g=2g_{z\bar z} |dz|^2$, 
+and are thus covariant under analytic
+diffeomorphisms of the complex coordinates. 
+(The issue of covariance of the OPE was raised by Pierre Deligne.)
+
+1) Using the fact that $T(z)$ transforms as a projective connection,
+establish directly that the OPE in (1) transforms covariantly
+under analytic diffeomorphisms.
+
+2) An alternative derivation of the covariance of (1), and in 
+addition of the validity of (1) on any surface with any metric, may be 
+obtained by retracing the derivation of the OPE using 
+Diff($\Sigma$) and Weyl($\Sigma$) Ward
+identities. The derivation was carried out in Gawedski's lectures, 
+but the actual OPE seems to have been derived only for
+locally flat metrics. 
+Here, we propose to complete the analysis for general metric. 
+For the sake of clarity, I shall go through all the steps
+of the derivation.
+
+
+Let $\phi _i $ be a set of primary fields, with conformal 
+weights $(h_i, \bar h_i)$, $i=1, \cdots, n$, and consider their
+(unnormalized) correlation functions 
+$\langle \phi _1  \cdots \phi _n  \rangle _g$
+for worldsheet metric $g$.
+We define the (covariant) quantum stress tensor $T_{mn} ^{cov}$ by
+$$
+\delta _g \langle \phi _1  \cdots \phi _n  \rangle _g
+= {1 \over 4 \pi}
+\int _{\Sigma} d \mu _g \delta g ^{mn} (w,\bar w) 
+\langle T_{mn} ^{cov}
+ (w. \bar w) \phi _1  \cdots \phi _n  \rangle _g
+$$
+and the variation of the correlation function on the r.h.s is given by
+$$
+\delta _g \langle T_{mn} ^{cov}
+ (w, \bar w) \phi _1  \cdots \phi _n  \rangle _g
+= {1 \over 4 \pi}
+\int _{\Sigma} d \mu _g \delta g ^{pq} (z, \bar z) 
+\langle T_{pq} ^{cov} (z, \bar z) T_{mn} ^{cov}
+ (w, \bar w) \phi _1  \cdots \phi _n  \rangle _g
+$$
+
+We define a conformal field theory on any surface 
+$\Sigma$, and for any  metric $g$ by the following requirement 
+on its full (covariant) quantum stress tensor $T_{mn} ^{cov}$
+$$
+\nabla ^m T_{mn} ^{cov} = 0 
+\qquad \qquad 
+T ^{cov} {} _{m} {}^{m}  = - {c \over 3} R_g
+$$
+where $\nabla$ is the covariant derivative with respect to the 
+affine connection. This definition is identical to the axiomatic
+definition used in Gawedski's lectures. 
+
+a) Use the covariance of the correlation function 
+$\langle \phi _1  \cdots \phi _n  \rangle _g $ 
+under general infinitesimal diffeomorphisms (not just analytic ones)
+to derive a first order differential equation relating 
+$\langle T_{ww} ^{cov}
+ (w) \phi _1  \cdots \phi _n  \rangle _g$
+ to 
+$\langle \phi _1  \cdots \phi _n  \rangle _g$.
+Deduce the OPE of $T_{ww} ^{cov} $ with $\phi _i (z)$ from this equation
+by solving for its singular part as $z \to w$.
+
+b) By evaluating the variation of $\langle T_{mn} ^{cov} (w,\bar w)
+  \phi _1  \cdots \phi _n  \rangle _g$ under a change $\delta g^{zz}$,
+ derive an
+ equation for $\langle T_{zz} ^{cov} (z,\bar z) T_{ww} ^{cov}
+ (w, \bar w) \phi _1  \cdots \phi _n  \rangle _g $.
+ Deduce the OPE $T_{zz} ^{cov}  T_{ww} ^{cov} $ from this
+ equation by solving for its singular part as $z \to w$.
+ 
+c) Show that there exists a quantity $Q_{zz}$ such that $T(z)$ defined by
+ $$
+ T (z) = T_{zz} ^{cov} (z, \bar z) + Q_{zz} (z, \bar z)
+ $$
+is analytic and obeys the standard OPE in (1).
+Determine $Q$, and compute it explicitly when $g _{z \bar z} =1$.
+
+d) Deduce from the results of c) for general metric that $T(z)$
+transforms as a projective connection under analytic diffeomorphisms.
+
+
+
+\end
+--2690_6e99-7f7b_16b0-7049_286--
+

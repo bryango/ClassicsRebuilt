@@ -1,0 +1,1181 @@
+%% This is a plain TeX file
+%%
+\magnification=1200
+\hsize=6.5 true in
+\vsize=8.7 true in
+
+\input amssym.def
+\input amssym.tex
+
+\font\boldtitlefont=cmb10 scaled\magstep2
+\font\smallboldtitle=cmb10 scaled \magstep1
+\font\sans=cmss10 scaled\magstep1
+
+\footline={\hfil {\tenrm IV.\folio}\hfil}
+
+\def\eps{{\varepsilon}}
+\def\Eps{{\epsilon}}
+\def\kap{{\kappa}}
+\def\lam{{\lambda}}
+\def\Lam{{\Lambda}}
+\def\mynabla{{\nabla\!}}
+
+\def\nspace{\lineskip=1pt\baselineskip=12pt%
+     \lineskiplimit=0pt}
+\def\dspace{\lineskip=2pt\baselineskip=18pt%
+     \lineskiplimit=0pt}
+
+\def\half{{\scriptstyle 1\over\scriptstyle 2}}
+\def\w{{\mathchoice{\,{\scriptstyle\wedge}\,}
+  {{\scriptstyle\wedge}}
+  {{\scriptscriptstyle\wedge}}{{\scriptscriptstyle\wedge}}}}
+\def\Le{{\mathchoice{\,{\scriptstyle\le}\,}
+{\,{\scriptstyle\le}\,}
+{\,{\scriptscriptstyle\le}\,}{\,{\scriptscriptstyle\le}\,}}}
+\def\Ge{{\mathchoice{\,{\scriptstyle\ge}\,}
+{\,{\scriptstyle\ge}\,}
+{\,{\scriptscriptstyle\ge}\,}{\,{\scriptscriptstyle\ge}\,}}}
+\def\plus{{\hbox{$\scriptscriptstyle +$}}}
+\def\Item#1{\par%
+     \smallskip\hang\indent\llap{\hbox to\parindent
+     {#1\hfill\enspace}}\ignorespaces}
+
+\def\im{{\rm Im}}  \def\Open{{\rm open}}
+\def\Diff{{\rm Diff}}  \def\Closed{{\rm closed}}
+\def\Map{{\rm Map}}  \def\spurious{{\rm spurious}}
+\def\Met{{\rm Met}} \def\phys{{\rm phys}}
+\def\diag{{\rm diag}}  \def\Vir{{\rm Vir}}
+\def\spin{{\rm spin}} \def\Res{{\rm Res}}
+\def\Null{{\rm null}} \def\mass{{\rm mass}}
+\def\SO{{\rm SO}} \def\Tr{{\rm Tr\,}}
+\def\SU{{\rm SU}} \def\tr{{\rm tr}}
+\def\Weyl{{\rm Weyl}} \def\Ker{{\rm Ker}}
+\def\Range{{\rm Range}} \def\SL{{\rm SL}}
+\def\Det{{\rm Det}} \def\re{{\rm Re}}
+\def\dist{{\rm dist}} \def\PSL{{\rm PSL}}
+\def\Vol{{\rm Vol}} \def\ghosts{{\rm ghosts}}
+\def\Fock{{\rm Fock}} \def\BRST{{\rm BRST}}
+\def\inv{{\rm inv}}
+
+\def\fbar{\bar{f}}  \def\mubar{\bar{\mu}}
+\def\barh{\bar{h}}  \def\gammabar{\bar{\gamma}}
+\def\kbar{\bar{k}}  \def\lambar{\bar{\lambda}}
+\def\mbar{\bar{m}}  \def\phibar{\bar{\phi}}
+\def\wbar{\bar{w}}  \def\etabar{\bar{\eta}}
+\def\vbar{\bar{v}}  \def\partialbar{\bar{\partial}}
+\def\xbar{\bar{x}}  \def\cbar{\bar{c}}
+\def\zbar{\bar{z}}  \def\bbar{\bar{b}}
+\def\Abar{\bar{A}}
+\def\Kbar{\bar{K}}
+\def\Pbar{\bar{P}}
+\def\Sbar{\bar{S}}
+\def\Tbar{\bar{T}}
+
+\def\scrFbc{{\scrF^{(bc)}}}
+\def\scrFbcbar{{\scrF^{(\bbar\cbar)}}}
+
+\def\ghat{\hat{g}}
+\def\muhat{\hat{\mu}}
+
+\def\htil{\tilde{h}}
+\def\xtil{\tilde{x}}
+\def\Dtil{\widetilde{D}}
+\def\Ltil{\tilde{L}}
+\def\Ntil{\widetilde{N}}
+\def\Ttil{\widetilde{T}}
+\def\scrFtil{\widetilde{\scrF}}
+\def\epstil{\tilde{\eps}}
+\def\psitil{\tilde{\psi}}
+
+\def\dbR{{\Bbb R}}
+\def\dbZ{{\Bbb Z}}
+
+%These two files (in this order!!) are necessary
+%in order to use AMS Fonts 2.0 with Plain TeX
+
+\input amssym.def
+\input amssym.tex
+
+%Capital roman double letters(Blackboard bold)
+\def\db#1{{\fam\msbfam\relax#1}}
+
+\def\dbA{{\db A}} \def\dbB{{\db B}}
+\def\dbC{{\db C}} \def\dbD{{\db D}}
+\def\dbE{{\db E}} \def\dbF{{\db F}}
+\def\dbG{{\db G}} \def\dbH{{\db H}}
+\def\dbI{{\db I}} \def\dbJ{{\db J}}
+\def\dbK{{\db K}} \def\dbL{{\db L}}
+\def\dbM{{\db M}} \def\dbN{{\db N}}
+\def\dbO{{\db O}} \def\dbP{{\db P}}
+\def\dbQ{{\db Q}} \def\dbR{{\db R}}
+\def\dbS{{\db S}} \def\dbT{{\db T}}
+\def\dbU{{\db U}} \def\dbV{{\db V}}
+\def\dbW{{\db W}} \def\dbX{{\db X}}
+\def\dbY{{\db Y}} \def\dbZ{{\db Z}}
+
+\font\teneusm=eusm10  \font\seveneusm=eusm7 
+\font\fiveeusm=eusm5 
+\newfam\eusmfam 
+\textfont\eusmfam=\teneusm 
+\scriptfont\eusmfam=\seveneusm 
+\scriptscriptfont\eusmfam=\fiveeufm 
+\def\scr#1{{\fam\eusmfam\relax#1}}
+
+
+%Upper-case Script Letters:
+
+\def\scrA{{\scr A}}   \def\scrB{{\scr B}}
+\def\scrC{{\scr C}}   \def\scrD{{\scr D}}
+\def\scrE{{\scr E}}   \def\scrF{{\scr F}}
+\def\scrG{{\scr G}}   \def\scrH{{\scr H}}
+\def\scrI{{\scr I}}   \def\scrJ{{\scr J}}
+\def\scrK{{\scr K}}   \def\scrL{{\scr L}}
+\def\scrM{{\scr M}}   \def\scrN{{\scr N}}
+\def\scrO{{\scr O}}   \def\scrP{{\scr P}}
+\def\scrQ{{\scr Q}}   \def\scrR{{\scr R}}
+\def\scrS{{\scr S}}   \def\scrT{{\scr T}}
+\def\scrU{{\scr U}}   \def\scrV{{\scr V}}
+\def\scrW{{\scr W}}   \def\scrX{{\scr X}}
+\def\scrY{{\scr Y}}   \def\scrZ{{\scr Z}}
+
+\def\gr#1{{\fam\eufmfam\relax#1}}
+
+%Euler Fraktur letters (German)
+\def\grA{{\gr A}}	\def\gra{{\gr a}}
+\def\grB{{\gr B}}	\def\grb{{\gr b}}
+\def\grC{{\gr C}}	\def\grc{{\gr c}}
+\def\grD{{\gr D}}	\def\grd{{\gr d}}
+\def\grE{{\gr E}}	\def\gre{{\gr e}}
+\def\grF{{\gr F}}	\def\grf{{\gr f}}
+\def\grG{{\gr G}}	\def\grg{{\gr g}}
+\def\grH{{\gr H}}	\def\grh{{\gr h}}
+\def\grI{{\gr I}}	\def\gri{{\gr i}}
+\def\grJ{{\gr J}}	\def\grj{{\gr j}}
+\def\grK{{\gr K}}	\def\grk{{\gr k}}
+\def\grL{{\gr L}}	\def\grl{{\gr l}}
+\def\grM{{\gr M}}	\def\grm{{\gr m}}
+\def\grN{{\gr N}}	\def\grn{{\gr n}}
+\def\grO{{\gr O}}	\def\gro{{\gr o}}
+\def\grP{{\gr P}}	\def\grp{{\gr p}}
+\def\grQ{{\gr Q}}	\def\grq{{\gr q}}
+\def\grR{{\gr R}}	\def\grr{{\gr r}}
+\def\grS{{\gr S}}	\def\grs{{\gr s}}
+\def\grT{{\gr T}}	\def\grt{{\gr t}}
+\def\grU{{\gr U}}	\def\gru{{\gr u}}
+\def\grV{{\gr V}}	\def\grv{{\gr v}}
+\def\grW{{\gr W}}	\def\grw{{\gr w}}
+\def\grX{{\gr X}}	\def\grx{{\gr x}}
+\def\grY{{\gr Y}}	\def\gry{{\gr y}}
+\def\grZ{{\gr Z}}	\def\grz{{\gr z}}
+
+\overfullrule=0pt
+
+\parindent=18pt
+\line{\sans --- DRAFT ---\hfill{\rm IASSNS-HEP-97/72}}
+
+\bigskip\bigskip
+\centerline{\boldtitlefont Lecture 7}
+\medskip
+\centerline{\smallboldtitle IV. Faddeev--Popov Ghosts ---
+BRST Quantization}
+
+\medskip
+\centerline{Eric D'Hoker}
+
+\frenchspacing
+
+\dspace
+\bigskip
+It is standard practice to recast the Faddeev-Popov
+determinant, which arose from fixing $\Diff(\Sigma)$
+gauge invariance, in terms of ghost fields.
+(See also Faddeev's lectures.)
+One introduces Grassmann-valued {\it ghost fields}
+$(c,\cbar)=(c^z(dz)^{-1}$, $c^{\zbar}(d\zbar)^{-1})$
+and {\it anti-ghost} fields $(b,\bbar)=(b_{zz}(dz)^2,
+b_{\zbar\zbar}(d\zbar)^2)$ transforming as the gauge
+transformation vector fields $(v,\vbar)$ and as the
+metric deformations 
+$(\delta g_{zz},\delta g_{\zbar\zbar})$, respectively.
+It is convenient to study such $b$-$c$ systems for general
+weight first, since we shall make use of such systems as
+well: $c\in K^{1-n}; b\in K^n$.
+For now $n$ is an integer, but later $n$ will also be
+allowed to be a half-integer.
+
+\bigskip\noindent
+\Item{\bf A.} {\bf Determinants and $b$-$c$ systems}
+
+\smallskip
+We therefore generalize by considering a system of a pair of
+Grassmann-valued fields $(c,\cbar)=(c(dz)^{1-n}$,
+$\cbar(d\zbar)^{1-n})$ and $(b,\bbar)=(b(dz)^n,
+\bbar(d\zbar)^n)$, so that the above case is $n=2$.
+In this notation, $b$ and $c$ are independent whereas
+$\bbar$, $\cbar$ are their complex conjugates.
+The action is first order in derivatives:
+$$
+S_n(b,c)={1\over 2\pi}\int_\Sigma
+d\mu_g\left(
+b\nabla_{(1-n)}^zc+\bbar
+\nabla_{(n-1)}^{\zbar}\cbar\right)\,\,.\eqno{(4.1)}
+$$
+We have the following {\it Theorem}:
+$$
+\eqalign{
+Z_{(n)}^-(g)
+\vert &\det\,\phi_j(z_k)\vert^2\,\,\vert\det\,\psi_a
+  (w_b)\vert^2\cr
+&=\int D(b\bbar)D(c\cbar)e^{-S_n(b,c)}
+\prod\limits_{j=1}^{\kern.3 cm N_{(n)}^-}b(z_j)\bbar(z_j)
+\prod\limits_{a=1}^{\kern.5 cm N_{(n-1)}^{-}}
+c(w_a)\cbar(w_a)\,\,,\cr}
+\eqno{(4.2)}
+$$
+where the measures $D(b\bbar)$ and $D(c\cbar)$ are
+obtained from the $L^2$ norms on $K^n$, $\Kbar^n$,
+$K^{(1-n)}$ and $\Kbar^{(1-n)}$; 
+$\phi_j\in\Ker\,\nabla_{(n)}^z$,
+$\psi_a\in\Ker\,\nabla_{(1-n)}^z$ and $N_{(n)}^{\pm}=\dim\,
+\Ker\,\Delta_{(n)}^{\pm}$.
+Note that for $n\Ge 2$ there are no $\psi_\alpha$'s
+whereas for $h=0$ there are no $\phi_j$'s.
+
+We begin the proof by recalling a finite-dimensional Grassmann
+integral, over variables $b_i$, $c_i$, $i=1,\ldots,N$,
+such that $\{b_i,b_j\}=\{c_i,c_j\}=\{b_i,c_j\}=0$.
+We use the standard Grassmann integration rules:
+$$
+\int dc_i\,c_j=\delta_{ij}\qquad\qquad
+\int db_i\,b_j=\delta_{ij}\eqno{(4.3)}
+$$
+and $\int dc_i\,1=\int db_i\,1=0$.
+Then, for any matrix $M_{ij}$, we have
+$$
+\prod\limits_{i=1}^N\int db_idc_i\,e^{b_i
+M_{ij}c_j}=\det\,M\,\,.
+\eqno{(4.4)}
+$$
+
+To prove the Theorem, we begin by expanding $b$ and $c$ in
+an orthonormal basis of eigenfunctions of $\Delta_{(n)}^-$
+and $\Delta_{(1-n)}^-$ as follows.
+Let $\Psi_\alpha$ be an orthonormal basis of eigenfunctions
+of $\Delta_{(1-n)}^-$ corresponding 
+to the non-zero eigenvalues
+$\lam_\alpha^2$, and let $\psi_a$ be an orthonormal basis of
+zero modes of $\Delta_{(1-n)}^-$.
+We have
+$$
+\cases{
+\Delta_{(1-n)}^-\Psi_\alpha=\lam_\alpha^2\Psi_\alpha &\cr
+\noalign{\medskip}
+\Delta_{(1-n)}^-\psi_a=0\,\,,\cr}
+\eqno{(4.5)}
+$$
+and we define $\Phi_\alpha$ by
+$$
+\cases{\sqrt{2\,\,}\nabla_{(1-n)}^z\Psi_\alpha=\lam_\alpha
+  \Phi_\alpha &\cr
+\noalign{\medskip}
+-\sqrt{2\,}\nabla_z^{(1-n)}\Phi_\alpha=\lam_\alpha
+   \Psi_\alpha\,\,,\cr}\eqno{(4.6)}
+$$
+so that $\Phi_\alpha$ provides an orthonormal basis of
+eigenfunctions of $\Delta_{(-n)}^{\plus}$ for non-zero
+eigenvalues.
+Let $\phi_j$ be an orthonormal basis for 
+$\Ker\,\nabla_z^{(-n)}$.
+As a result, $(g_{z\zbar})^n\Phi_\alpha^*$ together with
+the zero modes $(g_{z\zbar})^n\phi_j^*$ provides an
+orthonormal basis of eigenfunctions for $\Delta_{(n)}^-$.
+Thus, we have the decompositions
+$$
+\eqalign{
+c &=\sum\limits_{\alpha}c_\alpha\Psi_\alpha+\sum\limits_{a}
+  c_a\psi_a\cr
+b &=\sum\limits_{\alpha}b_\alpha(g_{z\zbar})^n
+\Phi_\alpha^*
++\sum\limits_{j}b_j(g_{z\zbar})^n\phi_j^*\,\,.\cr}\eqno{(4.7)}
+$$
+The $L^2$ norm then induces the following measures:
+$$
+\cases{
+D(b\bbar)=\prod\limits_{\alpha}db_\alpha\,d\bbar_\alpha
+  \prod\limits_{j}d\,b_j\,\,d\,\bbar_j\cr
+\noalign{\medskip}
+D(c\cbar)=\prod\limits_{\alpha}dc_\alpha\, d\cbar_\alpha
+  \prod\limits_{a}dc_a\,d\cbar_a\cr} \eqno{(4.8)}
+$$
+and it is straightforward to evaluate the action:
+$$
+\eqalign{
+S_n(b,c) &={1\over 2\pi}\sum\limits_{\alpha,\beta}b_\alpha
+ c_\beta\int\nolimits_{\Sigma}d\mu_g (g_{z\zbar})^n
+  \Phi_\alpha^*\nabla_{(1-n)}^z\Psi_\beta +c.c.\cr
+&={1\over 2\pi\sqrt{2\,\,}}\sum\limits_{\alpha,\beta}
+  b_\alpha c_\beta\lam_\beta\int\nolimits_{\Sigma}
+  d\mu_g (g_{z\zbar})^n\Phi_\alpha^*\Phi_\beta+c.c\cr
+&={1\over 2\pi\sqrt{2\,\,}}\sum\limits_{\alpha}(b_\alpha
+  c_\alpha\lam_\alpha+\bbar_\alpha \cbar_\alpha
+  \lam_\alpha)\,\,.\cr}\eqno{(4.9)}
+$$
+Notice that the zero mode coefficients $b_j$, $c_a$ do not
+enter the action.
+Modulo a constant $\left({1\over
+2\pi\sqrt{2\,}}\right)^{\zeta(0)}$ coming from the
+$\zeta$-function regularization,
+$$
+\int\prod\limits_{\alpha}db_\alpha d\bbar_\alpha
+  dc_\alpha d\cbar_\alpha\,e^{-S_n(b,c)}=
+\prod\limits_{\alpha}\lam_\alpha^2=\Det'\Delta_{(1-n)}^-\,\,.
+\eqno{(4.10)}
+$$
+The remaining finite product of factors can only involve
+the zero modes, since the number of factors of $b$ and $c$
+precisely equals the number of zero-mode integrations.
+$$
+\eqalign{
+\int\prod\limits_{a}dc_ad\cbar_a &\prod\limits_{j}
+  db_jd\bbar_j\prod\limits_{j=1}^{N_{(n)}^-}
+  b(z_j)\bbar(z_j)\prod\limits_{a=1}^{N_{(1-n)}^-}
+  c(w_a)\cbar(w_a)\cr
+&=\vert\det\,\phi_j(z_k)\vert^2\,\,
+  \vert\det\,\psi_a(w_b)\vert^2\,\,.\cr}
+\eqno{(4.11)}
+$$
+Recall that our bases $\phi_j$, $\psi_a$ had been chosen
+orthonormal.
+In an arbitrary basis, the result would be
+$$
+{\vert\det\,\phi_j(z_k)\vert^2
+  \over \det(\phi_j,\phi_k)}\,\,
+{\vert\det(\psi_a(w_b))\vert^2\over \det(\psi_a,
+  \psi_b)}\,\,.\eqno{(4.12)}
+$$
+Putting all together, we obtain the result in the Theorem
+by using the definition of the determinant combination
+$Z_{(n)}^-(g)$.
+
+Notice that the functional integral without $b$ or $c$
+insertions,
+$$
+\int D(b\bbar)D(c\cbar)e^{-S_n(b,c)}\,\,,
+$$
+vanishes because of the existence of zero modes which do
+not enter the action at all.
+
+\vfill\eject
+
+\noindent
+\Item{\bf B.} {\bf Ghost representation of the
+Faddeev-Popov determinant}
+
+\smallskip
+For bosonic string theory, $n=2$ is the suitable weight,
+and we have the following general form for the amplitudes
+$$
+A=\sum\limits_{h=0}^\infty e^{-\chi\Phi_0}
+  \int\nolimits_{\scrM_h}dm_j d\mbar_j\int
+  D(b\bbar)D(c\cbar)e^{-S_2(b,c)}\prod\limits_{j}
+  \vert(\mu_j,b)\vert^2
+\int\limits_{\Map(\Sigma;M)}Dx\,\scrO\,e^{-S_m(x)}
+\eqno{(4.13)}
+$$
+where
+$$
+\scrO=\left\{
+\matrix{
+\bullet\quad &\prod\limits_{a=N-2}^N c(z_a)\cbar(z_a)V_1\ldots
+V_{N-3}W(z_{N-2})W(z_{N-1})W(z_N)\hfill 
+  &(N\Ge 3;\,h=0)\hfill\cr
+\noalign{\medskip}
+\bullet\quad &0 \hfill   &(N=0,1,2;\,h=0)\hfill\cr
+\noalign{\medskip}
+\bullet\quad &c(z_N)\cbar(z_N)V_1\ldots V_{N-1}W(z_N)\hfill
+  &(N\Ge 1;\,h=1)\hfill\cr
+\noalign{\medskip}
+\bullet\quad &V_1\ldots V_N\,\,,\hfill    &(h\Ge 2)\hfill\cr}
+\right.
+\eqno{(4.14)}
+$$
+and $S_2(b,c)$ is the action for the ghost fields in the
+case $n=2$.
+This representation is valid for any matter action $S_m$,
+and any set of vertex operators $V_i$.
+The fields $c$ and $b$ are called the Faddeev-Popov ghosts
+and anti-ghosts.
+
+\bigskip\noindent
+\Item{\bf C.} {\bf Conformal Field Theory of the $b$-$c$
+system}
+
+\smallskip
+{}From the Weyl transformation law of the determinant
+combinations $Z_{(n)}^-(g)$, and the Weyl invariance of
+$\det\phi_j(z_k)$ and $\det\psi_a(w_b)$, we know that
+the $b$-$c$ system is a conformal field theory with central
+charge
+$$
+-2c_{(n)}^-=-2(6n^2-6n+1)\,\,.
+$$
+In particular, we confirm that for the ghost system of the
+bosonic string (i.e. $n=2$) the central charge is
+$c_{\ghosts}=-26$, cancelling
+the central charge of the matter part.
+We now study this conformal field theory for any
+$n\in\half\dbZ$, assuming that a spin structure has been
+chosen on $\Sigma$.
+In particular, for $n={1\over 2}$, we have a Dirac
+fermion $\psitil_{\plus}=b$, $\psi_{\plus}=c$; 
+$\psitil_-=\bbar$, $\psi_-=\cbar$ (in which case $b$, $c$
+are in the same space of Dirac spinors), or 
+two Majorana spinors:
+$(\psi_{\plus},\psitil_{\plus})$ and $(\psi_-,\psitil_-)=
+(\psi_{\plus},\psitil_{\plus})^*$.
+(See Witten's lectures.)
+
+{}From the classical action, we obtain the stress tensor by
+varying with respect to $\delta g^{zz}$ and using
+$$
+\delta\nabla_{(1-n)}^z={1\over 2} \delta
+g^{zz}\nabla_z^{(1-n)}+
+{1-n\over 2}\nabla_z (\delta g^{zz})\,\,.\eqno{(4.15)}
+$$
+We find for the classical stress tensor:
+$$
+\eqalign{
+T^{(bc)}(z)=T_{zz}^{(bc)} &=(1-n)\nabla_z bc-nb\nabla_z c\cr
+&=(1-n)(\partial_z b-n\Gamma
+b)c-nb(\partial_zc-(1-n)\Gamma c)\cr
+&=(1-n)(\partial_z b)c-nb\partial_zc\,\,.\cr}\eqno{(4.16)}
+$$
+
+Using Weyl rescaling, we may study the system on a surface
+with locally flat metric $\ghat=2\vert dz\vert^2$.
+At the same time, covariant derivatives become just
+Cauchy-Riemann operators:
+$\nabla_{(n)}^z$ becomes $\partialbar_{(n)}$ and
+$\nabla_z^{(n)}$ becomes $\partial_{(n)}$ ($\partialbar$
+and $\partial$ for short).
+The action is then
+$$
+S_n(b,c)={1\over 2\pi}\int\nolimits_{\Sigma}d^2\,z
+(b\partialbar c+\bbar\partial\cbar)\,\,.\eqno{(4.17)}
+$$
+The field equations are $\partialbar c=\partialbar b=0$,
+$\partial\cbar=\partial\bbar=0$.
+The OPE of $b$ and $c$ is given by the Green function of
+$\partialbar$:
+$$
+b(z)c(w)\sim{1\over z-w}\sim c(z)b(w)\,\,.\eqno{(4.18)}
+$$
+The quantum stress tensor may now be defined by
+subtracting the OPE singularities from the classical
+stress tensor.
+The holomorphic stress tensor is defined by
+$$
+T^{(bc)}(z)=\lim\limits_{w\to z}\left\{
+(1-n)\partial b(z)c(w)-nb(z)\partial c(w)+
+{1\over (z-w)^2}\right\}\,\,.
+\eqno{(4.19)}
+$$
+One immediately verifies
+$$
+\matrix{
+{\displaystyle T^{(bc)}(z)T^{(bc)}(w)\hfill} 
+&{\displaystyle \sim\hfill} &{\displaystyle -{(6n^2-6n+1)\over
+ (z-w)^4}} &\displaystyle{+\,\,{2\over 
+  (z-w)^2}T^{(bc)}(w)+{1\over z-w}
+  \partial_w T_{(w)}^{(bc)}\hfill}\cr
+\noalign{\medskip}
+{\displaystyle T^{(bc)}(z)c(w)\hfill} 
+&{\displaystyle \sim} &{\displaystyle {1-n\over (z-w)^2}c(w)} 
+&{\displaystyle +\,\,{1\over z-w} \partial_w c(w)}\hfill\cr
+\noalign{\medskip}
+{\displaystyle T^{(bc)}(z)b(w)\hfill} 
+&{\displaystyle \sim\hfill} 
+&{\displaystyle {n\over (z-w)^2}b(w)}
+&{\displaystyle +\,\,{1\over (z-w)}
+  \partial_w b(w)\,\,.}\hfill\cr}
+\eqno{(4.20)}
+$$
+(There is no singularity in the expansion of $b(z)b(w)$
+or $c(z)c(w)$.)
+The classical action $S_n$ is invariant under
+$U(1)_{bc}\times U(1)_{\bbar\cbar}$ phase rotations:
+$$
+\cases{
+c\to e^{i\theta}c &\cr
+\noalign{\medskip}
+b\to e^{-i\theta} b &\cr}\qquad\qquad
+\cases{
+\cbar\to e^{-i\theta'}\cbar &\cr
+\noalign{\medskip}
+\bbar\to e^{i\theta'}\bbar &\cr}
+\eqno{(4.21)}
+$$
+Only the diagonal subgroup with $\theta=\theta'$ 
+leaves the measure $D(b\bbar)D(c\cbar)$ invariant, and
+results in a quantum symmetry.
+
+The current associated with $U(1)_{bc}$ is given by
+$$
+j_z^{(bc)}= \,\,:cb:\,\, =\lim\limits_{w\to z}\left\{c(w)
+  b(z)-{1\over w-z}\right\}\,\,,\eqno{(4.22)}
+$$
+and we find the OPE's:
+$$
+j_z^{(bc)}c(w)\sim-{1\over z-w}\,c(w)\,\,;
+\qquad\qquad j_z^{(bc)}b(w)\sim{1\over z-w}\,b(w)\,\,.
+\eqno{(4.23)}
+$$
+The current $j_z^{(bc)}$ has an anomaly, as can be
+established from the fact that $j_z^{(bc)}$ does not
+transform as a tensor (for $n\not={1\over 2}$):
+$$
+T^{(c)}(z)j_w^{(bc)}\sim{1-2n\over (z-w)^3}+
+{1\over (z-w)^2}j_w^{(bc)}+{1\over z-w}
+\partial_w j_w^{(bc)}\,\,.\eqno{(4.24)}
+$$
+Thus, under analytic diffeomorphisms $z\to z'=f(z)$, we
+have
+$$
+j'{^{(bc)}}(z')dz'=j^{(bc)}(z)dz+\left(n-{1\over 2}\right)d
+(\ln\,f'(z))\eqno{(4.25)}
+$$
+Note that there is no anomaly for the case of spinors
+when $n=1/2$.
+Also, on a worldsheet with general metric $g$, $j^{(bc)}$ is
+not conserved; instead
+$\nabla^zj_z^{(bc)}=$
+$\left(\half-n\right)R_g$.
+
+\bigskip\noindent
+\Item{\bf D.} {\bf Bosonization of the $b$-$c$ system}
+
+\smallskip
+In Witten's lectures, a Bose-Fermi correspondence was
+established between a $2$-dimen-\break
+sional Dirac fermion and a
+real scalar boson field.
+The Dirac fermion corresponds here to the case $n=\half$.
+We will generalize the Bose-Fermi correspondence to the
+case of any $n\in\half\dbZ$.
+We begin by noticing that the $b$-$c$ stress tensor can be
+expressed in terms of the $U(1)_{bc}$ current only:
+$$
+T^{(bc)}(z)={1\over 2} j^{(bc)}(z)^2+\left(n-{1\over 2}\right)
+\partial_z j^{(bc)}(z)\,\,,\eqno{(4.26)}
+$$
+where the product of operators is always renormalized \`a
+la OPE.
+Using
+$$
+j^{(bc)}(z)j^{(bc)}(w)\sim{1\over (z-w)^2}\,\,,\eqno{(4.27)}
+$$
+it is straightforward to verify that $T^{(bc)}$ satisfies
+all identities listed above.
+
+We now introduce a scalar field $\phi$, with action (for
+general metric on $\Sigma$)
+$$
+S_Q(x)={1\over 4\pi}\int\nolimits_{\Sigma}d\mu_g\left\{
+{1\over 2} g^{mn}\partial_m\phi \partial_n\phi+
+  QR_g\phi\right\}\,\,.\eqno{(4.28)}
+$$
+This system was studied extensively in Problem Set \#1.
+Let us consider it only on locally flat metrics.
+Its central charge is $c=1+3Q^2$, and there is a current
+$\partial_z\phi$.
+Identifying the two systems will require that they have
+equal central charge:
+$$
+1+3Q^2=-12n^2+12n-2\qquad
+\hbox{or}\qquad Q=i(2n-1)\,\,.\eqno{(4.29)}
+$$
+(The second solution $Q=-i(2n-1)$ is equivalent upon
+changing the sign of $\phi$.)
+The identification of the currents gives
+$$
+\eqalign{
+j^{(bc)}(z)&=i\partial_z\phi\cr
+T^{(bc)}(z)=-{1\over 2} (\partial_z &\phi)^2+{1\over 2}\,
+Q\partial_z^2\phi\,\,.\cr}
+\eqno{(4.30)}
+$$
+The fields $b$, $c$ and $\bbar$, $\cbar$ may be identified
+in terms of the {\it chiral boson fields}
+$\phi_+(z)$,$\phi_-(\zbar)$, with
+$\phi(z,\zbar)=\phi_+(z)+\phi_-(\zbar)$ by
+$$
+\cases{
+c(z)=e^{i\phi_+(z)} &\cr
+\noalign{\medskip}
+b(z)=e^{-i\phi_+(z)} &\cr}\qquad\qquad
+\cases{
+\cbar(\zbar)=e^{+i\phi_-(\zbar)} &\cr
+\noalign{\medskip}
+\bbar(\zbar)=e^{-i\phi_-(\zbar)}\,\,. &\cr}
+\eqno{(4.31)}
+$$
+The $U(1)_{bc}\times U(1)_{\bbar\cbar}$ transformations
+now simply shift $\phi_+$ and $\phi_-$ by $\theta$ and
+$-\theta'$, respectively.
+
+It is now easy to see that the number 
+$(N_b, N_c)$ of $b$ and $c$ operator insertions yielding non-zero
+correlation functions is constrained by the
+Riemann-Roch-Atiyah-Singer theorem:
+$$
+N_b-N_c-{i\over 2}Q\chi=0\qquad\hbox{or}\qquad
+N_b-N_c=\left({1\over 2}-n\right)\chi\,\,,
+$$
+where $\chi$ is the Euler number of $\Sigma$.
+
+\bigskip\noindent
+\Item{\bf E.} {\bf The $b$-$c$  Fock Space}
+
+\smallskip
+The full Fock space is obtained as a tensor product of
+the $bc$ Fock space $\scrF^{(bc)}$ and the $\bbar\cbar$
+Fock space $\scrF^{(\bbar\cbar)}$:
+$$
+\Fock(b,c,\bbar,\cbar)=\scrF^{(bc)}\otimes
+\scrF^{(\bbar\cbar)}\,\,.
+\eqno{(4.32)}
+$$
+We proceed to construct $\scrFbc$, and $\scrFbcbar$ is
+constructed analogously.
+To do so, we consider the system on an annulus $\Sigma$,
+centered at $z=0$, with flat metric $g=2\vert dz\vert^2$,
+and we expand the holomorphic fields $b(z)$ and $c(z)$ in
+a Laurent series:
+$$
+\eqalign{
+c(z) &=\sum\limits_{r}c_r\,z^{-r-(1-n)}\cr
+b(z) &=\sum\limits_{r}b_r\,z^{-r-n}\cr}\qquad\qquad\qquad
+r\in\dbZ\,\,.
+\eqno{(4.33)}
+$$
+The shifts in the powers of $z$ reflect the conformal
+weights of the fields.
+The OPE of $b$ and $c$ yields
+$$
+\{b_r,b_s\}=\{c_r,c_s\}=0\qquad
+\{b_r,c_s\}=\delta_{r+s,0}\,\,.
+\eqno{(4.34)}
+$$
+The stress tensor (renormalized as in IV.7) yields the
+Virasoro generators
+$$
+\eqalign{
+L_m^{(bc)} &=\sum\limits_{r\in\dbZ}(mn-r)b_r
+c_{m-r}\qquad
+m\not=0\cr
+L_0^{(bc)} &=\sum\limits_{r=1}^\infty
+r(b_{-r}c_r+c_{-r}b_r)
+  -{1\over 2}\,n(n-1)\,\,.\cr}
+\eqno{(4.35)}
+$$
+The  $U(1)_{bc}$ current gives the $bc$ number operator:
+$$
+U=\oint {dz\over 2\pi i}j_z^{(bc)}=
+\sum\limits_{r=1}^\infty (c_{-r}b_r-b_{-r}c_r)+
+{1\over 2}(c_0b_0-b_0c_0)+n-{1\over 2}\,\,.
+\eqno{(4.36)}
+$$
+(The constant shifts in $L_0^{(bc)}$ and $U_0$ require
+great care, and are fundamental in the sequel.)
+
+The polarization here is again inherited from Minkowski
+worldsheet signature:
+$$
+b_r^{\dagger}=b_{-r}\qquad
+c_r^{\dagger}=c_{-r}\,;\qquad\qquad\qquad
+r\in\dbZ\,\,.
+\eqno{(4.37)}
+$$
+The ground state of the $b$-$c$ system is doubly degenerate,
+since $b_0$ and $c_0$ commute with $L_0$ (in fact they do
+not enter into the expession for $L_0$), and since $b_0$,
+$c_0$ generate an algebra $\{b_0,c_0\}=1$, $b_0^2=c_0^2=0$
+of which the ground state is a two-dimensional
+representation.
+We define the basis vectors by $\left.\mid\uparrow\right>$
+and $\left.\mid\downarrow\right>$, with
+$$
+b_r,c_r\left.\mid\uparrow\right>\quad
+\left.\mid\downarrow\right>=0\qquad\qquad\qquad
+r>0\,\,.
+\eqno{(4.38)}
+$$
+We choose the states so that
+$$
+\eqalign{
+c_0\left.\mid\uparrow\right> &=0\cr
+b_0\left.\mid\downarrow\right> &=0\,\,.\cr}
+\eqno{(4.39)}
+$$
+It follows that
+$$
+\matrix{
+b_0\left.\mid\uparrow\right>
+&=\left.\mid\downarrow\right> &\qquad\qquad
+U\left.\mid\uparrow\right>
+&=n\left.\mid\uparrow\right>\hfill\cr
+\noalign{\medskip}
+c_0\left.\mid\downarrow\right>
+&=\left.\mid\uparrow\right> &\qquad\qquad
+  U\left.\mid\downarrow\right>
+&=(n-1)\left.\mid\downarrow\right>\,\,.\cr}
+\eqno{(4.40)}
+$$
+It is natural to choose the following inner products
+$$
+\left<\downarrow\mid\uparrow\right>
+=\left<\uparrow\mid\downarrow\right>=1
+\eqno{(4.41)}
+$$
+(Notice that $\left<\uparrow\mid\uparrow\right>=
+\left<\downarrow\mid\downarrow\right>=0$ by their
+properties under $b_0$ and $c_0$.)
+
+The $b$-$c$ Fock space is naturally obtained by applying
+the creation operators $\{b_{-r},c_{-r}\}_{r\in \dbN}$ to
+either one of the ground states
+$\left.\mid\uparrow\right>$ or
+$\left.\mid\downarrow\right>$.
+The inner product thus inherited on $\scrFbc$ is not
+positive definite.
+
+\bigskip\noindent
+\Item{\bf F.} {\bf BRST Quantization}
+
+\smallskip
+We now return to string theory, where the relevant
+$b$-$c$ system is the one with $n=2$, in the notation
+used above.
+The combined matter-ghost action is (in a locally flat
+$g$)
+$$
+S={1\over 2\pi}\int d^2z \left({1\over 2} \partial x\cdot
+\partialbar x+b\partialbar c+\bbar\partial\cbar\right)\,\,.
+\eqno{(4.42)}
+$$
+The combined stress tensor (we denote the $x$ stress
+tensor by $T^{(x)}$)
+$$
+T(z)=T^{(x)}(z)+T^{(bc)}(z)
+\eqno{(4.43)}
+$$
+has zero central charge in $D=26$ and is thus a primary
+field of weight $(2,0)$.
+The associated Virasoro generators are
+$$
+\left\{
+\eqalign{
+L_m &=\sum\limits_{r\in\dbZ}(2m-r)b_rc_{m-r}+{1\over 2}
+  \sum\limits_{r\in\dbZ}x_r\cdot x_{m-r}\quad
+  (m\not=0)\cr
+L_0 &={1\over 2} p^2-1+\sum\limits_{r=1}^\infty
+ r(x_{-r} x_r+b_{-r}c_r+c_{-r}b_r)\cr}
+\right.
+\eqno{(4.44)}
+$$
+The second term $(-1)$ in the second equation arises from
+the ghost stress tensor on p. IV. 8 for $n=2$.
+The Virasoro algebra of $L_m$ reduces to the Witt algebra
+(i.e. with zero central charge)
+$$
+[L_\ell,L_m]=(\ell-m)L_{\ell+m}
+\eqno{(4.45)}
+$$
+Recall the ghost number
+$$
+U=1+c_0b_0+\sum\limits_{r=1}^\infty
+(c_{-r}b_r-b_{-r}c_r)
+\eqno{(4.46)}
+$$
+and recall that the round states
+$\left.\mid\uparrow\right>$ and
+$\left.\mid\downarrow\right>$ have ghost number 2 and 1,
+respectively.
+
+The full Fock space of states of the closed bosonic
+string, including the ghost states, is
+$$
+\scrF_{\Closed}=\left(\,\,\bigoplus\limits_{k\in\dbR^{26}}
+\scrF_k\otimes\scrFtil_k\right)\otimes
+\scrFbc\otimes\scrF^{(\bbar\cbar)}
+\eqno{(4.47)}
+$$
+We now wish to identify, inside $\scrF$, the subspace of
+physical states.
+We shall concentrate on $\scrF_k\otimes\scrFbc$, 
+the treatment of $\scrFtil_k\otimes\scrF^{(\bbar\cbar)}$ is
+analogous.
+
+Since the Virasoro algebra of $L_\ell$ generators holds
+with vanishing central charge, it is natural to impose
+$$
+L_\ell\left.\mid \phi\right>=0\qquad\qquad
+\forall\,\, \ell\in\dbZ\,\,.
+$$
+However, since the Fock space now also contains ghost
+states, this condition is insufficient.
+One would like to supplement it with a condition of ``no
+ghosts''.
+But from the treatment above, we see that ghost number
+changes under conformal mappings, so the no ghost
+condition is not invariant.
+The proper framework for imposing physical state
+conditions, when ghosts are present, is BRST
+quantization.
+It permits to recast the physical state conditions in
+terms of cohomology.
+
+We begin by discussing a finite-dimensional case, with
+finite-dimensional Lie group $G$ and associated Lie
+algebra $\scrG$.
+Let $\Lam$ be a representation of $\scrG$, with
+representation matrices $\Lam_i$, $i=1,\ldots,\dim\,G$,
+and let $f_{ij}^k$ be the structure constants of $\scrG$:
+$$
+\left[\Lam_i,\Lam_j\right]=f_{ij}^k\Lam_k
+\eqno{(4.48)}
+$$
+One introduces anti-ghosts $b_i$ in the adjoint
+representation of $\scrG$ and ghosts $c^i$ in the dual to
+the adjoint representation of $\scrG$.
+(For compact $G$, these are identified, but in general,
+it may not be possible to do so.)
+These satisfy
+$$
+\{b_i,c^j\}=\delta_j^j\qquad\qquad\qquad
+\{c^i,c^j\}=\{b_i,b_j\}=0\,\,.
+\eqno{(4.49)}
+$$
+The number operator is the analogue of the ghost number
+$$
+U=c^ib_i\qquad\qquad\qquad [U,c^i]=c^i\,;\,\,\,
+[U,b_i]=-b_i
+\eqno{(4.50)}
+$$
+and is invariant under $\scrG$. 
+The Fock space $\scrF$ is determined by choosing a
+polarization.
+The natural polarization here is as follows
+$$
+b_i\left.\mid 0\right>=0\qquad\qquad\qquad
+\scrF=\{c^i\}\left.\mid 0\right>\,\,,
+\eqno{(4.51)}
+$$
+and $\scrF$ contains $2^{\dim\,G}$ states.
+
+This model may be realized concretely by taking $c^i$,
+$i=1,\ldots,\dim\,G$ to be a basis of left-invariant
+$1$-forms on $G$, and $b_i$ to be the {\it contraction}
+with the form $c^i$: \ $b_i=\partial/\partial c^i$.
+The operator
+$U$ gives the degree of the form and the ground state
+$\left.\mid 0\right>$ corresponds to forms of degree $0$,
+i.e. constants.
+The Fock space $\scrF$ is the vector space of all
+left-invariant forms on $G$: \ $\Omega^{\inv}(G)$.
+
+In BRST theory, one introduces the {\it BRST operator}
+(still for our finite-dimensional group $G$):
+$$
+Q\equiv c^i\Lam_i-{1\over 2}\,f_{ij}^k c^ic^jb_k\,\,.
+\eqno{(4.52)}
+$$
+This operator acts on $\scrF\otimes\Lam$, where $\Lam$ is
+the representation vector space of $\Lam$.
+This operator is {\it nilpotent}.
+To see this, first show that $Q^2=0$ when $\Lam_i=0$; 
+the remaining terms with $\Lam$ present are
+$$
+Q^2={1\over 2}c^ic^j
+\left([\Lam_i,\Lam_j]-f_{ij}^k\Lam_k\right)\,\,,
+\eqno{(4.53)}
+$$
+which vanishes in view of the structure relations on
+$\Lam$.
+
+In terms of left-invariant forms on the group $G$, the
+operator $Q$ has a natural interpretation as well.
+This is understood by examining how a differential acts
+on a left-invariant differential form in
+$\Omega^{(p)}(G)$: \ if $\omega\in\Omega^{(p)}(G)$
+then $\omega=\omega_{i_1}\ldots i_p\,\, c^{i_1}\w\ldots\w
+c^{i_p},$
+with constant $\omega_{i_1\ldots i_p}$.
+The differential on $c^i$ is given by the Cartan
+structure equations
+$$
+dc^i+{1\over 2}\,f_{jk}^ic^j\w c^k=0
+\eqno{(4.54)}
+$$
+and thus its action on $\omega$ may be recast in a purely
+algebraic form
+$$
+d\omega=-{1\over 2}\,f_{jk}^i c^jc^kb_i\,\,.
+\eqno{(4.55)}
+$$
+Furthermore, when $\omega$ transforms under the
+representation $\Lam$ of $\scrG$, then $Q$ is nothing but
+the covariant derivative acting on $\scrF\otimes\Lam$,
+and its square vanishes in view of the flatness of the
+connection $c^i$.
+
+We now consider states in the Fock space $\scrF_{(m)}$ of
+degree $m=0,1,\ldots,\,\,\dim\,G$.
+The BRST operator $Q$ has degree $1$, and maps
+$Q\colon\,\scrF_{(m)}\to\scrF_{(m+1)}$ for $m\Le
+\dim\,G-1$, and $Q\colon\,\scrF_{(\dim\,G)}\to 0$.
+A state $\left.\vert\psi\right>$ is {\it BRST invariant}
+if
+$$
+\eqalignno{
+Q\left.\vert\psi\right>=0 &\kern5 true cm
+  \hbox{\rm (i.e. $Q$-closed)}\cr
+\noalign{\hbox{and {\it BRST trivial} if for some
+$\left.\vert x\right>\in\scrF_{(m-1)}$, we have}}
+\left.\vert\psi\right>=Q\left.\vert\chi\right>
+  &\kern5 true cm \hbox{\rm (i.e. $Q$-exact)}\cr}
+$$
+
+BRST cohomology is defined by the following equivalence
+relation: \ 
+$\left.\vert\psi\right>\sim\left.\vert\psi'\right>$
+provided there is some $\left.\vert\chi\right>$ such that
+$$
+\left.\vert\psi'\right>=\left.\vert\psi\right>+Q
+\left.\vert\chi\right>\,\,.
+$$
+BRST cohomology classes of degree $m$ are denoted by
+$H^{(m)}(Q)$.
+The BRST cohomology of degree $0$ is easily
+computed.
+First, $\left.\vert\psi\right>\in\scrF_{(0)}$ means
+that $b_j\left.\vert\psi\right>=0$ for all $j$, so that 
+the condition of BRST invariance becomes
+$$
+Q\left.\vert\psi\right>
+=c^i\Lam_i\left.\vert\psi\right>=0\qquad
+\Rightarrow \qquad
+\Lam_i\left.\vert\psi\right>=0
+$$
+Here, we have used the fact that, since
+ $\{b_i,c^j\}=\delta_i^j$, we have $c^i\left.\vert\psi\right>
+\not=0$ for all $i$, and these vectors are linearly
+independent.
+Thus, all BRST invariant states of ghost number $0$ are
+$\scrG$-invariant.
+Clearly no states in $\scrF_{(0)}$ are BRST trivial.
+Vice versa, all $\scrG$-invariant states of ghost number
+$0$ are BRST invariant.
+
+In string theory, the BRST formalism is implemented as
+follows.
+The Lie aglebra $\scrG$ is the infinite-dimensional
+Virasoro algebra, with structure constants
+$$
+[L_i,L_j]=(i-j)L_{i+j}+\hbox{ \rm central};\quad
+f_{ij}^k=(i-j)\delta_{i+j}^k\,\,.
+\eqno{(4.56)}
+$$
+We do not specify the central term, since we shall not
+infer its implications from the finite-dimensional
+model.
+The representation $\Lam$ of $\scrG$ is given by the
+matter fields $x$, with generators $L_i^{(x)}$, and
+central charge $26$.
+The ghost and anti-ghost modes are
+$$
+c^\ell=c_{-\ell}\qquad\hbox{and}\qquad
+b_\ell\qquad\qquad
+\ell\in\dbZ\,\,.
+\eqno{(4.57)}
+$$
+The polarization for the string theory BRST is different
+from that for the finite-dimensional model
+$$
+b_\ell, c_\ell \left.\vert\downarrow\right>\,,\quad
+\left.\vert\uparrow\right>=0\qquad
+\ell>0\,\,.
+\eqno{(4.58)}
+$$
+The BRST operator is defined by the structure constants
+$f_{ij}^k$, but the precise ordering prescription, and
+the effects of the central terms cannot be obtained from
+the finite-dimensional model.
+It will turn out (see next paragraph) that the correct
+prescription is given by
+$$
+Q\equiv\sum\limits_{r\in\dbZ}(L_r^{(x)}-\delta_{r,0})c_{-r}-
+{1\over 2}\sum\limits_{r,s\in\dbZ}(r-s)\,\,:
+c_{-r}c_{-s}b_{r+s}:
+\eqno{(4.59)}
+$$
+
+The correct prescription may be derived most efficiently
+from the fact that the BRST charge derives from a
+conserved (in fact analytic) BRST current, which arises
+as the Noether current of BRST symmetry of the action
+$S$.
+The transformation rules are (they may be derived from
+the commutation of the operator $\lam Q$, for some
+constant Grassmann parameter $\lam$, with the fields
+$x^\mu$, $b$, $c$):
+$$
+\left\{
+\eqalign{
+\delta x^\mu &=\lam c\partial x^\mu\cr
+\delta c &= \lam c\partial c\cr
+\delta b &=2\lam(T^{(x)}+T^{(bc)})\,\,.\cr}
+\right.
+\eqno{(4.60)}
+$$
+The resulting BRST current is
+$$
+\eqalign{
+j^{\BRST}(z) &=-{1\over 2}\,c\partial x\cdot\partial x+
+  bc\partial c+{3\over 2}\,\partial^2 c\cr
+&=cT^{(x)}+{1\over 2}\,cT^{(bc)}
++{3\over 2}\,\partial^2 c\,\,.\cr}
+\eqno{(4.61)}
+$$
+The last term on the right hand side ensures that
+$j^{\BRST}$ is a $(1,0)$ form as a quantum operator.
+The quantum (renormalized) current is defined as usual by
+OPE singularity subtractions.
+The BRST charge is then
+$$
+Q=\oint\,{dz\over 2\pi i}\,j^{\BRST}(z)\,\,,
+\eqno{(4.62)}
+$$
+and agrees with the expression of (4.59).
+
+Using the OPE algebra for the $b$-$c$ system, derived in
+\S{C}, we find that for $D=26$ we have
+$Q^2=0$. 
+Conversely, if $Q^2=0$, then the Virasoro algebra of
+$L_m=L_m^{(x)}+L_m^{gh)}$ must be satisfied with zero central
+charge.
+This is easily established from the fact that
+$$
+L_m=\{Q,b_m\}\qquad\Longrightarrow\qquad
+[L_m,Q]=0
+\eqno{(4.63)}
+$$
+and hence
+$$
+[L_m,L_n]=\{Q,[L_m,b_n]\}=(m-n)\{Q,b_{m+n}\}=
+(m-n)L_{m+n}\,\,.
+$$
+
+The BRST invariance condition $Q\left.\vert\psi\right>=0$
+now reproduces the physical state conditions
+$L_m\left.\vert\psi\right>=0$, $m\in\dbZ$, in the
+following way.
+First, we define a map $i$ from $\scrF_k^{\phys}$ into
+$\scrF_k^{\phys}\otimes\scrF^{(bc)}$. which maps
+physical states in $\scrF_k^{\phys}$ into states of
+ghost number $1$ as follows:
+$$
+i\colon\,\scrF_k^{\phys}\to\scrF_k\otimes
+\scrF^{(bc)},\,\,
+\left.\vert\varepsilon,k\right>\to \left.
+\vert\varepsilon,k,\downarrow\right>=
+\left.\vert\varepsilon,k\right>\otimes
+\left.\vert\downarrow\right>
+\eqno{(4.64)}
+$$
+Since $b_m\left.\vert\downarrow\right>=0$ for all
+$m\in\dbN$ and $c_n\left.\vert\downarrow\right>=0$ for
+all $n\in\dbN^{\plus}$, it follows that if
+$\left.\vert\epsilon,k\right>$ is physical, then
+$Q\left.\vert\varepsilon,k,\downarrow\right>=0$.
+Thus, $i$ is really a map into $\Ker\,Q$
+$$
+i\colon\,\scrF_k^{\phys}\to\Ker\,Q\,\,.\eqno{(4.65)}
+$$
+Next, let us consider a state
+$\left.\vert\psi\right>\in\scrF_k\otimes\scrF^{(bc)}$,
+of the form
+$$
+\left.\vert\psi\right>=\left.\vert\epsilon,k\right>
+\otimes\left.\vert\downarrow\right>\eqno{(4.66)}
+$$
+with ghost number $1$, and belonging to $\Ker\,Q$:
+$Q\left.\vert\psi\right>=0$.
+Then, in view of $b_m\left.\vert\downarrow\right>=0$
+for $m\in\dbN$ and $c_n\left\vert\downarrow\right>=0$
+for $n\in\dbN^{\plus}$, we have
+$$
+\eqalign{
+Q\left.\vert\psi\right> &=\sum\limits_{r\in\dbZ}
+(L_r^{(x)}-\delta_{r,0})c_{-r}
+\left.\vert\eps,k\right>\otimes\left.\vert\downarrow\right>\cr
+&=\left\{(L_0^{(x)}-1)c_0+\sum\limits_{r=1}^\infty
+  L_r^{(x)}c_{-r}\right\}\left.\vert\eps,k\right>
+  \otimes\left.\vert\downarrow\right>\,\,,\cr}
+\eqno{(4.67)}
+$$
+The condition 
+$Q\left.\vert\psi\right>=0$ implies $(L_0^{(x)}-1)
+\left.\vert\eps,k\right>=0$ and
+$L_r^{(x)}\left.\vert\eps,k\right>=0$ for 
+$r\in\dbN^{\plus}$, which are the correct physical state
+conditions on $\scrF_k$.
+(The ground state $\left.\vert\uparrow\right>$ would miss
+the conditions
+$(L_0^{(x)}-1)\left.\vert\eps,k\right>=0$.)
+
+Which of these states are BRST trivial?
+Again, from the definition of $Q$ and the fact that
+$b_m\left.\vert\psi\right>=c_m\left.\vert\psi\right>=0$
+for $m\in\dbN^{\plus}$, it follows that if
+$\left.\vert\psi\right>=Q\left.\vert\lam\right>$, 
+with $\left.\vert\lam\right>$ of ghost number $0$
+then
+$$
+\left.\vert\psi\right>=\sum\limits_{r=1}^\infty
+L_{-r}^{(x)}\left.\vert\lam_r\right>
+\eqno{(4.68)}
+$$
+for some states $\left.\vert\lam_r\right>$.
+But then $\left.\vert\lam\right>$ is spurious.
+
+In fact, 
+one can show that any state $\left.\vert\psi\right>$ in
+$\Ker\,Q$, of ghost number $1$, is of the form
+$$
+\left.\vert\psi\right>=\left.\vert\varepsilon,k\right>
+\otimes\left.\vert\downarrow\right>+Q\left.\vert
+x\right>
+$$
+where $\left.\vert\varepsilon,k\right>\in\scrF_k^{\phys}$
+and $\left.\vert x\right>$ is some state of ghost
+number $0$.
+Thus, the cohomology of $Q$ of ghost number $1$, i.e.
+space of states of ghost number 1
+which are  BRST invariant, modulo BRST trivial states,
+is isomorphic to the 
+physical state space $\scrF^{\plus}$ defined previously:
+$$
+\scrF^{\plus}=\scrF^{\phys}/\scrF^{\spurious}\sim
+H^{(1)}(Q)
+\eqno{(4.69)}
+$$
+
+
+\bye
+
+
+
+
+
+

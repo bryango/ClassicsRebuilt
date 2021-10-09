@@ -1,0 +1,713 @@
+%Date: Tue, 24 Feb 1998 18:33:26 -0500 (EST)
+%From: Pavel Etingof <etingof@abel.math.harvard.edu>
+
+\input amstex
+\documentstyle{amsppt}
+\magnification 1200
+\NoRunningHeads
+\NoBlackBoxes
+\document
+
+\def\bb{\overline{\beta}}
+\def\bga{\overline{\gamma}}
+\def\bg{\overline{g}}
+\def\eps{\epsilon}
+\def\tW{\tilde W}
+\def\Aut{\text{Aut}}
+\def\tr{{\text{tr}}}
+\def\ell{{\text{ell}}}
+\def\Ad{\text{Ad}}
+\def\u{\bold u}
+\def\m{\frak m}
+\def\O{\Cal O}
+\def\tA{\tilde A}
+\def\qdet{\text{qdet}}
+\def\k{\kappa}
+\def\RR{\Bbb R}
+\def\be{\bold e}
+\def\bR{\overline{R}}
+\def\tR{\tilde{\Cal R}}
+\def\hY{\hat Y}
+\def\tDY{\widetilde{DY}(\g)}
+\def\R{\Bbb R}
+\def\h1{\hat{\bold 1}}
+\def\hV{\hat V}
+\def\deg{\text{deg}}
+\def\hz{\hat \z}
+\def\hV{\hat V}
+\def\Uz{U_h(\g_\z)}
+\def\Uzi{U_h(\g_{\z,\infty})}
+\def\Uhz{U_h(\g_{\hz_i})}
+\def\Uhzi{U_h(\g_{\hz_i,\infty})}
+\def\tUz{U_h(\tg_\z)}
+\def\tUzi{U_h(\tg_{\z,\infty})}
+\def\tUhz{U_h(\tg_{\hz_i})}
+\def\tUhzi{U_h(\tg_{\hz_i,\infty})}
+\def\hUz{U_h(\hg_\z)}
+\def\hUzi{U_h(\hg_{\z,\infty})}
+\def\Uoz{U_h(\g^0_\z)}
+\def\Uozi{U_h(\g^0_{\z,\infty})}
+\def\Uohz{U_h(\g^0_{\hz_i})}
+\def\Uohzi{U_h(\g^0_{\hz_i,\infty})}
+\def\tUoz{U_h(\tg^0_\z)}
+\def\tUozi{U_h(\tg^0_{\z,\infty})}
+\def\tUohz{U_h(\tg^0_{\hz_i})}
+\def\tUohzi{U_h(\tg^0_{\hz_i,\infty})}
+\def\hUoz{U_h(\hg^0_\z)}
+\def\hUozi{U_h(\hg^0_{\z,\infty})}
+\def\hg{\hat\g}
+\def\tg{\tilde\g}
+\def\Ind{\text{Ind}}
+\def\pF{F^{\prime}}
+\def\hR{\hat R}
+\def\tF{\tilde F}
+\def\tg{\tilde \g}
+\def\tG{\tilde G}
+\def\hF{\hat F}
+\def\bG{\overline{G}}
+\def\Spec{\text{Spec}}
+\def\tlo{\hat\otimes}
+\def\hgr{\hat Gr}
+\def\tio{\tilde\otimes}
+\def\ho{\hat\otimes}
+\def\ad{\text{ad}}
+\def\Hom{\text{Hom}}
+\def\hh{\hat\h}
+\def\a{\frak a}
+\def\t{\hat t}
+\def\Ua{U_q(\tilde\g)}
+\def\U2{{\Ua}_2}
+\def\g{\frak g}
+\def\n{\frak n}
+\def\hh{\frak h}
+\def\sltwo{\frak s\frak l _2 }
+\def\Z{\Bbb Z}
+\def\C{\Bbb C}
+\def\d{\partial}
+\def\i{\text{i}}
+\def\ghat{\hat\frak g}
+\def\gtwisted{\hat{\frak g}_{\gamma}}
+\def\gtilde{\tilde{\frak g}_{\gamma}}
+\def\Tr{\text{\rm Tr}}
+\def\l{\lambda}
+\def\I{I_{\l,\nu,-g}(V)}
+\def\z{\bold z}
+\def\Id{\text{Id}}
+\def\<{\langle}
+\def\>{\rangle}
+\def\o{\otimes}
+\def\e{\varepsilon}
+\def\RE{\text{Re}}
+\def\Ug{U_q({\frak g})}
+\def\Id{\text{Id}}
+\def\End{\text{End}}
+\def\gg{\tilde\g}
+\def\b{\frak b}
+\def\S{\Cal S}
+\def\L{\Lambda}
+
+\topmatter
+\title Lecture 4: Renormalization groups (continued)
+\endtitle
+\author {\rm {\bf David Gross} }\endauthor
+\endtopmatter
+
+\centerline{Notes by P.Etingof and D.Kazhdan}
+\vskip .1in
+
+{\bf 2.1. Dynamical mass generation.}
+
+In the previous three lectures we developed a general formalism 
+of the method of renormalization group, derived the renormalization 
+group equations, and considered its applications. In particular, we 
+considered the notion of asymptotic freedom. In this lecture, we will 
+actually consider an example of a good quantum theory which exists 
+nonperturbatively and is asymptotically free. But before this let us finish 
+the discussion of general properties of the renormalization group equation. 
+
+Consider a theory given by a Lagrangian which classically 
+ has a symmetry prohibiting masses (e.g. QED with a chiral fermion 
+with no antichiral partner; such a theory has a chiral symmetry
+which prohibits the mass of a fermion). Let us ask 
+the question: can a physical mass 
+be dynamically generated in the corresponding quantum theory? 
+Of course, this can only happen if the prohibiting symmetry is broken 
+quantum mechanically. 
+
+Let $m_p$ be the physical mass of the particle in this
+ theory. That is, $m_p$ is the pole of the 2-point function
+in momentum space. 
+
+Since the Lagrangian can have no mass term, there is no bare masses. 
+Therefore, it is clear
+from counting of dimensions that the physical mass 
+of the particle is given by 
+$$
+m_p=\mu f(g),\tag 4.1
+$$
+where $f$ is a scalar function and $g$ is a dimensionless coupling. 
+
+As we made clear in the previous lectures, the main property of the 
+renormalization  group vector field on the space $P\times M$ 
+(where $M$ is the set of momentum scales, and $P$ the space of parameters) 
+is that any physical parameters -- actual (not bare!) masses of particles,
+scattering amplitudes -- are CONSTANT along the trajectories of this vector 
+field. 
+Thus, the renormalization group equation says 
+$$
+(\mu\d_\mu+\beta\d_g)\mu f(g)=0,\tag 4.2
+$$
+ which yields
+$$
+m_p=C\mu e^{-\int_{g_0}^g\frac{dx}{\beta(x)}}.\tag 4.3
+$$
+Consider the behavior of this function for weak coupling: $g\to 0$.
+As usual, this behavior is determined from the behaviour of the beta-function, 
+which can be obtained from a 1-loop calculation.  
+For example, assume that in our theory $\beta(g)\sim \pm g^3$ 
+(e.g. QED,QCD). Then 
+$$
+m_p\sim \tilde C\mu e^{\mp 1/g^2}.\tag 4.4
+$$
+
+Thus, for an asymptotically free theory we have $m_p\sim \mu e^{-1/g^2}$.
+This is a reasonable behavior, since $m_p\to 0$ as $g\to 0$, so the theory 
+is massless in the UV limit, as it should be. 
+Also, if $\Lambda$ is a cutoff and $g_\Lambda$ the coupling at $\Lambda$, 
+we have $m_p\sim \Lambda e^{-1/g_\Lambda^2}$. In particular, 
+$g_\Lambda^2\sim 1/\ln\Lambda$ as $\Lambda\to\infty$, which can 
+also be seen from the renormalization group equation. 
+
+Note that (4.4)
+goes to $0$ as $g\to 0$ faster than any polynomial; so it is a nonperturbative 
+correction; in particular, all perturbative 
+(Feynman diagram) approximations to $m_p(g)$ vanish. 
+This is not surprising, since the Feynman diagrams are written 
+from the Lagrangian in which there is no room for mass corrections. 
+
+Of course, it is possible that the proportionality coefficient 
+in (4.4) vanishes, in which case $m_p=0$ even in 
+the nonperturbative quantum theory. This can happen for example 
+if the prohibiting symmetry is unbroken (e.g. supersymmetry). 
+
+However, if the theory is not asymptotically free, but IR free, we get 
+$m_p\sim \mu e^{1/g^2}$, which is absurd. Thus, 
+in this case, mass generation 
+is not possible. 
+ 
+Finally, let us explain why theories which are not asymptotically 
+free are usually not believed to exist as well defined nonperturbative
+quantum theories. For this purpose consider 
+the dependence of the bare coupling $g_0$ of the cutoff $\e$ (in the 
+dimensional regularization -- minimal subtraction scheme); this 
+dependence can be derived from the renormalization group equation.
+Namely, we have (see Lecture 2)
+$$
+g_0(\e,g)=ge^{\int_0^g\frac{\beta(x)dx}{x(\e x/2-\beta(x))}},\tag 4.5
+$$
+where $\e=4-d$. 
+
+Let $\beta(x)=\pm x^2+...$. Then formula (4.5) can be written in the form 
+$$
+g_0=g+\sum_{m=1}^\infty g^{m+1}P_m(1/\e),\tag 4.6
+$$
+where $P_m$ is a polynomial of degree $m$ with zero free term. 
+This expression yields counterterms in all orders of perturbation theory. 
+
+Let us see, however, whether (4.5) and (4.6) make sense nonperturbatively. 
+If the sign in the beta-function is minus (asymptotic freedom), then the 
+integral in (4.5) is well 
+defined, at least for small enough $g$, since the denominator is positive. 
+However, if the sign is plus (no asymptotic freedom), then 
+the denominator vanishes for $x\sim \e$, so 
+if $\e$ is small then the integral gets a singularity even for small $x$. 
+This is usually regarded as a sign that the theory does not exist, i.e. that 
+ist perturbation expansion does not correspond to any nonperturbative theory. 
+In particular, the lack of asymptotic freedom for $\phi^4$ theory 
+is one of the reason people believe this theory does not exist. 
+
+{\bf Remark.} In spite of this, physicists often use 
+Lgarangians which are not asymptotically free and even nonrenormalizable
+for describing quantum field theories. In this case, it is usually meant 
+that the the theory is considered with a permanent UV cutoff, which is not 
+sent to infinity; thus the theory only makes sense as a 
+``low energy effective theory''. See Witten's lecture II-1 for more details. 
+
+{\bf 2.2. The Gross-Neveu model.} 
+
+Now we are ready to consider a concrete field theory, on whose example 
+we will be able to illustrate the method of renormalization group. 
+This is a 2-dimensional, purely fermionic theory, which is called the 
+$(\bar \psi\psi)^2$-model, or the Gross-Neveu model. 
+
+This model exhibits the following nice properties:
+
+1. It is described by a local Lagrangian and is both renormalizable and 
+asymptotically free. 
+
+2. It exists nonperturbatively; this is a nontrivial fact which can be proved 
+by applying a nonperturbative version of the renormalization group method. 
+
+3. It has dynamical symmetry breaking and dynamical mass generation 
+(these things go together as the symmetry which is broken is the one 
+prohibiting mass). 
+
+4. This theory is in 2 dimensions, but we can formally continue its
+large N expansion 
+to $2+\e$ (using dimensional regularization techniques), and the obtained 
+amplitudes will be regular at $\e=1$. Thus we obtain a 3-dimensional 
+``theory'' 
+which is non-renormalizable but exists.  
+
+5. This theory is soluble (integrable). This means, its S-matrix can be 
+computed exactly for a any fixed N and the Green's functions can be computed 
+exactly in the large N limit (where N is the number 
+of particles). Computation of the S-matrix leads to the theory of quantum 
+groups (Yangians) -- see Witten's lecture II-3, where a similar model is 
+studied. 
+
+6. It is closely related to 2-dimensional nonlinear sigma-model 
+to a homogeneous space with positive curvature (see Witten's lecture II-6). 
+ 
+Let us now define the Gross-Neveu model. It is a theory of N massless 
+Dirac fermions in two dimensions with a quartic interaction.
+Namely, let $V$ be a complex N-dimensional vector space with a positive 
+definite Hermitian form $(,):\bar V\times V\to \C$, 
+and let $\psi$ be a Dirac spinor on $\R^{1,1}$ 
+with coefficients in $V$. Consider the Lagrangian in Minkowski space
+$$
+L(\psi)=\int d^2x(i(\bar\psi,D\psi)+\frac{g^2}{2}(\bar\psi,\psi)^2).\tag 4.7
+$$
+
+Let us determine the symmetries of this Lagrangian.
+Let $S_+,S_-$ be the spin bundles over $\R^{1,1}$ (these are real, 
+1-dimensional representations of $Spin(1,1)$ with spins $1/2$ and $-1/2$.
+Let $S=S_+\oplus S_-$. 
+By definition, $\psi$ is a section of $\Gamma(S)\o V$, so 
+$\psi=(\psi_+,\psi_-)$. In terms of the chiral components 
+$(\psi_+,\psi_-)$, Lagrangian (4.7) can be written as 
+$$
+L(\psi)=\int d^2x(i(\bar\psi_+,D\psi_+)+i(\bar\psi_-,D\psi_-)+
+g^2((\bar\psi_+,\psi_-)+(\bar\psi_-,\psi_+)).\tag 4.8
+$$
+We see that (4.8) has an obvious global $U(N)$ symmetry 
+(unitary transformations of $V$), as well as a chiral symmetry 
+$\psi_\pm\to \pm \psi_\pm$. This chiral symmetry is the one that prevents a 
+mass term $m(\bar\psi,\psi)$. We will see that in quantum theory, 
+the chiral symmetry will be broken and the mass will be dynamically generated. 
+
+Recall that in 2 dimensions spinor fields have scaling dimension $1/2$. 
+This implies that the theory defined by (4.7) is purely renormalizable
+(i.e. classically conformally invariant), with a single renormalizable 
+coupling $g$. 
+
+{\bf Remark.} One can show 
+that the $U(N)$ symmetry survives in quantum theory, and 
+so no new couplings will appear in the process of renormalization. 
+
+We will see below that the Gross-Neveu model is asymptotically free 
+for $g^2>0$ and IR free for $g^2<0$. So we could hope to have a nice theory 
+only for $g^2>0$. Note that unlike $\phi^4$-theory, the positivity of the 
+coefficient at the quartic term in Minkowski signature is not a problem, 
+since our theory is fermionic and positivity of $g^2$ does not create 
+a divergence in the functional integral.  
+
+To study the Gross-Neveu model, it will be useful to introduce 
+an auxiliary real scalar field $\sigma$ (with values in $\R$), and consider 
+the Lagrangian
+$$
+L_\sigma(\psi,\sigma)=\int d^2x(i(\bar\psi,D\psi)+g\sigma(\bar\psi,\psi)-\frac{1}{2}
+\sigma^2).\tag 4.9
+$$
+It is clear that this Lagrangian is equivalent to (4.7): indeed, 
+(4.7) is obtained from (4.9) by integrating out $\sigma$ 
+(i.e. setting $\sigma$ to equal its stationary point, $\sigma=g(\bar\psi,\psi)$. 
+
+{\bf 2.3. The large N limit.}
+
+The Gross-Neveu model becomes especially simple in the limit $N\to\infty$. 
+More precisely, in this limit the theory is exactly solvable. 
+This means, we can compute the asymptotic expansion of 
+the Green's functions in this theory in terms of the variable $1/N$. This is 
+a kind of perturbation expansion which is useful also 
+for many other theories. The advantage of this expansion versus
+perturbation expansions with respect to other parameters (like $g$) is that 
+$1/N$ is not changed by the renormalization group flow. 
+ 
+We will solve the Gross-Neveu model in the large $N$ limit 
+in two ways: 1) by explicitly summing the perturbation series; 
+and 2) by using presentation (4.9).
+
+{\bf Remark.} It is not claimed that there is a well defined quantum field 
+theory at $N=\infty$; we just have a family of theories depending on $N$ whose 
+Green's functions have a nice asymptotic expansion in $N$ as $N\to\infty$.
+
+We start with summing the perturbation series. We note that the perturbation 
+series for bosonic theories (with a cutoff) usually diverges, 
+and one has to apply Borel summation to get a nonperturbative result. 
+However, in purely fermionic theories (like the Gross-Neveu model) 
+the perturbation theory may converge, defining an analytic 
+(not only $C^\infty$) function of the perturbation parameter. 
+To understand why it is so, it is best to look at two integrals 
+$$
+I_1(h)=\int_{\R^n} e^{-\frac{v^2+(v^2)^2}{h}}dv, 
+I_2(h)=\int_{\R^{0,2n}}e^{-\frac{(\psi,A\psi)+(\psi,A\psi)^2}{h}}d\psi
+$$
+where $\R^{0,2n}$ 
+is an odd vector space, and $A$ a skewsymmetric nondegenerate 
+matrix. Clearly, the first integral gives a divergent perturbation series, 
+while the second gives a polynomial. For infinite dimensional integrals, 
+convergence is not obvious even for purely fermionic theories, but one can 
+show that for the Gross-Neveu model the perturbation series indeed converges. 
+(see the paper of Gawedzki and Kupiainen, CMP, v.102(1),p.1-30). 
+
+Consider Lagrangian (4.7) for large $N$. It is clear that the first (kinetic)
+term is of order $N$ and the second (quartic) term is of order $N^2$. 
+Therefore, if set $g_N=\bg N^{-1/2}$, where $\bg$ is fixed, and consider 
+the sequence of theories with N-dimensional $V$ and coupling constant $g_N$, 
+then both terms in the Lagrangian scale in the same way for large $N$ 
+(they are both of order $N$). Thus, the large N limit for our theory is 
+similar to its quasiclassical limit (i.e. $1/N$ plays the role 
+of the Planck constant). 
+
+Let us consider the Feynman rules for our theory. For this we will choose 
+an orthonormal basis $e_i$ in $V$ and write $\psi=\sum \psi_je_j$, where 
+$\psi_j$ are complex valued spinors. The Feynman rules are as follows:
+the fermion propagator (in momentum space of Minkowski signature) 
+is $\frac{ip}{p^2}$
+(as usual), and the 4-vertex corresponding to the term 
+$(\bar\psi_j,\psi_{j'})(\bar\psi_k,\psi_{k'})$ carries the factor 
+$ig^2\delta_{jj'}\delta_{kk'}$. This makes in natural to draw the 4-vertex as 
+two separate (oriented) arcs:
+$$
+\gather
+i\ \ \ j\\
+\biggr)\biggl(\\
+\bar i\ \ \ \bar j\endgather
+$$
+(bars over $i,j$ remember the orientation). 
+In particular, every Feynman diagram is a union of lines and 
+circles, like
+$$
+\biggr)OOO\biggl(  \tag 4.10
+$$
+For large $N$, each circle gives a factor of $N$ (because of summation 
+over the index that lives on this circle) and every ``tangency'' 
+of two circles (a 4-vertex) gives a factor of $g^2$. 
+Thus the order of the contribution from such diagram is 
+$N^K$, where $N$ is the number of circles minus the number of  
+tangencies. 
+
+Now consider the perturbation expansion of the 
+1-particle irreducible 
+2-point function $\Gamma_2$ for $\psi$. This means we should consider 
+diagrams with one line and any number of circles. 
+For convenience let us close up the line (this will only give us 
+an extra factor of $N$). Then we get diagrams with circles only. 
+For any such diagram $D$, consider the graph $\Gamma(D)$ 
+in which vertices are the circles of $D$ and edges are tangencies of circles. 
+We see that $\Gamma_2=\sum_DA_D$, 
+where $A_D$ is the amplitude of $D$, and for large $N$ one has
+$A_D\sim N^{-n}$, where $n$ is the number of cycles in $\Gamma(D)$.
+(note that $\Gamma(D)$ is always connected). 
+
+Thus, the leading term of the large $N$ expansion of our theory is given 
+by ``tree'' diagrams, i.e. diagrams for which $\Gamma(D)$ (not $D$ itself!)
+is a tree. 
+
+Now, it is easy to see that the amplitude of the diagram 
+$$
+\biggr)O
+$$
+vanishes (it contains the factor 
+$\int_{ |p|\le \Lambda} \frac{ip}{p^2}d^2p$
+which is zero by symmetry arguments). Therefore, there is no nontrivial trees
+which give a contibution of order $N^0$ to the 2-point function
+(indeed, such a tree would have to have only one 1-valent vertex, which 
+is impossible for a nontrivial tree); 
+thus the propagator does not get a correction in perturbation 
+theory in the  top order in $N$. 
+
+Let us now consider the 4-point function
+$\<\psi_j\bar\psi_k\bar\psi_l\psi_m\>$. Arguing similarly to the 2-point 
+case, we see that all leading contributions (in $N$) come from diagrams 
+$D$ for which $\Gamma(D)$ is a tree with only two 1-valent vertices. 
+Any such tree must be a chain. Thus all diagrams of importance
+in the leading order are the following diagrams, which we call 
+$D_n$ and $D_n'$ (where $n$ is the number of bubbles):
+$$
+\gather
+j\ \ \ \ \ \ \ \bar k\\
+\biggr)OOO\biggl(\\
+\bar l\ \ \ \ \ \  \ m\\
+\text{and}\\
+j\ \ \ \ \ \ \ \bar l\\
+\biggr)OOO\biggl(\\
+\bar k\ \ \ \ \ \  \ m
+\endgather
+$$
+
+Thus, computing the leading term of the 4-point function reduces 
+to summing a geometric series. Namely, we have 
+$$
+\Gamma_4^{jklm}(p_1,p_2,p_3,p_4)|_{N=\infty}=\delta_{jk}\delta_{lm}F(s)+
+\delta_{jm}\delta_{kl}F(t),\tag 4.11
+$$
+where $$
+s=(p_1+p_2)^2, t=(p_3+p_4)^2, \tag 4.12
+$$ 
+$i,k,l,m$ are the labels of the components of $\psi_i$ for which 
+the 4-point function is computed, and $p_1,p_2,p_3,p_4$  
+are the momenta corresponding to labels $i,j,k,l$. 
+In this formula, the first summand comes from diagrams $D_n$ 
+  and the second from $D_n'$. Thus, 
+$$
+F(s)=\sum_{n\ge 0}A_{D_n}.\tag 4.13
+$$
+
+The amplitude of $D_n$ is easily computed. Since the Feynman integrals
+are IR convergent, it suffices to introduce an ultraviolet cutoff $\Lambda$. 
+Then 
+$$
+A_{D_n}=(ig^2)^{n+1}A^n,\tag 4.14
+$$
+where 
+$$
+A=\frac{iN}{\pi}\ln(-\Lambda^2/s)\tag 4.15
+$$
+(remember that a fermionic loop contributes a minus sign). 
+Thus, after introducing a counterterm 
+$Cg^4\ln(\Lambda/\mu)(\bar\psi,\psi)^2$ in the Lagrangian, 
+using some scale $\mu$, we will get by summing the geometric series:
+$$
+F(s)=\frac{ig^2}{1+\frac{g^2N}{\pi}\ln(-s/\mu^2)}.\tag 4.16
+$$
+
+Formula (4.16) implies that the coupling $g$ has the meaning 
+of the strength of the interaction at the scale $\mu$: indeed, if 
+we take $p_i$ such that $(p_i+p_j)^2=-\mu^2$ then $\Gamma_4^{jklm}=
+ig^2(\delta_{jk}\delta_{lm}+\delta_{jm}\delta_{kl})$. 
+
+Another consequence of formula (4.16) is that our theory is asymptotically 
+free for large $N$. Indeed, as $s\to -\infty$, function (4.16) behaves as 
+$1/(\ln(-s))$, i.e. goes to 0. Moreover, we can compute the $\beta$-function 
+exactly: from the renormalization group equation and (4.16) we get:
+$$
+\beta(g)=-\frac{g^3N}{\pi}+O(1),\ N\to\infty.\tag 4.17 
+$$
+This is the exact $\beta$-function to leading order in $1/N$. 
+
+Thus, we should expect that our theory is well defined in the UV limit. 
+
+Let us now consider what happens to this theory 
+in the infrared limit. 
+Then we notice that 
+formula (4.16) has an unfortunate property that the function 
+$F(s)$ has a pole at $s=-\mu^2e^{-\pi/g^2N}$. Thus, the $\Gamma$-function 
+has a pole outside of $0$ for ``Euclidean'' momenta. This cannot happen 
+in a well defined quantum field theory: it would mean that the theory 
+contains a ``tachyon'' -- particle of imaginary mass.  
+
+So what is wrong with our theory? There could be two things: either 
+the theory is ``sick'' (does not exist) or we have been doing 
+perturbation theory around a ``wrong'' (unstable) vacuum. 
+
+In fact, the situation (which can be expected if we believe the theory
+exists)
+is as follows. This theory classically has no mass gap, 
+so the quasiclassical approximation is not enough to determine what it does 
+quantum mechanically. What in fact happens is that the theory has two 
+different realizations, which are permuted by the chiral symmetry
+(see Witten's lecture II-1). In particular, the chiral symmetry is broken 
+quantum mechanically. These two vacuum states are massive (i.e. mass 
+is dynamically generated), and the expectation 
+value of $(\bar\psi,\psi)$ at them is nonzero: we have two opposite values for 
+two different vacua. However, these expectation values are exponentially 
+small (in terms of the coupling), so they cannot be distinguished in 
+perturbation theory. 
+
+Thus, 
+in order to find the quantum vacuum states, we have to use nonperturbative 
+methods. We will use formula (4.9), which contains an auxiliary bosonic 
+field $\sigma$.  
+
+Consider the Euclidean path integral with Lagrangian (4.9)
+(remember that we have to change the signs when going from 
+Minkowski to Euclidean space, and remove the $i$ in front of the 
+Dirac operator):
+$$
+\int D\psi D\sigma e^{-\int d^2x((\bar\psi,D\psi)-g\sigma(\bar\psi,\psi)+
+\frac{1}{2}\sigma^2)}.\tag 4.18
+$$ 
+In this integral, $\psi$ has $4N$ real components, and integration is carried 
+out over all of them. 
+Remembering the asymptotics of the terms of the Lagrangian in terms of $N$, 
+we see that it is convenient to replace $\sigma$ with $\sigma N^{1/2}$
+and rewrite this path integral as
+$$
+\int D\psi D\sigma e^{-N\int d^2x(\frac{1}{N}(\bar\psi,D\psi)-\frac{g}{\sqrt{N}}
+\sigma(\bar\psi,\psi)+
+\frac{1}{2}\sigma^2)}\tag 4.19
+$$ 
+
+Now, since the path integral (4.19) is Gaussian in $\psi$, we can integrate
+$\psi$ out. We get (up to an overall factor)
+$$
+\gather
+\int D\sigma \text{det}^N(D-g\sqrt{N}\sigma)e^{-N\int d^2x \sigma^2/2}=\\
+\int D\sigma e^{N\text{Tr}
+\ln (iD-g\sqrt{N}\sigma)-N\int d^2x \sigma^2/2}.\tag 4.20
+\endgather
+$$ 
+The large N limit of 
+last integral can be treated by the stationary phase method. 
+In particular, the expectation value of $\sigma$ 
+for large N is such that it makes 
+the functional 
+$$
+I(\sigma)=\text{Tr}\ln(D-g\sqrt{N}\sigma)-\int d^2x \sigma^2/2\tag 4.21
+$$
+stationary. 
+
+We look for constant functions $\sigma$. 
+Then the stationarity equation for (4.21) is
+$$
+\sigma=-\text{Tr}\frac{g\sqrt{N}}{D-g\sqrt{N}\sigma}=
+-\int \frac{d^2p}{(2\pi)^2}\frac{g\sqrt{N}}{iP-g\sqrt{N}\sigma},\tag 4.22
+$$
+where $P$ is the operator of Clifford multiplication by $p$. 
+Replacing $\sigma$ with $-i\rho$, we get  
+$$
+\rho=
+Tr\int \frac{d^2p}{(2\pi)^2}\frac{g\sqrt{N}}{P+g\sqrt{N}\rho},\tag 4.23
+$$
+
+It can be shown that this equation has two opposite nonzero solutions
+as well as the zero solution. 
+To find the nonzero solutions, the right hand side, which is divergent, 
+needs to be renormalized in the UV, using some scale $\mu$. The renormalized 
+equation has the form 
+$$
+\rho=
+\lim_{\Lambda\to\infty}
+(\int_{|p|=\Lambda} 
+\frac{d^2p}{(2\pi)^2}\frac{g\sqrt{N}}{P+g\sqrt{N}\rho}-\frac{g\sqrt{N}}
+{2\pi}\ln(\Lambda/\mu)).\tag 4.24
+$$
+Simplifying (4.24), we get
+$$
+\gather
+\rho=2\lim_{\Lambda\to\infty}
+\frac{g^2N\rho}{4\pi}\ln[\frac{\mu^2}{g^2N\rho^2}
+(1+g^2N\rho^2/\Lambda^2)]=\\
+2\frac{g^2N\rho}{4\pi}\ln[\frac{\mu^2}{g^2N\rho^2},\tag 4.25
+\endgather
+$$
+(the factor $2$ in the front is due to the fact that $P$ is a 2 by 2 matrix)
+which implies that 
+$$
+\rho=\frac{\mu}{g\sqrt{N}}e^{-\pi/g^2N}.\tag 4.26
+$$
+Thus, the expected physical mass of the fermions is
+$$
+m_p=g\sqrt{N}\rho=\mu e^{-\pi/g^2N}.\tag 4.27
+$$
+
+Another
+way to  find the explicit expression 
+for the nonzero solutions of equation (4.23) is to 
+compute the effective potential for $\rho$. The computation 
+is analogous to the above computation of the 4-point function, and 
+yields (up to scaling 
+$$
+V_{eff}(m)=\frac{m^2}{2}+\frac{g^2Nm^2}{4\pi}
+(\ln\frac{m^2}{\mu^2}-1).\tag 4.28
+$$
+The critical points of this function are $0$ and $\pm m_p$, where 
+$m_p$ is given by (4.27). However, the point $m=0$ is unphysical 
+(=does not define a quantum vacuum): at this point $V_{eff}''(m)=-\infty$, 
+so the point is a local maximum of the effective potential.  
+
+Thus, we have shown that our theory exhibits dynamical mass generation. 
+This is a special case of so called ``dimensional transmutation'' --
+a phenomenon in which a bare dimensionless coupling ($g$) transforms 
+dynamically into a dimensionful measurable quantity ($m$). 
+
+
+\end
+
+
+Now remember that as we tend $N\to\infty$, we decided to keep 
+$g\sqrt{N}$ fixed.  
+ 
+\end 
+
+Note that our theory has only one parameter. This means, after fixing the 
+scale of fields, 
+
+ 
+
+Suppose that $m$ is the bare mass for  
+this particle in this theory at a scale $\mu$. Then by dimensional analysis 
+we have 
+$$
+m_p=mf(g,Z), z=\ln(m/mu).\tag 4.1
+$$
+where $f$ is a dimensionless function of two dimensionless variables 
+(here we use scale-of-$\phi$- independent versions of $g,m$
+as was explained in previous lectures; note that here we have slightly 
+different notation). Then, using formula 
+(2.5) of lecture 2,  we see that the equation $Wm_p=0$ ($m_p$ is constant 
+along the renormalization group flow) can be expressed 
+as
+$$
+(\mu\frac{\d}{\d\mu}+\gamma m\frac{\d}{\d m}+\beta
+\frac{\d }{\d g})m_p=0.\tag 4.2
+$$
+(we use the scale-of-the-field independence of $m_p$ to drop the term 
+with $\frac{\d}{\d a}$).
+Substituting (4.1) into (4.2), we have
+$$
+-m\d_zf+\gamma m f+\gamma m \d_zf+\beta m\d_gf=0, \tag 4.3
+$$ 
+or
+$$
+(\frac{\d}{\d z}-\frac{\beta}{1-\gamma}\frac{\d}{\d g}-
+\frac{\gamma_m}{1-\gamma})f(g,z)=0.\tag 4.4
+$$
+Let us set $\bb=\beta/(1-\gamma)$, $\bga=\gamma/(1-\gamma)$. 
+Then, solving (4.4), we get 
+$$
+m_p=mf(g,z)=f(\bg(z),0)e^{\int_0^z\bga(\bg(t))dt},\tag 4.5
+$$
+where $\bg$ satisfies the differential equation 
+$\frac{d\bg}{dz}=\beta(\bg)$ with the initial condition $\bg(0)=g$. 
+(assuming that the renormalization prescription 
+used is mass-independent). 
+
+Now consider the question of dynamical generation of mass. The question is:
+can a theory which is asymptotically free and massless in the ultraviolet 
+limit generate a mass in the infrared? 
+
+Let us try to answer this question. Since our theory is asymptotically 
+free, it is not infrared free. Assume that it has an IR stable 
+fixed point $g^*\ne 0$, and is driven to this fixed point in the infrared
+by the renormalization group flow. In this case $\lim_{z\to -\infty}\bg(z)=
+g^*$, and formula (4.5) yields the asymptotics
+$$
+m_p\sim mf(g^*,0)(m/\mu)^{\frac{\gamma(g^*)}{1-\gamma(g^*)}}, m\to 0\tag 4.6
+$$
+(for sufficiently nice function $\gamma$). In particular, if 
+$g^*$ is so small that $\gamma(g^*)<1$ (remember that ($\gamma(0)=0$)
+then $m_p\to 0$ as $m\to 0$, 
+so the mass cannot be generated dynamically. However
+for $\gamma(g^*)>1$ mass generation takes place. Thus,  
+whether dynamical mass generation occurs or not
+for and IR stable fixed point $g^*\ne 0$
+-- cannot be decided on the basis of perturbation theory. 
+
+However, 
+if the original theory was not asymptotically free, then mass generation 
+surely is not possible: in this case $g_*=0$, and 
+$m_p\sim m(\ln m)^p$ for some $p$, so $m_p\to 0$ as $m\to 0$. 
+

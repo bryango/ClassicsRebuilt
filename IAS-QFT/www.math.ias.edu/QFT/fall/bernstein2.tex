@@ -1,0 +1,1162 @@
+\input amstex
+
+\documentstyle{amsppt}
+\magnification=1200
+\pagewidth{6.5 true in}
+\pageheight{8.9 true in}
+\loadeufm
+\loadeusm
+
+\catcode`\@=11
+\def\logo@{}
+\catcode`\@=13
+
+\NoRunningHeads
+
+\font\boldtitlefont=cmb10 scaled\magstep2
+
+\def\dspace{\lineskip=2pt\baselineskip=18pt\lineskiplimit=0pt}
+
+\def\uphook{\sssize\cup\kern-4.35pt\raise4.50pt%
+     \hbox{$\big\uparrow$}}
+\def\oplusop{\operatornamewithlimits{\oplus}\limits}
+\def\otimesop{\operatornamewithlimits{\otimes}\limits}
+\def\w{{\mathchoice{\,{\scriptstyle\wedge}\,}
+  {{\scriptstyle\wedge}}
+  {{\scriptscriptstyle\wedge}}{{\scriptscriptstyle\wedge}}}}
+\def\Le{{\mathchoice{\,{\scriptstyle\le}\,}
+  {\,{\scriptstyle\le}\,}
+  {\,{\scriptscriptstyle\le}\,}{\,{\scriptscriptstyle\le}\,}}}
+\def\Ge{{\mathchoice{\,{\scriptstyle\ge}\,}
+  {\,{\scriptstyle\ge}\,}
+  {\,{\scriptscriptstyle\ge}\,}{\,{\scriptscriptstyle\ge}\,}}}
+\def\vrulesub#1{\hbox{\,\vrule height7pt depth5pt\,}_{#1}}
+\def\rightsubsetarrow#1{\subset\kern-6.50pt\lower2.85pt
+     \hbox to #1pt{\rightarrowfill}}
+\def\mapright#1{\smash{\mathop{\,\longrightarrow\,}\limits^{#1}}}
+\def\rmapdown#1{\Big\downarrow\kern-1.0pt\vcenter{
+     \hbox{$\scriptstyle#1$}}}
+\def\Amod{\text{\rm $A$-mod}}
+\def\modA{\text{\rm mod-$A$}}
+\def\HOM{\scrH om}
+\def\END{\scrE nd}
+\def\SMan{S\scrM an}
+
+\def\vphi{{\varphi}}
+\def\vphibar{\overline{\vphi}}
+
+\def\zerobar{\overline{0}}
+\def\onebar{\overline{1}}
+\def\Cbar{\overline{C}}
+\def\Lbar{\overline{L}}
+\def\Mbar{\overline{M}}
+\def\scrMbar{\overline{\scrM}}
+\def\Qbar{\overline{Q}}
+\def\grGbar{\overline{\grG}}
+
+\def\Ttil{\widetilde{T}}
+\def\Ytil{\widetilde{Y}}
+\def\ytil{\widetilde{y}}
+\def\xitil{\widetilde{\xi}}
+\def\scrMtil{\widetilde{\scrM}}
+
+\def\Stab{\text{\rm Stab}} \def\Mat{\text{\rm Mat}}
+\def\SO{\text{\rm SO}} \def\Spin{\text{\rm Spin}}
+\def\SU{\text{\rm SU}} \def\Lie{\text{\rm Lie}}
+\def\SL{\text{\rm SL}} \def\Sym{\text{\rm Sym}}
+\def\str{\text{\rm str}} \def\tr{\text{\rm tr}}
+\def\Id{\text{\rm Id}} \def\Fr{\text{\rm Fr}}
+\def\Hom{\text{\rm Hom}} \def\Mor{\text{\rm Mor}}
+\def\Sets{\text{\rm Sets}} \def\GL{\text{\rm GL}}
+\def\Vect{\text{\rm Vect}} \def\Ext{\text{\rm Ext}}
+\def\Ber{\text{\rm Ber}} \def\Vol{\text{\rm Vol}}
+\def\Aut{\text{\rm Aut}} \def\SUSY{\text{\rm SUSY}}
+\def\Lie{\text{\rm Lie}}
+
+\def\dbC{{\Bbb C}} 
+\def\dbR{{\Bbb R}}
+\def\dbZ{{\Bbb Z}} 
+
+
+\def\scr#1{{\fam\eusmfam\relax#1}}
+
+\def\scrA{{\scr A}}   \def\scrB{{\scr B}}
+\def\scrC{{\scr C}}   \def\scrD{{\scr D}}
+\def\scrE{{\scr E}}   \def\scrF{{\scr F}}
+\def\scrG{{\scr G}}   \def\scrH{{\scr H}}
+\def\scrI{{\scr I}}   \def\scrJ{{\scr J}}
+\def\scrK{{\scr K}}   \def\scrL{{\scr L}}
+\def\scrM{{\scr M}}   \def\scrN{{\scr N}}
+\def\scrO{{\scr O}}   \def\scrP{{\scr P}}
+\def\scrQ{{\scr Q}}   \def\scrR{{\scr R}}
+\def\scrS{{\scr S}}   \def\scrT{{\scr T}}
+\def\scrU{{\scr U}}   \def\scrV{{\scr V}}
+\def\scrW{{\scr W}}   \def\scrX{{\scr X}}
+\def\scrY{{\scr Y}}   \def\scrZ{{\scr Z}}
+
+\def\gr#1{{\fam\eufmfam\relax#1}}
+
+%Euler Fraktur letters (German)
+\def\gra{{\frak a}}
+\def\grG{{\frak G}}
+\def\grg{{\frak g}}
+\def\grp{{\frak p}}
+
+
+\topmatter
+\title\nofrills
+{\boldtitlefont Lectures on supersymmetry}
+\endtitle
+\author
+{\rm Joseph Bernstein}
+\endauthor
+\endtopmatter
+
+
+
+\NoBlackBoxes
+\document
+\dspace
+
+\bigskip\bigskip
+\head
+{\bf Lecture 2}
+\endhead
+
+\bigskip
+\subhead
+1. Super liner algebra
+\endsubhead
+
+\subhead
+1.1
+\endsubhead
+A super vector space (over a field) is a $\dbZ_2$-graded vector space,
+standard notation: $V=V_{\zerobar}\oplus V_{\onebar}$.
+We let $p$ denote the function of parity defined on homogeneous elements.
+Super vector spaces form an abelian category endowed with a functor
+of change of parity that we denote as $\Pi$.
+There is also a tensor structure on the category of super
+vector spaces:
+$$
+\left(V_{\zerobar}\oplus V_{\onebar}\right)\otimes
+\left(W_{\zerobar}\oplus W_{\onebar}\right):=
+\underbrace{V_{\zerobar}\otimes W_{\zerobar}\oplus
+     V_{\onebar}\otimes
+W_{\onebar}}_{\thickfrac\thickness0{\big\uparrow}
+{\dsize\text{even component}}}\,\, \oplus\,\,
+\underbrace{V_{\zerobar}\otimes W_{\onebar}\oplus
+V_{\onebar}\otimes 
+     W_{\zerobar}}_{\thickfrac\thickness0{\big\uparrow}
+  {\dsize\text{odd component}}}
+\tag{$*$}
+$$
+The braiding operation $S:V\otimes W\to W\otimes V$ is defined by the rule:
+$$
+S_{V\otimes W}(X\otimes Y)=(-1)^{p(X)p(Y)}Y\otimes
+X.\tag{$**$}
+$$
+If $V=V_{\zerobar}\oplus V_{\onebar}$ is a super vector
+space, we set
+$(m,n):=(\dim\,V_{\zerobar},\dim\,V_{\onebar})$ to be its
+dimension.
+All types of algebras in the super world are defined as
+algebras in the tensor category of super vector spaces.
+We will give below a more down-to-Earth definition of basic
+algebraic structures.
+
+\subhead
+1.2
+\endsubhead
+
+Associative super algebra is a $\dbZ_2$-graded algebra (of
+course, the product operation must respect the
+$\dbZ_2$-grading).
+Left and right modules over an associative super algebra 
+are defined in an obvious manner, and the corresponding
+categories will be denoted by \break 
+$A-\mod$ and $\mod-A$, respectively.
+On each of these categories we have the parity change functor
+$\Pi$.
+
+An associative algebra is said to be commutative if
+$\forall\,a,b$ $a\cdot b=(-1)^{p(a)p(b)}b\cdot a$.
+
+\proclaim{Lemma-Construction}
+Let $A$ be a commutative super algebra.
+Then every left $A$-module $M$ acquires in a functorial way
+a right $A$-action.
+Moreover, the right and the left $A$-actions on $M$ commute.
+\endproclaim
+
+\demo{Proof}
+For $a\in A$, $m\in M$ we let $m\cdot a:=(-1)^{p(a)p(m)}am$.
+This is a right action and we have:
+$$
+(b\cdot m)a=(-1)^{p(a)(p(b)+p(m))}(a\cdot b)(m)=
+(-1)^{p(a)p(m)}b\cdot(am)=b\cdot(m\cdot a)\qquad\blacksquare
+$$
+\enddemo
+
+\proclaim{Corollary}
+If $M,N\in \Amod$, we can define new left modules 
+$\HOM_{\modA}(M,N)$; $M\otimesop_{A}N$.
+\endproclaim
+Therefore, super commutative algebras play the same role in
+the super world as usual commuttive algebras do in the usual
+mathematics.
+
+Finally, a Lie super algebra is a vector space
+$L=L_{\zerobar}\oplus L_{\onebar}$ with a bracket operation
+$[\quad,\quad]:\,\,L\otimes L\to L$ with:
+$$
+\align
+&[X,Y]=(-1)^{p(X)p(Y)}[Y,X]\\
+[X,&[Y,Z]]+(-1)^{p(Z)(p(X)+p(Y))}[Z,[X,Y]]+
+(-1)^{p(X)(p(Y)+p(Z))}[Y,[Z,X]]=0
+\endalign
+$$
+Note that, if $X\in L_{\onebar}$, $[X,X]$ does not
+necessarily vanish. 
+We have a functor:
+$$
+\text{Associative algebras} \longrightarrow \text{Lie
+algebras.}
+$$
+This functor preserves the underlying vector space and
+$$
+[X,Y]=XY+(-1)^{p(X)p(Y)}YX.
+$$
+In particular, if $X\in A_{\onebar}$, $[X,X]=2X^2$
+
+\subhead
+1.3
+\endsubhead
+
+Let $V$ be a super vector space, or more generally a module
+over a  commutative super aglebra $A$.
+
+We have a natural action of the symmetric group $S^n$ on
+$$
+\underbrace{V\otimesop_{A}V\otimes\cdots
+ \otimesop_{A}V}_{\text{$n$ times}}
+\qquad\text{(Remember, $\sigma(X\otimes Y):=\,(-1)^{p(X)p(Y)}
+Y\otimes X$)}
+$$
+
+$\Sym^n(V)$ is defined to be $(V^{\otimes n})^{S^n}$.
+
+The space $\Sym(V) = \oplus \Sym^n(V)$ has a natural
+structure of graded commutative superalgebra.
+
+If $V=V_{\zerobar}$, $\Sym^n(V)$ in the super sense
+identifies with the usual $\Sym^n(V)$, whereas if
+$V=V_{\onebar}$, $\Sym^n(V)$ in the super sense coincides
+with $\Lambda^n(V)$.
+
+We define the  exterior algebra $\Lambda(V)$ as
+$\Sym(\Pi(V))$. This again is a commutative superalgebra.
+
+
+\subhead
+1.4
+\endsubhead
+
+Let $A$ be a commutative super algebra and let $M$ and $N$
+be two free $A$-modules, i.e.
+$$
+\align
+M &=\underbrace{A\oplus A\oplus\cdots\oplus A\oplus A}_{p}\,\,
+\oplus\,\,\underbrace{\Pi A\oplus \Pi A\oplus\cdots\oplus \Pi A}_{q}\\
+N &=\underbrace{A\oplus A\oplus\cdots\oplus A\oplus
+A}_{p'}\,\,\oplus\,\,\underbrace{\Pi A\oplus \Pi A\oplus\cdots
+   \oplus \Pi A}_{q'}
+\endalign
+$$
+and let $(e_1,\dotsc,e_p,e_{p+1},\dotsc,e_{p+q})$,
+$(f_1,\dotsc,f_{p'},f_{p'+1},\dotsc,f_{p'+q'})$ denote their
+bases.
+
+Then every element in $\HOM(M,N)$ (cf. Corollary 1.2) can be
+presented in a matrix form
+$$
+T=\quad
+\bordermatrix{\offinterlineskip
+     &\overbrace{\qquad}^{p} &\overbrace{\qquad}^{q}\cr
+p'\Bigl\{ &A &B\cr
+\noalign{\smallskip}
+q'\Bigl\{ &C &D\cr}
+$$
+
+$T$ is even if all the entries of $A$, $D$ are even and those
+of $B$ and $C$ are odd.
+
+$T$ is odd if the entries of $A$, $D$ are odd and those of
+$B$ and $C$ are even.
+
+When $M=N$, $\END(M)$ will be identified with the matrix
+algebra which we denote as $Mat_{p,q}(A)$
+
+\proclaim{Lemma}
+Consider an even morphism  $str: \Mat_{p,q}(A) \to {\str} A$ 
+given by the formula
+$\str\left(\lower7pt\hbox{\vbox{\offinterlineskip
+\halign{\hfill #\hfill &\vrule# &\kern3pt\hfill #\hfill\cr
+$A$ &&$B$\cr \phantom{$a$} &&\phantom{$a$}\cr
+\noalign{\hrule}
+\phantom{$a$} &&\phantom{$a$}\cr
+$C$ &&$D$\cr}}}\right) =\tr\,A- (-1)^{p(D)}\tr\,D$.
+Then $\str([X,Y])=0$.
+
+$\blacksquare$
+\endproclaim
+
+The function $(\str)$ can also be defined  using the tensor
+structure mentioned in 1.1.
+
+\bigskip
+\subhead
+2. Super calculus
+\endsubhead
+
+\subhead
+2.1. Super domains
+\endsubhead
+
+A super domain of dimension $(p,q)$ is an open subset
+$U\subseteq \dbR^p$ with a super algebra of functions 
+$C^\infty(U)\otimes\Lambda^{\cdot}(\xi_1,\dotsc,\xi_q)$.
+For each $x\in U$ we have the evaluation map $ev_x\colon\,
+C^\infty(U)\otimes\Lambda^{\cdot}(\xi_1,\dotsc,\xi_q)\to\dbR$
+defined as 
+$$
+\cases
+ev_x(f\otimes 1)=f(X) &\\
+ev_x(1\otimes\xi)=0 &.
+\endcases
+$$
+The triple $(U,C^\infty(U)\otimes
+\Lambda^{\cdot}(\xi_1,\dotsc,\xi_q),ev_x)$ will be denoted by
+calligraphic $\scrU$ and the algebra
+$C^\infty(U)\otimes\Lambda^{\cdot}(\xi_1,\dotsc,\xi_q)$ will be
+denoted by $C^\infty(\scrU)$.
+
+If $\scrU$ and $\scrV$ are two super domains, a morphism
+$\vphi\colon\,\scrU\to\scrV$ is a pair $(\vphi_0,\vphi^*)$,
+where $\vphi_0\colon\,U\to V$ is a map of the underlying
+topological spaces and $\vphi^*\colon\,C^\infty(\scrV)\to
+C^\infty(\scrU)$ is a super algebra map, s.t. $\forall\,x\in
+U$, $\forall\,f\in C^\infty(\scrV)$,
+$ev_x(\vphi^*(f))=ev_{\vphi_0(x)}(f)$.
+
+\remark{\bf Remarks}
+Note that neither a function $\in C^\infty(\scrU)$ nor a
+morphism $\scrU\to\scrV$ are determined by their values
+at $x\in U$.
+\endremark
+
+\example{Example}
+
+Let $\scrU=(\dbR^1, C^\infty(\dbR^1)\otimes\Lambda
+(\xi_1,\xi_2))$.
+Consider a morphism $\vphi\colon\,\scrU\to\scrU$ given by
+$\vphi_0=\Id$; $\vphi^*(\xi_1)=\xi_1$,
+$\vphi^*(\xi_2)=\xi_2$; $\vphi^*(x)=x+\xi_1\xi_2$.
+This is an example of an automorphism which is trivial on
+the underlying topological space.
+\endexample
+
+\proclaim{Lemma}
+
+\roster
+\item"{\rm (a)}"
+A map of super domains $\vphi\colon\scrU\to\scrV$ is
+completely determined by the image of the coordinate
+functions
+$$
+y_1,\dotsc,y_{p'},\xi_1,\dotsc,\xi_{q'}\in C^\infty
+(\scrV).
+$$
+
+\item"{\rm (b)}"
+For any $\ytil_1,\dotsc,\ytil_{p'},\xitil_1,\dotsc,
+\xitil_{q'}\in C^\infty(\scrU)$ $\exists !$ map
+$\vphi\colon\,\scrU\to\scrV$ with $\vphi^*(y_i)=\ytil_i$:
+$\vphi^*(\xi_j)=\xitil_j$ provided that $\forall\,x\in U$,
+$(\ytil_1(x),\ytil_2(x),\dotsc,\ytil_{p'}(x))\in V$.
+\endroster
+\endproclaim
+
+\subhead
+2.2. Supermanifolds
+\endsubhead
+
+A supermanifold $\scrM$ is a topological space $M$ endowed
+with a sheaf of super algebras $C^\infty(\scrM)$ 
+which is locally  isomorphic to a super domain.
+
+Morhisms between two supermanifolds $\scrM$ and $\scrN$ are
+defined as in the case of super domains.
+
+Analogous definitions can be also given in the context of real
+analytic, complex, or algebraic manifolds.
+
+Again, we emphasize that neither of the geometric constructions
+on supermanifolds that will be described is determined by its
+action on the points of $M$.
+Nevertheless, the following construction is often convenient:
+
+\proclaim{Lemma-Construction}
+For every supermanifold $\scrM$ of dimension $(p,q)$ there
+exists a canonical sub-supermanifold $\scrMbar$ of dimension
+$(p,0)$ (i.e. a usual manifold) with a property that 
+every map $\scrN @>{\vphi}>>\scrM$ with $\scrN$ being
+completely even must factor as
+$$
+\matrix
+ &\raise4pt\hbox{$\sssize\vphi$}\kern-5pt\nearrow 
+     &\raise8pt\hbox{$\scrM$}\\
+\scrN &&\uphook\\
+&\searrow\kern-6pt\raise4pt\hbox{$\sssize\vphibar$}
+&\lower8pt\hbox{$\scrMbar$}\\
+\endmatrix
+$$
+\endproclaim
+
+\demo{Proof}
+We set $\scrMbar$ to have the same underlying topological
+space as $\scrM$ does.
+$C^\infty(\scrMbar)$ is the quotient of $C^\infty(\scrM)$ by
+the ideal generated by all odd functions.\qquad
+$\blacksquare$
+\enddemo
+
+$\scrMbar$ is called the underlying manifold of the
+supermanifold $\scrM$.
+
+We let $\SMan$ denote the category of supermanifolds. As in the case of
+usual manifolds, $\SMan$ admits the direct product construction:
+$\scrM,\scrN\to\scrN\times\scrM$.
+
+As in the usual geometry, many important constructions for
+supermanifolds are carried out in families, where by a
+family $\scrM_S$ of supermanifolds over a base $S$ which is a
+supermanifold too, we mean a submersive morphism
+$$
+\CD
+\scrM_S\\
+@VVV\\
+S
+\endCD
+\qquad\text{(cf. 2.3)}.
+$$
+We will often consider sheaves of $C^\infty(\scrM)$-modules
+on a supermanifold $\scrM$.
+A sheaf is called locally free, if locally on $M$, we have
+$\scrF\simeq C^\infty(\scrM)\otimesop_{\dbR}V$, where $V$ is
+a super vector space.
+
+If $x$ is a point of a supermanifold $\scrM$ and if $\scrF$
+is a sheaf on $\scrM$, the fiber $\scrF_x$ of $\scrF$ at $x$
+is defined as a super vector space $\scrF/m_x\scrF$, where
+$m_x$ is the maximal ideal in $C^\infty(\scrM)$
+corresponding to $x$.
+
+\subhead
+2.3. Tangent sheaf
+\endsubhead
+
+Consider the sheaf of all (even and odd) derivations of
+$C^\infty(\scrM)$.
+This is a sheaf of locally free $C^\infty(\scrM)$-modules,
+called the tangent sheaf and we denote it by $\scrT(\scrM)$.
+
+The dual sheaf to $\scrT(M)$ denoted  by
+$\scrT(\scrM)^*$  is called the cotangent sheaf. 
+We have a canonical even morphism $D: \scrO(\scrM) \to 
+\scrT(\scrM)$ defined by $D(f)(X) = (-1)^{p(f)p(X)}X(f)$.
+
+   The sheaf  $\Omega^1(\scrM) = \Pi \scrT(\scrM)^*$ is called the
+sheaf of 1-forms on $\scrM$. We have canonical odd morphism
+$d: \scrO(\scrM) \to \Omega^1(\scrM)$.
+
+\proclaim{Lemma-Definition}
+The sheaf $\oplusop_{i\Ge 0}\Lambda^i(\Omega^1(\scrM)
+   \overset\text{def}\to\simeq \oplusop_{i\Ge 0}
+\Omega^i(\scrM)$ has a structure of a  commutative super
+algebra such that:
+
+\roster
+\item"{\rm 1)}"
+The differential
+$d\colon\,\Omega^i(\scrM)\to\Omega^{i+1}(\scrM)$ is odd and
+satisfies the Leibnitz rule.
+
+\item"{\rm 2)}"
+For $f\in C^\infty(\scrM)\overset\text{def}\to\simeq
+\Omega^0(\scrM)$ and $X \in\Gamma(\scrM,\scrT(\scrM))$ we have
+$$
+df(X)=(-1)^{p(x)}X(f).\qquad\qquad\blacksquare
+$$
+\endroster
+\endproclaim
+
+Note that, unlike the usual situation, the De Rham complex
+$\Omega^0(\scrM)\to\Omega^1(\scrM)\to\,\,\ldots$ is infinite
+unless $\scrM$ is even.
+
+Let $\vphi\colon\,\scrM\to\scrN$ be a morphism between two
+supermanifolds.
+If $x\in M$ and $y=\vphi_0(x)\in N$ we have a map of
+superspaces called the differential of $\vphi$ at $x$:
+$$
+T_x\vphi\colon\,\scrT_x(\scrM)\to\scrT_y(\scrN).
+$$
+
+As in the classical case, we have the ``implicit function
+theorem'':
+
+\proclaim{Theorem}
+
+Let $\vphi\colon\,\scrM\to\scrN$ be a submersion (i.e.
+$T_x\vphi$ is onto $\forall\,x$).
+Then locally on $\scrM$, it can be identified with a
+projection 
+$\scrM = \scrN\times\scrN' \to \scrN$
+\endproclaim
+
+\subhead
+2.4. Distributions
+\endsubhead
+
+A distribution on a manifold $\scrM$ is a subsheaf 
+$\gra\hookrightarrow\scrT(\scrM)$ which locally on $M$ can be
+realized as a direct summand.
+Such $\gra$ leads to considering the Frobenius pairing:
+$$
+\Fr\colon\,\gra\otimes\gra\to\scrT(\scrM)/\gra.
+$$
+It is easy to see that $\Fr$ is a map of
+$C^\infty(\scrM)$-modules.
+We have an analog of the Frobenius theorem:
+
+\proclaim{Theorem}
+$\Fr\equiv 0$ if and only if the distribution $\gra$ is
+integrable, i.e. if locally on $M$ there exists a
+submersive map $\pi: \scrM \to \scrN$
+ such that $\gra$ identifies with the kernel
+$$
+0 @>>> \gra @>>> \scrT(\scrM) @>>> \pi^*\scrT(\scrN)
+@>>> 0\qquad\qquad\blacksquare
+$$
+\endproclaim
+
+\subhead
+2.5
+\endsubhead
+
+A convenient way to think about supermanifolds is to view
+them as contravariant functors on the category $\SMan$.
+In other words, to a supermanifold $\scrM$ associate a
+functor
+$$
+F_\scrM\colon\,\,\text{\SMan}^0\to\text{Sets}
+$$
+given by $F_\scrM(S)=\Hom(S,\scrM)$.
+By the general category theory, such a functor determines
+$\scrM$ completely.
+(Sometimes, the appropriate supermanifold does not exist and
+such a functor is a good substitute for it.)
+Let us consider several examples.
+
+\example{Example 1}
+$\dbR^{1,0}$, $\dbR^{0,1}$.
+
+It is easy to see that
+$$
+\align
+F_{\dbR^{1,0}}(S) &\simeq C^\infty(S)_{\zerobar}\\
+F_{\dbR^{0,1}}(S) &\simeq C^\infty(S)_{\onebar}.
+\endalign
+$$
+\endexample
+
+\example{Example 2}
+
+Let $V$ be a finite dimensional super vector space. Then one can canonically 
+define a supermanifold which corresponds to $V$.
+This supermanifold corresponds to the functor
+$$
+F_V(S)=(C^\infty(S)\otimes V)_{\zerobar}.
+$$
+More generally, let $E$ be a locally free sheaf of
+$C^\infty(\scrM)$-modules on a supermanifold $\scrM$.
+We define the total space of the corresponding super vector
+bundle $V(E)$ on $\scrM$ by means of the functor
+$$
+F_{V(E)}(S)=\{\text{pairs } \alpha\colon\,S\to M,\sigma\},
+$$
+where $\alpha$ is a morphism of supermanifolds and $\sigma$
+is an even section of $\alpha^*(E)$ on $S$. (Here $\alpha^*$
+denotes the functor of pull-back. )
+\endexample
+
+\example{Example 3}
+
+We will consider a particular case of the previous example
+for $E=\Pi(\scrT(\scrM))$.
+The supermanifold $V(E)$ will be also denoted as
+$\scrMtil$.
+\endexample
+
+\proclaim{Lemma}
+$F_{\scrMtil}(S)\simeq\Hom(S\times\dbR^{0,1},\scrM)
+\qquad\qquad\blacksquare$
+
+\noindent
+In particular, the points of $\scrMtil$ bijectively
+correspond to morphisms $\dbR^{0,1}\to\scrM$.
+\endproclaim
+Supermanifolds obtained in this way will be sometimes
+denoted as $\Mor(\dbR^{0,1},\scrM)$.
+
+\bigskip
+\subhead
+3. Lie supergroups and Lie superalgebras
+\endsubhead
+
+\subhead
+3.1. Lie supergroups
+\endsubhead
+
+Let $\grG$ be a supermanifold, which we would like to endow with
+a structure of a Lie supergroup on $\grG$. It is very convenient to phrase 
+the corresponding definition in terms of the corresponding functors.
+
+\definition{Definition}\quad 1)\enspace
+We say that $\grG$ is a Lie supergroup if the functor
+$F_\grG\colon{\SMan}^0\to\Sets$ possesses a group
+structure (i.e. if for every $B\in\SMan$ the set $F_\grG(B)$ is
+a group structure and for any morphism
+$B_1\to B_2$ of supermanifolds the corresponding morphism
+$F_\grG(B_2)\to F_\grg(B_1)$ is a homomorphism of groups.)
+
+2)\enspace
+We say that a Lie supergroup $\grG$ acts on a supermanifold
+$\scrM$ if the functor $F_\grG$ acts on the functor
+$F_\scrM$ (i.e. if for every supermanifold $B$ we are given an
+action of the group $F_\grG(B)$ on the set $F_\scrM(B)$ such
+that the obvious compatibility condition holds.)
+\enddefinition
+
+\remark{\bf Remark}
+One can give also the following (equivalent)
+definition of a Lie supergroup, or of its action on a
+supermanifold:
+
+We can say that a structure of a Lie supergroup
+on a supermanifold $\grG$ is a pair of morphisms
+$m\colon\,\grG\times\grG\to\grG$ (multiplication) and
+$i\colon\,\grG\to\grG$ (taking the inverse) such that the
+obvious axioms hold.
+However, we will see below that in most examples 
+the definition via functors is more convenient.
+\endremark
+
+\example{Example}
+Let us define the general linear  Lie group $\grG\scrL(p,q)$, which is
+a super analog of $\GL(n)$.
+It should be thought of as the group of linear automorphisms
+of $\dbR^{p,q}$.
+We define a functor $F_\grG\colon\,{\SMan}^0\to\Sets$ by
+$$
+F_\grG(B)=\Aut(C^\infty(B)\otimes\dbR^{p,q})
+\qquad\text{(cf. 1.4)}
+$$
+
+This functor is endowed with the obvious group structure and it is not 
+difficult to see that this functor is represented by a supermanifold. 
+\endexample
+
+More generally, let $V$ be any superspace of dimension
+$(p,q)$.
+Then one can define a Lie supergroup $\grG\scrL(V)$ by
+putting
+$$
+F_\grG(B)=\GL_{C^\infty(B)}(V\otimes C^\infty(B))
+$$
+(here $\GL_{C^\infty(B)}(V\otimes C^\infty(B))$ means the
+group of automorphisms of the module $V\otimes C^\infty(B)$
+over the superalgebra $C^\infty(B))$.
+
+\subhead
+3.2. Lie superalgebras
+\endsubhead
+
+If $\grG$ is a supergroup, it possesses a distinguished point
+$e$ called the unit element.
+Therefore we can consider the tangent space $\scrT_e\grG$ to
+$\grG$ at the point $e$.
+It is easy to see that the superspace $\grg=\scrT_e\grG$ 
+has a canonical structure of a Lie superalgebra (as
+in usual Lie theory, one can identify $\grg$ with the
+space of left invariant vector fields on $\grG$ and then
+consider their commutator).
+
+Let $G$ denote $\grGbar$.
+Then the Lie algebra $\Lie\,G$ of $G$ is canonically
+identified with $\grG_{\zerobar}$ and we see that 
+the pair $(G,\grg)$ forms a
+Harish-Chandra pair.
+Let us recall this notion.
+
+\definition{Definition}
+A Harish-Chandra pair is a pair $(G,\grg)$ where $G$ is a
+Lie group and $\grg$ is a Lie superalgebra together with an
+action of $G$ on $\grg$ by automorphisms and a Lie-algebra map
+$i\colon\,\Lie\,G\to \grg_0$, such that the standard
+compatibility condition saying that the action of $\Lie\,G$ on $\grg$ 
+obtained by deriving the $G$-action coincides with the adjoint action of
+$\Lie\,G=\grg_0$ on $\grg$ holds.
+\enddefinition
+
+
+It is easy to see that the assignment
+$\grG\to(\grGbar,\Lie\,\grG)=(G,\grg)$ is a correctly
+defined functor from the category of Lie supergroups to the
+category of Harish-Chandra pairs.
+
+\proclaim{Proposition}
+This functor is an equivalence between the category of Lie supergroups
+and the category of Harish-Chandra pairs for which the map
+$$i\colon\,\Lie\,G\to \grg_0$$
+is an isomorphism.
+\endproclaim
+
+This proposition allows to reduce any question
+about Lie supergroups to a question about Harish-Chandra
+pairs, which are intuitively easier to handle.
+For example, let us explain how to describe an
+action of a Lie supergroup on a supermanifold in terms of
+Harish-Chandra pairs.
+
+\definition{Definition}\quad 1)\enspace
+An action of a Lie superalgebra $\grg$ on a supermanifold
+$\scrM$ is a morphism of Lie superalgebras
+$\grg\to\Vect\,\scrM$  (here $\Vect\,\scrM$ denotes the
+algebra of global vector fields on $\scrM$).
+
+2)\enspace
+An action of a Harish-Chandra pair $(G,\grg)$ on $\scrM$ is
+an action of the Lie group $G$ on $\scrM$ together with an
+action of the Lie superalgebra $\grg$ on $\scrM$, satisfying
+the obvious compatibility condition (i.e. that the two
+actions of $\Lie\,G$ on $\scrM$ obtained by deriving the
+$G$-action on $\scrM$ and by identifying $\Lie\,G$ with
+$\grg_0\subset\grg$, coincide).
+\enddefinition
+
+It is easy to see that to give an action of a Lie supergroup
+$\grG$ on $\scrM$ is the same as to give an action of the
+corresponding Harish-Chandra pair.
+
+\example{Example}
+Let $\grG=\dbR^{0,1}$.
+This is a Lie supergroup (with respect to addition) and as
+any Lie supergroup it acts on itself by translations.
+More precisely, for any supermanifold $B$ the set 
+$\text{Hom}(B,\dbR^{0,1})$ is canonically identified with
+the vector space $C^\infty(B)_{\onebar}$,, which endows
+$F_\grG$ with a group structure.
+\endexample
+
+For any supermanifold $\scrM$ consider
+$\scrMtil=\Mor(\dbR^{0,1},\scrM)$.
+$\scrM$ is a supermanifold (cf. 2.5) which admits a natural
+action of $\dbR^{0,1}$ (since it acts on itself).
+The Lie algebra $\Lie\,\dbR^{0,1}$ is generated by the
+standard odd vector field $\frac{\partial}{\partial\xi}$.
+The action of its image in $\Vect\,\scrMtil$ on
+$\Omega^*(\scrM)\subset C^\infty(\scrMtil)$ coincides with the De Rham
+differential.
+
+\subhead
+3.3. Theory of connections
+\endsubhead
+
+We want to define the notion of connection in the
+superworld.
+Let us first explain what we mean by principal $\grG$-bundle
+over $\scrM$, where $\grG$ is a Lie supergroup.
+A principal $\grG$ bundle over $\scrM$ is a supermanifold
+$P$ together with a free $\grG$-action and a natural
+isomorphism $\scrM\simeq P/\grG$ (the notions of quotient
+and free actions are again easily formulated in terms of the
+corresponding functors).
+
+As in the usual differential geometry, one can define a connection
+on $P$ to be a distribution $\gra\subset\scrT(P)$ of codimension
+equal to $\dim\,\scrM$ and transversal to the fibers of the
+projection $P\to\scrM$ which is, moreover, $\grG$-invariant.
+
+A connection on a vector bundle $\scrE$ on $\scrM$ is by definition a
+first-order differential operator 
+$$
+\nabla\colon\,\scrE\otimes\Omega^*(\scrM)
+\to\scrE\otimes\Omega^*(\scrM)
+$$
+which is odd, satisfies the Leibnitz rule and has degree $1$
+with respect to the natural $\dbZ$-grading on
+$\Omega^*(\scrM)$.
+
+A connection on a principle $\grG$-bundle $P$ on $\scrM$ can be defined
+as a compatible (w.r. to tensor products) family of connections
+on every vector bundle associated with a representation
+$\rho\colon\,\grg\to\grG\scrL(V)$ of $\grG$.
+ 
+
+\bigskip
+\subhead
+4. Integration and determinants
+\endsubhead
+
+\subhead
+4.0
+\endsubhead
+So far we have discussed only differential geometry in the
+supercase.
+Now we want to treat integration theory.
+It is easy to see that in supercase one cannot integrate
+differential forms over a supermanifold (since there is no
+natural notion of highest-degree forms).
+Instead, we can integrate sections of some vector bundle
+over $\scrM$.
+In order to define it we first have to discuss the notion of
+superdeterminant (or Berezinian).
+So, we are going back to linear algebra.
+
+
+\subhead
+4.1
+\endsubhead
+Let $C$ be a commutative superalgebra and let $\scrM$ be a
+free $C$-module of rank $(p,q)$.
+We want to define an analog of the notion of highest
+exterior power of $\scrM$.
+We have the following definition: 
+
+Let $S(\scrM)$ denote the symmetric algebra of $\scrM$.
+\proclaim{Lemma}
+$$
+\Ext_{S(\scrM)}^i(C,S(\scrM))=
+\left\{\aligned
+&0\quad \text{\rm if $i\not=p$}\\
+&\text{\rm free $C$-module of rank $1$ and parity $q$ if $i=p$}
+\endaligned
+\right.
+$$
+\endproclaim
+
+We define $\Ber_C(\scrM):=\Ext_{S(\scrM)}^p(C,S(\scrM))^*$.
+
+\smallskip\noindent
+{\bf Properties of $\Ber$}
+
+\roster
+\item"1)"
+If $\scrM$ is of rank $(p,0)$ then
+$$
+\Ber\,\scrM=\Lambda_C^p\scrM
+$$
+
+\item"2)"
+Suppose that $0\to\scrM_1\to\scrM\to\scrM_2\to 0$ is a short
+exact sequence of $C$-modules.
+Then 
+$$
+\Ber\,\scrM=\Ber\,\scrM_1\otimes\Ber\,\scrM_2.
+$$
+
+\item"3)"
+Suppose that $\scrM$ is $(0,q)$-dimensional.
+Then
+$$
+\Ber\,\scrM=S^q(\scrM)^{-1}.
+$$
+\endroster
+
+Let now $g\in\Aut_C(\scrM)$ --- an automorphism of $\scrM$.
+Then one can define $\Ber(g)$ to be the invertible element of
+$C_{\zerobar}$ by which $g$ acts on $\Ber(\scrM)$.
+We obtain a homomorphism $\Aut_C(\scrM)\to C_{\zerobar}^*$.
+
+Berezin actually wrote a formula for $\Ber(g)$ (this was his
+original definition of Berezinian).
+
+Namely, let us choose a basis of $\scrM$ over $C$.
+Suppose that in this basis $g$ looks like
+$g=\left(\smallmatrix A &B\\ C
+&D\endsmallmatrix\right)$.
+Then
+$$
+\Ber\,g=\det(A - B\ D^{-1}C)(\det\,D)^{-1}
+$$
+Looking at this formula, it is not easy (although possible)
+to prove that it is multiplicative.
+
+Let us emphasize that, unlike the usual situation,
+Berezinian is defined only on even invertible matrices.
+
+There is yet another definiton of the Berezinian:
+by proposition 3.2 there exists a canonical morphism of
+Lie supergroups 
+$$\Ber\colon\,\grG\scrL(p,q)\to \grG\scrL(1,0)$$
+given by the usual determinant 
+$GL(n)\to GL(1)$ and by the supertrace
+$$\str:\Lie(\grG\scrL(p,q))\simeq\Mat(p,q,\dbR)\to\dbR\simeq 
+\Lie(\grG\scrL(1,0))$$ 
+and we can define $\Ber$ on even invertible $B$-valued matrices
+as the corresponding homomorphism
+$$F_{\grG\scrL(p,q)}(B)\to F_{\grG\scrL(1,0)}(B).$$ 
+
+Let us now list some further properties of $\Ber(\scrM)$.
+
+\roster
+\item"4)"
+$\Ber(\Pi(\scrM))=\Ber(\scrM)^{-1}$
+
+\item"5)"
+$\Ber(\scrM^*)=\Ber(\scrM)^{-1}$
+
+\item"6)"
+(very important in integration theory).
+\endroster
+
+Fix a basis $e_1\ldots e_p$, $e_{p+1}\ldots e_{p+q}$ of
+$\scrM$.
+Then it defines a canonical element\break
+$e_1\Lambda e_2\dotsc\Lambda e_{p+q})\in\Ber(\scrM)$.
+Moreover, if $e_1^1\ldots e_{p+q}^1$ is another basis of
+$\scrM$ and $g$ is the transition matrix from one basis to
+the other, then $\Delta(e_1^1\ldots e_{p+q}^1)=\Ber(g)
+\Delta(e_1\ldots e_{p+q})$.
+In fact, this property may serve as a definition of
+$\Ber(\scrM)$.
+
+Let now $\scrF$ be a locally free sheaf of
+$C^\infty(\scrM)$-modules on a supermanifold $\scrM$.
+We can associate to it an invertible sheaf $\Ber(\scrF)$ on
+$\scrM$.
+
+\subhead
+4.2 Integration
+\endsubhead
+
+Let $\scrM$ be a supermanifold.
+We define an invertible sheaf $\Vol(\scrM)$ on it as
+$\Ber(\Pi(\scrT(\scrM)))$.
+When $\scrM$ is even, $\scrT(\scrM)$ is even and 
+$\Vol(\scrM)\simeq\Omega^{\text{top}}(\scrM)$ coincides with
+the sheaf of usual volume forms.
+Let us also fix an orientation on the underlying manifold.
+
+\proclaim{Theorem}
+We have a unique map
+$\Gamma_c(\scrM,\Vol(\scrM))@>{\int}>>
+\dbR$ of parity $p$ satisfying the following properties:
+
+\roster
+\item"{\rm 1)}"
+If $\scrM$ is even $\int$ is the usual
+integration of a volume form
+$\omega\to\int\limits_{M}\omega$
+
+\item"{\rm 2)}"
+If $\scrM\simeq\scrM_1\times\scrM_2$;
+$\omega_i\in\Gamma_c(\scrM_i,\Vol(\scrM_i))$, we have
+$$
+\int\limits_{\scrM}\omega=\int\limits_{\scrM_1}
+\omega_1\times\int\limits_{\scrM_2}\omega_2
+$$
+
+\item"{\rm 3)}"
+If $\scrM\simeq\dbR^{0,1}$ and $\omega_0\in\Vol(\dbR^{0,1})$
+is given by
+$\xi\cdot d\xi$, $\int\limits_{\dbR^{0,1}}\omega_0=1$.
+\endroster
+\endproclaim
+
+\proclaim{Lemma}
+For every $X \in\Gamma(\scrM,\scrT(\scrM))$;
+$\omega\in\Gamma_c(\scrM,\Vol(\scrM))$ we have
+$\int\limits_{\scrM}(X \omega)=0$.\qquad$\blacksquare$
+\endproclaim
+
+As in the classical case, everything said above can be put
+also in the relative framework.
+Namely, consider a submersive morphism $\pi: \scrM \to \scrN$ 
+and let $\omega$ be a volume form on $\scrM$ whose support
+is proper w.r. to $\pi$.
+We can then ``integrate it along the fibers'', i.e.
+$\exists$ a well defined volume form
+$\pi_!\omega\in\Gamma(\scrN,\Vol(\scrN))$ and if
+$\omega\in\Gamma_c(\scrM,\Vol(\scrM))$,
+$$
+\int\limits_{\scrM}\omega=\int\limits_{\scrN}\pi_{!}\omega.
+$$
+
+In particular, in order to compute
+$\int\limits_{\scrM}\omega$ for a supermanifold $\scrM$, one
+must choose a projection $p\colon\,\matrix \scrM\\
+\big\downarrow\\ \scrMbar\endmatrix$ which reduces
+$\int\limits_{\scrM}\omega$ to the usual integration
+$\int\limits_{\scrMbar}p_!(\omega)$.
+
+Note that the integration $\omega\to p_!(\omega)$ is
+``non-analytic''.
+ 
+\subhead
+4.3. Integral forms
+\endsubhead
+
+The following formalism will be useful for us in the sequel.
+We introduce sheaves $\sum^{-i}$ on a supermanifold $\scrM$
+as $\sum^{-i}=\HOM(\Omega^i(\scrM),\Vol(\scrM))$.
+We have an action of vector fields on $\scrM$ on
+$\sum^{-i}$'s by Lie derivatives.
+The direct sum $\sum(\scrM):=\oplusop_{i}\sum^i$ is a $\dbZ$-graded
+module over the sheaf of superalgebras
+$\Omega(\scrM):=\oplusop_{i}\Omega^i(\scrM)$.
+It is easy to check that $\forall\, X \in\Gamma(\scrM,\scrF(\scrM))$
+extends uniquely to a derivation of degree $-1$ on
+$\oplusop_{i}\sum^i$ compatible with the module structure.
+
+\proclaim{Lemma}
+$\exists!$ odd differential of degree $1$
+$d:\,\sum\to\sum$ which makes it
+a $DG$-module over $\Omega(\scrM)$ such that
+$\forall\,X \in\Gamma(\scrM,\scrT(\scrM))$ we have 
+$[i_{X},d]=\Lie_{X}$.\qquad $\blacksquare$
+\endproclaim
+
+\bigskip
+\subhead
+5. SUSY Manifolds
+\endsubhead
+
+\subhead
+5.1
+\endsubhead
+
+\definition{Definition}
+A pre-SUSY manifold is a supermanifold $\scrM$ of dimension
+$(p,q)$ equipped with a distribution
+$\gra\hookrightarrow\scrT(\scrM)$ of dimension $(0,q)$.
+It is called a SUSY manifold if the Frobenius pairing
+$$
+\Fr\colon\,\gra\otimes\gra\to\scrT(\scrM)/\gra
+$$
+is sufficiently non-degenerate.
+\enddefinition
+
+Let us consider first the case of SUSY curves, i.e.
+$(p,q)=(1,1)$.
+In this case the non-degeneracy condition reads as:
+$\Fr\colon\gra\otimes\gra\to\scrT(\scrM)/\gra$ is an
+isomorphism.
+In what follows, our assertions apply both to the case of
+usual supermanifolds and complex analytic ones.
+
+\definition{Definition}
+A Spin curve (complex or real) is a curve $C$ with a line
+bundle $S$ and an isomorphism $S\otimes S=\scrT(C)$.
+\enddefinition
+
+\proclaim{Proposition}
+The category of SUSY curves is equivalent to the category 
+of Spin curves.
+\endproclaim
+
+\demo{Proof}
+Let $(C,\gra)$ be a SUSY curve.
+Consider the restriction $\gra\vert\Cbar$.
+By definition,
+$$
+\gra\vert\Cbar\otimes\gra\vert\Cbar\simeq
+\scrT(C)\vert\Cbar/\gra\vert\Cbar\simeq\tau(\Cbar).
+$$
+Therefore, $(\Cbar,\gra\vert\Cbar)$ is a Spin curve and we
+have constructed a functor SUSY curves $\to$ Spin curves.
+
+Since locally on a curve all Spin structures are
+isomorphic, it is sufficient to prove the local faithfulness
+of this functor.
+
+So, let $C=\dbR^{1,1}$ be with coordinates $(x,\xi)$ and let
+$\gra$ be given by $C^\infty(C)\cdot(\partial_\xi+
+x\partial_x)$.
+It is easy to see then that there are no non-trivial
+automorphisms of this SUSY structure that induce the trivial
+automorphism of $(\Cbar,\gra\vert\Cbar)$.\qquad
+$\blacksquare$
+\enddemo
+
+Let $S\scrM_g$ be the moduli space of Spin curves of genus
+$g$.
+The proposition proved above implies that it admits a
+natural super extension, namely the supermanifold of moduli
+of SUSY curves of genus $g$.
+$$
+S\scrM_g\hookrightarrow \SUSY\,\scrM_g.
+$$
+Moreover, $S\scrM_g$ identifies with
+$\overline{\SUSY\,\scrM_g}$.
+
+\subhead
+5.2
+\endsubhead
+In the sequel we will consider the example of a SUSY
+$(2,2)$-manifold.
+
+Let $\scrV$ be a SUSY $(2,2)$-manifold and let us assume,
+moreover, that $\scrV$ is locally a product of two SUSY
+curves.
+This condition is equivalent to the existence of a
+decomposition:
+$$
+\align
+\gra &=\gra_1\oplus\gra_2\\
+\scrT(\scrV)/\gra &=(\scrT(\scrV)/\gra)_1\oplus
+     (\scrT(\scrV)/\gra)_2\\
+\Fr(\gra_1\otimes\gra_1) &\simeq (\scrT(\scrV)/\gra)_1\\
+\Fr(\gra_2\otimes\gra_2) &\simeq (\scrT(\scrV)/\gra)_2\\
+\Fr(\gra_1\otimes\gra_2) &=\Fr(\gra_2\otimes\gra_1)=0.
+\endalign
+$$
+
+Such a decomposition is canonical if it exists.
+
+
+\proclaim{Lemma}
+In the above situation, $\Vol(\scrV)$ canonically identifies
+with $\gra_1^*\otimes\gra_2^*$.
+\qquad $\blacksquare$
+\endproclaim
+
+
+\enddocument
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

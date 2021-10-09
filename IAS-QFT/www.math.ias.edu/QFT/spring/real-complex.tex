@@ -1,0 +1,363 @@
+\input amstex
+\documentstyle{amsppt}
+\magnification=1200
+\input epsf.tex
+\loadeufm
+
+\font\dotless=cmr10 %for the roman i or j to be
+                    %used with accents on top.
+                    %(\dotless\char'020=i)
+                    %(\dotless\char'021=j)
+\font\itdotless=cmti10
+\def\itumi{{\"{\itdotless\char'020}}}
+\def\itumj{{\"{\itdotless\char'021}}}
+\def\umi{{\"{\dotless\char'020}}}
+\def\umj{{\"{\dotless\char'021}}}
+\font\thinlinefont=cmr5
+\font\smaller=cmr5
+\font\boldtitlefont=cmb10 scaled\magstep2
+
+\NoRunningHeads
+\pagewidth{6.5 true in}
+\pageheight{8.9 true in}
+\loadeusm
+
+\catcode`\@=11
+\def\logo@{}
+\catcode`\@=13
+
+\def\eps{{\varepsilon}}
+\def\WC{{W_{\dbC}}}
+\def\XC{{X_{\dbC}}}
+\def\YC{{Y_{\dbC}}}
+
+\def\undertext#1{$\underline{\vphantom{y}\hbox{#1}}$}
+\def\nspace{\lineskip=1pt\baselineskip=12pt%
+     \lineskiplimit=0pt}
+\def\dspace{\lineskip=2pt\baselineskip=18pt%
+     \lineskiplimit=0pt}
+
+%\def\wedgeop{\operatornamewithlimits{\wedge}\limits}
+%\def\oplusop{\operatornamewithlimits{\oplus}\limits}
+%\def\simover#1{\overset\sim\to#1}
+\def\w{{\mathchoice{\,{\scriptstyle\wedge}\,}
+  {{\scriptstyle\wedge}}
+  {{\scriptscriptstyle\wedge}}{{\scriptscriptstyle\wedge}}}}
+\def\Le{{\mathchoice{\,{\scriptstyle\le}\,}
+{\,{\scriptstyle\le}\,}
+{\,{\scriptscriptstyle\le}\,}{\,{\scriptscriptstyle\le}\,}}}
+\def\Ge{{\mathchoice{\,{\scriptstyle\ge}\,}
+{\,{\scriptstyle\ge}\,}
+{\,{\scriptscriptstyle\ge}\,}{\,{\scriptscriptstyle\ge}\,}}}
+%\def\doubleheaddownarrow#1{\hbox{$\Big\downarrow%
+%     \kern-5.96pt\lower2pt\hbox{$\downarrow$}$}%
+%     \rlap{$\vcenter{$\kern-18pt\scriptstyle#1$}$}}
+%\def\rmapdown#1{\Big\downarrow\kern-1.0pt\vcenter{
+%     \hbox{$\scriptstyle#1$}}}
+
+\def\red{\text{\rm red}}
+\def\Ber{\text{\rm Ber}}
+%\def\Gal{\text{\rm Gal}}  \def\sign{\text{\rm sign}}
+%\def\Br{\text{\rm Br}}  \def\im{\text{\rm Im}}
+%\def\sBr{\text{\rm sBr}} \def\Spin{\text{\rm Spin}}
+%\def\sgn{\text{\rm sgn}} \def\pr{\text{\rm pr}}
+%\def\Id{\text{\rm Id}} \def\Sp{\text{\rm Sp}}
+%\def\Gr{\text{Gr}} \def\SO{\text{\rm SO}}
+%\def\Sym{\text{\rm Sym}} \def\SL{\text{\rm SL}}
+%\def\End{\text{\rm End}}
+\def\Diff{\text{\rm Diff}}
+\def\HOM{\underline{\text{\rm Hom}}}
+\def\Hom{\text{\rm Hom}}
+%\def\Ker{\text{\rm Ker}}
+%\def\Tr{\text{\rm Tr}}
+%\def\Lie{\text{\rm Lie}} 
+
+\def\fbar{\bar{f}}
+%\def\kbar{\bar{k}}
+\def\zbar{\bar{z}}
+%\def\Abar{\bar{A}}
+%\def\Sbar{\bar{S}}
+\def\Xbar{\bar{X}}
+\def\Ybar{\bar{Y}}
+
+\def\dbC{{\Bbb C}}
+%\def\dbG{{\Bbb G}}
+%\def\dbH{{\Bbb H}}
+\def\dbR{{\Bbb R}}
+%\def\dbZ{{\Bbb Z}}
+
+
+\def\scr#1{{\fam\eusmfam\relax#1}}
+
+%\def\scrD{{\scr D}}
+%\def\scrL{{\scr L}}
+\def\scrO{{\scr O}}   
+\def\scrS{{\scr S}}   
+%\def\scrU{{\scr U}}   
+
+%\def\gr#1{{\fam\eufmfam\relax#1}}
+
+%Euler Fraktur letters (German)
+%\def\gro{{\gr o}}
+%\def\grs{{\gr s}}
+
+\def\grso{{\grs\gro}}
+
+
+\topmatter
+\title\nofrills
+{\boldtitlefont Real versus complex}
+\endtitle
+\author
+P. Deligne
+\endauthor
+\endtopmatter
+
+%\bigskip
+%\centerline{School of Mathematics}
+%\centerline{Institute for Advanced Study}
+%\centerline{Princeton, NJ \ 08540}
+
+%\smallskip
+%\centerline{e-mail: deligne\@math.ias.edu}
+
+%\smallskip
+%\centerline{(corrected October 11, 1996)}
+
+\NoBlackBoxes
+\parindent=20pt
+\frenchspacing
+\document
+\dspace
+\bigskip
+We want to explain how to go back and forth between two
+modes of writing:
+
+\subhead\nofrills
+{\bf real:}\enspace
+\endsubhead
+one considers real varieties, functions on them (possibly
+complex valued: $F=f+ig$), maps between them, $\ldots$
+
+\subhead\nofrills
+{\bf complex:}\enspace
+\endsubhead
+one considers complex varieties, and {\it only
+holomorphic functions} on them, complex analytic maps
+between them, $\ldots$ 
+
+A real analytic variety $X$ can be complexified to a
+complex variety $\XC$.
+In fact, only the germ of $\XC$ around $X$ is
+defined.
+One can think of $X$ as being given by $\XC$, plus
+some auxiliary data.
+For some purposes, this auxiliary data is not needed, and
+computations are better done in ``complex mode'', on
+$\XC$.
+
+To recover $X$ from $\XC$, one could give
+
+\medskip\noindent
+(A)\enspace
+The antiholomorphic involution ``complex conjugation'' on
+$\XC$, with fixed point $X\subset \XC$ --- or
+
+\medskip\noindent
+(B)\enspace
+the data of which (holomorphic) functions are real (on
+$X$).
+
+\medskip
+There is not much difference between complex valued
+functions on $X$, and (holomorphic) functions on
+$\XC$, and similarly for forms.
+A local coordinate system on $X$ gives a (holomorphic)
+local coordinate system on $\XC$.
+
+If $\alpha$ is a form of maximal degree on $X$, viewed as
+an (holomorphic) form on $\XC$, integration of
+$\alpha$ becomes, on $\XC$, integration on a cycle,
+and we need to know this cycle only up to suitable
+homologies.
+
+\example{Example}
+To compute $\int e^{-x^2/2+iax}dx$, it is better to go
+to the holomorphic picture, where the integration cycle
+$\dbR\subset\dbC$ is needed up to homologies given by
+$2$-chains on which the integrand decays fast.
+In this setting, the completing the square change of
+variables $y=(x-ia)$ makes good sense, giving the answer
+$\sqrt{2\pi\,\,}e^{-a^2/2}$.
+\endexample
+
+Similarly, a $(0\vert n)$ dimensional real variety$X$ can
+be complexified.
+Here, (holomorphic) functions on $\XC$ are the same
+as complex valued functions on $X$.
+The real $X$ is recovered from $\XC$ by giving
+$(A')$ an antilinear involutuion $\sigma$ of $\XC$:\,\,
+$\overline{\XC}\to \XC$ or $(B')$ which
+functions are real.
+Here, to integrate a density is a purely algebraic story:
+only the density on $\XC$ matter, the real form $X$
+is irrelevant.
+
+That integration is a purely algebraic story, making the
+real structure irrelevant, can happen also for ordinary
+varieties.
+Example: \ let $V$ be a real vector space, $Q$ a
+quadratic form, $P$ a polynomial and $dv$ a volume form.
+Then, up to an annoying square root, $\int e^{-Q}P.dv$
+depends only on $e^{-Q}P dv$ on the complexification
+$V_{\dbC}$.
+
+In dimension $(n\vert m)$, Bernstein introduced the
+notion of $cs$-spaces.
+I like to think of a $cs$ space as being a complex super
+space $\XC$, plus the data of an ``integration''
+cycle $C$ on the reduced space.
+In many local computations only $\XC$ matters.
+If one wants to integrate densities (holomorphic sections
+of $\Ber(\Omega^1)$), the cycle $C$ matters only up to
+suitable homologies.
+Sometimes one wants to germify along $C$ (which is the
+real locus for a real structure on the reduced space).
+This gives Bernstein definition, where the $cs$ space is
+$C$, with the sheaf of rings $\scrO_{\XC}$ restricted to
+$C$.
+
+If $X$ has complex structure $J$, $\XC$ is
+$X\times\Xbar$, with $X$ sitting in $X\times\Xbar$ as the
+diagonal.
+As before, this is not much difference between a (complex
+valued) function on $X$ and an (holomorphic) function on
+$\XC=X\times\Xbar$, defined near the diagonal.
+Holomorphic functions on $X$ become functions $f(x,y)$ on
+$\XC=X\times\Xbar$ depending only on $x$.
+In local coordinates: \ an holomorphic coordinate system
+on $X$, $(z_i)$, gives one on $\XC=X\times\Xbar$: \
+$(z_i,\zbar_i)$.
+A function on $X$ is then viewed as an (holomorphic)
+function of $z_i$ and $\zbar_i$.
+It is an holomorphic function on $X$ if it is an
+(holomorphic) function not depending on the $\zbar_i$.
+
+For functions spaces also it can be convenient to work in
+complexified spaces, with reality conditions coming as an
+afterthought, if needed.
+The complexification of $\HOM(X,Y)$ is the space
+$\HOM(\XC,\YC)$ of (holomorphic) maps $f$ from $\XC$ to
+$\YC$.
+One requires $f$ to be defined only in a suitable
+neighborhood of $X\subset\XC$, and that $f(X)$ is close
+to $Y\subset\YC$.
+
+\example{Example} \ 
+(i)\enspace If $v$ is a section of the complexified
+tangent bundle of $X$, with $X$ compact and $X$ and $v$
+real analytic, $\exp(tv)$ ($t$ small) belongs to
+$\Diff(X)_{\dbC}$.
+
+\smallskip\noindent
+(ii)\enspace
+(After G. Segal),\enspace
+ Let $S^1$ be the unit circle in $\dbC$.
+A point of $\Diff(S^1)_{\dbC}$ is an holomorphic map from
+an annulus $1-\eta<r<1+\eta$ to an annulus
+$1-\eps<r<1+\eps$.
+It should have a restriction to $S^1$ close to a
+diffeomorphism of $S^1$.
+
+Composition is only partially defined.
+If $f$ maps $S^1$ inside $S^1$, one can attach to $f$ the
+``annulus'' $[f]$ between $f(S^1)$ and $S^1$ in $\dbC$.
+Both boundary components of $[f]$ are parametrized by
+$S^1$, using the identity, resp. $f$.
+To composition corresponds gluing of annuli, and this is
+how a good substitute to $\Diff(S^1)_{\dbC}$ is the monoid
+of isomorphism classes of annuli with parametrized
+boundaries.
+In conformal field theory, one meets complex
+(projective) representations of real semi-group underlying 
+the complex semi-group $\Diff(S^1)_{\dbC}$.
+At the Lie algebra level, if $W$ is the Lie algebra of
+vector fields on $S^1$, with complexification $\WC$, a
+complex (projective) representation of the real Lie
+algebra $r(\WC)$ underlying $\WC$ is the same as a
+complex (projective) representation of
+$r(\WC)\otimes\dbC=\WC\otimes_{\dbR}\dbC=\WC\times\WC$.
+
+
+\smallskip\noindent
+(iii)\enspace
+Take $X=\dbR^{0\vert 1}$, hence $\XC=\dbC^{0\vert 1}$.
+Here $\Hom(X,Y)=Y$, with the sheaf of ring $\Omega^*$,
+while $\Hom(\XC,\YC)$, taken in the holomorphic world is
+$\YC$, with the holomorphic $\Omega^*$, and $(Y,\Omega^*)_{\dbC}=
+(\YC,\Omega^*)$.
+\endexample
+
+In the complex setting, if $X$ is of dimension $(0\vert
+1)$, and $Y$ of dimension $(n\vert 0)$, a real structure
+on $Y$ induces a $cs$ structure on $\HOM(X,Y)$.
+Indeed, $\HOM(X,Y)$ has a reduced space $Y$.
+
+The same is not true for $X$ of dimension $(0,2)$.
+Indeed, take $Y=\dbC$ and coordinates $\theta_1$, 
+$\theta_2$ on $X$.
+A map to $Y$, i.e. an (holomorphic) function, is written
+$$
+a+\alpha_1\theta_1+\alpha_2\theta_2+b\theta_1\theta_2\,\,:
+$$
+the space $\HOM(X,Y)$ is a $\dbC^{2\vert 2}$ with
+coordinates $(a,b,\alpha_1,\alpha_2)$.
+If we give a real structure on $Y$, we know what it means
+for $a$ to be real.
+To know what it means for $b$ to be real, we need in
+addition to give a real structure on $X$.
+
+In practice, this will not matter, for two reasons:
+
+\smallskip\noindent
+(A)\enspace
+The spaces of externals $\scrS\subset\Hom(X,Y)$ we will
+consider will be such that $\scrS_{\red}$ embeds into
+$\Hom(X_{\red},Y)$ (and is a space of extremal there), so
+that a real structure on $Y$ gives one on $\scrS_{\red}$:
+\ we get a $cs$ structure on $\scrS$.
+
+\smallskip\noindent
+(B)\enspace
+In path integrals, integrals on fields playing the role
+of ``$c$'' above can be handled algebraically.
+
+\smallskip
+In the real setting, if we are to consider $\Hom(X,Y)$
+with $Y$ having a complex structure, it is usually
+convenient to work on $\Hom(X,Y)_{\dbC}=\Hom(\XC,\YC)$.
+
+The fact that $Y$ was complex gives us two transversal
+foliations on $\YC=Y\times\Ybar$.
+In local oordinates: \ for $(z_i)$ local coordinates on
+$Y$, we get local coordinates $z_i$, $\zbar_i$ on $\YC$.
+It follows that $f\in\Hom(\XC,\YC)$ is given by the
+$f_i=z_i(f)$ and $\fbar_i=\zbar_i(f)$, where the $f_i$
+and $\fbar_i$ are (independent) holomorphic functions on
+$\XC$ (or complex valued functions on $X$).
+If on $\XC$ we have a real structure $X$, we get the real
+structure $\Hom(X,Y)$ on $\Hom(\XC,\YC)$ by telling that
+$f$ is real in $f_i$ and $\fbar_i$ are complex conjugate
+(on $X$).
+
+
+
+
+
+
+
+
+\enddocument
+
+
+

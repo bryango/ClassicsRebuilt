@@ -1,0 +1,484 @@
+\input amstex
+\documentstyle{amsppt}
+\magnification=1200
+\loadbold
+\loadeusm
+
+%\font\dotless=cmr10 %for the roman i or j to be
+                    %used with accents on top.
+                    %(\dotless\char'020=i)
+                    %(\dotless\char'021=j)
+%\font\itdotless=cmti10
+%\def\itumi{{\"{\itdotless\char'020}}}
+%\def\itumj{{\"{\itdotless\char'021}}}
+%\def\umi{{\"{\dotless\char'020}}}
+%\def\umj{{\"{\dotless\char'021}}}
+%\font\thinlinefont=cmr5
+%\font\smaller=cmr5
+\font\boldtitlefont=cmb10 scaled\magstep2
+
+\NoRunningHeads
+\pagewidth{6.5 true in}
+\pageheight{8.9 true in}
+
+\catcode`\@=11
+\def\logo@{}
+\catcode`\@=13
+
+\def\eps{{\varepsilon}}
+
+\def\undertext#1{$\underline{\vphantom{y}\hbox{#1}}$}
+\def\nspace{\lineskip=1pt\baselineskip=12pt%
+     \lineskiplimit=0pt}
+\def\dspace{\lineskip=2pt\baselineskip=18pt%
+     \lineskiplimit=0pt}
+
+\def\upvee{{\sssize \vee}}
+\def\w{{\mathchoice{\,{\scriptstyle\wedge}\,}
+  {{\scriptstyle\wedge}}
+  {{\scriptscriptstyle\wedge}}{{\scriptscriptstyle\wedge}}}}
+\def\Le{{\mathchoice{\,{\scriptstyle\le}\,}
+{\,{\scriptstyle\le}\,}
+{\,{\scriptscriptstyle\le}\,}{\,{\scriptscriptstyle\le}\,}}}
+\def\Ge{{\mathchoice{\,{\scriptstyle\ge}\,}
+{\,{\scriptstyle\ge}\,}
+{\,{\scriptscriptstyle\ge}\,}{\,{\scriptscriptstyle\ge}\,}}}
+\def\mapright#1{\smash{\mathop{\,\longrightarrow\,}%
+     \limits^{#1}}}
+\def\rmapdown#1{\Big\downarrow\kern-1.0pt\vcenter{
+     \hbox{$\scriptstyle#1$}}}
+\def\bfs{\bold{s}}
+\def\arrowsim{\smash{\mathop{\,\longrightarrow\,}%
+   \limits^{\lower1.5pt\hbox{$\scriptstyle\sim$}}}}
+\def\leftarrowsim{\smash{\mathop{\,\longleftarrow\,}%
+   \limits^{\lower1.5pt\hbox{$\scriptstyle\sim$}}}}
+
+\def\Sym{\text{\rm Sym}} 
+\def\Hom{\text{\rm Hom}} 
+\def\Tor{\text{\rm Tor}} \def\Gr{\text{\rm gr}}
+\def\Ext{\text{\rm Ext}} \def\ev{\text{\rm ev}}
+\def\I{\text{\bf I}} \def\Ber{\text{\rm Ber}}
+\def\II{\text{\bf II}} \def\ber{\text{\rm ber}}
+
+
+%Script letters:
+\def\scr#1{{\fam\eusmfam\relax#1}}
+\def\scrT{{\scr T}} 
+
+
+\topmatter
+\title\nofrills
+{\boldtitlefont Appendix: signs}
+\endtitle
+\author
+P. Deligne
+\endauthor
+\endtopmatter
+
+\NoBlackBoxes
+\parindent=20pt
+\frenchspacing
+\document
+\bigskip
+\dspace
+Some classical constructions give objects which are
+graded, and which can profitably be viewed as ``super'',
+i.e. subject to Koszul's sign rule.
+Examples: cohomology groups of all kind ($H^*$,
+$\Tor_*$, $\Ext^*\ldots$), the de Rham complex and
+other standard complexes,$\,\ldots\,\,\,$.
+
+To handle their analogue in the super world, two points
+of view have been used.
+As we will see, they are basically equivalent.
+However, they lead to different sign conventions.
+
+\subhead
+I
+\endsubhead
+One considers them as graded $\mod 2$ graded (i.e.
+super) objects.
+The grading which is the analogue of the grading in the
+classical case will be called the cohomological grading.
+The commutativity isomorphism for the tensor product of
+graded $\mod 2$ graded vector spaces is defined as
+follows:
+for $v$ of bidegree $(p,n)$: parity $p$ and
+cohomological degree $n$, and $w$ of bidegree $(q,m)$,
+$$
+\sigma_{\I}\colon\, V\otimes W\to W\otimes V
+\quad\text{is}\quad
+v\otimes w\longmapsto (-1)^{pq+nm}w\otimes v.
+$$
+
+\subhead
+II
+\endsubhead
+One considers that the classical construction already
+lives in the super world, with parity $=$ cohomological
+degree $\mod 2$.
+In the super world, one continues to obtain super
+objects; they also have a cohomological degree, with no
+influence on signs: the commutativity isomorphism of
+graded $\mod 2$ graded vector spaces is defined as
+$$
+\sigma_{\II}\colon\, V\otimes W\to W\otimes V\colon\,
+v\otimes w\to (-1)^{pq}w\otimes v
+$$
+for $v$ of parity $p$ and $w$ of parity $q$.
+Of course, one could consider modules instead of vector
+spaces.
+
+Here are advantages of the point of view {\bf I}.
+
+\medskip\noindent
+{\bf (A)}\enspace
+For any tensor category $\scrT$, say additive with
+``associative and commutative'' tensor product, one can
+define a new tensor category $\scrT^{\Gr}$ of graded
+objects of $\scrT$, with the commutativity of $\otimes$
+being given by:
+$$
+\sigma^{\Gr}\colon\,V\otimes W\to W\otimes V
+$$
+induces on $V^n\otimes W^m$ the map $V^n\otimes
+W^m\to W^m\otimes V^n$ of $\scrT$, multiplied by
+$(-1)^{nm}$.
+For $\scrT$ the tensor category of super vector spaces,
+$\scrT^{\Gr}$ is the category $\I$ of graded $\mod 2$
+graded vector spaces.
+The point of view $\I$ hence allows for the following
+way of reasoning: to prove a statement in superworld,
+prove it first in any tensor category (keeping in mind
+the case of vector spaces).
+At the end, specialize to the category of super vector
+spaces.
+In the general categorical story, no sign of super
+origin are there to confuse us: they are hidden in the
+compatibilities obeyed by the associativity and
+commutativity isomorphisms for $\otimes$.
+
+\example{Example {\rm (of this kind of reasoning)}}
+Suppose we want to see the following for finite
+dimensional super vector spaces.
+Known: if $W$ is the dual of $V$, then $V$ is the dual
+of $W$.
+As $V$ is the dual of $W$, repeating ``known'' for $W$
+and $V$, we get that: $W$ is the dual of $V$.
+Wished: the duality map is the same as the one we
+started with.
+\endexample
+
+The dual of $V$ is well defined up to unique isomorphism
+as an object $W$ provided with a morphism $\ev\colon\,
+W\otimes V\to 1$ with suitable properties, for $1$ the
+unit object.
+To give a map $W\otimes V\to 1$ is the same thing as
+giving a map $V\otimes W\to 1$, by the isomorphism
+$\sigma$ of $W\otimes V$ with $V\otimes W$.
+
+For super vector spaces, the structural map
+$\ev\colon\,W\otimes V\to k$ identifies $W$ with the space
+of linear forms on $V$, the evaluation map $\ev$ becoming
+$w\otimes v\mapsto w(v)$.
+If one prefers to say that it is the map $V\otimes W\to
+k$ which makes of $W$ the dual of $V$, one is rather led
+to identify the dual $W$ of $V$ with the space of linear
+forms on $V$ by $w\mapsto\text{ linear form }(v\mapsto
+\text{ image of $v\otimes w$)}$.
+This gives two ways to identify the dual (in the
+categorical sense) with the space of linear forms on
+$V$, those two ways differ by a sign on the odd part,
+and one easily gets confused.
+In the general categorical setting, no sign occurs.
+
+\medskip\noindent
+{\bf (B)}\enspace
+One has not to decide early on whether an object should
+be seen as having a cohomological degree.
+
+\example{Example}
+Let $A$ be a commutative super $k$-algebra.
+The point of view $\I$ suggest to define the module 
+$\Omega_A^1$ of K\"ahler differential as being an
+$A$-module (hence bimodule) $\Omega$, provided with a
+morphism of super $k$ vector spaces
+$d\colon\,A\to\Omega$ such that
+$$
+d(ab)=a.db+ da.b,\tag{B.1}
+$$
+which is universal.
+Later, when considering the de Rham complex, one may
+decide that $\Omega_A^1$ is of cohomological degree $1$.
+In the point of view $\II$, deciding that in the
+classical case (purely even $A$) $\Omega_A^1$ is odd,
+requires $d$ to be an odd map, and that (B.1) be
+replaced by
+$$
+d(ab)=(-1)^{p(a)}a.db+da.b\tag{B.2}
+$$
+\endexample
+
+\medskip\noindent
+{\bf (C)}\enspace
+The point of view $\I$ minimizes the use of the parity
+change functor $\Pi$.
+Using this functor leads to nightmares of signs, for the
+following reasons.
+
+\medskip\noindent
+(i)\enspace
+Let $1^-$ be $k$, viewed as an odd $k$-vector space.
+The functor $\Pi$ is best viewed as being the tensor
+product with $1^-$.
+One has to decide whether it is $V\mapsto 1^-\otimes V$
+or $V\mapsto V\otimes 1^-$.
+The two are canonically isomorphic, but lead to
+different sign conventions.
+
+\smallskip\noindent
+(ii)\enspace
+One has natural isomorphisms $(\Pi V)\otimes W\arrowsim
+(V\otimes W)$ and $(V\otimes \Pi W)\arrowsim
+\Pi(V\otimes W)$, exchanged by the commutativity of
+$\otimes$.
+The diagram
+$$
+\CD
+\Pi V\otimes\Pi W @>>> \Pi(V\otimes\Pi W)\\
+@VVV @VVV\\
+\Pi(\Pi V\otimes W) @>>> \Pi\Pi(V\otimes W)
+\endCD
+$$
+is anticommutative, rather than commutative.
+
+\bigskip
+Here are advantages of the point of view $\II$.
+
+\medskip\noindent
+{\bf (A)}\enspace
+One has only one parity to consider, for applying the
+sign rule.
+
+\medskip\noindent
+{\bf (B)}\enspace
+Some constructions are more natural.
+For example, if $D^-$ is the standard odd line
+(coordinate ring $k[\theta]$, $\theta$ odd, $\theta^2=0$), the
+de Rham complex of a super manifold $M$ is (up to a
+completion) the space of functions on the super manifold
+$$
+\underline{\Hom}(D^-,M).
+$$
+In the point of view $\I$, one has to apply to the de
+Rham complex the functor ``associated simply graded
+object'' explained below.
+
+I prefer the point of view $\I$.
+Bernstein prefers the point of view $\II$.
+
+The points of view $\I$ and $\II$ are equivalent, in the
+sense that the tensor categories $\scrT_{\I}$ and
+$\scrT_{\II}$ of graded $\mod 2$ graded vector spaces
+introduced in $\I$ and $\II$ are equivalent:
+we have an equivalence of categories
+$$
+\widetilde{\bold{s}}\colon\,\scrT_{\I}\longrightarrow
+\scrT_{\II}
+$$
+and an isomorphism of functors
+$$
+\alpha\colon\,
+\widetilde{\bold{s}}(V\otimes_{\I}W)\arrowsim
+\widetilde{\bold{s}}(V)\otimes_{\II}\widetilde{\bold{s}}(W)
+$$
+compatible with the associativity and commutativity
+isomorphisms for $\otimes_{\I}$ and $\otimes_{\II}$.
+
+The functor $\widetilde{\bold{s}}$ is the regrading functor:
+$\widetilde{\bold{s}}(V)$ has the same underlying vector space
+as $V$, with $v$ of parity $p$ and cohomological degree
+$n$ acquiring the parity $p+n$, and keeping its
+cohomological degree.
+
+On the underlying vector space, $\otimes_{\I}$ and
+$\otimes_{\II}$ are both the usual tensor product.
+For $v$ in $V^{p,n}$ and $w$ in $W^{q,m}$, $\alpha$ is
+defined as
+$$
+\alpha\colon v\otimes w\longmapsto (-1)^{nq}v\otimes w.
+$$
+
+The compatibility with the commutativity isomorphisms is
+the commutativity of the diagram
+$$
+\CD
+ @>{(-1)^{nq}}>> \\
+@V{(-1)^{pq+nm}}VV @VV{(-1)^{(p+n)(q+m)}}V\\
+ @>{(-1)^{mp}}>> 
+\endCD
+\qquad\qquad\qquad \lower25pt\hbox{.}
+$$
+
+The compatibility with the associativity isomorphisms
+comes from the identity
+$$
+n_1(p_2+p_3)+n_2p_3=n_1p_2+(n_1+n_2)p_3\,\,.
+$$
+
+The functor ``{\it associated simply $(\mod 2)$
+graded}'' $\bfs$ is the composite of $\widetilde{\bold{s}}$
+with the functor ``forgetting the cohomological degree''
+to super vector spaces.
+
+\example{Example}
+Let $A$ be a graded $\mod 2$ graded algebra (point of
+view $\I$).
+It is given by a multiplication
+$$
+\lower2pt\hbox{$\boldsymbol{\cdot}$}\,\,\colon\, 
+A\otimes A\to A.
+$$
+Applying $\bfs$, we obtain a super algebra, with $a$ of
+parity $p$ and cohomological degree $n$ becoming of
+parity $p+n$.
+The new product
+$$
+\gather
+*\colon\, \bfs(A)\otimes\bfs(A)
+\leftarrowsim \bfs(A\otimes
+A)@>{\bfs(\lower1.5pt\hbox{$\boldsymbol{\cdot}$})}>>
+\bfs(A)\\
+\intertext{is}
+x*y=(-1)^{nq}x.y
+\endgather
+$$
+for $x$ in $A^{p,n}$ and $y$ in $A^{q,m}$.
+
+The same applies to graded $\mod 2$ graded modules.
+\endexample
+
+\noindent
+Example:\enspace
+the already mentioned case of the K\"ahler differential
+of $A$.
+
+\example{Example: {\rm the Berezinian}}
+For $V$ a super vector space, considering $V$ as a space
+leads to consider the super algebra $\Sym(V^*)$ of
+functions on ``$V$, viewed as a space''.
+More generally, let $V$ be a free super module of finite
+rank $(p,q)$ on a commutative super ring $A$.
+One has an augmentation $\Sym_A^*(V)\to A$, and
+$$
+\Ber(V):= \underline{\Ext}_{\Sym_A(V^*)}^*
+(A,\Sym_A^*(V^*)).
+$$
+
+Those $\Ext$ are best considered as given by the derived
+functor of the functor $\underline{\Hom}
+(A,\,\,\,)$, identified with
+the functor from $\Sym_A^*(V)$-modules to $A$-modules:
+$M\mapsto$ the sub-$A$-module of elements of
+$M$ annihilated by the augmentation ideal.
+
+The only non zero $\underline{\Ext}$ is $\underline{\Ext}^p$.
+It is a free $A$-module of dimension $(1,0)$ for $q$
+even, $(0,1)$ for $q$ odd.
+Cohomological degree is $p$.
+
+\smallskip\noindent
+Basic examples:\enspace
+For $\Sym_A(V^*)=A[T]$, $\underline{\Ext}$ 
+can be computed using the
+following resolution of $A[T]$, pictured as a
+quasi-isomorphism of complexes
+$$
+\spreadmatrixlines{1\jot}
+\matrix
+A[T] &&A[T] &\\
+\rmapdown{\equiv} &\colon &\Big\downarrow &\\
+K^* &&A[T,T^{-1}] &\to A[T,T^{-1}]/A[T]\,\,.
+\endmatrix
+$$
+
+This resolution is not injective, but it is good enough:
+$\underline{\Ext}^i(A,K^j)=0$ 
+for $i>0$, as can be seen by using the
+projective resolutions $A[T]\mapright{T} A[T]$ of the
+$A[T]$-module $A$, and this ensures that for any
+injective resolution $K'$ and any morphism of resolutions
+$\alpha\colon\,K\to K'$, $\alpha$ induces an
+isomorphism, which is independent of $\alpha$,
+$$
+H^*\underline{\Hom}_{A[T]}(A,K)\longrightarrow
+H^*\underline{\Hom}_{A[T]}(A,K')\,.
+$$
+A basis of $\underline{\Ext}^1$ is the image of $T^{-1}\in
+A[T,T^{-1}]/A[T]$.
+For $\Sym_A(V^*)=A[\theta]$, no resolution is necessary.
+A basis of $\underline{\Ext}^0$ is $\theta$.
+\endexample
+
+For $(V_i)_{i\in I}$ a finite family of free modules, by
+the associativity and commutativity isomorphisms for
+$\oplus$, one can define the direct sum of the $V_i$
+without having first to choose an ordering of $I$.
+Similarly, by the associativity and commutativity
+isomorphisms for $\otimes$, for the tensor product of
+the $\Ber(V_i)$, viewed as graded super modules (point
+of view $\I$). 
+A K\"unneth formula gives a canonical isomorphism
+$$
+\Ber(\oplus V_i)\simeq \otimes\Ber(V_i)\,.
+$$
+If $V$ is filtered, a splitting of the filtration gives
+a direct sum decomposition $V\arrowsim \oplus \text{Gr}_F^i
+(V)$ and the resulting isomorphism
+$$
+\Ber(V)\arrowsim \otimes \Ber(\text{Gr}_V^i(V))
+$$
+does not depend on the choice of the splitting.
+
+The compatibilities to which those constructions obeys
+involve no sign.
+Trouble begins when one wants to name an element of
+$\otimes\Ber(V_i)$: a family of $b_i\in \Ber(V_i)$
+define an element $\otimes b_i$ of $\otimes\Ber(V_i)$
+only once an ordering of $I$ has been chosen, and for
+different orderings, $\otimes b_i$ maps to different
+elements, according ot the sign rule.
+In other words: trouble begins when one starts writing
+formuli, as formuli name elements.
+Written text is linear, and it is the usage that the
+linear order of a formula gives the linear order of $I$
+which is used.
+
+Applying to $\Ber$ the functor ``associated simply $\mod
+2$ graded'' $\bfs$, one obtains\break
+ $\ber(V):=\bfs \Ber(V)$.
+It is a free $A$-module of rank $(1,0)$ or $(0,1)$,
+depending on the parity of $p+q$;, and it obeys the same
+compatibility formalism.
+
+\example{Example: {\rm densities}}
+On a supermanifold $W$ of dimension $(p,q)$, the line
+bundle of densities is the tensor product of the
+orientation local system with $\Ber(T^{\upvee})$, for
+$T$ the tangent bundle.
+It is natural to give the orientation local system
+cohomological degree $-p$: the line bundle of densities
+has dimension $(0,1)$ or $(0,1)$, depending on the
+parity of $q$, and its cohomological degree zero.
+
+With these conventions, the integration of densities with
+compact support is an even map.
+\endexample
+
+
+
+
+\enddocument
+
+
+

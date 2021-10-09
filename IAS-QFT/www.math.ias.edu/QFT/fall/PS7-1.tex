@@ -1,0 +1,874 @@
+%From: Pierre Deligne <deligne@math.ias.edu>
+%Date: Thu, 23 Jan 1997 17:52:08 -0500
+%Subject: set7-1.tex
+
+\input amstex
+\documentstyle{amsppt}
+\magnification=1200
+\pagewidth{6.5 true in}
+\pageheight{8.9 true in}
+\loadeusm
+
+\catcode`\@=11
+\def\logo@{}
+\catcode`\@=13
+
+\NoRunningHeads
+
+\input pictex.tex
+
+\font\boldtitlefont=cmb10 scaled\magstep2
+
+\def\lam{{\lambda}}
+\def\eps{{\varepsilon}}
+
+\def\psibar{\bar{\psi}}
+\def\Omegabar{\bar{\Omega}}
+\def\Lbar{\bar{L}}
+\def\Sbar{\bar{S}}
+\def\Xbar{\bar{X}}
+\def\Ybar{\bar{Y}}
+
+\def\Ghat{\hat{G}}
+\def\Dhat{\hat{D}}
+\def\Gammahat{\hat{\Gamma}}
+
+%\def\dspace{\lineskip=2pt\baselineskip=18pt\lineskiplimit=0pt}
+\def\halfspace{\lineskip=1pt\baselineskip=15pt\lineskiplimit=0pt}
+%\def\wedgeop{\operatornamewithlimits{\wedge}\limits}
+%\def\w{{\mathchoice{\,{\scriptstyle\wedge}\,}
+%  {{\scriptstyle\wedge}}
+%  {{\scriptscriptstyle\wedge}}{{\scriptscriptstyle\wedge}}}}
+%\def\Le{{\mathchoice{\,{\scriptstyle\le}\,}
+%  {\,{\scriptstyle\le}\,}
+%  {\,{\scriptscriptstyle\le}\,}{\,{\scriptscriptstyle\le}\,}}}
+\def\Ge{{\mathchoice{\,{\scriptstyle\ge}\,}
+  {\,{\scriptstyle\ge}\,}
+  {\,{\scriptscriptstyle\ge}\,}{\,{\scriptscriptstyle\ge}\,}}}
+\def\vrulesub#1{\hbox{\vrule height7pt depth5pt\,}_{#1}}
+%\def\mapright#1{\smash{\mathop{\,\longrightarrow\,}%
+%     \limits^{#1}}}
+%\def\plus{{\sssize +}}
+%\def\upvee{{\sssize\vee}}
+%\def\underSim#1{\mathop{\vtop{\ialign{##\crcr
+%  \hfil {\bigsym\char'030}\hfil\crcr
+%  \noalign{\nointerlineskip}${\ssize #1}$\crcr
+%  \noalign{\nointerlineskip}\crcr}}}}
+
+\def\eps{{\varepsilon}}
+\def\Lam{{\Lambda}}
+%\def\mynabla{{\nabla\!}}
+
+%\def\xtil{\widetilde{x}}
+
+%\def\Adot{\Dot{A}}
+%\def\Bdot{\Dot{B}}
+%\def\Xdot{\Dot{X}}
+%\def\xdot{\Dot{x}}
+%\def\psidot{\Dot{\psi}}
+
+\def\dbC{{\Bbb C}}
+%\def\dbR{{\Bbb R}}
+
+\def\Tr{\text{\rm Tr}} \def\ln{\text{\rm ln}}
+\def\End{\text{\rm End}} \def\Sym{\text{\rm Sym}}
+\def\I{\text{\rm I}} \def\free{\text{\rm free}}
+\def\II{\text{\rm II}}
+\def\III{\text{\rm III}}
+
+
+\def\scr#1{{\fam\eusmfam\relax#1}}
+
+\def\scrF{{\scr F}}
+\def\scrH{{\scr H}}
+\def\scrL{{\scr L}}
+\def\scrO{{\scr O}}
+
+
+\document
+\line{{\boldtitlefont Witten's Problems}, Set Seven --- 
+N$^{\text{o}}$. 1 
+\hfill (solution written by D. Freed)}
+\smallskip
+\hbox to \hsize{\hrulefill}
+
+\bigskip\noindent
+{\bf Problem:} 
+
+\smallskip
+(1) (a) 
+Show that in $\phi^4$ theory the anomalous 
+dimension of $\phi$ vanishes
+in the one loop approximation and that the one-loop 
+beta function is therefore
+given by a one-loop diagram that we have computed before.  
+The one-loop
+beta function is in particular $\beta(\lambda)=A\lambda^2$ 
+where $\lambda$ is
+the $\phi^4$ coupling, and $A$ is the coefficient of the 
+one-loop divergence.
+
+(b) Convince yourself that the sign of the logarithmic 
+divergence in this
+one-loop diagram (whose significance we by now appreciate) 
+can be determined
+without any computation; it is determined by the 
+fact that in {\it free}
+scalar field theory the two point 
+function $\langle \phi^2(x)\phi^2(0)\rangle$
+is positive.  (This is actually a point that has been 
+made previously.)
+
+\bigskip\bigskip\noindent
+{\bf Solution:}
+
+\smallskip
+\halfspace
+\noindent
+(a)\enspace
+The anomalous dimension of $\phi$ gets contributions from
+$2$-point function diagrams.
+All such (connected) diagrams have naive quadratic
+divergences.
+Let $p$ be the momentum flowing in (and by conservation
+flowing out) and $m$ the mass.
+Then with a cutoff $\Lam$ the diagram diverges as
+$$
+f\fracwithdelims()pm
+\Lam^2+g\fracwithdelims()pm
+\log\fracwithdelims()\Lam m
+p^2+h\fracwithdelims()pm\log\fracwithdelims()\Lam m
+m^2
+$$
+for some functions $f$, $g$, $h$.
+This follows by dimensional analysis.
+(In fact, since the second derivative of a diagram with
+respect to $p$ is finite, we see that $f$, $g$, $h$ are
+simple polynomials.)
+Now the only $1$-loop diagram is shown, and the loop
+integral is\vadjust{\bigskip $$\vbox{\beginpicture
+\setcoordinatesystem units < .50cm, .50cm>
+\setlinear
+%
+% Fig ELLIPSE
+%
+\linethickness= 0.500pt
+\ellipticalarc axes ratio  0.667:0.667  360 degrees 
+	from 11.779 17.844 center at 11.113 17.844
+%
+% Fig POLYLINE object
+%
+\linethickness= 0.500pt
+\putrule from  8.858 17.177 to 13.335 17.177
+%
+% Fig POLYLINE object
+%
+\linethickness= 0.500pt
+\putrule from 12.287 17.177 to 12.954 17.177
+%
+% arrow head
+%
+\plot 12.700 17.113 12.954 17.177 12.700 17.240 /
+%
+%
+% Fig POLYLINE object
+%
+\linethickness= 0.500pt
+\putrule from  9.335 17.177 to 10.001 17.177
+%
+% arrow head
+%
+\plot  9.747 17.113 10.001 17.177  9.747 17.240 /
+%
+%
+% Fig TEXT object
+%
+\put{$\ssize p$} [lB] at 12.700 17.716
+%
+% Fig TEXT object
+%
+\put{$\ssize p$} [lB] at  9.779 17.685
+\linethickness=0pt
+\putrectangle corners at  8.858 18.510 and 13.335 17.177
+\endpicture}
+$$}
+\noindent
+independent of $p$.
+For this diagram, then, $g\equiv 0$ and there is no
+renormalization to the coefficient of $\vert
+d\phi\vert^2$ and so no contribution to the anomalous
+dimension of $\phi$.
+
+The diagram which contributes to the $1$-loop
+$\beta$-function is the 
+\vadjust{\bigskip $$\vbox{\beginpicture
+\setcoordinatesystem units < .50cm, .50cm>
+\setlinear
+%
+% Fig ELLIPSE
+%
+\linethickness= 0.500pt
+\ellipticalarc axes ratio  1.715:1.715  360 degrees 
+	from 12.478 17.844 center at 10.763 17.844
+%
+% Fig POLYLINE object
+%
+\linethickness= 0.500pt
+\plot 12.478 17.812 14.573 19.114 /
+%
+% Fig POLYLINE object
+%
+\linethickness= 0.500pt
+\plot 12.446 17.748 14.541 16.447 /
+%
+% Fig POLYLINE object
+%
+\linethickness= 0.500pt
+\plot  6.953 16.478  9.049 17.780 /
+%
+% Fig POLYLINE object
+%
+\linethickness= 0.500pt
+\plot  6.953 19.114  9.049 17.812 /
+%
+% Fig POLYLINE object
+%
+\linethickness= 0.500pt
+\putrule from 10.700 19.558 to 10.954 19.558
+%
+% arrow head
+%
+\plot 10.700 19.494 10.954 19.558 10.700 19.622 /
+%
+%
+% Fig POLYLINE object
+%
+\linethickness= 0.500pt
+\putrule from 10.922 16.161 to 10.795 16.161
+\putrule from 10.795 16.161 to 10.700 16.161
+%
+% arrow head
+%
+\plot 10.954 16.224 10.700 16.161 10.954 16.097 /
+%
+%
+% Fig POLYLINE object
+%
+\linethickness= 0.500pt
+\plot 14.034 18.796 13.906 18.637 /
+%
+% arrow head
+%
+\plot 14.016 18.875 13.906 18.637 14.115 18.796 /
+%
+%
+% Fig POLYLINE object
+%
+\linethickness= 0.500pt
+\plot 13.875 16.828 13.748 16.954 /
+%
+% arrow head
+%
+\plot 13.972 16.820 13.748 16.954 13.882 16.730 /
+%
+%
+% Fig POLYLINE object
+%
+\linethickness= 0.500pt
+\plot  7.493 18.764  7.620 18.669 /
+%
+% arrow head
+%
+\plot  7.379 18.771  7.620 18.669  7.455 18.872 /
+%
+%
+% Fig POLYLINE object
+%
+\linethickness= 0.500pt
+\plot  7.652 16.891  7.747 16.954 /
+%
+% arrow head
+%
+\plot  7.571 16.761  7.747 16.954  7.500 16.866 /
+%
+%
+% Fig TEXT object
+%
+\put{$\ssize q$} [lB] at 10.763 20.003
+%
+% Fig TEXT object
+%
+\put{\null\kern-5pt $\ssize q-(p_1+p_2)$} [lB] at  9.938 15.399
+%
+% Fig TEXT object
+%
+\put{$\ssize x_1$} [lB] at  6.191 19.082
+%
+% Fig TEXT object
+%
+\put{$\ssize x_2$} [lB] at  6.636 15.875
+%
+% Fig TEXT object
+%
+\put{$\ssize x_3$} [lB] at 14.922 19.018
+%
+% Fig TEXT object
+%
+\put{\raise3pt\hbox{$\ssize x_4$}} [lB] at 14.700 15.939
+%
+% Fig TEXT object
+%
+\put{$\ssize p_1$} [lB] at  7.779 19.018
+%
+% Fig TEXT object
+%
+\put{$\ssize p_2$} [lB] at  7.811 16.447
+%
+% Fig TEXT object
+%
+\put{$\ssize p_3$} [lB] at 13.430 18.955
+%
+% Fig TEXT object
+%
+\put{$\ssize p_4$} [lB] at 13.906 17.177
+\linethickness=0pt
+\putrectangle corners at  6.191 20.510 and 14.922 15.399
+\endpicture}
+$$}
+integral
+$$
+\Dhat(p_1,p_2,p_3,p_4)=\lam^2\int
+\tfrac{d^4q}{(2\pi)^4}\tfrac{1}{(q^2+m^2)((q-p_1-p_2)^2+m^2)}
+\cdot\delta(p_1+p_2+p_3+p_4)
+$$
+which has a leading divergence $A\lam^2\log\frac\Lam m$
+if an ultraviolet cutoff $\Lam$ is imposed.
+(Here $\Gammahat$ is a distribution supported on the
+subspace $(p_1+p_2+p_3+p_4=0$.)
+
+\medskip\noindent
+(b)\enspace
+We want to understand {\it a priori} that $A>0$.
+For this it is best to Fourier transform to position
+space.
+This is straightforward and leads to
+$$
+D(x_1,x_2,x_3,x_4)=G(x-y)^2
+\delta(x_1-x)\delta(x_2-x)\delta(x_3-y)
+\delta(x_4-y),
+$$
+where $G$ is the propagator.
+(So $D$ is supported on the subspace $x_1=x_2$,
+$x_3=x_4$ and its value there is the square of the
+Green's function.)
+In general, the position space prescription for computing
+a {\it one particle irreducible} Feynman diagram as part
+of the effective action is the same as usual --- we
+attach propagators to the legs and integrate over the
+positions in the internal vertices --- except that we
+replace the propagators on the {\it external} legs by
+$\delta$-functions.
+For convenience we take $y=0$ and write
+$D(x)=G(x)^2$.
+
+Now introduce the composite operator
+$\scrO(x)=\phi^2(x)$.
+Then it is immediate that the two point function
+$\left<\scrO(x)\scrO(0)\right>_{\free}$ in the {\it free}
+theory is computed by the diagram shown.
+
+$$
+\vbox{\beginpicture
+\setcoordinatesystem units < .50cm, .50cm>
+\setlinear
+%
+% Fig CIRCULAR ARC object
+%
+\linethickness= 0.500pt
+\circulararc 76.238 degrees from  9.684 17.526 center at  8.831 16.397
+%
+% Fig CIRCULAR ARC object
+%
+\linethickness= 0.500pt
+\circulararc 76.238 degrees from  7.938 17.209 center at  8.831 18.305
+%
+% Fig TEXT object
+%
+\put{\null\kern-.95pt$\ssize x\raise.50pt\hbox{$\ssize\otimes$}$} [lB] at  7.557 17.177
+%
+% Fig TEXT object
+%
+\put{$\ssize \otimes 0$} [lB] at  9.525 17.209
+\linethickness=0pt
+\putrectangle corners at  7.557 17.875 and  9.684 16.859
+\endpicture}
+$$
+
+\noindent
+We evaluate this diagram as $G(x)^2$, so it is precisely
+equal to $D(x)$.
+It is manifest that $D(x)\Ge0$, of course, since it is
+written as the square of a real function.
+But we would like to invoke instead {\it reflection
+positivity} since the argument is useful in more general
+situations.
+
+Reflection positivity asserts that if $\scrO_\Omega$ is a
+(complex) operator in a Euclidean field theory, supported
+in some set $\Omega$ lying on one side of a hyperplane,
+and if $\Omegabar$ denotes the reflection of $\Omega$ in
+the hyperplane, then
+$$
+\left<\scrO_\Omega\overline{\scrO_{\Omegabar}}\right>
+\Ge 0.
+$$
+If $\scrO_\Omega$ takes values in a vector space $V$,
+then the assertion is that
+$\left<\scrO_\Omega\overline{\scrO_{\Omegabar}}\right>$
+is a nonnegative hermitian form on $V^*$.
+$$
+\vbox{\beginpicture
+\setcoordinatesystem units < .50cm, .50cm>
+\setlinear
+%
+% Fig POLYLINE object
+%
+\linethickness= 0.500pt
+\putrule from  5.048 16.542 to 19.558 16.542
+\linethickness= 0.500pt
+%
+% Fig INTERPOLATED PT SPLINE
+%
+\plot  8.827 19.336 	 8.703 19.283
+	 8.598 19.233
+	 8.511 19.184
+	 8.441 19.136
+	 8.341 19.036
+	 8.287 18.923
+	 8.269 18.830
+	 8.269 18.733
+	 8.284 18.634
+	 8.313 18.537
+	 8.354 18.444
+	 8.407 18.359
+	 8.470 18.285
+	 8.541 18.224
+	 8.642 18.180
+	 8.756 18.168
+	 8.878 18.180
+	 9.005 18.205
+	 9.132 18.232
+	 9.253 18.251
+	 9.364 18.252
+	 9.462 18.224
+	 9.544 18.162
+	 9.621 18.072
+	 9.681 17.971
+	 9.716 17.875
+	 9.698 17.797
+	 9.684 17.716
+	 9.718 17.635
+	 9.770 17.554
+	 9.835 17.474
+	 9.910 17.398
+	 9.990 17.328
+	10.071 17.266
+	10.151 17.215
+	10.224 17.177
+	10.311 17.147
+	10.416 17.127
+	10.533 17.115
+	10.655 17.110
+	10.777 17.108
+	10.892 17.110
+	10.996 17.112
+	11.081 17.113
+	11.192 17.113
+	11.317 17.113
+	11.385 17.113
+	11.456 17.113
+	11.530 17.113
+	11.605 17.113
+	11.683 17.113
+	11.763 17.114
+	11.845 17.115
+	11.928 17.116
+	12.012 17.118
+	12.096 17.121
+	12.182 17.123
+	12.267 17.127
+	12.353 17.131
+	12.438 17.136
+	12.523 17.141
+	12.607 17.148
+	12.691 17.155
+	12.772 17.163
+	12.853 17.172
+	12.931 17.182
+	13.008 17.193
+	13.082 17.205
+	13.153 17.218
+	13.222 17.233
+	13.287 17.248
+	13.349 17.266
+	13.462 17.304
+	13.523 17.330
+	13.590 17.361
+	13.660 17.398
+	13.733 17.439
+	13.809 17.484
+	13.885 17.533
+	13.962 17.586
+	14.038 17.641
+	14.113 17.699
+	14.185 17.758
+	14.253 17.819
+	14.317 17.881
+	14.428 18.006
+	14.510 18.129
+	14.546 18.217
+	14.571 18.322
+	14.588 18.438
+	14.596 18.558
+	14.598 18.679
+	14.594 18.795
+	14.585 18.899
+	14.573 18.986
+	14.540 19.107
+	14.514 19.178
+	14.484 19.250
+	14.451 19.322
+	14.417 19.389
+	14.351 19.494
+	14.277 19.581
+	14.180 19.676
+	14.068 19.776
+	13.946 19.876
+	13.822 19.972
+	13.701 20.060
+	13.589 20.135
+	13.494 20.193
+	13.376 20.254
+	13.306 20.288
+	13.231 20.322
+	13.151 20.357
+	13.067 20.391
+	12.981 20.426
+	12.892 20.459
+	12.804 20.491
+	12.716 20.522
+	12.629 20.550
+	12.545 20.575
+	12.465 20.597
+	12.389 20.615
+	12.319 20.628
+	12.256 20.637
+	12.177 20.643
+	12.083 20.644
+	11.980 20.640
+	11.872 20.632
+	11.764 20.618
+	11.662 20.598
+	11.570 20.573
+	11.494 20.542
+	11.368 20.443
+	11.304 20.373
+	11.241 20.296
+	11.180 20.219
+	11.121 20.146
+	11.017 20.034
+	10.905 19.947
+	10.834 19.896
+	10.759 19.844
+	10.682 19.794
+	10.607 19.749
+	10.538 19.712
+	10.478 19.685
+	10.389 19.659
+	10.282 19.639
+	10.160 19.622
+	10.097 19.615
+	10.033 19.608
+	 9.968 19.602
+	 9.905 19.596
+	 9.784 19.584
+	 9.676 19.572
+	 9.588 19.558
+	 9.504 19.540
+	 9.397 19.515
+	 9.291 19.488
+	 9.207 19.463
+	 9.084 19.412
+	 8.988 19.367
+	 8.928 19.338
+	 8.858 19.304
+	/
+\linethickness= 0.500pt
+%
+% Fig INTERPOLATED PT SPLINE
+%
+\plot  8.795 13.557 	 8.671 13.610
+	 8.567 13.660
+	 8.480 13.709
+	 8.409 13.757
+	 8.309 13.857
+	 8.255 13.970
+	 8.238 14.063
+	 8.237 14.160
+	 8.252 14.259
+	 8.281 14.356
+	 8.323 14.449
+	 8.375 14.534
+	 8.438 14.608
+	 8.509 14.669
+	 8.610 14.713
+	 8.724 14.725
+	 8.847 14.713
+	 8.973 14.688
+	 9.100 14.661
+	 9.221 14.642
+	 9.333 14.641
+	 9.430 14.669
+	 9.513 14.731
+	 9.589 14.821
+	 9.649 14.922
+	 9.684 15.018
+	 9.666 15.096
+	 9.652 15.176
+	 9.686 15.258
+	 9.738 15.339
+	 9.803 15.419
+	 9.878 15.495
+	 9.958 15.565
+	10.040 15.627
+	10.119 15.678
+	10.192 15.716
+	10.279 15.746
+	10.384 15.766
+	10.501 15.778
+	10.623 15.783
+	10.745 15.785
+	10.861 15.783
+	10.964 15.781
+	11.049 15.780
+	11.160 15.780
+	11.286 15.780
+	11.354 15.780
+	11.424 15.780
+	11.498 15.780
+	11.574 15.780
+	11.652 15.780
+	11.732 15.779
+	11.813 15.778
+	11.896 15.777
+	11.980 15.775
+	12.065 15.772
+	12.150 15.770
+	12.236 15.766
+	12.321 15.762
+	12.407 15.757
+	12.491 15.752
+	12.576 15.745
+	12.659 15.738
+	12.741 15.730
+	12.821 15.721
+	12.899 15.711
+	12.976 15.700
+	13.050 15.688
+	13.121 15.675
+	13.190 15.660
+	13.255 15.645
+	13.317 15.627
+	13.430 15.589
+	13.492 15.563
+	13.558 15.532
+	13.628 15.495
+	13.701 15.454
+	13.777 15.409
+	13.854 15.360
+	13.931 15.307
+	14.007 15.252
+	14.081 15.194
+	14.153 15.135
+	14.222 15.074
+	14.286 15.012
+	14.396 14.887
+	14.478 14.764
+	14.514 14.676
+	14.540 14.571
+	14.556 14.455
+	14.565 14.335
+	14.566 14.214
+	14.562 14.098
+	14.553 13.994
+	14.541 13.906
+	14.509 13.786
+	14.483 13.715
+	14.452 13.643
+	14.419 13.571
+	14.385 13.504
+	14.319 13.399
+	14.245 13.312
+	14.149 13.217
+	14.036 13.117
+	13.915 13.017
+	13.790 12.921
+	13.669 12.833
+	13.557 12.758
+	13.462 12.700
+	13.344 12.639
+	13.275 12.605
+	13.199 12.571
+	13.119 12.536
+	13.035 12.502
+	12.949 12.467
+	12.861 12.434
+	12.772 12.402
+	12.684 12.371
+	12.597 12.343
+	12.513 12.318
+	12.433 12.296
+	12.357 12.278
+	12.287 12.265
+	12.224 12.256
+	12.145 12.250
+	12.052 12.249
+	11.948 12.253
+	11.840 12.261
+	11.732 12.275
+	11.630 12.295
+	11.538 12.320
+	11.462 12.351
+	11.337 12.450
+	11.273 12.520
+	11.209 12.597
+	11.148 12.674
+	11.089 12.747
+	10.986 12.859
+	10.873 12.946
+	10.803 12.997
+	10.727 13.049
+	10.650 13.099
+	10.575 13.144
+	10.506 13.181
+	10.446 13.208
+	10.358 13.234
+	10.250 13.254
+	10.129 13.271
+	10.065 13.278
+	10.001 13.285
+	 9.937 13.291
+	 9.873 13.297
+	 9.752 13.309
+	 9.644 13.321
+	 9.557 13.335
+	 9.472 13.353
+	 9.365 13.378
+	 9.259 13.405
+	 9.176 13.430
+	 9.052 13.481
+	 8.956 13.526
+	 8.896 13.555
+	 8.827 13.589
+	/
+%
+% Fig TEXT object
+%
+\put{$\ssize\Omega$} [lB] at 15.431 18.574
+%
+% Fig TEXT object
+%
+\put{$\ssize\bar{\Omega}$} [lB] at 15.335 14.065
+%
+% Fig TEXT object
+%
+%\put{\SetFigFont{12}{14.4}{rm}\_} [lB] at 15.367 14.446
+%
+% Fig TEXT object
+%
+\put{$\ssize\pi$} [lB] at 20.320 16.383
+%
+% Fig TEXT object
+%
+\put{$\ssize X_+$} [lB] at 18.256 17.209
+%
+% Fig TEXT object
+%
+\put{$\ssize X_-$} [lB] at 18.256 15.589
+\linethickness=0pt
+\putrectangle corners at  5.048 20.637 and 20.320 12.256
+\endpicture}
+$$
+
+We can understand this heuristically by writing a path
+integral over the half-space.
+Namely, suppose for simplicity that we are dealing with
+a complex scalar field $\phi$ with action $S(\phi)$.
+Then for $\phi_0$ a function on $\pi$ we set
+$$
+Z_{X_+}(\phi_0)=\int\limits
+\Sb
+\phi\colon\,X_+\to\dbC\\
+\phi\vrulesub{\pi}=\phi_0
+\endSb
+\scrO_\Omega(\phi)e^{-S_{X_+}(\phi)}D\phi.
+$$
+This should be viewed as a vector in some Hilbert space
+of functions of $\phi_0$.
+Now $X_-\cong \Xbar_+$, where $\Xbar_+$ is $X_+$ with the
+reversed orientation.
+The Euclidean action has the property that
+$S_{\Ybar}=\overline{S_Y}$ for any spacetime
+$Y$: \ orientation reversal conjugates the action.
+It follows that
+$$
+\align
+\overline{Z_{X_+}(\phi_0)} &=\int\limits
+\Sb
+\phi\colon\,X_+\to\dbC\\
+\phi\vrulesub{\pi}=\phi_0
+\endSb
+\overline{\scrO_\Omega(\phi)}e^{-\overline{S_{X_+}(\phi)}}
+D\phi\\
+&=\int\limits
+\Sb
+\phi\colon\,X_-\to\dbC\\
+\phi\vrulesub{\pi}=\phi_0
+\endSb
+\overline{\scrO_\Omega(\phi)}e^{-S_{X_-}(\phi)}D\phi
+\endalign
+$$
+The norm square of $Z_{X_+}(\phi)$ in $\scrH$ is computed
+by integrating over $\phi_0$:
+$$
+\align
+\Vert Z_{X_+}(\phi_0)\Vert_{\scrH}^2
+&=\int\limits_{\phi_0\colon\,\pi\to\dbC}Z_{X_+}(\phi_0)
+\overline{Z_{X_+}(\phi_0)}D\phi_0\\
+&=\int\limits_{\phi\colon X\to\dbC}\scrO_\Omega
+(\phi)\overline{\scrO_{\Omegabar}(\phi)}e^{-S_X(\phi)}D\phi\\
+&=\left<\scrO_\Omega\overline{\scrO_{\Omegabar}}\right>,
+\endalign
+$$
+where the measure is normalized so that the partition function
+is one.
+The left hand side is obviously positive, hence so is the
+right.
+
+In our example $\scrO_{(x)}=\phi^2(x)$ is real, and to
+show that
+$D(x)=\left<\scrO(x)\scrO(0)\right>_{\free}\Ge 0$ we
+use reflection positivity for the perpendicular
+bisector of the line segment connecting $0$ and $x$.
+Now $D(x)$ diverges as $x\to 0$, and since
+$D(x)\Ge 0$ the coefficient of the divergence is
+positive.
+This implies that the divergence in $D$ with a
+momentum cutoff $\Lam$ has a positive coefficient.
+
+
+\enddocument
+
+
+
+

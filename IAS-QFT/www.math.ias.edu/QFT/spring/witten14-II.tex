@@ -1,0 +1,443 @@
+\documentstyle{article}
+
+
+%These are the macros which are in common with all of the
+% sections in the paper mmr
+% Each section, for now, should begin with \documentstyle[11pt,cd]{article}
+% and then have \input{mmrmacros} followed by \begin{document}
+% The only exception is that the \Label macro is slightly different
+% in each file and should be put in separately.
+%New CD macros
+\newcommand{\cdrl}{\cd\rightleftarrows}
+\newcommand{\cdlr}{\cd\leftrightarrows}
+\newcommand{\cdr}{\cd\rightarrow}
+\newcommand{\cdl}{\cd\leftarrow}
+\newcommand{\cdu}{\cd\uparrow}
+\newcommand{\cdd}{\cd\downarrow}
+\newcommand{\cdud}{\cd\updownarrows}
+\newcommand{\cddu}{\cd\downuparrows}
+% (S) Proofs.
+% (S-1) Head is automatically supplied by \proof.
+
+\def\proof{\vspace{2ex}\noindent{\bf Proof.} }
+\def\tproof#1{\vspace{2ex}\noindent{\bf Proof of Theorem #1.} }
+\def\pproof#1{\vspace{2ex}\noindent{\bf Proof of Proposition #1.} }
+\def\lproof#1{\vspace{2ex}\noindent{\bf Proof of Lemma #1.} }
+\def\cproof#1{\vspace{2ex}\noindent{\bf Proof of Corollary #1.} }
+\def\clproof#1{\vspace{2ex}\noindent{\bf Proof of Claim #1.} }
+% End of Proof Symbol at the end of an equation must precede $$.
+
+\def\endproof{\relax\ifmmode\expandafter\endproofmath\else
+  \unskip\nobreak\hfil\penalty50\hskip.75em\hbox{}\nobreak\hfil\bull
+  {\parfillskip=0pt \finalhyphendemerits=0 \bigbreak}\fi}
+\def\endproofmath$${\eqno\bull$$\bigbreak}
+\def\bull{\vbox{\hrule\hbox{\vrule\kern3pt\vbox{\kern6pt}\kern3pt\vrule}\hrule}
+}
+\addtolength{\textwidth}{1in}                  % Margin-setting commands
+\addtolength{\oddsidemargin}{-.5in}
+\addtolength{\evensidemargin}{.5in}
+\addtolength{\textheight}{.5in}
+\addtolength{\topmargin}{-.3in}
+\addtolength{\marginparwidth}{-.32in}
+\renewcommand{\baselinestretch}{1.6}
+\def\hu#1#2#3{\hbox{$H^{#1}(#2;{\bf #3})$}}          % #1-Cohomology of #2
+\def\hl#1#2#3{\hbox{$H_{#1}(#2;{\bf #3})$}}          % #1-Homology of #2
+\def\md#1{\ifmmode{\cal M}_\delta(#1)\else  % moduli space, delta decay of #1
+{${\cal M}_\delta(#1)$}\fi}
+\def\mb#1{\ifmmode{\cal M}_\delta^0(#1)\else  %moduli space, based, delta
+                                              %decay of #1
+{${\cal M}_\delta^0(#1)$}\fi}
+\def\mdc#1#2{\ifmmode{\cal M}_{\delta,#1}(#2)\else    %moduli space, delta
+                                                      %decay, chern class #1
+                                                      %of #2
+{${\cal M}_{\delta,#1}(#2)$}\fi}
+\def\mbc#1#2{\ifmmode{\cal M}_{\delta,#1}^0(#2)\else   %as before, based
+{${\cal M}_{\delta,#1}^0(#2)$}\fi}
+\def\mm{\ifmmode{\cal M}\else {${\cal M}$}\fi}
+\def\ad{{\rm ad}}
+\def\msigma{\ifmmode{\cal M}^\sigma\else {${\cal M}^\sigma$}\fi}
+\def\cancel#1#2{\ooalign{$\hfil#1\mkern1mu/\hfil$\crcr$#1#2$}}
+\def\dirac{\mathpalette\cancel\partial}
+\newtheorem{thm}{Theorem}
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{D}[theorem]{Definition}
+\newenvironment{defn}{\begin{D} \rm }{\end{D}}
+\newtheorem{addendum}[theorem]{Addendum}
+\newtheorem{R}[theorem]{Remark}
+\newenvironment{remark}{\begin{R}\rm }{\end{R}}
+\newcommand{\note}[1]{\marginpar{\scriptsize #1 }}
+\newenvironment{comments}{\smallskip\noindent{\bf Comments:}\begin{enumerate}}{
+\end{enumerate}\smallskip}
+
+\renewcommand{\thesection}{\Roman{section}}
+\def\eqlabel#1{\addtocounter{theorem}{1}
+\write1{\string\newlabel{#1}{{\thetheorem}{\thepage}}}
+\leqno(\rm\thetheorem)}
+\def\cS{{\cal S}}
+\def\ov{\overline}
+
+
+
+
+
+
+
+
+\newcommand{\operatorname}[1]{\mathop{\rm #1}\nolimits}
+\newcommand{\Tr}{\operatorname{Tr}}
+
+
+
+\title{Lecture II-14, part II: Quantum Cohomology of K\"ahler Manifolds}
+\author{Edward Witten\thanks{Notes by John Morgan}}
+\date{May 1, 1997}
+
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+
+We return now to twisted $N=2$ supersymmetric $\sigma$-models in
+dimension two with  target a K\"ahler manifold $X$.
+Recall that there were four possibilities for twisting depending on
+which  supersymmetry $Q\in\{\overline Q_++\overline Q_-,Q_++\overline
+Q_-,\overline Q_++Q_-, Q_++\overline Q_-\}$ is preserved.
+Whichever possibility
+one selects, the cohomology of $Q$ as a vector space can be identified
+with the cohomology of $X$.  But there is more structure; if
+we restrict to the case that the Riemann surface is a fixed $\S^2$,
+then the additional structure is a ring structure on the cohomology
+of $Q$. The resulting rings are called the $(a,a)$, $(c,a)$, $(a,c)$,
+and $(c,c)$ chiral rings.
+
+With one of the choices,
+the classical version of the chiral ring turns out to be the
+usual ring structure on cohomology, but quantum mechanically there are
+corrections, instanton corrections, to this classical answer. For this
+reason the chiral ring of the $\sigma$-model
+is called the quantum cohomology of
+the K\"ahler manifold $X$.
+In this half of the lecture, we will discuss quantum cohomology
+generally and then make some explicit computations in the case $X={\bf
+C}P^{n-1}$ and the case $X$ is a Fano hypersurface.
+These computations will be done both mathematically, counting
+holomorphic rational curves with certain properties, and will be done
+from the physics point of view by using the renormalization group flow
+(discussed in Lecture
+II-12 and the first half of Lecture II-14)
+from these $\sigma$-models to Landau-Ginsburg theories
+with extra vacua.
+
+
+
+\section{The space of $0$-energy states}
+
+We wish to compute some of these chiral rings, but before we deal
+directly with the operators, we compute the $0$-energy states in
+the Hamiltonian framework. The reason for doing this computation is
+that as we showed in the last lecture there is a map
+$$\psi\colon {\rm chiral\ ring}\to \{0{\rm -energy\ states}\}$$
+given by inserting a local operator at a point on the hemisphere.
+In favorable circumstances this  map is an isomorphism.
+
+
+In the Hamiltonian framework the bosonic space underlying the space
+of fields is
+$${\cal W}={\rm Maps}(S^1,X).$$
+The minimum energy configurations are the constant maps and hence the
+space of these is a copy of $X$.
+Since there are fermions in two copies of the
+spin bundle, when we quantize  the resulting Hilbert space is the
+tensor product of two copies of the spin bundle over $X$, i.e., the space of
+differential forms on $X$. The Hamiltonian is the Laplacian and its
+space of ground states is then the space
+$L^2$-harmonic  forms on $X$ which is identified with $H^*_{L^2}(X)$.
+Of course, there are normal directions to the copy of $X$ in ${\cal
+W}$ to consider, but supersymmetry implies that the
+quadratic form in the normal directions is non-degenerate, and hence
+these directions produce a tensor products of harmonic oscillators and
+have a unique ground state. Thus, in the end we find that the ground
+states for the entire theory are identified with the harmonic forms on
+$X$.
+We shall see that the computation of the chiral rings gives the same
+answer (additively), so that in the cases we consider today the map
+$\psi$ is indeed an isomorphism.  This is true generally when the
+classical theory has the property that the energy grows as the fields
+go to infinity.
+
+
+\section{Generalities on the chiral ring}
+
+In order to define a chiral ring we need a global supersymmetry. As
+we saw in Lecture II-13 the way to obtain these is to twist the usual
+form of the $N=2$ supersymmetric theory.
+Today we shall only consider  twists making $\overline Q_++Q_-$
+global. This is what we referred to in  Lecture II-13 as Case A.  It
+is a twist that can be performed for any K\"ahler manifold -- no
+assumption of vanishing first Chern class
+is necessary. We shall consider local operators
+which are functions of the basic bosonic field $\phi\colon S^1\to X$
+and fermions. Recall that  one of the effects of twisting is to make the
+fermions sections of bundles of integral rather than half-integral
+spin. That is to say, they are differential forms instead of spinors.
+It will suffice in describing the
+$Q$-cohomology of operators,  to consider only fermions of zero spin.
+The reason for this is that all of the $Q$-cohomology classes of operators
+have representatives that are constructed using only those fermions.
+To be more precise, the $Q$-cohomology classes have representatives
+that depend only on the bosonic fields and spin zero fermions and
+not their derivatives.
+\footnote{This is the operator analog of the fact that in the Hamiltonian
+description, the zero energy states are constructed from differential
+forms on the target space with all oscillators in their ground state.
+Operators that contain derivatives of fields would correspond to states
+in which some oscillators are excited.}
+Thus, our local operators will be of the form
+$${\cal O}={\cal O}(\phi,\psi_L,\psi_R)$$
+where in the untwisted version of the theory, $\psi_L$ is a section of
+$K^{-1/2}\otimes \phi^*T^{0,1}X$ and $\psi_R$ is a section of
+$K^{1/2}\otimes T^{1,0}X$.
+After we twist, these fermion fields lie in
+$\phi^*T^{0,1}X$ and $\phi^*T^{1,0}X$, since the twisting cancels out
+the line bundle over $\Sigma$.
+In particular, it is possible to form the sum $\psi=\psi_L+\psi_R$ and
+consider operators ${\cal O}={\cal O}(\phi,\psi)$.
+
+\subsection{Local Operators}
+
+For each differential form $\lambda$ on $X$ there is an operator ${\cal
+O}_\lambda(x)={\cal O}_\lambda(\phi(x),\psi(x))$. As we remarked in
+the Lecture II-13, under the identifications of operators and forms, $Q$
+is identified with the usual exterior derivative:
+$$\{Q,{\cal O}_\lambda\}={\cal O}_{d\lambda}.$$
+
+
+
+When, as in the case of these $N=2$ supersymmetric $\sigma$-models,
+the operator-to-state
+correspondence is an isomorphism we can compute the ring structure of
+the chiral ring by computing correlation coefficients.
+Our goal here is to compute in more classical topological and
+geometric terms the correlation coefficient
+$$\langle{\cal O}_{\lambda_1}(x_1)\cdots{\cal
+O}_{\lambda_s}(x_s)\rangle$$
+for closed forms $\lambda_i$.
+As we have already remarked, the correlation coefficient is unchanged
+if we replace the $\lambda_i$ by cohomologous forms. Also, to compute
+this correlation function,
+which means to compute the path integral
+$$\int{\cal D}\phi{\cal D}\psi e^{2\pi i{\cal L}}\prod_i{\cal
+O}_{\lambda_i}(x_i)$$
+over the space of all fields, it suffices to compute the integral over
+the subspace of $Q$-invariant fields.
+We have already identified
+ the bosonic part of the subspace
+of $Q$-fixed points: it is the space of
+holomorphic maps $\Sigma\to X$.
+For each $i$ choose a cycle $H_i$ Poincar\'e dual to $[\lambda_i]$.
+Then we can choose a representative for $\lambda_i$ with support in an
+arbitrarily small neighborhood of $H_i$.
+To compute the correlation function one will consider the
+moduli space of holomorphic maps from the Riemann surface passing
+through all of the $H_i$ at the points $x_i$. In the `best' case  when
+there are only finitely many holomorphic maps passing through the
+cycles, one simply counts each of these maps with a sign.  The sign
+comes from evaluating the bosonic and fermionic determinants in an
+expansion around the classical solution.
+Then the result is weighted by the exponential of $2\pi i$ times the
+value of the action at this component.
+
+Mathematically, there is a dimension count which must be satisfied for
+the differential form being integrated to be top dimensional on the
+moduli space of holomorphic curves, and hence for the answer to have a
+chance of being non-zero. From the physics point of view one
+sees the same dimension restriction  coming from the anomaly of the
+$R$-symmetry. The measure of integration in the path integral has an
+anomaly under this symmetry, and one
+must use a set of operators whose product has precisely the cancelling
+anomaly for the path integral to have a chance to be non-zero. Not
+surprisingly, these two conditions are the same: namely, that the sum of
+the codimensions of the $H_i$ in $X$ must be equal to the dimension of
+the instanton moduli space of non-constant holomorphic maps from
+$\Sigma$ to $X$.
+
+If one wants to see just the classical cohomology ring, rather
+than the quantum cohomology, then one should consider just the constant
+maps to $X$.  Then the dimension condition is
+$$\sum_{i=1}^s{\rm degree}\lambda_i={\rm dim}X$$
+and the classical answer is simply
+$$\int_X\lambda_1\wedge\cdots\wedge \lambda_s.$$
+That is to say, the classical chiral ring is the cohomology ring of
+$X$.
+This answer gets corrected quantum mechanically by instanton
+corrections  given by the integrals we were describing over the moduli
+space of non-constant holomorphic maps. Thus, the chiral ring is a quantum
+correction to the usual cohomology ring of $X$. For this reason the
+chiral ring is usually  called the quantum cohomology ring of $X$.
+
+
+\section{More Details on the Ring Structure}
+
+Having given the general definition of quantum cohomology as the
+chiral ring and indicated the sorts of mathematics that go into
+computing it, it is now time to be more concrete and compute an
+example. We take the case of $\Sigma=S^2$ mapping into a compact
+K\"ahler manifold $X$.
+Let us begin with a correlation function with only two operators:
+$$\langle {\cal O}_{\lambda_1}{\cal O}_{\lambda_2}\rangle,$$
+with the degree of $\lambda_1$ plus the degree of $\lambda_2$ equal to
+the dimension of $X$.
+We of course know that the space of constant maps  gives a
+contribution to this correlation function equal to
+$$\int_X\lambda_1\wedge\lambda_2.$$
+
+In this case there is no quantum correction and this is also the answer
+in the chiral ring. The reason that there is no quantum correction is
+that the space of non-constant holomorphic maps of $S^2\to X$
+passing through a point of $H_1$ and $H_2$ has a free ${\bf
+C}^*$-action on it. For a component of this space to possibly give a
+non-zero correction to the correlation coefficient, it must be the
+case that its formal dimension is zero. But if it has zero dimension
+and has a free ${\bf C}^*$-action on it, then it must be empty.
+(Even for a possible nonzero component of this space, the free ${\bf C}^*$
+action ensures that the contribution is zero.)
+Thus, we have shown that under the identification of the chiral ring
+with the cohomology of $X$,  the two point correlation functions, which
+compute the  inner product on the vector space underlying the chiral
+ring, give the usual inner product on cohomology or equivalently give
+the intersection form on homology.
+
+Now let us consider the ring structure. Fix a basis $\{\lambda_i\}$
+for $H^*(X)$.
+Let the inner product in this basis be given by $\eta_{ij}$:
+$$\eta_{ij}=\langle{\cal O}_{\lambda_i}{\cal O}_{\lambda_j}\rangle.$$
+Then the ring structure is determined by structure constants
+$c_{ij}^k$ defined by
+$${\cal O}_{\lambda_i}{\cal O}_{\lambda_j}=c_{ij}^k{\cal
+O}_{\lambda_k}.$$
+Let
+$\omega_{ijk}$ be the three point function
+$$\langle{\cal O}_{\lambda_i}{\cal O}_{\lambda_j}{\cal
+O}_{\lambda_k}\rangle.$$
+Since this three point function is also the inner product of the
+product of the first two local operators with the third, we see
+$$\omega_{ijk}=\sum_rc_{ij}^r\eta_{rk}.$$
+Since $\eta_{ij}$ is non-degenerate, this implies that the two and
+three point correlation functions determine the ring structure of the
+chiral ring.
+
+
+\section{Calculations for ${\bf C}P^{n-1}$}
+
+We will now consider an example.
+We do the computation for ${\bf C}P^{n-1}$ by using a gauged linear
+$\sigma$-model with linear bosonic fields $\phi_1,\ldots,\phi_n,p$ as
+in Lecture II-12.
+To get all of ${\bf C}P^{n-1}$ we set the superpotential $W$ equal to
+zero.
+We get a family of theories depending on a complex parameter
+$t=-ir+\frac\theta{2\pi}$, and
+as we have seen, for ${\rm Im}\,t\ll 0$ these are non-linear
+$\sigma$-models on $X$ with some K\"ahler metric depending on $t$ and
+K\"ahler class roughly proportional to ${\rm Im}\,t$.
+The only observable is ${\cal O}_H$ where $H$ is the hyperplane
+section. We call this operator $\sigma$.
+Classically, in ${\bf C}P^{n-1}$ we have one relation, namely
+$\sigma^{n}=0$. Let us see what happens quantum mechanically.
+We need to compute the three point function
+$$\langle \sigma^a\sigma^b\sigma^c\rangle$$
+where $a+b+c=n-1+dn={\rm dim}{\cal M}_d$,
+the dimension of the moduli space of rational curves of degree $d$.
+Clearly, it suffices to consider the case when $a,b,c<n$. This implies
+that the only possibilities for $d$ are $d=0,1$. Of course, $d=0$
+is the moduli space of constant maps and its contribution is the
+classical ring structure. For $d=1$, we are considering
+straight lines in ${\bf C}P^{n-1}$.
+To calculate
+$$\langle \sigma^{n-1}(x)\sigma^{n-1}(y)\sigma(z)\rangle$$
+we must consider the space of straight lines through two points
+meeting a fixed hyperplane. There is exactly one such line.
+Since the instanton action is $e^{-2\pi it}$,
+this lead to the relation
+$$\langle \sigma^{n-1}(x)\sigma^{n-1}(y)\sigma(z)\rangle= e^{-2\pi
+it}.$$
+Unraveling the ring structure from this three point function yields
+$$\sigma^n=e^{-2\pi it}$$
+in quantum cohomology.
+
+We can make the same calculation physically. We are considering the
+$\sigma$-model ${\bf C}P^1\to {\bf C}P^{n-1}$. At the end of Lecture II-12 we
+found that  in the infra-red this flows to $n$ vacua with a mass gap
+(since this is a case in which $c_1(X)>0$, the flow is from the
+$\sigma$-model to the Landau-Ginsburg model). The field $\sigma$ has
+different expectation values in each vacuum.  Since the fields are
+massive, we simply set them equal to their expectation values. These
+vacuum expectation values
+are $\sigma=\mu e^{2\pi i(-t+k)/n}, \ k=0,\ldots,n-1$.
+These give the idempotents of the quantum cohomology ring, from which
+we deduce the same answer as before,\footnote{Except for a factor of $\mu$
+which has to do with a mismatch between our physical and mathematical
+conventions.  In lecture 12, $\sigma$ was defined as a field of dimension
+one and no effort was made to compare to any topological normalization.
+In our mathematical discussion today, $\sigma$ was normalized topologically
+as a field related to a hyperplane section of projective space, and
+in particular has dimension zero.  To compare the two definitions,
+one should, in the setting of lecture 12, integrate out the $\sigma$
+field in the region $r\gg 0$ in favor of the massless fields of the sigma
+model.  In this process, $\sigma$ will turn into an operator of the low
+energy theory that can be derived from a two-form on ${\bf CP}^{n-1}$.
+The cohomology class of this operator will be a multiple $C$ of
+the hyperplane section, and $C$ is the factor by which the physical
+normalization of lecture 12 disagrees with the topological normalization
+that gives $\sigma^n=e^{-2\pi it}$.}
+ namely that the ring is generated
+by $\sigma$ modulo the relation $\sigma^n=e^{-2\pi it}$.
+
+\section{Calculations for Fano Hypersurfaces}
+
+Now let us generalize these computations to the case of a hypersurface
+of degree $d<n$ in ${\bf C}P^{n-1}$, so-called Fano hypersurfaces.
+
+According to [Collino-Jinzenji] the answer, computed mathematically, is
+that the quantum cohomology ring is generated by $\sigma$ with one
+relation:
+\begin{equation}\label{quantumFano}
+\sigma^{d-1}\left(\sigma^{n-d}-e^{-2\pi it}\right)=0.
+\end{equation}
+
+Let us think about how this computation fits with the fact that again
+this $\sigma$-model flows in the infra-red to a Landau-Ginsburg model
+plus extra massive vacua.
+The roots of the equation $\sigma^{d-1}(\sigma^{n-d}-e^{-2\pi i t})=0$
+are of two types: a root at $\sigma=0$ of multiplicity $d-1$,
+and nondegenerate roots (that is, roots of multiplicity one) at
+nonzero sigma.
+The roots of the equation correspond to the vacua of the quantum field
+theory.  Nondegenerate roots correspond to massive vacua, which give
+idempotents of the quantum cohomology ring.
+In analyzing the vacuum structure of this theory in lecture 12, we found
+$n-d$ massive vacua at nonzero sigma.  These give the factor
+$(\sigma^{n-d}-e^{-2\pi i t})$ in the equation for the quantum cohomology.
+The other factor $\sigma^{d-1}$ is the contribution of the Landau-Ginzburg
+vacua at the origin.  This factor is present if $d>1$ (for $d=1$
+we are discussing a projective space of codimension one, and there is
+no Landau-Ginzburg vacuum), and corresponds to a root at the origin
+of multiplicity greater than one if $d>2$ (for $d=2$, the central
+charge of the Landau-Ginzburg theory, which in general is $\widehat
+c=n(1-2/d)$,
+vanishes; in this case the Landau-Ginzburg theory is massive and infrared
+trivial).  For general $d$, the multiplicity of the $\sigma=0$
+root of the quantum cohomology can be computed by evaluating $\Tr(-1)^F$
+in the Landau-Ginzburg theory at $\sigma=0$.
+
+
+
+
+
+\end{document}

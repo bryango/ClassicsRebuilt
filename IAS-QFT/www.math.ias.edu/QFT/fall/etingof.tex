@@ -1,0 +1,908 @@
+%From: Pavel I Etingof <etingof@IAS.EDU>
+%Date: Tue, 17 Dec 1996 10:01:33 -0500
+
+\input amstex
+\documentstyle{amsppt}
+\magnification 1200
+\NoRunningHeads
+\NoBlackBoxes
+\document
+
+\def\top{{\text{top}}}
+\def\Re{\text{Re}}
+\def\tW{\tilde W}
+\def\Aut{\text{Aut}}
+\def\tr{{\text{tr}}}
+\def\ell{{\text{ell}}}
+\def\Ad{\text{Ad}}
+\def\u{\bold u}
+\def\m{\frak m}
+\def\O{\Cal O}
+\def\tA{\tilde A}
+\def\qdet{\text{qdet}}
+\def\k{\kappa}
+\def\RR{\Bbb R}
+\def\be{\bold e}
+\def\bR{\overline{R}}
+\def\tR{\tilde{\Cal R}}
+\def\hY{\hat Y}
+\def\tDY{\widetilde{DY}(\g)}
+\def\R{\Bbb R}
+\def\h1{\hat{\bold 1}}
+\def\hV{\hat V}
+\def\deg{\text{deg}}
+\def\hz{\hat \z}
+\def\hV{\hat V}
+\def\Uz{U_h(\g_\z)}
+\def\Uzi{U_h(\g_{\z,\infty})}
+\def\Uhz{U_h(\g_{\hz_i})}
+\def\Uhzi{U_h(\g_{\hz_i,\infty})}
+\def\tUz{U_h(\tg_\z)}
+\def\tUzi{U_h(\tg_{\z,\infty})}
+\def\tUhz{U_h(\tg_{\hz_i})}
+\def\tUhzi{U_h(\tg_{\hz_i,\infty})}
+\def\hUz{U_h(\hg_\z)}
+\def\hUzi{U_h(\hg_{\z,\infty})}
+\def\Uoz{U_h(\g^0_\z)}
+\def\Uozi{U_h(\g^0_{\z,\infty})}
+\def\Uohz{U_h(\g^0_{\hz_i})}
+\def\Uohzi{U_h(\g^0_{\hz_i,\infty})}
+\def\tUoz{U_h(\tg^0_\z)}
+\def\tUozi{U_h(\tg^0_{\z,\infty})}
+\def\tUohz{U_h(\tg^0_{\hz_i})}
+\def\tUohzi{U_h(\tg^0_{\hz_i,\infty})}
+\def\hUoz{U_h(\hg^0_\z)}
+\def\hUozi{U_h(\hg^0_{\z,\infty})}
+\def\hg{\hat\g}
+\def\tg{\tilde\g}
+\def\Ind{\text{Ind}}
+\def\pF{F^{\prime}}
+\def\hR{\hat R}
+\def\tF{\tilde F}
+\def\tg{\tilde \g}
+\def\tG{\tilde G}
+\def\hF{\hat F}
+\def\bg{\overline{\g}}
+\def\bG{\overline{G}}
+\def\Spec{\text{Spec}}
+\def\tlo{\hat\otimes}
+\def\hgr{\hat Gr}
+\def\tio{\tilde\otimes}
+\def\ho{\hat\otimes}
+\def\ad{\text{ad}}
+\def\Hom{\text{Hom}}
+\def\hh{\hat\h}
+\def\a{\frak a}
+\def\t{\hat t}
+\def\Ua{U_q(\tilde\g)}
+\def\U2{{\Ua}_2}
+\def\g{\frak g}
+\def\n{\frak n}
+\def\hh{\frak h}
+\def\sltwo{\frak s\frak l _2 }
+\def\Z{\Bbb Z}
+\def\C{\Bbb C}
+\def\d{\partial}
+\def\i{\text{i}}
+\def\ghat{\hat\frak g}
+\def\gtwisted{\hat{\frak g}_{\gamma}}
+\def\gtilde{\tilde{\frak g}_{\gamma}}
+\def\Tr{\text{\rm Tr}}
+\def\l{\lambda}
+\def\I{I_{\l,\nu,-g}(V)}
+\def\z{\bold z}
+\def\Id{\text{Id}}
+\def\<{\langle}
+\def\>{\rangle}
+\def\o{\otimes}
+\def\e{\varepsilon}
+\def\RE{\text{Re}}
+\def\Ug{U_q({\frak g})}
+\def\Id{\text{Id}}
+\def\End{\text{End}}
+\def\gg{\tilde\g}
+\def\b{\frak b}
+\def\S{\Cal S}
+\def\L{\Lambda}
+
+\topmatter
+\title On integration in a space with complex dimension
+\endtitle
+\author {\rm {\bf Pavel Etingof} }\endauthor
+\endtopmatter
+
+These are comments on dimensional regularization of Feynman integrals, which 
+was discussed in the lectures of K.Gawedzki and D.Gross. 
+This material can be found in physical literature, but in a slightly 
+different form. 
+
+We will first define a certain remarkable operator 
+(the D-dimensional integral), which acts on functions of nonnegative 
+symmetric bilinear forms, and then show how it applies to dimensional 
+regularization.  
+
+{\bf Acknowledgement: } I am grateful to Pierre Deligne,
+who helped me improve this text. 
+
+{\bf 1. The $D$-dimensional integral.}
+
+Let $E$ be a real vector space of dimension $N$
+with a volume element $dv_E$. Denote by 
+$S^2E^*$ the space of symmetric bilinear forms on $E$, and by
+$S^2_+E^*\subset S^2E^*$ the set of nonnegative symmetric bilinear forms. 
+We think of elements of $S^2E^*$ as of selfadjoint operators 
+$E\to E^*$. For any such operator $A$, we can canonically define 
+its determinant $\det(A)\in \Bbb R$.  
+
+Let $dA$ be a 
+volume element on $S^2E^*$ defined by $dv_E$. 
+That is: identify $E^*$ with $E$ 
+by any positive operator $X:E\to E^*$ with deteminant $1$,
+regard $A\in S^2E^*$ as a selfadjoint operator on $E$
+using this identification,
+ and define $dA$ to be the volume element on $S^2E^*$ corresponding 
+to the norm $||A||^2=\Tr(A^2)$. (It is clear that this definition 
+does not depend on $X$). 
+
+Fix a complex number $D$ with $\Re D>N-1$. 
+
+\proclaim{Lemma 1} For any $B\in S^2E$ such that $B>0$
+$$
+\gather
+\int_{S^2_+E^*}(\det A)^{{(D-N-1)/2}}e^{-\tr(AB)}dA=
+\Gamma_N(D/2)(\det B)^{-D/2},\\
+\Gamma_N(D/2)=
+(2\pi)^{N(N-1)/4}\prod_{l=0}^{N-1}\Gamma\biggl(\frac{D+l}{2}
+\biggr).\tag 1
+\endgather
+$$
+\endproclaim
+
+\demo{Proof} 
+Denote this integral by $f(B)$.
+It is easy to see that for any $S\in GL(E)$,
+$f(S^*BS)=f(B)|\det S|^{-D}$. 
+{}From this it follows that $f(B)=C(D)(\det B)^{-D/2}$. 
+
+It remains to compute $C(D)$. Let us 
+pick $B$ such that $\det B=1$, and identify $E^*$ with $E$ 
+using the isomorphism $B:E^*\to E$. Then $E$ becomes a 
+Euclidean space with the inner product $B^{-1}$. 
+Thus the constant $C(D)$ has the form
+$$
+\int_{A:E\to E,A^*=A,A\ge 0}(\det A)^{(D-N-1)/2}e^{-\tr A}dA
+$$
+Since this integral is invariant 
+under conjugation by $SO(E)$, we can reduce it to the quotient
+space $S^2_+E^*/SO(E)=[0,\infty)^N/S_N$.
+It is known from the theory 
+of symmetric spaces 
+that the pushforward of $dA$
+from $S^2_+E^*$ to $S^2_+E^*/SO(E)$ has the form 
+ $b_N\prod_{1\le i<j\le N}|s_i-s_j|
+ds_1...ds_N$, where $s_i$ are the eigenvalues of $A\in S^2_+E^*/SO(E)$, and
+$$
+b_N=\frac{2^{N(N-1)/4}\pi^{N(N+1)/4}}{\prod_{l=1}^N\Gamma(l/2)},
+$$
+
+Thus, $C(D)$ has the form
+$$
+b_N N!^{-1}\int_{[0,\infty)^N}\prod_i t_i^{{(D-N-1)/2}}\prod_i e^{-t_i}
+\prod_{1\le i<j\le N}|t_i-t_j|
+dt_1...dt_N.\tag 2
+$$
+
+To compute this integral, we use (a special case of) Selberg's integral 
+formula:
+$$
+\gather
+\int_{0\le t_i\le 1}\prod_i t_i^a\prod_i (1-t_i)^b
+\prod_{1\le i<j\le N}|t_i-t_j|
+dt_1...dt_N=\\
+\prod_{l=1}^N\frac{\Gamma(a+\frac{l+1}{2})\Gamma(b+\frac{l+1}{2})
+\Gamma(\frac{l}{2}+1)}{\Gamma(a+b+\frac{2N-l+3}{2})\Gamma(\frac{3}{2})}.
+\tag 3\endgather 
+$$
+Let us set $s_i=bt_i$ in Selberg's integral, 
+and send $b$ to $+\infty$. In the limit, using Stirling's formula, 
+and setting $a={(D-N-1)/2}$, we get
+$$
+\gather
+C(D)=b_N 
+N!^{-1}\prod_{l=1}^N\frac{\Gamma(\frac{D+l-N}{2})\Gamma(\frac{l}{2}+1)}
+{\Gamma(\frac{3}{2})}=\\ b_N\pi^{-N/2}
+\prod_{l=1}^N\Gamma\biggl(\frac{D+l-N}{2}\biggr)
+\Gamma\biggl(\frac{l}{2}\biggr)=\Gamma_N(D/2).
+.\tag 4
+\endgather
+$$
+The Lemma is proved. 
+\enddemo
+
+Now consider the function $\rho^E_D$ on $S^2E^*$ which is
+supported at $S^2_+E^*$ and is given by the formula
+$$
+\rho^E_D(A)=
+ \pi^{ND/2}\Gamma_N(D/2)^{-1}
+(\det A)^{{(D-N-1)/2}}.\tag 5
+$$
+By Lemma 1, we have
+$$
+\int_{S^2_+E^*}\rho^E_D(A)e^{-\tr(AB)}dA=\pi^{ND/2}(\det B)^{-D/2},\tag 6
+$$
+$\Re D>N-1$.
+
+If $\Re D>N-1$, the function $\rho^E_D(A)$ is a locally $L^1$-function, so 
+it defines a distribution on $S^2E^*$.  
+Let us compute the Fourier transform of $\rho^E_D(A)$, i.e. 
+$$
+\hat \rho^E_D(B)=\int_{S^2E^*}\rho^E_D(A)e^{-i\tr(AB)}dA,
+$$
+$B\in S^2E$ (the integral is understood in the sense of distributions).
+
+\proclaim{Lemma 2} 
+$$
+\hat \rho^E_D(B)=
+\lim_{J\to +0}\pi^{ND/2}\det (iB+J)^{-D/2}.\tag 7
+$$
+where $J\in S^2E^*,J>0$.
+\endproclaim
+
+{\bf Remark.} Here we use the branch of the function $z^{-D/2}$ 
+which is equal to $e^{-D\ln z/2}$ for real positive $z$. 
+
+\demo{Proof} By analytic continuation, formula (6) holds 
+for arbitrary $B\in (S^2E^*)_\C$ with $\Re B>0$.
+In particular, we can replace $B$ with $iB+J$,
+where $B\in S^2E^*$. In the limit when $J\to +0$, we obtain formula (7).
+\enddemo
+
+Let $\mu: S^2E\to \Hom(E^*,E)$ be the tautological embedding. 
+Let $\Delta$ 
+be the polynomial of degree $N$ on $S^2E$,
+defined by the equation $\Delta(B)=\det(\mu(B))$. We regard $\Delta$ as a 
+differential operator of order $N$ on $S^2E^*$
+with constant coefficients.  
+
+\proclaim{Corollary 3} If $\Re D>N+1$, then 
+$$
+\Delta \rho^E_D(A)=\pi^N\rho^E_{D-2}(A).\tag 8
+$$
+\endproclaim
+
+\demo{Proof} The proof is obvious after passing to Fourier 
+transforms.
+\enddemo
+
+Let $\Cal S(S^2E^*)$ be the space of complex-valued Schwarz 
+functions on $S^2E^*$. 
+For any $f\in \Cal S(S^2E^*)$ and $\Re D>N-1$, define
+$$
+I_D^E(f)=\int_{S^2E^*}\rho^E_D(A)f(A)dA.\tag 9
+$$
+
+\proclaim{Corollary 4} 
+$I_D^E(f)$ extends to an entire function of $D$.
+\endproclaim
+
+\demo{Proof} For $Re D>N-1-2K$, $K\in \Z_+$, we can define 
+$I_D^E(f)$ by the formula
+$$
+I_D^E(f)=(-\pi)^{-KN}\int_{S^2E^*}\rho^E_{D+2K}(A)\Delta^Kf(A)dA.\tag 10
+$$
+According to Corollary 3, if $\Re D>>0$, formula (10) defines the same
+function as (9). Thus, (10) defines an analytic continuation of $I_D^E$. 
+\enddemo
+
+\proclaim{Proposition 5} Let $D\ge 0$ be a nonnegative integer, 
+and $V$ be a vector space of dimension $D$, 
+with a positive definite symmetric bilinear form $\beta$. 
+Then for any $f\in \Cal S(S^2E^*)$ 
+one has
+$$
+I_D^E(f)=\int_{\Hom(E,V)}f(x^*(\beta))dx,\tag 11
+$$
+where $x^*(\beta)$ denotes the inverse image of $\beta$ under $x$
+(a nonnegative symmetric bilinear form on $E$).  
+\endproclaim
+
+\demo{Proof} It is enough to check
+that (11) holds for functions $e^{-\tr(AB)}1_{S^2_+E^*}(A)$
+where $1_Y$ is the characteristic function of the set $Y$, and
+$\text{Re}(B)>0$. This follows from the fact 
+that the function $f(A)$ admits a Fourier representation. 
+ 
+In the case 
+$$
+f(A)=e^{-\tr(AB)}1_{S^2_+E^*}(A),\tag 12
+$$
+ evaluating the Gaussian integral 
+on the right hand side of (11), we get $\pi^{ND/2}(\det B)^{-D/2}$.
+On the left hand side of (11), by Lemma 1, we get the same. 
+The proposition is proved. 
+\enddemo
+
+{\bf Remark.} From Proposition 5 it is clear why formula (9) works only for
+$\Re D>N-1$. Indeed, for integer $D$ between $0$ and $N-1$ 
+the distribution $\rho_D(A)dA$ is concentrated on forms of
+rank $\le D$, so it is a purely singular distribution. 
+Thus, the measure $\rho_D(A)dA$ is not absolutely continuous with respect
+to $dA$ and hence cannot be represented as a function times $dA$. 
+In fact, it turns out that this distribution is singular
+(not locally $L^1$) 
+for all $D$ with $\Re D\le N-1$. 
+
+Proposition 5 motivates the following definition.
+
+\proclaim{Definition} $I_D^E(f)$ is called the D-dimenional
+integral of $f$.
+\endproclaim
+
+Another way of computing the D-dimensional integral is using 
+Fourier transforms. By Plancherel formula, 
+it follows from (9) that 
+$$
+I_D^E(f)=(2\pi)^{-N(N+1)/2}
+\int_{S^2E^*}\hat f(B)\overline{\hat\rho^E_{\bar D}(B)}dB,\tag 13
+$$
+where $\hat f$ is the Fourier transform of $f$.
+(It is clear that
+$\overline
+{\hat\rho^E_{\bar D}(B)}=\lim_{J\to +0}\pi^{ND/2}\det(-iB+J)^{-D/2}$).  
+
+For $\Re D<2$, this formula can be written as
+$$
+I_D^E(f)= 2^{-N(N+1)/2}\pi^{N(D-N-1)/2}
+\int_{S^2E^*}\hat f(B)e^{\frac{\pi iD}{4}\sigma(B)}|\det (B)|^{-D/2}dB,\tag 14
+$$
+where $\sigma(B)$ is the signature of $B$ (the number of pluses 
+minus the number of minuses). 
+If $\Re D\ge 2$, the distribution $\overline{\hat\rho^E_{\bar D}(B)}$ 
+is singular, so in order to define $I_D^E(f)$ by a direct integration
+formula, we need to use the operator $\Delta$. 
+Namely, from Lemma 1 it follows that
+$$
+\Delta \hat \rho^E_D(B)=(-1)^Np_N(D)
+\hat\rho^E_{D+2}(B),\ \  p_N(D)=\pi^{-N}\prod_{l=1}^N\frac{D+l-N}{2}\tag 15
+$$ 
+So if $\Re D<2+2K$, we can define $I_D^E$ by the formula
+$$
+\gather
+I_D^E(f)=2^{-N(N+1)/2}\pi^{N(D-N-1)/2}\prod_{J=1}^Kp_N(D-2J)^{-1}\times\\
+\int_{S^2E^*}\Delta^K\hat f(B)
+e^{\frac{\pi i(D-2K)}{4}\sigma(B)}|\det (B)|^{(-D+2K)/2}dB,
+\tag 16\endgather
+$$
+
+{\bf Example.} If $N=1$, the D-dimensional integral of $f$ is 
+(up to normalization) just the Mellin transform of $f$:
+$$
+I_D^E(f)=\pi^{D/2}\Gamma(D/2)^{-1}\int_{0}^\infty x^{\frac{D}{2}-1}f(x)dx.
+$$
+
+Let $\Cal S(S^2_+E^*)$ be the space of smooth functions $f$ on 
+$S^2_+E^*$, such that all the derivatives of $f$ are rapidly decaying.
+It is easy to see that the restriction map $\Cal S(S^2E^*)\to
+\Cal S(S^2_+E^*)$ is surjective. So, $I_D^E$ defines a linear functional
+$\Cal S(S^2_+E^*)\to \C$. 
+
+{\bf 2. D-dimensional integral with parameters.}
+
+Now we will extend our construction to a more general situation.
+Let $F\subset E$ be a subspace of dimension $M$
+with a volume element $dv_F$.
+Any symmetric bilinear form
+$A$ on $E$ defines a form $A_F$ on $F$ (the restriction of $E$).
+
+Also, for any 
+symmetric bilinear form $B$ on $E^*$ 
+such that $B_{F^\perp}$ is nondegenerate
+we can define a form $B^{F^*}$ on $F^*$ as follows.  
+Let $(F^\perp)^{\perp_B}$ be the B-orthogonal complement of 
+$F^\perp$. As $B_{F^\perp}$ is nondegenerate, 
+this space is naturally identified with $F^*=E^*/F^\perp$. 
+By the definition, the form $B^{F^*}$ is the restriction of $B$ to
+$(F^\perp)^{\perp_B}=F^*$.
+
+Let us find an explicit expression of $B^{F^*}$. Choose 
+a positive definite inner product on $E$ and thus identify
+$E^*$ with $E$. Then we have a decomposition 
+$E=F\oplus F^\perp$, and $B$ becomes a selfadjoint operator
+$E\to E$ with a decomposition
+$$
+B=\biggl(\matrix B_{11}&B_{12}\\ B_{21}&B_{22}\endmatrix\biggr),
+$$
+where $B_{ij}^*=B_{ji}$. Now the operator 
+corresponding to $B_{F^\perp}$ is $B_{22}$, and the 
+operator corresponding to $B^{F^*}$ is 
+$B_{11}-B_{12}B_{22}^{-1}B_{21}$. From this formula
+it is obvious that for this operator 
+to be defined, it is sufficient for $B_{22}$ to be invertible. 
+ 
+The following Lemma is a generalization of Lemma 1. 
+
+\proclaim{Lemma 6} For $\Re D>N-1$ and any positive $B\in S^2E$, 
+$C\in S^2F^*$
+$$
+\gather
+\int_{S^2_+E^*}\delta(A_F-C)(\det A)^{
+(D-N-1)/2}
+e^{-\tr(AB)}dA=\\
+\frac{\Gamma_N(D/2)}{\Gamma_M(D/2)}e^{-\tr(CB^{F^*})}
+(\det C)^{(D-M-1)/2}(\det B_{F^\perp})^{-D/2},
+\tag 17\endgather 
+$$
+\endproclaim
+
+{\bf Remark.} The space $S^2F^*$ inherits a volume element from $F$,
+so the delta-function $\delta(A_F-C)$ is well defined. 
+
+\demo{Proof} Denote the left hand side of (17) by $I(B,C)$. 
+Let $S\in GL(E)$ be an automorphism which preserves $F$.
+Make a change of variable $A\to S^*AS$. Then 
+$A_F\to S_F^*A_FS_F$, where $S_F$ is the restriction of $S$ to $F$.
+Thus we get
+$$
+I(B,C)=|\det S|^{N-M}I(SBS^*,(S_F^*)^{-1}CS_F^{-1}).\tag 18
+$$
+Now choose $B$ with $\det B_{F^\perp}=1$, and 
+identify $E^*$ with $E$ using the map $B:E\to E^*$.
+Then $E$ becomes a 
+Euclidean space with the inner product $B^{-1}$.
+Now we can identify $F^*$ with $F$ using the map $B^{F^*}: F^*\to F$,
+thus $F$ is also a Euclidean space. 
+
+After these identifications, integral (17) takes the form
+$$
+\int_{A\in S^2_+E^*}\delta(A_F-C)(\det A)^{
+(D-N-1)/2}
+e^{-\tr A}dA.\tag 19 
+$$
+Using the decomposition $E=F\oplus F^\perp$, 
+we can write $A$ in the form
+$$
+A=\biggl(\matrix A_{11}&A_{12}\\ A_{21}&A_{22}\endmatrix\biggr),\tag 20
+$$
+where $A_{ij}^*=A_{ji}$. 
+This allows us to rewrite (19) as
+$$
+\int_{A\in S^2_+E^*:A_{11}=C}(\det A)^{
+(D-N-1)/2}
+e^{-\tr A}dA.\tag 21
+$$
+To compute this integral, 
+let us use the identity $\det A=\det A_{11}\det (A_{22}-
+A_{21}A_{11}^{-1}A_{12})$. Since we are integrating 
+over such $A$ that $A_{11}=C$, we get 
+$\det A=\det C\det (A_{22}-A_{21}C^{-1}A_{12})$.
+After the change of variable
+$X=A_{22}-A_{21}C^{-1}A_{12}$, 
+integral (21) takes the form
+$$
+(\det C)^{(D-N-1)/2}e^{-\tr C}\int_{X\ge 0}(\det X)^{(D-N-1)/2}
+e^{-\tr X}dX\int_{\Hom(F^\perp,F)}e^{-\tr A_{12}^*C^{-1}A_{12}}dA_{12}
+\tag 22
+$$
+The second integral in (22) is Gaussian and equals 
+$$
+(2\pi)^{M(N-M)/2}(\det C)^{(M-N)/2}.\tag 23
+$$
+ The first integral in (22) 
+was computed in Lemma 1 and equals $\Gamma_{N-M}((D-M)/2)$. 
+Using the identity 
+$$
+\frac{\Gamma_N(D/2)}{\Gamma_M(D/2)}=
+(2\pi)^{M(N-M)/2}\Gamma_{N-M}((D-M)/2).\tag 24
+$$
+ we obtain the statement 
+of the Lemma. 
+\enddemo
+
+Now consider the distribution on $S^2E^*$ (depending on $C$ as a parameter)
+$$
+\gather
+\rho_D^{EF}(A,C)=\delta(A_F-C)\frac{\rho_D^E(A)}{\rho_D^F(C)}=\\
+\pi^{(N-M)D/2}\frac{\Gamma_M(D/2)}{\Gamma_N(D/2)}
+\delta(A_F-C)(\det C)^{-(D-M-1)/2}(\det A)^{
+(D-N-1)/2}, \tag 25\endgather
+$$
+for $\Re D>N-1$. 
+
+For $f\in \Cal S(S^2_+E^*)$, define
+a function $I_D^{EF}(f)$ 
+on $C>0$, by setting
+$$
+I_D^{EF}(f)(C)=\int_{S^2_+E^*}\rho_D^{EF}(A,C)f(A)dA.\tag 26
+$$
+Since $(\det C)^{-1}\le (\det A)^{-1} (\tr A)^{N-M}$, 
+the function $I_D^{EF}(f)$ extends continuously to 
+$C\ge 0$, i.e. defines a continuous, rapidly decaying function 
+on $S^2_+F^*$. 
+
+{\bf Remark.} Although the power of $(\det C)^{-1}$ in (25) 
+is more than that of $\det A$, for small $\det C$ the 
+intersection of the region of integration in (26) 
+with any fixed ball has area $\sim (\det C)^{(N-M)/2}$ (because 
+of presence of the delta-function), which helps compensate 
+the negative exponent of $\det C$. 
+ 
+Using Lemma 6, it is easy to compute the Fourier transform 
+$\hat\rho_D^{EF}(B,C)$ of $\rho_D^{EF}(A,C)$ 
+with respect to $A$.
+
+\proclaim{Lemma 7}  
+$$
+\hat \rho_D^{EF}(B,C)=
+\lim_{J\to +0}\pi^{(N-M)D/2}e^{-i\tr (CB^{F^*})}
+\det (iB_{F^\perp}+J)^{-D/2}.\tag 27
+$$
+\endproclaim
+
+\demo{Proof} Analogous to the proof of Lemma 2.
+\enddemo
+
+Let $\Delta_{2}$ be the operator $\Delta$ 
+acting on $\Cal S(S^2F^\perp)$.
+
+\proclaim{Corollary 8} If $\Re D>N+1$, then 
+$$
+\Delta_2 \rho_D^{EF}(A,C)=\pi^N\rho_{D-2}^{EF}(A,C).\tag 28
+$$
+(here $\Delta_2$ acts on $A$). 
+\endproclaim
+
+\demo{Proof} The proof is immediate after passing to Fourier 
+transforms.
+\enddemo
+
+\proclaim{Corollary 9} For any $f\in \Cal S(S^2_+E^*)$, $I_D^{EF}(f)$ 
+is a Schwarz function of $C$, 
+and for any $C\ge 0$
+the function $I_D^{EF}(f)(C)$, regarded as a function
+ of $D$, analytically continues
+to an entire function. 
+\endproclaim
+
+\demo{Proof} Similar to the Proof of Corollary 4. 
+\enddemo
+ 
+\proclaim{Proposition 10} 
+ Let $D\ge 0$ be a nonnegative integer, 
+and $V$ be a vector space of dimension $D$
+with a positive definite symmetric bilinear form $\beta$. 
+Then for any $f\in \Cal S(S^2_+E^*)$ and $y:F\to V$
+one has
+$$
+I_D^{EF}(f)(y^*(\beta))=\int_{x\in \Hom(E,V):x|_F=y}
+f(x^*(\beta))dx.\tag 29
+$$
+\endproclaim
+
+\demo{Proof} As in Proposition 5, it is enough to consider $f(A)=
+e^{-\tr(AB)}$. In this case, on the r.h.s. of 
+(19) is a Gaussian integral, whose value is 
+$$
+\pi^{(N-M)D/2}e^{-\tr (y^*(\beta)B^{F^*})}
+(\det B_{F^\perp})^{-D/2}.
+$$
+Thus, the Proposition follows from Lemma 6.
+\enddemo
+
+\proclaim{Definition} $I_D^{EF}$ is called the D-dimensional 
+integral with external parameters. 
+\endproclaim
+
+As before, the D-dimensional integral can be computed using Fourier 
+transform. 
+
+Let $f\in \Cal S(S^2E^*)$.
+By Plancherel formula, 
+$$
+I_D^{EF}(f)(C)=(2\pi)^{-N(N+1)/2}
+\int_{S^2E^*}\hat f(B)\overline{\hat\rho_{\bar D}^{EF}(B,C)}dB,\tag 30
+$$
+where $\hat f$ is the Fourier transform of $f$.
+Here
+$$
+\overline
+{\hat\rho_{\bar D}^{EF}(B,C)}=\lim_{J\to +0}\pi^{(N-M)D/2}
+e^{i\tr (CB^{F^*})}\det(-iB_{F^\perp}+J)^{-D/2}.
+$$  
+
+For $\Re D<2$, this formula can be written as
+$$
+\gather
+I_D^{EF}(f)(C)= \\
+2^{-N(N+1)/2}\pi^{((N-M)D-N(N+1))/2}
+\int_{S^2E^*}\hat f(B)e^{\frac{\pi iD}{4}\sigma(B_{F^\perp})}
+e^{i\tr (CB^{F^*})}
+|\det (B_{F^\perp})|^{-D/2}dB.\tag 31\endgather
+$$
+If $\Re D\ge 2$, the distribution $\overline{\hat\rho_{\bar D}^{EF}(B,C)}$ 
+is singular, so in order to define $I_D^{EF}(f)$ by a direct integration
+formula, we need to use the operator $\Delta$. 
+Namely, from Lemma 6 it follows that
+$$
+\gather
+(\det C)^{-1}\Delta \hat \rho^{EF}_D(B,C)=(-1)^{N-M}p_{NM}(D)
+\rho_{D+2}^{EF}(B),\\
+ p_{NM}(D)=\pi^{M-N}\prod_{l=M+1}^N\frac{D+l-N}{2}\tag 32
+\endgather
+$$ 
+So if $\Re D<2+2K$, we can define $I_D^{EF}$ by the formula
+$$
+\gather
+I_D^{EF}(f)(C)=2^{-N(N+1)/2}\pi^{((N-M)D-N(N+1))/2}(\det C)^{-K}
+\prod_{J=1}^Kp_N(D-2J)^{-1}\times\\
+\int_{S^2E^*}\Delta^K\hat f(B)
+e^{i\tr (CB^{F^*})}
+e^{\frac{\pi i(D-2K)}{4}\sigma(B)}
+|\det (B)|^{(-D+2K)/2}dB.
+\endgather
+$$
+
+Thus we have defined an operator $I_D^{EF}: \Cal S(S^2_+E^*)\to \Cal S(S^2_+F^*)$. 
+It is clear that $I_D^{FG}I_D^{EF}=I_D^{EG}$ if $E\supset F\supset G$,
+and $I_D^{E0}=I_D^E$.
+
+
+Now we can define the
+ D-dimensional integral of functions with polynomial growth.
+Let $f$ be a smooth function on $S^2E^*$ such that 
+there exists $a\in \R$ for which $f$ and all its derivatives
+satisfy the condition
+$\phi(A) =O(||A||^a)$, $||A||\to \infty$
+(for any norm on $S^2E^*$). 
+In this case, the integral $I_D^{EF}(f)$ is defined 
+for $\Re D<<0$. Indeed, 
+the condition on $f$ implies that
+the Fourier transform $\hat f$ is a distribution defined 
+on functions with sufficiently many 
+continuous derivatives having polynomial growth 
+at infinity. Thus, we can use formula (30)
+to define $I_D^{EF}(f)$ for $\Re D<<0$.
+
+{\bf Remark.} The operator $I_D^{EF}$ has rather strange properties.
+For example, if $P$ is any polynomial, then
+$I_D^E(P(A))=0$. Indeed, the Fourier
+transform of $P$ is a distribution supported at $0$, 
+so for sufficiently negative $D$ formula (14) gives $0$. 
+Thus, $I_D^E$ is not continuous in any topology in which polynomials 
+are dense. 
+
+{\bf Example.} Let $N=1$, $M=0$, and $f$ be a rational function, regular
+at $x\ge 0$. Write $f$ as a sum of simple fractions:
+$f(x)=f_0(x)+\sum_i\alpha_i(x+a_i)^{-n_i}$, where 
+$f_0$ is a polynomial, $a_i\in\Bbb C\setminus
+\Bbb R_-$, and $n_i$ are positive integers.
+Then
+$$
+I_D^E(f)=\pi^{D/2}\sum_i\alpha_i\frac{\Gamma(n_i-D/2)}{\Gamma(n_i)}
+a_i^{n_i-\frac{D}{2}}.
+$$
+ 
+Thus we see that if $f$ is satisfies the above condition
+of polynomial growth then $I_D^{EF}(f)(C)$ is
+holomorphic in $D$ for $\Re D<<0$. 
+In general, 
+we cannot expect that 
+this function will analytically continue to the 
+whole complex plane. 
+However, for functions of a certain algebraic nature, it extends 
+meromorphically to the whole complex plane.  
+
+{\bf 3. D-dimensional integral of functions arising from Feynman diagrams.}
+
+\proclaim{Definition} A function $f$ on $S^2_+E^*$ is called a function 
+of Feynman type if it has the form
+$$
+f(A)=\frac{P(A)}{\prod_{j=1}^l(\tr (AB_j)+m_j^2)}, 
+$$
+where $P$ is a polynomial, $B_j\ge 0$, 
+such that $(\sum t_iB_i)_{F^\perp}$ is nondegenerate 
+for $t_i>0$, and $m_j\ne 0$
+are real numbers.
+\endproclaim
+
+\proclaim{Proposition 11} If $f$ is of Feynman type then 
+$I_D^{EF}(f)$ extends meromorphically to the whole complex plane. 
+\endproclaim
+
+\demo{Proof} We will prove the statement for 
+$P=1$. For general $P$, the proof is similar to the case $P=1$. 
+
+Using the formula $b^{-1}=\int_0^\infty e^{-tb}dt$, 
+we can rewrite $I_D^{EF}(f)$ in the form
+$$
+I_D^{EF}(f)=\int_{t_1,...,t_l\in [0,\infty)}
+e^{-\sum t_jm_j^2}I_D^{EF}
+( e^{-\tr(A(\sum t_jB_j))})dt.\tag 33
+$$
+Set $B(t)=\sum t_jB_j$. 
+Using Lemma 6, we can rewrite this in the form
+$$ 
+I_D^{EF}(f)(C)=\pi^{(N-M)/2}\int_{t_1,...,t_l\in [0,\infty)}
+e^{-\sum t_jm_j^2-\tr(CB^{F^*}(t))}
+(\det B_{F^\perp}(t))^{-D/2}dt.\tag 34
+$$
+
+Now we will use the following theorem of Bernstein, which is proved
+with the help of the theory of D-modules. 
+
+{\bf Bernstein's theorem.} Let $Q(t)$ be any polynomial in $l$ variables. 
+Then there exists a polynomial differential operator 
+$L(D)$ in $l$ variables, 
+with coefficients depending polynomially on $D$, and a 
+polynomial $q$ in $D$, such that $L(D)Q^{-D/2}=q(D)Q^{-1-D/2}$.
+
+This theorem implies the following statement, which is 
+a special case of a result of Bernstein.
+
+{\bf Corollary.} Assume that $Q$ takes positive values for $t_j>0$, and
+let $g$ be a rapidly decaying smooth function defined for $t_i\ge 0$,
+such that its derivatives are also rapidly decaying.  
+Then the integral
+$$
+I(D,g)=\int_{t_i\in [0,\infty)}g(t)Q(t)^{-D/2}dt,\tag 35
+$$
+convergent for $\Re D<< 0$, extends meromorphically to the whole
+complex plane. 
+
+The corollary is proved by induction in $l$ (the number of $t_j$).
+The base of  induction is trivial. Now,
+using Bernstein's theorem and integration by parts,
+we can write
+$$
+\gather
+I(D+2,g)=q(D)^{-1}\int g(t)L(D)(Q(t)^{-D/2})dt=
+\\ q(D)^{-1}\int (L(D)^*g(t))Q(t)^{-D/2}dt+
+C(D)=
+q(D)^{-1}I(D,L(D)^*g)+C(D),\tag 36
+\endgather
+$$
+where $C(D)$ is the integral over the boundary, which is meromorphic 
+by the assumption of induction. 
+
+Now we apply the corollary to our situation, and obtain the proof 
+of the Proposition for $P=1$. 
+\enddemo
+
+{\bf Remark 1.} Using Hironaka's theorem about the existence 
+of a smooth resolution of singularities for a compact projective variety,
+it is possible to prove that $I_D^{EF}$ is meromorphic in $D$ in a much
+more general situation than in Proposition 11. 
+For example, as was explained to me by M.Kontsevich,
+one can prove that if $f$ is a rational 
+function without singularities in $S^2_+E^*$, 
+then $I_D^{EF}(f)$ is meromorphic. 
+
+It is also possible to show that for rational $f$ as
+above the poles of $I_D^{EF}(f)$ are all rational, and 
+belong to a finite number of arithmetic progressions. 
+ 
+{\bf 4. Dimensional regularization of Feynman integrals.} 
+
+Proposition 11 allows to define the procedure of dimensional regularization 
+of Feynman integrals in quantum field theory. 
+
+Suppose that we have a quantum field theory given by some Lagrangian,
+and we want to compute its correlation functions. 
+According to Feynman rules, such a correlation function 
+equals to the sum of amplitudes of all Feynman diagrams (graphs),
+which are given by some finite-dimensional integrals. 
+
+We will work in the Euclidean setting and in momentum space. 
+For simplicity we will assume that our theory contains only  
+scalar massive fields. 
+Then the amplitude of any Feynman graph $\Gamma$ 
+is given by the formula
+$$
+\int_{x\in\Hom(E,V):x|_F=y}g(x)dx, y\in \Hom(F,V),\tag 37
+$$
+where $V$ is the momentum space 
+(a Euclidean space
+of dimension $d$ with inner product $\beta$),
+$E=H^1_c(\Gamma\setminus\d\Gamma,\Bbb R)$
+(the cohomology with compact supports), 
+$F$ is the image of the map $H^0(\d\Gamma,\Bbb R)\to
+H^1_c(\Gamma\setminus\d\Gamma,\Bbb R)$ in the long exact sequence
+of cohomology, and 
+$g$ is a function on $\Hom(E,V)$ of the form
+$g(z)=f(z^*(\beta))$, 
+where $f$ is a certain function of Feynman type
+attached to $\Gamma$.
+
+{\bf Remark.} It is clear 
+from the long exact sequence
+that $E/F=H^1(\Gamma,\Bbb R)$. 
+
+Since cohomology groups are defined over $\Z$, they have
+natural volume elements. This defines the volume element
+$dx$ in (37). 
+
+The problem is that integral (37) is often divergent, since the function
+$g$ does not decay rapidly enough. 
+
+Dimensional regularization is a method to give meaning to the integral (37).
+This is done as follows. 
+Recall that since $f$ is of Feynman type, 
+$I_D^{EF}(f)$ is meromorphic in $D$.
+
+\proclaim{Definition} Dimensional regularization 
+of integral (37) is the regular part of
+$I_D^{EF}(f)$ at $D=d$, i.e. 
+$\frac{1}{2\pi i}\oint_{|D-d|=\e}I_D^{EF}(f)d\ln(D-d)$.  
+\endproclaim
+
+{\bf Remark.} In general, we have to consider functions 
+$f$ which (even before the regularization) depend meromorphically on $D$. 
+This is caused by the fact that our graph $\Gamma$ may contain divergent
+proper subgraphs, which have to have been regularized 
+before we start working with $\Gamma$. Since regularization
+is performed by adding $D$-dependent counterterms, we will have to work
+with functions which depend meromorphically on $D$. 
+ 
+{\bf 5. D-dimensional Stokes formula.}
+
+Let $F\subset E$ be vector spaces
+with volume elements, $\dim E=N$, $\dim F=M$, and
+$D$ be any complex number.
+Define the space $\Omega_{EF}^{\top}$ 
+of (Schwarz) top degree forms  
+to be the space $\Cal S(S^2_+E^*)$, and the space 
+$\Omega_{EF}^{\top-1}$ of forms of degree $\top-1$ to be the space
+of Schwarz functions 
+$\omega: S^2_+E^*\to \Hom(E/F,E)$. That is,
+$\Omega_{EF}^{\top}=\Hom(E/F,E)\o \Cal S(S^2_+E^*)$. 
+
+If $D$ is an integer, and $V$ is a Euclidean space of dimension
+$D$ with inner product $\beta$, then we have a linear map
+$\theta: \Hom(E,V)\to \Hom(F,V)$ given by restriction, and
+any $f\in \Omega_{EF}^\top$ indeed defines a top differential
+ form $f(x^*(\beta))dx$ on each fiber of $\theta$
+($dx$ is the natural volume form on the fiber). 
+
+Also, any $\omega\in\Omega_{EF}^{\top-1}$
+defines a $\top-1$-form on the fiber.
+Indeed, let $z: (E/F)^*\to V$ be a linear map. 
+We regard $z$ as a constant 1-form on the fibers of $\theta$.  
+Then the $\top-1$-form corresponding to 
+$\Omega$ is defined by the formula 
+$(\omega\wedge z)(x)=\tr (\omega \beta(x,z))dx$, 
+where $\beta(x,z)\in \Hom(E\o (E/F)^*,\Bbb R)$ 
+is regarded as an operator $E\to E/F$. 
+
+Recall that the group $GL(E)$ acts on $S^2_+E^*$ by $A\to S^*AS$, 
+$S\in GL(E)$. Thus, any element 
+$X$ of the Lie algebra $\End(E)$ of $GL(E)$
+defines a vector field on $S^2_+E^*$:
+$L_Xf(A)=\frac{d}{dt}|_{t=0}f(e^{X^*t}Ae^{Xt})$. 
+
+For any $\omega=\sum X_i\o f_i\in \Omega_{EF}^{\top -1}$, 
+$X_i\in\Hom(E/F,E)$, $f_i\in \Cal S(S^2_+E^*)$, define 
+the form $d\omega\in \Omega_{EF}^\top$ by the formula
+$$
+d\omega=\sum_i(L_{X_i}f_i+D\tr(X_i)f_i),\tag 38
+$$
+where $X_i$ are regarded as elements of $\End(E)$. 
+Thus, we have defined a linear map $d:\Omega_{EF}^{\top-1}\to
+\Omega_{EF}^\top$. It is easy to see 
+that if $D$ is an integer, $d$ coincides 
+with the usual differential. 
+
+\proclaim{Proposition 12} (Stokes formula.) 
+$I_D^{EF}(d\omega)=0$ for any 
+$\omega\in \Omega_{EF}^{\top-1}$.
+\endproclaim
+
+\demo{Proof} It is enough to prove the formula for $\Re D>>0$;
+for other values of $D$ the formula follows by analytic continuation. 
+
+For $\Re D>>0$, the formula follows by integration by parts
+ from the definition (26) of $I_D^{EF}$, as 
+$L_X((\det A)^{(D-N-1)/2}dA)=D\tr(X)(\det A)^{(D-N-1)/2}dA$. 
+\enddemo
+
+\end
+
+

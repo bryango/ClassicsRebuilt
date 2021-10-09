@@ -1,0 +1,873 @@
+%From: John W Morgan <jmorgan@math.ias.edu>
+%Date: Tue, 10 Jun 1997 14:31:56 -0400
+%Subject: Lecture II-17
+
+\documentclass[10pt]{article}
+\usepackage{amssymb}
+
+
+%These are the macros which are in common with all of the
+% sections in the paper mmr
+% Each section, for now, should begin with \documentstyle[11pt,cd]{article}
+% and then have \input{mmrmacros} followed by \begin{document}
+% The only exception is that the \Label macro is slightly different
+% in each file and should be put in separately.
+%New CD macros
+\newcommand{\cdrl}{\cd\rightleftarrows}
+\newcommand{\cdlr}{\cd\leftrightarrows}
+\newcommand{\cdr}{\cd\rightarrow}
+\newcommand{\cdl}{\cd\leftarrow}
+\newcommand{\cdu}{\cd\uparrow}
+\newcommand{\cdd}{\cd\downarrow}
+\newcommand{\cdud}{\cd\updownarrows}
+\newcommand{\cddu}{\cd\downuparrows}
+% (S) Proofs.
+% (S-1) Head is automatically supplied by \proof.
+
+\def\proof{\vspace{2ex}\noindent{\bf Proof.} }
+\def\tproof#1{\vspace{2ex}\noindent{\bf Proof of Theorem #1.} }
+\def\pproof#1{\vspace{2ex}\noindent{\bf Proof of Proposition #1.} }
+\def\lproof#1{\vspace{2ex}\noindent{\bf Proof of Lemma #1.} }
+\def\cproof#1{\vspace{2ex}\noindent{\bf Proof of Corollary #1.} }
+\def\clproof#1{\vspace{2ex}\noindent{\bf Proof of Claim #1.} }
+% End of Proof Symbol at the end of an equation must precede $$.
+
+\def\endproof{\relax\ifmmode\expandafter\endproofmath\else
+  \unskip\nobreak\hfil\penalty50\hskip.75em\hbox{}\nobreak\hfil\bull
+  {\parfillskip=0pt \finalhyphendemerits=0 \bigbreak}\fi}
+\def\endproofmath$${\eqno\bull$$\bigbreak}
+\def\bull{\vbox{\hrule\hbox{\vrule\kern3pt\vbox{\kern6pt}\kern3pt\vrule}\hrule}}
+\addtolength{\textwidth}{1in}                  % Margin-setting commands
+\addtolength{\oddsidemargin}{-.5in}
+\addtolength{\evensidemargin}{.5in}
+\addtolength{\textheight}{.5in}
+\addtolength{\topmargin}{-.3in}
+\addtolength{\marginparwidth}{-.32in}
+\renewcommand{\baselinestretch}{1.6}
+\def\hu#1#2#3{\hbox{$H^{#1}(#2;{\bf #3})$}}          % #1-Cohomology of #2
+\def\hl#1#2#3{\hbox{$H_{#1}(#2;{\bf #3})$}}          % #1-Homology of #2
+\def\md#1{\ifmmode{\cal M}_\delta(#1)\else  % moduli space, delta decay of #1
+{${\cal M}_\delta(#1)$}\fi}
+\def\mb#1{\ifmmode{\cal M}_\delta^0(#1)\else  %moduli space, based, delta
+					      %decay of #1
+{${\cal M}_\delta^0(#1)$}\fi}
+\def\mdc#1#2{\ifmmode{\cal M}_{\delta,#1}(#2)\else    %moduli space, delta
+						      %decay, chern class #1
+						      %of #2
+{${\cal M}_{\delta,#1}(#2)$}\fi}
+\def\mbc#1#2{\ifmmode{\cal M}_{\delta,#1}^0(#2)\else   %as before, based
+{${\cal M}_{\delta,#1}^0(#2)$}\fi}
+\def\mm{\ifmmode{\cal M}\else {${\cal M}$}\fi}
+\def\ad{{\rm ad}}
+\def\msigma{\ifmmode{\cal M}^\sigma\else {${\cal M}^\sigma$}\fi}
+\def\cancel#1#2{\ooalign{$\hfil#1\mkern1mu/\hfil$\crcr$#1#2$}}
+\def\dirac{\mathpalette\cancel\partial}
+\newtheorem{thm}{Theorem}
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{D}[theorem]{Definition}
+\newenvironment{defn}{\begin{D} \rm }{\end{D}}
+\newtheorem{addendum}[theorem]{Addendum}
+\newtheorem{R}[theorem]{Remark}
+\newenvironment{remark}{\begin{R}\rm }{\end{R}}
+\newcommand{\note}[1]{\marginpar{\scriptsize #1 }} 
+\newenvironment{comments}{\smallskip\noindent{\bf Comments:}\begin{enumerate}}{\end{enumerate}\smallskip}
+
+\renewcommand{\thesection}{\Roman{section}}
+\def\eqlabel#1{\addtocounter{theorem}{1}
+\write1{\string\newlabel{#1}{{\thetheorem}{\thepage}}}
+\leqno(\rm\thetheorem)}
+\def\cS{{\cal S}}
+\def\ov{\overline}
+
+
+
+
+
+
+
+
+
+
+
+
+\title{Lecture II-17: $N=2$ Super-symmetric Yang-Mills theories in
+dimension four: Part 1} 
+\author{Edward Witten\thanks{Notes by John Morgan}}
+\date{}
+\begin{document}
+\maketitle
+
+
+\section{Introduction}
+
+Today we shall be studying the dynamics of  $N=2$ super-symmetric
+Yang-Mills theories in 
+four-dimensions. The underlying manifold on which we shall study these
+theories will be Minkowski four-space $M^4={\bf R}^{3,1}$. We are
+mainly interested in the case when the gauge group $G$ is
+$SU(2)$. Since low energy limits of $SU(2)$ theories can
+generate $U(1)$-theories, we shall begin by
+studying $U(1)$-Yang-Mills theory. One should note that these
+$U(1)$-theories are purely unrenormalizable (all terms are
+unrenormalizable) in dimension four. Thus, they  don't make sense
+as fundamental theories, but they are free in the infra-red.
+But, by the same token, we can study their low
+energy  limits by doing semi-classical calculations.
+Of course, when we get to the $SU(2)$-theory we will be dealing with
+an asymptotically free, renormalizable theory which has strong quantum
+effects. This is then a reasonable fundamental theory, but its low
+energy limit is hard to understand. 
+
+We shall eventually use the analysis of low energy limits of these
+gauge theories on Minkowski space as a tool in the analysis of low
+energy limits of these
+theories on compact Riemannian four-manifolds. Understanding these
+limits will give another mechanism for computing certain correlation
+functions associated to cycles in the four-manifold.  These
+correlation functions can be computed in the low energy limit because
+one shows that they are invariant under deformation of the parameters.
+Computing in  the high energy limit, one identifies these correlation
+functions with differentiable invariants, namely the Donaldson invariants
+of the four-manifold. In this way we obtain totally different
+expressions for the Donaldson invariants of a four-manifold.  In 
+most cases these invariants can be directly computed from a
+$U(1)$-monopole theory. This then produces the link between the
+Donaldson polynomial invariants and the Seiberg-Witten $U(1)$-monopole
+invariants. All this is the subject of the next several lectures.
+Today we study low energy limits of $U(1)$-gauge theories.
+
+
+\section{Low Energy $U(1)$ $N=2$ super Yang-Mills Theories}
+
+\subsection{The basic fields}
+
+Consider pure $N=2$ super Yang-Mills
+theory in four-dimensions with gauge group 
+$U(1)$. This means that the  fields in the Lagrangian
+will form a single $N=2$ vector super-multiplet.  That is to say, we
+will have the gauge 
+field,  and its $N=2$ super-symmetric partners.
+All the fields will be massless.
+Let us recall from the super-homework what the $N=2$ massless vector
+super-multiplet looks like in dimension $4$.
+Massless particles are associated to
+representations of 
+the `little' subgroup $Spin(2)$ in the Lorentz group $Spin(3,1)$ fixing a
+nontrivial vector $v\in R^{3,1}$ of norm zero. The `helicity' of such
+a particle (i.e., its spin around its direction of motion) is the
+representation of its stabilizer.  These are indexed so that the
+fundamental representation of $Spin(2)$ is labeled $1/2$.
+The irreducible representations of the Poincar\'e group that comprise
+the $N=2$ vector super-multiplet in dimension four are arrayed as
+pictured below:
+
+$$\matrix{{\rm helicity} & -1 & -1/2 & 0 &\oplus  & 0 & 1/2 & 1 \cr
+\ {\rm multiplicity\ of \ representation} \ & 1 & 2 & 1 & &  1 & 2 & 1.}$$
+The action of CPT conjugation on these representations is to interchange the
+right and left halves of this table. This multiplet
+has a $U(2)_R$ symmetry, acting so as to 
+preserve helicity.  Thus, the $SU(2)_R\subset U(2)_R$ acts trivially
+except on those particles 
+of helicities $\pm(1/2)$. On each of these it acts via the fundamental
+two-dimensional representation. The $U(1)_R$ acts trivially on the
+states of helicity $\pm 1$ and acts by (two copies of) the standard
+representation on the states of helicity $\pm 1/2$ and by the $\pm 2$ power of
+the fundamental representation on  the states of helicity
+zero. The CPT involution normalizes the $U(1)_R$ and acts on it by
+conjugation. Thus, the representation of $U(1)_R$ on the other half of
+the multiplet is given by the negative of the above.
+
+The fields of an $N=2$ vector super-multiplet  on $N=1$
+super-space in dimension four decompose into an $N=1$ vector multiplet
+and an $N=1$ chiral multiplet.
+The $N=1$ vector super-multiplet is the gauge $N=1$
+super-multiplet ${\cal A}$.
+ The field ${\cal A}$ is the super-connection and (after partial gauge
+fixing to Wess-Zumino gauge) consists of a triple 
+$${\cal A}=(A,\lambda,D)$$
+where $A$ is the usual $U(1)$-gauge field, $\lambda$ is a fermion
+field, and $D$ is an auxiliary field.
+The curvature of ${\cal A}$ is a two-form on $N=1$
+super-space. The entire curvature form is determined by certain
+components $W_\alpha$ which are
+ $(\frac{1}{2},0)$ spinor chiral super-fields. (Representations of
+$Spin(3,1)=SL_2({\bf C})$ are indexed by an ordered pair $(a,b)$ of
+half-integers. The pair $(1/2,0)$ indexes the defining two-dimensional
+complex representation.  It is 
+chiral because the second half-integer is zero.) The only way that the
+super-connection  ${\cal
+A}$ enters the action is through the field $W_\alpha$.
+The other fields  form an $N=1$ super-multiplet called $\Phi$.
+This is a (scalar) chiral super-multiplet. 
+It consists of
+$$\Phi=(\phi,\psi,F)$$
+where $\phi$ is a complex-valued scalar field,
+$\psi$ is a fermion, and $F$ is an auxiliary field.  The auxiliary
+fields $D$ and $F$ enter the action quadratically and without
+derivatives so that 
+they can be integrated out using the equations of motion.
+Thus, they play no role in the analysis.
+
+\subsection{The Lagrangian}
+
+Now we are ready to write the Lagrangian for the pure $N=2$
+$U(1)$-gauge theory in four-dimensions.  Though we
+require impose $N=2$ super-symmetry, we choose to write the Lagrangian
+first as a Lagrangian for fields on $N=1$ super-space and then study the
+consequences of the extra super-symmetry. The Lagrangian is:
+\begin{equation}\label{1steqn}
+{\cal L}=\left(\frac{i}{4\pi}\int d^4xd^2
+\theta\tau(\Phi)W_\alpha W^\alpha+{\rm c.c.}\right)
++\frac{1}{4\pi}\int_{R^{3,1|4}}d^4xd^4\theta K(\Phi,\overline\Phi).
+\end{equation}
+
+As we remarked above, $W$ is a piece of the curvature of the $N=1$ super
+connection ${\cal A}$.  It 
+is a chiral super-field. The function $\tau(\Phi)$ is a holomorphic
+function on the complex plane (or more generally the complex curve)
+where $\Phi$ takes its values.  Since 
+$\Phi$ is a chiral super-field it follows  that 
+$\tau(\Phi)$ is also a chiral super-field.
+We write
+$$\tau=\frac{\theta}{2\pi}+\frac{4\pi i}{e^2}.$$
+ Lastly,
+$K(\Phi,\overline\Phi)$ is a K\"ahler potential on $\Phi$-space.
+
+
+We have encountered this Lagrangian before, with one essential
+difference.
+That difference is that here we are not assuming $\tau$ is constant.
+Rather we allow it to be a holomorphic function of $\Phi$. 
+Briefly, the reason that we consider this generalization is that this
+theory will arise as a low energy limit of some $SU(2)$-theory. That
+theory will have a complex plane of classical vacua (i.e., the
+space of minima of the potential energy  will be ${\bf C}$).
+We find terms in the low energy limit which involve
+functions on this space of classical vacua (cf, sigma-models arising
+as low energy limits).  It is in this way that the non-constant holomorphic
+function $\tau$ arises.
+The main application we have in mind for this study is to the low
+energy limits of $N=2$ super-symmetric pure $SU(2)$ gauge theory.
+Of course, in the low energy limit $\Phi$ will be  slowly varying,
+i.e., almost constant.  To the extent that $\Phi$ is almost constant
+the same will be true of $\tau$, and we find ourselves expanding
+around a low energy effective theory with constant $\tau_{\rm eff}$.
+
+
+
+Another difference of this Lagrangian from the general $N=1$
+super-symmetric Lagrangian is 
+that there is no super-potential term.  The reason is that one can have
+such a term in an $N=1$ super-symmetric theory on $N=1$ super-space in
+four-dimensions, but the extra conditions imposed by requiring the
+theory to have $N=2$ super-symmetry imply that this term must be zero.
+Another related, but more delicate, consequence of the same idea is
+that $N=2$ super-symmetry imposes a relation between $\tau$ and $K$.
+To see this, let us write out the Lagrangian in components.  We get
+\begin{eqnarray}\label{2ndeqn}
+{\cal L} & = &
+\frac{1}{4\pi}\int_{R^{3,1}} d^4x\left(i\left[  \overline\tau(F^+\wedge
+F^+)-\tau(F^-\wedge F^-)\right]
++K_{\phi\overline\phi}\partial\phi\overline{\partial\phi}\right. \\
+& & \hskip.5in \left. + {\rm Im}\tau\overline\lambda i\dirac\lambda +
+K_{\phi\overline\phi} \overline\psi i\dirac\psi\right) \nonumber
+\end{eqnarray}
+One thing which is clear from this formula, which we have seen before,
+is that it is not the K\"ahler potential $K(\Phi,\overline\Phi)$ {\sl
+per se} that enters into 
+the Lagrangian; only the K\"ahler metric
+$K_{\phi\overline\phi}\partial\phi \overline{\partial\phi}$ of the
+potential enters. 
+
+
+To see the relation of $\tau$ and $K$ we use the  $SU(2)_R$-symmetry
+which is a consequence of $N=2$ super-symmetry. 
+Notice that if $K_{\phi\overline\phi}={\rm Im}\tau$, then 
+the pair
+$(\lambda,\psi)$ form a multiplet for the $SU(2)_R$ which is
+isomorphic
+to the  standard representation. 
+Conversely if there is an $SU(2)_R$-symmetry, then with an 
+appropriate holomorphic redefinition of the
+coordinates the $(\lambda,\psi)$ form a standard multiplet for the
+$SU(2)_R$ action.  Thus, in these coordinates the 
+coupling terms for $\lambda,\lambda$ and $\psi,\psi$ must have the
+same strength, and hence with this choice of coordinates we have
+${\rm
+Im}\tau=K_{\phi\overline\phi}$.
+One immediate consequence of this is that ${\rm Im}\tau>0$. This seems
+like a problematic condition.  Locally it is not hard to ensure that
+it holds, but for a global holomorphic function on all of ${\bf C}$ it
+cannot  be achieved. There are two possibilities to contemplate.  One
+is that as $\tau$ approaches the real axis,  for some reason
+the physics breaks down. One would then be faced with studying what
+happens at these `bad' limits.  Another possibility is that $\tau$ is
+multi-valued. 
+After all, we already know that the transformation $\tau\to \tau +1$
+(i.e., increasing $\theta$ by $2\pi$) does not affect the theory.
+So at least to that extent one must consider $\tau$ as multi-valued.  Of
+course, this does not solve the problem we are addressing since any
+non-constant, entire holomorphic function $\tau$ to ${\bf
+C}/\{\tau\cong\tau+1\}$ 
+still cannot have ${\rm Im}\tau>0$.
+To arrange this we need a larger group of indeterminacy for the values
+of $\tau$.  
+For example, recall that it is easy to construct global holomorphic
+functions into 
+the upper half-plane if we permit them to be multi-valued, say under
+the standard action of
+$SL_2({\bf Z})$. As we shall see, this is exactly what happens in this
+case. 
+
+\subsection{Indeterminacy of $\tau$}
+
+
+In order to make the notation consistent with that of [Seiberg-Witten
+???] we set $\phi=a$.
+The  term in the Lagrangian derived from the K\"ahler potential 
+becomes
+$$\frac{i}{4\pi}\int_{R^{3,1}}d^4x(\tau-\overline\tau)\frac{\partial
+a}{\partial x^i}\frac{\partial\overline{a}}{\partial \overline x^i},$$
+which means that the induced K\"ahler metric on the $\Phi$-plane, now
+called $U$, is
+$$ds^2=\frac{i}{4\pi}(\tau da
+d\overline{a}-da\overline{\tau}d\overline{a}),$$ 
+where $a$ is a local holomorphic coordinate on the $U$.
+It is convenient to introduce another holomorphic function $a_D$
+(called {\sl the dual of} $a$) 
+locally on an open subset $V$ of  $U$ with the property
+that $da_D=\tau da$. 
+Given this, we can re-write the metric on $V$ as
+$$ds^2=\frac{i}{4\pi}(da_Dd\overline{a}-dad\overline{a}_D).$$
+We denote by $\Omega$ the K\"ahler form of this metric:
+$$\Omega=\frac{-1}{8\pi}\left(da_D\wedge d\overline{a}-da\wedge
+d\overline{a}_D\right).$$
+We can view this more symmetrically in $a$ and $a_D$ by forming the
+complex two-space with coordinates $(a,a_D)$. 
+Then there is an embedding of the  complex curve $f\colon V\to
+{\bf C}^2$ into this complex
+two-space so that the image is a solution curve for  the differential
+equation $da_D=\tau da$.  This embedding will be the graph of
+either of the variables as a function of the other.
+Let $\omega=\frac{-1}{8\pi}\left(da\wedge d\overline{a}_D-da_D\wedge
+\overline{a}\right)$. It is a closed, non-positive $(1,1)$-form on
+complex two-space. 
+Of course, $f$ must be such that $f^*\omega=\Omega>0$.
+
+The question is: How much freedom do we have in the representation of
+the theory in terms of the parameters $a,a_D$ (and implicitly $\tau$)?
+Said another way, In what ways can we find other Lagrangian's of this
+form with different $a$ and $a_D$ (and hence different $\tau$) which
+represent the same theory? 
+Just considering the K\"ahler potential term we see an obvious
+geometric change of coordinates that brings the Lagrangian back into
+the same form with different values of the parameters.  Namely, we can
+act by an extended version $ISL_2({\bf R})$ of $SL_2({\bf R})$. 
+We define
+$$0\to {\bf C}^2\to ISL_2({\bf R})\to SL_2({\bf R})\to 0$$
+to be an extension which is a semi-direct product with the natural
+action of $SL_2({\bf R})$ on ${\bf C}^2$. 
+An element $(M,\pmatrix{c_D \cr c})$ in this group acts by
+$$(M,\pmatrix{ c_D \cr c})\cdot\pmatrix{a_D \cr a}=M\cdot\pmatrix{a_D
+\cr a}+\pmatrix{c_D \cr c}.$$ 
+Since $\tau=\frac{da_D}{da}$, one sees that the action of this group
+on $\tau$ is the usual fractional linear transformation of $M$ on
+$\tau\in {\bf H}$:
+$$\pmatrix{r & s \cr t & u}\cdot \tau=\frac{u\tau +t}{s\tau +r}.$$ 
+In this way this change of variables brings the $d^4\theta$ term of
+the Lagrangian back into the same form with a different $a,a_D,\tau$.
+
+
+This computation with the K\"ahler metric leads us to ask whether the
+non-uniqueness in our 
+description of the holomorphic function $\tau$ should be that we are
+allowed to compose $\tau$ with any $SL_2({\bf R})$  fractional-linear
+transformation. 
+But 
+we must examine the other term in the Lagrangian where $\tau$ appears. 
+That is in the term involving the gauge field (or photon). 
+Recall from Lecture II-8 what happens  for constant $\tau$.
+Since $\tau =\frac{\theta}{2\pi}+\frac{4\pi
+i}{e^2}$ and the action is given by $e^{i{\cal L}}$, if 
+we consider strictly upper triangular matrices the only ones that
+leave invariant this part of the action are those of the form
+$$\pmatrix{ 1 & b \cr 0 & 1}$$
+with $b\in{\bf Z}$. 
+As we have seen in Lecture II-8, this action of the strictly upper
+triangular matrices 
+in $SL_2({\bf Z})$ extends to an action of $SL_2({\bf Z})$ on
+representations of the theory. 
+That is to say, if $\tau$ and $\tau'$ in ${\bf H}$ differ by the action
+of $SL_2({\bf Z})$, then the pure $U(1)$-gauge theory with $\tau$ as
+parameter has another representation as a $U(1)$-gauge theory (with
+different basic fields) where the parameter is $\tau'$.
+The transformation $\tau\to (-1)/\tau$ is the duality transformation
+in $U(1)$-gauge theory interchanging the electric and magnetic charges.
+The upshot of all this is that
+the full symmetry group of representations  of the theory by
+Lagrangian's of the given form is 
+$$ISL_2({\bf Z})={\bf C}^2\ltimes SL_2({\bf Z}).$$
+The way this group transforms the parameter  $\tau$ is through
+composing with the usual 
+fraction linear transformation action of $SL_2({\bf Z})$ on the upper
+half-plane. 
+
+We now see how to describe our low energy effective  theory globally.  There
+is a complex curve $U$ of vacua and there is a global holomorphic function
+$\overline\tau\colon U\to {\bf H}/PSL_2({\bf Z})$.  Furthermore, for
+each $u\in U$ there is a neighborhood $V$ of $u$, a lifting of
+$\overline\tau$ to a  
+holomorphic function $\tau\colon V\to {\bf H}$, and $N=1$ super-fields
+${\cal A},\Phi$ such that there is a
+Lagrangian in the form 
+given in Equation~\ref{1steqn} (or Equation~\ref{2ndeqn} in
+components)  which represents the theory in $V$.
+As we pass from one of these open subsets to another, the
+representation of the low energy effective theory locally by
+Lagrangian's changes. 
+The function $\tau$ changes by  the
+natural action of $SL_2({\bf Z})$ on ${\bf H}$.
+The chiral super-field changes by the action of $ISL_2({\bf Z})$
+described above, and
+the gauge super-field ${\cal A}$ changes by the duality action
+of $SL_2({\bf Z})$ action on the representations of pure $N=1$
+super-symmetric $U(1)$-gauge theory as described in Lecture II-8.
+Because there are global holomorphic functions to ${\bf H}/SL_2({\bf
+Z})$,  this is a completely consistent picture of a global theory in
+which ${\rm Im}\tau$ never goes to zero. 
+
+
+\subsection{The Family of elliptic curves associated to $\tau$}
+
+
+We have now established all the relevant general features of the
+low energy effective theories we want to study. We have an $N=2$
+super-symmetric pure 
+$U(1)$-gauge theory with a family of vacua parameterized by
+a complex curve $U$, where the scalar field $\phi=a$ takes its values. This
+curve has an open covering $\{V^\alpha\}$ and on 
+each open subset there is a pair of dual holomorphic coordinates
+$a^\alpha,a_D^\alpha$ so that
+$\tau^\alpha=\frac{da^\alpha_D}{da^\alpha}$ is the parameter appearing
+in the Lagrangian. We assume that the different local representations of
+the theory differ by automorphisms in $ISL_2({\bf Z})$.
+We have just seen that the local holomorphic function $\tau$ on $U$
+which appears 
+in the Lagrangian is in fact a global function of $U$ to ${\bf
+H}/SL_2({\bf Z})$. 
+Thus, for each $u\in U$ it is natural to consider $\tau(u)$ as the
+$j$-invariant of an elliptic curve $E(u)$. Of course, it is possible
+that at a discrete set of points $\{p_i\}_i$ in $U$ that $\tau$ goes off to
+infinity, or equivalently that the elliptic curves $E(u)$ develop  a
+node as $u\to p_i$.
+At these points the physics changes and there are more massless
+fields, fields that become massive at nearby $u\in U$. 
+
+There is a natural way to
+fit these elliptic curves together. Namely, there is a complex analytic
+surface ${\cal E}$ together with a proper holomorphic map
+${\cal E}\to U$ whose fibers form the  family of
+elliptic curves $\{E(u)\}_{u\in U}$
+The simplest way to construct such a family is to take the Weierstrass
+form. That is to say, there are functions $A,B$ on $U$ such that
+${\cal E}$ is defined by
+$$Y^2=X^3+AX+B,$$
+with an appropriate completion of the missing point at infinity in
+each elliptic curve. (For globally non-trivial bases $U$, we will have a
+line bundle $L$ over $U$ and $A$ and $B$ will be sections of
+$L^{\otimes 4}$ and $L^{\otimes 6}$, respectively.) This family of
+elliptic curves has a natural section (the section at infinity in the
+Weierstrass description), and thus, it can be viewed as a family of
+one-dimensional Abelian varieties. There are, of course, other
+families of  holomorphically varying genus-one curves over the same base with
+the same $j$-invariant function but without a section.  But given the
+information of the $j$-invariant function only, there is no
+distinguished family except the one with a section. 
+
+
+Suppose that we have  a family of elliptic curves ${\cal E}\to U$ with
+a section $\sigma$. Furthermore, suppose that
+we have an open covering $\{V^\alpha\}_\alpha$ of $U$ such that on
+each $V^\alpha$ there are a pair of dual holomorphic coordinates
+$a^\alpha,a^\alpha_D$ such that $\tau^\alpha=
+\frac{da^\alpha_D}{da^\alpha}$ is a
+function to the upper half-plane.
+We suppose that these two sets of data are related as above.  That is
+to say, 
+${\cal E}|_{V^\alpha}$ 
+is isomorphic to the family
+$V^\alpha\times{\bf C}/(1,\tau^\alpha(v))$.
+This allows us to define one-cycles
+$E_1^\alpha(u),E_2^\alpha(u)\subset E(u)$ for all $u\in V^\alpha$ as
+the images of the arcs $\{u\}\times [0,1]$ and $\{u\}\times
+[0,\tau^\alpha(u)]$ in $\{u\}\times {\bf C}$. 
+Then, there is a differential of the
+second kind $\lambda^\alpha$ (i.e., a meromorphic one-form with trivial
+residue along its polar locus) on ${\cal E}|_{V^\alpha}$ such that
+$$\int_{E^\alpha_1(u)}\lambda^\alpha=a^\alpha(u)$$
+$$\int_{E^\alpha_2(u)}\lambda^\alpha =a^\alpha_D(u).$$
+In general, we can not fit these differentials $\lambda^\alpha$ of the
+first kind together to produce a global object.  (We will see the precise
+conditions when this can be done soon.) But 
+we claim that we can fit together the two-forms $d\lambda^\alpha$.
+Namely, we claim that we there is a unique global holomorphic two-form
+$\eta$ on ${\cal E}$ 
+such that on  ${\cal E}|_{V^\alpha}$ we have
+$$\int_{E^\alpha_1}\eta=da^\alpha$$
+$$\int_{E^\alpha_2}\eta=da^\alpha_D.$$
+Of course, the uniqueness assertion immediately implies that the
+restriction of any such global two-form $\eta$ 
+to  ${\cal E}^\alpha$ is equal to 
+$d\lambda^\alpha$.  
+
+
+Recall that  ${\cal E}^\alpha$ is identified with $V^\alpha\times {\bf
+C}/(1,\tau^\alpha(u))$. On the universal covering space
+$V^\alpha\times {\bf C}$ we have the holomorphic one-form $dz$ induced
+from the standard holomorphic coordinate on ${\bf C}$.
+This one-form does not descend to the quotient because $\tau$ is not
+a constant  function of $a^\alpha$. Nevertheless, the two-form
+$da^\alpha \wedge dz$ does descend to give a well-defined two-form on
+${\cal E}^\alpha$.
+It is clear that the 
+only holomorphic two-form on ${\cal
+E}|_{V^\alpha}$ which satisfies 
+the first integral equation above is 
+$$\eta^\alpha=-da^\alpha\wedge dz.$$
+
+This two-form $\eta^\alpha$ also clearly satisfies the second integral
+equation. Now we need to see that these local two-forms fit together
+to give a global form $\eta$.
+But this is clear from the uniqueness of the local forms.
+
+Now let us compute
+$\pi_*(\eta\wedge\overline\eta)$, where $\pi$ is the projection from
+${\cal E}\to U$. Let us restrict attention to ${\cal
+E}|_{V^\alpha}$. From our local description we have 
+$$\pi_*(\eta\wedge\overline\eta)=\int_{{\rm
+fibers}}d\lambda^\alpha \wedge d\overline{\lambda}^\alpha.$$
+It follows immediately from the formulas for the integrals of
+$d\lambda$ over $E^\alpha_1$ and $E^\alpha_2$ and the fact that
+$E^\alpha_1\cdot E^\alpha_2=1$ in the
+homology of $E(u)$ that the result is
+$$\pi_*(\eta\wedge \overline\eta)=da^\alpha\wedge
+d\overline{a}^\alpha\overline{\tau}^\alpha+da^\alpha\wedge
+d\overline{a}^\alpha  \tau^\alpha 
+=(\tau^\alpha-\overline{\tau}^\alpha)da^\alpha\wedge
+d\overline{a}^\alpha=8\pi\Omega|_{V^\alpha}.$$   
+
+Since the two-form $\eta$ is holomorphic, it integrates trivially on
+any fiber and on the section $\sigma$ of the elliptic fibration.
+Thus, its homology class is determined by the integrals
+of $\eta$ along two-tori which lie over circles in $U$.
+
+The deRham cohomology class of $\eta$ measures whether or not the
+automorphisms required in passing between  our local descriptions in
+terms of various sets of $(a,a_D,\tau)$ lie in $SL_2({\bf Z})$ or in
+the extended group $ISL_2({\bf Z})$. 
+We claim that if the deRham homology class of $\eta$ is trivial,
+then the automorphisms we use lie in $SL_2({\bf Z})$. The point is the
+following. We already know that the change in $da, da_D$ is by
+elements in $SL_2({\bf Z})$.  We need to compute the changes in
+$a,a_D$. 
+If we go around any loop $\gamma$ in $U$ with the
+property that $E_1$ comes back to itself, then the cycles
+$E_1(\gamma(t))$ fit together to make a torus and the integral around
+this torus of $\eta$ is equal to $\int_\gamma da$.  If this integral
+is trivial, then $a$ can be analytically continued around this loop to
+a single valued function.
+Similar arguments apply to $a_D$. Thus, if all the periods of $\eta$
+are trivial, then $a,a_D$ transform by $SL_2({\bf Z})$.
+
+
+In general, the deRham cohomology class of a holomorphic two-form such
+as $\eta$ is trivial if and only if there is a global differential of
+the second kind $\lambda$ on ${\cal E}$ with 
+$d\lambda=\eta$.
+In the more general case, we can write the holomorphic two-form $\eta$
+as $d\lambda$ for some 
+global differential  $\lambda$ of the third kind on
+${\cal E}$ (i.e., $\lambda$ is a meromorphic one-form on ${\cal E}$
+with constant residue along its polar locus.) 
+In turns out in our application to pure $SU(2)$-gauge theory,
+ that the automorphisms between our various descriptions lie in
+$SL_2({\bf Z})$, so that  we shall
+not need to consider this more general case.
+The proof of this fact is the subject of the next section.
+
+
+\subsection{The BPS formalism}
+
+Our goal here is to show that if the low energy effective $U(1)$-gauge
+theory that we have 
+been considering is the low energy limit of a pure $N=2$ super-symmetric
+$SU(2)$ gauge-theory, then the transformations between the various local
+descriptions in terms of $(a,a_D,\tau)$ of the $U(1)$-theory lie in
+$SL_2({\bf Z})$. 
+We shall establish this by using the BPS formalism.  In any
+$U(1)$-theory we have two conserved charges, the electric and
+magnetic charges: 
+$$Q_e=\frac{1}{4\pi}\int_{S^2}*F$$
+$$Q_m=\frac{1}{4\pi}\int_{S^2}F.$$
+Here, we are doing the integrals on the sphere at infinity in some
+time slice in Minkowski four-space. 
+In pure $U(1)$-theory on four-space, these charges are both zero.
+But in the case that our $U(1)$-theory is the low energy limit of an
+$SU(2)$-theory these charges can be non-zero.
+Recall from Lecture II-9 that our $SU(2)$-theory has a $U(1)$-symmetry
+whose conserved charge is 
+$$N_e=Q_e+\frac{\theta Q_m}{2\pi}.$$
+As a result, this operator has integral eigenvalues.  It is called the
+electric charge.
+There is another conserved charge, the magnetic charge, given by
+$$N_m=Q_m.$$
+This is the first Chern class of the line bundle at infinity and
+hence is clearly has integral eigenvalues as well.
+Of course, as we saw in Lecture II-9 and II-9 these two charges are
+interchanged by duality. Thus, both charges come from
+$U(1)$-symmetries of the theory. 
+
+
+At least
+in the case of constant $\tau$ they are related to the $Q_e,Q_m$ by
+\begin{eqnarray*}
+N_m & = & Q_m \\
+N_e & = & Q_e+\frac{\theta Q_m}{2\pi}
+\end{eqnarray*}
+
+The $N=2$ super-symmetry generators $Q_\alpha^i, \ \ i=1,2$ 
+satisfy the relations of the super Poincar\'e group
+$$\{Q_\alpha^i,Q_{\dot\alpha}^j\}=\delta^i{}_jP_{\alpha\dot\alpha}$$
+where $P_{\alpha\dot\alpha}$ is infinitesimal translation in the
+spatial direction $\{\alpha\dot\alpha\}$. Also, we have
+$$\{Q_\alpha^i,Q_\beta^j\}=\epsilon^{ij}\epsilon_{\alpha\beta}U$$
+where $U$ is  multiplication by a scalar, the central charge of the
+theory. 
+
+In general, there is the BPS bound on the mass of any state
+which says
+$$M\ge |U|.$$
+In addition, there is a good understanding of the BPS saturated
+states, i.e., those for which this inequality is an equality.
+
+In our case we wish to compute the central charge $U$.
+To do this recall that the Lagrangian (for $\tau$ constant) is:
+$${\cal L}=\frac{1}{4\pi}\int d^4xd^2\theta i\tau
+W_\alpha W^\alpha+\int d^4xd^4\theta{\rm Im}\tau \overline\Phi\Phi.$$ 
+{}From this one knows (from Lecture II-9) that for this value of
+$\tau$ 
+$$U=aN_e+a_DN_m$$
+where $\Phi=a+\ldots$.
+(On dimensional grounds, this formula holds even if $\tau$ is not
+constant.) 
+The interpretation is that different realizations of the low energy
+theory correspond to different values of $a$.  In  these
+realizations $U$ depends on the values of $a, a_D$ by the above
+formula.
+Recall from Lecture II-9 that $(N_m,N_e)$ transform under $SL_2({\bf
+Z})$ as we take different representations of our theory. Since $U$ has
+to be unchanged, we see that if 
+$$\pmatrix{a_D \cr a}\mapsto M\cdot\pmatrix{a_D \cr a},$$
+then
+$$\pmatrix{N_m & N_e}\mapsto \pmatrix{N_m & N_e}\cdot M^{-1}$$
+for any $M\in SL_2({\bf Z})$. 
+
+The first important point to notice is that we can not compensate for
+the operation of adding a constant to $\pmatrix{a_D \cr a}$ by a
+change in $(N_m,N_e)$.  This shows that the automorphisms between the
+various representations of the $U(1)$-theory in terms of
+$(a,a_D,\tau)$ lie in $SL_2({\bf Z})$. 
+Thus, in this case  we can construct a differential
+$\lambda$ of the second kind on ${\cal E}$ such that for each $\alpha$
+we have
+$$\int_{E_1}\lambda=a^\alpha$$
+$$\int_{E_2}\lambda =a^\alpha_D.$$
+on ${\cal E}|_{V^\alpha}$.
+
+More generally, if the $SU(2)$-theory has extra symmetries (as might
+be the case if we add matter), then the form of the central charge
+becomes 
+$$U=aN_e+a_DN_m+S$$
+where $S$ is some other conserved charge.
+In this case it is possible to compensate for the affine translations
+in $(a_d,a)$.  Namely, we can have
+$$\pmatrix{a_D \cr a \cr 1}\mapsto \pmatrix{M & \pmatrix{c_D \cr c} \cr
+\pmatrix{ 0 & 0 } & 1}\cdot \pmatrix{a_D  \cr a \cr 1}$$
+and
+$$\pmatrix{N_m & N_e & S}\mapsto \pmatrix{N_m & N_e & S}\cdot
+\pmatrix{M^{-1} & \pmatrix{* \cr *} \cr \pmatrix{0 & 0} & 1}.$$
+
+In all these transformations no derivatives of $\tau$ enter.
+In fact, what we did was to  compute the transformation laws for
+$\tau$ constant and 
+just extended them in the obvious way to the case when $\tau$ is
+holomorphic.  The reason that we know that this mechanism  works is
+that on dimensional grounds alone we know that no derivatives of
+$\tau$ can enter the formulas.
+While one can consider the low energy limits of these more complicated
+$SU(2)$-theories with matter, we shall restrict ourselves to the case
+when there are no extra symmetries and the transformations between the
+various representations of our low energy theory lie in $SL_2({\bf
+Z})$. 
+
+
+We gave a derivation of the formula for the central charge above from
+the form of the Lagrangian.  Let us give another derivation of the
+same formula (or at least a piece of it). Let us consider $U(1)$-gauge
+theory with a charged $N=2$ vector hyper-multiplet. In the $N=1$
+language, this hyper-multiplet is a pair of chiral super-fields
+$(T,\tilde T)$ of equal but opposite charges.  Super-symmetry implies
+that the charges must be opposite, let us denote them by  $\pm
+n_e$. In the Lagrangian we have added a 
+super-potential  
+$$W=n_e\Phi T\tilde T.$$ 
+Since $\Phi=a+\ldots$, we see that the mass of the pair $(T,\tilde T)$
+is $aN_e$. 
+Thus, we see this term in the central charge of the theory from this
+point of view.
+
+
+\subsection{Jumping of the BPS spectrum}
+
+Let us return to our low energy $N=2$ super-symmetric $U(1)$-gauge
+theory given locally by $a,a_D$. 
+In such theories the BPS mass inequality is
+$$M\ge |n_ea+n_ma_D|.$$
+Since  $N_e$ and $N_m$ are
+integers, this is a good bound in the sense that it implies that there
+is a positive constant which is a lower bound for $M$ as long as the
+lattice in ${\bf C}$ generated by $a$ and $a_D$ is a honest lattice.
+Let us examine what happens as the lattice  generated by
+$a$ and $a_D$ degenerates, i.e., when $a$ and $a_D$ become collinear in
+${\bf C}$.  
+At such points the triangle inequality is no long strict and this
+permits states to decay to other lower states.  In this way BPS states can
+disappear (or appear), accounting for the jumping in the BPS spectrum.
+
+ Generically, we expect this to happen along a real curve in
+$U$. (Notice the lattice generated by $(1,\tau)$ is not degenerating,
+rather it is the lattice of values of $a$ and $a_D$ which is
+degenerating.) 
+This phenomenon is similar to that in Vafa's lecture for $N=2$
+super-symmetric theories in dimension two. There the jumping occurred
+when the values of the central charge became collinear. 
+In the example of interest, we shall obtain explicit information about
+the curve in  $U$ where the BPS spectrum jumps.
+
+
+
+\subsection{More about the application to $SU(2)$-gauge theory}
+
+As we have remarked in passing several times, we will study an
+$N=2$ super-symmetric $SU(2)$-gauge theory with no matter
+hyper-multiplets. We shall do this by studying the theory as an $N=1$
+super-symmetric theory with $\Phi$ an adjoint-valued chiral
+super-field. 
+The microscopic (or high energy) effective Lagrangian is given by:
+$${\cal L}_{\rm mac}=\frac{1}{4\pi}\int d^4xd^2\theta
+\tau_0(\Lambda_0){\rm Tr}W_\alpha W^\alpha+{\rm c.c.} +\frac{1}{4\pi}
+\int d^4xd^4\theta {\rm Im}\tau_0(\Lambda_0){\rm
+Tr}\overline\Phi\Phi$$ 
+where $W$ is a piece of the super-curvature of the super-connection
+${\cal A}$ on a principal $SU(2)$-bundle over Minkowski space, and
+$\Phi=\phi+\theta\psi+\cdots$ with $\phi$ being a 
+field with values in the complexification of the adjoint bundle.  The $\Lambda_0$ refers to the
+ultraviolet momentum cut-off that 
+we have chosen to regulate the $SU(2)$-theory.  Here, $\tau_0$ is a
+constant (in the fields) which depends on the value of $\Lambda$.
+
+The space of classical vacua is given by configurations consisting of
+trivial connections 
+and constant (covariantly constant) sections $\phi$ of ${\bf C}\otimes
+su(2)$ which are zeros for the potential, up to gauge equivalence.
+The potential for this  Lagrangian is the norm-squared of the moment map
+$$V=\frac{{\rm Im} \tau_0}{4\pi}\int d^4x {\rm
+Tr}\left([\phi,\overline\phi]^2\right).$$
+If $\phi$ is a zero of the potential function, then clearly 
+$\phi$ and $\overline\phi$ commute.
+Writing $\phi=\gamma+i\delta$ with $\gamma,\delta\in su(2)$, we see
+that the condition that $\phi$ and $\overline\phi$ commute is simply
+that $\gamma$ and $\delta$ commute.  This means that $\gamma$ and
+$\delta$  can be simultaneously
+diagonalized. That is to say, up to gauge transformation,
+$$\phi=\frac{1}{\sqrt{2}}\pmatrix{ a & 0 \cr 0 & -a}$$
+for $a\in {\bf C}$.
+There is a further conjugation, namely the action of the Weyl group,
+which in this case is ${\bf Z}/2{\bf Z}$ and acts by sending $a\mapsto
+-a$. Thus, the moduli space of classical vacua is a complex plane
+parameterized by the complex coordinate 
+$$u={\rm Tr}\phi^2=a^2.$$
+In the classical theory, for  $u\not=0$ the $SU(2)$-gauge symmetry is
+broken to $U(1)$ and the 
+low energy theory is as we have discussed today.
+It has a  single massless multiplet, which becomes Higgs'ed and
+acquires a mass.
+The low energy effective theory at the exceptional point $u=0$
+remains an unbroken $SU(2)$-gauge theory.  
+
+
+Let us examine it in light of our discussion today about low energy
+effective $U(1)$-theories.  
+As we have just explained the space of classical vacua is the complex
+plane -- the $u$-plane.
+Let us examine the metric on the $u$-plane. 
+All points of this plane except zero correspond to a $U(1)$-theory as
+described in this lecture.
+The metric on the space of classical vacua is induced from the natural
+metric on the 
+space of trivial connections and covariantly constant scalars in the
+complexified Lie algebra.  This is simply  the ad-invariant metric on the
+complexified Lie algebra. Restricting to the diagonal matrices as
+above, we see that the induced metric is $da\wedge d\overline{a}$. 
+Since $u=a^2$, this means that the metric on the $u$-plane is
+$$ds^2=\frac{du d\overline{u}}{|u|^2},$$
+which has a singularity at the origin.  This singularity reflects the
+fact that at the origin there are other masses fields so that the
+the low energy effective theory is not a pure $N=1$ super-symmetric
+$U(1)$-gauge theory at that point.
+
+Now we can describe the family of tori over the $u$-plane punctured at
+$0$, and the holomorphic two-form
+$\eta$ on the total space of this family.
+The function $\tau$ is constant, and hence the family of tori has
+monodromy contained in $\{\pm 1\}\subset SL_2({\bf Z})$. Since the
+metric on the $u$-plane minus the origin is given by ${\rm Im}\tau
+da\wedge d\overline{a}$ we see that the parameter $a=\sqrt{u}$ is the
+parameter of the same name in the $U(1)$-theory (i.e., the first of
+the dual pair of local holomorphic coordinates on the base) and the
+dual parameter $a_D$ is $\tau a$. This means that the monodromy around
+infinity (or equivalently around zero) sends $a$ to $-a$ and $a_D$ to
+$-a_D$. This means that the family of tori over the puncture
+$u$-plane is obtained from the
+product family $({\bf C}-\{0\})\times E$ over the punctured $a$-plane
+by dividing out by the involution $(a,z)\mapsto (-a,-z)$. 
+(Here, $E$ is the elliptic curve ${\bf C}/L(1,\tau)$, the quotient of
+the complex plane by the lattice generated by $1$ and $\tau$.)
+The holomorphic two-form $\eta$ is the image of $da\wedge dz$ where
+$dz$ is a global holomorphic one-form on $E$.
+
+
+This description is of the classical theory.  In the next lecture we
+shall discuss the quantum version of this theory. It turns out that
+things change somewhat in going to the quantum theory, but the
+changes are in some ways not as drastic as one might imagine. For 
+example the space 
+of quantum vacua will be the same $u$-plane, though the singular
+points will be different, and they will correspond to a different
+type of object becoming massless.
+Also, the monodromy will be different.
+
+
+\end{document}
+
+
+
+
+
+
+

@@ -1,0 +1,960 @@
+\documentstyle{article}
+
+
+%These are the macros which are in common with all of the
+% sections in the paper mmr
+% Each section, for now, should begin with \documentstyle[11pt,cd]{article}
+% and then have \input{mmrmacros} followed by \begin{document}
+% The only exception is that the \Label macro is slightly different
+% in each file and should be put in separately.
+%New CD macros
+%\newcommand{\cdrl}{\cd\rightleftarrows}
+%\newcommand{\cdlr}{\cd\leftrightarrows}
+%\newcommand{\cdr}{\cd\rightarrow}
+%\newcommand{\cdl}{\cd\leftarrow}
+%\newcommand{\cdu}{\cd\uparrow}
+%\newcommand{\cdd}{\cd\downarrow}
+%\newcommand{\cdud}{\cd\updownarrows}
+%\newcommand{\cddu}{\cd\downuparrows}
+% (S) Proofs.
+% (S-1) Head is automatically supplied by \proof.
+
+\def\proof{\vspace{2ex}\noindent{\bf Proof.} }
+\def\tproof#1{\vspace{2ex}\noindent{\bf Proof of Theorem #1.} }
+\def\pproof#1{\vspace{2ex}\noindent{\bf Proof of Proposition #1.} }
+\def\lproof#1{\vspace{2ex}\noindent{\bf Proof of Lemma #1.} }
+\def\cproof#1{\vspace{2ex}\noindent{\bf Proof of Corollary #1.} }
+\def\clproof#1{\vspace{2ex}\noindent{\bf Proof of Claim #1.} }
+% End of Proof Symbol at the end of an equation must precede $$.
+
+\def\endproof{\relax\ifmmode\expandafter\endproofmath\else
+  \unskip\nobreak\hfil\penalty50\hskip.75em\hbox{}\nobreak\hfil\bull
+  {\parfillskip=0pt \finalhyphendemerits=0 \bigbreak}\fi}
+\def\endproofmath$${\eqno\bull$$\bigbreak}
+\def\bull{\vbox{\hrule\hbox{\vrule\kern3pt\vbox{\kern6pt}\kern3pt\vrule}\hrule}
+}
+\addtolength{\textwidth}{1in}                  % Margin-setting commands
+\addtolength{\oddsidemargin}{-.5in}
+\addtolength{\evensidemargin}{.5in}
+\addtolength{\textheight}{.5in}
+\addtolength{\topmargin}{-.3in}
+\addtolength{\marginparwidth}{-.32in}
+\renewcommand{\baselinestretch}{1.6}
+\def\hu#1#2#3{\hbox{$H^{#1}(#2;{\bf #3})$}}          % #1-Cohomology of #2
+\def\hl#1#2#3{\hbox{$H_{#1}(#2;{\bf #3})$}}          % #1-Homology of #2
+\def\md#1{\ifmmode{\cal M}_\delta(#1)\else  % moduli space, delta decay of #1
+{${\cal M}_\delta(#1)$}\fi}
+\def\mb#1{\ifmmode{\cal M}_\delta^0(#1)\else  %moduli space, based, delta
+                                              %decay of #1
+{${\cal M}_\delta^0(#1)$}\fi}
+\def\mdc#1#2{\ifmmode{\cal M}_{\delta,#1}(#2)\else    %moduli space, delta
+                                                      %decay, chern class #1
+                                                      %of #2
+{${\cal M}_{\delta,#1}(#2)$}\fi}
+\def\mbc#1#2{\ifmmode{\cal M}_{\delta,#1}^0(#2)\else   %as before, based
+{${\cal M}_{\delta,#1}^0(#2)$}\fi}
+\def\mm{\ifmmode{\cal M}\else {${\cal M}$}\fi}
+\def\ad{{\rm ad}}
+\def\msigma{\ifmmode{\cal M}^\sigma\else {${\cal M}^\sigma$}\fi}
+\def\cancel#1#2{\ooalign{$\hfil#1\mkern1mu/\hfil$\crcr$#1#2$}}
+\def\dirac{\mathpalette\cancel\partial}
+\newtheorem{thm}{Theorem}
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{D}[theorem]{Definition}
+\newenvironment{defn}{\begin{D} \rm }{\end{D}}
+\newtheorem{addendum}[theorem]{Addendum}
+\newtheorem{R}[theorem]{Remark}
+\newenvironment{remark}{\begin{R}\rm }{\end{R}}
+\newcommand{\note}[1]{\marginpar{\scriptsize #1 }} 
+\newenvironment{comments}{\smallskip\noindent{\bf Comments:}\begin{enumerate}}{
+\end{enumerate}\smallskip}
+
+\renewcommand{\thesection}{\Roman{section}}
+\def\eqlabel#1{\addtocounter{theorem}{1}
+\write1{\string\newlabel{#1}{{\thetheorem}{\thepage}}}
+\leqno(\rm\thetheorem)}
+\def\cS{{\cal S}}
+\def\ov{\overline}
+
+
+
+\input epsf
+
+
+
+
+
+
+
+
+\title{The Dirac Index on Manifolds and Loop Spaces: Part II}
+\author{Edward Witten}
+\date{December 17, 1996}
+
+\begin{document}
+\maketitle
+
+%\tableofcontents
+
+\section{Introduction}
+In this lecture we shall extend the discussion from the last lecture
+to the case of signature operators and Dirac operators on loop spaces.
+
+\section{The Lagrangian formulation: $\sigma$-models in two dimensions}
+
+We shall consider the space (or rather the super-space) of maps of
+${\bf R}^{2|2}$ to a finite dimensional, complete riemannian manifold
+$M$ of even dimension. 
+Let $u,v$ be the coordinates on the underlying space ${\bf R}^2$ of
+${\bf R}^{2|2}$ and
+let $\theta_+,\theta_-$ be the odd coordinates on this super manifold.
+The metric on the underlying ${\bf R}^2$ is  the flat Minkowski metric
+$ds^2=du\,\,dv$.
+On ${\bf R}^{2|2}$ we have the vector fields $D_+$ and $D_-$ given by
+$$D_+=\frac{\partial}{\partial \theta_+}-\theta_+\frac{\partial}{\partial
+u},$$
+and
+$$D_-=\frac{\partial}{\partial \theta_-}-\theta_-\frac{\partial}{\partial
+v}.$$
+The Lagrangian that we consider is
+$${\cal L}=\frac{1}{2}\int_{{\bf
+R}^{2|2}}d^2\theta dudv\ g_{IJ}D_+X^ID_-X^J,$$ 
+or written invariantly using the metric $\langle\ \ ,\ \ \rangle_M$ on $TM$
+$${\cal L}=\frac{1}{2}\int_{{\bf R}^{2|2}} d^2\theta dudv\langle
+D_+X,D_-X\rangle _M=\frac{1}{2}\int_{{\bf R}^2}dudv\left(D_-D_+\langle
+D_+X,D_-X\rangle_M\right)|_{\theta=0} .$$
+Let us write the superfield out in coordinates as
+$$X=x+\theta_+\psi_-+\theta_-\psi_++\theta_+\theta_-F$$
+where $x=X|_{\theta=0}$, $\psi_\pm=D_\pm(X)|_{\theta=0}$, and
+$F=D_-D_+(X)|_{\theta=0}$.
+Integrating out the odd variables yields
+$${\cal L}=\int_{{\bf R}^2}dudv\frac{1}{2}\left( \langle\frac{\partial
+x}{\partial u},\frac{\partial x}{\partial v}\rangle +\langle
+\psi_+,D_u\psi_+\rangle+\langle \psi_-,D_v\psi_-\rangle +\frac{1}{4}
+R_{IJKL}\psi_-^I\psi_-^J\psi_+^K\psi_+^L +\langle F,F\rangle\right).$$
+Of course, when we consider the action since $F$ appears purely
+quadratically and with no derivatives we can simply integrate out
+these degrees of freedom introducing the condition that $F=0$ as one
+of the equations of motion.  From now on we drop this term.
+
+
+The presence of the indefinite form  $\langle \frac{\partial
+x}{\partial u},\frac{\partial x}{\partial v}\rangle$ indicates that
+neither $u$ nor $v$ can be used as a time coordinate
+on ${\bf R}^2$.
+We
+switch coordinates letting (time coordinate) $t=(u+v)/2$ and (space 
+coordinate) $\sigma$ be $(u-v)/2$ with the metric $ds^2=dt^2-d\sigma^2$. 
+We also allow the possibility that the spatial direction $\sigma$ has
+been made periodic so that it is a circle instead of a copy of ${\bf
+  R}$.
+Under this change of coordinates we have
+$$\frac{d}{du}=\frac{d}{dt}+\frac{d}{d\sigma}$$
+$$\frac{d}{dv}=\frac{d}{dt}-\frac{d}{d\sigma}$$
+and analogously for covariant derivatives.
+
+\centerline{\quad}
+\centerline{\epsfxsize=1in\epsfbox{fig2.1.eps}}
+\centerline{\bf Figure 1.}
+\centerline{\quad}
+
+Rewriting the Lagrangian in these variables yields
+\begin{eqnarray*}
+\lefteqn{{\cal L}=\frac{1}{2}\int_{{\bf R}^2}dtd\sigma\left(\langle \dot x,\dot
+x\rangle+\langle 
+\psi_+,\dot \psi_+\rangle +\langle \psi_-,\dot\psi_-\rangle\right. }  \\
+& &\left.-\langle\frac{\partial x}{\partial\sigma},\frac{\partial x}{\partial
+\sigma}\rangle +\langle \psi_+,\frac{\partial \psi_+}{\partial
+\sigma}\rangle -\langle\psi_-,\frac{\partial \psi_-}{\partial
+\sigma}\rangle
++\frac{1}{4}R_{IJKL}\psi_-^I\psi_-^J\psi_+^K\psi_+^L\right).
+\end{eqnarray*}
+The first three terms, those  involving the time derivatives, are the
+kinetic energy terms.  The other terms are potential terms.
+
+
+As usual, we have symmetries of the Lagrangian associated with the right
+invariant vector fields
+$$Q_+=\frac{\partial}{\partial
+  \theta^+}+\theta^+\frac{\partial}{\partial u}$$
+$$Q_-=\frac{\partial}{\partial
+  \theta^-}+\theta^+\frac{\partial}{\partial v}.$$
+Of course we have
+$$Q_+^2=\frac{\partial }{\partial u}$$
+$$Q_-^2=\frac{\partial }{\partial v}.$$
+
+
+\section{Quantization}
+
+Now that we have a time direction $t$ it makes sense to quantize in
+the Hamiltonian framework.
+In order to quantize we restrict to the  slice   $t=0$.
+The fields $\psi_\pm$ should be viewed as spinors on the slice $t=0$ with
+values in $x^*(TM)$ , or equivalently as half-densities on the slice 
+with values in $S_\pm\otimes x^*TM$.
+In the case that the spatial direction is a circle, we can view
+$\psi_\pm$ as half-density on $S^1$ with values in  $T({\cal L}M)$.
+Since we are taking periodic boundary values for the $\psi_\pm$
+the spin bundles $S_\pm$  are trivial over the circle (i.e., give the
+non-bounding spin structure on $S^1$.)
+We can write
+$$\int_{t=0}(\psi_+,\psi_+)$$ as a well-defined quadratic form on
+the space of sections on the slice. Quantizing this infinite
+dimensional quadratic space yields a spin space. Since we are in infinite
+dimensions now, the spin space depends not only on the underlying
+quadratic space but also on a polarization (i.e., a self-annihilating
+subspace in the complexification). The subspace we choose is given by
+the operator $D/D\sigma$ 
+acting on  the spinors. Since space is now a circle, this operator has
+discrete spectrum. For the spinors $\psi_+$ we use the
+polarization coming from the negative eigenspaces plus a polarization
+of the zero eigenspace. The choice of this latter polarization is
+irrelevant since it is finite dimensional.
+For the spinors $\psi_-$ we choose the polarization consisting
+of the positive eigenspaces of $D/D\sigma$ plus a polarization for the
+zero eigenspace. The reason for these choices will be apparent presently.
+We call the resulting spin spaces for the two types of spinors $S_R$
+of right-moving spinors (the $\psi_+$) and $S_L$ of left-moving
+spinors (the $\psi_-$).
+The Hilbert space after quantizing is
+the tensor product 
+$S_R\otimes S_L$.
+This gives us a model for the differential
+forms on the loop space $\Omega^*({\cal L}M)$. They are a type of
+middle dimensional forms in the sense that they are of neither finite
+dimension nor codimension.
+
+
+
+
+The Hamiltonian operator is a perturbation of the
+operator given by the purely quadratic part of the kinetic plus
+potential energy.
+This operator derived from the quadratic energy terms has pieces
+$$H_{\psi_+}=-\int_{S^1}(\psi_+,\frac{D}{D\sigma}\psi_+)$$
+and
+$$H_{\psi_-}=\int_{S^1}(\psi_-,\frac{D}{D\sigma}\psi_-).$$
+Since we need these  two operators to be bounded below, 
+the choices we have made are forced upon us (up to finite dimensional
+change which does not affect the result spin space).
+
+The supersymmetries $Q_\pm$ discussed above become operators after we
+quantize satisfying the same relations they did before quantization.
+In addition, 
+the operators $Q_\pm$ commute with the Hamiltonian $H$, which is
+associated with the vector field
+$$\frac{\partial }{\partial t}=\frac{1}{2}\left(\frac{\partial}{\partial
+u}+\frac{\partial}{\partial v}\right).$$
+
+Associated to the vector fields  $Q_\pm$ are conserved quantities also
+denoted $Q_\pm$ given by
+$$Q_+=\int_{S^1}(\psi_+,D_ux)$$
+$$Q_-=\int_{S^1}(\psi_-,D_vx).$$
+Writing things out in local coordinates on $M$, we have
+$$Q_+=\int_{S^1}d\sigma g_{IJ}\psi_+^I(\sigma)\left(\frac{\partial
+x^J}{\partial t}+\frac{\partial x^J}{\partial \sigma}\right).$$
+Under quantization $\partial x^I/\partial t$ becomes $-ig^{IJ}\delta/\delta
+x^J(t)$ so that
+$$Q_+=\int_{S^1}d\sigma\left(-i\psi_+^I\frac{\delta}{\delta
+x^I(t)}+(\psi,\frac{dx}{d\sigma})\right).$$ 
+The first term in this last formula for $Q_+$
+is formally the Dirac operator for the free loop space
+${\cal L}M$. The second term is needed to make the operator
+well-behaved quantum mechanically. 
+Recall that in the last lecture (in the finite dimensional
+$S^1$-equivariant case) we
+had the operator $D+t\Gamma\cdot V$ where $D$ was the Dirac operator
+and $V$ was the Killing vector field of a circle action ($t$ is a real
+number and $\Gamma$
+represents Clifford multiplication). In the case of the free loop
+space, there is a natural circle action which rotates the
+parametrization on the domain circle. Its Killing vector field $V$ is
+$\frac{\partial }{\partial \sigma}$ so that the analogue of
+$t\Gamma\cdot V$ in this case is the second term in the last
+expression for $Q_+$. Notice that there is no parameter here
+playing the role of $t$ in the finite dimensional discussion. 
+If we tried to vary our operators replacing $D/Du$ by $D/Dt+\epsilon
+D/D\sigma$, this would work fine as long as $\epsilon>0$ (of course
+once $\epsilon\not=1$ we would violate relativity, but that is not
+relevant here), but when $\epsilon<0$ our Hamiltonian operators would
+no longer be bounded below. To achieve this we would have to pick the
+opposite polarizations for the spinors, so our operators
+and index theory would jump discontinuously in passing through $\epsilon=0$.
+ This is the basic reason that
+the vanishing results we will get  for index theory
+on free loop space are weaker than the finite dimensional
+vanishing theorem.
+Half of the $S^1$-indices vanish in the loop space case rather than all of them
+as in the finite dimensional case. In the language of our discussion
+from last week, we are forced to keep $t>0$ and hence can only show that
+half the indices vanish.
+
+Of course, for a  spin manifold $M$ of finite, even dimension we have that the
+differential forms can be decomposed in terms of spinors (which we denote
+$S(M)$) by
+by $\Omega^*(M)=S(M)\otimes S(M)$. 
+In general, in Riemannian geometry, there is a natural Dirac operator
+acting on sections of $S(M)\otimes E$ where $E$ is any vector bundle
+with connection.  By setting $E=S(M)$ and identifying $S(M)\otimes V$
+with $S(M)\otimes S(M)$ in either of two ways (which differ by exchange
+of the factors), 
+we have two Dirac
+operators acting on $\Omega^*(M)$.
+ These coupled Dirac
+operators commute and are given  by $D=d+d^*$, using the Dirac
+operator on the first factor, and $\tilde D =
+d-d^*$, using the Dirac operator on the second factor. 
+If $M$ has a circle action generated by a Killing vector field $V$, then
+we can form the operators
+$$Q_+=D+\Gamma\cdot V$$
+$$Q_-=\tilde D-\tilde\Gamma\cdot V,$$
+where $\Gamma$ and $\tilde\Gamma$ represent Clifford multiplication
+in the first and second factor respectively.
+These operators commute and furnish finite-dimensional prototypes
+for the supersymmetry generators $Q_\pm$ in the loop space case.
+
+\section{The Index of $Q_+$}
+
+Our goal is to calculate the ${\rm index}(Q_+)$ 
+on the free loop space. Of course, this index
+must be interpreted properly since the free loop space is of infinite
+dimension.
+One thing we need to do in this infinite dimensional context is define
+the `degree' of our `forms' on the loop space, at least modulo two.
+How to do this was  discussed at the end of the last lecture.
+Recall from that discussion that in  our
+situation there is a group ${\bf Z}/2{\bf Z}\times {\bf Z}/2{\bf 
+Z}$ with generators acting via
+$$\psi_+\mapsto -\psi_+;\ \ \ \psi_-\mapsto\psi_-$$
+and
+$$\psi_+\mapsto \psi_+;\ \ \ \ \psi_-\mapsto-\psi_-.$$
+As we saw, if $M$ is spin then the full group of symmetries exists in
+the quantum theory; in any event,
+ the diagonal copy of ${\bf Z}/2{\bf Z}$ always
+exists as a symmetry of the quantum theory.
+It turns out that using the diagonal ${\bf Z}/2{\bf Z}$ produces an
+index which plays the role of the Euler characteristic in finite
+dimensions. (After all in our finite dimensional analogy, the
+diagonal  ${\bf Z}/2{\bf Z}$ acts with $(S^+\otimes S^+)\oplus
+(S^-\otimes S^-)$ as the fixed space and $(S^+\otimes S^-)\oplus
+(S^-\otimes S^+)$ as the minus one eigenspace. Under the isomorphism of
+$S\otimes S$ with $\Omega^*(M)$, this ${\bf Z}/2{\bf
+Z}$-grading corresponds to the degree modulo two.
+So it is not surprising that in the context of the loop space the
+index graded by the diagonal involution gives an Euler
+characteristic-type object.)
+But if we 
+ assume that $M$ is spin, then we can
+take  one of these involutions, say the
+involution $\rho$ sending $\psi_+$ to $-\psi_+$. In the finite dimensional
+situation this involution is the Hodge $*$-operator, so it is
+reasonable to view the
+index computed using this involution as a generalization the usual
+signature of a finite dimensional manifold.
+This is the index that we shall study.
+But just using this involution is not enough.
+In order to get finite answers, we need to use the circle symmetry on
+the free loop space in addition to the involution.
+The way we set things up is to consider the index as a formal
+character of the circle. That is to say we consider
+$${\rm index}\,Q_+={\rm Tr}_{{\rm Ker}^+(Q_+)}q^P-{\rm Tr}_{{\rm
+Ker}^-(Q_+)}q^P$$ 
+where $q$ is a formal variable, the operator $P$ is given by
+$$P=-\frac{\partial}{\partial\sigma},$$
+and ${\rm Ker}^\pm(Q_+)$ refer to the 
+decomposition of ${\rm Ker}(Q_+)$ into  $\pm 1$-eigenspaces under the
+involution $\rho$.
+
+
+We will compute this index by
+quantizing the space of  maps of a $2|2$
+supermanifold whose underlying geometric manifold is $(S^1\times {\bf
+R})$ into a compact even dimensional spin manifold $M$.
+
+\section{The computation around the fixed points of the $S^1$-action.}
+
+As usual the computation localizes around the fixed points of the
+supersymmetry $Q_+$. Let us see what these are.
+The operator
+$$Q_+^2=H+P$$
+is the Laplacian on forms plus ${\cal L}_V+|V|^2$,
+where $V$ is the vector field generating the natural circle action on
+the free loop space.
+Thus, as in the last lecture we compute the index by localizing around
+the fixed points of $V$.
+The zeros of the vector field $V$ acting on the loop space are easy to
+determine: they 
+are simply the constant loops. Hence, they make a copy of the manifold
+$M$, embedded as a subspace of ${\cal L}M$. Thus, by an infinite dimensional
+analogue of the Atiyah-Bott fixed point theorem we expect the
+computation to yield an answer of the form
+$$F(q)=\int_M\hat A(M){\rm ch}({\cal R})$$
+where ${\cal R}$ is a bundle (or more precisely, a formal sum of
+bundles) that will be found presently
+by a computation on the normal bundle to $M$ in the 
+free loop space.
+
+We made a similar computation in the last lecture for circle actions
+on finite dimensional manifolds. The method was to find the kernels of
+the Hamiltonian operators in the normal direction to the fixed point
+set.
+That is what we do here as well.
+Let us begin the discussion by parameterizing this normal bundle. We
+consider a constant loop at $x_0\in M$. Then any nearby $x$ can be
+written as
+$$X(\sigma)=x_0+{\rm exp}(\varphi(\sigma))$$
+where $\varphi(\sigma)\in TM_{x_0}$ satisfies
+$\int_{S^1}d\sigma\varphi(\sigma)=0$ and $\varphi(\sigma)$ satisfies
+the free wave equation:
+$$\left(\frac{d^2}{dt^2}-\frac{d^2}{d\sigma^2}\right)\varphi=0.$$
+This means that we can decompose $\varphi(\sigma)$ uniquely as
+$$\varphi(\sigma)=\varphi_+(\sigma)+\varphi_-(\sigma),$$
+with $\varphi_+$ be left-moving and $\varphi_-$ being right-moving.
+This decomposition is unique since we have required that the zero
+Fourier mode for  $\varphi$ vanishes.
+
+Since we are considering `differential forms' on the loop space as
+being the tensor product of two spin bundles $S_R\otimes S_L$,
+we also have to consider the fermions $$\psi_-(v),\psi_+(u).$$
+If we want to consider the Dirac operator $Q_+$ that acts on spinors
+$S_R$, then the roles of $S_R$ and $S_L$ are not symmetrical.
+$S_R$ is the bundle of ``spinors on free loop space,'' while
+$S_L$ is an auxiliary bundle on free loop space that just happens
+to be a spin bundle constructed with a different polarization.
+(In fact, at the end of the lecture we will replace $S_L$ by a more
+general vector bundle on free loop space.)  Let us then focus on the
+role of $S_R$, which is obtained by quantizing $\psi_+$.  By quantizing
+the zero modes of $\psi_+$, we get the spinors on 
+$M$ (regarded as the fixed point subset of ${\cal L}M$), 
+while quantization of the nonzero modes of $\psi_+$ gives the
+spinors on the normal bundle $N$ to $M$.  The tensor product is
+$S_R=S(M)\otimes S(N)$, where the two factors are $S(M)$, the spinors
+on $M$, obtained by quantizing the constant modes of $\psi_+$,
+and $S(N)$, the spinors of the normal bundle, obtained by quantizing
+the part of $\psi_+$ that is orthogonal to the zero modes. 
+Thus $\psi_+=\psi_{+,0}+\psi_{+,\perp}$, where
+$\psi_{+,0}$ is constant and 
+$$\int_{S^1}d\sigma \psi_{+,\perp}(u)=0.$$
+$S(N)$ is obtained by quantizing $\psi_{+,\perp}$.
+
+First suppose that $M$ is the flat manifold ${\bf R}^{2n}$. Then the
+theory would have no interaction terms and the action would be purely
+quadratic. The resulting Hilbert space would be the tensor product of
+spinor-valued $L^2$ functions on ${\bf R}^{2n}$ (obtained by quantizing $x_0$,
+$\dot x_0$, and $\psi_{+,0}$) 
+ with a tensor product Hilbert space
+$$\chi=\chi^+\otimes \chi^-,$$
+where $\chi^+$ and $\chi^-$ are Hilbert spaces of right-movers and left-movers,
+respectively.  Concretely
+$\chi^+$ comes from quantizing   $\varphi_+$ and $\psi_{+,0}$,
+and $\chi^-$ comes from quantizing $\varphi_-,\psi_-$.  (Because the
+Dirac operator whose index we will compute is $Q_+$ -- a choice that
+breaks the symmetry between left and right -- it is very helpful
+to separate out the zero modes from $\psi_+$, as we have done, but there
+is no need to similarly separate out the zero modes from $\psi_-$.)
+ $\chi^+$  is a  Fock space since, for $M={\bf R}^{2n}$,
+the theory is free.  $\chi^-$ is almost a Fock space; it is actually
+the tensor product of a copy of $S(M)$ (obtained by quantizing the zero
+modes in $\psi_-$) with a Fock space obtained by quantizing the nonzero
+modes of $\psi_-$ and $\varphi_-$.  The Dirac operator $Q_+$ of the free
+model is the sum of an operator that acts in $\chi^+$ and an operator
+(namely $(\psi_{+,0}\dot x_0)$, which is interpreted as the ordinary
+Dirac operator on ${\bf R}^{2n}$) that acts on the spinors on ${\bf R}^{2n}$.
+
+Now suppose that $M$ is not flat, but scale up the metric of $M$ by a large
+factor so that the curvature is everywhere very small.  Working near
+the constant loops in ${\cal L}M$ and using the fact that the flat
+model is everywhere a good approximation, we make a fiberwise version of
+the description in the last paragraph.
+The Hilbert
+space of the theory consists of spinor-valued $L^2$ sections of a certain
+bundle  of Fock-like spaces over $M$. The bundle over $M$
+is a tensor product $\chi^+\otimes \chi^-$ where $\chi^+$ and $\chi^-$ are
+constructed exactly as in the flat model.  (We call the factors Fock-like
+only because $\chi^-$ is not quite a Fock space.)
+One might think in terms of a projection from a small neighborhood
+of $M\subset {\cal L}M$ back to $M$.  The idea is to compute the 
+index of the Dirac operator by using this fibration; as usual the first
+step is to solve the Dirac equation along the fibers, which are copies
+of the normal bundle to $M$ in ${\cal L}M$.  We write
+$Q_{+,\perp}$ for the part of $Q_+$ that acts in $\chi$.
+
+The Dirac operator in the fibers is easily described.
+The operator $Q_{+,\perp}$ acts in $\chi^+$  as the tensor algebra of its
+action on the space generated by
+ $\varphi_+(n),\psi_+(n)$ for $n>0$.  (As usual
+we make Fourier expansions $\varphi_+=\sum_ne^{in\sigma}\varphi_+(n)$, and
+likewise for other fields.)   In each such space, $Q_{+,\perp}$ 
+has a one-dimensional
+kernel,
+so the kernel of $Q_{+,\perp}$ 
+in the full Fock space $\chi^+$ is the infinite tensor
+product $L$ of the one-dimensional invariant subspaces.
+Hence its kernel in $\chi$ is identified with $\chi^-$ tensored with $L$:
+$${\rm Ker}(Q_{+,\perp})=L\otimes \chi^-.$$
+
+The involution that we are using acts nontrivially on $\chi^+$ but
+trivially on $L$ and
+trivially on $\chi^-$. It then follows that the involution acts
+trivially on the kernel of $Q_{+,\perp}$.
+To understand better that kernel,
+let us examine $\chi^-$ in more detail. We have fields
+$$\varphi_-(\sigma)=\sum_{n\not= 0}\varphi_ne^{in\sigma}$$
+$$\psi_-(\sigma)=\sum_n\psi_ne^{in\sigma}.$$
+These produce creation and annihilation operators in the Fock space
+$\chi^-$ which satisfy:
+$$[\varphi_n^i,\varphi_m^j]=\frac{1}{m}\delta_{n+m}\delta^{ij}$$
+$$\{\psi_n^i,\psi_m^j\}=\delta^{ij}\delta_{n+m},$$
+where $\delta^{ij}$ is the metric in the tangent space to $M$ at
+$x_0$. 
+We quantize so that $H$ is bounded below.  In particular, the bosons
+can be quantized  with a vacuum state
+$|\Omega\rangle$, such that
+$$\varphi_n|\Omega\rangle =0, \ \ n>0,$$
+and hence the bosonic states in the Fock space are
+$$\prod_{\ell=1}^\infty\varphi_{-\ell}^{\epsilon_\ell}|\Omega\rangle$$
+of energy $\sum_\ell\ell\epsilon_\ell$.
+
+
+For the fermions $\psi_-$ the zero mode is allowed so that the
+quantization of $\psi_0$ gives a copy of the spin bundle $S$ of the
+manifold $M$. In particular, there is not a unique vacuum since any
+state of $S$ is of zero energy. We use $|s\rangle$ for such zero
+energy states. As before, we want $\psi_n|s\rangle=0,\ n>0$ and for
+any zero energy state $|s\rangle$. Thus, the states in the Fock space
+are 
+$$\prod_{n=1}^\infty\psi_{-n}^{\delta_n}|s\rangle$$
+of energy $\sum_{n=1}^\infty n\delta_n$.
+Now we are in position to describe ${\rm Ker}(Q_+)=\chi^-$ as an
+$S^1$-module. 
+Clearly, from the above description we see that it is given by
+$$\chi^-=S\otimes_{n=1}^\infty {\rm
+Sym}_{q^n}(TM)\otimes_{n=0}^\infty\Lambda_{q^n}(TM).$$
+Here we use the abbreviations
+$${\rm Sym}_{q^n}(TM)= \oplus_{m=0}^\infty q^{nm}{\rm Sym}^m(TM),$$
+and similarly 
+$$\Lambda_{q^n}(TM)=\oplus_{m=0}^\infty q^{nm}\Lambda^m(TM).$$
+Here ${\rm Sym}^m$ and $\Lambda^m$ denote as usual the $m^{th}$ symmetric
+or exterior powers.
+  Finally, a factor $q^n$ in front of a vector bundle is to
+indicate that the action of the circle on this bundle is by the
+$n^{th}$ power of the standard representation.
+
+After solving the Dirac equation along the fibers to get the kernel
+$L\otimes \chi^-$, the next step is to solve the Dirac equation
+along $M$ with values in this kernel.
+Thus, formally at least, we have
+$$F(q)=q^{-{\rm dim}M/24}\int_M\hat A(M){\rm
+ch}\left(S\otimes _{n-1}^\infty{\rm
+Sym}_{q^n}(TM)\otimes_{m=1}^\infty\Lambda_{q^m}(TM)\right),$$
+where $F(q)$ is ${\rm Signature}({\cal L}M)(q)$ as defined by the
+index of $Q_+$.
+Several comments are in order about this formula. First of all the
+power of $q$ out front comes from the action of the circle on the fixed
+complex line $L$;  we will explain later why this is
+the correct factor. Secondly, notice that only positive powers of $q$
+appear under the integral sign. But since there are positive powers
+which do appear in this 
+formula, the signature is not constant as a representation of $S^1$,
+unlike the finite dimensional case. What replaces the constancy for
+the character is the
+fact that in this context the character is a holomorphic function of
+$q$, with positive powers only (multiplying a fixed prefactor). We shall see 
+shortly that setting $q=e^{2\pi i\tau}$, this character extends to a
+holomorphic function of $\tau$ in the entire upper half-plane, a
+function that is modular for the subgroup $\Gamma_0(2)$ of $SL_2({\bf Z})$.  
+
+
+\section{Path Integral Approach}
+
+In the path integral approach to computing the index under discussion
+we consider, for real $\theta$, the expression
+$${\rm Tr}\left(e^{-\beta H}e^{i\theta P}(-1)^{F_\rho}\right)$$
+where $\rho$ is the involution sending $\psi_+$ to $-\psi_+$ and
+$\psi_-$ to $\psi_-$. Since $Q_+^2=H+P=0$ on ${\rm Ker}(Q_+)$, on this
+kernel $H=-P$. This trace is equal to 
+$${\rm Tr}_{{\rm Ker}^+(Q_+)}e^{-(\beta+i\theta)H}-{\rm Tr}_{{\rm
+Ker}^-(Q_+)}e^{-(\beta+i\theta)H}.$$
+This of course is simply the supertrace
+$$F(q)={\rm str}_{{\rm Ker}(Q_+)}q^H$$
+for $q=e^{-(\beta+i\theta)}$. 
+Notice that $|q|<1$ since $\beta>0$.
+The path integral has a propagator $e^{-\beta H}$ (so that time is
+Euclidean) for fields on a circle. The term $e^{i\theta P}$ says that
+before we glue the ends of the cylinder together we rotate by an angle
+$\theta$.
+This yields a riemann surface diffeomorphic to $T^2$.
+As we have seen from the Hamiltonian discussion previously, there is
+a power series expression for this supertrace which is a holomorphic
+function of $q={\rm exp}(2\pi i\tau)$  for $\tau$ in the upper
+half-plane.
+One can also prove directly using path integrals that this path
+integral is a holomorphic function of $\tau$ in the upper half-plane. 
+(The key step in the proof is to write certain components of the stress
+tensor in the form $\{Q_+,\dots\}$; one then uses this to prove
+that the $\overline \tau$ derivative of the index vanishes.)
+
+\centerline{\quad}
+\centerline{\epsfxsize=1.5in\epsfbox{fig2.2.eps}}
+\centerline{\bf Figure 2.}
+\centerline{\quad}
+
+
+
+In this path integral
+description, the fields $\psi_\pm$ are sections over $T^2$ of
+the spin bundles $S_\pm$. Since there are four spin structures on
+$T^2$, there are $16$ different possibilities for the pair of spin
+bundles $S^\pm$ and hence $16$ different possibilities for the path
+integral
+$$\int_{X\colon T^2\to M}{\cal D}X{\cal D}\psi_+{\cal D}\psi_-
+e^{-{\cal L}}.$$ 
+We need to know which spin structures we should use. These are of
+course determined by the boundary conditions, or gluing conditions on
+the fields $\psi_\pm$. In the spatial direction for both $\psi_+$ and
+$\psi_-$ we are using the
+ordinary periodicity and hence the spin structure in that direction is
+the non-bounding one for both types of spinors.
+In the time direction for $\psi_+$ we are computing the supertrace,
+this means that the spin structure for $S^+$ in that direction is the
+non- bounding one.
+In the time direction for $\psi_-$ we are computing the usual trace
+and hence the spin structure for $S^-$ in that direction is the
+bounding one.
+Letting $+$ denote the non-bounding spin structure on $S^1$ and $-$
+the bounding one we see that the spin structures are given as pictured
+below:
+
+\centerline{\quad}
+\centerline{\epsfxsize=3in\epsfbox{fig2.3.eps}}
+\centerline{\bf Figure 3.}
+\centerline{\quad}
+
+
+
+
+Let us consider the action of $SL_2({\bf Z})$ on these spin
+structures. First of all, the action of an element in $SL_2({\bf Z})$
+on a spin structure depends only on its reduction modulo two. The spin
+structure for $S_+$ is in fact invariant under the full group
+$SL_2({\bf Z})$ whereas the subgroup leaving second one invariant is
+$\Gamma_0(2)$, which consists of
+matrices whose lower left entry is zero modulo two. 
+This is a subgroup of index three
+in $SL_2({\bf Z})$ reflecting the fact that the orbit of this spin
+structure under $SL_2({\bf Z})$ has three elements.
+The fundamental domain for $\Gamma_0(2)$ acting on the upper
+half-plane is:
+
+
+\centerline{\quad}
+\centerline{\epsfxsize=1.5in\epsfbox{fig2.4.eps}}
+\centerline{{\bf Figure 4.} Fundamental Domain for $\Gamma_0(2)$}
+\centerline{\quad}
+
+
+
+
+Notice that the quotient of the upper half-plane by $\Gamma_0(2)$ has
+three cusps.
+The one represented at $\infty$ in the upper half-space corresponds to
+$\beta\mapsto\infty$. Computing in this limit shows that the path
+integral reduces to the supertrace on ${\rm Ker}(Q_+)$ of $q^H$, as
+discussed above. The other cusps correspond to different computations.
+The  cusps are interchanged by the action of $SL_2({\bf Z})$
+and hence computing in the limit at one of these means computing  the
+same path integrals but with different  spin structures.
+
+As we have already mentioned, the action of $SL_2({\bf Z})$ leaves
+invariant the spin bundle $S_+$, so that when we compute at the other
+cusps $\psi_+$ is still a section of the same spin bundle.
+What changes is the spin bundle $S_-$.
+Computing at one of the two other cusps means taking $\psi_-$ as a
+section of
+$$x^*TM\otimes \epsilon$$
+where $\epsilon$ is a real line bundle on $T^2$ which is non-trivial
+over the  the spatial  circle.  The two other cusps differ by whether
+$\epsilon$ is trivial in the time direction; we first take the
+case that it is.
+
+The previous analysis can be repeated to determine the index that
+corresponds to a path integral with this spin structure.
+ Namely, the Hilbert space of states $\chi$ for the theory is
+a tensor product $\chi=\chi_+\otimes \chi_-$ of Fock spaces.
+Nothing has changed with $\chi_+$, but let us examine $\chi_-$.
+ As
+before, we have, for example, the Fourier decomposition
+$$\varphi_-(\sigma)=\sum_{n\not= 0}\varphi_ne^{in\sigma}.$$
+The difference is that because of the change in the spin structure
+$S_-$ around the spatial circle, the Fourier expansion for $\psi_-$ is now
+$$\psi_-(\sigma)=\sum_{m\in {\bf Z}+\frac{1}{2}}\psi_ne^{im\sigma}.$$
+In particular, in the Fock space there is no copy of $S$, since there
+is no zero Fourier coefficient for $\psi_-$. (So things are now a bit
+simpler: $\chi^{\pm}$ are true Fock spaces, while before this was not quite
+so for $\chi^-$.)  Thus, the expansion at
+this cusp for the index is
+$$F(q)=q^{-{\rm dim} M/24}\int_M\hat A(M){\rm
+ch}\left(\otimes_{n=1}^\infty{\rm
+Sym}_{q^n}(TM)\otimes_{m=1/2,3/2,\ldots}\Lambda_{q^m}(TM)\right).$$ 
+
+The third cusp is the image of the second cusp under the map
+$\tau\mapsto \tau+1$. Thus, the expansion at the third cusp differs
+from this one simply by changing the sign of $q^{1/2}$
+and thus, in the last formula,
+ changing the sign of $q^{m}$ for all $m$.  (Recall that $m$
+is in ${\bf Z}+\frac{1}{2}$.)
+
+Now there is one important point that we have not yet discussed. This
+is the source of the factor $q^{-{\rm dim}M/24}$ in front of these
+integral expressions. This comes from the $S^1$ action on
+$$L={\rm Ker}(Q_{+,\perp})$$ 
+In fact, $L$ is an infinite
+tensor product of one dimensional spaces which are obtained by quantizing
+$\varphi_+(n), \psi_+(n)$ for $n=1,2,3,\dots.$  On the $n^{th}$ such
+space, the circle acts with character
+$${n\over 2}{\rm dim}\, M.$$
+Thus, on the tensor product the circle action contributes a
+multiplicative factor
+$$q^{\frac{1}{2}\sum_{n=1}^\infty n{\rm dim}M}.$$
+Of course, this factor is regularized in the renormalization
+procedure. It becomes
+$$q^{\frac{1}{2}\zeta(-1){\rm dim}M}=q^{-{\rm dim}M/24}.$$
+
+As an alternative to the Hamiltonian approach that we have followed,
+the index of $Q_+$ can be evaluated
+by  directly computing the path integral. One gets equivalent formulas,
+of course.  Scaling up the metric of $M$
+reduces the evaluation of the path integral to one-loop computations.
+One requires computing Pfaffians for $D_+$ 
+and $D_-$ on spinors in a non-trivial but flat bundle over $T^2$ and
+ computing the determinant of the Laplacian for the
+bosons.  We will not explore this direction today.
+
+
+\section{Bundles with whose signature  or Dirac
+operator has constant character
+for circle actions}
+
+Let us examine the formulas we get for the index of $Q_+$ at the
+various cusps. For one cusp we get a formula of the form
+$$F(q)=\int_M\hat A(M){\rm ch}\left(S\otimes(\oplus_{n=1}^\infty q^n 
+R_n)\right).$$  
+At the other cusps we get a formula of the form
+$$F(q)=\int_M\hat A(M){\rm ch}(\oplus_{m\in {\bf Z}/2}
+ q^m \tilde R_m).$$  
+Both the bundles $R_n$ and $\tilde R_m$ are $SO$-bundles associated to
+the tangent bundle of $M$ by certain representations which we can make
+explicit. 
+We claim that these bundles  have a special property.
+Suppose that $M$
+has an $U(1)$-symmetry $G\colon S^1\times M\to M$, with generating
+vector field $K$. Then
+$$F(q,\alpha)={\rm Tr}_{{\rm Ker}^+(Q_+)}q^He^{i\alpha K}-{\rm
+Tr}_{{\rm Ker}^-(Q_+)}q^He^{i\alpha K}$$
+is independent of $\alpha$. 
+Of course, this is really a statement about the signature operator 
+ coupled with the finite
+dimensional vector bundles $ R_m$ (or the Dirac operator with
+$\tilde R_m$) on a finite dimensional spin manifold with circle action. The 
+statement is that for the special 
+bundles arising from consideration of the loop space
+index, the indices of these operators, viewed as characters on the
+circle, are constant.
+
+To establish this result, let us consider the path integrals where
+instead of using maps of $T^2\to M$ we consider sections of a bundle
+over an $M$-bundle over $T^2$ where as we pass from time $t=0$ to
+$t=\beta$ we identify $M$ with itself by twisting by ${\rm exp}(\alpha K)$.
+(Of course, we could do the same sort of twisting in the other
+direction as well. That we will do presently.)
+We expand the resulting index as
+$$F(q,\alpha)=q^{-{\rm dim}M/24}\sum_{k,m}q^ke^{im\alpha}c_{k,m}$$
+for constants $c_{k,m}\in {\bf Z}$.
+We have already seen that
+$$c_{k,m}=0\ \ {\rm for\ }k<0.$$
+Next we claim that:
+$$c_{k,m}=c_{k+m,m}.$$
+If we can establish this claim, then together with the first fact, it
+immediately follows that $c_{k,m}=0$ for $m\not=0$, which is exactly
+the constancy of $F(q,\alpha)$ with respect to $\alpha$.
+
+It remains to establish the above claim.
+To do this, let us introduce another $\gamma\in S^1$, and let us
+consider the Dirac operator $Q_+$ on a twisted loop space ${\cal L}_\gamma
+M$, the $M$ bundle over the spatial circle obtained by gluing the ends
+together using the automorphism $\exp(\gamma K)$. 
+The $\sigma$-model makes sense as a function
+of $\gamma$, and $F(q,\alpha)$, being an index, is independent of the
+continuous parameter $\gamma$.
+On ${\cal L}_\gamma M$, we have
+$$e^{2\pi \frac{d}{d\theta}}=e^{\gamma K}.$$
+Let us define subspaces 
+${\cal H}_{\gamma,n,m}$
+in the Hilbert space of states by the conditions
+$${\cal H}_{\gamma,n,m}=\left\{\psi|K\psi=\psi \ {\rm and}\ 
+P\psi=\left(n-\frac{\gamma m}{2\pi}\right)\psi\right\}.$$
+The dimension of the space ${\cal H}_{{\rm Id},m,n}$ is the index $c_{n,m}$.
+Once again, we know that the dimension of these spaces is independent
+of $\gamma$ (the Fredholm property of the operators). As we let
+$\gamma$ go from $0$ to $2\pi$ this has the effect of shifting the
+$c_{n,m}$ to $c_{n+m,m}$. This, then, establishes the claim and hence
+the constancy statement.
+
+In this way we have found an infinite sequences of bundles $\tilde R_m$
+(or $R_n$)
+associated to the tangent bundle of a compact even dimensional spin
+manifold $M$ with the following property.
+If $M$ has an isometric circle action, then the index of the Dirac (or
+signature)
+operator coupled to these bundles is a constant character of
+$S^1$. 
+The first few of the $\tilde R_m$'s are:
+\begin{eqnarray*}
+\tilde R_0 & = & {\cal O}; \ \ {\rm the\ trivial\ bundle} \\
+\tilde R_{1/2} & = & TM \\
+\tilde R_1 & = & TM\oplus \wedge^2TM.
+\end{eqnarray*}
+
+By computing relevant bordism groups Landweber-Stong showed that for
+general spin manifolds the $\tilde R_m$  are the only bundles
+naturally associated to the tangent bundle with this constancy property.
+
+
+
+\section{Generalization to Vector Bundles over the Loop Space}
+
+There is an analogue of this theory  where one
+considers spinors on the loop space with values in certain
+ vector bundles ${\cal 
+V}$
+over the loop space.  The relevant ${\cal V}$'s are constructed
+from ordinary finite-rank vector bundles $V\to M$.
+Physically, this analogue is very important because it
+arises in heterotic string theory.
+Mathematically, one finds that
+ the index of the Dirac operator with values in certain bundles made
+ from $V$ (rather than from the tangent bundle of $M$)  is a constant
+character of the circle if $M$ has a circle action obeying certain conditions.
+Let us sketch briefly the relevant version of the nonlinear sigma model and
+its mathematical application.
+
+We use ``chiral'' superfields; we 
+set $\theta^-$ and  $\psi_-$ to zero and consider maps
+$$X\colon {\bf R}^{2|1}\to M.$$
+The Lagrangian we consider is
+$$\int d\theta_+dudv\left((D_vX,D_{\theta_+}X\right)=\int
+dudv\left(g_{IJ}\partial_u x^I\partial_v x^J+\psi_+D_v\psi_+\right).$$
+To get something interesting we add another superfield 
+$$\Lambda\in \Gamma\left({\bf R}^{2|1},S_-\otimes x^*(V)\right),$$
+where $V\to M$ is a real $SO(k)$-bundle with a connection.
+We express $\Lambda$ in components as $\Lambda=\lambda+\theta_+ G$.
+We form a new Lagrangian
+$$\int  d\theta_+dudv\left((D_vX,D_{\theta_+}X)
++(\Lambda,D_{\theta_+}\Lambda)\right)$$
+which after performing the theta integral and integrating out the auxiliary
+field $G$ becomes schematically
+$$\int dudv\left(g_{IJ}\partial_u X^I\partial_v x^J+\psi_+D_v\psi_+
++\lambda D_u \lambda+F\psi_+\psi_+\lambda\lambda\right).$$
+Here $F$ is the curvature of the connection on $V$.
+
+In this theory we have the operator $Q_+$ as before, but no longer do
+we have $Q_-$. When we go to evaluate path integrals we find that
+for a fixed choice of the Riemann surface $\Sigma$ and the map $X:\Sigma
+\to M$,  the fermion path integral takes values in a product of
+determinant line bundles
+${\rm det}D_+(\lambda)\cdot {\rm det}D_-(\lambda)$.
+In order for the path integral to be a real number, and not just a
+section of a line bundle, we need to trivialize this product of
+determinant line bundles. The first question then is a topological
+one: when is this product of determinant line bundles topologically
+trivial?  The answer depends a bit on what choices of spin structures
+one wishes to use.  Assuming that we want to be able to 
+make independent choices
+of spin structure for both $\psi_+$ and $\lambda$ (this is what one needs
+to do in the heterotic string theory, and it leads to the most interesting
+mathematical results), one needs the theory to be invariant under the
+full ${\bf Z}_2\times {\bf Z}_2$ of independent sign changes for $\psi_+$
+and $\lambda$.  For this, we need
+$M$ to be a spin manifold and $V$ a spin
+bundle.
+The triviality of the product of determinant line bundles for any
+Riemann surface and any spin structures gives further
+$$\frac{p_1(TM)}{2}=\frac{p_1(V)}{2}.~~~~~~(*)$$
+(Here $p_1$ is the first Pontryagin class, which is naturally divisible
+by two for spin manifolds and spin bundles.)
+
+
+The next question is to find a flat connection on this product of
+determinant line bundles.  Mathematically, there is a standard
+definition of a connection on the determinant line bundle.  Though it is not
+flat, it can be modified to be flat if one is 
+given a $3$-form $H$ on $M$ such that
+$$dH=\frac{{\rm tr} R\wedge R-{\rm tr}F\wedge F}{8\pi^2}.$$
+Here, $R$ is the curvature of the riemannian manifold $M$.
+The point of the formula is that $dH$ is the four-form that appears
+in the standard mathematical formula for the curvature of the usual connection.
+The equality of $p_1(TM)$ and $p_1(V)$ ensures that such $H$'s exist.
+If one is given such an $H$, then one modifies the usual connection
+on the determinant line bundle as follows.  The Dirac operators whose
+product of determinants we wish to trivialize are defined when one
+is given a choice of a Riemann surface $\Sigma$ and a map $X:\Sigma\to M$.
+A one-parameter family of such data give a three-manifold $W=\Sigma\times
+[0,1]$ and a map $X_W:W\to M$.  We multiply the usual parallel
+transport from 0 to 1 in the determinant line by
+the phase factor
+$${\exp(i\int_W X^*_W(H)).}$$
+The usual local formula for the curvature of the determinant line bundle
+ensures that the modified connection is flat; its global holonomy is also
+trivial if the formula $(*)$ holds integrally and not just at the level
+of differential forms.
+
+This construction is related to some very important physics.
+Physically, $H$ is the curvature of the two-form field that is usually
+called $B$, and the inclusion of the $H$-dependent phase
+ factor is part of the Green-Schwarz
+anomaly cancellation mechanism.
+
+
+To give a mathematical application,
+ we  suppose that $M$ and $V$ have $S^1$-actions and we ask, as
+before, if the index is a constant character for the $S^1$.
+Here a new question arises:
+the action of $S^1$ induces a symmetry of the Lagrangian, but is it a
+symmetry of the quantum field theory?
+For this, we want not just that
+the  product of determinant lines considered
+before should be trivial, but that  
+if $X:\Sigma\to M$ is an $S^1$-invariant map, the $S^1$ action on the
+fiber of the product
+of determinant lines over $X$ should be trivial.
+Via some further index theory, one can show that the condition
+for this is that $(*)$ must hold in the $S^1$-equivariant cohomology,
+not just in ordinary integral cohomology:
+$$\left(\frac{(p_1)_{S^1}(V)}{2}-\frac{(p_1)_{S^1}(TM)}{2}\right)^{S^1}=0.
+~~~(**)$$  
+(Here, $(p_1)_{S^1}$ refers to the Pontryjagin class in
+$S^1$-equivariant cohomology.)
+Once we have this, the arguments as in the previous case apply to show
+that the Dirac index on $M$ with values in $\tilde R_m(V)$ or in
+$S(V)\otimes R_n(V)$ is constant as a character of the circle.
+
+One can actually make a somewhat similar statement if 
+the left hand side of $(**)$ is not zero but is the pullback of
+ a class in $H^4(BG)$.  For if this is so, then by adding or in the sense
+ of $K$ theory subtracting from $V$ a trivial bundle with nontrivial
+ $S^1$ action, one can reduce to the case that $(**)$ is satisfied.
+
+
+
+
+\end{document}
+
+
+
+
+

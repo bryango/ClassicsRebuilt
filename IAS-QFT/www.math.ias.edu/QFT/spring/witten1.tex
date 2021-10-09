@@ -1,0 +1,1514 @@
+%Date: Fri, 14 Feb 1997 16:48:24 -0500 (EST)
+%From: Pavel Etingof <etingof@abel.MATH.HARVARD.EDU>
+
+\input amstex
+\documentstyle{amsppt}
+\magnification 1200
+\NoRunningHeads
+\NoBlackBoxes
+\document
+
+\def\h{\frak h}
+\def\tW{\tilde W}
+\def\Aut{\text{Aut}}
+\def\tr{{\text{tr}}}
+\def\ell{{\text{ell}}}
+\def\Ad{\text{Ad}}
+\def\u{\bold u}
+\def\m{\frak m}
+\def\O{\Cal O}
+\def\tA{\tilde A}
+\def\qdet{\text{qdet}}
+\def\k{\kappa}
+\def\RR{\Bbb R}
+\def\be{\bold e}
+\def\bR{\overline{R}}
+\def\tR{\tilde{\Cal R}}
+\def\hY{\hat Y}
+\def\tDY{\widetilde{DY}(\g)}
+\def\R{\Bbb R}
+\def\h1{\hat{\bold 1}}
+\def\hV{\hat V}
+\def\deg{\text{deg}}
+\def\hz{\hat \z}
+\def\hV{\hat V}
+\def\Uz{U_h(\g_\z)}
+\def\Uzi{U_h(\g_{\z,\infty})}
+\def\Uhz{U_h(\g_{\hz_i})}
+\def\Uhzi{U_h(\g_{\hz_i,\infty})}
+\def\tUz{U_h(\tg_\z)}
+\def\tUzi{U_h(\tg_{\z,\infty})}
+\def\tUhz{U_h(\tg_{\hz_i})}
+\def\tUhzi{U_h(\tg_{\hz_i,\infty})}
+\def\hUz{U_h(\hg_\z)}
+\def\hUzi{U_h(\hg_{\z,\infty})}
+\def\Uoz{U_h(\g^0_\z)}
+\def\Uozi{U_h(\g^0_{\z,\infty})}
+\def\Uohz{U_h(\g^0_{\hz_i})}
+\def\Uohzi{U_h(\g^0_{\hz_i,\infty})}
+\def\tUoz{U_h(\tg^0_\z)}
+\def\tUozi{U_h(\tg^0_{\z,\infty})}
+\def\tUohz{U_h(\tg^0_{\hz_i})}
+\def\tUohzi{U_h(\tg^0_{\hz_i,\infty})}
+\def\hUoz{U_h(\hg^0_\z)}
+\def\hUozi{U_h(\hg^0_{\z,\infty})}
+\def\hg{\hat\g}
+\def\tg{\tilde\g}
+\def\Ind{\text{Ind}}
+\def\pF{F^{\prime}}
+\def\hR{\hat R}
+\def\tF{\tilde F}
+\def\tg{\tilde \g}
+\def\tG{\tilde G}
+\def\hF{\hat F}
+\def\bg{\overline{\g}}
+\def\bG{\overline{G}}
+\def\Spec{\text{Spec}}
+\def\tlo{\hat\otimes}
+\def\hgr{\hat Gr}
+\def\tio{\tilde\otimes}
+\def\ho{\hat\otimes}
+\def\ad{\text{ad}}
+\def\Hom{\text{Hom}}
+\def\hh{\hat\h}
+\def\a{\frak a}
+\def\t{\hat t}
+\def\Ua{U_q(\tilde\g)}
+\def\U2{{\Ua}_2}
+\def\g{\frak g}
+\def\n{\frak n}
+\def\hh{\frak h}
+\def\sltwo{\frak s\frak l _2 }
+\def\Z{\Bbb Z}
+\def\C{\Bbb C}
+\def\d{\partial}
+\def\i{\text{i}}
+\def\ghat{\hat\frak g}
+\def\gtwisted{\hat{\frak g}_{\gamma}}
+\def\gtilde{\tilde{\frak g}_{\gamma}}
+\def\Tr{\text{\rm Tr}}
+\def\l{\lambda}
+\def\I{I_{\l,\nu,-g}(V)}
+\def\z{\bold z}
+\def\Id{\text{Id}}
+\def\<{\langle}
+\def\>{\rangle}
+\def\o{\otimes}
+\def\e{\varepsilon}
+\def\RE{\text{Re}}
+\def\Ug{U_q({\frak g})}
+\def\Id{\text{Id}}
+\def\End{\text{End}}
+\def\gg{\tilde\g}
+\def\b{\frak b}
+\def\S{\Cal S}
+\def\L{\Lambda}
+
+\topmatter
+\title Lecture II-1: Symmetry breaking
+\endtitle
+\author {\rm {\bf Edward Witten} }\endauthor
+\endtopmatter
+
+\centerline{Notes by Pavel Etingof and David Kazhdan}
+
+\vskip .1in
+
+In this semester we will continue the discussion of quantum field theory, 
+but now mostly dynamics rather than perturbation theory and purely formal 
+things. The topics we will discuss are much more difficult to deal with
+rigorously than the formal theory we studied in the fall semester. We will
+try to do it when possible, but it will not always be possible. 
+In general, we will try to form an intuitive picture of what is going on, 
+and illustrate it by considering concrete examples. 
+
+
+{\bf 1.0. Theories and realizations.} [This section is explanatory 
+and was written by the 
+preparers of these notes in order to create a false sense of security
+i.e. an unsubstantiated feeling that we understand what we are talking
+about in the rest of the lecture. Unfortunately, this is not the case, 
+at least if ``understand'' means what it usually means among mathematicians.]
+
+For the purposes of the present and forthcoming lectures, 
+it will be important for us to distinguish theories and their realizations. 
+So let us explain what we mean by a theory and what we mean by its 
+realization. This explaination is not a mathematical 
+definition (in fact, it is hard
+to give a definition which is both rigorous and useful), but we hope that 
+it will make clear what we are talking about. 
+
+Recall that a classical physical system $\Sigma$ is usually described 
+by defining the space of states $X$ of $\Sigma$ (a symplectic manifold, maybe
+infinite-dimensional) and a 1-parameter group $g^t$ of time translations 
+which preserves symplectic structure. Then $g^t$ 
+produces a Hamiltonian flow, which is defined   
+(ignoring topological problems)
+by a Hamiltonian function $H$. This function is called the Hamiltonian,
+or energy function of the system. One should remember that $H$ is defined 
+only up to adding a (locally) constant function. 
+
+In most examples, $H$ is bounded from below. In such a case, $H$ is always
+normalized in such a way that the infinum of $H$ on (each connected 
+component of) $X$ is zero. 
+
+In this situation, by {\bf a theory} we mean a pair $(X,H)$, 
+where $X$ is a symplectic manifold, and $H:X\to\R$ the energy function,
+defined up to a (locally) constant function. 
+By {\bf a vacuum state of this theory} we mean a lowest energy 
+equilibrium state
+$x\in X$ of the system $\Sigma$, 
+i.e. a state where the energy functional $ H$
+attains a global minimum. 
+
+The same theory can have different vacuum states. For example, 
+if we have a particle on the line with potential energy
+$U(x)=\frac{g}{4!}(x^2-a^2)^2$, 
+then the space $X$ is the phase plane $\R^2$ with 
+coordinates $(x,p)$, the Hamiltonian is $\frac{p^2}{2}+U(x)$, 
+and there are two vacuum states $(a,0)$ and $(-a,0)$. 
+
+Often a classical system $\Sigma$ can be described 
+by a Lagrangian $\Cal L$, defined on some
+space of fields $S$ on the spacetime $V$. 
+In this case its space of states is 
+the space $X\subset S$ of extremals of $\Cal L$. 
+As we have seen before, the space $X$ carries a 
+natural closed 2-form $\omega$, which is nondegenerate, and 
+thus defines a symplectic structure on $X$. Also, the group of time 
+translations acts on $X$ and preserves $\omega$. Therefore, 
+the flow on $X$ generated by this 1-parameter group 
+is Hamiltonian, and is defined by a Hamiltonian function $H$. 
+
+However, one should remember that 
+the description of a theory by a Lagrangian is not intrinsic, 
+since different Lagrangians defined on different spaces of fields $S$
+may define the same theory. Indeed, consider, for example, 
+the Lagrangian $\Cal L_1=\int x'(t)^2dt/2$ defined on 
+$S_1=C^\infty(\R,M)$, where $M$ is a Riemannian manifold. 
+This Lagrangian defines the geodesic flow. The space of states
+in this case is $T^*M$, and the Hamiltonian function is $p^2/2$. 
+On the other hand, we can write the Lagrangian 
+$\Cal L_2=\int (-x'(t)p(t)+p^2(t)/2)dt$ defined on 
+the space $S_2=C^\infty(\R,T^*M)$. It is easy to see 
+that these two Lagrangians define the same theory. 
+
+We will consider relativistically invariant theories $(X,H)$, i.e.
+theories with an action of the Poincare group $\bold P$ on 
+$X$, which preserves the symplectic structure
+(in the case when the system is defined by a Lagrangian, 
+the group $\bold P$ acts on $S$ and preserves the Lagrangian, and therefore, 
+it acts on $X$ preserving the Poisson structure). The group of time 
+translations is a subgroup of $\bold P$, so $\bold P$ also preserves 
+the energy function $H$. 
+In this case, when we talk about vacuum states of the theory $(X,H)$, 
+we mean a vacuum state invariant under $\bold P$.  
+
+Recall that to define a symplectic manifold $X$ is the same thing as to 
+define the Poisson algebra $A=C^\infty(X)$
+($X$ can be reconstructed as the spectrum of $A$). Therefore, we may say that
+a theory is a pair $(A,H)$, where $A$ is a Poisson algebra and $H\in A$. 
+The Poisson algebra $A$ is called the algebra of observables of the system. 
+
+Now let us consider quantum systems. The definition of
+a theory in this case is similar to the classical case. 
+Namely, we will define {\bf a quantum theory} to be a pair $(A,H)$, 
+where $A$ is a *-algebra (not necessarily commutative), and 
+$H$ is a selfadjoint element of $A$, defined up to adding 
+a real number. The algebra $A$ is called the 
+algebra of quantum observables (operators). 
+The element $H$, as before, is called the 
+Hamiltonian. Everything here is dependent on a real positive parameter 
+$\hbar$ (the Planck constant). 
+
+By {\bf a realization (or solution)} of
+a quantum theory $(A,H)$ we will mean an irreducible *-representation  
+of the algebra $A$ in some Hilbert space $\Cal H$,
+such that the spectrum of the operator $H$ is bounded from below 
+(representations are considered up to an isomorphism which preserves $H$). 
+We will always normalize $H$ so that the lowest point of its spectrum is zero. 
+The space $\Cal H$ is called the quantum space 
+of states of the system (in this realization). Of course, as in the 
+classical case, the same theory can have different realizations, 
+as the same algebra can have different representations. 
+
+As we have mentioned, we will be interested in relativiatically 
+invariant theories, i.e. theories with an action of the Poincare group 
+on $A$, so that the subgroup of time translations acts by 
+$a\to e^{itH/\hbar}ae^{-itH/\hbar}$. 
+When we talk about realizations of such a theory, 
+we will assume that $\bold P$ acts in $\Cal H$ by unitary operators, with the group 
+of time translations acting by $e^{itH/\hbar}$. 
+
+By a vacuum state we mean a vector $\Omega\in \Cal H$ such that 
+$Hv=0$. In a relativistically invariant situation, a vacuum state
+is the same thing as a $\bold P$-invariant vector. 
+
+{\bf Remark.} In general, as we will see, an irreducible realization of
+a theory can have many vacuum states. Therefore, the notions
+of a realization and of a vacuum state are not equivalent. However, 
+if the algebra of observables is commutative
+( i.e. in the classical theory), each irreducible representation 
+of this algebra is 1-dimensional, and there is no real difference 
+between the notions of a realization and a vacuum state. 
+Therefore, the word ``realization'' is not usually used 
+when one refers to the classical theory. 
+
+Suppose that we have a classical theory $(A_0,H_0)$ which has 
+been quantized, and the corresponding 
+$\hbar$-dependent family of quantum theories is $(A,H)$
+(here by an $\hbar$-dependent family we mean a family depending
+on the dimensionless parameter $\hbar/S_0$, where $S_0$ is a   
+characteristic scale of
+action).
+This means that we have a quantization map --
+some linear map $A_0\to A$, given by 
+$a\to \hat a$, such that $\hat H_0=H$, and 
+$[\hat a,\hat b]=i\hbar\widehat{\{a,b\}}+o(\hbar)$, $\hbar\to 0$.   
+In this case, we will say that a state $v\in \Cal H$ of norm $1$ 
+is localized near a classical solution $x\in X=\text{Spec} A_0$ 
+if for any $a\in A_0$ $\<v,\hat av\>\to a(x)$, $\hbar \to 0$.
+
+Let us now explain the connection between the classical and the quantum 
+notions of a vacuum state. Suppose we have a quantum vacuum state
+$\Omega$ of norm $1$ which is localized near a classical state $x$. 
+In this case $x$ is a classical vacuum state. 
+Indeed, $H_0(x)=\lim_{\hbar\to 0}\<\Omega,H\Omega\>=0$, and
+for any $F\in A_0$ $\{F,H_0\}(x)=\lim_{\hbar\to 0}\frac{1}{i\hbar}
+\<\Omega,[\hat F,H]\Omega\>=0$, so $x$ is a stationary point of $H_0$. 
+
+{\bf Remark.} Note any quantum vacuum state is localized near a classical 
+vacuum state. Sometimes a quantum vacuum state is ``spread'' with some density over 
+the set of classical vacuum states. We will see examples of this in today's lecture. 
+
+Given a quantum theory $(A,H)$, it is convenient to represent its
+realizations by correlation functions. Namely, given a realization
+$\Cal H$ of this system, and a vacuum state $\Omega\in \Cal H$, 
+we can define correlation functions $\<\Omega, L_1...L_n\Omega\>$, 
+where $L_i\in A$. Since the action of $A$ in $\Cal H$ is irreducible, 
+the realization $\Cal H$ can be completely reconstructed from these 
+correlation functions. 
+
+{\bf Remark.} The irreducibility condition is not always satisfied in 
+physically interesting examples. But here for simplicity we will assume
+that it is satisfied. 
+
+Sometimes a quantum system can be defined by a Lagrangian. 
+Of course, as in the classical case, this is not always possible, and if 
+possible, not in a unique way. However, 
+such a presentation is very convenient for understanding the behaviour of the 
+system. So let us explain (on examples) how to pass from a 
+Lagrangian to the Hamiltonian  and the operator algebra. 
+
+We will start with the case of quantum mechanics, when the spacetime is 
+just the time line. Consider a Lagrangian for one boson:
+$$
+\Cal L=\int[\frac{(\phi')^2}{2}-U(\phi)]dt.
+$$
+Then, by definition, the operator algebra is generated by 
+operators $\phi_0,\phi_0',H$, with the canonical commutation relations 
+$$
+[\phi_0,\phi_0']=i\hbar,\ [H,\phi_0]=-i\hbar \phi_0',\ [H,\phi_0']=
+i\hbar U'(\phi_0).
+$$
+Define the local operators $\phi(t)=e^{iHt/\hbar}\phi_0
+e^{-iHt/\hbar}$, $\phi'(t)=e^{iHt/\hbar}\phi_0'
+e^{-iHt/\hbar}$.
+It follows from the above definition 
+that $d\phi/dt=\phi'$, and $\phi$ satisfies the
+Newton's differential equation
+$$
+\phi''(t)=-U'(\phi(t)).
+$$
+The operators of the form $F(\phi(t),\phi'(t))$, where $F$ is a 
+polynomial, are called local operators at $t$
+(we order products in such a way that 
+$\phi'$ stands on the right from $\phi$).
+
+The operator algebra is spanned (topologically) 
+by operators $\phi(t_1)...\phi(t_n)$. Thus, a realization of the theory 
+is defined by prescribing expectation values of these operators --
+the correlation functions. 
+
+In any realization of the theory, 
+the Hamiltonian is given by the following explicit formula:
+$$
+H=\frac{1}{2}(\phi')^2+U(\phi)+C.
+$$
+Indeed, the difference of the left and the right hand sides of this equation
+commutes with $\phi$ and $\phi'$, so by irreducibility it acts by 
+a scalar.
+
+Now consider quantum field theory. We first consider the theory 
+in a spacetime $V=L\times \R$, where $L$ is a lattice (finite or infinite). 
+Let $\nabla_L$ be the discrete gradient operator on the lattice. 
+Consider a Lagrangian
+$$
+\Cal L=\sum_{x\in L}\int dt[\frac{1}{2}(\phi_t^2(x,t)-(\nabla_L\phi(x,t))^2)-
+U(\phi(x,t))]
+$$
+In this case the operator algebra 
+is generated by operators $\phi(x,0), \phi_t(x,0)$, $x\in L$, and $H$, 
+satisfying the commutation relations 
+$$
+\gather
+[\phi(x,0),\phi_t(x,0)]=i\hbar,\ [H,\phi(x,0)]=-i\hbar \phi_t(x,0),\\ 
+[H,\phi_t(x,0)]=i\hbar[-\Delta_L\phi(x,0)+U'(\phi(x,0))],
+\endgather
+$$
+(where $\Delta_L$ is the lattice Laplacian)
+and such that $\phi(x,0),\phi'(x,0)$ commute with $\phi(y,0),\phi'(y,0)$
+if $x\ne y$ (causality). 
+The local operators $\phi(x,t),\phi'(x,t)$ are defined as above. 
+(Observe that since $H$ does not commute with $\phi$, for $t_1\ne t_2$
+the operators $\phi(x_1,t_1)$, $\phi(x_2,t_2)$, in general, 
+do not commute). 
+
+As before, the operator algebra is spanned by the operators 
+$\phi(x_1,t_1)...\phi(x_n,t_n)$. 
+Thus, a realization of the theory is determined by 
+expectation values of these operators -- the correlation functions. 
+
+As in the case of quantum mechanics, in any realization
+we can compute the Hamiltonian explicitly. Namely, 
+the Hamiltonian is of the form 
+$H=\sum_{x\in L}H_x$, where $H_x=\frac{1}{2}(\phi_t^2(x,0)+(\nabla_L
+\phi(x,0))^2)   
++U(\phi(x,0))+C_x$. 
+
+{\bf Remark.} Of course, if the lattice $L$ is infinite, the definition of $H$ 
+can be problematic, since the sum over $L$ may be divergent. 
+However, since commutators of $H$ 
+with other operators are well defined, one may hope that the constants 
+$C_x$ can in fact be adjusted in such a way that the sum converges. 
+This is indeed true in many situations. 
+
+Now let us consider field theory in continuous spacetime. 
+In this case the operator algebra and the Hamiltonian are 
+defined similarly to the case of discrete space, which was considered above. 
+Namely, the operator algebra will be generated by the 
+operators $\phi(x,0)$, $\phi_t(x,0)$, and also $H_b$, $b\in{\frak p}$, 
+where ${\frak p}$ is the Lie algebra of the Poincare group $\bold P$, with the
+commutation relations between $\phi$, $\phi_t$ and $H_b$ similar to the above. 
+
+However, we will face an additional problem -- now expressions like
+$\phi^2(x,t)$ may not be well defined, because of ultraviolet divergences. 
+This problem can be cured by the ultraviolet renormalization theory,
+which we discussed last semester, if the Lagrangian we started with
+was renormalizable. In this case, the algebra of local operators
+is not quite an algebra, but an OPE algebra (an algebra with operator 
+product expansion). It is almost never possible to compute 
+the structure constants of this algebra exactly
+(rational conformal field theory in 2 dimensions is the main exception), 
+but it is possible 
+to compute them in perturbation expansion to any finite order. 
+In general, for continuous space we have additional analytic
+difficulties (compared to the case of discrete space), but they will not be very
+important in the present lecture, so we will not discuss them here.  
+We will just need the rough general picture, which has been outlined in this 
+introduction. 
+
+Finally, let us say what we will mean by a {\bf vacuum} for a quantum
+theory $(A,H)$. We will mean by a vacuum for $(A,H)$ one of two,
+roughly equivalent, things:
+
+1. A linear functional $\<,\>:A\to \C$ on the operator algebra
+(the expectation value), which 
+satisfies some field theory axioms (e.g. axioms for Wightman functions);
+ 
+2. A realization $\Cal H$ of $(A,H)$ together with a vacuum state $\Omega$, 
+normalized to unity. 
+
+The passage from 2 to 1 is trivial, and the passage from 1 to 2 is a part of 
+the general formalism of field theory (see Kazhdan's lecture 1).
+
+In general, a vacuum is not the same thing as a realization, since 
+the same realization can have different vacua. For example, 
+in the theory of Dirac operator on a manifold the space of vacua 
+is the space of harmonic spinors. However, in a Wightman field theory 
+in infinite volume, 
+one can show that any realization has exactly one vacuum state.  
+
+{\bf 1.1. What is symmetry breaking, and why it does not happen in 
+quantum mechanics.}
+
+Suppose we have some classical
+physical theory $(A,H)$, which has a symmetry group $G$. 
+Let us ask the following question: does this theory have 
+a $G$-invariant vacuum state?
+
+If we have a quantum theory $(A,H)$, which has a symmetry group $G$, then 
+the correct analogue of this equestion is: does this theory have 
+a $G$-invariant realization?
+
+If the answer is no, one says that the symmetry is broken. 
+If the answer is yes, one says that the symmetry is preserved. 
+
+In classical mechanics and classical field theory symmetry breaking 
+can easily happen. For example, consider a classical particle of mass 1
+on the line whose potential energy is $U(x)=g(x^2-a^2)^2/4!$, where
+$a>0,g>0$. The space of states of this particle is the plane 
+with coordinates $x,p$, and its Hamiltonian is $\frac{p^2}{2}+U(x)$. 
+There is an action of the group $G=\Z/2\Z$ on the space of states, by
+$(x,p)\to (-x,-p)$, which preserves the equations of motion, and there are 
+two lowest energy states: $s_+=(a,0),s_-=(-a,0)$, which 
+are permuted by $G$. But 
+there is no lowest energy state which is $G$-invariant.
+
+In quantum mechanics,
+symmetry breaking does not occur. This is a simple, 
+but nontrivial and very important result. Let us show why this is true in the 
+case of quantum mechanics of bosons, with a real Lagrangian. 
+In this case, the operator algebra is generated by operators
+$x_i,p_i$, $i=1,...,n$, satisfying the Heisenberg algebra relations, and 
+has a Hamiltonian $H=\frac{p^2}{2}+U(x)$.   
+There is a realization of the theory in $\Cal H=L^2(\R^n)$, with $x_i$ acting 
+by multiplication by the coordinate functions, and 
+$p_i=-i\hbar\frac{\d}{d x_i}$. 
+It is well known this representation is irreducible.
+Any symmetry group $G$ of the potential $U$ also acts in $\Cal H$. Thus, 
+symmetry breaking does not occur. 
+
+{\bf Remark.} In fact, according to the Stone-von-Neumann theorem, 
+$\Cal H$ is the unique realization of the theory. 
+
+In the case of bosons with real Lagrangian we can in fact make a stronger 
+statement. Namely, not only is the realization unique, but the vacuum 
+is also unique (and therefore invariant under any symmetry group of $U$).  
+For simplicity we will show it in the case of only one boson
+on the line, but the argument 
+we will give generalizes to any number of bosons in a space of any dimension. 
+
+We will consider a single boson on the line, 
+in a field with potential $U(x)$ as above. 
+
+\proclaim{Theorem 1.1} Let $H=-\frac{1}{2}\frac{d^2}{d x^2}+U(x)$ be any
+Schr\"odinger operator, such that the potential $U(x)$ tends to $+\infty$ 
+at infinity (so that $H$ has discrete spectrum). Let $E_0$ be the smallest
+eigenvalue of $H$. Then there exists a unique, up to a factor,
+function $\psi\in L^2(\R)$
+(called the vacuum state wave function) such that $H\psi=E_0\psi$. 
+\endproclaim
+
+\demo{Proof} For any $f\in L^2(\R)$ we have
+$$
+(f,Hf)=\int_{-\infty}^{\infty}\biggl(\frac{1}{2}|f'(x)|^2+U(x)|f(x)|^2\biggr)dx
+\tag 1.1
+$$
+Thus, $\psi$ is defined by the condition that it is a global minimum point
+for the energy functional $E(f):=(f,Hf)$ on the sphere $||f||=1$. 
+The proof of uniqueness of $\psi$ rests 
+on the following Lemma. 
+
+{\bf Lemma.} If $\psi$ is a real global minimum point of (1.1) 
+than $\psi$ has constant sign. 
+
+{\it Proof of the Lemma.} Let $E(\psi)=E_0$. 
+Suppose that $\psi$ changes sign at the point $x_0$. 
+Since $\psi$ satisfies the Euler-Lagrange (=Schr\"odinger) 
+equation $H\psi=E_0\psi$, we have
+$\psi'(x_0)\ne 0$. Consider the function $|\psi|$. It is clear that
+$E(|\psi|)=E(\psi)=E_0$, but $|\psi|$ is not smooth, so it does not satisfy 
+the Euler-Lagrange equation $Hf=E_0f$, and thus cannot be the global minimum 
+of $E$. So, the smallest value of $E$ on the sphere is less than $E_0$
+-- a contadiction. 
+
+Now it is easy to prove the theorem. If the space of solutions of 
+$H\psi=E_0\psi$ is more than 1-dimensional, then there exist 
+two linearly independent, orthogonal 
+real solutions $\psi_1,\psi_2$. On the other hand, both of them
+have to be of constant sign, so $(\psi_1,\psi_2)\ne 0$ -- a contradiction. 
+$\square$\enddemo
+
+It is useful to consider how symmetry breaking, which is absent in the quantum 
+theory, arises in the quasiclassical limit. For this purpose, we should
+introduce the Planck's constant $\hbar$, and consider the $\hbar$-dependent 
+Hamiltonian
+$$
+H=-\frac{\hbar^2}{2}\frac{d^2}{d x^2}+U(x),\tag 1.2
+$$
+where $U(x)=g(x^2-a^2)^2/4!$. 
+Let $E_0,E_1$ be the lowest eigenvalues of $H$ in the space of even and 
+odd functions, respectively, and $\psi_0,\psi_1$ the corresponding 
+eigenvectors. We assume that 
+$\psi_0$, $\psi_1$ have unit norm, and are normalized in such a way
+that $\psi_0(0)>0$, $\psi_1'(0)>0$. It is easy to show in the same way as above
+that $\psi_1$ does not change sign in the regions 
+$x>0$, $x<0$. 
+Define
+$\psi_+=\frac{1}{\sqrt{2}}(\psi_0+\psi_1)$,
+$\psi_-=\frac{1}{\sqrt{2}}(\psi_0-\psi_1)$.
+
+Then it is possible to prove the following.
+
+\proclaim{Theorem 1.2}
+(i) As $\hbar\to 0$, $E_0,E_1\sim a\hbar\sqrt{g/4!}$, and 
+$E_1-E_0\sim C e^{-S_0/\hbar}$, where $S_0$ is a positive constant. 
+
+(ii) In the sense of distributions, 
+$$
+\lim_{\hbar\to 0}|\psi_\pm|^2=\delta(x\mp a).\tag 1.3
+$$
+
+\endproclaim
+
+This theorem shows that for very small $\hbar$, although there is
+only one lowest energy state $\psi_0$ with energy $E_0$, 
+there is another stationary state $\psi_1$
+with energy $E_1$ almost indistinguishable from the lowest one, 
+and in the 2-dimensional space spanned by $\psi_0,\psi_1$, 
+there are two orthogonal states $\psi_+$, $\psi_-$ localized near 
+the classical equilibrium states $a,-a$. 
+The states $\psi_+$, $\psi_-$ are not stationary
+(i.e. are not eigenvectors of $H$), but their 
+failure to be stationary is indistinguishable to any finite order in $\hbar$
+(in fact, the angle between $H\psi_\pm$ and $\psi_\pm$ is dominated by
+$\text{const}e^{-S_0/\hbar}$. In particular, symmetry restoration 
+in quantum theory is not seen at the perturbation theory level. 
+
+Thus, we have seen how symmetry is lost in the quasiclassical limit. 
+One can consider this effect from a slightly different prospective, 
+by looking how symmetry appears in the process of quantization.
+ 
+Recall that we have two classical lowest-energy states $a,-a$, near which
+the operator $H$ looks approximately like a harmonic oscillator.
+Therefore, we can look for eigenfunctions of $H$ perturbatively, in the form
+$$
+\tilde\psi_\pm(x)=f_\pm(\frac{x\mp a}{\sqrt{\hbar}}),
+\ f_\pm(z) =(\pi\hbar)^{-1/4}g^{1/8}
+e^{-\sqrt{g}z^2/2}(1+u_1(z)\hbar^{1/2}+u_2(z)\hbar+...)   
+\tag 1.4
+$$
+(the 0-th term of this expansion is the lowest eigenfunction of the harmonic
+oscillator). It is easy to see that the 
+real ``eigenfunction'' of the form (1.4),
+normalized to have unit norm, is 
+unique for each sign. 
+
+Now, one can see the following. 
+
+(i) The formal series $f_\pm(z)$ do not converge. However, 
+they represent asymptotic expansions of actual functions 
+$\psi_\pm(z\sqrt{\hbar}\pm a)$ (where $\psi_\pm$ are as above), which 
+are smooth from the right in $\hbar$ on $[0,\infty)$, but not analytic. 
+
+(ii) The formal series $\tilde\psi_\pm(x)$ are eigenfunctions of
+$H$ with the same eigenvalue. On the other hand, the actual functions 
+$\psi_\pm(x)$ are not eigenvectors of $H$, although their failure to 
+be ones is exponentally small. The actual lowest eigenvector of $H$ is 
+unique up to a factor, and 
+equals $\psi_0=\frac{1}{\sqrt{2}}(\psi_++\psi_-)$. 
+In particular, it is $G$-invariant, unlike $\psi_+$, $\psi_-$. 
+
+(iii) Let $W_+^n(t_1,...,t_n)$, 
+$W_-^n(t_1,...,t_n)$ be the correlation functions 
+computed perturbatively (by Feynman calculus)
+using the formal vacua $\tilde\psi_+$,
+$\tilde\psi_-$. Then $W_+^n,W_-^n$ do not 
+serve as small $\hbar$ asymptotic expansions
+of the correlation functions of any realization of our quantum theory. 
+However, the averages $\frac{1}{2}(W_+^n+W_-^n)$ do 
+serve as such asymptotic expansions. 
+
+This shows how symmetry appears in quantization, when one goes from the 
+perturbative to the nonperturbative setting. 
+
+{\bf 1.2. Still no symmetry breaking in quantum field theory
+in finite volume.}
+
+Before going over to quantum field theory, we will give one more argument,
+at the physical level of rigor, which shows why there is no symmetry 
+breaking in quantum mechanics (this argument is more of an explanation 
+than a proof). It is based on the path integral 
+approach.
+It does not use representation theory
+of the Heisenberg algebra, nor the positivity of the vacuum wave function,
+ and has the advantage that it also works for quantum field
+theory on a spacetime with a ``space'' part of finite volume. 
+
+As before, we will consider the $\Z/2\Z$-symmetric quartic potential $U(x)$. 
+Suppose that symmetry breaking were the case. 
+Then the two perturbative vacua $\tilde\psi_+,\tilde\psi_-$ 
+do indeed exist nonperturbatively, i..e serve as asymptotic expansions 
+of actual lowest eigenstates $\psi_+,\psi_-$ of the Hamiltonian,
+in two different realizations of the theory, $\Cal H_+,\Cal H_-$. 
+Consider the space $\Cal H=\Cal H_+\oplus\Cal H_-$.  
+The vectors $\psi_+,\psi_-\in\Cal H$ are ``localized'' near $a,-a$, and are 
+orthogonal to each other. Thus, the inner product 
+$(\psi_+, e^{-Ht/\hbar}\psi_-)$ must vanish. 
+Let us now compute the same inner product using path integrals. 
+
+Recall Feynman-Kac formula:
+$$
+(\delta_{x_1},e^{-Ht/\hbar}\delta_{x_2})=
+\int_{\phi: [0,t]\to \R, \phi(0)=x_1, \phi(t)=x_2}e^{-S(\phi)/\hbar}D\phi,
+\tag 1.5
+$$
+where 
+$$
+S(\phi)=\int_{0}^t[\frac{1}{2}(\phi')^2
++U(\phi)]ds.\tag 1.6
+$$
+The states
+ $\psi_+$, $\psi_-$ are ``localized'' near $a,-a$ (i.e. are close 
+to delta-functions at $a,-a$ after a suitable normalization).
+So, if we believe the Feynman-Kac formula in this situation, we can 
+substitute $\delta(x-a)$, $\delta(x+a)$ instead of them, and 
+apply the Feynman-Kac formula. Using the small $\hbar$ 
+stationary phase estimate 
+on the right hand side of (1.5), we will get
+$$
+(\psi_+, e^{-tH/\hbar}\psi_-)\sim Ce^{-S_*(t)/\hbar},\tag 1.7
+$$
+where $S_*(t)$ is the least possible action of a path 
+$\phi: [0,t]\to \R$ such that $\phi(0)=-a,\phi(t)=a$. 
+
+The least action $S_*(t)$ is attained at a classical trajectory
+$\phi=\phi_*(\tau)$, which is a solution of the 
+Euler-Lagrange differential equation,
+i.e. the Newton's equation $\phi''=\frac{g}{6}\phi(\phi^2-a^2)$
+with boundary conditions $\phi(0)=-a$, $\phi(t)=a$. 
+(Such a solution exists and is unique).
+
+{\bf Remark.} The function $x=\phi_*(\tau)$ describes the motion 
+of a ball in the potential field with potential $-U(x)$ (a camel's back),
+from one hump to the other. The initial velocity of the ball is such that
+the time needed to go from the top of one hump to the top of the other is $t$. 
+The reason that the potential $U(x)$ is replaced here by $-U(x)$ is that 
+we are doing a Euclidean path integral, which means that we performed 
+a Wick rotation $t\to it$. This rotation transforms the Newton's equation 
+for the potential $U$ into the Newton's equation for the potential $-U$. 
+
+Formula (1.7) contradicts the fact that $(\psi_+,e^{-Ht/\hbar}\psi_-)$
+vanishes. So our assumption that there are two vacua was false. 
+
+{\bf Remark.} Formula (1.7) actually gives the correct estimate 
+of the inner product $(\psi_+,e^{-tH}\psi_-)$. In particular,
+$S_0=S_*(\infty)$. 
+This estimate can be confirmed
+by rigorous methods. 
+
+In this argument, we have never used the fact that $\psi_+$, $\psi_-$ 
+are functions on the real line. All we used is that they are ``localized'' 
+near classical equilibrium states $a,-a$, i.e. that for any local 
+observable $A$ the expectation value of $A$ on $\psi_\pm$ is close
+to the value of the corresponding classical observable at 
+the point $(\pm a,0)$ in the phase space. Thus, our argument is independent
+of the realization of the space of states as $L^2(\R)$. This makes it easy 
+to generalize this argument to the case of field theory.
+
+Consider a spacetime $M\times \R$, where 
+$M$ is the ``space''. We will assume that we have already performed
+a Wick rotation, so that the metric on the spacetime is a Riemannian product metric. 
+We will assume that the volume of $M$ is finite and equals $V$. 
+
+Consider the field theory on $M\times R$
+with one scalar Bose field $\phi$, described by the Euclidean Lagrangian 
+$$
+\Cal L=\int (\frac{1}{2}(\nabla\phi)^2+U(\phi))dx, \tag 1.8
+$$
+where $U$ is the quartic potential as above. As before, we have two 
+equilibrium states $a,-a$.
+
+Now consider this theory quantum mechanically.
+Then we can see that there is still no symmetry breaking. 
+The simplest way to see it is to consider first a discrete space 
+$M$. In this case, the operator algebra is a finite tensor product 
+of Heisenberg algebras corresponding to points of $M$, so it is a 
+Heisenberg algebra itself, and the representation-theoretic argument 
+the we used in the case of quantum mechanics shows that symmetry breaking 
+does not occur. 
+
+However, it is more instructive to use the path integral argument. 
+As before, assume that symmetry breaking occurs. 
+Then we have two realizations $\Cal H_+$, $\Cal H_-$, and 
+two orthogonal quantum vacua $\Omega_\pm\in \Cal H=\Cal H_+\oplus\Cal H_-$
+whic are ``localized'' near the 
+equilibrium points $a,-a$ for small $\hbar$, in the sense 
+that $\<\Omega_\pm,\phi(x_1)...\phi(x_n)\Omega_\pm\>\to (\pm a)^n$, 
+$\hbar\to 0$. 
+
+As in the quantum mechanics case, the inner product $(\Omega_+,e^{-tH/\hbar}
+\Omega_-)$ vanishes. On the other hand, computing it using the Feynman-Kac 
+formula, we will get 
+$$
+(\Omega_+,e^{-tH/\hbar}\Omega_-)\sim e^{-S_*(t)V/\hbar},\tag 1.9
+$$
+where $S_*(t)$ is as above. The reason is that the least action 
+is attained on the space-independent classical solution 
+$\phi_*^M(\mu,\tau)=\phi_*(\tau)$, $\mu\in M$, $\tau\in \R$. 
+
+Since (1.9) is nonzero (here it is essential that the volume $V$ is finite),
+we get a contradiction. 
+
+As in quantum mechanics, we can define two sets of correlation functions
+$W_+^n$, 
+$W_-^n$, evaluated by using perturbation theory 
+near the lowest energy points $a,-a$ (of course, we can only define 
+them in the renormalizable case, i.e. in 4 dimensions and below;
+also, one should remember that renormalization is not uniquely determined).
+Our reasonings show that $W_+^n$, $W_-^n$ are not small $\hbar$ expansions 
+of the correlation functions of a realization of our quantum
+ theory. On the other hand, the functions $W_0^n=\frac{1}{2}(W_+^n+W_-^n)$
+have a chance to be asymptotic expansions of the actual 
+(nonperturbative) correlation functions. 
+
+For $\text{dim}(M)=1,2$ the existence of the quantum theory $\Cal H$ has been 
+established in constructive field theory. In this case, it is possible to show
+that there exists a $G$-invariant vacuum $\Omega_0$, such that 
+the correlation functions of the theory with respect to $\Omega_0$ 
+indeed have the asymptotic expansion given by $W_0^n$. 
+
+
+{\bf 1.3. Symmetry breaking in quantum field theory in infinite volume.} 
+
+When the volume $V$ of the space $M$ becomes infinite, the arguments 
+of the previous section fail. The representation-theoretic argument fails,
+because the canonical representation of the operator algebra, whioch we 
+used in the case of finite volume, 
+is now an infinite tensor product of spaces
+corresponding to points; so we have to make sense of it, and there 
+may be no G-invariant way of doing so. The path integral argument also fails.  
+Indeed, the right hand side of (1.9)
+vanishes, so both computations of $(\Omega_+,e^{-tH/\hbar}\Omega_-)$
+give the same answer, and we can derive no contradiction. 
+Moreover, if we assume that we have a representation $\Cal H$ of
+the operator algebra with two vacua $\Omega_+,\Omega_-$, then 
+using the formula
+$$
+\<\Omega_+,\phi(x_1^*)....\phi(x_n^*)\Omega_-\>=
+\int_{\phi: X\to\R, \phi\to \pm a, t\to \pm\infty}
+\phi(x_1)...\phi(x_n)e^{-S(\phi)/\hbar}D\phi,\tag 1.10 
+$$
+where $x^*=(\mu,it)$ for $x=(\mu,t)$,
+we infer that the inner product (1.10)
+vanishes for any $x_1,...,x_n$. This shows that the space
+$\Cal H$ splits in an orthogonal direct sum: $\Cal H=\Cal H_+\oplus\Cal H_-$,
+where the spaces $\Cal H_\pm$ are the Hilbert spaces
+of separate realizations generated by the vacua
+$\Omega_+,\Omega_-$. This means, symmetry breaking could occur, 
+like in the classical theory: quantum effects are not strong enough 
+to restore symmetry. 
+
+This is what in fact happens in quantum field theory. 
+More precisely, the situation is the following. 
+
+(i) If the symmetry group $G$ is a finite group, symmetry
+can be broken in infinite volume starting with spacetime dimension 2.
+For example, in the example we considered symmetry breaking does occur. 
+
+(ii) If the symmetry group $G$ is a connected Lie group, symmetry breaking 
+can occur starting with spacetime dimension 3. The fact that it does not
+occur in dimension 2 is a remarkable and a very important fact, which 
+we will discuss in the next section. This fact was proved by S.Coleman 
+in 1973 (see S.Coleman's paper, CMP, vol. 31, page 259).
+
+Thus, symmetry breaking is an ``infrared'' effect, associated 
+with the behavior of the theory at large distances. 
+
+{\bf 1.4. Infinite volume asymptotics of correlation functions.}
+
+Let us see how symmetry is broken in the infinite volume limit 
+of finite volume quantum field theories. We will assume that 
+$M$ is a torus $T_r=(\R/r\Z)^{d-1}$, and $r\to\infty$. 
+In the limit, we hope
+to recover a Poincare invariant field theory corresponding to our Lagrangian.
+However, as we know, there are two such theories: $\Cal H_+$ and $\Cal H_-$. 
+So which of them do we recover?
+
+Let us formulate the question more precisely. 
+Consider the correlation functions $W^n_r$,
+corresponding to the field theory with space being the torus $T_r$.
+Let also $W_+^n,W_-^n$ be the correlation functions of the theories 
+$\Cal H_+$, $\Cal H_-$. The question is, what is the asymptotics 
+of $W^n_r$ as $r\to \infty$, in terms of $W_+^n$, $W_-^n$?
+
+The answer is: there exists an $r$-dependent normalization constant 
+$C(r)$ such that 
+$$
+\lim_{r\to \infty}C(r)W^n_r=\frac{1}{2}(W^n_++W^n_-).\tag 1.11
+$$ 
+
+Now consider a field theory defined by a 
+Lagrangian $\Cal L=\int(\frac{1}{2}(\nabla\phi)^2)+U(\phi))d^nx$,
+where $U(\phi)$ is a general potential, with a finite symmetry group $G$.  
+Suppose that $a_1,...,a_m$ are the 
+global minimum points of $U$, 
+transitively acted on by $G$, and $U(a_i)=0$. Consider first the 
+quantum field theory with space being the torus of volume $V=r^{d-1}$. 
+We have seen that there is one realization $\Cal H$ of this theory, and it 
+has certain correlation functions $W^n_r$. On the other hand, in infinite 
+volume we will have $m$ different realizations $\Cal H_1,...,\Cal H_m$, 
+with correlation functions $W^n_1,...,W^n_m$. 
+
+Let us consider the asymptotics of $W^n_r$ as $r\to \infty$. 
+The answer is the following: for a suitable 
+$V$-dependent normalization constant $C(r)$, 
+$$
+\lim_{r\to \infty}C(r)W^n_r=\frac{1}{m}\sum W^n_i,\tag 1.12
+$$
+
+This 
+shows that the limit of normalized 
+finite volume correlation functions may, in general,
+fail to satisfy the cluster decomposition axiom, 
+(see Kazhdan's lectures). 
+
+This story can be slightly generalized. Namely, we can make $M$ a ball 
+of radius $r$, and impose some boundary conditions $B$ on 
+fields at the boundary of the spacetime. This means, we will define 
+correlation functions by the formula
+$$
+W_r^n(B)(x_1,...,x_n)=\int_{\phi \text{satisfying boundary
+conditions}}\phi(x_1)...\phi(x_n)e^{-S(\phi)}D\phi.
+$$ 
+Then the infinite volume asymptotics of $W^n_r(B)$ looks like
+$$
+\lim_{r\to \infty}C(r)W^n_r(B)=\sum p_iW^n_i,\tag 1.12
+$$
+The collection of numbers $p_i$ represents 
+the ``density'' with which the quantum vacuum in finite volume is
+spread over the set of classical minima (=quantum vacua in 
+infinite volume). This density depends on the boundary conditions. 
+The word ``density'' should not be taken literally,
+however, because the numbers $p_i$ are in general complex numbers. 
+
+If we take the simplest boundary condition $\phi=a_i$, then 
+in the limit we will get the correlation functions $W_i^n$
+(i.e. $p_i=1,p_j=0$, $i\ne j$), so we get purely the i-th vacuum. 
+However, if we impose some other boundary condition, we will, in general, 
+get a mixture of vacua. 
+
+For example, in the case of $\Z/2\Z$-invariant quartic potential, 
+we can impose boundary conditions $\phi=a$, $\phi=-a$, or $\phi=0$
+(do not worry that the action of all fields in the third case is infinite;
+since we are considering a normalized path integral, i.e. divided 
+by the partition function, this infinity will cancel).
+Let $W_r^n(s)$ are the corresponding correlation functions 
+$s=a,-a,0$. Then in the first case $p_+=1,p_-=0$
+(as it it hard to get from the boundary anywhere except $a$ with a small action), 
+in the second case $p_+=0,p_-=1$ (for a similar reason), and in the third case 
+$p_+=p_-=1/2$.
+
+{\bf 1.5. Continuous symmetry breaking.}
+
+Now we will consider symmetry breaking in quantum field theory, when 
+the symmetry group is a connected Lie group. 
+The typical example is
+ a complex valued Bose field $\phi$, and the Lagrangian
+$$
+\Cal L(\phi)=\int d^dx\left(\frac{1}{2}|\nabla \phi|^2+
+(|\phi|^2-a^2)^2\right).\tag 1.13
+$$
+This Lagrangian has a $U(1)$-symmetry, acting by $\phi\to e^{i\theta}\phi$. 
+In the classical theory, we have lowest energy states $\phi=ae^{i\theta}$, 
+$\theta\in [0,2\pi)$, so we have symmetry breaking. 
+We will try to find out whether symmetry breaking 
+exists also in the quantum theory. 
+
+Above we showed that symmetry breaking does not occur in the 1-dimensional 
+case (quantum mechanics). We did it for the case of a real boson $\phi$, 
+but for the complex boson the argument (with path integral) works even better. 
+For instance, for Lagrangian (1.13) the set of classical minima of energy is 
+the circle $|\phi|=a$, which is connected. Therefore, 
+to go from one classical minimum, $ae^{i\theta_1}$, 
+to another, $ae^{i\theta_2}$, one does not need to go over the ``hump'' 
+of the potential, and can go along the circle of minima, so one can do
+it with even less action than before. Therefore, the path integral 
+computation described above would show that in the complex case
+there is even more linking between the states $\psi_+,\psi_-$
+than in the real case. This effect might make us think that 
+perhaps in field theory, 
+continuous symmetry breaking does not happen as easily 
+as discrete symmetry breaking. And indeed, it turns out 
+that continuous symmetry breaking cannot happen in two dimensions, 
+and can happen only in dimensions $\ge 3$. 
+
+Unfortunately, the path integral method is too crude to show that
+continuous symmetry breaking does not occur in 2 dimensions. 
+Indeed, it is easy to see 
+that all paths in the integral which computes $(\Omega_+,e^{-tH}\Omega_-)$ 
+have infinite action in infinite volume, so we can derive 
+no contradiction. So let us demonstrate 
+why symmetry is preserved in 2 dimensions and broken 
+above 2 dimensions by considering the simplest example.  
+
+The simplest example is the theory
+of a free massless real scalar Bose field
+in $d$ dimensions, defined by the Lagrangian
+$$
+\Cal L_0(\phi)=\int d^dx(\frac{1}{2}(\nabla\phi)^2).\tag 1.14
+$$
+This theory has a translation symmetry $\phi\to \phi+c$. 
+Let us show that this symmetry is broken for $d>2$, and preserved for $d=2$.
+
+For $d>2$, symmetry breaking is obvious. Indeed, 
+in this case we have a Wightman field theory 
+generated by an elementary field $\phi$, satisfying Wightman axioms
+(see Kazhdan's lectures). In this theory, the 
+1-point function of the operator $\phi$ is zero, while 
+the 1-point function of the operator $\phi+c$ is $c$. 
+Therefore, the transformation $\phi\to\phi+c$ does not 
+preserve the 1-point function. This shows, that in the case
+$d>2$ we in fact have not a single realization, but 
+a family of realizations $\Cal H_c$ parametrized by 
+points $c$ of the line. The theory $\Cal H_c$ is defined by
+the condition that $\<\Omega_c,\phi \Omega_c\>=c$, where 
+$\Omega_c$ is the vacuum of $\Cal H_c$. The vacuum $\Omega_c$ is
+``localized'' near the classical equilibrium state $c$. 
+The map $\phi\to \phi+c$ transforms $\Cal H_b$ to $\Cal H_{b+c}$. 
+
+For $d=2$, the situation is not the same. 
+The problem is that the operator $\phi$ is not defined in 2 dimensions, 
+although its derivatives are. Indeed, in 2 dimensions, we have
+$$
+\<\d\phi(x)\d\phi(y)\>=-\d_x\d_y\ln|x-y|,\tag 1.15
+$$
+so if the operator $\phi$ was defined in some way, we would have 
+$$
+\<\phi(x)\phi(y)\>=-\ln|x-y|+C,\tag 1.16
+$$
+which contradicts positivity (the function on the RHS of (1.16) is not positive).
+
+Let us say this more precisely. 
+What we have in 2 dimensions is a quantum field theory generated by a  
+ Wightman map 
+$\phi$ from Schwarz functions to operators, which 
+is defined not on the whole space of Schwarz functions 
+$S(V)$ but only on the space $S_0(V)$ 
+of Schwarz functions on $V$ with integral zero. 
+Then derivatives of $\phi$ can then be defined on all Schwarz functions
+by
+$$
+\d_i\phi(f)=-\phi(\d_if)
+$$
+(the right hand side makes sense since $\int\d_if=0$).  
+
+However, in the theory defined by such $\phi$ the question of symmetry breaking
+does not arise, since there is no symmetry to begin with: on the space
+$S_0(V)$, the maps $\phi$ and $\phi+c$ are the same. So, in order
+to raise the question about symmetry breaking, 
+we should consider an extension of our operator algebra,
+which will have a nontrivial action of symmetry. 
+The most reasonable way of doing so is the following.
+
+Instead of considering the theory of an $\R$-valued massless scalar
+$\phi$, we will consider the theory of a circle-valued field $\phi$
+with the same Lagrangian. We take the circle to be $S_\l=\R/2\pi\l \Z$. 
+The Lagrangian is the same as before. In this case, the local functional 
+$\phi$ is not defined, but instead we have local functionals
+$e^{ik\phi/\l}$, $k\in\Z$. The local functionals in this theory 
+are Laurent polynomials in $e^{i\phi/\l}$ whose coefficients 
+are differential polynomials 
+in the derivatives of the field $\phi$, but not in $\phi$ itself.
+The translational symmetry in this theory is the $U(1)$-symmetry:
+for a complex number $z$ with $|z|=1$,
+$z\circ e^{ik\phi/\l}=z^ke^{ik\phi/\l}$, and 
+$z$ acts trivially on the derivatives of $\phi$. 
+Classically, this theory has a family of vacua (equilibrium states),
+given by $\phi=c$, $c\in S_\l$. 
+
+Let us show that in this system symmetry is not broken
+quantum-mechanically. It is enough to show that the 1-point function 
+$\<\Omega,\O(0)\Omega\>$ vanishes for any local operator $\O$ of
+the form $\O=P(\phi)e^{ik\phi/\l}$ for $k\ne 0$. Let us show this 
+in the case $P=1$ (in general, the proof is analogous). Proof: 
+{}From the OPE in the free theory 
+(cf. Witten's lecture 3 from the fall term) we get 
+$$
+\<\Omega,\O(x)\O^*(0)\Omega\>=|x|^{-k^2/\l^2},
+$$
+so this 2-point function vanishes at infinity. 
+But by clustering, the limit of this function at infinity
+is $|\<\Omega,\O(0)\Omega\>|^2$. So, $\<\Omega,\O(0)\Omega\>=0$. 
+ 
+Another way to see that there is no symmetry breaking is as follows. 
+The Hilbert space of the quantized theory is of the form 
+$\Cal H=F\o F^*\o l_2(\l\Z)=\oplus_{k\in\Z}(F\o F^*)_k$, 
+where $F$ is the Fock space. 
+The operators corresponding to derivatives of
+$\phi$ respect this decomposition, while the operator $e^{ik\phi/\l}$
+maps the space $(F\o F_*)_{k'}$ to $(F\o F^*)_{k+k'}$. 
+The vacuum vector $\Omega$ belongs to the zero
+component $(F\o F^*)_0$. This implies that all correlation 
+functions of operators in this theory are invariant under the action
+of $U(1)$. In particular, $\<e^{ik\phi/\l}\>=\delta_{0k}$,
+which shows that the vacuum $\Omega$ is not ``localized'' near any
+classical vacuum but is ``spread'' uniformly over the space $S_\l$ of
+classical vacua. Thus, symmetry under $U(1)$ is not broken. 
+
+{\bf Remark 1.} It is instructive to see why our argument 
+that there is symmetry breaking for $d>2$ fails in finite 
+volume, where, as we know, there should be no symmetry breaking. 
+The problem is that in finite volume the field $\phi$ is not defined, 
+although its derivatives are. Indeed, 
+since the spacetime is the product of a time line with a compact space, 
+at large distances in looks simply like a line,
+the 2-point function of $\phi$ (which is
+the Green's function
+of the spacetime) at large $|t|$ looks like the 1-dimensional 
+Green's function, i.e. $-|t|+C+o(1)$. This function is not 
+bounded from below, so it violates positivity.   
+Moreover, as follows from considering 
+the case $d=2$, 
+the situation is the same if all spatial directions but one are 
+compactified.  
+
+{\bf Remark 2.} Above we have considered the theory of a free massless 
+scalar $\phi$ in dimension $d>2$ and found that its space
+of quantum vacua is the space of values of $\phi$
+(i.e. the target space $\R$). 
+More generally, if one considers the sigma-model
+with spacetime $\R^d$, $d\ge 2$, and target space $M$ (a 
+Riemannian manifold),
+the space of quantum vacua, as well as the space of classical vacua, will be 
+$M$. (Here you should forget for a moment that this sigma-model 
+for nonlinear $M$ is not renormalizable, and so it is not clear 
+what this statement means. We will clarify this point later.)
+In particular, $M$ as a Riemannian manifold 
+can be recovered from the quantum theory as moduli space 
+of quantum vacua (see Remark 3 below). 
+
+On the other hand, we saw that for $d=2$ the theory of a circle-valued 
+field $\phi$ (which is the same as the 2-dimensional 
+sigma-model with target space $S_\l$) has only one vacuum $\Omega$.   
+This is the case for 2-dimensional sigma-model in general: its moduli space
+of quantum vacua is generally very small, and does not coincide 
+with the space of classical vacua (=the target space). In particular,
+the target space cannot be recovered intrinsically from the quantum theory. 
+For example, the circle $S_\l$ cannot be recovered intrinsically 
+from the theory of maps into $S_\l$ considered above. This, in fact, happens
+for a good reason -- one can show that the theories attached to the circles
+$S_\l$ and $S_{1/\l}$ are equivalent (for example, their partition functions
+coincide -- see Gawedzki's lecture 1, formula (9)). This is the starting point
+for the theory of mirror symmetry.
+
+{\bf Remark 3.} Consider a field theory with the Lagrangian
+$\Cal L=
+\int d^dx(\frac{1}{2}(\nabla\phi)^2+U(\phi))$, where $\phi$ takes values in 
+some Riemannian manifold $M$, 
+and $U$ is a potential function on $M$ ($U\ge 0$). 
+Let $M(0)$ is the set of zeros of $U$. Assume that $M(0)$ is nonempty
+and smooth, and that $d^2U$ is nondegenerate on $T_xM/T_xM(0)$ for 
+$x\in M(0)$. Suppose that there is 
+a Lie group $G$ which acts by isometries on $M$, 
+fixes $U$, and acts transitively on $M_0$.
+In this case, one can show 
+(at the physical level of rigor)
+that the ``infrared behavior''
+of the theory described by $\Cal L$ is the same as the ``infrared behavior''
+of the sigma-model with target space being the space $M(0)$ of classical 
+vacua. The precise meaning of this statement is explained in Section 1.7. 
+(We can ignore nonrenormalizability problems by defining the theories 
+by a cutoff path integral, where integration is taken over fields 
+defined on a lattice with step $\L^{-1}$, or over fields 
+having only Fourier modes with $|k|<\L$, with respect to some 
+coordinate system; in this setting, the cutoff $\L$ is not sent to infinity).
+ This fact can be explained heuristically: if 
+a function $\phi$ has only low Fourier modes, it cannot oscillate 
+rapidly, so in order to have a small action and thus give a 
+noticeable contribution to the path integral, it has to stay closely 
+to the minimum locus $M(0)$, i.e. has to be close to a map into $M(0)$. 
+
+Thus, continuous symmetry breaking, being an infrared effect, will occur in 
+the theory described by $\Cal L$ iff it occurs in 
+the corresponding sigma-model. So, as follows from remark 2, 
+symmetry breaking tends not to occur in dimension 2, but tends to occur
+in dimension $>2$. 
+
+These are, however, mostly heuristic arguments. 
+In the next section we will treat the issue of continuous 
+symmetry breaking in a more systematic way, using Goldstone's theorem. 
+
+{\bf 1.6. Goldstone's theorem.}
+
+Recall the standard formalism of Noether's theorem and currents 
+in classical field theory. Suppose we have a Lagrangian 
+$\Cal L=\Cal L(\phi)$ in a $d$-dimensional spacetime $V$.
+Denote the space of solutions of the corresponding Euler-Lagrange 
+equations by $X$. 
+
+Let  $G^s$ be a 1-parameter symmetry group 
+of this Lagrangian. Let $D_\phi:=\frac{d}{ds}|_{s=0}G^s\phi$. 
+We assume that $D_\phi$ is a local functional of $\phi$. 
+ 
+Let $\eta\in \Omega^1(X,\Omega^{n-1}(V))$ be the canonical
+1-form on the space of solutions that was discussed in Bernstein's 
+lectures and in  
+Witten's problem sets
+(the canonical 2-form on $X$ was defined as
+$\int_Cd_X\eta$, where $C$ is an $n-1$-dimensional cycle).
+For instance, the formula for $\eta$ for the free theory of a massless scalar
+is
+$$
+\eta(\delta\phi)(x)=\delta\phi(x)*d\phi(x).\tag 1.17
+$$
+Let $J\in \Omega^0(X,\Omega^{d-1}(V))$ be defined by the formula
+$J=\eta(D_\phi)$. Since $D_\phi$ is local, so is $J$. 
+Thus, $J$ is a local functional on $X$ with values 
+in $\Omega^{d-1}(V)$. For instance, if $\Cal L$ is the Lagrangian of the 
+theory of a free massless scalar, and $G^s\phi=\phi+s$, then 
+$D_\phi=1$, so $J(x)=*d\phi(x)$. The local functional $J$ is called the 
+{\it current} corresponding to the symmetry $G^s$. The main property of
+the current is that it is {\it conserved}, i.e. $d_VJ=0$. 
+This follows form the fact that $d_V\eta=0$. 
+
+In finite volume 
+it is useful to define the charge functional
+$Q=\int_CJ(x)$, where $C$ is some spacelike cycle (e.g. $t=\text{const}$).
+Since the current is conserved, this quantity is independent of the choice
+of the cycle, as long as it represents the fundamental homology class of 
+``space''. If $\Omega=\int_Cd_X\eta$ is a
+nondegenerate 2-form on $X$, then $Q$ 
+is a Hamiltonian which defines the 
+symmetry group $G^s$, in the sense that
+$\frac{d}{ds}|_{s=0}(G^s)^*F=\{F,Q\}$, where $\{,\}$ is the Poisson bracket
+on $S$, and $F$ any local functional on $X$.
+
+In infinite volume, the functional $Q$ is not necessarily 
+defined, since the integral
+does not converge.  
+In this case, it is convenient to set $C=C_0=\{t=0\}$ 
+(here we have chosen a time coordinate on the spacetime), 
+and define the ``cutoff charge functional''
+$$
+Q_f=\int_{C_0}f(x)J(x),\tag 1.18
+$$
+where $f: C_0\to \R$ is a Schwarz function.
+The limit $\lim_{f\to 1}Q_f$ in this case does not exist, but for any 
+local functional $F$ 
+$$
+\lim_{f\to 1}\{F,Q_f\}=\frac{d}{ds}|_{s=0}(G^s)^*F.\tag 1.19
+$$
+  
+{\bf Remark.} By $f\to 1$ we mean that $f$ converges to $1$ uniformly on any 
+compact set, and all derivatives of $f$ go to zero uniformly on the 
+whole space. 
+
+In quantum theory, the story is the same, except that (local) functionals
+are replaced with local operators, and Poisson bracket with commutator
+times $i$. 
+That is, to any one-parameter symmetry $G^s$ there corresponds 
+a $d-1$-form-valued local operator $J(x)$, which is conserved, 
+and the charge operator $Q=\int_CJ(x)$ (in finite volume) has the property
+$$
+[F,Q]=-i\frac{d}{ds}|_{s=0}(G^s)^*F.\tag 1.20
+$$
+The case of infinite volume is dealt with in the same way as 
+in the classical theory, by considering cutoff operators $Q_f$. 
+
+Now we will discuss Goldstone's theorem. Suppose that the symmetry $G^s$
+in the theory defined by $\Cal L$ is broken not only classically
+but also quantum mechanically. In this case, if we have a solution
+of the theory $\Cal H$ (a Hilbert space with an action of
+the operator algebra), then there exists a scalar local operator $\phi$ 
+whose 1-point function is not invariant under symmetry. 
+
+{\bf Remark.} Strictly speaking, we only know that some n-point function
+is not invariant; but in all known situations 
+with symmetry breaking there is also a non-invariant 1-point function.  
+
+Let $Q_f$ be the cutoff charge operator for the symmetry $G^s$. 
+We have 
+$$
+\<\Omega|[Q_f,\phi(0)]|\Omega\>\ne 0,\tag 1.21
+$$
+for $f$ sufficiently close to 1. Thus, 
+$\<\Omega|[J(x)\phi(0)]|\Omega\>\ne 0$ for some $x$. 
+
+Consider the 2-point functions
+$$
+M_+(x):=\<\Omega|J(x)\phi(0)|\Omega\>, 
+M_-(x):=\<\Omega|\phi(0)J(x)|\Omega\>\ \tag 1.22
+$$
+(these are $d-1$-forms on $V$). Since the symmetry is broken, 
+$M_+\ne M_-$, although by space-like separation, they coincide if $x$ is 
+spacelike. 
+
+Let $\Cal H=\int_{p\in V_+}\Cal H_p$ be the spectral decomposition 
+of $\Cal H$ with respect to the action of the translation group
+(here $V_+$ is the positive part of the full light cone).
+Using the decomposition of the inner product in a sum over intermediate 
+states, ($\<J(x)\Omega,\phi(0)\Omega\>=\sum_n\<J(x)\Omega,n\>
+\<n,\phi(0)\Omega\>$), we get
+$$
+M_\pm(x)=\int_{V_+} K_\pm(x,p)dp,\tag 1.23
+$$
+where 
+$K_+(x,p), K_-(x,p)$ are the contributions to $M_+,M_-$ 
+from intermediate states of 4-momentum $p$ 
+($K_\pm$ are vector-valued distributions in $p$). 
+
+Because of Lorentz invariance, 
+the distributions $K_+,K_-$ look like 
+$$
+K_\pm=pe^{\pm ipx}\rho_\pm(-p^2),\tag 1.24
+$$
+where $\rho_\pm(s)$ are distributions on the half-line 
+$s\ge 0$. 
+
+This yields 
+$$
+M_\pm(x)=i*d_V\int_0^\infty\rho_\pm(m^2)W_m(\pm x)dm^2,\tag 1.25
+$$
+where $W_m(x)=\int_{\O_m^+}e^{ipx}dp$ 
+is the Klein-Gordon propagator with mass $m$ defined in Lecture 
+1 last term ($\O_m^+$ is the upper sheet of the hyperboloid $p^2=-m^2$).
+
+Let $M(x)=M_+(x)-M_-(x)$. 
+Since $W_m(x)=W_m(-x)$ when $x$ is spacelike, for spacelike $x$
+(1.25) yields
+$$
+M(x)=i*d_V\int_0^\infty(\rho_+(m^2)-\rho_-(m^2))W_m(x)dm^2.\tag 1.26
+$$
+However, as we have mentioned, by spacelike separation
+$M(x)$ vanishes for spacelike $x$. This implies that $\rho_+=\rho_-=\rho$, and
+so (1.25) yields 
+$$
+M(x)=i*d_V\int_0^\infty\rho(m^2)(W_m(x)-W_m(-x))dm^2.\tag 1.27
+$$
+Differentiating both sides of (1.27), at a point $x$ such that $x^2>0$, 
+and using the conservation of the current 
+and the Klein-Gordon equation $\nabla^2W_m=-m^2W_m$, we get
+$$
+\int_0^\infty m^2\rho(m^2)(W_m(x)-W_m(-x))dm^2=0.\tag 1.28
+$$
+Taking the Fourier transform, we get
+$$
+p^2\rho(-p^2)=0.\tag 1.29
+$$
+Thus, $\rho(m^2)=c\delta(m^2)$, where $c$ is a constant. 
+The constant $c$ cannot vanish, otherwise we will prove that 
+$[J(x),\phi(0)]$ has a zero expectation value at the vacuum, 
+which contradicts the assumption 
+of symmetry breaking. 
+
+This argument shows 
+that all contributions to the 2-point function $\<\Omega,J(x)\phi(0)\Omega\>$
+comes from intermediate states of zero mass. This implies 
+that $L^2(\O_0^+)$ is contained in the discrete spectrum of $\Cal H$ 
+(i.e. as an honest subrepresentation of the Poincare group).
+Such a subrepresentation is interpreted in quantum field theory 
+as a massless particle of zero spin.  
+Thus, we have proved the following statement,
+which goes under the name of Goldstone's theorem: 
+
+\proclaim{Theorem} In the Hilbert space 
+of a realization of a field theory with continuous symmetry breaking, 
+there is a massless scalar (i.e. a subrepresentation 
+of the Poincare group isomorphic to $L^2(\O_0^+)$) 
+which is created by the current of the broken symmetry. 
+\endproclaim
+
+{\bf Remark.} ``Created'' means that $J(x)\Omega$ is not 
+orthogonal to the subrepresentation. 
+
+{\bf Definition.}
+The massless scalar which we found is called the Goldstone boson
+corresponding to the broken symmetry $G^s$. 
+
+{\bf Remark 1.} If the symmetry with respect to $G^s$ was not broken, then
+$\lim_{f\to 1}Q_f\Omega$ would be zero. 
+On the other hand, when symmetry breaking occurs, 
+$Q_f$ creates Goldstone bosons from the vacuum. 
+Thus, Goldstone bosons ``measure''
+the failure of symmetry.
+
+{\bf Remark 2.} The Goldstone boson can be created not only 
+by the current operator of the symmetry, but also by other local 
+operators. In fact, as we saw in the proof of Goldstone's theorem,
+it will be created by any scalar local operator whose 1-point 
+function is not invariant under the symmetry. 
+
+{\bf Remark 3.} There is no claim in Goldstone's theorem that 
+the Goldstone boson is free, i.e. that 
+it can be created by a free field $\phi(x)$. 
+In fact, as we will see, this is often not the 
+case. 
+
+{\bf Remark 4.} If continuous symmetry breaking occurs classically, 
+the Goldstone boson can already be seen in
+perturbation theory. As an example consider Lagrangian (1.13). Consider the 
+classical vacuum state $\phi=a$. This vacuum state is degenerate. 
+Therefore, if we introduce real variables $\phi_1=\text{Re}\phi-a$,  
+$\phi_2=\text{Im}\phi$, and rewrite the Lagrangian in terms of
+these variable, then because of the degeneracy of the minimum
+the field $\phi_2$ will be classically massless. 
+Therefore, if we compute the 2-point function of 
+$\phi_2$ it will have a pole at $k^2=0$
+(modulo the perturbation parameters). Of course, in principle loop terms 
+might shift this pole. In other words, the classically massless $\phi_2$
+may get nonzero mass quantum-mechanically. What Goldstone theorem tells us
+is that this will not happen if symmetry is broken. 
+
+\proclaim{Corollary
+from Goldstone theorem} 
+Symmetry breaking does not happen in 2 dimensions. 
+\endproclaim
+
+{\it Proof.} Otherwise, by Goldstone's theorem 
+Goldstone bosons would have to exist. But in a 2-dimensional 
+quantum field theory, there can be no massless particles
+created by a local operator. Indeed, 
+the 2-point function of this operator in momentum space 
+equals $w(k^2)=\int_0^\infty\frac{d\mu(m^2)}{k^2+m^2}$, where 
+$\mu$ is the spectral measure. If there is a massless particle, 
+this measure will have an atom at $m=0$. But in this case
+the 2-point function $W(x)$ in position space will behave 
+like $-C\ln x^2$ at infinity, i.e. would
+violate the positivity axiom. $\square$
+
+Now assume that we have a Lagrangian which has a Lie group $G$ 
+of symmetries. Assume that $\Cal H$ is a 
+realization of the quantum field theory defined 
+by this Lagrangian, whose stabilizer is $H\subset G$. In this case 
+one says that in the realization $\Cal H$, the $G$-symmetry is spontaneously 
+broken to $H$. 
+
+Let $\g,\frak h$ be the Lie algebras of $G,H$. 
+Goldstone's theorem implies
+
+\proclaim
+{Corollary} $\Cal H$ contains in its discrete spectrum a subrepresentation 
+isomorphic to $L^2(\O_0^+)\o (\g/\frak h)$. 
+\endproclaim
+
+\demo{Proof} The proof is clear: if 
+this is not so than there exists an element $Y\in\g$, $Y\notin \frak h$, such that
+$Q^Y_f\Omega\to 0$ (weakly) when $f\to 1$. This means that the symmetry with respect to $Y$ is not broken -- a contradiction.
+\enddemo 
+
+The corollary means that Goldstone bosons corresponding to linearly
+independent broken infinitesimal symmetries are also linearly independent.   
+
+{\bf Example.} Let $\phi: \R^d\to \R^N$ be a scalar field, and consider
+the Lagrangian
+$$
+\Cal L(\phi)=\int d^dx(\frac{1}{2}(\nabla\phi)^2+\frac{g}{4!}(\phi^2-a^2)^2).
+\tag 1.30
+$$
+
+This Lagrangian has an $SO(N)$-symmetry, and  
+the space of its classical vacua is $S^{N-1}$.
+Therefore, classically the $SO(N)$-symmetry is broken to
+$SO(N-1)$. As we know, if $d>2$, the same will happen 
+quantum mechanically (for a weakly coupled theory), 
+and so any realization (solution) of the theory has 
+$N-1$ independent Goldstone bosons. 
+
+Let $P$ be the classical minimum with coordinates $(0,0,...,0,a)$.  
+Consider the realization $\Cal H_P$ of the theory, where 
+the vacuum $\Omega$ is localized near $P$.
+Let $Y_i\in \frak{so}_N$, $i=1,...,N-1$, be 
+the infinitesimal rotations in the planes 
+generated by basis vectors $e_i,e_N$ of $\R^N$.  
+The 1-point function of the operator $\phi_i$ is not invariant under 
+$Y_i$, so $\phi_i$ creates the Goldstone boson corresponding to $Y_i$. 
+
+We can construct low energy (non-vacuum) states 
+localized near other classical vacua than $P$. Indeed, let $P'$ be
+another classical vacuum, and $Y\in \frak{so}(N)$ is 
+an element such that $e^YP=P'$. Let $J_Y$ be the current 
+corresponding to $Y$, and $Q^Y_f$ the corresponding cutoff charge.  
+Then the state $e^{iQ^Y_f}\Omega$ is a low energy state 
+localized near $P'$. 
+
+At long distances the theory will behave 
+as a sigma-model into the space of classical vacua. 
+This is an interesting statement for $N\ge 3$, because in this case 
+the target ($S^{N-1}$) is not flat, so the sigma-model is not free. 
+More precisely, at low energies (or long distances), the theory 
+of bosons $\phi_i$, $i=1,...,N-1$, will be free in the zero approximation, 
+but in the first approximation it will not be free but will be described
+by the Lagrangian of the sigma-model into the sphere. 
+
+{\bf 1.7. Infrared behavior of purely non-renormalizable field theories.}
+
+In this section we will clarify the meaning of
+the statement that for $d>2$ a quantum field theory behaves in the infrared 
+limit as a sigma-model into the space of classical vacua.
+
+Suppose we have a purely nonrenormalizable field theory 
+described by a Lagrangian $\Cal L$. We will call a Lagrangian 
+purely nonrenormalizable if all its couplings have negative dimension.
+An example of such a Lagrangian is the Lagrangian of a sigma-model for 
+$d>2$. Such Lagrangians are not good for perturbative renormalization 
+in the UV limit, but create no problem in the IR limit, since
+all their interactions are IR irrelevant from the point of view of 
+the Wilsonian renormalization group flow. Namely, if 
+we introduce an UV momentum cutoff $\L$ (which is now not being sent 
+to infinity), we can define correlation functions of $\Cal L$ 
+perturbatively: the correlation function
+is the sum of amplitudes of all Feynman diagrams, 
+which are evaluated as usual, with integration carried out
+with cutoff $|q|<\L$. Because $\Cal L$ has no mass terms, 
+there will be some IR divergences, but they can be dealt 
+with in the same way as we dealt with UV divergences 
+in Lectures 1-3 last semester. Moreover, since the theory is purely 
+non-renormalizable, only finitely many graphs will be divergent
+for each number of external legs (like in a superrenormalizable 
+theory in UV renormalization). 
+
+Now suppose that we want to compute the asymptotic expansion  
+of the n-point function in momentum representation, around 
+the point $k_i=0$. 
+We will have (for $\sum k_i=0$):
+$$
+G_n(k_1,...,k_n)=k_1^{-2}...k_n^{-2}G_n^0(k_1,...,k_n),\tag 1.31
+$$
+where $G_n^0$ is a certain series, having a limit at $k_i=0$ 
+(In general, this will not be a power series; it may contain terms 
+of the form $k^4\ln k^2$). 
+
+The key property of this series, which follows from pure
+nonrenormalziability, is that modulo 
+terms of any finite power, it is determined by finitely many Feynman graphs. 
+Thus, we can obtain the IR asymptotics of the correlation functions 
+to any order in $k_i$ without 
+having to sum the perturbation series.
+
+Now suppose we have an actual quantum field theory, given by some 
+renormalizable Lagrangian 
+$\Cal L'$. When we say that the theory defined by $\Cal L'$ is
+described in the IR limit by a purely nonrenormalizable 
+Lagrangian $\Cal L$ (on the same fields), we mean that
+to a certain order in $k_i$ (near $k_i=0$), the functions 
+$G_n^0$ given by (1.31) are the same for $\Cal L$ as for $\Cal L'$. 
+
+For instance, when at the end of the previous section we said that
+at low energies (or long distances), the theory 
+of bosons $\phi_i$, $i=1,...,N-1$, is free in the zero approximation, 
+and described
+by the Lagrangian of the sigma-model into the sphere,
+$$
+\Cal L_\sigma=\int d^dx(\frac{1}{2}\sum (\nabla\phi_i)^2
++R(\sum \phi_i^2)(\sum (\nabla\phi_i)^2))
+$$
+in the first approximation (where $R$ is proportional to the curvature), 
+we meant that the 
+functions $G_n^0(k_1,...,k_n)$ for $\phi_i$ are the same as in the free theory
+modulo $o(1)$, and the same as in the sigma-model modulo $o(k^2)$.   
+
+Computing higher terms of the $k$-expansion, one can construct a purely nonrenormalizable
+low energy effective theory, which will describe our theory in the infrared to
+any required accuracy.
+
+{\bf Remark.} The restriction of the function $G_0^n(k_1,...,k_n)$ 
+to the locus $k_i^2=0$ (but $k_i$ is not necessarily zero) has
+a physical meaning: it is the scattering amplitude (S-matrix) of $n$ 
+Goldstone bosons. Thus, the statement is that scattering matrix of
+$n$ Goldstone bosons in model (1.30) is like in the free theory for $N=2$ 
+(as the circle is flat), but has a quadratic correction due to curvature
+for $N>2$. 
+
+\end
+
+
+
+Therefore, asymptotic expansion (1.31) can be computed to any order in $k_i$
+by computing amplitudes of finitely many diagrams.  
+
+
+\end
+
+

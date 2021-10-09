@@ -1,0 +1,691 @@
+%Date: Wed, 26 Mar 1997 18:32:05 -0500 (EST)
+%From: Pavel Etingof <etingof@abel.MATH.HARVARD.EDU>
+
+\input amstex
+\documentstyle{amsppt}
+\magnification 1200
+\NoRunningHeads
+\NoBlackBoxes
+\document
+
+\def\opsi{\overrightarrow{\psi}}
+\def\h{\frak h}
+\def\tW{\tilde W}
+\def\Aut{\text{Aut}}
+\def\tr{{\text{tr}}}
+\def\ell{{\text{ell}}}
+\def\Ad{\text{Ad}}
+\def\u{\bold u}
+\def\m{\frak m}
+\def\O{\Cal O}
+\def\tA{\tilde A}
+\def\qdet{\text{qdet}}
+\def\k{\kappa}
+\def\RR{\Bbb R}
+\def\be{\bold e}
+\def\bR{\overline{R}}
+\def\tR{\tilde{\Cal R}}
+\def\hY{\hat Y}
+\def\tDY{\widetilde{DY}(\g)}
+\def\R{\Bbb R}
+\def\h1{\hat{\bold 1}}
+\def\hV{\hat V}
+\def\deg{\text{deg}}
+\def\hz{\hat \z}
+\def\hV{\hat V}
+\def\Uz{U_h(\g_\z)}
+\def\Uzi{U_h(\g_{\z,\infty})}
+\def\Uhz{U_h(\g_{\hz_i})}
+\def\Uhzi{U_h(\g_{\hz_i,\infty})}
+\def\tUz{U_h(\tg_\z)}
+\def\tUzi{U_h(\tg_{\z,\infty})}
+\def\tUhz{U_h(\tg_{\hz_i})}
+\def\tUhzi{U_h(\tg_{\hz_i,\infty})}
+\def\hUz{U_h(\hg_\z)}
+\def\hUzi{U_h(\hg_{\z,\infty})}
+\def\Uoz{U_h(\g^0_\z)}
+\def\Uozi{U_h(\g^0_{\z,\infty})}
+\def\Uohz{U_h(\g^0_{\hz_i})}
+\def\Uohzi{U_h(\g^0_{\hz_i,\infty})}
+\def\tUoz{U_h(\tg^0_\z)}
+\def\tUozi{U_h(\tg^0_{\z,\infty})}
+\def\tUohz{U_h(\tg^0_{\hz_i})}
+\def\tUohzi{U_h(\tg^0_{\hz_i,\infty})}
+\def\hUoz{U_h(\hg^0_\z)}
+\def\hUozi{U_h(\hg^0_{\z,\infty})}
+\def\hg{\hat\g}
+\def\tg{\tilde\g}
+\def\Ind{\text{Ind}}
+\def\pF{F^{\prime}}
+\def\hR{\hat R}
+\def\tF{\tilde F}
+\def\tg{\tilde \g}
+\def\tG{\tilde G}
+\def\hF{\hat F}
+\def\bg{\overline{\g}}
+\def\bG{\overline{G}}
+\def\Spec{\text{Spec}}
+\def\tlo{\hat\otimes}
+\def\hgr{\hat Gr}
+\def\tio{\tilde\otimes}
+\def\ho{\hat\otimes}
+\def\ad{\text{ad}}
+\def\Hom{\text{Hom}}
+\def\hh{\hat\h}
+\def\a{\frak a}
+\def\t{\hat t}
+\def\Ua{U_q(\tilde\g)}
+\def\U2{{\Ua}_2}
+\def\g{\frak g}
+\def\n{\frak n}
+\def\hh{\frak h}
+\def\sltwo{\frak s\frak l _2 }
+\def\Z{\Bbb Z}
+\def\C{\Bbb C}
+\def\d{\partial}
+\def\i{\text{i}}
+\def\ghat{\hat\frak g}
+\def\gtwisted{\hat{\frak g}_{\gamma}}
+\def\gtilde{\tilde{\frak g}_{\gamma}}
+\def\Tr{\text{\rm Tr}}
+\def\l{\lambda}
+\def\I{I_{\l,\nu,-g}(V)}
+\def\z{\bold z}
+\def\Id{\text{Id}}
+\def\<{\langle}
+\def\>{\rangle}
+\def\o{\otimes}
+\def\e{\varepsilon}
+\def\RE{\text{Re}}
+\def\Ug{U_q({\frak g})}
+\def\Id{\text{Id}}
+\def\End{\text{End}}
+\def\gg{\tilde\g}
+\def\b{\frak b}
+\def\S{\Cal S}
+\def\L{\Lambda}
+\def\tl{\tilde\lambda}
+
+\topmatter
+\title Lecture II-6: Gauge theory in 2 dimensions with 
+self-interacting bosons, the Wilson line operator, and confinement
+\endtitle
+\author {\rm {\bf Edward Witten} }\endauthor
+\endtopmatter
+
+\centerline{Notes by Pavel Etingof and David Kazhdan}
+
+\vskip .1in
+
+In the last lecture we considered 2-d gauge theories with fermions. 
+Today we will consider 2-dimensional gauge theories with bosons. 
+As before, we will work with Euclidean Lagrangians. 
+
+{\bf 6.1. Infrared behavior of $U(1)$ gauge theories with 
+bosons in 2-dimensions.}
+
+We consider a $U(1)$ gauge theory with bosons in 2 dimensions. 
+
+Our spacetime is a Riemann surface $\Sigma$. 
+Our fields are $A$ -- a $U(1)$ connection in some line bundle $L$, 
+and $\phi_1,...,\phi_N$ -- complex scalar fields, which are sections of $L$. 
+
+Our Lagrangian is
+$$
+\int d^2x\left(\frac{(*F)^2}{4e^2}+\frac{1}{2}|d\phi|^2+\frac{\l}{4}
+(|\phi|^2-a^2)^2\right)-\frac{i\theta}{2\pi}\int F,\tag 6.1
+$$
+where $|\phi|^2=\sum |\phi_i|^2, |d\phi|^2=\sum |d\phi_i|^2$. 
+
+We want to understand the infrared behavior of this theory.
+
+Clasisically, the ``mass'' of the bosons is given by $\phi_i$ is $m^2=-
+\l a^2$. 
+If $\l\to 0$ and $m^2>0$ remains fixed, this Lagrangian becomes the Lagrangian
+of a gauge theory with ``free'' massive bosons (i.e. bosons interacting
+with the gauge field only and not interacting with each other), which was 
+considered in Lecture II-4. 
+
+The parameters of the theory are $m,\theta,\l,e$ (with $\l>0$). We will 
+now keep $\l,e$ fixed, and vary $m,\theta$, to see how the behavior  
+of the theory depends on them. 
+
+First consider the situation $m^2\to +\infty$ (i.e. $m^2>>e^2$). In this 
+situation the quartic term in the Lagrangian becomes unimportant, 
+and the situation is essentially the same as in Lecture II-4. Namely,
+the theory has a mass gap, and the interaction between bosons is approximated 
+by the 1-dimensional Coloumb 
+potential, which causes their confinement:  
+all states in the theory are of total charge zero. 
+Also, the space reversal symmetry is preserved for $\theta=0$, 
+but broken for $\theta=\pi$, thus producing two vacua and
+a cut at $\theta=\pi$. For example, the vacuum energy density, 
+which is a $2\pi$-periodic function of $\theta$ 
+given for $-\pi\le \theta\le \pi$ by formula (6.2) below,  
+has a discontinuous derivative at $\theta=\pi$. 
+
+Now consider the situation when $m^2\to -\infty$ (i.e. $m^2<<-e^2$). 
+In this case, the situation is totally different: because of the presence 
+of the quartic term, the classical potential for bosons has a minimum at
+$|\phi|^2=a^2$, so the space of minima is $S^{2N-1}$. The gauge group 
+$U(1)$ acts freely on this space, so the space of classical vacua
+is $\C P^{N-1}=S^{2N-1}/U(1)$. Thus, the low energy effective theory 
+is the theory of maps from $\Sigma$ to $\C P^{N-1}$ with the round
+metric (the sigma-model). 
+
+{\bf Remark.} In Lecture 3 we saw that the theory 
+with the Lagrangian density $\frac{1}{2}(d\phi)^2+\l(\phi^2-a^2)^2$ 
+flows in the infrared to the sigma-model of maps to the sphere. We
+remarked that this means that this (superrenormalizable) theory 
+is a good cutoff for the sigma-model to the sphere. Similarly, 
+the superrenormalizable (and hence rigorously existing) theory 
+defined by Lagrangian (6.1) is a good UV cutoff for the theory of maps to 
+$\C P^{N-1}$. 
+
+For Large $N$, we found that the sigma-model of maps 
+to $\C P^{N-1}$ behaves in the infrared as the gauge theory  
+of massive bosons. Today we will consider in more detail the case $N=1$. 
+In this case $\C P^{N-1}$ is one point, so the theory defined by 
+(6.1) has a mass gap and a unique vacuum. 
+
+{\bf 6.2. The vacuum energy density.} 
+
+Recall that for $m^2>>e^2$ in Lecture II-4 we found the following value 
+of the vacuum energy density:
+$$
+E_{vac}(\theta)=\frac{e^2}{2}\left(\frac{\theta}{2\pi}\right)^2.\tag 6.2
+$$
+So the $\theta$-derivative of the energy density 
+is proportional to the first power of the coupling $e^2$. 
+
+In the case $m^2<<-e^2$, the situation is totally different. Namely, now 
+the contributions to the path integral from nontrivial line bundles
+(relative to infinity) 
+is exponentially small in $e^2$, since any section of such a bundle 
+has to vanish somewhere, and this will have a big action due to the presense
+of the quartic potential. Thus, to any finite order of perturbation 
+theory (in $e^2$), the path integral,
+and hence the vacuum energy density are independent of $\theta$. 
+More precisely, the theta-dependence is exponentially small, and comes from 
+the sum over {\it instantons} -- lowest action configurations of nontrivial 
+first Chern class. 
+
+{\bf 6.3. Instantons.}
+
+Let us compute the coefficient of $e^{i\theta}$ in the Fourier expansion 
+of the path integral with Lagrangian (6.1). This is equivalent to taking 
+the path integral over connections in line bundles with $c_1=1$. 
+
+As usual, the main contribution to the path integral comes from field 
+configurations which are close to the configuration minimizing 
+the action. Such a configuration $(\phi,A)$ is called an instanton.
+
+Let $(\phi,A)$ be an instanton. 
+In order for its action to be finite, we must have
+$$
+|\phi(x)|\to a, F_A(x)\to 0, x\to \infty,\tag 6.3
+$$
+where $F_A$ is the curvature of $A$. Moreover,   
+since $\phi$ is classically massive, this convergence 
+is exponentially fast. Thus, an instanton in our problem 
+has to be a highly localized field configuration. 
+
+In our further discussion of instantons, we will assume that $\Sigma=\R^2$, 
+and $c_1$ is measured with respect to trivialization at infinity. 
+In this case, we expect that instantons are 
+rotationally symmetric, with respect to some center of rotation $x_0$. 
+Without loss of generality we can assume that $x_0=0$, so that the instanton 
+has the form $\phi=ae^{i\alpha}f(r)$, $A=g(r)d\alpha$, where 
+$f(r)$, $g(r)$ are some functions of the radius $r$ (where $r,\alpha$ 
+are polar coordinates on $\R^2$). It is easy to show 
+that in this case one must have $f(0)=0$, $f(\infty)=1$, 
+and $g(0)=0$, $g(\infty)=1$. Thus, we get a boundary value problem for
+ordinary differential equations. It can be proved by considering 
+the corresponding ODE that this problem 
+has a unique solution. Thus, the instanton is unique, up to translations. 
+In particular, it has a definite size, and its action is 
+a well-defined positive constant $I$.  
+
+{\bf Remark.} In this respect, our instanton is different from 
+the instantons of the $\C P^{N-1}$ model, which could be 
+transformed by any conformal automorphism, and therefore had no 
+definite size. 
+
+By dimensional analysis 
+it is clear that $I$ is of the form $a^2h(\frac{\l}{e^2})$, 
+where $h$ is a dimensionless function. It is possible to show that
+$h(z)\sim Cz$ as $z\to \infty$, where $C$ is a constant, 
+so for small $e$ (compared to $\l$), $I\sim \frac{C\l a^2}{e^2}$.   
+This calculation illustrates
+the fact that the contribution of the instanton to the path integral 
+is exponentially small with respect to $e^2$. 
+
+{\bf 6.4. Instanton gas.}
+
+Now we want to understand how to compute the contribution of the instantons 
+to the path integral, and when such a computation gives a good approximation. 
+
+First of all consider line bundles with $c_1=2$. It can be shown that 
+there is no instanton in this topological class if $e^2/\lambda$ is 
+sufficiently large. We will assume that there is no instanton 
+for $c_1>1$, but what we will say can be generalized to the case 
+when there is one (for small $e^2/\lambda$). In the case when there
+is no instanton with $c_1>1$,  
+the problem of minimization of action in the case $c_1=2$ has no global 
+minimum (the infinum is not attained). However, 
+we can consider approximate instantons, whose action approaches
+the infinum arbitrarily closely. More precisely, if we take 
+$A(x)=A_*(x-x_1)+A_*(x-x_2),\phi(x)=\phi_*(x-x_1)\phi_*(x-x_2)/a$, where
+$(A_*,\phi_*)$ is the instanton centered at $0$, then the action 
+of $(A,\phi)$ equals $2I$, plus a correction which is of order
+$e^{-c|x_1-x_2|}$, where $c$ is a positive constant.
+Thus, the infinum of actions for $c_1=2$ is $2I$. 
+
+Similarly, the infinum of actions for $c_1=n$ is $nI$, for any
+$n\in \Z_+$. This follows from the fact that the action of 
+the field configuration 
+$$\sum_{i=1}^n A_*(x-x_i), a\prod_{i=1}^n\frac{\phi_*(x-x_i)}{a}$$
+has action which is exponentially close to $nI$ when $|x_i-x_j|$ are big. 
+
+Now consider the situation when $c_1<0$. It is easy to see that 
+$(-A_*,\bar \phi_*)$ is the instanton for $c_1=-1$. 
+It is called the antiinstanton. Thus, 
+the situation for $n<0$ is symmetric to the situation for $n\in \Z_+$:
+the field configuration $$-\sum_{i=1}^{|n|}A_*(x-y_i),
+a\prod_{i=1}^n\frac{\bar\phi_*(x-y_i)}{a}$$ has action exponentially
+close to $|n|I$ when $|y_i-y_j|$ is big. 
+
+More generally, one can consider field configurations
+$$\sum_{i=1}^n A_*(x-x_i)-\sum_{i=1}^m A_*(x-y_i),
+a\prod_{i=1}^n\frac{\phi_*(x-x_i)}{a}
+\prod_{i=1}^m\frac{\bar\phi_*(x-y_i)}{a},$$ 
+with $c_1=n-m$ which have action exponentially 
+close to $(n+m)I$ when $x_i,y_j$ are distant from each other. 
+
+{\bf Remark.} 
+Such field configurations are called ``instanton gas''. 
+The term ``instanton gas'' refers to a gas with long range
+Coulomb forces (like the instantons we studied later in the Polyakov
+model in 2+1 dimensions).  This gas with exponentially small forces
+at long range is more like an ordinary gas of atoms, for instance
+the air in the atmosphere.  It is an almost ideal gas, the ideal gas law
+of thermodynamics is the case that the forces are exactly zero.  Any
+real gas (hydrogen, oxygen) behaves as an almost ideal gas if the density
+is small enough, because then the particles are generally at big distances
+where the interactions are small.  That is the case for the instantons
+in this model because the instanton action is big (and the instantons
+have a definite size)
+
+{\bf 6.5. Summing over instantons.}
+
+As we remarked, the perturbation series with respect to powers of $e^2$
+for the path integral with Lagrangian (6.1) does not involve contributions
+from instantons, as they are exponentially small. Let us introduce 
+a refined perturbation series, which will take instantons into account. 
+For this purpose we will work on a Riemann surface of volume $V$, and 
+introduce a new perturbation parameter $W=Ve^{-I}$.
+We will consider the perturbation expansion with respect to both $W$ and $e$. 
+The key fact is that in this
+refined perturbation expansion, the only contributions of finite order
+in $W$ and $e$ are from the instanton gas. Thus, the approximation 
+to the partition function obtained this way has the form
+$$
+Z(e^2,\theta,W)=e^{VP_0}\sum_{n,m=0}^{\infty}
+\frac{W^{m+n}P_+^nP_-^me^{i\theta(n-m)}}{m!n!},\tag 6.4
+$$
+where $P_0,P_+,P_-$ are the perturbation series around the zero
+solution, the instanton, and the antiinstanton, respectively. 
+
+Here the term with indices $m,n$ comes from a field configuration 
+with $n$ instantons and $m$ antiinstantons, distant from each other. 
+The factorials in the denominator arise from the fact that instantons 
+and antiinstantons are not labeled, and their permutation does not change
+the configuration.  
+
+Summing (6.4) by ordinary calculus, we get
+$$
+Z(e^2,\theta,W)=e^{VP_0+W(P_+e^{i\theta}+P_-e^{-i\theta})}.\tag 6.5
+$$
+In our case, $P_+=P_-=P$, so we get
+$$
+Z(e^2,\theta,W)=e^{VP_0+2WP\cos\theta}.\tag 6.6
+$$
+
+Now we can compute the energy density of the vacuum in this approximation. 
+This can be done from the equality $Z=e^{-VE_{vac}}$, which is 
+the definition of the vacuum energy density $E_{vac}$. Thus, 
+$$
+E_{vac}=-P_0-2Pe^{-I}\cos\theta.\tag 6.7
+$$
+As we expected, the theta-dependence is exponentially suppressed, but we were 
+able to compute the main term of this dependence. 
+
+The next order correction to (6.7) is of order $e^{-2I}$, but it 
+is hard to calculate. But if we had an instanton for $c_1=2$ with
+$I'<2I$, then the correction would be of the form $e^{-2I'}\cos 2\theta$.  
+
+We see that unlike the case $m^2>>0$, where $E_{vac}=e^2\theta^2/8\pi^2$
+is a non-smooth function of $\theta$ (it has a cut at $\theta=\pm \pi$), 
+in the case $m^2<<0$ the function $E_{vac}(\theta)=-P_0+2Pe^{-I}\cos\theta$
+is smooth in the first approximation. Thus, for $m^2<<0$ there is no cut 
+at $\theta=\pm \pi$, and there is a mass gap and a unique vacuum for any 
+$\theta$. 
+
+Thus, the cut at $\theta=\pm \pi$ has to add at some point $m^2=m^2_c\in \R$.  
+At this point the effective potential of the theory (if it makes sense) 
+has a quartic critical point at the origin, so that the theory has no 
+mass gap. It is conjectured that this theory is conformal, and is the 
+continuous limit of the 2-dimensional Ising model. 
+
+{\bf 6.6. The Wilson line operator.}
+
+In this and subsequent sections we will define the Wilson line operator, 
+and try to understand its physical and formal properties. 
+
+Suppose we have a gauge theory with gauge group $G$ on a spacetime $M$. 
+Let $A$ denote the corresponding gauge field with values in the Lie algebra 
+$\g$ of $G$. Let $C$ be a closed loop in $M$, and $Hol(A,C)\in G$ be the 
+holonomy of the connection $A$ along $C$ (it is only defined up to 
+conjugation). Let $R$ be a finite-dimensional representation of $G$. 
+Define the classical Wilson line (or Wilson loop) functional to be
+$$
+W_R(C)(A)=\Tr|_R(Hol(A,C)).\tag 6.8
+$$
+It is clear that this functional is gauge invariant. 
+
+If $C$ is a union of disconnected loops $C_i$ labeled with representations
+$R=(R_i)$, then by definition $W_R(C)=\prod W_{R_i}(C_i)$. 
+
+If $G$ is abelian, and $C$ is cotractible, then 
+$W_R(C)=e^{i\int_D F}$, where $F$ is the curvature of $A$, and 
+$D$ is a disk such that $\d D=C$. 
+
+An important generalization of this is the following: 
+$\hat G$ is the simply-connected cover of $G$, and $R$ is 
+a representation of the universal covering 
+$\hat G$ of $G$. In this case it is easy to see that 
+$W_R(C)$ is still well-defined when $C$ bounds a disk $D$. 
+(in the abelian case, it follows from the above integral representation
+of $W$). 
+
+Now we want to define an analogue of $W_R(C)$ in quantum theory. 
+For this purpose we need to renormalize the classical functional
+$W_R(C)$. This can be done by expanding $W_R(C)$ in powers of $A$ 
+(like the exponential is expanded in Taylor series):
+$$
+W_R(C)=\text{dim}(R)+\int dl\Tr|_R(A(l))+
+\frac{1}{2}\int dl dl'\Tr|_R(A(l)A(l'))+...,\tag 6.9
+$$
+where $l$ is some parameter on $C$, and 
+$A(l)$ is the evaluation of the form $A$ on the 
+tangent vector $\frac{d}{dl}$ to $C$ at the point $l$, with respect to this 
+parametrization. Each term of this expansion
+is polynomial and can be renormalized as usual. 
+
+In fact, one can show in most cases that 
+the operator $W_R(C)$ has only multiplicative renormalization. 
+This follows from the fact that classically, 
+$W_R(C)$ is the trace of the monodromy of the differential equation
+$x'=Ax$ along the loop. This equation is renormalized to
+$x'=(A+c)x$, where $c$ is an operator in the theory, invariant
+under the same symmetries as $A$, in the adjoint representation of 
+the gauge group, of dimension the same and lower than $A$. If there is
+no such operators except for constants 
+(constants come up for the $U(1)$-case)
+then this equation will change to $x'=(A+c)x$ under 
+renormalization, where $c$ is a scalar operator. This shows that $W_R(C)$ 
+will have multiplicative renormalization. 
+
+More precisely, one can show 
+that in critical dimension 4, the divergent renormalization 
+factor has the form $e^{L(C)\Lambda f(e^2)+o(\L)}$, 
+where $\L$ is the cutoff and $L(C)$ is the length of $C$, while 
+in the superrenormalizable case (in less than 4 dimensions), 
+the divergent factor has power growth with respect to $\L$.
+
+A more physical way of thinking of the Wilson loop operator 
+is the following. We will use the Hamiltonian picture. 
+Thus, $M=M_s\times \R$, where $M_s$ is the space manifold.
+The Hilbert space of the theory is then $\Cal H$ the space of functions on 
+$\Cal A$, where 
+$\Cal A$ is the space of gauge classes of connections on
+$M_s$. The space $\Cal H$ has the form $\Cal H=(\Cal H_0)^{\tilde G}$, 
+where $\Cal H_0$ is the space of functions on all connections, 
+and $\tilde G$ is the group of  gauge transformations.
+ 
+Now let $C$ be a loop in $M$. 
+Suppose first that the loop $C$ is in the submanifold 
+$t=0$. In this case, the Wilson loop operator is obviously just 
+the operator of multiplication by the function $W_R(C)$. 
+
+Now consider the situation when $C$ is not in a horizontal section 
+of the spacetime, but a general curve. In this case, $W_R(C)$ 
+is no longer multiplication by a function.
+
+  {\bf Remark. } 
+We think of $C$ as a worldline of a ``charge'' 
+which transforms in a representation $R$. The best is to think 
+of two charges of type $R,R^*$ which are born at some time $t_0$ from nothing 
+at the same point $x_0$, then fly around for a while (until $t_1$), and finally
+recombine at the time $t_1$, back into nothing, at a point $x_1$. 
+We think of these charges as classical, external objects. That is,
+the expectations in the presence of $C$ are conditional 
+expectations, given that the worldlines of the charges form the loop $C$. 
+In this setting, we can regard $e^{iH(t_1-t_0)}W_R(C)$ 
+as the evolution operator from time $t_0$ to time $t_1$, in the 
+system with presence of $C$ (here $H$ is the Hamiltonian 
+of the system). 
+
+The operator $W_R(C)$ allows us to define the time ordered correlation
+functions in the presence of $C$ for any set of local operators at points 
+$(x,t)$ such that $t\notin [t_0,t_1]$, simply as correlation functions with 
+the insertion of $W_R(C)$ in the right place. 
+But what should we do for $t_0<t<t_1$? 
+
+The most natural method is to set the Hilbert space of states 
+at $t$ to be $\Cal H(t)=(\Cal H_0\o R(x(t))\o R^*(y(t)))^{\tilde G}$,
+where $R(x)$, $R^*(y)$ are the evaluation representations of the group 
+$\tilde G$ at the points $x.y$, and $x(t),y(t)$ are the positions
+of the two charges at the time $t$. 
+Define operators $W_R(C_+(t)): \Cal H\to \Cal H(t)$, $W_R(C_-(t)): 
+\Cal H(t)\to \Cal H$ 
+-- the Wilson ``open line'' operators corresponding to the upper and lower
+half-loops $C_+(t),C_-(t)$ (the parts of $C$ lying above and below time $t$). 
+The definition of the ``open line'' operators similar to the definition 
+of the closed loop operators. 
+Now, the expectation value of
+a local operator $\O(x,t)$ in the presence of $C$ is just the usual 
+expectation value of the operator $W_R(C_+(t))\phi(x,t)W_R(C_-(t))$.
+
+{\bf 6.7. The path integral representation of the Wilson line operator.}
+
+It is convenient to represent the classical Wilson line functional 
+as a 1-dimensional path integral. Such a representation
+ will be deduced in this section. 
+
+Let $R$ be an irreducible, finite-dimensional representation of a  
+simple compact Lie group $G$. By Borel-Weil theory, we can think of $R$ 
+as $H^0(G/T,\Cal L_R)$, where $\Cal L_R$ is a suitable holomorphic 
+line bundle. The bundle $\Cal L_R$ has a natural Hermitian metric, 
+and therefore a natural connection $B$. For any map $\phi: S^1\to G/T$, 
+define the action $I_R(\phi)=-\ln \text{Hol}(\phi^*(B))$ (Hol is for holonomy).
+The number $I_R$ is only defined up to $2\pi in$, but 
+$e^{-I_R(\phi)}=\text{Hol}(\phi^*(B))$ is well defined. 
+
+Consider the path integral
+$$
+\int D\phi e^{-I_R(\phi)}.\tag 6.10
+$$
+It can be represented in the form
+$$
+\int D\phi e^{i\int_D \phi^*(F_B)},\tag 6.11
+$$
+where $F_B$ is the curvature of $B$, and $D$ is a disk whose boundary
+is the image of $S^1$. 
+The quantum theory defined by this path integral is the Hilbert space $R$ 
+with the zero Hamiltonian (as the path integral is invariant under 
+diffeomorphisms). 
+
+Now let $P$ be the total space of 
+a principal $G$-bundle over the circle, 
+with a connection $A$, and let $P/T$ be the 
+associated $G/T$ bundle. Since $\Cal L$ is a $G$-equivariant line bundle 
+on $G/T$, it defines a complex line bundle on $P$, which we denote by 
+$\Cal L_P$. The hermitian connection $B$ on $\Cal L$ defines a 
+connection on $\Cal L_P$ in the vertical direction (along fibers of $P$). 
+This connection can be naturally extended to a connection $B_P$ on $\Cal L_P$ 
+using the connection $A$: in a local gauge where $P$ is trivial and $A=0$, 
+$B$ is extended by the condition that constant paths   
+are horizontal paths.
+
+For any smooth section $\phi$ of $P/T$, define the action
+$$
+I(\phi,A)=-\ln \text{Hol}(\phi^*(B_P)).\tag 6.12
+$$
+As before, $I$ is defined up to $2\pi i n$. 
+
+Let $W_R(A)$ denote the trace in $R$ of the holonomy of $A$ around 
+the circle. 
+It is now easy to see that the functional $W_R(A)$ has the following 
+integral representation: 
+$$
+W_R(A)=\int_{\phi\in \Gamma(P/T)}e^{-I(\phi,A)}D\phi.\tag 6.13
+$$
+
+Now let $C$ is a loop in $M$, and $A$ is a connection in a principal 
+$G$-bundle $P$ over $M$. Let $f: S^1\to C$ be a parametrization.
+Then we have
+$$
+W_R(C)(A)=\int_{\phi\in \Gamma(f^*P/T)}e^{-I(\phi,f^*A)}D\phi.\tag 6.14
+$$
+
+This gives an integral representation of the Wilson line operator.
+This representation allows us to represent the theory in the presence of $C$
+(for instance, for pure gauge theory) by a double path integral
+$$
+\int DAD\phi e^{-\frac{1}{4e^2}\int \Tr |F^2|-I(\phi,A)}.\tag 6.15
+$$
+
+ {\bf Remark.} 
+Note that the integrand of (6.13),(6.14) is the holonomy of an abelian 
+connection, so it can be explicitly computed as the exponential 
+of the integral of curvature. This, we have represented the monodromy 
+of an arbitrary linear differential equation on the circle 
+as an explicit integral over infinitely many auxiliary 
+variables. It is well known in classical analysis 
+that such a reopresentation with finitely many auxiliary variables
+is, in general, impossible: it is only possible for some special 
+equations of ``hypergeometric'' type. 
+
+{\bf 6.8. The Higgs and the confinement regimes.} 
+
+Consider a Wilson loop which is approximately a rectangle: 
+two charges are born, move away from each other at distance $L$, 
+stay at that distance from each other for a time $T>>L$, and then 
+annihilate each other. Then 
+The expectation value $\<W_R(C)\>$ of the Wilson loop operator 
+(in the Euclidean setting) has the following meaning: it is approximately 
+equal to $Ce^{-TV(L)}$, 
+where $V(L)$ is the energy of interaction of the charges
+at distance $L$, and $C$ is a constant. 
+This is clear from the interpretation of the Wilson 
+loop operator as an evolution operator, which is given above. 
+
+So the asymptotics of $\<W_R(C)\>$ depends on the asymptotics 
+of $V(L)$ as $L\to \infty$. 
+
+Physicists believe that above 2 dimensions, in gauge theories 
+with a mass gap, there are
+two possibilities:
+
+1. Higgs regime: $V{L}\to \text{const}, L\to \infty$.
+
+In this regime, charges can separate from each other. 
+
+2. Confinement regime: $V(L)\sim \text{const}L$ as $L\to \infty$,
+where the constant is positive. 
+
+In this regime charges are confined, and cannot separate without 
+spending an arbitrarily large amount of energy. 
+
+Now let us consider a Wilson loop $C$ of any shape, with circumference $S$ and 
+minimal area of the spanning surface $A$. 
+There is a general conjecture that patterns 1 and 2, if they hold
+for $T>>L>>0$, hold for an arbitrary $C$ (large in all directions) 
+in the following form:
+the Higgs regime corresponds
+to the asymptotics
+$\<W_R(C)\>\sim e^{-wS}$ (the circumference law), 
+and the confinement regime corresponds
+to the asymptotics $\<W_R(C)\>\sim e^{-wA}$ (the area law), where $w>0$. 
+
+{\bf Remark.} Actually, confinement can only occur if
+$R$ is a representation of the universal cover $\hat G$ of $G$ and not 
+of $G$ itself. Indeed, if $R$ is a representation of $G$, 
+there are physical processes contributing to $\<W_R(C)\>$ 
+in which large portions of the Wilson line have zero charge
+(i.e. carry the trivial representation of $G$)
+(i.e. some particles have annihilated the charges on the Wilson line).
+These processes have an amplitude which is bigger than that
+predicted by the area law. 
+ 
+As a toy example, let us consider the 2-dimensional theory with Lagrangian
+(6.1), which we studied in the first part of the lecture. 
+In this case, $G=U(1)$. Let $R$ be the representation of $\hat G$ defined by 
+$\l\in \R$: $x\to e^{i\l x}$. Then, classically, 
+$W_R(C)=e^{i\l\int_D F_A}$. 
+Thus, quantum mechanically
+$$
+\<W_R(C)\>=\int DAD\phi D\bar\phi e^{-\Cal L}e^{i\l\int_D F}. \tag 6.16
+$$ 
+Let $V$ be the volume of spacetime, and $A_C$ be the area 
+enclosed by $C$. We will split the path integral (6.16) 
+into a product of two -- the integral over values
+of fields inside the loop $C$ and over the values outside. 
+Observe that the last factor in (6.16) 
+(the holonomy factor) is 
+of the same type as the topological term in (6.1).
+Therefore, according to the results 
+of the first part of this lecture, (6.16) yields
+$$
+\<W_R(C)\>= \frac{1}{Z}e^{-(V-A_C)E(\theta)-A_CE(\theta+\l)},\tag 6.17
+$$
+up to boundary terms, which we will neglect here. 
+(Here $E(\theta)$ is the vacuum energy density). 
+Since $Z=e^{-VE(\theta)}$, we get
+$$
+\<W_R(C)\>=e^{A_C(E(\theta)-E(\theta+\l))}.\tag 6.18
+$$
+
+According to our calculations, for $\theta=0$
+$$
+E(\theta+\l)-E(\theta)=E(\l)-E(0)=2(1-cos \l)e^{-I/e^2}P. \tag 6.19
+$$
+This is always positive when $\l$ is not a multiple of $2\pi$. Thus,  
+theory (6.1) for $\theta=0$ exhibits the confinement regime. 
+
+In more than 2 dimensions, one expects that this theory obeys Higgs 
+regime. 
+
+{\bf 6.9. The confinement conjecture.}
+
+The following conjecture is central in quantum field theory.
+
+\proclaim{Conjecture} Let $G$ be a simple compact Lie group,
+and $R$ be a representation of $G$ which is not a 
+representation of the adjoint group $G_{ad}$. In 3 and 4 dimensions, 
+the pure gauge theory with gauge group $G$ and Lagrangian
+$\int \Tr F\wedge *F$ exhibits confinement
+for charges with values in $R$ and $R^*$.
+\endproclaim
+
+The physically interesting case of this theory is $G=SU(3)$, $R=\C^3$. 
+This special case of the conjecture would explain confinement of quarks. 
+
+In 2 dimensions, this conjecture is true, as we saw in the previous lectures. 
+
+
+
+
+\end
+

@@ -1,0 +1,2057 @@
+%% This is a plain TeX file
+%%
+\magnification=1200
+\hsize=6.5 true in
+\vsize=8.7 true in
+\input epsf.tex
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\font\eightrm=cmr8
+\font\sevenrm=cmr7
+\font\sixrm=cmr6
+\font\fiverm=cmr5
+\font\eighti=cmmi8
+\font\sixi=cmmi6
+\font\fivei=cmmi5
+\font\eightsy=cmsy8
+\font\sixsy=cmsy6
+\font\fivesy=cmsy5
+\font\tenex=cmex10
+\font\eightit=cmti8
+\font\eightsl=cmsl8
+\font\eighttt=cmtt8
+\font\eightbf=cmbx8
+\font\sixbf=cmbx6
+\font\fivebf=cmbx5
+\font\eightmsb=msbm8
+\font\sixmsb=msbm6
+
+\def\eightpoint{\def\rm{\fam0\eightrm}% switch to 8-point type
+\textfont0=\eightrm \scriptfont0=\sixrm 
+\scriptscriptfont0=\fiverm
+  \textfont1=\eighti \scriptfont1=\sixi 
+\scriptscriptfont1=\fivei
+  \textfont2=\eightsy \scriptfont2=\sixsy 
+\scriptscriptfont2=\fivesy
+  \textfont3=\tenex \scriptfont3=\tenex 
+\scriptscriptfont3=\tenex
+  \textfont\itfam=\eightit  \def\it{\fam\itfam\eightit}%
+  \textfont\slfam=\eightsl  \def\sl{\fam\slfam\eightsl}%
+  \textfont\ttfam=\eighttt  \def\tt{\fam\ttfam\eighttt}%
+  \textfont\bffam=\eightbf  \scriptfont\bffam=\sixbf
+ \scriptscriptfont\bffam=\fivebf  \def\bf{\fam\bffam\eightbf}%
+  \normalbaselineskip=9pt
+  \setbox\strutbox=\hbox{\vrule height7pt depth2pt width0pt}%
+  \let\sc=\sixrm  \normalbaselines\rm}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\font\dotless=cmr10 %for the roman i or j to be
+                    %used with accents on top.
+                    %(\dotless\char'020=i)
+                    %(\dotless\char'021=j)
+\font\itdotless=cmti10
+\def\itumi{{\"{\itdotless\char'020}}}
+\def\itumj{{\"{\itdotless\char'021}}}
+\def\umi{{\"{\dotless\char'020}}}
+\def\umj{{\"{\dotless\char'021}}}
+\font\smaller=cmr5
+\font\boldtitlefont=cmb10 scaled\magstep2
+\font\smallboldtitle=cmb10 scaled \magstep1
+\font\ninerm=cmr9
+\font\dun=cmdunh10 %scaled\magstep1
+
+\footline={\hfil {\tenrm VI.\folio}\hfil}
+
+\def\eps{{\varepsilon}}
+\def\Eps{{\varepsilon}}
+\def\kap{{\kappa}}
+\def\lam{{\lambda}}
+\def\Lam{{\Lambda}}
+\def\mynabla{{\nabla\!}}
+
+\def\Bmu{{B_{\mu\nu}}}
+\def\Gmu{{G_{\mu\nu}}}
+
+\def\xdot{{\dot x}}
+\def\xddot{{\ddot x}}
+
+\def\undertext#1{$\underline{\vphantom{y}\hbox{#1}}$}
+\def\nspace{\lineskip=1pt\baselineskip=12pt%
+     \lineskiplimit=0pt}
+\def\dspace{\lineskip=2pt\baselineskip=18pt%
+     \lineskiplimit=0pt}
+
+\def\half{\raise4.5pt\hbox{{\vtop{\ialign{##\crcr
+  \hfil\rm $1$\hfil\crcr
+   \noalign{\nointerlineskip}--\crcr
+   \noalign{\nointerlineskip\vskip-1pt}$2$\crcr}}}}}
+\def\third{\raise4.5pt\hbox{{\vtop{\ialign{##\crcr
+  \hfil\rm $1$\hfil\crcr
+  \noalign{\nointerlineskip}--\crcr
+  \noalign{\nointerlineskip\vskip-1pt}$3$\crcr}}}}}
+\def\fourth{\raise4.5pt\hbox{{\vtop{\ialign{##\crcr
+  \hfil\rm $1$\hfil\crcr
+  \noalign{\nointerlineskip}--\crcr
+  \noalign{\nointerlineskip\vskip-1pt}$4$\crcr}}}}}
+\def\sixth{\raise4.5pt\hbox{{\vtop{\ialign{##\crcr
+  \hfil\rm $1$\hfil\crcr
+  \noalign{\nointerlineskip}--\crcr
+  \noalign{\nointerlineskip\vskip-1pt}$6$\crcr}}}}}
+\def\eighth{\raise4.5pt\hbox{{\vtop{\ialign{##\crcr
+  \hfil\rm $1$\hfil\crcr
+  \noalign{\nointerlineskip}--\crcr
+  \noalign{\nointerlineskip\vskip-1pt}$8$\crcr}}}}}
+
+\def\w{{\mathchoice{\,{\scriptstyle\wedge}\,}
+  {{\scriptstyle\wedge}}
+  {{\scriptscriptstyle\wedge}}{{\scriptscriptstyle\wedge}}}}
+\def\Le{{\mathchoice{\,{\scriptstyle\le}\,}
+{\,{\scriptstyle\le}\,}
+{\,{\scriptscriptstyle\le}\,}{\,{\scriptscriptstyle\le}\,}}}
+\def\Ge{{\mathchoice{\,{\scriptstyle\ge}\,}
+{\,{\scriptstyle\ge}\,}
+{\,{\scriptscriptstyle\ge}\,}{\,{\scriptscriptstyle\ge}\,}}}
+\def\plus{{\hbox{$\scriptscriptstyle +$}}}
+\def\xdot{\dot{x}}
+\def\Condition#1{\item{#1}}
+\def\Firstcondition#1{\hangindent\parindent{#1}\enspace
+     \ignorespaces}
+\def\Proclaim#1{\medbreak
+  \medskip\noindent{\bf#1\enspace}\it\ignorespaces}
+\def\finishproclaim{\par\rm
+     \ifdim\lastskip<\smallskipamount\removelastskip
+     \penalty55\medskip\fi}
+\def\Item#1{\par\smallskip\hang\indent%
+  \llap{\hbox to\parindent {#1\hfill\enspace}}\ignorespaces}
+\def\vrulesub#1{{\,\vrule height7pt depth5pt}_{\,#1}}
+\def\underbrake#1#2{\mathop{#1}\limits_{\raise3pt
+  \hbox{%
+\vrule height 3pt depth 0pt
+  %\kern.1pt
+  \hbox to #2{\hrulefill}
+  \kern-3.4pt
+  \vrule height 3pt depth 0pt}}}
+
+
+\def\Diff{{\rm Diff}}  \def\expt{{\rm expt}}
+\def\cm{{\rm cm}} \def\SO{{\rm SO}}
+\def\mass{{\rm mass}} \def\diag{{\rm diag}}
+\def\Weyl{{\rm Weyl}} 
+
+\def\cbar{\bar{c}}
+\def\bbar{\bar{b}}
+\def\epsbar{\bar{\varepsilon}}
+\def\Gammabar{\bar{\Gamma}}
+\def\Sbar{\bar{S}}
+
+
+\def\Ptil{\widetilde{P}}
+\def\betatil{\tilde{\beta}}
+
+\def\dbR{{\Bbb R}}
+
+%These two files (in this order!!) are necessary
+%in order to use AMS Fonts 2.0 with Plain TeX
+
+\input amssym.def
+\input amssym.tex
+
+%Capital roman double letters(Blackboard bold)
+\def\db#1{{\fam\msbfam\relax#1}}
+
+\def\dbA{{\db A}} \def\dbB{{\db B}}
+\def\dbC{{\db C}} \def\dbD{{\db D}}
+\def\dbE{{\db E}} \def\dbF{{\db F}}
+\def\dbG{{\db G}} \def\dbH{{\db H}}
+\def\dbI{{\db I}} \def\dbJ{{\db J}}
+\def\dbK{{\db K}} \def\dbL{{\db L}}
+\def\dbM{{\db M}} \def\dbN{{\db N}}
+\def\dbO{{\db O}} \def\dbP{{\db P}}
+\def\dbQ{{\db Q}} \def\dbR{{\db R}}
+\def\dbS{{\db S}} \def\dbT{{\db T}}
+\def\dbU{{\db U}} \def\dbV{{\db V}}
+\def\dbW{{\db W}} \def\dbX{{\db X}}
+\def\dbY{{\db Y}} \def\dbZ{{\db Z}}
+
+\font\teneusm=eusm10  \font\seveneusm=eusm7 
+\font\fiveeusm=eusm5 
+\newfam\eusmfam 
+\textfont\eusmfam=\teneusm 
+\scriptfont\eusmfam=\seveneusm 
+\scriptscriptfont\eusmfam=\fiveeufm 
+\def\scr#1{{\fam\eusmfam\relax#1}}
+
+
+%Upper-case Script Letters:
+
+\def\scrA{{\scr A}}   \def\scrB{{\scr B}}
+\def\scrC{{\scr C}}   \def\scrD{{\scr D}}
+\def\scrE{{\scr E}}   \def\scrF{{\scr F}}
+\def\scrG{{\scr G}}   \def\scrH{{\scr H}}
+\def\scrI{{\scr I}}   \def\scrJ{{\scr J}}
+\def\scrK{{\scr K}}   \def\scrL{{\scr L}}
+\def\scrM{{\scr M}}   \def\scrN{{\scr N}}
+\def\scrO{{\scr O}}   \def\scrP{{\scr P}}
+\def\scrQ{{\scr Q}}   \def\scrR{{\scr R}}
+\def\scrS{{\scr S}}   \def\scrT{{\scr T}}
+\def\scrU{{\scr U}}   \def\scrV{{\scr V}}
+\def\scrW{{\scr W}}   \def\scrX{{\scr X}}
+\def\scrY{{\scr Y}}   \def\scrZ{{\scr Z}}
+
+\def\gr#1{{\fam\eufmfam\relax#1}}
+
+%Euler Fraktur letters (German)
+\def\grA{{\gr A}}	\def\gra{{\gr a}}
+\def\grB{{\gr B}}	\def\grb{{\gr b}}
+\def\grC{{\gr C}}	\def\grc{{\gr c}}
+\def\grD{{\gr D}}	\def\grd{{\gr d}}
+\def\grE{{\gr E}}	\def\gre{{\gr e}}
+\def\grF{{\gr F}}	\def\grf{{\gr f}}
+\def\grG{{\gr G}}	\def\grg{{\gr g}}
+\def\grH{{\gr H}}	\def\grh{{\gr h}}
+\def\grI{{\gr I}}	\def\gri{{\gr i}}
+\def\grJ{{\gr J}}	\def\grj{{\gr j}}
+\def\grK{{\gr K}}	\def\grk{{\gr k}}
+\def\grL{{\gr L}}	\def\grl{{\gr l}}
+\def\grM{{\gr M}}	\def\grm{{\gr m}}
+\def\grN{{\gr N}}	\def\grn{{\gr n}}
+\def\grO{{\gr O}}	\def\gro{{\gr o}}
+\def\grP{{\gr P}}	\def\grp{{\gr p}}
+\def\grQ{{\gr Q}}	\def\grq{{\gr q}}
+\def\grR{{\gr R}}	\def\grr{{\gr r}}
+\def\grS{{\gr S}}	\def\grs{{\gr s}}
+\def\grT{{\gr T}}	\def\grt{{\gr t}}
+\def\grU{{\gr U}}	\def\gru{{\gr u}}
+\def\grV{{\gr V}}	\def\grv{{\gr v}}
+\def\grW{{\gr W}}	\def\grw{{\gr w}}
+\def\grX{{\gr X}}	\def\grx{{\gr x}}
+\def\grY{{\gr Y}}	\def\gry{{\gr y}}
+\def\grZ{{\gr Z}}	\def\grz{{\gr z}}
+
+%\overfullrule=0pt
+
+\parindent=20pt
+\line{\dun --- DRAFT ---\hfill{\rm IASSNS-HEP-97/72}}
+
+\bigskip\bigskip
+\centerline{\boldtitlefont Lectures 9 and 10}
+\medskip
+\centerline{\smallboldtitle VI. Strings on General
+Manifolds}
+
+\medskip
+\centerline{Eric D'Hoker}
+
+\frenchspacing
+
+\dspace
+\bigskip
+In the preceding lectures, we have quantized strings
+in flat Minkowski space-time.
+The existence of a Hilbert space of physical string
+states (i.e. the consistent elimination
+of negative norm states)
+requires $\Weyl(\Sigma)$ and $\Diff(\Sigma)$
+invariance of the full quantum theory.
+This condition fixes the dimension of space-time to be
+$D=26$ and results in the appearance of massless spin
+$1$ and spin $2$ string states which behave like
+Yang-Mills particles and gravitons, respectively.
+The spectrum also contains massless dilatons and
+anti-symmetric tensor states.
+
+In the present lecture, we wish to extend the analysis
+of the consistent elimination of negative norm states
+to the case of arbitrary space-time manifolds, with
+general metric $G_{\mu\nu}$, anti-symmetric tensor
+$B_{\mu\nu}$ and dilaton $\Phi$, and possible other
+background fields.
+On physical grounds, we shall assume that the
+space-times of interest have Minkowski signature
+$(-,+,\cdots,+)$.
+For simplicity, we assume that the dimension of
+space-time $D$ is such that $D\Ge 4$ in order to avoid
+dealing with certain peculiarities that arise in
+$D=2,3$.
+We expect again that the space-time dimension $D$ will
+be fixed by the condition that all negative norm states
+be consistently eliminated.
+The precise value of $D$ where this happens may,
+however, depend on the background fields $G_{\mu\nu}$,
+$B_{\mu\nu}$ and $\Phi$, so we shall leave $D$ to be
+determined later on.
+We shall also assume that space-time $M$ has at least
+$2$ non-compact dimensions, including the time
+direction, so that scattering can be defined in $M$.
+
+Given the signature of the space-time manifold $M$,
+the Fock space of states produced by the quantization
+of the map $x$ will contain again negative norm
+states. 
+These states are to be eliminated before a
+Hilbert space of string states can be constructed.
+To achieve elimination of negative norm states, it
+is clearly necessary that the worldsheet 
+quantum field theory of
+the map $x$, defined in terms of the background
+$G_{\mu\nu}$, $B_{\mu\nu}$, $\Phi$ (and perhaps other
+fields), together with the Faddeev-Popov ghost fields
+$b$, $c$, $\bbar$, $\cbar$, be invariant under
+$\Diff(\Sigma)$ and $\Weyl(\Sigma)$ transformations.
+In this case, the BRST quantization scheme of \S{IV} may be
+set up, just as in the case of flat Minkowski $M$.
+
+For certain classes of space-time manifolds $M$, this
+condition can be shown to be also sufficient.
+When $M=\dbR^2\times M_{D-2}$, where $\dbR^2$
+includes the time direction, so that the metric $G$ on
+$M_{D-2}$ is positive, we have the usual Hilbert space
+construction for the states arising from the $M_{D-2}$ part
+of space-time, since these states have positive norm. 
+One can show that the BRST
+quantization scheme for all of $M$ leads to a Hilbert
+space.
+The proof proceeds by passing to the lightcone gauge
+variables, which may be defined for the $\dbR^2$ part
+of $M$ just as in the case of flat $M$.
+In lightcone gauge, only positive norm, physical states
+survive, and may be mapped onto BRST cohomology classes
+in a one-to-one fashion, just as for flat $M$.
+For more general $M$, I am not aware of a proof that
+a Hilbert space may be constructed, but it is
+generally believed to be the case, at least ``under
+certain conditions''.
+For example, a space-time $M$ with a black hole is
+expected to cause problems.
+
+Henceforth, we shall restrict to space-time manifolds
+$M$ and background fields, such that
+$\Weyl(\Sigma)\ltimes \Diff(\Sigma)$ invariance of the
+$x$, $b$, $c$, $\bbar$, $\cbar$ system leads to a
+Hilbert space. 
+Equivalently, the quantum field theory of the $x$
+field is a conformal field theory of central charge
+$c=26$.
+Thus, we have reduced the conditions of consistent string
+propagation in space-time manifolds $M$ background
+fields to a problem in quantum field theory: that of
+identifying and 
+parametrizing conformal field theories of the map $x$
+with central charge $c=26$.
+
+\bigskip\noindent
+\Item{\bf A)} {\bf Perturbation Theory Around General
+Field Configurations}
+
+Before launching into a study of the conditions for
+conformal invariance of the field
+theory of the map $x$ with general space-time $M$,
+general $G_{\mu\nu}$, $B_{\mu\nu}$, $\Phi$, (and
+possibly other background fields), we wish to clarify
+the physical significance of string quantization in
+non-flat background field configurations.
+We proceed by comparison with perturbation theory in
+quantum field theory (QFT).
+
+In QFT, we start with canonical fields $\phi$ and a
+classical action $S[\phi]$ which we assume to be
+independent of $\hslash$.
+Perturbation theory (in the loop expansion) is carried
+out by choosing a field configuration $\phi_0$, and
+expanding the field $\phi$ in powers of
+$\sqrt{\hbar\,\,}$: \
+$\phi=\phi_0+\sqrt{\hbar\,\,}\varphi$.
+The Feynman rules are then obtained by an expansion
+of the action $S[\phi]$ in powers of
+$\sqrt{\hbar\,\,}$:
+$$
+\matrix{\displaystyle
+{1\over\hslash}\,S[\phi] ={1\over\hslash}\,S[\phi_0] 
+  &\displaystyle\!\!\! +{1\over\sqrt{\hslash\,\,}}\int\varphi
+  {\delta S\over\delta\phi}\,[\phi_0]+\half
+  \int\!\!\!\int
+\varphi\varphi{\delta^2S\over\delta\phi^2}\,[\phi_0]\hfill
+\displaystyle +{\textstyle 1\over\textstyle 6}
+  \sqrt{\hslash\,\,}
+  \int\!\!\!\int\!\!\!\int\varphi\varphi\varphi\,{\delta^3
+S\over\delta\phi^3}\,[\phi_0]+\cdots\hfill\cr
+\noalign{\bigskip}
+\displaystyle 
+x\raise2pt\hbox to 35pt{\hrulefill}\!\bullet\hfill
+ &\qquad\displaystyle 
+{1\over\sqrt{\hslash\,\,}}{\delta S\over\delta\phi(x)}\,
+ [\delta_0]\hfill\cr
+\noalign{\bigskip}
+\displaystyle x \raise2pt\hbox to 35pt{\hrulefill} y\hfill
+&\qquad\displaystyle \left({\delta^2 S\over
+\delta\phi(x)\delta\phi(y)}\,
+  [\phi_0]\right)^{-1}\hfill\cr
+\noalign{\bigskip}
+\displaystyle x\raise2pt\hbox to 35pt{\hrulefill}
+\raise4pt\hbox{$\diagup$}\,\raise10pt\hbox{$y$} \kern-16pt
+\lower4.25pt\hbox{$\diagdown$}\,
+\lower8pt\hbox{$z$}\hfill &\qquad\displaystyle
+\sqrt{\hslash\,\,}{\delta^3 S\over
+\delta\phi(x)\delta\phi(y)\delta\phi(z)}\,[\phi_0]\hfill\cr
+&\vdots\hfill\cr}
+\kern-31pt\raise20pt\hbox{(6.A.1)}
+$$
+Both the Feynman rules for the $\varphi$ propagator
+and for the $\varphi$ interaction vertices depend upon
+the background field $\phi_0$ in a non-trivial way, as
+is evident from the Feynman rule expansion in (6.A.1).
+
+In string theory, we have no equivalent of the
+canonical field $\phi$ and of the classical action
+$S[\phi]$ that is as well understood as in QFT.
+(Many attempts at constructing a string field theory
+formulation have been made over the years, but have
+met with only limited success.)
+In string theory, our starting point consists only of 
+the Feynman rules,
+which are given in terms of a summation over surfaces
+$\Sigma$, and maps $\Sigma\to M$, and which yield on-shell
+transition amplitudes only.
+The r\^{o}le of $\phi_0$ in QFT is played in string
+theory by the background fields $\Gmu$,
+$\Bmu$ $\Phi$, and possibly other fields.
+And indeed, the Feynman rules of string theory depend
+upon these background fields, just as the Feynman
+rules of QFT depended upon $\phi_0$.
+
+Fortunately, much crucial physical information may be
+reconstructed from the Feynman rules: we already know
+that they yield the transition amplitudes for
+physical states, i.e. the $S$-matrix (at least in
+perturbation theory).
+In particular, it is clear from QFT that 
+certain transition amplitudes yield direct information
+on the background $\phi_0$.
+The most important one for our purposes is that {\it
+$\phi_0$ is a classical solution}, i.e. $\delta
+S/\delta\phi[\phi_0]=0$ if and only if all {\it
+tadpole graphs are zero to tree level}.
+The string theory equivalent of this criterion is that
+a given background field configuration $\Gmu$, $\Bmu$,
+$\Phi$ (and possibly other fields) are a {\it solution
+to the string equations of motion to tree level} (i.e.
+classically) {\it if and only if all tadpole graphs
+vanish}.
+This criterion gives us a powerful tool to investigate
+whether a certain configuration is a classical
+solution or not. 
+In QFT, we do not usually investigate the Feynman
+rules to decide whether a configuration $\phi_0$ is a
+solution, because we can directly check whether
+$\delta S/\delta\phi[\phi_0]$ vanishes or not.
+In string theory, this alternative is not available,
+at present.
+
+We have established previously that the existence
+of a Hilbert space of string states requires the map
+$x$ to define a conformal field theory of central
+charge $c=26$.
+It is a simple consequence of conformal invariance on
+the sphere (established for $x$ in flat space-time $M$
+in \S{III}) that the $1$-point function of any primary
+conformal field of weight
+$(1,1)$, describing an on-shell physical state,
+must vanish to tree level.
+Combining this result with that of the preceeding
+paragraph, we discover that if $x$ defines a conformal
+field theory of central charge $26$, for a certain
+background configuration $\Gmu$, $\Bmu$, $\Phi$, (and
+possibly other fields), then this configuration is a
+classical (tree level) solution to the string
+equation!
+In other words, demanding that the backgrounds $\Gmu$,
+$\Bmu$, $\Phi\,\,\,$, $\ldots$ define a $c=26$ CFT
+will enforce on $\Gmu$, $\Bmu$, $\Phi$ (and possibly
+other fields), 
+the string equations of motion and guarantee the
+existence of a Hilbert space of physical states.
+While in QFT, we knew the equations of motion for
+$\phi_0$ directly from the action, in string theory the
+equations on the background fields will be novel.
+
+We finish this subsection by noticing that other
+useful information may be obtained from the Feynman
+rules.
+First, a configuration $\Gmu$, $\Bmu$,
+$\Phi\,\,,\ldots$ is a solution to the full
+(perturbative) quantum string equations if the sum of
+all tadpoles cancels to all orders.
+This is in analogy with QFT, where a solution to the
+full (perturbative) quantum fields equations is an
+extremum of the full effective action, so that the sum
+of all tadpole graphs cancels.
+Secondly, the presence of tachyons in the spectrum
+signals that the background around which the
+perturbative expansion was formulated is not a local
+minimum.
+
+\vfill\eject
+
+\noindent
+\Item{\bf B)} {\bf Renormalization of Generalized
+Non-linear sigma Models}
+
+Let $M$ be a Riemannian manifold of dimension $D$,
+with metric $\Gmu$, and fields $\Bmu$, $\Phi$ defined
+in \S{I}.
+The starting point for string dynamics in the
+background of these fields is the generalized 
+non-linear sigma model action for the maps
+$x\colon\,\Sigma\to M$, given by $S=S_{G,B}+S_\Phi$ and
+$$
+\eqalign{
+S_{G,B}[x,g] &={1\over
+8\pi\ell^2}\int\nolimits_{\Sigma}d\mu_g \partial_m
+x^\mu\partial_n x^\nu\{g^{mn}\Gmu (x)+\varepsilon^{mn}
+\Bmu(x)\}\cr
+S_\Phi[x,g] &={1\over 2\pi}\int\nolimits_{\Sigma}
+  d\mu_g R_g\Phi(x)\cr}
+\eqno{(6.B.1)}
+$$
+Recall that the term involving $\Bmu$ is the pullback
+of a two form $B=\Bmu dx^\mu\w dx^\nu$ under the map
+$x$, written out in coordinates.
+Here, $\varepsilon^{mn}$ is the tensor defined by
+$$
+\varepsilon^{mn}\equiv\epsbar^{mn}/\sqrt{\det\,g_{pq}\,\,}
+\qquad\qquad
+\epsbar^{01}=-\epsbar^{10}=1\,\,.
+\eqno{(6.B.2)}
+$$
+We have re-exhibited the dependence on the string
+tension $\kappa$, introduced in \S{I} via the
+parameter $\ell$.
+It is standard
+notation to express $\kappa$ in terms of the {\it Regge 
+slope parameter} $\alpha'$; we find it convenient to
+use the Planck length scale $\ell$, instead, 
+with the following
+relations
+$$
+\kappa={1\over 4\pi\alpha'}={1\over
+8\pi\ell^2}\,\,,
+\qquad\qquad
+\alpha'=2\ell^2\,\,,\qquad \ell>0\,\,.
+\eqno{(6.B.3)}
+$$
+It is possible to include a further term in $S$
+corresponding to the dynamics of the tachyon 
+state, to which we shall associated the field $U$:
+$$
+S_U[x,g]={1\over 4\pi}\int\nolimits_{\Sigma}
+d\mu_g U(x)\eqno{(6.B.4)}
+$$
+
+Recall from Lecture 1 that the classical action $S$ is
+invariant under
+$$
+\matrix{
+{\rm (a)} &\quad \Diff(\Sigma)\hfill \cr
+\noalign{\bigskip}
+{\rm (b)} &\quad \Diff(M)\hfill \cr
+\noalign{\bigskip}
+{\rm (c)} &\quad
+U(1)_B  \hbox{ gauge invariance, acting by $B\to
+B+d\gamma$, for some $\gamma\in\Omega^{(1)}(M)$.}\cr}
+$$
+$\Weyl(\Sigma)$ transformations on $g$ leave $S_{G,B}$
+invariant, but will develop anomalies upon
+quantization.
+$S_\Phi$ and $S_U$ fail to be Weyl invariant, even
+classically.
+
+We naturally have two notions of dimension in the
+problem:
+the worldsheet or $\Sigma$-dimension, and the
+space-time or $M$-dimension. 
+The $\Sigma$-dimension of
+$x$, $g$, $G$, $B$, $\Phi$ and $\ell$ vanishes, while
+that of $\partial$ and $R_g$ is $1$ and $2$,
+respectively.
+The $M$-dimension of $x$ and $\ell$ is $-1$, and
+that of $g$, $G$, $B$, $\Phi$ vanishes.
+
+We begin by discussing the renormalization of the
+quantum field theory defined by $S$, for general
+fields $\Gmu$, $\Bmu$, $\Phi$.
+We shall not discuss here the effects of including the
+tachyon field in $S$.
+We shall see that in certain regularization schemes,
+such as dimensional regularization, its contribution
+can be ignored.
+Also, in the superstring, the tachyon will be absent
+anyway.
+
+\Proclaim{\rm 1) {\it Low Energy or $\alpha'$-expansion}.}
+\finishproclaim
+
+The parameter $\ell$ is a very small length-scale (see
+Prob. 5), compared to scales accessible at present
+(whose order of magnitude we denote by $L_{\expt}$)
+$$
+\ell\sim 10^{-33}\cm\qquad\qquad\qquad\qquad
+L_{\expt}\sim 10^{-17}\cm\,\,.\eqno{(6.B.5)}
+$$
+Thus, we consider the quantum theory defined by $S$ in
+an expansion in powers of $\ell$ (or equivalently
+in powers of $\alpha'$), and we
+are guaranteed that this approximation will be
+reliable if we just retain the leading contributions.
+The $\alpha'=2\ell^2$ expansion is an expansion in increasing
+powers of $M$-derivatives on the fields, hence the name
+{\it low-energy expansion}.
+
+If it were only for $S_{G,B}$, the parameter
+$\ell^2$ would play
+precisely the same r\^{o}le as $\hbar$ plays in quantum field
+theory, and the expansion is powers of $\ell$ would
+yield a loop expansion.
+$S_\Phi$ has a different dependence in $\ell$ though,
+as each factor of $\Phi$ effectively contributes an
+extra factor of $\ell^2$, and this
+will rearrange the orders of the loop expansion.
+Perturbation theory may be carried out as usual by
+letting $x=x_0+\ell y$ for some fixed reference
+configuration $x_0$.
+Expansion of the fields $G$, $B$, $\Phi$, for example
+of
+$$
+\Gmu(x)=\Gmu(x_0)+\ell\partial_\kap\Gmu(x_0)y^\kap
++\half \ell^2\partial_\kap\partial_\lam\Gmu
+(x_0)y^\kap y^\lam+\cdots
+\eqno{(6.B.6)}
+$$
+reveals that $S$ is a quantum field theory with an
+infinite number of couplings.
+It is seen from (6.B.6) that the independent couplings
+of this quantum field theory correspond to the
+successive derivatives of the fields $G$, $B$ and
+$\Phi$ at the expansion point $x_0$.
+
+\vfill\eject
+
+\Proclaim{\rm 2) {\it Regularization schemes}.}
+\finishproclaim
+
+It is possible to choose regularization schemes that
+preserve the classical symmetries $(\Diff(\Sigma),
+\Diff(M), U(1)_B)$ of $S$.
+We shall always assume that such a regulator is used,
+and give here two examples.
+It is of course not possible to choose a
+regularization scheme that also preserves
+$\Weyl(\Sigma)$ invariance.
+This failure precisely results in the appearance of the
+Weyl anomaly as was already discovered for flat $M$ and
+vanishing $B$ and $\Phi$ in \S{IV}.
+
+\medskip\noindent
+a)\enspace
+Dimensional regularization consists in replacing the
+dimensionlity of $\Sigma$ by an arbitrary complex number
+$2-\eps$, and multiplying the action $S$ by a factor of
+$\Lam^{-\eps}$. 
+Here $\Lam$ is the dimensional 
+regularization renormalization scale with
+$\Sigma$-dimension $1$.
+Dimensional regularization has the advantage that it
+never generates quadratic divergences, so that if we start
+with $S_U=0$ (no contribution of the
+tachyon to the action), then no tachyon dependence will ever
+be generated upon renormalization.
+Dimensional regularization has the disadvantage that
+the $\Eps^{mn}$ tensor of (6.B.2) is specifically
+$2$-dimensional, so that an additional ad hoc
+prescription for its regularization 
+must be provided, and the results should be verified using the
+Ward identities to make sure that the ad hoc
+prescription is consistent with all symmetries.
+
+\medskip\noindent
+b)\enspace
+Heat-kernel methods have already been used in the
+definition of determinants resulting from Gaussian
+quantum theories.
+They may also be used for QFT with non-trivial
+interactions by 
+replacing its propagator by the heat-kernel
+regularization propagator.
+Let $\Delta_0$ be the second order operator on the
+field $y$ at
+$x_0$, and $\Delta_0^{-1}$ the associated propagator
+for $y$.
+We define the heat-kernel propagator by using a small
+real constant $\eta>0$:
+$$
+\Delta_\eta^{-1}=\Delta_0^{-1}\cdot
+e^{-\Delta_0\eta^2}\,\,.\eqno{(6.B.7)}
+$$
+
+\Proclaim{\rm 3) {\it $\Diff(M)$ and $U(1)_B$ invariant
+renormalization}.}
+\finishproclaim
+
+Since $x$ and $y$ have zero $\Sigma$-dimension, all
+terms listed in (6.B.1) for
+$S$ have $\Sigma$-dimension $2$ and thus $S$
+is power counting renormalizable.
+Under the renormalization group flow, the change in
+each one of the infinite number of coupling constants
+(i.e. the Taylor coefficients of the expansion of
+$G$, $B$, $\Phi$ in powers of $y$ as shown for $G$ in
+(6.B.6)) 
+will be given by a beta function associated with that
+coupling constant.
+An infinite number of renormalization conditions is
+required to specify the initial condition of the
+theory completely.
+These conditions amount to providing the functions
+$\Gmu(x)$, $\Bmu(x)$ and $\Phi(x)$ at some reference
+renormalization scale which we denote by $\Lam_0$.
+For the metric, for example, the renormalization group
+equations will read:
+$$
+\cases{
+\Lam{d\over d\Lam}\Gmu(x)=\beta_{\mu\nu}(x) &\cr
+\noalign{\bigskip}
+\Gmu(x)\vrulesub{\Lam_0}=\Gmu^0(x) &\cr}
+\eqno{(6.B.8)}
+$$
+Here $\beta_{\mu\nu}(x)$ depends on $x$ only through
+the dependence of $\beta_{\mu\nu}$ on the fields
+$G_{\mu\nu}$, $B_{\mu\nu}$ and $\Phi$, as well as the
+derivatives of these fields.
+
+Now, we impose upon the renormalization procedure that
+it preserve the $\Diff(M)$ and $U(1)_B$ invariance of $S$.
+The existence of a regulator that preserves these
+symmetries guarantees that there will be no anomalies
+in these symmetries.
+This implies that $\beta_{\mu\nu}$ must be a
+$U(1)_B$-invariant, symmetric rank $2$ $\Diff(M)$ tensor.
+Similarly for the $\beta$-functions of the fields $B$
+and $\Phi$.
+
+We conclude with a remark on the nature of the
+renormalizability of the action $S$.
+Customarily, renormalizable QFT's are power counting
+renormalizable, but depend only upon a finite number of
+input parameters, which may be viewed as initial
+conditions on the renormalization group equations.
+In four dimensional QFTs of particle dynamics, the
+fact that only a finite number of input parameters is
+needed renders the theory physically predictive.
+Indeed, once those parameters have been determined
+(even approxiamtely), the theory is specified and all
+physical quantities are in principle calculable.
+Here, however, the number of input parameters in the
+theory of action $S$ is infinite.
+In string theory, this is precisely what is needed in
+order to be able to formulate string theory in infinite
+dimensional families of backgrounds, which will
+correspond to solutions to string equations of motion.
+
+\Proclaim{\rm 4) {\it Irrelevance of Higher Mass Couplings}.}
+\finishproclaim
+
+The fields $\Gmu$, $\Bmu$, $\Phi$ are associated with
+the graviton, anti-symmetric tensor and
+dilaton states in string theory, respectively. 
+Those are precisely all the {\it massless states} of the
+bosonic string.
+A natural question arises as to whether fields
+associated with {\it massive string states} should
+also be included in $S$.
+In other words, we wish to find out whether $S$ 
+is the most general action possible for the dynamics of
+bosonic string theory.
+
+Using the correspondence (established in \S{II})
+between variations in the
+background fields (such as $\Gmu$, $\Bmu$ and $\Phi$) and
+vertex operators for the associated physical states,
+we may infer the structure of possible contributions
+to $S$ from massive states, directly from the
+corresponding vertex operators.
+A vertex operator of a string state of
+square mass $M^2=-2+2p$ is of the form
+$$
+V(\eps,k)=\int\nolimits_{\Sigma}d\mu_g
+\Eps_{\mu_1\ldots\mu_{2p}}(k)
+P^{\mu_1\ldots\mu_{2p}}(\partial x,
+\partial^2x,\ldots;k)e^{ik\cdot x}
+\eqno{(6.B.9)}
+$$
+where $\Eps$ is a polarization tensor characterizing
+the string state and $P$ is a
+polynomial of degree $2p$ in derivatives on $x$, so
+that $P$ has $\Sigma$-dimension $2p$.
+Denoting the field associated with this state by $E_{\mu_1
+\ldots\mu_{2p}}(x)$, the contribution to the action 
+$S$ will take the form
+$$
+S_E[x,g]=\int\nolimits_{\Sigma}d\mu_g\,E_{\mu_1\ldots
+\mu_{2p}}(x)\Ptil^{\mu_1\ldots\mu_{2p}}(\partial x,
+\partial^2 x,\ldots\,)\,\,.
+\eqno{(6.B.10)}
+$$
+Here $\Ptil$ is again a polynomial of worldsheet
+dimension $2p$.
+For $p=0$, we recover the tachyon action, which we
+omit.
+For $p=1$, we recover the action $S$, associated with
+massless string states.
+
+For $p\Ge 2$, $S_E$ produces a non-renormalizable, or
+{\it irrelevant}, contribution to the worldsheet action.
+Addition of $S_E$ to $S$ yields a quantum field theory
+that can also be defined solely from the action $S$,
+but with modified background field values $G$, $B$,
+$\Phi$.
+In other words, the family of renormalized QFT's
+defined by $S+S_E$ coincides with the family of
+renormalized QFT's defined solely by $S$.
+
+This means that bosonic string theory is completely specified
+by the background fields associated with massless
+states only (we continue to ignore the tachyon).
+Once those have been specified, the dynamics of all massive
+states is a consequence of string dynamics and is
+completely determined.
+Of course, as argued in the beginning of this lecture,
+the condition of
+consistent string propagation will further limit the
+possible backgrounds to those yielding a conformal
+field theory of central charge $c=26$.
+
+\bigskip\noindent
+\Item{\bf C)} {\bf General Structure of Weyl Dependence}
+
+We now determine the general structure of the Weyl
+dependence of Green functions in the quantum field
+theory specified by the action $S$ in terms of fixed
+background fields $\Gmu$, $\Bmu$, $\Phi$.
+We consider unnormalized correlation functions of
+operators $\phi_1\ldots\phi_n$, inserted at points
+$\xi_1,\ldots,\xi_n\in\Sigma$.
+
+In \S{E}, we shall provide a concrete and useful
+reformulation of correlation functions in terms of the
+effective action, via the covariant background field
+method.
+{}From this reformulation, it will be immediate to
+establish in perturbation theory the properties that we
+shall use formally in this section and in the next one
+(\S{D}).
+
+Under a $\Weyl(\Sigma)$ transformation $g\to
+e^{2\delta\sigma}g$, with support away from
+$\xi_1\ldots\xi_n$, we have by definition of the stress
+tensor $T_{mn}$:
+$$
+\delta_\sigma\left<\phi_1\ldots\phi_n\right>_g=
+{1\over 2\pi}\int\nolimits_{\Sigma}
+d\mu_g\delta\sigma
+\left<T_m^{\,\,\,m}\phi_1\ldots\phi_n\right>_g \,\,.
+\eqno{(6.C.1)}
+$$
+We assume throughout that correlation functions are
+covariant under $\Diff(\Sigma)$, so that
+$$
+\nabla^m T_{mn}=0\,\,.
+\eqno{(6.C.2)}
+$$
+$T_m^{\,\,\,m}$ receives contributions from the explicit
+Weyl-non-invariance of $S_\Phi$, from Weyl anomalies,
+and from the interplay between non-invariance of
+$S_\Phi$ and Weyl anomalies.
+All such contributions to $T_m^{\,\,\,m}$ are {\it local
+functions of $x$}, (i.e. dependent on $x$ and on
+finite order derivatives on $x$) and {\it polynomial
+in the derivatives of $x$}
+(see Witten's lectures).
+
+Collecting the various criteria, we find that 
+$T_m^{\,\,\,m}$ has to
+be
+
+\medskip
+\itemitem{1)}
+local in $x$ and polynomial in derivatives of $x$;
+
+\itemitem{2)}
+$\Diff(\Sigma)$ scalar;
+
+\itemitem{3)}
+of $\Sigma$-dimension $2$;
+
+\itemitem{4)}
+of $M$-dimension $0$;
+
+\itemitem{5)}
+$\Diff(M)$-invariant;
+
+\itemitem{6)}
+$U(1)_B$ invariant;
+
+\itemitem{7)}
+invariant under shifts in $\Phi$ by a constant.
+
+\medskip\noindent
+Only the last point may need justification: a shift in
+$\Phi$ by a constant yields a shift in the action $S$
+by a term proportional to the Euler number, which is
+Weyl independent.
+
+Making use of a combination of
+these criteria, we find that $T_m^{\,\,\,m}$
+must involve precisely $2$ derivatives on $\Sigma$,
+and must be determined in terms of $4$ unknown local functions
+$\beta^G$, $\beta^B$, $\beta^\Phi$ and $\beta^V$ of
+$x$:
+$$
+\eqalign{
+T_m^{\,\,\,m} &=\partial_m x^\mu \partial_n
+x^\nu\Bigl(\beta_{\mu\nu}^G(x)g^{mn}+\beta_{\mu\nu}^B(x)
+\Eps^{mn}\Bigr)\cr
+&\qquad +\beta^\Phi(x)R_g+\beta_\mu^V(x)
+g^{mn}D_m^*\partial_n x^n\,\,.\cr}
+\eqno{(6.C.3)}
+$$
+Here, $D_m^*$ is the covariant derivative on
+$T^*\Sigma\otimes TM$ pulled back to $\Sigma$ by the
+map $x$, and is defined by{\baselineskip=9pt\footnote{$^*$}%
+{\eightpoint We shall denote the pullback under the map
+$x$ of covariant derivatives $D$ on $TM$ by $D^*$.
+
+}}
+$$
+D_m^*\partial_n x^\mu=\nabla_m \partial_n x^\mu+
+\Gamma_{\nu \rho}^\mu\partial_m x^\nu\partial_n x^\rho\,\,,
+\eqno{(6.C.4)}
+$$
+where $\nabla_m$ is the standard covariant derivative
+on $T^*\Sigma$, as defined in \S{II}, and
+$\Gamma$ is the affine connection of the metric
+$\Gmu$.
+The functions $\beta^G$, $\beta^B$, $\beta^\Phi$,
+$\beta^V$ are called {\it beta functions}, even though in this
+context they govern a change of
+Weyl scale rather than a change of renormalization
+scale.
+
+The structure of $T_m^{\,\,\,m}$ reveals a 
+puzzle:
+the action $S$ involves only the three fields $G$, $B$,
+$\Phi$, but the Weyl variation of the correlation
+functions produces four beta functions.
+Indeed, there is an additional beta function
+$\beta^V$.
+If only {\it constant} Weyl transformations
+$\delta_\sigma$ are performed in (6.C.1), the term involving
+$\beta^V$ may be integrated by parts and effectively absorbed
+into $\beta^G$.
+For general Weyl transformations, however, the term
+involving $\beta^V$ is truly independent.
+
+The resolution of this puzzle lies in
+the fact that upon performing a Weyl transformation
+on $g$, we are free to simultaneously transform $x$. 
+On general grounds, the form of this transformation is
+given by $\delta_\sigma x^\mu=\ell^2
+V^\mu(x)\delta\sigma$, where $V^\mu(x)$ is a vector
+field on $M$.
+We shall make it clear later on how to implement this
+additional effect of a Weyl transformation in actual
+calculations.
+Using the freedom to make this additional
+transformation, we see that  $V^\mu(x)$ may be chosen
+so as to compensate for the $\beta^V$-function.
+The remaining $\beta$-functions $\beta_{\mu,\nu}^G$,
+$\beta_{\mu\nu}^B$, $\beta^\Phi$ then have precisely as many
+components as the fields $G_{\mu\nu}$, $B_{\mu\nu}$ and
+$\Phi$ whose Weyl variation they describe.
+
+Assuming now that the $\beta_\mu^V$ term has been
+cancelled by a suitable transformation
+$\delta_\sigma x^\mu$, we have the most general
+expression for $T_m^{\,\,\,m}$ as follows
+(we continue to use the same notation for $\beta$'s):
+$$
+T_m^{\,\,\,m}=\partial_m x^\mu\partial_n x^\nu
+\left(\beta_{\mu\nu}^G(x)g^{mn}+\beta_{\mu\nu}^B(x)
+\varepsilon^{mn}\right)+\beta^\Phi(x)R_g\,\,.
+\eqno{(6.C.5)}
+$$
+
+(This phenomenon of augmenting Weyl transformations on
+$g$ by further transformations on the fields was
+already encountered in Problem Set \#1.
+There, we studied a special case of action $S$ where
+$D=1$, $G=1$, $B=0$, $\Phi=Qx$ and
+$$
+S[x,g]={1\over 4\pi}\int\nolimits_{\Sigma}
+d\mu_g\left(\half\,x\Delta_g x+QR_g x\right)
+\eqno{(6.C.6)}
+$$
+and discovered that upon a Weyl transformation,
+$\delta_\sigma x=Q\delta\sigma$.)
+
+\Proclaim{\it Classical contribution to $T_m{}^m$}.
+\rm
+
+The contribution to $T_m^{\,\,\,m}$ 
+arising from the variation of the classical
+action with respect to $\delta_\sigma x^\mu$ is given by
+$$
+T_m^{\,\,\,m}(\delta_\sigma x^\mu)=g^{mn}
+\scrD_m^*\partial_n x^\mu V^\nu(x)\Gmu(x)\,\,.
+\eqno{(6.C.7)}
+$$
+To define the covariant derivative $\scrD_m^*$, we need
+the {\it torsion tensor}, $H_{\mu\nu\rho}$, which is the
+field strength of the field
+$\Bmu$, given by $H=dB$, or in component notation
+$$
+H_{\mu\nu\rho}\equiv\partial_\mu
+B_{\nu\rho}+\partial_\nu B_{\rho\mu}+\partial_\rho
+\Bmu\,\,.
+\eqno{(6.C.8)}
+$$
+Then, we have
+$$
+\scrD_m^*\partial_n x^\mu\equiv D_m^*\partial_n
+x^\mu-\half\,H_{\nu\rho}^\mu g_{m\rho}
+\Eps^{qp}\partial_q x^\nu\partial_n x^\rho
+\eqno{(6.C.9)}
+$$
+so that $\scrD_m^*$ is a covariant derivative with
+respect to a connection with torsion
+$\Gamma+{1\over2}\,H$ on $TM$.
+
+It is now clear that a vector field
+$V^\mu(x)$ may be chosen so as to
+cancel $\beta_\mu^V$ in the expression for
+$T_m^{\,\,\,m}$ in (6.C.3).
+To lowest order in $\ell^2$, we have
+$$
+V^\mu(x)\Gmu(x)=-\beta_\nu^V(x)+O(\ell^2)\,\,.
+\eqno{(6.C.10)}
+$$
+Notice that this cancellation of the $\beta^V$ term
+produces modifications in the functions $\beta^G$ and
+$\beta^B$ and possibly also $\beta^\Phi$.
+
+\bigskip\noindent
+\Item{\bf D)} {\bf General Structure of Weyl Anomaly
+in Low Energy Expansion}
+
+An exact computation of $\beta^G$, $\beta^B$ and
+$\beta^\Phi$ is possible only if $G$, $B$ and $\Phi$
+exhibit a high degree of symmetry.
+(e.g. flat $\Gmu$, $\Bmu=\Phi=0$.)
+For general $G$, $B$ and $\Phi$, only approximate
+expressions can be obtained.
+Fortunately, the constant $\ell$ is exceedingly small
+compared to $L_{\expt}$, so an expansion in power of
+$\ell$ should be very reliable.
+On general grounds, the expansion of the functions
+$\beta^G$, $\beta^B$ and $\beta^\Phi$ has the
+following structure
+$$
+\beta(x)=\sum\limits_{p=0}^\infty \ell^{2p}\beta^{(p)}
+(x)\eqno{(6.D.1)}
+$$
+where the coefficients $\beta^{(p)}(x)$ are
+
+\medskip
+\itemitem{1)}
+local in $x$ and function of $x$, but not of derivatives
+of $x$;
+
+\itemitem{2)}
+independent of $g$;
+
+\itemitem{3)}
+of $\Sigma$ dimension $0$;
+
+\itemitem{4)}
+of $M$ dimension $2+2p$ for $\beta^G$, $\beta^B$;
+$2p$ for $\beta^\Phi$;
+
+\itemitem{5)}
+$\Diff(M)$ tensors;
+
+\itemitem{6)}
+$U(1)_B$ invariant, dependent upon $B$ only through
+$H=dB$;
+
+\itemitem{7)}
+invariant under shifts in $\Phi$ by a constant.
+
+\medskip\noindent
+Expanding up to and including terms with two
+derivatives (total) on the fields $G$, $B$, $\Phi$ 
+requires expansion up to order $p=0$ for $\beta^G$,
+$\beta^B$ and orders $p=0,2$ for $\beta^\Phi$.
+Up to this order, we find the most general possible
+expression satisfying the above criteria:
+$$
+\eqalign{
+\beta_{\mu\nu}^G &=a_1R_{\mu\nu}^G+a_2\Gmu+a_3\Gmu R^G+
+a_4 H_{\mu\rho\sigma}H_\nu^{\rho\sigma}
++a_5 \Gmu H_{\rho\sigma\tau}H^{\rho\sigma\tau}\cr
+&\qquad + a_6D_\mu D_\nu\Phi+a_7 \Gmu D^2\Phi +
+  a_8 G_{\mu\nu}D^\rho\Phi\,D_\rho\Phi\cr
+\beta_{\mu\nu}^B &=b_1 D^\kap H_{\kap\mu\nu}+b_2
+  D^\kap \Phi H_{\kap\mu\nu}\cr
+\beta^\Phi &=c_0+\ell^2\left\{c_1 R^G+c_2 D^2\Phi+
+  c_3 D^\kap\Phi D_\kap \Phi+c_4 H_{\rho\sigma\tau}
+  H^{\rho\sigma\tau}\right\}\cr}
+\eqno{(6.D.2)}
+$$
+Here, $R^G$ and $R_{\mu\nu}^G$ are the Ricci scalar
+and tensor of the metric $G$, indices are raised and
+lowered with the help of the metric $G$, and $D_\mu$ is the
+covariant derivative with respect to the affine
+connection $\Gamma$. 
+On a vector field $V^\mu$, $D_\mu$ acts by
+$$
+D_\mu V^\kap\equiv \partial_\mu V^\kap+\Gamma_{\mu\nu}^\kap
+V^\nu\,\,.
+\eqno{(6.D.3)}
+$$
+The coefficients $a_1,\ldots,a_8$, $b_1$, $b_2$,
+$c_0,c_1,\ldots,c_4$ are now the only remaining
+unknowns, and we shall determine them shortly.
+
+It is very useful to investigate the $\ell$-dependence
+of the graphs contributing to each coefficient.
+This counting is given by the usual loop expansion,
+except that each factor of $\Phi$ contributes a factor
+of $\ell^2$ additionally.
+Within this counting, $a_8$ would arise from a graph
+with $-1$ loops, and thus must be absent: $a_8=0$.
+We have furthermore
+$$
+\matrix{
+0-{\rm loops}\colon\hfill &a_6,a_7,b_2,c_3\hfill \cr
+\noalign{\bigskip}
+1-{\rm loop}\colon\hfill &a_1,\ldots,a_5,b_1,c_0,c_2\hfill \cr
+\noalign{\bigskip}
+2-{\rm loops}\colon\hfill &c_1,c_4\,\,.\hfill \cr}
+$$
+
+Two of these coefficients may be obtained from the
+Weyl anomaly calculation in flat $\Gmu$, with
+$\Bmu=\Phi=0$.
+We have
+$$
+\matrix{
+{\scriptscriptstyle\bullet}\hfill &a_2=0:\hfill
+&\hbox{no field renormalization in free $x$-field
+theory;}\hfill\cr
+\noalign{\bigskip}
+{\scriptscriptstyle\bullet}\hfill &c_0=+D/6:\hfill
+  &\hbox{the central charge of $D$ scalars
+$x^\mu$.}\hfill\cr}
+\eqno{(6.D.4)}
+$$
+
+The tree-level coefficients may be obtained from
+classical calculations, and are thus also easily
+gotten.
+One finds (see Problem Set \#7)
+$$
+\matrix{
+{\scriptscriptstyle\bullet}\hfill &a_6=1\,,\hfill
+  &a_7=0\hfill\cr
+\noalign{\bigskip}
+{\scriptscriptstyle\bullet}\hfill &b_2=1/2\,\,.\hfill &\cr
+\noalign{\bigskip}
+{\scriptscriptstyle\bullet}\hfill &c_3=2\,\,.\hfill &\cr}
+\eqno{(6.D.5)}
+$$
+
+It remains to obtain the $1$-loop coefficients $a_1$,
+$a_3$, $a_4$, $a_5$, $b_1$, $c_2$ and the $2$-loop
+coefficients $c_1$ and $c_4$.
+To do so, we use the background field method.
+
+\vfill\eject
+
+\noindent
+\Item{\bf E)} {\bf Background Field Quantization
+Method}
+
+The background field quantization method is a powerful
+tool for obtaining the effective action, which is the
+generating functional for $1$-particle irreducible
+(1PI) Feynman diagrams, in terms of a functional integral.
+When local symmetries are present, the method may be
+organized in a manifestly covariant way, thereby
+greatly enhancing the effectiveness of perturbative
+expansion methods.
+We start by explaining the background field method for
+a general scalar field $\phi$, and then adapt the method
+to the case of sigma models.
+
+Let $S$ be the classical action for the classical
+field $\phi$, given in terms of classical coupling
+constants.
+We shall designate by coupling constants all
+the parameters entering the
+definition of $S$.
+Their dependence will not be exhibited.
+By replacing classical field and coupling constants by
+{\it bare} quantities, we obtain the {\it bare action}
+$S_0[\phi_0]$ in terms of the {\it bare field}
+$\phi_0$ and {\it bare coupling constants}.
+We shall assume that the 
+field $\phi_0$ is multiplicatively renormalized by
+a field renormalization factor $Z_\phi$, which 
+depends only upon the coupling constants and the
+renormalization scale $\Lam$, but not on
+the field $\phi$.
+Let $J$ be a source function. 
+Then the generating
+functional $W[J]$, which is the generating functional
+for {\it renormalized connected Feynman diagrams}, is
+defined by
+$$
+e^{W[J]}\equiv\int D\phi_0\,e^{-S_0[\phi_0]+Z_\phi\int
+J\phi_0}\,\,.
+\eqno{(6.E.1)}
+$$
+
+Alternatively, the above functional integral may be
+expressed directly in terms of the {\it
+renormalized field} $\phi\equiv Z_\phi\phi_0$.
+It is standard to introduce the {\it renormalized
+action} $S_R[\phi]$ by
+$$
+S_0[\phi\,Z_\phi^{-1}]\equiv S_R[\phi]
+\eqno{(6.E.2)}
+$$
+($S_R$ consists of the classical action, plus renormalization
+counterterms.)
+Then, we have
+$$
+e^{W[J]}=\int D\phi\,e^{-S_R[\phi]+\int J\phi}\,\,.
+\eqno{(6.E.3)}
+$$
+
+The effective action for connected, $1PI$ renormalized
+Feynman diagrams is denoted by $\Gamma[\varphi]$ and
+is defined as the Legendre transform of $W[J]$:
+$$
+\Gamma[\varphi]\equiv\int
+J\varphi-W[J]\qquad\qquad\qquad
+J(x)={\delta\Gamma[\varphi]\over \delta\varphi(x)}\,\,.
+\eqno{(6.E.4)}
+$$
+Expressing $W[J]$ in terms of $\Gamma[\varphi]$,
+eliminating $J$, and shifting $\phi$ by $\varphi$ in
+(6.E.3), we
+obtain the final formula for $\Gamma[\varphi]$:
+$$
+e^{-\Gamma[\varphi]}=\int D\phi\,\exp\left\{-S_R[\varphi+
+\phi]+\int\phi{\delta\Gamma[\varphi]\over\delta\varphi}\right\}
+\eqno{(6.E.5)}
+$$
+
+At first sight, it would appear that we have gained
+little: the right hand side depends upon
+$\Gamma[\varphi]$ itself, and we have only obtained an
+implicit equation for $\Gamma[\varphi]$.
+However, a loop expansion (in powers of $\hslash$ in QFT, which
+we shall perform in terms of $\ell^2$ here, for later
+use) reveals that the above expression yields a
+powerful recursive equation for $\Gamma[\varphi]$.
+To see this, redefine $\phi\to\ell\phi$, and expand $S_R$
+and $\Gamma[\varphi]$ around the classical action.
+We make use of the fact that $\Gamma[\varphi]$ admits
+a Laurent expansion in powers of $\ell^2$ (not just
+$\ell$). 
+We have
+$$
+\eqalignno{
+S_R[\varphi+\ell\phi] &={1\over\ell^2}\,S[\varphi]
+  +{1\over\ell}\int\phi\,{\delta S\over \delta\varphi}
+\,[\varphi]+\Sbar[\varphi;\phi](\ell) &(6.E.6)\cr
+\noalign{\hbox{and}}
+\Gamma[\varphi]\hfill &={1\over\ell^2}\,S[\varphi]+
+  \Gammabar[\varphi](\ell)&(6.E.7)\cr}
+$$
+Here, $\Sbar$ and $\Gammabar$ admit a Taylor series
+expansion in $\ell$ and $\ell^2$, respectively.
+Substituting these general forms into (6.E.5),
+we find:
+$$
+e^{-\Gammabar[\varphi](\ell)}=\int D\phi\,
+\exp\left\{-\Sbar[\varphi;\phi](\ell)+\ell\int\phi\,
+{\delta\Gammabar[\varphi](\ell)\over\delta\varphi}\right\}
+\eqno{(6.E.8)}
+$$
+from which it is transparent that $\Gammabar$ is
+determined by a nice recursive equation.
+For example, to order $\ell^0$, we have a standard
+formula for the $1$-loop effective action
+$$
+e^{-\Gammabar[\varphi](0)}=\int D\phi\,
+e^{-\Sbar[\varphi;\phi](0)}\,\,.
+\eqno{(6.E.9)}
+$$
+
+\bigskip\noindent
+\Item{\bf F)} {\bf Covariant Expansion Methods}
+
+Applying the background field method to the non-linear
+sigma model with action $S$, given in (6.B.1), 
+the quantum field $\phi$ becomes the
+coordinate $x^\mu$ of a point on the Riemannian
+manifold $M$, while the classical field $\varphi$
+becomes a reference point $x_0{}^\mu$ on $M$.
+Addition of coordinates --- as would apparently
+be needed in the
+background field method developed above --- is not
+covariant under $\Diff(M)$.
+It is beneficial to make use of the Riemann normal
+coordinate expansion instead, since this method yields
+$\Diff(M)$ covariant results.
+
+For $x_0^\mu$ and $x^\mu$ sufficiently close to one
+another, there is a unique shortest geodesic curve
+$C$, parametrized by $x_\tau^\mu$, that interpolates
+between $x_0^\mu$ for $\tau=0$ and $x^\mu$ for
+$\tau=\ell$.
+The function $x_\tau^\mu$ obeys the geodesic equation
+$$
+{D\over
+D\tau}\,\xdot_\tau^\mu=\xddot_\tau^\mu+\Gamma_{\nu\rho}^\mu
+(x_\tau)\xdot_\tau^\nu\,\xdot_\tau^\rho=0
+\eqno{(6.F.1)}
+$$
+The tangent vector to $C$ at $\tau=0$ is a vector
+field $\xi^\mu\equiv\xdot_0^\mu$ and $x^\mu$ may be
+parametrized (in a neighborhood of $x_0^\mu$) by
+$x_0^\mu$ and $\xi^\mu$: \
+$x^\mu=e^{\ell\xi}x_0^\mu$.
+$$
+\vbox{\epsfxsize=2.5in\epsfbox{fig1.eps}}
+$$
+
+$\Diff(M)$-tensors admit covariant expansions in
+powers of $\ell$.
+For example, the expansion of rank $0$ tensors
+(scalars, such as $\Phi$) is given by
+$$
+\Phi(x)=\Phi(x_0)+D_\kappa\Phi(x_0)\ell\xi^\kappa
++\half\,D_\kappa\,D_\lam\Phi(x_0)\ell^2
+\xi^\kappa\xi^\lam+O(\ell^3).\eqno{(6.F.2)}
+$$
+while the expansion of rank $2$ tensors (such
+as $G$, $B$) is given by
+$$
+\eqalign{
+T_{\mu\nu}(x) &=T_{\mu\nu}(x_0)+D_\kap T_{\mu\nu}(x_0)
+\ell\xi^\kap +\half\{D_\kap D_\lam T_{\mu\nu}(x_0)\cr
+&\qquad\qquad -\third\,R_{\kap\mu\lam}^\rho
+T_{\rho\nu}(x_0)-\third\,R_{\kap\nu\lam}^\rho
+T_{\mu\rho}(x_0)\}\ell^2\xi^\kap\xi^\lam+
+  O(\ell^3)\,\,.\cr}
+\eqno{(6.F.3)}
+$$
+Here, $D_\kap$ is the covariant derivative with
+respect to the affine connection
+$\Gamma_{\nu\rho}^\mu$, and
+$R_{\kap\mu\lam}^\rho$ is the associated Riemann
+curvature.
+
+As a result, the generalized non-linear sigma model
+action $S[x,g]$ of \S{B} may be similarly expanded
+around $x_0$, in a power series in $\ell$, by setting
+$x=e^{\ell\xi}x_0$.
+$$
+\eqalign{
+S[x,g]=&S[x_0,g]+\ell\int\nolimits_{\Sigma}
+d\mu_g\,\xi^\mu\,S_\mu^{(1)}[x_0,g]+\Sbar[x_0,\xi;g]\cr
+&S_\mu^{(1)}[x_0,g]={1\over\sqrt{\det\,g}}\,\,
+{\delta S[e^{\xi'} x_0,g]\over\delta\xi'{^{\mu}}}
+\,\,{\vrule height15pt depth 8pt}_{\,\xi'=0}
+\cr}
+\eqno{(6.F.4)}
+$$
+Here, $\Sbar$ admits a Taylor series expansion in
+$\ell$.
+Notice that $S$ and $S_\mu^{(1)}$ are each the sum of a
+term of order $\ell^{-2}$ and a term of order
+$\ell^0$ arising from the dilaton action $S_\Phi$.
+The effective action $\Gamma[x_0,g]$ is now obtained
+just as in (6.E.8), except with the field $\varphi$
+replaced by $x_0$ and $\phi$ replaced by $\xi$.
+$$
+e^{-\Gamma[x_0,g]}=\int
+D\xi^\mu
+\exp\left\{-S [e^{\ell\xi}x_0,g]+\ell\int\nolimits_{\Sigma}
+d\mu_g\xi^\mu\Gamma_\mu^{(1)}[x,g]\right\}
+\eqno{(6.F.5)}
+$$
+It will be understood throughout that $S$ stands for
+the renormalized action, denoted by $S_R$ previously.
+We have also used the definition
+$$
+\Gamma_\mu^{(1)}[x_0,g]\equiv
+{1\over\sqrt{\det\,g}}\,\,
+{\delta\Gamma[e^{\xi'}x_0,g]\over\delta\xi'{^{\mu}}}
+\,\,{\vrule height15pt depth 8pt}_{\,\xi'=0}\,\,.
+\eqno{(6.F.5')}
+$$
+The functional measure $D\xi^\mu$ is defined through
+the $L^2$ norm on $TM$, which is given explicitly by
+$$
+\Vert\xi^\mu\Vert^2\equiv\int\nolimits_{\Sigma}
+d\mu_g\,G_{\mu\nu}(x_0)\xi^\mu\xi^\nu\,\,.
+\eqno{(6.F.6)}
+$$
+Using again the property that $\Gamma[x_0,g]$ admits a
+Laurent expansion in terms of $\ell^2$ rather than
+$\ell$, we have
+$$
+\Gamma[x_0,g]=S[x_0,g]+\Gammabar[x_0,g]
+\eqno{(6.F.7)}
+$$
+where $\Gammabar$ admits a Taylor series expansion
+in $\ell^2$, and is given by
+$$
+e^{-\Gammabar[x_0,g]}=\int D\xi^\mu\,
+e^{-\Sbar[x,g]+\ell\int\nolimits_{\Sigma}
+  d\mu_g\xi^\mu\,\Gammabar_\mu^{(1)}[x_0,g]}\,\,.
+\eqno{(6.F.8)}
+$$
+Here, $\Sbar$ is defined as in $(6.F.4)$, and
+$\Gammabar_\mu^{(1)}$ is defined as in $(6.F.5')$ by
+replacing $\Gamma$ by $\Gammabar$.
+
+It remains to list the explicit expansion terms that
+we shall need to evaluate $\beta^G$, $\beta^B$ and
+$\beta^\Phi$, up to order $\ell^0$ in $\beta^G$ and
+$\beta^B$ and $\ell^0$, $\ell^2$ in $\beta^\Phi$.
+They are given by
+$$
+\Sbar 
+=\Sbar_0+\ell\,\Sbar_1+\ell^2\Sbar_2+O(\ell^3)\eqno{(6.F.9)}
+$$
+where
+$$
+\eqalignno{
+\Sbar_0 &={1\over 8\pi}\int\nolimits_{\Sigma}
+  d\mu_g\Bigl\{\scrD_m^*\xi^\mu\scrD_n^*\xi^\nu\Gmu(x_0)
+  g^{mn} +\scrR_{\mu\nu\rho\sigma}(x_0)
+  \partial_m x_0^\mu\partial_n x_0^\rho
+  \xi^\nu\xi^\sigma(g^{mn}-\Eps^{mn})\Bigr\}\cr
+\Sbar_1 &={1\over 8\pi}\int\nolimits_{\Sigma} d\mu_g
+\Bigl\{\third\,H_{\mu\nu\rho}\xi^\mu\scrD_m^*\xi^\nu\scrD_n^*
+  \xi^\rho\Eps^{mn}\Bigr\}&(6.F.10)\cr
+\Sbar_2 &={1\over 8\pi}\int\nolimits_{\Sigma}
+d\mu_g  \Bigl\{\third\,R_{\mu\nu\rho\sigma}\xi^\nu\xi^\rho
+  \scrD_m^*\xi^\mu\scrD_n^*\xi^\sigma g^{mn}
+-\half\,\scrR_{\mu\nu\rho\sigma}
+\xi^\nu\xi^\rho\scrD_m^*\xi^\mu\scrD_n^*\xi^\sigma\Eps^{mn}\cr
+&\qquad\qquad\qquad +2D_\mu D_\nu\Phi(x_0)
+  R_g\xi^\mu\xi^\nu\Bigr\}\,\,.\cr}
+$$
+Here, the covariant derivative with torsion on
+$TM$ and pulled back to $\Sigma$, is defined by
+$$
+\scrD_m^*\xi^\mu\equiv D_m^*\xi^\mu+\half\,
+H^\sigma{}_{\nu\rho} g_{mp}\Eps^{pq}\partial_q
+  x^\nu\xi^\rho\,\,.
+\eqno{(6.F.11)}
+$$
+(This definition agrees with that of (6.C.9).)
+Furthermore, we have the following covariant
+derivatives with torsion on $TM$
+$$
+\scrD_\mu\xi^\nu\equiv D_\mu\xi^\nu+\half\,
+H^\sigma{}_{\mu\rho}\xi^\rho
+\eqno{(6.F.12)}
+$$
+whose structure relations yield the torsion $H$ and
+the curvature tensor $\scrR$ of the connection with
+torsion $\Gamma+{1\over 2}\,H$:
+$$
+\left[\scrD_\mu,\scrD_\nu\right]\xi^\rho=H^\sigma{}_{\mu\nu}
+\scrD_\sigma\xi^\rho+\scrR_{\sigma\mu\nu}^\rho
+\xi^\sigma\,\,.
+\eqno{(6.F.13)}
+$$
+It is easy to express $\scrR$ in terms of the Riemann
+tensor $R$ and the torsion tensor $H$:
+$$
+\eqalign{
+\scrR_{\mu\nu\rho\sigma} &=R_{\mu\nu\rho\sigma}+
+\half\,D_\rho H_{\sigma\mu\nu}-\half\,D_\sigma
+  H_{\rho\mu\nu}\cr
+&\qquad +\fourth\,H_{\rho\mu\alpha}H_{\sigma\nu}{}^\alpha
+-\fourth\,H_{\sigma\mu\alpha}H_{\rho\nu}{}^\alpha\cr}
+\eqno{(6.F.14)}
+$$
+
+\bigskip\noindent
+\Item{\bf G)} {\bf Reformulation as an $\SO(1,D-1)$
+gauge theory}
+
+The difficulty encountered in the above formulation is
+that the quadratic form representing the kinetic term
+for the field $\xi^\mu$ in (6.F.10) depends in a
+non-trivial way on the metric $G_{\mu\nu}$ and on the
+background field $x_0^\mu$.
+As a result, perturbation theory will involve determining the
+$\xi$-propagator in arbitrary $x_0$ background, which
+is an impossible task.
+One may get around this complication by changing
+variables and absorbing the $G_{\mu\nu}$ and $x_0^\mu$
+dependence into the new field.
+
+One introduces an orthonormal frame, which we denote by
+$e_\mu{}^a$, with $a=0,1,\ldots,D-1$ representing the
+tangent space direction of $TM$.
+We have, by definition
+$$
+G_{\mu\nu}=e_\mu{}^a\,e_\nu{}^b\,\eta_{ab}\eqno{(6.G.1)}
+$$
+where $\eta_{ab}=\diag(-\,+\cdots +)$ is the
+$\SO(1,D-1)$ invariant flat metric.
+The inverse frame is denoted by $e_a{}^\mu$, so that
+$e_a{}^\mu\,e_\mu{}^b=\delta_a{}^b$ and
+$e_\mu{}^a\,e_a{}^\nu=\delta_\mu{}^\nu$.
+We also introduce the \break
+$\SO(1,D-1)$-valued connection
+$\omega_\mu$, with components $\omega_\mu{}^a{}_b$, such
+hat under the covariant derivative with respect to the
+affine connection $\Gamma$, and the spin connection
+$\omega_\mu$, the frame $e_\mu{}^a$ is covariantly
+constant
+$$
+D_\mu e_\nu{}^a\equiv \partial_\mu
+e_\nu{}^a-\Gamma_{\mu\nu}^\kappa
+e_\kappa{}^a+\omega_\mu{}^a{}_b\,e_\nu{}^b=0
+\eqno{(6.G.2)}
+$$
+The covariant derivative $\scrD$, including the torsion
+connection ${1\over 2}\,H$, is similarly defined.
+For example, on $e_\nu{}^a$, we have
+$$
+\scrD_\mu e_\nu{}^a=D_\mu
+e_\nu{}^a+\half\,H_{\mu\nu}{}^\rho
+e_\rho{}^a\eqno{(6.G.3)}
+$$
+We now rewrite all tensors with respect to the
+orthonormal frame basis.
+Thus, we have
+$$
+\eqalign{
+H_{\mu\nu\rho} &=e_\mu{}^a e_\nu{}^b e_\rho{}^c
+H_{abc}\cr
+\scrR_{\mu\nu\rho\sigma} &=e_\mu{}^a e_\nu{}^b
+e_\rho{}^c e_\sigma{}^d
+  \scrR_{abcd}\cr
+\xi^\mu &=\xi^a e_a{}^\mu\cr
+\scrD_a &=e_a{}^\mu \scrD_\mu\cr}
+\eqno{(6.G.4)}
+$$
+where all tensors are evaluated at the same point on
+$M$, which in our background calculation will be
+$x_0{}^\mu$.
+We also introduce the pullback of the tangent vector 
+$\partial_m x_0^\mu$, expressed in orthonormal frame
+basis:
+$$
+e_m^*{}^a\equiv \partial_m x_0{}^\mu e_\mu{}^a(x_0)
+\eqno{(6.G.5)}
+$$
+
+The expression for the quantum contributions to the
+effective action $\Gammabar[x_0,g]$ of (6.F.8) is now
+$$
+e^{-\Gamma[x_0,g]}=\int D\xi^a
+\exp\left\{-\Sbar[e^{\ell\xi}x_0,g]+\ell
+\int\nolimits_{\Sigma}d\mu_g \xi^a\Gamma_a^{(1)}\right\}
+\eqno{(6.G.6)}
+$$
+The functional measure $D\xi^a$ is again defined with
+respect to the $L^2$ norm
+$$
+\Vert\xi^a\Vert^2=\int\nolimits_{\Sigma} d\mu_g
+\xi^a\xi^b\eta_{ab}\eqno{(6.G.7)}
+$$
+which does not depend upon $x_0$ or $G_{\mu\nu}$
+anymore.
+The action $\Sbar$ may be expanded, just as in
+(6.F.10), and we obtain
+$$
+\eqalignno{
+\Sbar_0 &={1\over 8\pi}\int\nolimits_{\Sigma}d\mu_g
+  \{\scrD_m^*\xi^a\scrD_n^*\xi^b\eta_{ab}g^{mn}
++\scrR_{abcd}\,e_m^*{}^ae_n^*{}^c\xi^b\xi^d
+(g^{mn}-\eps^{mn})\} &(6.G.8a)\cr
+\Sbar_1 &={1\over 8\pi}\int\nolimits_{\Sigma}d\mu_g
+\{\third\,H_{abc}\xi^a\scrD_m^*\xi^b\scrD_n^*\xi^c
+  \Eps^{mn}\}&(6.G.8b)\cr
+\Sbar_2 &={1\over 8\pi}\int\nolimits_{\Sigma}d\mu_g
+\{\third(\scrR_{abcd}-\fourth\,H_{caf}H_{db}{}^f)
+\xi^b\xi^c\scrD_m^*\xi^a\scrD_n^* \xi^d g^{mn} &(6.G.8c)\cr
+&\qquad -\half\,\scrR_{abcd}\xi^b\xi^c\scrD_m^*
+  \xi^a\scrD_n^*\xi^d\eps^{mn}
++2\scrD_a\scrD_b\Phi\,R_g\,\xi^a\xi^b\}\,\,.\cr}
+$$
+The pullback covariant derivative is now very simple:
+$$
+\scrD_m^*\xi^a=\nabla_m\xi^a+A_m{}^{ab}
+\,\xi^b\eqno{(6.G.9)}
+$$
+The effective $\SO(1,D-1)$ gauge field $A_m$ is defined by the
+pullback of the spin connection $\omega_\mu$:
+$$
+A_{mb}^a(\xi)\equiv
+\partial_m x_0^\mu(\xi)
+\omega_\mu{}^a{}_b \eqno{(6.G.10)}
+$$
+In particular, the kinetic term for the $\xi^a$-field
+is now also independent of the metric $G_{\mu\nu}$ and
+the background field $x_0{}^\mu$.
+As a result, standard perturbation methods in $\ell$
+may be used to evaluate the effective action
+$\Gamma[x_0,g]$, with a standard propagation for
+$\xi^a$.
+
+\bigskip\noindent
+\Item{\bf H)} {\bf Weyl Variation of the Effective
+Action}
+
+The definition of the trace of the stress tensor for
+Green functions introduced in (6.C.1)
+ may be translated into an equation for
+the Weyl variation of the effective action,
+$\Gamma[x_0,g]$.
+One finds
+$$
+\delta_\sigma\Gamma[x_0,g]=-{1\over 2\pi}
+\int\nolimits_{\Sigma}d\mu_g\,\delta\sigma\,T_m^{\,\,\,m}\,\,.
+\eqno{(6.H.1)}
+$$
+where $T_m{}^m$ denotes the expectation value of the
+operator $T_m{}^m$ in the bakcground field $x_0$, and
+metric $g$.
+The derivation of (6.H.1) from (6.C.1)
+is given in Appendix A.
+It is understood that $x_0$ is also allowed to
+transform under $\Weyl(\Sigma)$, as explained in
+\S{C}.
+The arguments developed in \S{C} for what the most
+general structure of $T_m^{\,\,\,m}$ is, carry over
+here, and we find, for a suitable $\Weyl(\Sigma)$
+action on $x_0$:
+$$
+T_m^{\,\,\,m}=\partial_m x_0^\mu\partial _n
+x_0^\nu(\beta_{\mu\nu}^G
+g^{mn}+\beta_{\mu\nu}^B\Eps^{mn})+
+\beta^\Phi R_g \eqno{(6.H.2)}
+$$
+where $\beta^G$, $\beta^B$ and $\beta^\Phi$ are
+evaluated at $x_0$.
+This definition of $T_m^{\,\,\,m}$ and $\beta^G$,
+$\beta^B$, and $\beta^\Phi$ is now completely precise,
+and these quantities may be directly evaluated from
+$\Gamma[x_0,g]$.
+Notice that the variation $\delta_\sigma\Gamma$
+obtained by substituting (6.H.2) into (6.H.1) must
+satisfy an integrability condition, known as the
+Wess-Zumino consistency condition.
+This condition provides a relation between $\beta^G$,
+$\beta^B$ and $\beta^\Phi$, which we shall discuss
+in \S{I}.
+
+The effective action $\Gamma[x_0,g]$ is the sum of the
+classical action $S[x_0,g]$ and the quantum
+corrections $\Gammabar[x_0,g]$.
+The contribution of $S$ to $\beta^G$, $\beta^B$ and
+$\beta^\Phi$ was already evaluated previously
+(Problem Set \#7).
+It remains to evaluate the Weyl transformation of
+$\Gammabar$ to the order we are computing.
+We begin by evaluating the $O(\ell^0)$ contribution,
+which arises solely from $\Sbar_0$.
+We shall treat the contributions to $T_m^{\,\,\,m}$
+perturbatively in the number of $M$-derivatives
+applied to the fields $G$, $B$ and $\Phi$.
+This expansion is reliable since we know from general
+considerations that we should only retain contributions
+to $T_m{}^m$ with
+two derivatives.
+For example, the $\scrR$-term in $\Sbar_0$ can contribute at
+most to first order.
+
+The form of the first term in $\Sbar_0$ is that of a
+gauge field --- the spin connection $\omega_\mu$ --- minimally
+coupled to $\xi^a$.
+By power counting its one-loop graphs with one insertion of
+$\omega_\mu\,\omega_\nu$ and with two insertions of
+$\omega_\mu\,\partial_\nu$ are the only 
+ones that could potentially contribute to the Weyl anomaly.
+$$
+\vbox{\epsfxsize=3.5in\epsfbox{fig1a.eps}}
+$$
+\line{\null\kern3true cm graph $\omega_\mu\omega_\nu$
+  \kern3.75true cm 
+graph $\omega_\mu\partial_\nu$\hfil}
+
+\noindent
+All other graphs are absolutely convergent and obey
+anomaly-free Ward identities.
+By gauge invariance, however, the degree of divergence
+is lowered by $2$ and the sum of the two 
+graphs does not contribute
+to the Weyl anomaly either (see also Gawedzki's lectures).
+Thus, the only contribution from the first term in
+$\Sbar_0$ is to the central charge: $+D/6$
+contribution to $\beta^\Phi$, which we have already
+discussed previously by fixing $c_0=+D/6$.
+
+It remains to evaluate the contributions from the
+first order expansion of the $\scrR$-term in
+$\Sbar_0$ to $\beta^G$ and $\beta^B$. 
+We directly use the Ansatz for these functions in
+terms of $G$, $B$, $\Phi$:
+we denote their contribution to this order by
+$\betatil^G$, $\betatil^B$, $\betatil^\Phi$.
+Clearly $\betatil^\Phi=0$, and the Weyl
+transformation of this part is given by
+$$
+\eqalign{
+&-{1\over
+2\pi}\int\nolimits_{\Sigma}d\mu_g\,\delta\sigma\,\partial_m
+x_0^\mu\partial_n
+x_0^\nu\left(\betatil_{\mu\nu}^G(x_0)
+g^{mn}+\betatil_{\mu\nu}^B(x_0)\Eps^{mn}\right)\cr
+&=\delta_\sigma\Bigl<-{1\over
+8\pi}\int\nolimits_{\Sigma}d\mu_g\,\scrR_{\mu a\rho b}
+(x_0)\partial_m x_0^\mu\partial_n x_0^\rho \xi^a
+\xi^ b(g^{mn}-\Eps^{mn})\Bigr>\,\,,\cr}
+\eqno{(6.H.3)}
+$$
+where $\left<\qquad\right>$ stands for the normalized
+correlation function taken with respect to the action
+given by only the first term in $\Sbar_0$.
+But, since $x_0$ was arbitrary throughout, we may
+identify the symmetric and antisymmetric tensor parts:
+$$
+\eqalign{
+\betatil_{\mu\nu}^G(x_0)\delta\sigma &=
+\delta_\sigma\left<\xi^a\xi^b\right>{1\over 8}
+  (\scrR_{\mu a\nu b}+\scrR_{\nu a\mu b})\cr
+\betatil_{\mu\nu}^B(x_0)\delta\sigma &=-
+\delta_\sigma\left<\xi^a\xi^b\right>{1\over 8}
+  (\scrR_{\mu a\nu b}-\scrR_{\nu a\mu b})\cr}
+\eqno{(6.H.4)}
+$$
+The correlation function of $\xi$'s to this order is
+independent of $x_0$, and we we find
+$$
+\delta_\sigma\left<\xi^a\xi^b\right>=
+2\delta\sigma\eta^{ab}\,\,.
+\eqno{(6.H.5)}
+$$
+Making use of the expression for $\scrR$ in terms of
+$R^G$ and $H$ of (6.F.14), we find
+$$
+\eqalign{
+\betatil_{\mu\nu}^G &=\half\,R_{\mu\nu}^G
+-\eighth\,H_{\mu\alpha\beta}H_\nu{}^{\alpha\beta}\cr
+\betatil_{\mu\nu}^B &=-\fourth\,D^\alpha
+H_{\alpha\mu\nu}\,\,.\cr}
+\eqno{(6.H.6)}
+$$
+We now combine this result with the one obtained to
+tree level: this yields the full $\beta$-functions
+$\beta^G$, $\beta^B$ to order $\ell^0$; we also
+collect the results obtained thus far for $\beta^\Phi$:
+$$
+\eqalign{
+\beta_{\mu\nu}^G
+&=\half\,R_{\mu\nu}^G-\eighth\,H_{\mu\alpha\beta}
+H_\nu^{\,\,\,\alpha\beta}+D_\mu D_\nu\Phi\cr
+\beta_{\mu\nu}^B &=-\fourth D^\alpha H_{\alpha\mu\nu}+
+ \half\,D^\alpha\Phi\,H_{\alpha\mu\nu}\cr
+\beta^\Phi &=D/6+\ell^2\{2D_\alpha \Phi
+  D^\alpha\Phi-2D_\alpha D^\alpha\Phi+c_1
+  R^G+c_4 H^2\}\,\,.\cr}
+\eqno{(6.H.7)}
+$$
+Here, we have included the coefficient of $D_\alpha
+D^\alpha\Phi$, which is obtained from a simple
+$1$-loop calculation, from the last term in $\Sbar_2$.
+The calculation of $c_1$, $c_4$ requires a full
+$2$-loop computation, with the following Feynman
+diagram contributions:
+$$
+\vbox{\epsfxsize=3.5in\epsfbox{fig2.eps}}
+$$
+The result is
+$$
+c_1=-\half\,;\qquad c_4={\textstyle 1\over\textstyle 24}\,\,.
+\eqno{(6.H.8)}
+$$
+
+\bigskip
+\Item{\bf I)} {\bf Low Energy String Field Equations and
+String Effective Action}
+
+The string field equations are obtained by including
+also the effects of the Faddeev-Popov ghosts $b$ $c$;
+this effect is limited to an addition of $-13/3$ to
+$\beta^\Phi$.
+We then obtain the following equations for string
+dynamics:
+$$
+\cases{
+\beta_{\mu\nu}^G =\half\,R_{\mu\nu}^G-\eighth\,
+  H_{\mu\alpha\beta}H_\nu^{\,\,\,\alpha\beta}+
+  D_\mu D_\nu\Phi=0 &\cr
+\noalign{\bigskip}
+\beta_{\mu\nu}^B=-\fourth\,D^\alpha
+H_{\alpha\mu\nu}+\half\,D^\alpha\Phi\,H_{\alpha\mu\nu}=0&\cr
+\noalign{\bigskip}
+\beta^\Phi=(D-26)/6+\ell^2\{2D_\alpha\Phi\,D^\alpha\Phi
+  -2D_\alpha D^\alpha\Phi-\half\,R^G+{\textstyle 1
+  \over\textstyle 24}\,H^2\}=0\,\,.&\cr}
+\eqno{(6.I.1)}
+$$
+to leading order in the expansion in powers of
+derivatives on $G$, $B$ and $\Phi$.
+
+There is an interesting consistency condition, 
+whose origin may be understood as follows.
+On a (locally) flat worldsheet, conformal
+invariance requires only that $\beta^G=\beta^B=0$. 
+One expects that these conditions should suffice to make
+the model conformal on non-flat worldsheets as well.
+This in turn suggests that the equation $\beta^\Phi=0$
+is not independent from the equations 
+$\beta^G=\beta^B=0$. 
+In fact, this interdependence
+may indeed be established with the help of the
+Bianchi identities:
+$$
+\eqalign{
+&D^\mu R_{\mu\nu}^G=\half\,D_\nu\,R^G\cr
+&D^\mu(H_{\mu\alpha\beta}H_\nu^{\,\,\,\alpha\beta})=D^\mu
+H_{\mu\alpha\beta}H_\nu^{\,\,\,\alpha\beta}
++\sixth\,D_\nu H^2\,\,,\cr}
+\eqno{(6.I.2)}
+$$
+where $H^2\equiv
+H_{\alpha\beta\gamma}H^{\alpha\beta\gamma}$.
+The following relation is then found to hold
+to this order in powers of $\ell$:
+$$
+D^\mu \beta_{\mu\nu}^G=-{1\over 2\ell^2}\,D_\nu
+\beta^\Phi+\half\,\beta_{\alpha\beta}^B
+H_\nu^{\,\,\,\alpha\beta}+2\beta_{\mu\nu}^G
+D^\mu\Phi\,\,,
+\eqno{(6.I.3)}
+$$
+so that the equations
+$\beta^G=\beta^B=0$ imply that $\beta^\Phi$ is
+constant.
+We see that it suffices indeed to render the
+quantum-field theory of the $x$-field
+conformal on a (locally) flat worldsheet.
+The only quantity left undetermined is then the
+central charge.
+There are arguments in the physics literature that
+such an equation for $\beta^\Phi$ holds to all orders
+in $\ell$.
+
+The only way to satisfy $\beta^\Phi=0$, given that $D$
+must be an integer, and that $\ell$ is an expansion
+parameter, is to set $D=26$.
+
+The above equations can be put in a more standard form,
+which reflects the fact that $\Bmu$ and $\Phi$ may be
+viewed as matter fields, coupling to the metric $\Gmu$
+by their energy-momentum tensor.
+Alternatively, the above field equations are seen to
+derive from an action
+$$
+I(G,B,\Phi)={1\over 2\kappa^2}\int
+d^{26}x\sqrt{\det\,G}\,\, e^{-2\Phi}
+\Bigl\{R^G+4D_\mu\Phi D^\mu\Phi-{\textstyle
+1\over\textstyle 12}\,H^2\Bigr\}\,\,,
+\eqno{(6.I.4)}
+$$
+provided the dimension is critical $D=26$.
+The way the dilaton coupling enters exposes the fact
+that $e^{2\Phi_0}$ is the string loop expansion
+parameter, or string coupling constant, when the dilaton
+vacuum expection value is $\Phi_0$.
+The presence of the factor
+$e^{-2\Phi_0}$ reveals that this effective action
+arises from string tree level effects.
+(One loop contributions would have no exponential
+$\Phi$ dependence.)
+It is possible to put the action in a more standard
+form, by performing a Weyl transformation on $G$.
+(For later use, we consider arbitrary dimension $D_i$
+on results will then have application also to
+superstring theory, where $D=10$.)
+$$
+\Gmu\to G'_{\mu\nu}=e^{-4\Phi/(D-2)}\Gmu\,\,.
+\eqno{(6.I.5)}
+$$
+The action in this metric assumes the form
+$$
+I(G',B,\Phi)={1\over 2\kappa^2}\int d^{D}x\sqrt{\det\,G'}\,\,
+\Bigl\{R^{G'}-{4\over D-2}\,D_\mu\Phi D^\mu\Phi
+-{{\textstyle 1}\over{\textstyle 12}}\,e^{-8\Phi/(D-2)}
+H^2\Bigr\}\,\,.
+\eqno{(6.I.6)}
+$$
+The metrics $G$ and $G'$ are usually called the {\it
+string metric} and the {\it Einstein metric},
+respectively.
+
+The action $I(G',B,\Phi)$ is in fact well-known in
+field theory.
+If we ignore the peculiar value of the $D=26$
+dimension, and arbitrarily set $D=10$ instead, we recover the
+action for the 
+bosonic part of the $N=1$ supergravity multiplet in
+$D=10$ which is part of the so-called Chapline-Manton action
+(see \S{X}).
+When we deal will with superstrings, we shall see that the
+superstring calculation to this order yields the same
+as the bosonic string, except for the dimension!
+
+Finally, we point out that the field equations (6.I.1)
+are consistent with the low energy limit of transition
+amplitudes of strings, scattering in flat Minkowski
+space-time.
+The simplest example of such a low energy limit was
+encountered in \S{II}, where we argued that the
+transversality conditions on the graviton polarization
+tensor required conditions that arise as the low
+energy limit of the linearized limit of
+$R_{\mu\nu}^G=0$.
+In fact, string scattering amplitudes may be used
+directly to compute the string field equations.
+Unfortunately, it is difficult to compute the effective
+action directly from string transition amplitudes,
+since the latter are always evaluated on-shell only.
+
+\Item{\bf J)} {\bf A first Look at Compactification}
+
+One of the most remarkable results of string theory is
+that the dimension of space-time (at long distances) is
+dynamically determined: $D=26$ for bosonic strings and
+$D=10$ for superstrings in flat (or nearly flat)
+space-time.
+The nagging aspect of this result, however, is that the
+number of dimensions we observe is only $4$.
+Well, at least $10$ is {\it larger} than $4$!
+
+In attempts at unifying general relativity and
+Maxwell's electromagnetism, Kaluza and Klein proposed
+in the 1920's that space-time could really be of higher
+dimension.
+And that as long as space-time effectively appears to
+be $4$-dimensional at all length scales where present
+day experiments can probe it, the extra dimensions
+would not be directly observable.
+This scheme is usually termed Kaluza-Klein theory.
+
+The most straightforward way to realize such
+unobservable extra dimensions is to consider
+space-times $M$ of the form $M=\dbR^4\times K$.
+Here, $\dim\,K=\dim\,M-4$, and $K$ is a compact
+manifold, whose (largest) size will be denoted by
+$R_K$.
+As long as $R_K\ll L_{{\rm expt}}$, 
+the $K$ manifold should not be directly observable.
+More generally, we may consider $M$ to be of the form
+$M=M_4\times K$, where $M_4$ is approximately
+Minkowskian (such as would be the case for our
+universe, where $M_4$ is a manifold curved by the
+presence of matter).
+
+The low energy approximation to string theory yields
+information on the possible solutions for the compact
+manifold $K$, provided the size $R_K$ of $K$ is much
+larger than the Planck scale:
+$$
+R_K\gg \ell=\sqrt{\alpha'/2\,\,}\eqno{(6.J.1)}
+$$
+In this case the approxiamtion in which higher powers of
+$\ell$ are neglected is reliable.
+The string field equations (6.I.1) restrict the fields
+$G$, $B$ and $\Phi$ that are allowed on $K$ and thus
+restrict $K$.
+
+If it is assumed that space-time sypersymmetry remains
+partially unbroken at distance scales of order
+$R_K$, then $K$  must be a K\"ahler manifold, and
+$\Phi$ must be constant.
+A particular solution corresponds to $H=0$, so that $K$
+must be K\"ahler and Ricci flat.
+For superstrings, where the critical dimension is
+$D=10$, the combination of these conditions amounts to
+demanding that $K$ be a Calabi Yau manifold of complex
+dimension $3$.
+
+\Proclaim{Appendix A} \rm
+
+The correlation functions in (6.C.1) are defined by
+$$
+\eqalign{
+\left<\phi_1\ldots\phi_n\right>_g &=
+\int D\phi\,\phi_1\ldots\phi_n\,e^{-S[\phi,g]}\cr
+&={\delta\over\delta J_1}\ldots{\delta\over \delta
+J_n}\,e^{W[J,g]}\vrulesub{J=0}\cr}
+$$
+Here, we consider correlation functions of a canonical
+field $\phi$, which in our case is just the map $x$ or
+the field $\xi$ and $J$ is some function, just as in
+(6.E.1).
+We now perform an infinitesimal Weyl rescaling
+$\delta_\sigma$, whose support does not contain the
+points where the operators $\phi_1\ldots\phi_n$ are
+applied.
+Thus the Weyl variation becomes:
+$$
+\delta_\sigma\left<\phi_1\ldots\phi_n\right>_g=
+{\delta\over \delta J_1}\ldots{\delta\over \delta
+J_n}\,
+\delta_\sigma W[J,g]\,e^{-W[J,g]}\vrulesub{J=0}
+$$
+and using the definition of the effective action by
+Legendre transform
+$$
+\delta_\sigma W[J,g]\vrulesub{J=0}=-\delta_\sigma
+\Gamma[\varphi,g]\vrulesub{\varphi}
+$$
+where $\varphi$ is such that $J=0$.
+Equation (6.H.1) follows immediately.
+
+
+
+\bye
+
+

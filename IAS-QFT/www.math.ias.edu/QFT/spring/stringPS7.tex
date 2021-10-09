@@ -1,0 +1,87 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%
+%%%%    STRING THEORY : Problem Set 7, March 13, 1997
+%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\magnification=\magstep1
+\overfullrule=0pt
+\baselineskip=17pt
+\def\det{{\rm det}}
+\def\Det{{\rm Det}}
+\def\tr{{\rm tr}}
+\def\Tr{{\rm Tr}}
+\def\12{{1 \over 2}}
+\def\ker{{\rm Ker}}
+\def\O{{\cal O}}
+
+\centerline{{\bf STRING THEORY}}
+\centerline{ Problem Set \# 7}
+\centerline{March 13, 1997}
+
+\bigskip
+\bigskip
+
+
+\noindent
+{\it Problem 1}
+
+\medskip
+
+Let $M$ be a Riemannian manifold with local coordinates $x^\mu$,
+metric $G=G_{\mu \nu}dx^\mu \otimes dx^\nu$, two form
+$B=B_{\mu \nu} dx^\mu \wedge d x^\nu$, and scalar field $\Phi$,
+and let $l$ be a real positive parameter.
+The generalized non-linear sigma model action on a surface $\Sigma$,
+with metric $g$, Gaussian curvature $R_g$, volume form $d \mu _g$,
+and anti-symmetric tensor $\epsilon ^{mn}$, is given by
+$$
+S[x;g] = {1 \over 8 \pi l^2} \int _\Sigma d \mu _g
+\bigl [ g^{mn} G_{\mu \nu} + \epsilon ^{mn} B_{\mu \nu} \bigr ]
+\partial _m x^\mu \partial _n x ^\nu 
++ {1 \over 2 \pi } \int _\Sigma d \mu _g R_g \Phi
+$$
+a) Derive the form of the vector field $V^\mu(x)$ in $TM$, such that
+the infinitesimal Weyl transformation $\delta g = 2 \delta \sigma g$,
+combined with the transformation 
+$\delta x^\mu = l^2 \delta \sigma V^\mu (x)$ yields a trace of the stress
+tensor $T_{mn} g^{mn}$ which is of the same form as the Lagrangian
+density of $S[x;g]$, i.e. such that
+$$
+\delta S[x;g] = -{1 \over 2 \pi} \int _\Sigma d \mu _g
+\bigl [ g^{mn} \beta ^G _{\mu \nu} + \epsilon ^{mn} \beta ^B_{\mu \nu} \bigr ]
+\partial _m x^\mu \partial _n x ^\nu 
++ {1 \over 2 \pi } \int _\Sigma d \mu _g R_g \beta ^\Phi
+$$
+b) Derive the resulting expressions for $\beta ^G, ~ \beta ^B$ and 
+$\beta ^\Phi$. (These are the tree level contributions to the 
+$\beta$-functions defined for Weyl transformations.)
+
+\bigskip
+
+\noindent
+{\it Problem 2}
+
+\medskip
+
+Let $\phi$ be a real scalar field on a Riemann surface $\Sigma$, with action
+$$
+S[\phi;g] = { 1 \over 8 \pi} \int _\Sigma d \mu _g \bigl [
+g^{mn} \partial _m \phi \partial _n \phi + m^2 \phi ^2 \bigr ]
+$$
+where $m$ is an IR regulator mass, which we let to zero whenever
+the limit is well-defined.
+
+\noindent
+a) Use dimensional regularization to derive the Weyl transformation
+properties of the Green function $G(\xi, \xi')=\langle \phi (\xi)
+\phi (\xi') \rangle$ and its first and second derivatives,
+evaluated on the diagonal (i.e. at coincident points).
+
+\noindent
+b) Repeat the calculation of a), but now with a heat-kernel regularization
+of the Green function. Compare your result with that of a).
+\end
+
+

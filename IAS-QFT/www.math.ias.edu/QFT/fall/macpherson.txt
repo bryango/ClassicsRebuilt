@@ -1,0 +1,64 @@
+                                           December 15, 1995 
+
+Dear Colleagues,
+
+The Institute for Advanced Study will have a special program during the
+academic year 1996-97 on quantum field theory, directed by P. Deligne, D.
+Kazhdan and E. Witten.  It will be sponsored jointly by the School of
+Mathematics and the School of Natural Sciences.
+
+The goal is to create and convey an understanding, in terms congenial to
+mathematicians, of some fundamental notions of physics, such as quantum
+field theory, supersymmetry and string theory.  The emphasis will be on
+developing the intuition stemming from functional integrals.
+
+One way to define the goals of the program is by negation, excluding certain
+important subjects commonly pursued by mathematicians whose work is
+motivated by physics.  In this spirit, it is not planned to treat except
+periferally the magnificent new applications of field theory, such as
+Seiberg-Witten equations to Donaldson theory.  Nor is the plan to consider
+fundamental new constructions within mathematics that were inspired by
+physics, such as quantum groups or vertex operator algebras.  Nor is the aim
+to discuss how to provide mathematical rigor for physical theories.  Rather,
+the goal is to develop the sort of intuition common among physicists for
+those who are used to thought processes stemming from geometry and algebra.
+
+During the year there will be several series of lectures, including:
+
+Quantum field theory including Yang-Mills theory and renormalization, by L.
+Faddeev
+
+Conformal field theories from the point of view of functional integrals, by
+K. Gawedzki
+
+Super-symmetry, by D. Kazhdan
+
+String theory leading to Yang-Mills theory and super-symmetry, by E. D'Hoker
+
+S-duality, by E. Witten.
+
+The Institute will have funds to support a limited number of
+mathematicians and physicists at the postdoctoral level.  Traditionally
+our application deadline is December 1.  However, we will be
+considering candidates for this special program until February 1.
+Application materials may be requested from Mr. Richard Lloyd, School
+of Mathematics, Institute for Advanced Study, Olden Lane, Princeton, NJ
+08540, (609) 734-8112.  His e-mail address is:  lloyd@math.ias.edu.
+Also, forms may be accessed via a "gopher" connection to:
+gopher.math.ias.edu, or via a "web" connection to:
+http://www.math.ias.edu/.
+
+If you know any outstanding recent Ph.D. who might be in a position to
+benefit from this program, please give them this information and
+encourage them to apply.
+
+It would be helpful to both the applicant and to us to have letters of
+recommendation which focus on the ability of the applicant to benefit from
+being at the Institute during this special program.
+
+                                        Sincerely,
+
+
+
+                                        Robert MacPherson
+

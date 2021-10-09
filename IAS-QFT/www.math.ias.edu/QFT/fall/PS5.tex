@@ -1,0 +1,174 @@
+%Date: Thu, 31 Oct 1996 17:28:46 EST
+%From: Edward Witten <witten@sns.ias.edu>
+
+
+\input harvmac
+{\it ``Problem Set Five''}
+
+(1)  Consider motion of a non-relativistic particle in one dimension
+with a delta function potential.
+
+The Hamiltonian is
+
+\eqn\gorry{H={p^2\over 2m}+\lambda \delta(x)}
+
+with $p=-id/dx$ and $m,\lambda$ being constants.
+
+Find a solution of the Schrodinger equation $H\psi = k^2\psi$
+
+which is asymptotic for $x\to -\infty$ to $e^{ikx}+R(k)e^{-ikx}$
+and for $x\to +\infty$ to $T(k)e^{ikx}$.  $R$ and $T$ are called
+the reflection and transmission amplitudes; show that $|R|^2+|T|^2=1$.
+
+Does this problem have a bound state?  That is, is there an ${\bf L}^2$
+solution of the equation $H\psi=-\epsilon\psi$ with $\epsilon>0$?
+(The answer may depend on $\lambda$!)
+
+(2) The following is a continuation of a problem from last week.
+We considered the simple harmonic oscillator in one dimension
+with Lagrangian
+\eqn\ibbo{L=\int dt\,\left(\half m\dot x^2-\half m\omega^2x^2\right)}
+and Hamiltonian 
+\eqn\nibbo{H={p^2\over 2m}+{1\over 2}m\omega^2 x^2}
+and we computed the kernel
+$K(b,a;t)=(b,e^{-tH}a)$ by a path integral
+\eqn\fibbo{K(b,a;t)=\int_{X(0)=a}^{X(t)=b} DX(t')\,\,e^{-L}}
+over maps $X$  of $I=[0,t]$ to ${\bf R}$ with $X(0)=a$ and $X(t)=b$.
+(In this exercise we will be computing $e^{-tH}$ with real $t$ so $I$
+is ``Euclidean'' and we use $e^{-L}$ rather than $e^{iL}$ in the path 
+integral.)
+
+Now we'd like to compute $\Tr e^{-tH}=\int da K(a,a;t)$.
+To do so, we simply set $b=a$ in \fibbo\ and integrate over $a$.
+But a map $X:I\to {\bf R}$ that has the same value $a$ at the endpoints
+is the same as a map $X:S\to {\bf R}$, where $S$ is the circle 
+(of circumference $t$) obtained  by gluing together the ends of $I$.
+Moreover, in the formula \fibbo\ for $K$ we are already once we set $b=a$
+integrating over all maps $S\to {\bf R}$ with value $a$ at the former
+endpoint; once we also integrate over $a$ to get $\Tr \,e^{-Ht}$, we
+are simply integrating over all maps $S\to {\bf R}$.
+
+So the upshot is a formula
+\eqn\yoggo{\Tr\,e^{-Ht}=\int dX\,e^{-L}}
+where the integral is over all real-valued functions on $S$ and $L$
+is the Lagrangian evaluated for such an $X$.
+
+(a)
+
+As $L$ is a homogeneous quadratic function on the linear space 
+$Maps(S,{\bf R})$, the integral can be evaluated formally as $1/\sqrt{\det D}$
+where $D$ is a differential operator on $S$.  Calculate the determinant
+(using the same sort of methods you needed in last week's problem)
+and compare to a standard formula for $\Tr \,e^{-Ht}$.
+
+(b)  Now let $J$ be the operation $X\to -X$.  We want to compute
+by path integrals $\Tr\,Je^{-Ht}$.  This is $\int da K(-a,a;t)$
+so it can be computed exactly as  before except that when
+we glue the endpoints of $I$ to make the circle $S$, we have
+to require that the boundary values obey $b=-a$.  This means that
+$X$ is not a real-valued function on $S$, but a section of
+an unorientable real line bundle ${\cal L}$ over $S$.  With ${\cal L}$ 
+understood to have a metric (its structure group in particular is
+${\bf Z}_2$ and not ${\bf R}^*$)  the Lagrangian $L$ makes sense for
+$X$ a section of ${\cal L}$ and we have
+\eqn\okoppo{\Tr\,J\,e^{-Ht}=\int' DX\,e^{-L}}
+where now the integral runs over the space of sections of ${\cal L}$.
+As this space is again a linear space on which $L$ is a quadratic function,
+the path integral is again a Gaussian.  Evaluate the determinant
+and compare to another evaluation of $\Tr J\,e^{-Ht}$.
+
+(3)  Now we will do an analogous computation for fermions,
+to demonstrate by path integrals that quantization of the Lagrangian
+\eqn\koko{ L=\int_M dt i\sum_{j=1}^n\psi_j{d\psi_j\over dt} }
+leads to the spin representation.  Here $M$ is an oriented one-manifold
+and the $\psi_j$ are $n$ real fermions. Actually, to be precise, we will
+take $n$ to be even; there are then two spin representations
+$S_+$ and $S_-$, and we will see them both appear.
+
+First of all, in \koko\ we might take $M={\bf R}$ in which case we
+quantize and get a Hilbert space ${\cal H}$.  On this Hilbert space
+there would be in general a Hamiltonian, but in the case at hand
+-- since \koko\ is invariant under reparametrizations of $t$ -- the
+Hamiltonian is $H=0$.
+
+Rather than trying
+to determine by canonical quantization what ${\cal H}$ would be,
+here we will study the situation with path integrals.
+For this we take $M$ to be $S^1$, as in the last exercise.
+To find the dimension of ${\cal H}$, we want $\Tr_{\cal H}e^{-t H}$
+which (as $H=0$) as $\Tr_{\cal H}1=\dim\,{\cal H}$.  By naively
+imitating the last excerise, you would think we would have
+\eqn\hombo{?? \Tr_{cal H}1 =\int D\psi(t) e^{-L}}
+which in turn could be computed as a Pfaffian, rather as for
+the bosonic harmonic oscillator.
+
+Once we are on a circle, though, we note that $\psi$ is best understood
+as a section of the spin bundle of the circle.  There are two
+such spin bundles, the trivial and non-trivial $Z_2$ bundles
+over $\S^1$ (tensored with ${\bf R}$), so we have two candidate
+path integrals.  One spin structure can be obtained from the other by twisting
+by an element of $H^1(S^1,{\bf Z}_2)$.  What that means is that
+if we are building $S^1$ by gluing together the ends of an interval
+$I$, then (given a recipe for the gluing to make one spin structure)
+the second can be made by multiplying all fermions by $-1$ prior
+to the gluing.  
+
+(a) If then the path integral with one of the two spin structures
+computes $\Tr_{\cal H}1$, the path integral with the other spin
+structure computes $\Tr_{\cal H}\Gamma$, where $\Gamma$ is an operator
+in the quantum theory such that $\Gamma\psi_j=-\psi_j\Gamma$ for
+all $j$.  Using your knowledge of canonical quantization and the spin
+representation, what is $\Gamma$?  And by considering whether the
+Pfaffian is zero or not, can you see which spin structure must go with
+$\Tr_{\cal H}1$ and which computes $\Tr_{\cal H}\Gamma$?
+
+(b)  But our main interest here is in the following generalization.
+In gluing the ends of the interval $I$ to make $S^1$, we could ``twist''
+by an arbitrary element $g$ of the symmetry group $SO(n)$.  Depending
+on what spin structure we use, the path 
+integral will compute
+$\Tr_{\cal H}g$ or $\Tr_{\cal H}g\Gamma$. 
+
+By introducing such a $g$, one builds an $SO(n)$ bundle  over  $S^1$.
+ $\psi$ is now a section of $\epsilon\otimes F_g$ where $\epsilon$
+is a spin bundle of $S^1$ and $F_g$ is now understood to be the
+rank $n$ flat vector bundle with structure group $SO(n)$ made by twisting
+by $g$.  The Lagrangian makes sense for such $\psi$'s and should
+compute $\Tr_{\cal H}g$ or $\Tr_{\cal H}g\Gamma$ as the case may be.
+
+The problem is now simply to do the computation and get the appropriate
+formulas.  First of all, the fermion path integral gives
+the Pfaffian of the one-dimensional Dirac operator $D/Dt$ (which
+acts on sections of $\epsilon\otimes F_g$),  Mathematically, this
+Pfaffian is not a number but a section of a determinant line (better
+called a Pfaffian line).
+The relevant Pfaffian line bundle is real, but is in fact a non-trivial
+line bundle with structure group $Z_2$.
+ In other words, if one considers the family of flat
+bundles $F_g$ parametrized by $g\in SO(n)$, we get a family of Dirac
+operators parametrized by the group $SO(n)$, and the Pfaffian line
+bundle is a non-trivial real line bundle over $SO(n)$.
+
+If one takes the double cover of $SO(n)$, replacing it by $Spin(n)$,
+then the Pfaffian line becomes trivial and can be trivialized.
+Once a trivialization is picked, the Pfaffian of the Dirac operator
+becomes a function on $Spin(n)$.  
+Of course, we get two such functions, say $f_\epsilon$, depending
+on the choice of spin bundle $\epsilon$.
+
+Compute the $f_\epsilon$'s by actually writing down the eigenvalues
+of the Dirac operator and taking their product (with a regularization
+analogous to what you needed in the bosonic case).  The functions
+$f_\epsilon$ are obviously invariant under conjugation in $Spin(n)$
+and so are linear combinations of characters of that group.  But in
+fact, using your knowledge of spinors, describe precisely
+what characters here appear and compare to your identification above
+of the operator $\Gamma$.
+
+\end
+
+
+
+
+
+

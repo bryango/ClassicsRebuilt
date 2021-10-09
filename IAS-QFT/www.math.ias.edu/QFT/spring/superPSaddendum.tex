@@ -1,0 +1,243 @@
+%Date: Tue, 08 Apr 1997 11:17:58 -0400
+%From: Edward Witten <witten@IAS.EDU>
+
+\input harvmac
+
+
+{\it Addendum To Superhomework}
+
+\def\Z{{\bf Z}}
+The discussion in and after the last lecture suggested that the following
+exercises on representations of super-Poincar\'e in four dimensions
+would be helpful.
+
+Recall that unitary irreducible representations of super-Poincar\'e are
+constructed from certain equivariant vector bundles supported on a cone or
+hyperboloid in momentum space.
+The equivariant vector bundles in question are classified by representations
+of the subgroup $H_p$ of super-Poincar\'e that leaves fixed a chosen vector 
+$p$ 
+on the cone or hyperboloid.  Moreover, one can replace $H_p$ by its maximal
+reductive subgroup, whose bosonic part is $Spin(2)$ if we are on the cone
+and $Spin(3)$ if we are on the hyperboloid.  
+
+The $Spin(2)$ Lie algebra has one generator which we call $J$; its eigenvalues
+are in $\Z/2$.  The $Spin(3)$ Lie algebra has one representation $R_n$ of
+every positive dimension $n$.
+
+The $N=1$ super-Poincar\'e Lie algebra in four dimensions is (with notation
+as in the superhomework)
+\eqn\ozo{\{Q_A,Q_{\dot A}\}=P_{A\dot A}}
+with other anticommutators vanishing and Poincar\'e acting on the odd
+generators $Q$ in the usual fashion.  
+
+Upon fixing a vector on the cone or hyperboloid, the $P_{A\dot A}$ become
+numbers, say $p_{A\dot A}$.  Unitary representations of \ozo\ are analyzed in
+a fashion we should know from last fall: $Q$'s 
+that are in the kernel of the quadratic form in \ozo\ are represented by
+zero, and the remaining $Q$'s generate a Clifford algebra.
+
+(1) Show that if $p$ is lightlike, the quadratic form in \ozo\ has a
+two-dimensional null space, and that quantization of the Clifford algebra
+gives a two-dimensional representation  with $J$ eigenvalues
+$j,j+1/2$, for arbitrary $j\in\Z/2$.  We will call the $0,1/2$ and $-1/2,0$
+representations
+the chiral representations $C_+$ and $C_-$ and the $1/2,1$ and $-1,-1/2$
+representations the vector representations $V_+$ and $V_-$.
+
+Show that quantization of a chiral superfield gives a sum of $C_-$ and $C_+$ 
+for the one particle states, and quantization of a vector superfield gives
+similarly a sum of $V_+$ and $V_-$.
+
+(2) Show that if $p$ is timelike, the quadratic form is nondegenerate.
+Its irreducible representation  is four-dimensional
+and is (as a $Spin(3)$ respresection)  $C'=R_1\oplus R_1\oplus R_2$.
+An irreducible  representation of $H_p$ is then $C'\otimes R$ where $R$ is 
+any irreducible representationa of $Spin(3)$.
+
+We call $C'$ the massive chiral representation and we call $V'=C'\otimes R_2$
+the massive vector representation.
+
+(3) Show that when a null vector $p$ is perturbed to be timelike,
+$C_+\oplus C_-$ can be deformed to $C'$.  Now do a bit of field theory:
+show that the representation theory fact just stated  corresponds to the
+fact that it is possible to add a bare mass for a massless chiral superfield.
+
+(4) The analogous statement for the vector representation is a bit more
+complex (as we should expect from our study of the Higgs mechanism in the
+bosonic case).  Show that the representation $V_+\oplus V_-\oplus C_+\oplus 
+C_-$
+can be perturbed to $V'$.
+
+Now show how this can be realized in field theory.\foot{I write the following
+in a slightly naive way; the model presented here is actually anomalous.
+One can add additional fields to cancel the anomaly without affecting
+the occurrence of the super-Higgs mechanism.  (The supersymmetry breaking
+that occurs in one case in the text may be destroyed.)}
+Consider a theory with a vector superfield  and a chiral superfield
+$\Phi$ of charge 1.  Take the Lagrangian to be the kinetic energy
+for both superfields plus the ``Fayet-Iliopoulos $D$-term'' 
+\eqn\bozo{r\int d^4x D}
+(related to the constant term in the moment map) discussed in the 
+superhomework.
+
+Show that (a) for $r=0$, we get the representation $V_+\oplus V_-\oplus
+C_+\oplus C_-$ at tree level, (b) for $r\not=0$ one gets at tree
+level depending on the sign of $r$ either supersymmetry
+breaking, or a supersymmetric vacuum with mass gap and representation $V'$.
+The occurrence of the latter is called the super-Higgs effect.
+
+(5) Now we consider the $N=2$ supersymmetry algebra.  In the absence of
+a central term, the algebra reads
+\eqn\jozo{\{Q_A^I,Q_{\dot A J}\} = \delta^I_JP_{A\dot A},\,\,\,\,\,I,J=1,2}
+with other anticommutators vanishing.
+
+Classify the unitary representations as follows:
+
+(a) In the massless case, the ``helicities'' or $J$ eigenvalues in
+an irreducible representation are $j,j+1/2,j+1/2,$ and $j+1$ for any 
+$j\in {\bf Z}/2$.
+
+(b) In the superhomework you met two kinds of $N=2$ fields.
+Show that the massless
+hypermultiplet gives on quantization a representation $H$ which
+is the sum of two copies of the $j=-1/2$ representation
+(helicities from $-1/2$ to $+1/2$; there are two copies
+because of the quaternionic structure of the hypermultiplet)
+while the vector multiplet gives a representation $V$
+that is the sum of a representation with $j=-1$
+(helicities from $-1$ to 0) and $j=0$ (helicities from 0 to 1).  We call the
+$j=-1/2$ representation $H_0$.
+
+(c) In the massive case, the basic representation $H'$, obtained
+by quantizing the nondegenerate Clifford algebra in \jozo, has helicities
+ranging from $-1$ to $1$ with multiplicities $1,4,6,4,1$.  
+\foot{In the massive case, by helicity we mean the weight under the generator
+of a maximal torus of $Spin(3)$.} 
+Any irreducible
+unitary representation of the little group $H_p$ 
+is $H'\otimes R$ with $R$ an irreducible representation of $Spin(3)$.
+
+
+ The above facts might seem to imply, for instance, that a bare
+mass for the hypermultiplet is impossible (why?) but it is in fact possible
+to add a supersymmetric bare mass term.  In the presence of the bare
+mass, the $N=2$ super-Poincar\'e is deformed to the most general possibility
+allowed by the Haag-Sohnius-Lopuszanski theorem (the subject of Bernstein's
+first lecture).  
+In the process, the $R$ symmetry group of outer automorphisms, isomorphic
+to $U(2)$ (and discussed in the superhomework), is reduced to $SU(2)$.
+
+Concretely, the deformation of the algebra is as follows.
+\jozo\ is unchanged, but instead of the other anticommutators
+vanishing one has
+\eqn\lozo{\{Q_{A}^I,Q_B^J\}=\epsilon^{IJ}\epsilon_{AB} Y,}
+where the $\epsilon$'s are the antisymmetric tensors invariant
+under the action of Poincar\'e and of the $SU(2)$ group of $R$ symmetries.
+$Y$ is a ``central charge,'' that is an operator that commutes with
+the whole super-Poincar\'e, including its adjoint $\overline Y$ which
+appears in the remaining anticommutator:
+\eqn\olozo{\{Q_{\dot A I},Q_{\dot B J}\}=\epsilon_{AB}\epsilon_{IJ}\overline 
+Y.}
+
+(6) Consider a representation of mass $M$ and $Y=y$ ($y$ is a complex number;
+as $Y$ is central, in an irreducible representation it can be set to a 
+constant).
+We have already analyzed the representations for $y=0$.  Show
+that more generally the representations with $M>|y|$ are similar (for
+instance, deformable to)  the
+massive representations with $y=0$ and the representations with $M=|y|$ are
+likewise similar to the representations with $M=y=0$.  
+
+(7) There are two important cases of this in practice.  One is the 
+hypermultiplet,
+for which it is in fact possible to add a bare mass.  Recall from the
+superhomework that a single hypermultiplet has for its bosonic fields
+a map to the flat hyper-Kahler manifold ${\bf H}={\bf R}^4$.  ${\bf H}$ has
+a group $SU(2)$ of symmetries that preserve the hyper-Kahler structure
+(and so commute with super-Poincar\'e).  Show that it is possible to add a bare
+mass, in such a way that $Y$ is equal to an arbitrary element of the $SU(2)$
+Lie algebra.  (This is easy if you have the right frame of mind, but perhaps
+not otherwise.  In any event it is less immediately necessary than the
+results stated in the next exercise, 
+which are essential for doing Donaldson theory.) 
+
+(8) The other important case is the vector multiplet. First we have
+to discuss the Higgs mechanism for $N=2$.   We recall that the
+bosonic fields of a vector multiplet for gauge group $G$ are a connection $A$
+and a complex scalar $\phi$ in the adjoint representation.  There may also
+be charged scalars that transform in hypermultiplets; this means that
+one has for bosonic fields not only the vector multiplet but also
+a map from Minkowski space to a hyper-Kahler manifold $X$ (on which $G$ acts).
+
+There are two basic cases of the Higgs mechanism for $N=2$.  We describe
+these in a language that is tied to weak coupling (so we can speak informally
+of the expectation value of a charged field):
+
+(i) The scalar fields that have vacuum expectation values are all in the
+vector multiplet; this means that the vacuum is determined by a point in $X$
+that is $G$-invariant.
+
+(ii) The vacuum corresponds to a non-trivial orbit in the action of $G$ on $X$,
+for instance a free orbit.
+
+In this context:
+
+(a) Consider case (i), which is really essential for Donaldson theory.
+ You may as well assume there are no hypermultiplets.
+Then because of the term $\Tr [\phi,\bar \phi]^2$ term in the potential
+(recall the superhomework) the unbroken subgroup of $G$ has the same rank
+as $G$ and is in fact, for generic $\phi$,  a maximal torus.  By going from
+$\phi=0$ to $\phi\not=0$, most of the representations get mass, but the
+representations do not change in size; the massive representations we get
+are obviously representations with $M=|Y|$, as those are the massive
+representations to which the massless vector representation can be deformed.
+The relevant $Y$ is computed in the Olive-Witten paper that was distributed
+previously.
+
+
+(b) In this same situation, magnetic monopoles, which arise from solutions
+of the BPS equation $F=*D\phi$, are likewise in ``small'' representations of
+supersymmetry.  This is shown as follows:
+(1) The classical solution is invariant under half of the $Q$'s.
+(2) The other half of the $Q$'s give fermion zero modes, four of them
+to be precise. There are no other fermion zero modes.
+ (3) Quantization of four fermion zero modes gives a four-dimensional
+Clifford algebra with a four-dimensional irreducible representation, which
+is what we called above  representation $H_0$.
+The monopole {\it of fixed electric charge}\foot{We have  seen in one of the 
+lectures that monopoles have an ``arbitrary'' electric charge. We recall that 
+the 
+electric charge of the monopole is obtained by quantizing a bosonic zero 
+mode.} 
+transforms in the representation $H_0$.  The antimonopole (obtained by 
+quantizing the
+solution of $F=-*D\phi$, and with opposite electric charge) gives another
+copy of $H_0$.  Together they make the hypermultiplet representation $H$;
+this will be important in Donaldson theory.
+
+(c) Now show that a Higgs effect of type (ii) gives a representation of $M>
+|Y|$.
+To show that this is so generically it is enough to consider a special case,
+and I would recommend working through in detail the following example.
+Take $G=U(1)$, with a linear action on the quaternions ${\bf H}$ (preserving
+the hyper-Kahler structure) and let $X={\bf H}^2$.  A Higgs mechanism is 
+possible,
+since the hyper-Kahler quotient of $X$ by $U(1)$ is non-trivial and in fact
+is four-dimensional.  (What is it?)
+For a generic classical vacuum, show that the spectrum
+at tree level is as follows: a massless hypermultiplet and a copy of the basic
+massive $Y=0$ representation $H'$.  We recall that
+the latter has helicities running from $-1 $ to 1
+with multiplicities $1,4,6,4,1$.  (As a $Spin(3)$ representation it is the sum 
+of
+$R_3$, four copies of $R_2$, and five copies of $R_1$.)
+\end
+
+
+
+
+
+
+
+

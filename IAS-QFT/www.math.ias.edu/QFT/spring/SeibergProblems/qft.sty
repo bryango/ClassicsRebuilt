@@ -1,0 +1,2763 @@
+\catcode`\@=11
+\message{Loading utility definitions,}
+\def\identity@#1{#1}
+\def\nofrills@@#1{%
+ \DN@{#1}%
+ \ifx\next\nofrills \let\frills@\eat@
+   \expandafter\expandafter\expandafter\next@\expandafter\eat@
+  \else \let\frills@\identity@\expandafter\next@\fi}
+\def\nofrillscheck#1{\def\nofrills@{\nofrills@@{#1}}%
+  \futurelet\next\nofrills@}
+\Invalid@\usualspace
+\def\addto#1#2{\csname \expandafter\eat@\string#1@\endcsname
+  \expandafter{\the\csname \expandafter\eat@\string#1@\endcsname#2}}
+\newdimen\bigsize@
+\def\big@#1#2{{\hbox{$\left#2\vcenter to#1\bigsize@{}%
+  \right.\nulldelimiterspace\z@\m@th$}}}
+\def\big{\big@\@ne}
+\def\Big{\big@{1.5}}
+\def\bigg{\big@\tw@}
+\def\Bigg{\big@{2.5}}
+\def\raggedcenter@{\leftskip\z@ plus.4\hsize \rightskip\leftskip
+  \parfillskip\z@ \parindent\z@ \spaceskip.3333em \xspaceskip.5em
+  \pretolerance9999\tolerance9999 \exhyphenpenalty\@M
+  \hyphenpenalty\@M \let\\\linebreak}
+\def\uppercasetext@#1{%
+   {\spaceskip1.3\fontdimen2\the\font plus1.3\fontdimen3\the\font
+    \def\ss{SS}\let\i=I\let\j=J\let\ae\AE\let\oe\OE
+    \let\o\O\let\aa\AA\let\l\L
+    \skipmath@#1$\skipmath@$}}
+\def\skipmath@#1$#2${\uppercase{#1}%
+  \ifx\skipmath@#2\else$#2$\expandafter\skipmath@\fi}
+\def\add@missing#1{\expandafter\ifx\envir@end#1%
+  \Err@{You seem to have a missing or misspelled
+  \expandafter\string\envir@end ...}%
+  \envir@end
+\fi}
+\newtoks\revert@
+\def\envir@stack#1{\toks@\expandafter{\envir@end}%
+  \edef\next@{\def\noexpand\envir@end{\the\toks@}%
+    \revert@{\the\revert@}}%
+  \revert@\expandafter{\next@}%
+  \def\envir@end{#1}}
+\begingroup
+\catcode`\ =11
+\gdef\revert@envir#1{\expandafter\ifx\envir@end#1%
+\the\revert@%
+\else\ifx\envir@end\enddocument \Err@{Extra \string#1}%
+\else\expandafter\add@missing\envir@end\revert@envir#1%
+\fi\fi}
+\xdef\enddocument {\string\enddocument}%
+\global\let\envir@end\enddocument %%%%%% don't remove the final space!
+\endgroup\relax
+\def\first@#1#2\end{#1}
+\def\true@{TT}
+\def\false@{TF}
+\def\empty@{}
+\begingroup  \catcode`\-=3
+\long\gdef\notempty#1{%
+  \expandafter\ifx\first@#1-\end-\empty@ \false@\else \true@\fi}
+\endgroup
+\message{more fonts,}
+\font@\tensmc=cmcsc10 \relax
+\let\sevenex=\tenex % needs special handling in \PSAMSFonts
+\font@\sevenit=cmti7 \relax
+\font@\eightrm=cmr8 \relax % preloaded in plain.tex
+\font@\sixrm=cmr6 \relax % preloaded in plain.tex
+\font@\eighti=cmmi8 \relax     \skewchar\eighti='177 % preloaded
+\font@\sixi=cmmi6 \relax       \skewchar\sixi='177   % preloaded
+\font@\eightsy=cmsy8 \relax    \skewchar\eightsy='60 % preloaded
+\font@\sixsy=cmsy6 \relax      \skewchar\sixsy='60   % preloaded
+\let\eightex=\tenex % needs special handling in \PSAMSFonts
+\font@\eightbf=cmbx8 \relax % preloaded in plain.tex
+\font@\sixbf=cmbx6 \relax   % preloaded in plain.tex
+\font@\eightit=cmti8 \relax % preloaded in plain.tex
+\font@\eightsl=cmsl8 \relax % preloaded in plain.tex
+\font@\eighttt=cmtt8 \relax % preloaded in plain.tex
+\let\eightsmc=\nullfont % needs special handling in \PSAMSFonts
+\newtoks\tenpoint@
+\def\tenpoint{\normalbaselineskip12\p@
+ \abovedisplayskip12\p@ plus3\p@ minus9\p@
+ \belowdisplayskip\abovedisplayskip
+ \abovedisplayshortskip\z@ plus3\p@
+ \belowdisplayshortskip7\p@ plus3\p@ minus4\p@
+ \textonlyfont@\rm\tenrm \textonlyfont@\it\tenit
+ \textonlyfont@\sl\tensl \textonlyfont@\bf\tenbf
+ \textonlyfont@\smc\tensmc \textonlyfont@\tt\tentt
+ \ifsyntax@ \def\big##1{{\hbox{$\left##1\right.$}}}%
+  \let\Big\big \let\bigg\big \let\Bigg\big
+ \else
+   \textfont\z@\tenrm  \scriptfont\z@\sevenrm
+       \scriptscriptfont\z@\fiverm
+   \textfont\@ne\teni  \scriptfont\@ne\seveni
+       \scriptscriptfont\@ne\fivei
+   \textfont\tw@\tensy \scriptfont\tw@\sevensy
+       \scriptscriptfont\tw@\fivesy
+   \textfont\thr@@\tenex \scriptfont\thr@@\sevenex
+        \scriptscriptfont\thr@@\sevenex
+   \textfont\itfam\tenit \scriptfont\itfam\sevenit
+        \scriptscriptfont\itfam\sevenit
+   \textfont\bffam\tenbf \scriptfont\bffam\sevenbf
+        \scriptscriptfont\bffam\fivebf
+   \setbox\strutbox\hbox{\vrule height8.5\p@ depth3.5\p@ width\z@}%
+   \setbox\strutbox@\hbox{\lower.5\normallineskiplimit\vbox{%
+        \kern-\normallineskiplimit\copy\strutbox}}%
+   \setbox\z@\vbox{\hbox{$($}\kern\z@}\bigsize@1.2\ht\z@
+  \fi
+  \normalbaselines\rm\dotsspace@1.5mu\ex@.2326ex\jot3\ex@
+  \the\tenpoint@}
+\newtoks\eightpoint@
+\def\eightpoint{\normalbaselineskip10\p@
+ \abovedisplayskip10\p@ plus2.4\p@ minus7.2\p@
+ \belowdisplayskip\abovedisplayskip
+ \abovedisplayshortskip\z@ plus2.4\p@
+ \belowdisplayshortskip5.6\p@ plus2.4\p@ minus3.2\p@
+ \textonlyfont@\rm\eightrm \textonlyfont@\it\eightit
+ \textonlyfont@\sl\eightsl \textonlyfont@\bf\eightbf
+ \textonlyfont@\smc\eightsmc \textonlyfont@\tt\eighttt
+ \ifsyntax@\def\big##1{{\hbox{$\left##1\right.$}}}%
+  \let\Big\big \let\bigg\big \let\Bigg\big
+ \else
+  \textfont\z@\eightrm \scriptfont\z@\sixrm
+       \scriptscriptfont\z@\fiverm
+  \textfont\@ne\eighti \scriptfont\@ne\sixi
+       \scriptscriptfont\@ne\fivei
+  \textfont\tw@\eightsy \scriptfont\tw@\sixsy
+       \scriptscriptfont\tw@\fivesy
+  \textfont\thr@@\eightex \scriptfont\thr@@\sevenex
+   \scriptscriptfont\thr@@\sevenex
+  \textfont\itfam\eightit \scriptfont\itfam\sevenit
+   \scriptscriptfont\itfam\sevenit
+  \textfont\bffam\eightbf \scriptfont\bffam\sixbf
+   \scriptscriptfont\bffam\fivebf
+ \setbox\strutbox\hbox{\vrule height7\p@ depth3\p@ width\z@}%
+ \setbox\strutbox@\hbox{\raise.5\normallineskiplimit\vbox{%
+   \kern-\normallineskiplimit\copy\strutbox}}%
+ \setbox\z@\vbox{\hbox{$($}\kern\z@}\bigsize@1.2\ht\z@
+ \fi
+ \normalbaselines\eightrm\dotsspace@1.5mu\ex@.2326ex\jot3\ex@
+ \the\eightpoint@}
+\def\linespacing#1{%
+  \addto\tenpoint{\normalbaselineskip=#1\normalbaselineskip
+    \normalbaselines
+    \setbox\strutbox=\hbox{\vrule height.7\normalbaselineskip
+      depth.3\normalbaselineskip width\z@}%
+    \setbox\strutbox@\hbox{\raise.5\normallineskiplimit
+      \vbox{\kern-\normallineskiplimit\copy\strutbox}}%
+  }%
+  \addto\eightpoint{\normalbaselineskip=#1\normalbaselineskip
+    \normalbaselines
+    \setbox\strutbox=\hbox{\vrule height.7\normalbaselineskip
+      depth.3\normalbaselineskip width\z@}%
+    \setbox\strutbox@\hbox{\raise.5\normallineskiplimit
+      \vbox{\kern-\normallineskiplimit\copy\strutbox}}%
+  }%
+}
+\def\extrafont@#1#2#3{\font#1=#2#3\relax}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newif\ifPSAMSFonts
+\def\PSAMSFonts{%
+  \def\extrafont@##1##2##3{%
+    \font##1=##2%
+      \ifnum##3=9 10 at9pt%
+      \else\ifnum##3=8 10 at8pt%
+      \else\ifnum##3=6 7 at6pt%
+              \else ##3\fi\fi\fi\relax}%
+  \font@\eightsmc=cmcsc10 at 8pt
+  \font@\eightex=cmex10 at 8pt
+  \font@\sevenex=cmex10 at 7pt
+  \PSAMSFontstrue
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\loadextrasizes@#1#2#3#4#5#6#7{%
+ \ifx\undefined#1%
+ \else \extrafont@{#4}{#2}{8}\extrafont@{#6}{#2}{6}%
+   \ifsyntax@
+   \else
+     \addto\tenpoint{\textfont#1#3\scriptfont#1#5%
+       \scriptscriptfont#1#7}%
+    \addto\eightpoint{\textfont#1#4\scriptfont#1#6%
+       \scriptscriptfont#1#7}%
+   \fi
+ \fi
+}
+\newtoks\loadextrafonts@@
+\def\loadextrafonts@{%
+  \loadextrasizes@\msafam{msam}%
+    \tenmsa\eightmsa\sevenmsa\sixmsa\fivemsa
+  \loadextrasizes@\msbfam{msbm}%
+    \tenmsb\eightmsb\sevenmsb\sixmsb\fivemsb
+  \loadextrasizes@\eufmfam{eufm}%
+    \teneufm\eighteufm\seveneufm\sixeufm\fiveeufm
+  \loadextrasizes@\eufbfam{eufb}%
+    \teneufb\eighteufb\seveneufb\sixeufb\fiveeufb
+  \loadextrasizes@\eusmfam{eusm}%
+    \teneusm\eighteusm\seveneusm\sixeusm\fiveeusm
+  \loadextrasizes@\eusbfam{eusb}%
+    \teneusb\eighteusb\seveneusb\sixeusb\fiveeusb
+  \loadextrasizes@\eurmfam{eurm}%
+    \teneurm\eighteurm\seveneurm\sixeurm\fiveeurm
+  \loadextrasizes@\eurbfam{eurb}%
+    \teneurb\eighteurb\seveneurb\sixeurb\fiveeurb
+  \loadextrasizes@\cmmibfam{cmmib}%
+    \tencmmib\eightcmmib\sevencmmib\sixcmmib\fivecmmib
+  \loadextrasizes@\cmbsyfam{cmbsy}%
+    \tencmbsy\eightcmbsy\sevencmbsy\sixcmbsy\fivecmbsy
+  \let\loadextrafonts@\empty@
+  \ifPSAMSFonts
+  \else
+    \font@\eightsmc=cmcsc8 \relax
+    \font@\eightex=cmex8 \relax
+    \font@\sevenex=cmex7 \relax
+  \fi
+  \the\loadextrafonts@@
+}
+\message{page dimension settings,}
+\parindent1pc
+\newdimen\normalparindent \normalparindent\parindent
+\normallineskiplimit\p@
+\newdimen\indenti \indenti=2pc
+\let\magnification=\mag
+\topskip10pt \relax
+\message{top matter,}
+\def\topmatter{\loadextrafonts@ \let\topmatter\relax}
+\def\chapterno@{\uppercase\expandafter{\romannumeral\chaptercount@}}
+\newcount\chaptercount@
+\def\chapter{\let\savedef@\chapter
+  \def\chapter##1{\let\chapter\savedef@
+  \leavevmode\hskip-\leftskip
+   \rlap{\vbox to\z@{\vss\centerline{\eightpoint
+   \frills@{CHAPTER\space\afterassignment\chapterno@
+       \global\chaptercount@=}%
+   ##1\unskip}\baselineskip2pc\null}}\hskip\leftskip}%
+ \nofrillscheck\chapter}
+\newbox\titlebox@
+\def\title{\let\savedef@\title
+  \def\title##1\endtitle{\let\title\savedef@
+    \global\setbox\titlebox@\vtop{\tenpoint\bf
+      \raggedcenter@
+      \baselineskip1.3\baselineskip
+      \frills@\uppercasetext@{##1}\endgraf}%
+    \ifmonograph@
+      \edef\next{\the\leftheadtoks}\ifx\next\empty@ \leftheadtext{##1}\fi
+    \fi
+    \edef\next{\the\rightheadtoks}\ifx\next\empty@ \rightheadtext{##1}\fi
+  }%
+  \nofrillscheck\title}
+\newbox\authorbox@
+\def\author#1\endauthor{\global\setbox\authorbox@
+  \vbox{\tenpoint\smc\raggedcenter@ #1\endgraf}\relaxnext@
+  \edef\next{\the\leftheadtoks}%
+  \ifx\next\empty@\leftheadtext{#1}\fi}
+\newbox\affilbox@
+\def\affil#1\endaffil{\global\setbox\affilbox@
+  \vbox{\tenpoint\raggedcenter@#1\endgraf}}
+\newcount\addresscount@
+\addresscount@\z@
+\def\address#1\endaddress{\global\advance\addresscount@\@ne
+  \expandafter\gdef\csname address\number\addresscount@\endcsname
+  {\nobreak\vskip12\p@ minus6\p@\indent\eightpoint\smc#1\par}}
+\def\curraddr{\let\savedef@\curraddr
+  \def\curraddr##1\endcurraddr{\let\curraddr\savedef@
+  \toks@\expandafter\expandafter\expandafter{%
+       \csname address\number\addresscount@\endcsname}%
+  \toks@@{##1}%
+  \expandafter\xdef\csname address\number\addresscount@\endcsname
+  {\the\toks@\endgraf\noexpand\nobreak
+    \indent{\noexpand\rm
+    \frills@{{\noexpand\it Current address\noexpand\/}:\space}%
+    \def\noexpand\usualspace{\space}\the\toks@@\unskip}}}%
+  \nofrillscheck\curraddr}
+\def\email{\let\savedef@\email
+  \def\email##1\endemail{\let\email\savedef@
+  \toks@{\def\usualspace{{\it\enspace}}\endgraf\indent\eightpoint}%
+  \toks@@{\tt##1\par}%
+  \expandafter\xdef\csname email\number\addresscount@\endcsname
+  {\the\toks@\frills@{{\noexpand\it E-mail address\noexpand\/}:%
+     \noexpand\enspace}\the\toks@@}}%
+  \nofrillscheck\email}
+\def\tildechar{{\tt\char`\~}}
+\def\urladdr{\let\savedef@\urladdr
+  \def\urladdr##1\endurladdr{\let\urladdr\savedef@
+  \toks@{\def\usualspace{{\it\enspace}}\endgraf\indent\eightpoint}%
+  \toks@@{\tt##1\par}%
+  \expandafter\xdef\csname urladdr\number\addresscount@\endcsname
+  {\the\toks@\frills@{{\noexpand\it URL\noexpand\/}:%
+     \noexpand\enspace}\the\toks@@}}%
+  \nofrillscheck\urladdr}
+\def\thedate@{}
+\def\date#1\enddate{\gdef\thedate@{\tenpoint#1\unskip}}
+\def\thethanks@{}
+\def\thanks#1\endthanks{%
+  \ifx\thethanks@\empty@ \gdef\thethanks@{\eightpoint#1}%
+  \else
+    \expandafter\gdef\expandafter\thethanks@\expandafter{%
+     \thethanks@\endgraf#1}%
+  \fi}
+\def\thekeywords@{}
+\def\keywords{\let\savedef@\keywords
+  \def\keywords##1\endkeywords{\let\keywords\savedef@
+  \toks@{\def\usualspace{{\it\enspace}}\eightpoint}%
+  \toks@@{##1\unskip.}%
+  \edef\thekeywords@{\the\toks@\frills@{{\noexpand\it
+    Key words and phrases.\noexpand\enspace}}\the\toks@@}}%
+ \nofrillscheck\keywords}
+\def\thesubjclass@{}
+\def\subjclass{\let\savedef@\subjclass
+ \def\subjclass##1\endsubjclass{\let\subjclass\savedef@
+   \toks@{\def\usualspace{{\rm\enspace}}\eightpoint}%
+   \toks@@{##1\unskip.}%
+   \edef\thesubjclass@{\the\toks@
+     \frills@{{\noexpand\rm1991 {\noexpand\it Mathematics Subject
+       Classification}.\noexpand\enspace}}%
+     \the\toks@@}}%
+  \nofrillscheck\subjclass}
+\newbox\abstractbox@
+\def\abstract{\let\savedef@\abstract
+  \def\abstract{\let\abstract\savedef@
+    \setbox\abstractbox@\vbox\bgroup\noindent$$\vbox\bgroup
+      \def\envir@end{\endabstract}\advance\hsize-2\indenti
+      \def\usualspace{\enspace}\eightpoint \noindent
+      \frills@{{\smc Abstract.\enspace}}}%
+  \nofrillscheck\abstract}
+\def\endabstract{\par\unskip\egroup$$\egroup}
+\def\widestnumber{\begingroup \let\head\relax\let\subhead\relax
+  \let\subsubhead\relax \expandafter\endgroup\setwidest@}
+\def\setwidest@#1#2{%
+   \ifx#1\head\setbox\tocheadbox@\hbox{#2.\enspace}%
+   \else\ifx#1\subhead\setbox\tocsubheadbox@\hbox{#2.\enspace}%
+   \else\ifx#1\subsubhead\setbox\tocsubheadbox@\hbox{#2.\enspace}%
+   \else\ifx#1\key
+       \if C\refstyle@ \else\refstyle A\fi
+       \setboxz@h{\refsfont@\keyformat{#2}}%
+       \refindentwd\wd\z@
+   \else\ifx#1\no\refstyle C%
+       \setboxz@h{\refsfont@\keyformat{#2}}%
+       \refindentwd\wd\z@
+   \else\ifx#1\page\setbox\z@\hbox{\quad\bf#2}%
+       \pagenumwd\wd\z@
+   \else\ifx#1\item
+       \setboxz@h{(#2)}\rosteritemwd\wdz@
+   \else\message{\string\widestnumber\space not defined for this
+      option (\string#1)}%
+\fi\fi\fi\fi\fi\fi\fi}
+\newif\ifmonograph@
+\def\Monograph{\monograph@true \let\headmark\rightheadtext
+  \let\varindent@\indent \def\headfont@{\bf}\def\proclaimheadfont@{\smc}%
+  \def\remarkheadfont@{\smc}}
+\let\varindent@\noindent
+\newbox\tocheadbox@    \newbox\tocsubheadbox@
+\newbox\tocbox@
+\newdimen\pagenumwd
+\def\toc{\toc@{Contents}}
+\def\newtocdefs{%
+   \def \title##1\endtitle
+       {\penaltyandskip@\z@\smallskipamount
+        \hangindent\wd\tocheadbox@\noindent{\bf##1}}%
+   \def \chapter##1{%
+        Chapter \uppercase\expandafter{%
+              \romannumeral##1.\unskip}\enspace}%
+   \def \specialhead##1\endspecialhead
+       {\par\hangindent\wd\tocheadbox@ \noindent##1\par}%
+   \def \Head##1 ##2
+       {\par\hangindent\wd\tocheadbox@ \noindent
+        \if\notempty{##1}\hbox to\wd\tocheadbox@{\hfil##1\enspace}\fi
+        ##2\par}%
+   \def \subhead##1 ##2\endsubhead
+       {\par\vskip-\parskip {\normalbaselines
+        \advance\leftskip\wd\tocheadbox@
+        \hangindent\wd\tocsubheadbox@ \noindent
+        \if\notempty{##1}%
+              \hbox to\wd\tocsubheadbox@{##1\unskip\hfil}\fi
+         ##2\par}}%
+   \def \subsubhead##1 ##2\endsubsubhead
+       {\par\vskip-\parskip {\normalbaselines
+        \advance\leftskip\wd\tocheadbox@
+        \hangindent\wd\tocsubheadbox@ \noindent
+        \if\notempty{##1}%
+              \hbox to\wd\tocsubheadbox@{##1\unskip\hfil}\fi
+        ##2\par}}}
+\def\toc@#1{\relaxnext@
+ \DN@{\ifx\next\nofrills\DN@\nofrills{\nextii@}%
+      \else\DN@{\nextii@{{#1}}}\fi
+      \next@}%
+ \DNii@##1{%
+\ifmonograph@\bgroup\else\setbox\tocbox@\vbox\bgroup
+   \centerline{\headfont@\ignorespaces##1\unskip}\nobreak
+   \vskip\belowheadskip \fi
+   \def\page####1%
+       {\unskip\penalty\z@\null\hfil
+        \rlap{\hbox to\pagenumwd{\quad\hfil####1}}%
+              \hfilneg\penalty\@M}%
+   \setbox\tocheadbox@\hbox{0.\enspace}%
+   \setbox\tocsubheadbox@\hbox{0.0.\enspace}%
+   \leftskip\indenti \rightskip\leftskip
+   \setboxz@h{\bf\quad000}\pagenumwd\wd\z@
+   \advance\rightskip\pagenumwd
+   \newtocdefs
+ }%
+ \FN@\next@}
+\def\endtoc{\par\egroup}
+\let\pretitle\relax
+\let\preauthor\relax
+\let\preaffil\relax
+\let\predate\relax
+\let\preabstract\relax
+\let\prepaper\relax
+\def\dedicatory #1\enddedicatory{\def\preabstract{{\medskip
+  \eightpoint\it \raggedcenter@#1\endgraf}}}
+\def\thetranslator@{}
+\def\translator{%
+  \let\savedef@\translator
+  \def\translator##1\endtranslator{\let\translator\savedef@
+    \edef\thetranslator@{\noexpand\nobreak\noexpand\medskip
+      \noexpand\line{\noexpand\eightpoint\hfil
+      \frills@{Translated by \uppercase}{##1}\qquad\qquad}%
+       \noexpand\nobreak}}%
+  \nofrillscheck\translator}
+\outer\def\endtopmatter{\add@missing\endabstract
+  \edef\next{\the\leftheadtoks}%
+  \ifx\next\empty@
+    \expandafter\leftheadtext\expandafter{\the\rightheadtoks}%
+  \fi
+  \ifmonograph@\else
+    \ifx\thesubjclass@\empty@\else \makefootnote@{}{\thesubjclass@}\fi
+    \ifx\thekeywords@\empty@\else \makefootnote@{}{\thekeywords@}\fi
+    \ifx\thethanks@\empty@\else \makefootnote@{}{\thethanks@}\fi
+  \fi
+  \inslogo@
+  \pretitle
+  \begingroup % to localize variant topskip
+  \ifmonograph@ \topskip7pc \else \topskip4pc \fi
+  \box\titlebox@
+  \endgroup
+  \preauthor
+  \ifvoid\authorbox@\else \vskip2.5pcplus1pc\unvbox\authorbox@\fi
+  \preaffil
+  \ifvoid\affilbox@\else \vskip1pcplus.5pc\unvbox\affilbox@\fi
+  \predate
+  \ifx\thedate@\empty@\else
+    \vskip1pcplus.5pc\line{\hfil\thedate@\hfil}\fi
+  \preabstract
+  \ifvoid\abstractbox@\else
+    \vskip1.5pcplus.5pc\unvbox\abstractbox@ \fi
+  \ifvoid\tocbox@\else\vskip1.5pcplus.5pc\unvbox\tocbox@\fi
+  \prepaper
+  \vskip2pcplus1pc\relax
+}
+\def\document{%
+  \loadextrafonts@
+  \let\fontlist@\relax\let\alloclist@\relax
+  \tenpoint}
+\message{section heads,}
+\newskip\aboveheadskip       \aboveheadskip\bigskipamount
+\newdimen\belowheadskip      \belowheadskip6\p@
+\def\headfont@{\smc}
+\def\penaltyandskip@#1#2{\par\skip@#2\relax
+  \ifdim\lastskip<\skip@\relax\removelastskip
+      \ifnum#1=\z@\else\penalty@#1\relax\fi\vskip\skip@
+  \else\ifnum#1=\z@\else\penalty@#1\relax\fi\fi}
+\def\nobreak{\penalty\@M
+  \ifvmode\gdef\penalty@{\global\let\penalty@\penalty\count@@@}%
+  \everypar{\global\let\penalty@\penalty\everypar{}}\fi}
+\let\penalty@\penalty
+\def\heading#1\endheading{\head#1\endhead}
+\def\subheading{\DN@{\ifx\next\nofrills
+    \expandafter\subheading@
+  \else \expandafter\subheading@\expandafter\empty@
+  \fi}%
+  \FN@\next@
+}
+\def\subheading@#1#2{\subhead#1#2\endsubhead}
+\newskip\abovespecialheadskip
+\abovespecialheadskip=\aboveheadskip
+\def\specialheadfont@{\bf}
+\outer\def\specialhead{%
+  \add@missing\endroster \add@missing\enddefinition
+  \add@missing\enddemo \add@missing\endexample
+  \add@missing\endproclaim
+  \penaltyandskip@{-200}\abovespecialheadskip
+  \begingroup\interlinepenalty\@M\rightskip\z@ plus\hsize
+  \let\\\linebreak
+  \specialheadfont@\noindent}
+\def\endspecialhead{\par\endgroup\nobreak\vskip\belowheadskip}
+\outer\def\head#1\endhead{%
+  \add@missing\endroster \add@missing\enddefinition
+  \add@missing\enddemo \add@missing\endexample
+  \add@missing\endproclaim
+  \penaltyandskip@{-200}\aboveheadskip
+  {\headfont@\raggedcenter@\interlinepenalty\@M
+  #1\endgraf}\headmark{#1}%
+  \nobreak
+  \vskip\belowheadskip}
+\let\headmark\eat@
+\def\restoredef@#1{\relax\let#1\savedef@\let\savedef@\relax}
+\newskip\subheadskip       \subheadskip\medskipamount
+\def\subheadfont@{\bf}
+\outer\def\subhead{%
+  \add@missing\endroster \add@missing\enddefinition
+  \add@missing\enddemo \add@missing\endexample
+  \add@missing\endproclaim
+  \let\savedef@\subhead \let\subhead\relax
+  \def\subhead##1\endsubhead{\restoredef@\subhead
+    \penaltyandskip@{-100}\subheadskip
+    {\def\usualspace{\/{\subheadfont@\enspace}}%
+     \varindent@\subheadfont@\ignorespaces##1\unskip\frills@{.\enspace}}%
+    \ignorespaces}%
+  \nofrillscheck\subhead}
+\newskip\subsubheadskip       \subsubheadskip\medskipamount
+\def\subsubheadfont@{\it}
+\outer\def\subsubhead{%
+  \add@missing\endroster \add@missing\enddefinition
+  \add@missing\enddemo
+  \add@missing\endexample \add@missing\endproclaim
+  \let\savedef@\subsubhead \let\subsubhead\relax
+  \def\subsubhead##1\endsubsubhead{\restoredef@\subsubhead
+    \penaltyandskip@{-50}\subsubheadskip
+    {\def\usualspace{\/{\subsubheadfont@\enspace}}%
+     \subsubheadfont@##1\unskip\frills@{.\enspace}}\ignorespaces}%
+  \nofrillscheck\subsubhead}
+\message{theorems/proofs/definitions/remarks,}
+\def\proclaimheadfont@{\bf}
+\def\proclaimfont{\it}
+\newskip\preproclaimskip  \preproclaimskip=\medskipamount
+\newskip\postproclaimskip \postproclaimskip=\medskipamount
+\outer\def\proclaim{%
+  \let\savedef@\proclaim \let\proclaim\relax
+  \add@missing\endroster \add@missing\enddefinition
+  \add@missing\endproclaim \envir@stack\endproclaim
+  \def\proclaim##1{\restoredef@\proclaim
+    \penaltyandskip@{-100}\preproclaimskip
+    {\def\usualspace{\/{\proclaimheadfont@\enspace}}%
+     \varindent@\proclaimheadfont@\ignorespaces##1\unskip
+     \frills@{.\enspace}}%
+    \proclaimfont\ignorespaces}%
+  \nofrillscheck\proclaim}
+\def\endproclaim{\revert@envir\endproclaim \par\rm
+  \penaltyandskip@{55}\postproclaimskip}
+\def\remarkheadfont@{\it}
+\def\remarkfont{\rm}
+\newskip\remarkskip  \remarkskip=\medskipamount
+\def\remark{\let\savedef@\remark \let\remark\relax
+  \add@missing\endroster \add@missing\endproclaim
+  \envir@stack\endremark
+  \def\remark##1{\restoredef@\remark
+    \penaltyandskip@\z@\remarkskip
+    {\def\usualspace{\/{\remarkheadfont@\enspace}}%
+     \varindent@\remarkheadfont@\ignorespaces##1\unskip
+     \frills@{.\enspace}}%
+    \remarkfont\ignorespaces}%
+  \nofrillscheck\remark}
+\def\endremark{\par\revert@envir\endremark}
+\def\qed{\ifhmode\unskip\nobreak\fi\quad
+  \ifmmode\square\else$\m@th\square$\fi}
+\newskip\postdemoskip  \postdemoskip=\medskipamount
+\def\demo{\DN@{\ifx\next\nofrills
+    \DN@####1####2{\remark####1{####2}\envir@stack\enddemo
+      \ignorespaces}%
+  \else
+    \DN@####1{\remark{####1}\envir@stack\enddemo\ignorespaces}%
+  \fi
+  \next@}%
+\FN@\next@}
+\def\enddemo{\par\revert@envir\enddemo \endremark\vskip\postdemoskip}
+\def\definitionfont{\rm}
+\newskip\predefinitionskip  \predefinitionskip=\medskipamount
+\newskip\postdefinitionskip  \postdefinitionskip=\medskipamount
+\def\definition{\let\savedef@\definition \let\definition\relax
+  \add@missing\endproclaim \add@missing\endroster
+  \add@missing\enddefinition \envir@stack\enddefinition
+  \def\definition##1{\restoredef@\definition
+    \penaltyandskip@{-100}\predefinitionskip
+    {\def\usualspace{\/{\proclaimheadfont@\enspace}}%
+     \varindent@\proclaimheadfont@\ignorespaces##1\unskip
+     \frills@{.\proclaimheadfont@\enspace}}%
+    \definitionfont\ignorespaces}%
+  \nofrillscheck\definition}
+\def\enddefinition{\revert@envir\enddefinition
+  \par\vskip\postdefinitionskip}
+\def\example{%
+  \DN@{\ifx\next\nofrills
+    \DN@####1####2{\definition####1{####2}\envir@stack\endexample
+      \ignorespaces}%
+  \else
+    \DN@####1{\definition{####1}\envir@stack\endexample\ignorespaces}%
+  \fi
+  \next@}%
+\FN@\next@}
+\def\endexample{\revert@envir\endexample \enddefinition }
+\message{rosters,}
+\newdimen\rosteritemwd
+\rosteritemwd16pt % approximately the width of (iii) in 10 point text
+\newcount\rostercount@
+\newif\iffirstitem@
+\let\plainitem@\item
+\newtoks\everypartoks@
+\def\par@{\everypartoks@\expandafter{\the\everypar}\everypar{}}
+\def\leftskip@{}
+\def\roster{%
+  \envir@stack\endroster
+  \edef\leftskip@{\leftskip\the\leftskip}%
+  \relaxnext@
+  \rostercount@\z@% Initialize \rostercount@ to 0.
+  \def\item{\FN@\rosteritem@}%      \item, now redefined, has
+  \DN@{\ifx\next\runinitem\let\next@\nextii@
+    \else\let\next@\nextiii@
+    \fi\next@}%
+  \DNii@\runinitem% If \runinitem occurs, \nextii@ must kill it off.
+    {\unskip% This unskips any space before the original \roster.
+     \DN@{\ifx\next[\let\next@\nextii@
+       \else\ifx\next"\let\next@\nextiii@\else\let\next@\nextiv@\fi
+       \fi\next@}%
+     \DNii@[####1]{\rostercount@####1\relax
+       \enspace\therosteritem{\number\rostercount@}~\ignorespaces}%
+     \def\nextiii@"####1"{\enspace{\rm####1}~\ignorespaces}%
+     \def\nextiv@{\enspace\therosteritem1\rostercount@\@ne~}%
+     \par@\firstitem@false% Before doing any of this we still change
+     \FN@\next@}%      End of definition of \nextii@\runinitem.
+  \def\nextiii@{\par\par@% End the present paragraph, change \everypar
+    \penalty\@m\smallskip\vskip-\parskip
+    \firstitem@true}%
+  \FN@\next@}
+\def\rosteritem@{\iffirstitem@\firstitem@false
+  \else\par\vskip-\parskip\fi
+ \leftskip\rosteritemwd \advance\leftskip\normalparindent
+ \advance\leftskip.5em \noindent
+ \DNii@[##1]{\rostercount@##1\relax\itembox@}%
+ \def\nextiii@"##1"{\def\therosteritem@{\rm##1}\itembox@}%
+ \def\nextiv@{\advance\rostercount@\@ne\itembox@}%
+ \def\therosteritem@{\therosteritem{\number\rostercount@}}%
+ \ifx\next[\let\next@\nextii@\else\ifx\next"\let\next@\nextiii@\else
+  \let\next@\nextiv@\fi\fi\next@}
+\def\itembox@{\llap{\hbox to\rosteritemwd{\hss
+  \kern\z@ % kern to thwart \unskip in \rom
+  \therosteritem@}\enspace}\ignorespaces}
+\def\therosteritem#1{\rom{(\ignorespaces#1\unskip)}}
+\newif\ifnextRunin@
+\def\endroster{\relaxnext@
+ \revert@envir\endroster % restore \envir@end
+ \par\leftskip@% End the paragraph, and restore the \leftskip.
+ \global\rosteritemwd16\p@ % restore default value
+ \penalty-50 \vskip-\parskip\smallskip% Add a good break and
+ \DN@{\ifx\next\Runinitem\let\next@\relax
+  \else\nextRunin@false\let\item\plainitem@% Otherwise, set
+   \ifx\next\par% moreover, if \endroster is followed by \par,
+    \DN@\par{\everypar\expandafter{\the\everypartoks@}}%
+   \else% but if the \endroster isn't followed by a new paragraph,
+    \DN@{\noindent\everypar\expandafter{\the\everypartoks@}}%
+  \fi\fi\next@}%
+ \FN@\next@}
+\newcount\rosterhangafter@
+\def\Runinitem#1\roster\runinitem{\relaxnext@
+  \envir@stack\endroster
+ \rostercount@\z@
+ \def\item{\FN@\rosteritem@}%
+ \def\runinitem@{#1}%
+ \DN@{\ifx\next[\let\next\nextii@\else\ifx\next"\let\next\nextiii@
+  \else\let\next\nextiv@\fi\fi\next}%
+ \DNii@[##1]{\rostercount@##1\relax
+  \def\item@{\therosteritem{\number\rostercount@}}\nextv@}%
+ \def\nextiii@"##1"{\def\item@{{\rm##1}}\nextv@}%
+ \def\nextiv@{\advance\rostercount@\@ne
+  \def\item@{\therosteritem{\number\rostercount@}}\nextv@}%
+ \def\nextv@{\setbox\z@\vbox
+  {\ifnextRunin@\noindent\fi
+  \runinitem@\unskip\enspace\item@~\par
+  \global\rosterhangafter@\prevgraf}%
+  \firstitem@false% Set \firstitem@false for future \item's.
+  \ifnextRunin@\else\par\fi
+  \hangafter\rosterhangafter@\hangindent3\normalparindent
+  \ifnextRunin@\noindent\fi
+  \runinitem@\unskip\enspace%  Put in all the stored stuff
+  \item@~\ifnextRunin@\else\par@\fi% and the \item@, and
+  \nextRunin@true\ignorespaces}%% Here's where we set \nextRunin@true.
+ \FN@\next@}
+\message{footnotes,}
+\def\footmarkform@#1{$\m@th^{#1}$}
+\let\thefootnotemark\footmarkform@
+\def\makefootnote@#1#2{\insert\footins
+ {\interlinepenalty\interfootnotelinepenalty
+ \eightpoint\splittopskip\ht\strutbox\splitmaxdepth\dp\strutbox
+ \floatingpenalty\@MM\leftskip\z@skip\rightskip\z@skip
+ \spaceskip\z@skip\xspaceskip\z@skip\noindent         % DF (added \noindent)
+ \leavevmode{#1}\footstrut\ignorespaces#2\unskip\lower\dp\strutbox 
+ \vbox to\dp\strutbox{}}}
+\newcount\footmarkcount@
+\footmarkcount@\z@
+\def\footnotemark{\let\@sf\empty@\relaxnext@
+ \ifhmode\edef\@sf{\spacefactor\the\spacefactor}\/\fi
+ \DN@{\ifx[\next\let\next@\nextii@\else
+  \ifx"\next\let\next@\nextiii@\else
+  \let\next@\nextiv@\fi\fi\next@}%
+ \DNii@[##1]{\footmarkform@{##1}\@sf}%
+ \def\nextiii@"##1"{{##1}\@sf}%
+ \def\nextiv@{\iffirstchoice@\global\advance\footmarkcount@\@ne\fi
+  \footmarkform@{\number\footmarkcount@}\@sf}%
+ \FN@\next@}
+\def\footnotetext{\relaxnext@
+ \DN@{\ifx[\next\let\next@\nextii@\else
+  \ifx"\next\let\next@\nextiii@\else
+  \let\next@\nextiv@\fi\fi\next@}%
+ \DNii@[##1]##2{\makefootnote@{\footmarkform@{##1}}{##2}}%
+ \def\nextiii@"##1"##2{\makefootnote@{##1}{##2}}%
+ \def\nextiv@##1{\makefootnote@{\footmarkform@%
+  {\number\footmarkcount@}}{##1}}%
+ \FN@\next@}
+\def\footnote{\let\@sf\empty@\relaxnext@
+ \ifhmode\edef\@sf{\spacefactor\the\spacefactor}\/\fi
+ \DN@{\ifx[\next\let\next@\nextii@\else
+  \ifx"\next\let\next@\nextiii@\else
+  \let\next@\nextiv@\fi\fi\next@}%
+ \DNii@[##1]##2{\footnotemark[##1]\footnotetext[##1]{##2}}%
+ \def\nextiii@"##1"##2{\footnotemark"##1"\footnotetext"##1"{##2}}%
+ \def\nextiv@##1{\footnotemark\footnotetext{##1}}%
+ \FN@\next@}
+\def\adjustfootnotemark#1{\advance\footmarkcount@#1\relax}
+\def\footnoterule{\kern-4\p@
+  \hrule width5pc\kern 3.6\p@}%      the \hrule is .4pt high
+\message{figures and captions,}
+\def\captionfont@{\smc}
+\def\topcaption#1#2\endcaption{%
+  {\dimen@\hsize \advance\dimen@-\captionwidth@
+   \rm\raggedcenter@ \advance\leftskip.5\dimen@ \rightskip\leftskip
+  {\captionfont@#1}%
+  \if\notempty{#2}.\enspace\ignorespaces#2\fi
+  \endgraf}\nobreak\bigskip}
+\def\botcaption#1#2\endcaption{%
+  \nobreak\bigskip
+  \setboxz@h{\captionfont@#1\if\notempty{#2}.\enspace\rm\ignorespaces#2\fi}%
+  {\dimen@\hsize \advance\dimen@-\captionwidth@
+   \leftskip.5\dimen@ \rightskip\leftskip
+   \noindent \ifdim\wdz@>\captionwidth@
+   \else\hfil\fi
+  {\captionfont@#1}%
+  \if\notempty{#2}.\enspace\rm\ignorespaces#2\fi\endgraf}}
+\def\@ins{\par\begingroup\def\vspace##1{\vskip##1\relax}%
+  \def\captionwidth##1{\captionwidth@##1\relax}%
+  \setbox\z@\vbox\bgroup} % start a \vbox
+\message{miscellaneous,}
+\def\block{\RIfMIfI@\nondmatherr@\block\fi
+       \else\ifvmode\noindent$$\predisplaysize\hsize
+         \else$$\fi
+  \def\endblock{\par\egroup$$}\fi
+  \vbox\bgroup\advance\hsize-2\indenti\noindent}
+\def\endblock{\par\egroup}
+\def\cite#1{\rom{[{\citefont@\m@th#1}]}}
+\def\citefont@{\rm}
+\def\rom#1{\leavevmode
+  \edef\prevskip@{\ifdim\lastskip=\z@ \else\hskip\the\lastskip\relax\fi}%
+  \unskip
+  \edef\prevpenalty@{\ifnum\lastpenalty=\z@ \else
+    \penalty\the\lastpenalty\relax\fi}%
+  \unpenalty \/\prevpenalty@ \prevskip@ {\rm #1}}
+\message{references,}
+\def\refsfont@{\eightpoint}
+\def\refsheadfont@{\headfont@}
+\newdimen\refindentwd
+\newdimen\refafterindentwd
+\setboxz@h{\refsfont@ 00.\enspace}
+\refindentwd\wdz@
+\refafterindentwd\wdz@
+\def\Refsname{References}
+\outer\def\Refs{\add@missing\endroster \add@missing\endproclaim
+ \let\savedef@\Refs \let\Refs\relax % because of \outer-ness
+ \def\Refs##1{\restoredef@\Refs
+   \if\notempty{##1}\penaltyandskip@{-200}\aboveheadskip
+     \begingroup \raggedcenter@\refsheadfont@
+       \ignorespaces##1\endgraf\endgroup
+     \penaltyandskip@\@M\belowheadskip
+   \fi
+   \begingroup\def\envir@end{\endRefs}\refsfont@\sfcode`\.\@m
+   }%
+ \nofrillscheck{\csname Refs\expandafter\endcsname
+  \frills@{{\Refsname}}}}
+\def\endRefs{\par % This will check for a missing \endref, also
+  \endgroup}
+\newif\ifbook@ \newif\ifprocpaper@
+\def\nofrills{%
+  \expandafter\ifx\envir@end\endref
+    \let\do\relax
+    \xdef\nofrills@list{\nofrills@list\do\curbox}%
+  \else\errmessage{\Invalid@@ \string\nofrills}%
+  \fi}%
+\def\defaultreftexts{\gdef\edtext{ed.}\gdef\pagestext{pp.}%
+  \gdef\voltext{vol.}\gdef\issuetext{no.}}
+\defaultreftexts
+\def\ref{\par
+  \begingroup \def\envir@end{\endref}%
+  \noindent\hangindent\refafterindentwd
+  \def\par{\add@missing\endref}%
+  \global\let\nofrills@list\empty@
+  \refbreaks
+  \procpaper@false \book@false \moreref@false
+  \def\curbox{\z@}\setbox\z@\vbox\bgroup
+}
+\let\keyhook@\empty@
+\def\endref{%
+  \setbox\tw@\box\thr@@
+  \makerefbox?\thr@@{\endgraf\egroup}%
+  \endref@
+  \endgraf
+  \endgroup
+  \keyhook@
+  \global\let\keyhook@\empty@ % \global to conserve save stack
+}
+\def\key{\gdef\key{\makerefbox\key\keybox@\empty@}\key} \newbox\keybox@
+\def\no{\gdef\no{\makerefbox\no\keybox@\empty@}%
+  \gdef\keyhook@{\refstyle C}\no}
+\def\by{\makerefbox\by\bybox@\empty@} \newbox\bybox@
+\let\manyby\by % for backward compatibility
+\def\bysame{\by\hbox to3em{\hrulefill}\thinspace\kern\z@}
+\def\paper{\makerefbox\paper\paperbox@\it} \newbox\paperbox@
+\def\paperinfo{\makerefbox\paperinfo\paperinfobox@\empty@}%
+  \newbox\paperinfobox@
+\def\jour{\makerefbox\jour\jourbox@
+  {\aftergroup\book@false \aftergroup\procpaper@false}} \newbox\jourbox@
+\def\issue{\makerefbox\issue\issuebox@\empty@} \newbox\issuebox@
+\def\yr{\makerefbox\yr\yrbox@\empty@} \newbox\yrbox@
+\def\pages{\makerefbox\pages\pagesbox@\empty@} \newbox\pagesbox@
+\def\page{\gdef\pagestext{p.}\makerefbox\page\pagesbox@\empty@}
+\def\ed{\makerefbox\ed\edbox@\empty@} \newbox\edbox@
+\def\eds{\gdef\edtext{eds.}\makerefbox\eds\edbox@\empty@}
+\def\book{\makerefbox\book\bookbox@
+  {\it\aftergroup\book@true \aftergroup\procpaper@false}}
+  \newbox\bookbox@
+\def\bookinfo{\makerefbox\bookinfo\bookinfobox@\empty@}%
+  \newbox\bookinfobox@
+\def\publ{\makerefbox\publ\publbox@\empty@} \newbox\publbox@
+\def\publaddr{\makerefbox\publaddr\publaddrbox@\empty@}%
+  \newbox\publaddrbox@
+\def\inbook{\makerefbox\inbook\bookbox@
+  {\aftergroup\procpaper@true \aftergroup\book@false}}
+\def\procinfo{\makerefbox\procinfo\procinfobox@\empty@}%
+  \newbox\procinfobox@
+\def\finalinfo{\makerefbox\finalinfo\finalinfobox@\empty@}%
+  \newbox\finalinfobox@
+\def\miscnote{\makerefbox\miscnote\miscnotebox@\empty@}%
+  \newbox\miscnotebox@
+\def\toappear{\miscnote to appear}
+\def\lang{\makerefbox\lang\langbox@\empty@} \newbox\langbox@
+\newbox\morerefbox@
+\def\vol{\makerefbox\vol\volbox@{\ifbook@ \else
+  \ifprocpaper@\else\bf\fi\fi}}
+\newbox\volbox@
+\define\MR#1{\makerefbox\MR\MRbox@\empty@
+  \def\next@##1:##2:##3\next@{\ifx @##2\empty@##1\else{\bf##1:}##2\fi}%
+  MR \next@#1:@:\next@}
+\newbox\MRbox@
+\define\AMSPPS#1{\makerefbox\AMSPPS\MRbox@\empty@ AMS\-PPS \##1}
+\define\CMP#1{\makerefbox\CMP\MRbox@\empty@ CMP #1}
+\newbox\holdoverbox
+\def\makerefbox#1#2#3{\endgraf
+  \setbox\z@\lastbox
+  \global\setbox\@ne\hbox{\unhbox\holdoverbox
+    \ifvoid\z@\else\unhbox\z@\unskip\unskip\unpenalty\fi}%
+  \egroup
+  \setbox\curbox\box\ifdim\wd\@ne>\z@ \@ne \else\voidb@x\fi
+  \ifvoid#2\else\Err@{Redundant \string#1; duplicate use, or
+     mutually exclusive information already given}\fi
+  \def\curbox{#2}\setbox\curbox\vbox\bgroup \hsize\maxdimen \noindent
+  #3}
+\def\refbreaks{%
+  \def\refconcat##1{\setbox\z@\lastbox \setbox\holdoverbox\hbox{%
+       \unhbox\holdoverbox \unhbox\z@\unskip\unskip\unpenalty##1}}%
+  \def\holdover##1{%
+    \RIfM@
+      \penalty-\@M\null
+      \hfil$\clubpenalty\z@\widowpenalty\z@\interlinepenalty\z@
+      \offinterlineskip\endgraf
+      \setbox\z@\lastbox\unskip \unpenalty
+      \refconcat{##1}%
+      \noindent
+      $\hfil\penalty-\@M
+    \else
+      \endgraf\refconcat{##1}\noindent
+    \fi}%
+  \def\break{\holdover{\penalty-\@M}}%
+  \let\vadjust@\vadjust
+  \def\vadjust##1{\holdover{\vadjust@{##1}}}%
+  \def\newpage{\vadjust{\vfill\break}}%
+}
+\def\refstyle#1{\uppercase{%
+  \gdef\refstyle@{#1}%
+  \if#1A\relax \def\keyformat##1{[##1]\enspace\hfil}%
+  \else\if#1B\relax
+    \refindentwd\parindent
+    \def\keyformat##1{\aftergroup\kern
+              \aftergroup-\aftergroup\refindentwd}%
+ \else\if#1C\relax
+   \def\keyformat##1{\hfil##1.\enspace}%
+ \fi\fi\fi}% end of \uppercase
+}
+\refstyle{A}
+\def\finalpunct{\ifnum\lastkern=\m@ne\unkern\else.\spacefactor2000 \fi
+       \refquotes@\refbreak@}%
+\def\continuepunct#1#2#3#4{}%
+\def\endref@{%
+  \hskip\refindentwd
+  \keyhook@
+  \def\nofrillscheck##1{%
+    \def\do####1{\ifx##1####1\let\frills@\eat@\fi}%
+    \let\frills@\identity@ \nofrills@list}%
+  \ifvoid\bybox@
+    \ifvoid\edbox@
+    \else\setbox\bybox@\hbox{\unhbox\edbox@\breakcheck
+      \nofrillscheck\edbox@\frills@{\space(\edtext)}\refbreak@}\fi
+  \fi
+  \ifvoid\keybox@\else\llap{\hbox to\refindentwd{%
+       \keyformat{\unhbox\keybox@}}}\fi
+  \ifmoreref@
+    \commaunbox@\morerefbox@
+  \else
+    \kern-\tw@ sp\kern\m@ne sp
+  \fi
+  \ppunbox@\empty@\empty@\bybox@\empty@
+  \ifbook@ % Case 1: \book etc.
+    \commaunbox@\bookbox@ \commaunbox@\bookinfobox@
+    \ppunbox@\empty@{ (}\procinfobox@)%
+    \ppunbox@,{ vol.~}\volbox@\empty@
+    \ppunbox@\empty@{ (}\edbox@{, \edtext)}%
+    \commaunbox@\publbox@ \commaunbox@\publaddrbox@
+    \commaunbox@\yrbox@
+    \ppunbox@,{ \pagestext~}\pagesbox@\empty@
+  \else
+    \commaunbox@\paperbox@ \commaunbox@\paperinfobox@
+    \ifprocpaper@ % Case 2: \paper ... \inbook
+      \commaunbox@\bookbox@
+      \ppunbox@\empty@{ (}\procinfobox@)%
+      \ppunbox@\empty@{ (}\edbox@{, \edtext)}%
+      \commaunbox@\bookinfobox@
+      \ppunbox@,{ \voltext~}\volbox@\empty@
+      \commaunbox@\publbox@ \commaunbox@\publaddrbox@
+      \commaunbox@\yrbox@
+      \ppunbox@,{ \pagestext~}\pagesbox@\empty@
+    \else % Case 3: \paper ... \jour
+      \commaunbox@\jourbox@
+      \ppunbox@\empty@{ }\volbox@\empty@
+      \ppunbox@\empty@{ (}\yrbox@)%
+      \ppunbox@,{ \issuetext~}\issuebox@\empty@
+      \commaunbox@\publbox@ \commaunbox@\publaddrbox@
+      \commaunbox@\pagesbox@
+    \fi
+  \fi
+  \commaunbox@\finalinfobox@
+  \ppunbox@\empty@{ (}\miscnotebox@)%
+  \finalpunct
+  \ppunbox@\empty@{ (}\langbox@{)\spacefactor1001 }%
+  \ifnum\spacefactor>\@m \ppunbox@{}{ }\MRbox@\empty@
+  \else \commaunbox@\MRbox@
+  \fi
+  \defaultreftexts
+}
+\def\punct@#1{#1}
+\def\ppunbox@#1#2#3#4{\ifvoid#3\else
+  \let\prespace@\relax
+  \ifnum\lastkern=\m@ne \unkern\let\punct@\eat@
+    \ifnum\lastkern=-\tw@ \unkern\let\prespace@\ignorespaces \fi
+  \fi
+  \nofrillscheck#3%
+  \punct@{#1}\refquotes@\refbreak@
+  \let\punct@\identity@
+  \prespace@
+  \frills@{#2\eat@}\space
+  \unhbox#3\breakcheck
+  \frills@{#4\eat@}{\kern\m@ne sp}\fi}
+\def\commaunbox@#1{\ppunbox@,\space{#1}\empty@}
+\def\breakcheck{\edef\refbreak@{\ifnum\lastpenalty=\z@\else
+  \penalty\the\lastpenalty\relax\fi}\unpenalty}
+\def\endquotes{\def\refquotes@{''\let\refquotes@\empty@}}
+\let\refquotes@\empty@
+\let\refbreak@\empty@
+\newif\ifmoreref@
+\def\moreref{%
+  \setbox\tw@\box\thr@@
+  \makerefbox?\thr@@{\endgraf\egroup}%
+  \let\savedef@\finalpunct  \let\finalpunct\empty@
+  \endref@
+  \def\punct@##1##2{##2;}%
+  \global\let\nofrills@list\empty@ % global, to conserve save stack
+  \let\finalpunct\savedef@
+  \moreref@true
+  \def\curbox{\morerefbox@}%
+  \setbox\morerefbox@\vbox\bgroup \hsize\maxdimen \noindent
+}
+\def\transl{\moreref}
+\message{end of document,}
+\ifx\plainend\undefined \let\plainend\end \fi
+\outer\def\enddocument{\par% \par will do a runaway check for \endref
+  \add@missing\endRefs
+  \add@missing\endroster \add@missing\endproclaim
+  \add@missing\enddefinition
+  \add@missing\enddemo \add@missing\endremark \add@missing\endexample
+  \enddocument@text
+  \vfill\supereject\plainend}
+
+\def\enddocument@text{%
+  \ifmonograph@ % do nothing
+  \else
+    \nobreak
+    \thetranslator@
+    \count@\z@
+    \loop\ifnum\count@<\addresscount@\advance\count@\@ne
+      \csname address\number\count@\endcsname
+      \csname email\number\count@\endcsname
+      \csname urladdr\number\count@\endcsname
+    \repeat
+  \fi
+}
+
+\message{output routine,}
+\def\folio{{\foliofont@\ifnum\pageno<\z@ \romannumeral-\pageno
+ \else\number\pageno \fi}}
+\def\foliofont@{\eightrm}
+\def\headlinefont@{\eightpoint}
+\def\leftheadline{\rlap{\folio}\hfill \iftrue\topmark\fi \hfill}
+\def\rightheadline{\hfill \expandafter\iffalse\botmark\fi
+  \hfill \llap{\folio}}
+\newtoks\leftheadtoks
+\newtoks\rightheadtoks
+\def\leftheadtext{\let\savedef@\leftheadtext
+  \def\leftheadtext##1{\let\leftheadtext\savedef@
+    \leftheadtoks\expandafter{\frills@\uppercasetext@{##1}}%
+    \mark{\the\leftheadtoks\noexpand\else\the\rightheadtoks}
+    \ifsyntax@\setboxz@h{\def\\{\unskip\space\ignorespaces}%
+        \headlinefont@##1}\fi}%
+  \nofrillscheck\leftheadtext}
+\def\rightheadtext{\let\savedef@\rightheadtext
+  \def\rightheadtext##1{\let\rightheadtext\savedef@
+    \rightheadtoks\expandafter{\frills@\uppercasetext@{##1}}%
+    \mark{\the\leftheadtoks\noexpand\else\the\rightheadtoks}%
+    \ifsyntax@\setboxz@h{\def\\{\unskip\space\ignorespaces}%
+        \headlinefont@##1}\fi}%
+  \nofrillscheck\rightheadtext}
+\headline={\def\\{\unskip\space\ignorespaces}\headlinefont@
+  \def\chapter{%
+    \def\chapter##1{%
+      \frills@{\afterassignment\chapterno@ \chaptercount@=}##1.\space}%
+    \nofrillscheck\chapter}%
+  \ifodd\pageno \rightheadline \else \leftheadline\fi}
+\def\NoRunningHeads{\global\runheads@false\global\let\headmark\eat@}
+\def\NoPageNumbers{\gdef\folio{}}
+\newif\iffirstpage@     \firstpage@true
+\newif\ifrunheads@      \runheads@true
+\output={\output@}
+\newdimen\headlineheight \newdimen\headlinespace
+\newdimen\dropfoliodepth
+
+\dropfoliodepth=1pc
+\headlineheight=5pt
+\headlinespace=24pt
+
+\def\pagewidth#1{\hsize#1%
+   \captionwidth@\hsize \advance\captionwidth@-2\indenti}
+
+\def\pageheight#1{%
+  \vsize=#1 % target height
+  \advance\vsize -\headlineheight % subtract height of running head
+  \advance\vsize -\headlinespace % subtract space below running head
+  \advance\vsize \topskip % but the 24pt is base-to-base, so we need to
+                          % compensate for topskip
+}
+
+\pagewidth{30pc}\pageheight{50.5pc}
+
+\newinsert\copyins
+\skip\copyins=12\p@
+\dimen\copyins=40pc
+\count\copyins=1000
+\def\inslogo@{\insert\copyins{\logo@}}
+\def\logo@{\rightline{\eightpoint Typeset by \AmSTeX}}
+\def\nologo{\let\logo@\empty@ \let\inslogo@\empty@}
+\let\flheadline\hfil \let\frheadline\hfil
+\newif\ifplain@  \plain@false
+\def\output@{%
+  \def\break{\penalty-\@M}\let\par\endgraf
+  \shipout\vbox{%
+    \ifplain@
+      \let\makeheadline\relax \let\makefootline\relax
+    \else
+      \iffirstpage@ \global\firstpage@false
+        \let\rightheadline\frheadline
+        \let\leftheadline\flheadline
+      \else
+        \ifrunheads@ \let\makefootline\relax
+        \else \let\makeheadline\relax \fi
+      \fi
+    \fi
+    \makeheadline \pagebody \makefootline
+  }%
+  \advancepageno \ifnum\outputpenalty>-\@MM\else\dosupereject\fi
+}
+\def\pagecontents{%
+  \ifvoid\topins\else\unvbox\topins\fi
+  \dimen@=\dp\@cclv \unvbox\@cclv % open up \box255
+  \ifvoid\footins
+  \else % footnote info is present
+    \vskip\skip\footins
+    \footnoterule
+    \unvbox\footins
+  \fi
+  \ifr@ggedbottom \kern-\dimen@ \vfil \fi
+  \ifvoid\copyins \else \vskip\skip\copyins \unvbox\copyins \fi
+}
+\def\makeheadline{%
+  \leftskip=\z@
+  \vbox{%
+    \vbox to\headlineheight{\vss
+      \hbox to\hsize{\hskip\z@ plus\hsize\the\headline}%
+      \kern-\prevdepth
+    }%
+    \vskip\headlinespace
+    \vskip-\topskip
+  }%
+  \nointerlineskip
+}
+\def\makefootline{%
+  \relax\ifdim\prevdepth>\z@ \ifdim\prevdepth>\maxdepth \else
+    \vskip-\prevdepth \fi\fi
+  \nointerlineskip
+  \vbox to\z@{\hbox{}%
+    \baselineskip\dropfoliodepth
+    \hbox to\hsize{\hskip\z@ plus\hsize\the\footline}%
+    \vss}}
+
+\message{hyphenation exceptions (U.S. English)}
+\hyphenation{acad-e-my acad-e-mies af-ter-thought anom-aly anom-alies
+an-ti-deriv-a-tive an-tin-o-my an-tin-o-mies apoth-e-o-ses
+apoth-e-o-sis ap-pen-dix ar-che-typ-al as-sign-a-ble as-sist-ant-ship
+as-ymp-tot-ic asyn-chro-nous at-trib-uted at-trib-ut-able bank-rupt
+bank-rupt-cy bi-dif-fer-en-tial blue-print busier busiest
+cat-a-stroph-ic cat-a-stroph-i-cally con-gress cross-hatched data-base
+de-fin-i-tive de-riv-a-tive dis-trib-ute dri-ver dri-vers eco-nom-ics
+econ-o-mist elit-ist equi-vari-ant ex-quis-ite ex-tra-or-di-nary
+flow-chart for-mi-da-ble forth-right friv-o-lous ge-o-des-ic
+ge-o-det-ic geo-met-ric griev-ance griev-ous griev-ous-ly
+hexa-dec-i-mal ho-lo-no-my ho-mo-thetic ideals idio-syn-crasy
+in-fin-ite-ly in-fin-i-tes-i-mal ir-rev-o-ca-ble key-stroke
+lam-en-ta-ble light-weight mal-a-prop-ism man-u-script mar-gin-al
+meta-bol-ic me-tab-o-lism meta-lan-guage me-trop-o-lis
+met-ro-pol-i-tan mi-nut-est mol-e-cule mono-chrome mono-pole
+mo-nop-oly mono-spline mo-not-o-nous mul-ti-fac-eted mul-ti-plic-able
+non-euclid-ean non-iso-mor-phic non-smooth par-a-digm par-a-bol-ic
+pa-rab-o-loid pa-ram-e-trize para-mount pen-ta-gon phe-nom-e-non
+post-script pre-am-ble pro-ce-dur-al pro-hib-i-tive pro-hib-i-tive-ly
+pseu-do-dif-fer-en-tial pseu-do-fi-nite pseu-do-nym qua-drat-ic
+quad-ra-ture qua-si-smooth qua-si-sta-tion-ary qua-si-tri-an-gu-lar
+quin-tes-sence quin-tes-sen-tial re-arrange-ment rec-tan-gle
+ret-ri-bu-tion retro-fit retro-fit-ted right-eous right-eous-ness
+ro-bot ro-bot-ics sched-ul-ing se-mes-ter semi-def-i-nite
+semi-ho-mo-thet-ic set-up se-vere-ly side-step sov-er-eign spe-cious
+spher-oid spher-oid-al star-tling star-tling-ly sta-tis-tics
+sto-chas-tic straight-est strange-ness strat-a-gem strong-hold
+sum-ma-ble symp-to-matic syn-chro-nous topo-graph-i-cal tra-vers-a-ble
+tra-ver-sal tra-ver-sals treach-ery turn-around un-at-tached
+un-err-ing-ly white-space wide-spread wing-spread wretch-ed
+wretch-ed-ly Brown-ian Eng-lish Euler-ian Feb-ru-ary Gauss-ian
+Grothen-dieck Hamil-ton-ian Her-mit-ian Jan-u-ary Japan-ese Kor-te-weg
+Le-gendre Lip-schitz Lip-schitz-ian Mar-kov-ian Noe-ther-ian
+No-vem-ber Rie-mann-ian Schwarz-schild Sep-tem-ber}
+\loadeufm \loadmsam \loadmsbm
+\message{symbol names}\UseAMSsymbols\message{,}
+
+%%   The following definition can be used to provide a \square for
+%%   \qed in lieu of the normal \UseAMSsymbols route.
+%%\define\square{\vrule width.6em height.5em depth.1em\relax}
+
+\tenpoint
+
+
+\W@{}
+\csname amsppt.sty\endcsname
+%% 
+%% End of file `amsppt.sty'.
+
+%    Then load specs that are shared between ams-m and ams-p.
+
+\brokenpenalty=10000
+\clubpenalty=10000
+\widowpenalty=10000
+
+\catcode`\@=11
+
+%    Dummy definition of \keyboarder, for now [mjd,1995/04/03]
+\def\keyboarder#1{}%
+
+%    Page dimensions = 30pc x 50.5pc
+\def\pagewidth#1{\hsize#1
+  \captionwidth@24pc}
+
+\pagewidth{30pc}
+
+\parindent=18\p@
+\normalparindent\parindent
+
+\parskip=\z@
+
+\def\foliofont@{\sevenrm}
+\def\headlinefont@{\sevenpoint}
+
+%  Heading styles are different from AMSPPT.STY:
+
+\def\specialheadfont@{\elevenpoint\smc}
+\def\headfont@{\bf}
+\def\subheadfont@{\bf}
+\def\refsheadfont@{\bf}
+\def\abstractfont@{\smc}
+\def\proclaimheadfont@{\smc}
+\def\xcaheadfont@{\smc}
+\def\captionfont@{\smc}
+\def\citefont@{\bf}
+\def\refsfont@{\eightpoint}
+
+\font\sixsy=cmsy6
+
+%    Added \msbfam and \eufmfam to all additional sizes so that \Bbb
+%    and \frak can be used in titles, running heads.  [bnb, 1996/05/07]
+
+%    Twelvepoint (12/14) used for titles
+\font@\twelverm=cmr10 scaled \magstep1
+\font@\twelvebf=cmbx10 scaled \magstep1
+\font@\twelveit=cmti10 scaled \magstep1
+\font@\twelvesl=cmsl10 scaled \magstep1
+\font@\twelvesmc=cmcsc10 scaled \magstep1
+\font@\twelvett=cmtt10 scaled \magstep1
+\font@\twelvei=cmmi10 scaled \magstep1
+\font@\twelvesy=cmsy10 scaled \magstep1
+\font@\twelveex=cmex10 scaled \magstep1
+\font@\twelvemsb=msbm10 scaled \magstep1
+\font@\twelveeufm=eufm10 scaled \magstep1
+
+\newtoks\twelvepoint@
+\def\twelvepoint{\normalbaselineskip14\p@
+  \abovedisplayskip12\p@ plus3\p@ minus9\p@
+  \belowdisplayskip\abovedisplayskip
+  \abovedisplayshortskip\z@ plus3\p@
+  \belowdisplayshortskip7\p@ plus3\p@ minus4\p@
+  \textonlyfont@\rm\twelverm \textonlyfont@\it\twelveit
+  \textonlyfont@\sl\twelvesl \textonlyfont@\bf\twelvebf
+  \textonlyfont@\smc\twelvesmc \textonlyfont@\tt\twelvett
+  \ifsyntax@ \def\big##1{{\hbox{$\left##1\right.$}}}%
+    \let\Big\big \let\bigg\big \let\Bigg\big
+  \else
+    \textfont\z@\twelverm  \scriptfont\z@\eightrm
+       \scriptscriptfont\z@\sixrm
+    \textfont\@ne\twelvei  \scriptfont\@ne\eighti
+       \scriptscriptfont\@ne\sixi
+    \textfont\tw@\twelvesy \scriptfont\tw@\eightsy
+       \scriptscriptfont\tw@\sixsy
+    \textfont\thr@@\twelveex \scriptfont\thr@@\eightex
+        \scriptscriptfont\thr@@\eightex
+    \textfont\itfam\twelveit \scriptfont\itfam\eightit
+        \scriptscriptfont\itfam\eightit
+    \textfont\bffam\twelvebf \scriptfont\bffam\eightbf
+        \scriptscriptfont\bffam\sixbf
+    \textfont\msbfam\twelvemsb \scriptfont\msbfam\eightmsb
+        \scriptscriptfont\msbfam\sixmsb
+    \textfont\eufmfam\twelveeufm \scriptfont\eufmfam\eighteufm
+        \scriptscriptfont\eufmfam\sixeufm
+    \setbox\strutbox\hbox{\vrule height8.5\p@ depth3.5\p@ width\z@}%
+    \setbox\strutbox@\hbox{\lower.5\normallineskiplimit\vbox{%
+        \kern-\normallineskiplimit\copy\strutbox}}%
+    \setbox\z@\vbox{\hbox{$($}\kern\z@}\bigsize@1.2\ht\z@
+  \fi
+  \normalbaselines\rm\dotsspace@1.5mu\ex@.2326ex\jot3\ex@
+  \the\twelvepoint@}
+
+%    Elevenpoint (11/13) used for authors in proceedings.
+\font@\elevenrm=cmr10 scaled \magstephalf
+\font@\elevenbf=cmbx10 scaled \magstephalf
+\font@\elevenit=cmti10 scaled \magstephalf
+\font@\elevensl=cmsl10 scaled \magstephalf
+\font@\elevensmc=cmcsc10 scaled \magstephalf
+\font@\eleventt=cmtt10 scaled \magstephalf
+\font@\eleveni=cmmi10 scaled \magstephalf
+\font@\elevensy=cmsy10 scaled \magstephalf
+\font@\elevenex=cmex10 scaled \magstephalf
+\font@\elevenmsb=msbm10 scaled \magstephalf
+\font@\eleveneufm=eufm10 scaled \magstephalf
+
+\newtoks\elevenpoint@
+\def\elevenpoint{\normalbaselineskip13\p@
+  \abovedisplayskip12\p@ plus3\p@ minus9\p@
+  \belowdisplayskip\abovedisplayskip
+  \abovedisplayshortskip\z@ plus3\p@
+  \belowdisplayshortskip7\p@ plus3\p@ minus4\p@
+  \textonlyfont@\rm\elevenrm \textonlyfont@\it\elevenit
+  \textonlyfont@\sl\elevensl \textonlyfont@\bf\elevenbf
+  \textonlyfont@\smc\elevensmc \textonlyfont@\tt\eleventt
+  \ifsyntax@ \def\big##1{{\hbox{$\left##1\right.$}}}%
+    \let\Big\big \let\bigg\big \let\Bigg\big
+  \else
+    \textfont\z@\elevenrm  \scriptfont\z@\eightrm
+       \scriptscriptfont\z@\sixrm
+    \textfont\@ne\eleveni  \scriptfont\@ne\eighti
+       \scriptscriptfont\@ne\sixi
+    \textfont\tw@\elevensy \scriptfont\tw@\eightsy
+       \scriptscriptfont\tw@\sixsy
+    \textfont\thr@@\elevenex \scriptfont\thr@@\eightex
+        \scriptscriptfont\thr@@\eightex
+    \textfont\itfam\elevenit \scriptfont\itfam\eightit
+        \scriptscriptfont\itfam\eightit
+    \textfont\bffam\elevenbf \scriptfont\bffam\eightbf
+        \scriptscriptfont\bffam\sixbf
+    \textfont\msbfam\elevenmsb \scriptfont\msbfam\eightmsb
+        \scriptscriptfont\msbfam\sixmsb
+    \textfont\eufmfam\eleveneufm \scriptfont\eufmfam\eighteufm
+        \scriptscriptfont\eufmfam\sixeufm
+    \setbox\strutbox\hbox{\vrule height8.5\p@ depth3.5\p@ width\z@}%
+    \setbox\strutbox@\hbox{\lower.5\normallineskiplimit\vbox{%
+        \kern-\normallineskiplimit\copy\strutbox}}%
+    \setbox\z@\vbox{\hbox{$($}\kern\z@}\bigsize@1.2\ht\z@
+  \fi
+  \normalbaselines\rm\dotsspace@1.5mu\ex@.2326ex\jot3\ex@
+  \the\elevenpoint@}
+
+\addto\tenpoint{\normalbaselineskip12\p@
+ \abovedisplayskip6\p@ plus6\p@ minus0\p@
+ \belowdisplayskip6\p@ plus6\p@ minus0\p@
+ \abovedisplayshortskip0\p@ plus3\p@ minus0\p@
+ \belowdisplayshortskip2\p@ plus3\p@ minus0\p@
+ \ifsyntax@
+ \else
+  \setbox\strutbox\hbox{\vrule height9\p@ depth4\p@ width\z@}%
+  \setbox\strutbox@\hbox{\vrule height8\p@ depth3\p@ width\z@}%
+ \fi
+ \normalbaselines\rm}
+
+%    Add sevenpoint for running heads.
+\newtoks\sevenpoint@
+\def\sevenpoint{\normalbaselineskip9\p@
+ \textonlyfont@\rm\sevenrm \textonlyfont@\it\sevenit
+ \textonlyfont@\sl\sevensl \textonlyfont@\bf\sevenbf
+ \textonlyfont@\smc\sevensmc \textonlyfont@\tt\seventt
+  \textfont\z@\sevenrm \scriptfont\z@\sixrm
+       \scriptscriptfont\z@\fiverm
+  \textfont\@ne\seveni \scriptfont\@ne\sixi
+       \scriptscriptfont\@ne\fivei
+  \textfont\tw@\sevensy \scriptfont\tw@\sixsy
+       \scriptscriptfont\tw@\fivesy
+  \textfont\thr@@\sevenex \scriptfont\thr@@\sevenex
+   \scriptscriptfont\thr@@\sevenex
+  \textfont\itfam\sevenit \scriptfont\itfam\sevenit
+   \scriptscriptfont\itfam\sevenit
+  \textfont\bffam\sevenbf \scriptfont\bffam\sixbf
+   \scriptscriptfont\bffam\fivebf
+  \textfont\msbfam\sevenmsb \scriptfont\msbfam\sixmsb
+   \scriptscriptfont\msbfam\fivemsb
+  \textfont\eufmfam\seveneufm \scriptfont\eufmfam\sixeufm
+   \scriptscriptfont\eufmfam\fiveeufm
+ \setbox\strutbox\hbox{\vrule height7\p@ depth3\p@ width\z@}%
+ \setbox\strutbox@\hbox{\raise.5\normallineskiplimit\vbox{%
+   \kern-\normallineskiplimit\copy\strutbox}}%
+ \setbox\z@\vbox{\hbox{$($}\kern\z@}\bigsize@1.2\ht\z@
+ \normalbaselines\sevenrm\dotsspace@1.5mu\ex@.2326ex\jot3\ex@
+ \the\sevenpoint@}
+
+%    Differences from amsppt.sty:
+%    - own skips above and below, not the same as \head
+%    - centered, not flush left
+\newskip\abovespecheadskip   \abovespecheadskip20\p@ plus8\p@ minus2\p@
+\newdimen\belowspecheadskip  \belowspecheadskip6\p@
+\outer\def\specialhead{%
+  \add@missing\endroster \add@missing\enddefinition
+  \add@missing\enddemo \add@missing\endexample
+  \add@missing\endproclaim
+  \penaltyandskip@{-200}\abovespecheadskip
+  \begingroup\interlinepenalty\@M\rightskip\z@ plus\hsize
+  \let\\\linebreak
+  \specialheadfont@\raggedcenter@\noindent}
+\def\endspecialhead{\endgraf\endgroup\nobreak\vskip\belowspecheadskip}
+
+\let\varindent@\indent
+
+\def\num#1{{\rm #1\enspace}}
+
+%    Differences from amsppt.sty:
+%    - no \penaltyandskip@ before
+\let\subsubhead\relax
+\outer\def\subsubhead{%
+  \add@missing\endroster \add@missing\enddefinition
+  \add@missing\enddemo
+  \add@missing\endexample \add@missing\endproclaim
+  \let\savedef@\subsubhead \let\subsubhead\relax
+  \def\subsubhead##1\endsubsubhead{\restoredef@\subsubhead
+      {\def\usualspace{\/{\subsubheadfont@\enspace}}%
+    \subsubheadfont@##1\unskip\frills@{.\enspace}}\ignorespaces}%
+  \nofrillscheck\subsubhead}
+
+%    Indentation for \proclaim, \demo, etc., are the same as for
+%    \subhead, and are taken care of by \varindent.
+%    \proclaim head font is small caps, and the text font is italic
+%    (not \sl). Vertical space only above proclaim, no added space to
+%    other math environments.
+
+\newskip\abstractindent 	\abstractindent=3pc
+\long\def\block #1\endblock{\vskip 6pt
+	{\leftskip=\abstractindent \rightskip=\abstractindent
+	\noindent #1\endgraf}\vskip 6pt}
+
+\long\def\ext #1\endext{\removelastskip\block #1\endblock}
+
+\outer\def\xca{\let\savedef@\xca \let\xca\relax
+  \add@missing\endproclaim \add@missing\endroster
+  \add@missing\endxca \envir@stack\endxca
+  \def\xca##1{\restoredef@\xca
+    \penaltyandskip@{-100}\medskipamount
+    \bgroup{\def\usualspace{{\xcaheadfont@\enspace}}%
+      \varindent@\xcaheadfont@\ignorespaces##1\unskip
+      \frills@{.\xcaheadfont@\enspace}}%
+      \ignorespaces}%
+  \nofrillscheck\xca}
+\def\endxca{\egroup\revert@envir\endxca
+  \par\medskip}
+
+%    Differences from amsppt.sty:
+%    - font is \smc, not \it
+%    - good break point before
+%    - skip after
+\def\remarkheadfont@{\smc}
+\def\remark{\let\savedef@\remark \let\remark\relax
+  \add@missing\endroster \add@missing\endproclaim
+  \envir@stack\endremark
+  \def\remark##1{\restoredef@\remark
+    \penaltyandskip@{-100}\medskipamount
+    {\def\usualspace{{\remarkheadfont@\enspace}}%
+     \varindent@\remarkheadfont@\ignorespaces##1\unskip
+     \frills@{.\enspace}}\rm
+    \ignorespaces}\nofrillscheck\remark}
+\def\endremark{\par\revert@envir\endremark\medskip}
+
+%    Differences from amsppt.sty:
+%    - square is flush right
+\def\qed{\ifhmode\unskip\nobreak\fi\hfill
+  \ifmmode\square\else$\m@th\square$\fi}
+
+
+%%%%%%
+
+%    Expand rosters to three item levels
+%    This is identical to code in ams-j.sty except for the width setting
+%    of \rosteritemitemitemwd (here "iii"; "ii" in ams-j.sty).
+\newdimen\rosteritemsep
+\rosteritemsep=.5pc
+
+\newdimen\rosteritemitemwd
+\newdimen\rosteritemitemitemwd
+
+\newbox\setwdbox
+\setbox\setwdbox\hbox{0.}\rosteritemwd=\wd\setwdbox
+\setbox\setwdbox\hbox{0.\hskip.5pc(c)}\rosteritemitemwd=\wd\setwdbox
+\setbox\setwdbox\hbox{0.\hskip.5pc(c)\hskip.5pc(iii)}%
+  \rosteritemitemitemwd=\wd\setwdbox
+
+%    Differences from amsppt.sty:
+%    - adds \itemitem, \itemitemitem
+%    - omits \enspace before item label
+%    - omits \smallskip following item
+\def\roster{%
+  \envir@stack\endroster
+  \edef\leftskip@{\leftskip\the\leftskip}%
+  \relaxnext@
+  \rostercount@\z@% Initialize \rostercount@ to 0.
+  \def\item{\FN@\rosteritem@}%
+  \def\itemitem{\FN@\rosteritemitem@}%
+  \def\itemitemitem{\FN@\rosteritemitemitem@}%
+  \DN@{\ifx\next\runinitem\let\next@\nextii@
+    \else\let\next@\nextiii@
+    \fi\next@}%
+  \DNii@\runinitem% If \runinitem occurs, \nextii@ must kill it off.
+    {\unskip% This unskips any space before the original \roster.
+     \DN@{\ifx\next[\let\next@\nextii@
+       \else\ifx\next"\let\next@\nextiii@\else\let\next@\nextiv@\fi
+       \fi\next@}%
+     \DNii@[####1]{\rostercount@####1\relax
+       \therosteritem{\number\rostercount@}~\ignorespaces}%
+     \def\nextiii@"####1"{{\rm####1}~\ignorespaces}%
+     \def\nextiv@{\therosteritem1\rostercount@\@ne~}%
+     \par@\firstitem@false% Before doing any of this we still change
+     \FN@\next@}%      End of definition of \nextii@\runinitem.
+  \def\nextiii@{\par\par@% End the present paragraph, change \everypar
+    \penalty\@m\vskip-\parskip
+    \firstitem@true}%
+  \FN@\next@}
+
+%    Differences from amsppt.sty:
+%    - \leftskip = .5pc, not .5em
+\def\rosteritem@{\iffirstitem@\firstitem@false
+  \else\par\vskip-\parskip
+  \fi
+  \leftskip\rosteritemwd \advance\leftskip\normalparindent
+  \advance\leftskip.5pc \noindent
+  \DNii@[##1]{\rostercount@##1\relax\itembox@}%
+  \def\nextiii@"##1"{\def\therosteritem@{\rm##1}\itembox@}%
+  \def\nextiv@{\advance\rostercount@\@ne\itembox@}%
+  \def\therosteritem@{\therosteritem{\number\rostercount@}}%
+  \ifx\next[\let\next@\nextii@
+  \else\ifx\next"\let\next@\nextiii@\else\let\next@\nextiv@\fi
+  \fi\next@}
+
+%    Differences from amsppt.sty:
+%    - \skip after label = .5pc, not \enspace
+\def\itembox@{\llap{\hbox to\rosteritemwd{\hss
+  \kern\z@ % kern to thwart \unskip in \rom
+  \therosteritem@}\hskip.5pc}\ignorespaces}
+
+%    Differences from amsppt.sty:
+%    - period after, no parentheses around label
+\def\therosteritem#1{\rom{\ignorespaces#1.\unskip}}
+
+%    Two new levels.
+\def\rosteritemitem@{\iffirstitem@\firstitem@false
+  \else\par\vskip-\parskip
+  \fi
+  \leftskip\rosteritemitemwd \advance\leftskip\normalparindent
+  \advance\leftskip.5pc \noindent
+  \DNii@[##1]{\rostercount@##1\relax\itemitembox@}%
+  \def\nextiii@"##1"{\def\therosteritemitem@{\rm##1}\itemitembox@}%
+  \def\nextiv@{\advance\rostercount@\@ne\itemitembox@}%
+  \def\therosteritemitem@{\therosteritemitem{\number\rostercount@}}%
+  \ifx\next[\let\next@\nextii@
+  \else\ifx\next"\let\next@\nextiii@\else\let\next@\nextiv@\fi
+  \fi\next@}
+
+\def\itemitembox@{\llap{\hbox to\rosteritemitemwd{\hss
+  \kern\z@ % kern to thwart \unskip in \rom
+  \therosteritemitem@}\hskip.5pc}\ignorespaces}
+
+\def\therosteritemitem#1{\rom{(\ignorespaces#1\unskip)}}
+
+\def\rosteritemitemitem@{\iffirstitem@\firstitem@false
+  \else\par\vskip-\parskip
+  \fi
+  \leftskip\rosteritemitemitemwd \advance\leftskip\normalparindent
+  \advance\leftskip.5pc \noindent
+  \DNii@[##1]{\rostercount@##1\relax\itemitemitembox@}%
+  \def\nextiii@"##1"{\def\therosteritemitemitem@{\rm##1}\itemitemitembox@}%
+  \def\nextiv@{\advance\rostercount@\@ne\itemitemitembox@}%
+  \def\therosteritemitemitem@{\therosteritemitemitem{\number\rostercount@}}%
+  \ifx\next[\let\next@\nextii@
+  \else\ifx\next"\let\next@\nextiii@\else\let\next@\nextiv@\fi
+  \fi\next@}
+
+\def\itemitemitembox@{\llap{\hbox to\rosteritemitemitemwd{\hss
+  \kern\z@ % kern to thwart \unskip in \rom
+  \therosteritemitemitem@}\hskip.5pc}\ignorespaces}
+
+\def\therosteritemitemitem#1{\rom{(\ignorespaces#1\unskip)}}
+
+\def\endroster{\relaxnext@
+  \revert@envir\endroster % restore \envir@end
+  \par\leftskip@% End the paragraph, and restore the \leftskip.
+  \penalty-50 % \vskip-\parskip% Add a good break
+  \DN@{\ifx\next\Runinitem\let\next@\relax
+    \else\nextRunin@false\let\item\plainitem@% Otherwise, set
+      \ifx\next\par% moreover, if \endroster is followed by \par,
+        \DN@\par{\everypar\expandafter{\the\everypartoks@}}%
+      \else% but if the \endroster isn't followed by a new paragraph,
+        \DN@{\noindent\everypar\expandafter{\the\everypartoks@}}%
+      \fi
+    \fi\next@}%
+  \FN@\next@}
+
+%%%%%%%%%%
+
+%    Differences with amsppt.sty (all address-related items):
+%    - break not suppressed before \address
+%    - \addressfont@ specified
+\def\address#1\endaddress{\global\advance\addresscount@\@ne
+  \expandafter\gdef\csname address\number\addresscount@\endcsname
+  {\vskip12\p@ minus6\p@\indent\addressfont@\smc\ignorespaces#1\par}}
+
+%  Current addresses as well as permanent ones must be accommodated.
+%  Check on the skip before the address; it may be a fixed 6pt.
+%  \smallskip has been assumed before the current address, as that
+%  is what has been used for \email.
+
+\def\curraddr{\let\savedef@\curraddr
+  \def\curraddr##1\endcurraddr{\let\curraddr\savedef@
+  \toks@\expandafter\expandafter\expandafter{%
+       \csname address\number\addresscount@\endcsname}%
+  \toks@@{##1}%
+  \expandafter\xdef\csname address\number\addresscount@\endcsname
+  {\the\toks@\endgraf\noexpand\nobreak
+    \indent\noexpand\addressfont@{\noexpand\rm
+    \frills@{{\noexpand\it Current address\noexpand\/}:\space}%
+    \def\noexpand\usualspace{\space}\the\toks@@\unskip}}}%
+  \nofrillscheck\curraddr}
+
+\def\email{\let\savedef@\email
+  \def\email##1\endemail{\let\email\savedef@
+  \toks@{\def\usualspace{{\it\enspace}}\endgraf\indent\addressfont@}%
+  \toks@@{{\tt ##1}\par}%
+  \expandafter\xdef\csname email\number\addresscount@\endcsname
+  {\the\toks@\frills@{{\noexpand\it E-mail address\noexpand\/}:%
+     \noexpand\enspace}\the\toks@@}}%
+  \nofrillscheck\email}
+
+
+\def\rom#1{{\rm #1}}
+
+%    Differences from amsppt.sty:
+%    - rule is 2pc, not 3em
+\def\bysame{\by\hbox to2pc{\hrulefill}\thinspace\kern\z@}
+
+%    Differences from amsppt.sty:
+%    - indent differs in style B
+\def\refstyle#1{\uppercase{%
+  \gdef\refstyle@{#1}%
+  \if#1A\relax \def\keyformat##1{[##1]\enspace\hfil}%
+  \else\if#1B\relax
+    \refindentwd2pc
+    \def\keyformat##1{\aftergroup\kern
+              \aftergroup-\aftergroup\refindentwd}%
+  \else\if#1C\relax
+    \refindentwd30pt \refafterindentwd39pt
+    \def\keyformat##1{\hfil##1.\enspace}%
+  \fi\fi\fi}% end of \uppercase
+}
+
+\refstyle{C}
+
+
+
+
+\catcode`\@=11
+
+%    Heading styles are different from AMSPPT.STY:
+
+\def\addressfont@{\tenpoint}
+
+\skip\footins=\bigskipamount % space added when footnote is present
+
+%  \titlefont is 14/18 (in ams-p.sty it is 12/14)
+\font@\titlebf=cmbx10 scaled \magstep2	% 14/18
+\font@\titlei=cmmi10 scaled \magstep2
+\font@\titlesy=cmsy10 scaled \magstep2
+\font@\titlemsb=msbm10 scaled \magstep2
+\font@\titleeufm=eufm10 scaled \magstep2
+\def\titlefont{\normalbaselineskip18\p@
+  \textonlyfont@\bf\titlebf
+  \ifsyntax@\else
+    \textfont\z@\titlebf  \scriptfont\z@\tenbf  \scriptscriptfont\z@\sevenbf
+    \textfont\@ne\titlei  \scriptfont\@ne\teni  \scriptscriptfont\@ne\seveni
+    \textfont\tw@\titlesy \scriptfont\tw@\tensy \scriptscriptfont\tw@\sevensy
+    \textfont\thr@@\tenex \scriptfont\thr@@\tenex \scriptscriptfont\thr@@\tenex
+    \textfont\msbfam\titlemsb \scriptfont\msbfam\tenmsb
+      \scriptscriptfont\msbfam\sevenmsb
+    \textfont\eufmfam\titleeufm \scriptfont\eufmfam\teneufm
+      \scriptscriptfont\eufmfam\seveneufm
+  \fi
+  \normalbaselines\titlebf}
+
+%  added \specialpart to allow suppression of ``Part n'' element; bnb, 30May96
+\newif\ifpart	\partfalse
+\newif\ifspecialpart  \specialpartfalse
+
+\font\partnofont=cmbx10 scaled \magstep3
+%  \partfont is 20/25
+%  amplified \partfont to accommodate math; bnb, 21Sep96
+%\font\partfont=cmbx10 scaled \magstep4
+\font@\partbf=cmbx10 scaled \magstep4
+\font@\parti=cmmi10 scaled \magstep4
+\font@\partsy=cmsy10 scaled \magstep4
+\font@\partmsb=msbm10 scaled \magstep4
+\font@\parteufm=eufm10 scaled \magstep4
+\def\partfont{\normalbaselineskip25\p@
+  \textonlyfont@\bf\partbf
+  \ifsyntax@\else
+    \textfont\z@\partbf  \scriptfont\z@\titlebf  \scriptscriptfont\z@\tenbf
+    \textfont\@ne\parti  \scriptfont\@ne\titlei  \scriptscriptfont\@ne\teni
+    \textfont\tw@\partsy \scriptfont\tw@\titlesy \scriptscriptfont\tw@\tensy
+    \textfont\thr@@\tenex \scriptfont\thr@@\tenex \scriptscriptfont\thr@@\tenex
+    \textfont\bffam\partbf \scriptfont\bffam\titlebf
+      \scriptscriptfont\bffam\tenbf
+    \textfont\msbfam\partmsb \scriptfont\msbfam\titlemsb
+      \scriptscriptfont\msbfam\tenmsb
+    \textfont\eufmfam\parteufm \scriptfont\eufmfam\titleeufm
+      \scriptscriptfont\eufmfam\teneufm
+  \fi
+  \normalbaselines\partbf}
+
+%  To get proper inter-word spacing, \raggedcenter@ must follow font change.
+\def\part#1\\#2\endpart{\global\parttrue
+  \gdef\thepart{\def\\{\hfil\break}%
+    {\partnofont\raggedcenter@ \ifspecialpart\null \else Part #1\fi \endgraf}%
+    \vskip 20pt
+    {\partfont\raggedcenter@ #2\endgraf}}%
+  }
+
+\def\specialpart#1\endspecialpart{%
+  \global\specialparttrue
+  \part\\#1\endpart}
+
+\def\title#1\endtitle{%
+  \global\setbox\titlebox@\vtop{\titlefont
+   \raggedcenter@
+   #1\endgraf}%
+ \ifmonograph@ \edef\next{\the\leftheadtoks}%
+    \ifx\next\empty@
+    \leftheadtext{#1}\fi
+ \fi
+ \edef\next{\the\rightheadtoks}\ifx\next\empty@ \rightheadtext{#1}\fi
+ }
+
+% chapter heading in ten point
+
+\def\romanchapternum{\gdef\chapterno@{\uppercase\expandafter{\romannumeral
+    \chaptercount@}}}
+
+\def\chapterno@{\the\chaptercount@}
+
+\def\chapter{\let\savedef@\chapter
+  \def\chapter##1{\let\chapter\savedef@
+  \leavevmode\hskip-\leftskip
+   \rlap{\vbox to\z@{\vss\centerline{\tenpoint
+   \frills@{CHAPTER\space\afterassignment\chapterno@
+       \global\chaptercount@=}%
+   ##1\unskip}\baselineskip36pt\null}}\hskip\leftskip}%
+ \nofrillscheck\chapter}
+
+
+%  authors are set in all caps
+
+\def\author{\let\savedef@\author
+  \def\author##1\endauthor{\global\setbox\authorbox@
+ \vbox{\tenpoint\raggedcenter@
+  \frills@{\ignorespaces##1}\endgraf}
+ \edef\next{\the\leftheadtoks}%
+ \ifx\next\empty@\expandafter\uppercase{\leftheadtext{##1}}\fi}
+\nofrillscheck\author}
+
+%  \abstract differs from the one in AMSPPT.STY by the use of a slightly
+%  larger indentation.
+
+\def\abstract{\let\savedef@\abstract
+ \def\abstract{\let\abstract\savedef@
+  \setbox\abstractbox@\vbox\bgroup\noindent$$\vbox\bgroup\indenti=0pt
+  \def\envir@end{\endabstract}\advance\hsize-2\indenti
+  \def\usualspace{\enspace}\tenpoint \noindent
+  \frills@{{\abstractfont@ Abstract.\enspace}}}%
+ \nofrillscheck\abstract}
+
+
+\def\thanks#1\endthanks{%
+  \gdef\thethanks@{{\tenpoint#1\endgraf}}}
+
+\def\keywords{\let\savedef@\keywords
+  \def\keywords##1\endkeywords{\let\keywords\savedef@
+  \toks@{\def\usualspace{{\it\enspace}}\raggedcenter@\tenpoint}%
+  \toks@@{##1\unskip.\endgraf}%
+  \edef\thekeywords@{{\the\toks@\frills@{{\noexpand\it
+    Key words and phrases.\noexpand\enspace}}\the\toks@@}}}%
+ \nofrillscheck\keywords}
+
+\def\subjclass{\let\savedef@\subjclass
+ \def\subjclass##1\endsubjclass{\let\subjclass\savedef@
+   \toks@{\def\usualspace{{\rm\enspace}}\tenpoint\raggedcenter@}%
+   \toks@@{##1\unskip.\endgraf}%
+   \edef\thesubjclass@{{\the\toks@
+     \frills@{{\noexpand\rm1991 {\noexpand\it Mathematics Subject
+       Classification}.\noexpand\enspace}}%
+     \the\toks@@}}}%
+  \nofrillscheck\subjclass}
+
+%  More generous skips above some section headings, not as much shrink.
+\abovespecheadskip=24\p@ plus12\p@ minus\z@
+\aboveheadskip=12\p@ plus4\p@ minus2\p@
+\subheadskip=6\p@ plus2\p@ minus\z@
+
+\newskip\xcskip   \newskip\afterxcskip
+\xcskip=10pt plus2pt minus0pt
+\afterxcskip=0pt
+\long\def\xcb#1{\par\ifnum\lastskip<\xcskip
+  \removelastskip\penalty-100\vskip\xcskip\fi
+  \noindent{\bf#1}%
+  \nobreak\bgroup
+  \xcbrosterdefs}
+
+\def\xcbrosterdefs{\normalparindent=0pt
+\setbox\setwdbox\hbox{0.}\rosteritemwd=\wd\setwdbox\relax
+  \setbox\setwdbox\hbox{0.\hskip.5pc(c)}\rosteritemitemwd=\wd\setwdbox\relax
+  \setbox\setwdbox\hbox{0.\hskip.5pc(c)\hskip.5pc(iii)}%
+	\rosteritemitemitemwd=\wd\setwdbox\relax
+}
+
+\def\endxcb{\par\egroup}
+
+\outer\def\endtopmatter{\add@missing\endabstract
+  \edef\next{\the\leftheadtoks}%
+  \ifx\next\empty@
+    \expandafter\leftheadtext\expandafter{\the\rightheadtoks}%
+  \fi
+  \ifpart
+%	%  AMS-LaTeX spacing: \null\vfil\thepart\vfil\vfil\newpage
+%	%  Fix this at the same distance as a part with 1-line title.
+    \global\plain@true
+    \null\vskip146\p@
+    \thepart
+    \vfill\eject
+    \null\vfill\eject
+  \fi
+  \global\plain@false
+  \global\firstpage@true
+  \begingroup % to localize variant topskip
+    \topskip90\p@
+    \box\titlebox@
+  \endgroup
+  \ifvoid\authorbox@\else \vskip2.5pc plus1pc\unvbox\authorbox@\fi
+  \ifnum\addresscount@>\z@
+    \vfill
+    Author address\ifnum\addresscount@>1 es\fi:
+    \count@\z@
+    \loop\ifnum\count@<\addresscount@\advance\count@\@ne
+      \csname address\number\count@\endcsname
+      \csname email\number\count@\endcsname
+    \repeat
+    \vfill\eject
+  \fi
+  \ifvoid\affilbox@\else \vskip1pcplus\unvbox\affilbox@\fi
+  \ifx\thesubjclass@\empty@\else \vfil\thesubjclass@\fi
+  \ifx\thekeywords@\empty@\else \vfil\thekeywords@\fi
+  \ifx\thethanks@\empty@\else \vfil\thethanks@\fi
+  \ifvoid\abstractbox@\else \vfil\unvbox\abstractbox@\vfil\eject \fi
+  \ifvoid\tocbox@\else \vskip1.5pcplus.5pc\unvbox\tocbox@\fi
+  \prepaper
+  \vskip22pt\relax
+}
+
+\def\raggedleft@{\leftskip\z@ plus.4\hsize \rightskip\z@
+  \parfillskip\z@ \parindent\z@ \spaceskip.3333em \xspaceskip.5em
+  \pretolerance9999\tolerance9999 \exhyphenpenalty\@M
+  \hyphenpenalty\@M \let\\\linebreak}
+
+\def\aufm #1\endaufm{\vskip-\prevdepth
+  \vskip12pt{\raggedleft@ #1\endgraf}}
+
+\widestnumber\key{M} % set default lettered ref style
+
+%%%% table of contents
+
+\begingroup
+\let\head\relax \let\specialhead\relax \let\subhead\relax
+\let\subsubhead\relax \let\title\relax \let\chapter\relax
+\newbox\tocchapbox@
+
+\gdef\newtocdefs{%
+  \def\ptitle##1\endptitle
+       {\penalty\z@ \vskip8\p@
+        \hangindent\wd\tocheadbox@\noindent{\bf ##1}\endgraf}%
+  \def\title##1\endtitle
+       {\penalty\z@ \vskip8\p@
+        \hangindent\wd\tocchapbox@\noindent{##1}\endgraf}%
+  \def\chapter##1{\par
+        Chapter ##1.\unskip\enspace}%
+  \def\part##1{\par
+        {\bf Part ##1.}\unskip\enspace}%
+  \def\specialhead##1 ##2\endspecialhead{\par
+    \begingroup \hangindent.5em \noindent
+    \if\notempty{##1}%
+      \leftskip\wd\tocheadbox@
+      \llap{\hbox to\wd\tocheadbox@{\hfil##1}}\enspace
+    \else
+      \leftskip\parindent
+    \fi
+    ##2\endgraf
+    \endgroup}%
+  \def\head##1 ##2\endhead{\par
+    \begingroup \hangindent.5em \noindent
+    \if\notempty{##1}%
+      \leftskip\wd\tocheadbox@
+      \llap{\hbox to\wd\tocheadbox@{\hfil##1}}\enspace
+    \else
+      \leftskip\parindent
+    \fi
+    ##2\endgraf
+    \endgroup}%
+%    Added subhead and subsubhead to prevent \widestnumber error.
+%    Style for these in the toc is unspecified; just provide something
+%    ad hoc for now. [mjd,1995/03/28]
+%    modify sub(sub)heads so that extra lines are hangindented [bnb,1996/07/03]
+  \def\subhead##1 ##2\endsubhead{\par
+    \begingroup \leftskip4.5pc
+    \noindent\llap{##1\enspace}##2\endgraf \endgroup}%
+  \def\subsubhead##1 ##2\endsubsubhead{\par
+    \begingroup \leftskip7pc
+    \noindent\llap{\hss##1\enspace}##2\endgraf \endgroup}%
+}%
+\gdef\toc@#1{\relaxnext@
+  \DN@{\ifx\next\nofrills\DN@\nofrills{\nextii@}%
+      \else\DN@{\nextii@{{#1}}}%
+      \fi
+      \next@}%
+  \DNii@##1{%
+    \ifmonograph@\bgroup
+    \else\setbox\tocbox@\vbox\bgroup
+      \centerline{\headfont@\ignorespaces##1\unskip}\nobreak
+      \vskip\belowheadskip
+    \fi
+    \def\page####1%
+       {\unskip\penalty\z@\null\hfil
+        \rlap{\hbox to\pagenumwd{\quad\hfil\rm ####1}}%
+    \global\setbox\tocchapbox@\hbox{Chapter 1.\enspace}%
+    \global\setbox\tocheadbox@\hbox{\hskip18pt \S0.0.}%
+         \hfilneg\penalty\@M}%
+    \leftskip\z@ \rightskip\leftskip
+    \setboxz@h{\bf\quad000}\pagenumwd\wd\z@
+    \advance\rightskip\pagenumwd
+    \newtocdefs
+    }%
+  \FN@\next@
+}%
+\endgroup
+
+\def\logo@{}
+
+\def\makefootline{\baselineskip18\p@\line{\the\footline}}
+
+\Monograph
+
+\catcode`\@=13
+
+\def\amsversion{2.1c}
+
+\catcode`\@=11
+
+\def\pretitle{\vskip84pt}
+
+\aboveheadskip=12\p@ plus 9\p@
+
+\newskip\abovesubheadskip
+\abovesubheadskip=9\p@ plus 6\p@
+
+
+\newskip\abovesubsubheadskip
+\abovesubsubheadskip=6\p@ plus 6\p@
+
+\belowheadskip=6\p@
+
+%  Page numbers and running heads are provided by default, as defined
+%  in AMSPPT.STY.  Headline text is centered, and page numbers are
+%  positioned at the outside corners.  To suppress page numbers and/or
+%  running heads, include \NoPageNumbers and/or \NoRunningHeads in the
+%  input file, as appropriate.
+
+\def\foliofont@{\eightbf}
+\def\headlinefont@{\eightpoint}           %DF
+
+\newif\iflecture@ \lecture@false
+
+\newif\ifLogoOn  \LogoOnfalse
+\def\LogoOn{\global\LogoOntrue
+  \def\inslogo@{\insert\copyins{\logo@}}%
+  }
+
+\def\Monograph{\monograph@true
+  \nologo \nojourlogo
+  \let\headmark\rightheadtext
+  \let\varindent@\noindent
+  \def\abstractfont@{\bf}
+  \def\addressfont@{\tenpoint}
+  \def\specialheadfont@{\twelvepoint\bf}%
+  \def\headfont@{\elevenpoint\bf}%
+  \def\proclaimheadfont@{\bf}%
+  \def\remarkheadfont@{\bf}}
+
+
+%  Heading styles are different from AMSPPT.STY:
+
+\def\subheadfont@{\bf}
+\def\refheadfont@{\headfont@}
+
+\outer\def\specialhead{%
+  \add@missing\endroster \add@missing\enddefinition
+  \add@missing\enddemo \add@missing\endexample
+  \add@missing\endproclaim
+  \penaltyandskip@{-200}\abovespecheadskip
+  \begingroup\interlinepenalty\@M\rightskip\z@ plus\hsize
+  \let\\\linebreak
+  \specialheadfont@\raggedright\noindent}
+\def\endspecialhead{\endgraf\endgroup\nobreak\vskip\belowspecheadskip\noindent}
+
+
+\font@\fourteenrm=cmr10 scaled \magstep2
+\font@\fourteenbf=cmbx10 scaled \magstep2
+\font@\fourteenit=cmti10 scaled \magstep2
+\font@\fourteensl=cmsl10 scaled \magstep2
+\font@\fourteensmc=cmcsc10 scaled \magstep2
+\font@\fourteentt=cmtt10 scaled \magstep2
+\font@\fourteeni=cmmi10 scaled \magstep2
+\font@\fourteensy=cmsy10 scaled \magstep2
+\font@\fourteenex=cmex10 scaled \magstep2
+
+\newtoks\fourteenpoint@
+\def\fourteenpoint{\normalbaselineskip16\p@
+ \abovedisplayskip12\p@ plus3\p@ minus9\p@
+ \belowdisplayskip\abovedisplayskip
+ \abovedisplayshortskip\z@ plus3\p@
+ \belowdisplayshortskip7\p@ plus3\p@ minus4\p@
+ \textonlyfont@\rm\fourteenrm \textonlyfont@\it\fourteenit
+ \textonlyfont@\sl\fourteensl \textonlyfont@\bf\fourteenbf
+ \textonlyfont@\smc\fourteensmc \textonlyfont@\tt\fourteentt
+ \ifsyntax@ \def\big##1{{\hbox{$\left##1\right.$}}}%
+  \let\Big\big \let\bigg\big \let\Bigg\big
+ \else
+   \textfont\z@\fourteenrm  \scriptfont\z@\tenrm
+       \scriptscriptfont\z@\eightrm
+   \textfont\@ne\fourteeni  \scriptfont\@ne\teni
+       \scriptscriptfont\@ne\eighti
+   \textfont\tw@\fourteensy \scriptfont\tw@\tensy
+       \scriptscriptfont\tw@\eightsy
+   \textfont\thr@@\fourteenex \scriptfont\thr@@\tenex
+        \scriptscriptfont\thr@@\tenex
+   \textfont\itfam\fourteenit \scriptfont\itfam\tenit
+        \scriptscriptfont\itfam\tenit
+   \textfont\bffam\fourteenbf \scriptfont\bffam\tenbf
+        \scriptscriptfont\bffam\eightbf
+   \setbox\strutbox\hbox{\vrule height8.5\p@ depth3.5\p@ width\z@}%
+   \setbox\strutbox@\hbox{\lower.5\normallineskiplimit\vbox{%
+        \kern-\normallineskiplimit\copy\strutbox}}%
+   \setbox\z@\vbox{\hbox{$()$}\kern\z@}\bigsize@1.2\ht\z@
+  \fi
+  \normalbaselines\rm\dotsspace@1.5mu\ex@.2326ex\jot3\ex@
+  \the\fourteenpoint@}
+
+
+\font@\titlebf=cmbx10 scaled \magstep3  % 17/22
+\font@\titlei=cmmi10 scaled \magstep3
+\font@\titlesy=cmsy10 scaled \magstep3
+\def\titlefont{\normalbaselineskip22\p@
+ \textonlyfont@\bf\titlebf
+ \ifsyntax@\else
+  \textfont\z@\titlebf  \scriptfont\z@\tenbf  \scriptscriptfont\z@\sevenbf
+  \textfont\@ne\titlei  \scriptfont\@ne\teni  \scriptscriptfont\@ne\seveni
+  \textfont\tw@\titlesy \scriptfont\tw@\tensy \scriptscriptfont\tw@\sevensy
+  \textfont\thr@@\tenex \scriptfont\thr@@\tenex \scriptscriptfont\thr@@\tenex
+ \fi
+ \normalbaselines\titlebf}
+
+\def\raggedleft{\leftskip\z@ plus 1fil
+\parfillskip\z@ \parindent\z@ \spaceskip\z@ \xspaceskip\z@
+ \pretolerance9999\tolerance9999 \exhyphenpenalty\@M}
+
+\def\raggedright{\rightskip\z@ plus 1fil
+\parfillskip\z@ \parindent\z@ \spaceskip\z@ \xspaceskip\z@
+ \pretolerance9999\tolerance9999 \exhyphenpenalty\@M}
+
+
+\newif\ifpart   \partfalse
+
+\newif\ifNoNewpage \NoNewpagefalse
+\def\NoNewPage{\NoNewpagetrue}
+
+\font\partnofont=cmbx10 scaled \magstep1
+\font\partfont=cmbx10 scaled \magstep3
+
+\def\partno#1{{\titlefont Part #1}}
+
+\def\part#1\\#2\endpart{\global\parttrue
+  \gdef\thepart{\def\\{\break}%
+    {\raggedleft
+     \noindent\partnofont PART #1\unskip\vskip5pt
+     \partfont\baselineskip=25pt
+     \noindent#2\unskip\break\endgraf}}}
+
+\def\series #1\endseries{\global\parttrue
+  \def\sauth ##1\endsauth{\gdef\thesauth{{%
+                \fourteenpoint\bf ##1\unskip\endgraf}}}%
+  \gdef\thepart{\def\\{\break}%
+    {\raggedleft
+     \partfont\baselineskip=25pt
+     \noindent#1\unskip\vskip\baselineskip
+     \if\notempty{\thesauth}%
+       \thesauth
+     \fi
+     \endgraf}}}
+
+\newif\ifContents \Contentsfalse
+\def\contents{\global\Contentstrue}
+
+\setbox\titlebox@\vbox{}
+
+\def\title#1\endtitle{%
+  \def\\{\break}%
+  \global\setbox\titlebox@\vtop{\titlefont
+   \ifodd\pageno
+     \ifContents\raggedright
+     \else\raggedleft
+     \fi
+   \else\raggedright
+   \fi
+   \noindent#1\unskip\break}%
+ \ifmonograph@ \edef\next{\the\leftheadtoks}%
+    \ifx\next\empty
+    \leftheadtext{#1}\fi
+ \fi
+ \edef\next{\the\rightheadtoks}\ifx\next\empty \rightheadtext{#1}\fi
+ }
+
+\def\shortauthtitle #1\endshortauthtitle{%       %DF 
+  \leftheadtext{\uppercase{\ignorespaces#1\unskip}}}
+
+\def\thelecture{}
+\def\thelecturelabel{Lecture}                     %DF
+\def\thenewlecturelabel{Lecture}                     %DF
+\def\lecturelabel#1{\def\thenewlecturelabel{#1}}  %DF   (to get headings right)
+\def\lecture#1{%
+  \ifNoNewpage\else\vfill\eject\fi               %DF
+  \global\lecture@true
+  \gdef\lectnomark{#1}%
+  \gdef\thelecture{%
+    \begingroup\raggedleft
+      \twelvepoint\bf
+      \expandafter\uppercase\expandafter{\thelecturelabel}
+      {\fourteenbf #1\unskip}\break
+  }}
+
+\def\lecturename #1\endlecturename{%
+  \gdef\lectnamemark{#1}%
+  \gdef\shortlectnamemark{\uppercase{\ignorespaces#1\unskip}}%          %DF
+  \gdef\thelecturename{%
+      \def\\{\break}%
+      \baselineskip=16pt #1\unskip\endgraf
+    \endgroup}}
+
+\def\shortlecturename #1\endshortlecturename{%  %DF
+  \gdef\shortlectnamemark{\uppercase{\ignorespaces#1\unskip}}}          %DF
+
+\def\chapter{\let\savedef@\chapter
+  \def\chapter##1{\let\chapter\savedef@
+  \leavevmode\hskip-\leftskip
+   \rlap{\vbox to\z@{\vss
+   \ifodd\pageno
+   \rightline{\twelvepoint\bf
+   \frills@{CHAPTER\fourteenpoint\bf\space\afterassignment\chapterno@
+       \global\chaptercount@=}%
+   ##1\unskip}%
+   \else
+   \leftline{\twelvepoint
+   \frills@{CHAPTER\fourteenpoint\bf\space\afterassignment\chapterno@
+       \global\chaptercount@=}%
+   ##1\unskip}%
+   \fi
+\baselineskip44pt\null}}\hskip\leftskip}%
+ \nofrillscheck\chapter}
+
+
+\def\author{\let\savedef@\author
+  \def\author##1\endauthor{\global\setbox\authorbox@\vbox{%
+        \fourteenpoint\bf\raggedleft
+  \ignorespaces##1\unskip\break\endgraf}%
+ \edef\next{\the\leftheadtoks}%
+ \ifx\next\empty{\leftheadtext{##1}}\fi}\author}
+
+\def\address#1\endaddress{%
+  \global\advance\addresscount@\@ne
+  \expandafter\gdef\csname address\number\addresscount@\endcsname
+  {{\ignorespaces#1\unskip}}}
+
+%  Current addresses as well as permanent ones must be accommodated.
+%  Check on the skip before the address; it may be a fixed 6pt.
+
+\def\email{\let\savedef@\email
+  \def\email##1\endemail{\let\email\savedef@
+  \toks@{\def\usualspace{{\bf\enspace}}}%
+  \toks@@{{\tt ##1\unskip}}%
+  \expandafter\xdef\csname email\number\addresscount@\endcsname
+  {\endgraf\noindent\the\toks@\frills@{{\noexpand\bf E-mail address
+        \noexpand\/}\rm :%
+     \noexpand\enspace}\the\toks@@}}%
+  \nofrillscheck\email}
+
+
+\def\curraddr{\let\savedef@\curraddr
+  \def\curraddr##1\endcurraddr{\let\curraddr\savedef@
+  \toks@\expandafter\expandafter\expandafter{%
+       \csname address\number\addresscount@\endcsname}%
+  \toks@@{##1\unskip}%
+  \expandafter\xdef\csname address\number\addresscount@\endcsname
+  {\the\toks@\endgraf\noindent
+    {\noexpand\rm
+    \frills@{{\noexpand\bf Current address\noexpand\/}:\space}%
+    \def\noexpand\usualspace{\space}\the\toks@@\unskip}}}%
+  \nofrillscheck\curraddr}
+
+
+\def\setaddress@{%
+% \iflecture@\else\vfill\eject\fi        %COMMENTED OUT BY DF
+{\parskip=0pt\ifnum\addresscount@>\z@
+ \count@\z@ \loop\ifnum\count@<\addresscount@\advance\count@\@ne
+ \makefootnote@{$^{\number\count@}$}%
+        {\csname address\number\count@\endcsname
+        \csname email\number\count@\endcsname}%
+ \repeat
+\fi
+}\adjustfootnotemark{\number\addresscount@}
+\addresscount@\z@}			%ADDED BY DF
+
+
+\outer\def\head#1\endhead{%
+  \add@missing\endroster \add@missing\enddefinition
+  \add@missing\enddemo \add@missing\endexample
+  \add@missing\endproclaim
+  \penaltyandskip@{-200}\aboveheadskip
+  {\headfont@\interlinepenalty\@M
+  \noindent #1\unskip\endgraf}\iflecture@\else\headmark{#1}\fi%
+  \penalty10000
+  \parskip=\belowheadskip\noindent\parskip0pt\relax}
+
+
+\outer\def\subhead#1\endsubhead{%
+  \add@missing\endroster \add@missing\enddefinition
+  \add@missing\enddemo \add@missing\endexample
+  \add@missing\endproclaim
+  \par
+  \ifdim\lastskip=\belowheadskip\else
+          \penaltyandskip@{-200}\abovesubheadskip\fi
+  {\subheadfont@\interlinepenalty\@M
+  \noindent #1\unskip\endgraf}%
+  \penalty999
+  \parskip=\belowheadskip\noindent\parskip0pt\relax}
+
+
+\let\subsubhead\relax
+\def\subsubhead{%
+  \add@missing\endroster \add@missing\enddefinition
+  \add@missing\enddemo
+  \add@missing\endexample \add@missing\endproclaim
+  \let\savedef@\subsubhead \let\subsubhead\relax
+  \def\subsubhead##1\endsubsubhead{\restoredef@\subsubhead
+  \par
+  \ifdim\lastskip=\belowheadskip\else
+          \penaltyandskip@{-50}\abovesubsubheadskip\fi
+      {\def\usualspace{\/{\it\enspace}}%
+    \noindent \it##1\unskip\frills@{.\enspace}}}%
+  \nofrillscheck\subsubhead}
+
+\def\endtopmatter{\add@missing\endabstract
+  \edef\next{\the\leftheadtoks}%
+  \ifx\next\empty
+    \expandafter\leftheadtext\expandafter{\the\rightheadtoks}%
+  \fi
+  \ifpart
+     \partfalse				% DF
+     \global\plain@true
+     \null\vskip11pc
+     \thepart
+     \vfill\eject
+     \null\vfill\eject
+     \global\firstpage@true	%DF
+  \fi
+  \global\plain@false
+  \ifLogoOn
+     \inslogo@ \let\logo@=\relax   %DF
+  \fi
+  \iflecture@                            %DF
+    \ifNoNewpage\NoNewpagefalse\else     %DF
+    \ifodd\pageno\global\firstpage@true  %DF
+    \else\plain@true\null\vfill\eject    %DF
+    \global\plain@false\global\firstpage@true    %DF
+  \fi\fi  % DF 
+  \fi
+  \let\thelecturelabel\thenewlecturelabel    %DF      (to get headings right)
+  \null\pretitle
+  \box\titlebox@
+  \topskip10pt
+  \ifvoid\authorbox@
+  \else
+     \ifLogoOn \vskip-.8\baselineskip \else \vskip5pt\fi
+     \unvbox\authorbox@
+  \fi
+  \ifLogoOn
+     \vskip13pt
+  \else
+     \iflecture@ \vskip4pt \fi
+  \fi
+  \iflecture@
+     \ifLogoOn\else\vskip12pt\fi
+     \thelecture
+     \thelecturename
+     \rightheadtext{\uppercase\expandafter{\thelecturelabel\  %   %DF
+     \lectnomark.\ \shortlectnamemark}}%  %DF 
+  \fi
+  \ifnum\addresscount@>\z@
+     \setaddress@
+  \fi
+  \ifvoid\affilbox@
+  \else
+        \vskip1pcplus\unvbox\affilbox@
+  \fi
+  \ifx\thesubjclass@\empty\else \vfil\thesubjclass@\fi
+  \ifx\thekeywords@\empty\else \vfil\thekeywords@\fi
+  \ifx\thethanks@\empty\else \vfil\thethanks@\fi
+  \ifvoid\abstractbox@\else \vfil\unvbox\abstractbox@\vfil\eject \fi
+  \ifvoid\tocbox@\else\vskip1.5pcplus.5pc\unvbox\tocbox@\fi
+  \iflecture@ \vskip2pc\fi
+}
+
+\def\xcaheadfont@{\bf}
+\def\xcbheadfont@{\headfont@}
+
+% figure
+\def\endinsert{\egroup % finish the \vbox
+  \if@mid \dimen@\ht\z@ \advance\dimen@\dp\z@ \advance\dimen@12\p@
+    \advance\dimen@\pagetotal \advance\dimen@-\pageshrink
+    \ifdim\dimen@>\pagegoal\@midfalse\p@gefalse\fi\fi
+  \if@mid \bigskip\box\z@\bigbreak
+  \else\insert\topins{\penalty100 % floating insertion
+    \splittopskip\z@skip
+    \splitmaxdepth\maxdimen \floatingpenalty\z@
+    \ifp@ge \dimen@\dp\z@
+    \vbox to\vsize{\unvbox\z@\kern-\dimen@}% depth is zero
+    \else \box\z@\nobreak\vskip 12\p@ plus 12\p@\fi}\fi\endgroup}
+
+\iflecture@
+   \def\refsfont@{\eightpoint}%
+\else
+   \def\refsfont@{\tenpoint}%
+   \widestnumber\key{M}
+\fi
+
+\def\leftheadtext{\let\savedef@\leftheadtext
+  \def\leftheadtext##1{\let\leftheadtext\savedef@
+    \leftheadtoks\expandafter{\frills@{##1}}%
+    \mark{\the\leftheadtoks\noexpand\else\the\rightheadtoks}
+    \ifsyntax@\setboxz@h{\def\\{\unskip\space\ignorespaces}%
+        \headlinefont@##1\unskip}\fi}%
+  \nofrillscheck\leftheadtext}
+\def\rightheadtext{\let\savedef@\rightheadtext
+  \def\rightheadtext##1{\let\rightheadtext\savedef@
+    \rightheadtoks\expandafter{\frills@{##1}}%
+    \mark{\the\leftheadtoks\noexpand\else\the\rightheadtoks}%
+    \ifsyntax@\setboxz@h{\def\\{\unskip\space\ignorespaces}%
+        \headlinefont@##1\unskip}\fi}%
+  \nofrillscheck\rightheadtext}
+
+\def\captionfont@{\bf}
+
+\def\topcaption#1#2\endcaption{%
+  {\dimen@\hsize \advance\dimen@-\captionwidth@
+   \rm\raggedcenter@ \advance\leftskip.5\dimen@ \rightskip\leftskip
+  {\captionfont@#1}%
+  \if\notempty{#2}\enspace\ignorespaces#2\unskip\fi
+  \endgraf}\nobreak\bigskip}
+\def\botcaption#1#2\endcaption{%
+  \nobreak\bigskip
+  \setboxz@h{\captionfont@#1\if\notempty{#2}.\enspace\rm#2\unskip\fi}%
+  {\dimen@\hsize \advance\dimen@-\captionwidth@
+   \leftskip.5\dimen@ \rightskip\leftskip
+   \noindent \ifdim\wdz@>\captionwidth@
+   \else\hfil\fi\eightpoint
+  {\captionfont@#1\unskip}%
+  \if\notempty{#2}.\enspace\rm#2\fi\endgraf}}
+
+
+
+%%%% table of contents
+
+
+\begingroup
+\let\head\relax
+\let\specialhead\relax
+\let\subhead\relax
+\let\subsubhead\relax
+\let\title\relax
+\let\chapter\relax
+
+
+\gdef\newtocdefs{%
+   \def \Title##1
+       {\penalty\z@ \vskip10\p@
+        \noindent{\bf ##1}\endgraf}%
+   \def \title##1\endtitle
+       {\penalty\z@ \vskip8\p@
+        \hangindent\wd\tocheadbox@\noindent{##1}\endgraf}%
+   \def \chapter##1{%
+        Chapter ##1.\unskip\enspace}%
+   \def \part##1{%
+        {\bf PART ##1}\hfill\break}%
+   \def \specialhead##1 ##2\endspecialhead
+       {\par\hangindent\wd\tocheadbox@\parindent=12pt \indent
+        \if\notempty{##1}\hbox to\wd\tocheadbox@{\hfil ##1\unskip\enspace}\fi
+        {\bf ##2}\par}%
+   \def \Head##1##2{\par\hangindent\wd\tocheadbox@\parindent=12pt \indent
+        \if\notempty{##1}\hbox to\wd\tocheadbox@{\hfil\S##1\unskip\enspace}\fi
+        ##2\par}%
+   \def \subhead##1 ##2\endsubhead
+       {\par\vskip-\parskip {\normalbaselines
+        \advance\leftskip\wd\tocheadbox@
+        \hangindent\wd\tocsubheadbox@ \parindent=12pt\indent
+        \if\notempty{##1}%
+              \hbox to\wd\tocsubheadbox@{##1\unskip\hfil}\fi
+         ##2\unskip\par}}%
+   \def \subsubhead##1 ##2\endsubsubhead{}% not applicable
+}%
+\gdef\toc@#1{\relaxnext@
+ \DN@{\ifx\next\nofrills\DN@\nofrills{\nextii@}%
+      \else\DN@{\nextii@{{#1}}}\fi
+      \next@}%
+ \DNii@##1{%
+  \bgroup
+   \def\page####1%
+       {\unskip\penalty\z@\null\hfil
+        \rlap{\hbox to\pagenumwd{\quad\hfil\rm ####1}}%
+              \hfilneg\penalty\@M}%
+   \setbox\tocheadbox@\hbox{0.0.\enspace}%
+   \setbox\tocsubheadbox@\hbox{0.0.0.\enspace}%
+  \leftskip\z@ \rightskip\leftskip
+   \setboxz@h{\bf\quad000}\pagenumwd\wd\z@
+   \advance\rightskip\pagenumwd
+   \vskip-4pt
+   \newtocdefs
+ }%
+ \FN@\next@}%
+
+\endgroup
+
+%%%%%
+
+%       define  a logo for the upper left-hand corner
+
+%\def\nojourlogo{\let\jourlogo\empty@}
+\def\nojourlogo{\LogoOnfalse}
+
+\def\jourlogo{%
+  \vbox to\headlineheight{%
+    \parshape\z@ \leftskip\z@ \rightskip\z@
+    \parfillskip\z@ plus1fil\relax
+    \eightbf \baselineskip9pt
+    \parindent\z@ \frenchspacing
+    \vtop{IAS/Park City Mathematics Series\endgraf
+      Volume \issuevol@, \issueyear@\par\vss}%
+    \vss}%
+}
+
+\def\flheadline{\ifLogoOn\jourlogo\global\LogoOnfalse\else\empty@\fi}  % DF
+\let\frheadline\flheadline 
+
+%       macros to be put into the \topmatter for the logo
+
+\define\volyear#1#2{\issueinfo{#1}{#1}{}{#2} 
+     \let\logo@=\copyrightline@}              % ADDED BY DF
+
+\define\issueinfo#1#2#3#4{%
+  \def\issuevol@{#1}\def\issueno@{#2}%
+  \def\issuemonth@{#3}\def\issueyear@{#4}}
+\issueinfo{00}{0}{}{1997}
+
+\define\copyrightinfo#1#2{\def\cryear@{#1}\def\crholder@{#2}}
+\copyrightinfo{\issueyear@}{American Mathematical Society}
+
+\font\sixsy=cmsy6
+
+\def\issn#1{\gdef\issn@{#1}}
+\issn{1070-4116}
+
+\skip\copyins=1.5pc
+\def\copyrightline@{%
+  \rightline{\sixbf \textfont2=\sixsy \copyright\cryear@\ \crholder@}}
+
+\newif\ifplain@  \plain@false
+
+\Monograph
+
+%%%%%%%%%%  Front End to AMS Commands          (DF)        %%%%%%%%%%% 
+ 
+\NoBlackBoxes
+
+\newif\iftajointauthor \tajointauthorfalse 
+\newif\iftaassistantauthor \taassistantauthorfalse
+
+\def\Volume#1{\gdef\volumemark{#1}} 
+\def\Year#1{\gdef\yearmark{#1}}
+\def\SeriesTitle#1{\gdef\seriestitle{#1}%          
+		   \gdef\shortseriestitle{\uppercase{#1}}%  
+} 
+\def\ShortSeriesTitle#1{\gdef\shortseriestitle{\uppercase{#1}}}    %  optional
+\def\Author#1{\gdef\authormark{#1}} 
+\def\ShortAuthor#1{\gdef\shortauthor{\uppercase{#1}}}
+\def\AuthorAddress#1{\gdef\authoraddress{#1}}
+\def\AuthorEmail#1{\gdef\authoremail{#1}}
+\def\TAIsJointAuthor{\tajointauthortrue}
+\def\TAIsAssistantAuthor{\tajointauthortrue\taassistantauthortrue}
+\def\TA#1{\gdef\ta{#1}} 
+\def\ShortTA#1{\gdef\shortta{\uppercase{#1}}} 
+\def\TAAddress#1{\gdef\taaddress{#1}} 
+\def\TAEmail#1{\gdef\taemail{#1}}
+
+\def\EndTopInfo{ 
+%   \volyear{\volumemark}{\yearmark} 
+   \LogoOnfalse
+   \topmatter 
+%   \series\seriestitle
+%   \iftajointauthor
+%     \iftaassistantauthor
+%       \sauth\authormark\\ \\ {\it with the assistance of\/}\\\ta\endsauth 
+%     \else 
+%       \sauth\authormark\\\ta\endsauth 
+%     \fi
+%   \else 
+%     \sauth\authormark\endsauth 
+%   \fi
+%   \endseries 
+   \title\seriestitle\endtitle 
+   \iftajointauthor
+     \iftaassistantauthor
+       \author\authormark\\ \\ {\it with the assistance of\/}\\\ta\endauthor 
+       \shortauthtitle\shortauthor, \shortseriestitle\endshortauthtitle
+     \else 
+       \author\authormark\\ \ta\endauthor 
+       \shortauthtitle\shortauthor, \shortta, %
+         \shortseriestitle\endshortauthtitle 
+     \fi
+   \else 
+     \author\authormark\endauthor 
+     \shortauthtitle\shortauthor, \shortseriestitle\endshortauthtitle
+   \fi
+%   \address\authoraddress\endaddress 
+%   \email\authoremail\endemail 
+   \iftajointauthor 
+     \address\taaddress\endaddress 
+     \email\taemail\endemail 
+   \fi 
+   \endtopmatter
+}
+
+\def\Lecture#1#2{ 
+   \topmatter
+   \lecturelabel{Lecture}
+   \lecture{#1}
+   \lecturename #2\endlecturename
+   \endtopmatter
+}
+
+\def\Chapter#1#2{ 
+   \topmatter
+   \lecturelabel{Chapter}
+   \lecture{#1}
+   \lecturename #2\endlecturename
+   \endtopmatter
+}
+
+\def\Notetaker#1{
+   \footnotetext""{\bf Notes by #1}
+}
+
+
+\def\ShortLectureName#1{ 
+  \gdef\shortlectnamemark{\uppercase{\ignorespaces#1\unskip}}
+  \rightheadtext{\uppercase\expandafter{\thelecturelabel\  %
+  \lectnomark.\ \shortlectnamemark}}%
+}
+
+\def\Exercises{ 
+   \topmatter
+   \lecturelabel{Exercises}
+   \lecture{}
+   \lecturename\endlecturename 
+   \endtopmatter
+   \rightheadtext{EXERCISES} 
+}
+
+\def\Bibliography{ 
+   \topmatter
+   \lecturelabel{Bibliography}
+   \lecture{}
+   \lecturename\endlecturename 
+   \endtopmatter
+   \rightheadtext{BIBLIOGRAPHY} 
+}
+
+\def\BlankPage{ 
+   \plain@true\null\vfill\eject\plain@false
+}
+
+\def\Head#1#2{\add@missing\endroster \add@missing\enddefinition
+  \add@missing\enddemo \add@missing\endexample
+  \add@missing\endproclaim
+  \penaltyandskip@{-200}\aboveheadskip
+  {\headfont@\interlinepenalty\@M
+  \noindent \S#1. #2\unskip\endgraf}%
+  \penalty10000
+  \parskip=\belowheadskip\flushpar\parskip0pt}
+
+\def\Headnn#1{\add@missing\endroster \add@missing\enddefinition
+  \add@missing\enddemo \add@missing\endexample
+  \add@missing\endproclaim
+  \penaltyandskip@{-200}\aboveheadskip
+  {\headfont@\interlinepenalty\@M
+  \noindent #1\unskip\endgraf}%
+  \penalty10000
+  \parskip=\belowheadskip\flushpar\parskip0pt}
+
+\def\Subhead#1#2{%
+  \add@missing\endroster \add@missing\enddefinition
+  \add@missing\enddemo \add@missing\endexample
+  \add@missing\endproclaim
+  \par
+  \ifdim\lastskip=\belowheadskip\else
+          \penaltyandskip@{-200}\abovesubheadskip\fi
+  {\subheadfont@\interlinepenalty\@M
+  \noindent #1. #2\unskip\endgraf}%
+  \penalty999
+  \parskip=\belowheadskip\noindent\parskip0pt\relax}
+
+
+\def\SubHeadnn#1{\add@missing\endroster \add@missing\enddefinition
+  \add@missing\enddemo \add@missing\endexample
+  \add@missing\endproclaim
+  \par
+  \ifdim\lastskip=\belowheadskip\else
+          \penaltyandskip@{-200}\abovesubheadskip\fi
+  {\subheadfont@\interlinepenalty\@M
+  \noindent #1\unskip\endgraf}%
+  \penalty999
+  \parskip=\belowheadskip\flushpar\parskip0pt}
+
+\def\EndTopInfoNoAuthor{ 
+%   \volyear{\volumemark}{\yearmark} 
+   \LogoOnfalse
+   \topmatter 
+%   \series\seriestitle
+%   \iftajointauthor
+%     \iftaassistantauthor
+%       \sauth\authormark\\ \\ {\it with the assistance of\/}\\\ta\endsauth 
+%     \else 
+%       \sauth\authormark\\\ta\endsauth 
+%     \fi
+%   \else 
+%     \sauth\authormark\endsauth 
+%   \fi
+%   \endseries 
+   \title\seriestitle\endtitle 
+%   \iftajointauthor
+%     \iftaassistantauthor
+%       \author\authormark\\ \\ {\it with the assistance of\/}\\\ta\endauthor 
+%       \shortauthtitle\shortauthor, \shortseriestitle\endshortauthtitle
+%     \else 
+%       \author\authormark\\ \ta\endauthor 
+%       \shortauthtitle\shortauthor, \shortta, %
+%         \shortseriestitle\endshortauthtitle 
+%     \fi
+%   \else 
+%     \author\authormark\endauthor 
+%     \shortauthtitle\shortauthor, \shortseriestitle\endshortauthtitle
+%   \fi
+%   \address\authoraddress\endaddress 
+%   \email\authoremail\endemail 
+   \iftajointauthor 
+     \address\taaddress\endaddress 
+     \email\taemail\endemail 
+   \fi 
+   \endtopmatter
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%		FOR PROBLEMS 
+
+\setbox0\hbox{(a)\ }  
+\newdimen\secwidth \secwidth=\wd0 
+\secwidth=0pt
+\newcount\probno \probno=0 \newcount\probsecno
+\newbox\numbox
+
+\def\prob#1#2{#1.\;\hbox to 40pt{\hrulefill/#2}\hskip25pt}
+\long\def\problem#1\endproblem{\bigbreak \global\advance\probno by 1
+  \noindent {\parskip2pt plus1pt minus1pt \parindent0pt
+  {\bf\problemlabel\number\probno.\enspace}#1}\bigbreak}
+\def\probsec{\futurelet\next\probsecc}
+\def\probsecc{\bigbreak \global\advance\probno by 1
+  \noindent \begingroup  \parskip2pt plus1pt minus1pt \parindent0pt
+  \probsecno=0 
+  \ifx\next\sec\firstsec\else\firsttext\fi}
+\long\def\firsttext#1\sec{{\bf\problemlabel\number\probno.\enspace}#1\sec}
+\def\firstsec\else\firsttext\fi\sec#1\sec{\fi\advance\probsecno by 1 
+    \leftskip\secwidth\leavevmode{\bf\problemlabel\number\probno.\enspace 
+    (\secno\unskip)\ }#1\sec}
+\long\def\sec{\par\leftskip\secwidth\smallbreak\advance\probsecno by 1 
+  \leavevmode{\bf(\secno\unskip)\ }}
+\def\secno{\ifcase\probsecno\or a \or b \or c \or d \or e \or f \or g \or h
+  \or i \or j \or k \or l \or m \or n\else\fi}
+\def\endprobsec{\par\endgroup\bigbreak}
+\def\pretend#1\haswidth#2{\setbox0\hbox{#2}\hbox to \wd0{\hfill #1}}
+
+\def\Solution#1#2{\rightheadtext{SOLUTION TO \uppercase\expandafter{\problemlabel}#1} \Headnn{Solution\footnote{Solution by #2} to %
+   \problemlabel#1}}
+ 
+\def\Solutionna#1{\rightheadtext{SOLUTION TO \uppercase\expandafter{\problemlabel}#1}\Headnn{Solution to %
+   \problemlabel#1}}
+
+
+
+\def\Notes{\begingroup\parindent12pt\eightpoint
+\add@missing\endroster \add@missing\enddefinition
+  \add@missing\enddemo \add@missing\endexample
+  \add@missing\endproclaim
+  \penaltyandskip@{-200}\aboveheadskip
+  {\tenbf\interlinepenalty\@M
+  \noindent References and cross
+  references\unskip\endgraf}% 
+  \penalty10000
+  \parskip=\belowheadskip\flushpar\parskip0pt\refstyle{C}} 
+
+\def\endNotes{\endgroup}
+%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+ 
+%	XREF CODES 
+ 
+\newcount\commacount@
+\def\first@#1#2\end{#1}
+\def\true@{TT}
+\def\false@{TF}
+\def\empty@{}
+\begingroup  \catcode`\-=3
+\long\gdef\notempty#1{%
+  \expandafter\ifx\first@#1-\end-\empty@ \false@\else \true@\fi}
+\endgroup
+\def\tcomma#1{\commacount@=0 \testcomma#1\end } 
+\def\testcomma#1{\ifx#1\end \let\next=\relax 
+  \else\if#1,\commacount@=1\fi\let\next=\testcomma\fi\next}
+\def\tperiod#1{\commacount@=0 \testperiod#1\end } 
+\def\testperiod#1{\ifx#1\end \let\next=\relax 
+  \else\if#1.\commacount@=1\fi\let\next=\testperiod\fi\next}
+
+\def\CODE#1#2#3#4{\if\notempty{#2}\tcomma{#2}\ifnum\commacount@=1[#4-{\bf %
+   #1}, \S\S#2]\else \tperiod{#2}\ifnum\commacount@=1[#4-{\bf #1},~\S#2]\else%
+   #3#2 of [#4-{\bf #1}]\fi\fi\else[#4-{\bf #1}]\fi}
+
+\def\ASH#1{\CODE{Home\-work}{#1}{Problem~ASH}{I}}
+\def\CFT#1{\CODE{CFT}{#1}{Lecture~}{II}}
+\def\CF#1{\CODE{Clas\-sical Fields}{#1}{Chapter~}{I}}
+\def\DQFT#1{\CODE{Dynam\-ics of QFT}{#1}{Lecture~}{II}}
+\def\DQFTP#1{\CODE{Dynam\-ics of QFT, Exercises}{#1}{Problem~}{II}}
+\def\DQ#1{\CODE{Quan\-ti\-za\-tion}{#1}{\S }{I}}
+\def\DR#1{\CODE{Dim'l Regu\-lar\-iza\-tion}{#1}{\S }{I}}
+\def\DS#1{\CODE{Spin\-ors}{#1}{Chapter~}{I}}
+\def\FE#1{\CODE{Home\-work}{#1}{Problem~FE}{I}}
+\def\FP#1{\CODE{Home\-work}{#1}{Problem~FP}{I}}
+\def\HLS#1{\CODE{Symme\-tries}{#1}{\S }{I}}
+\def\IQFT#1{\CODE{Axiom\-atics}{#1}{Lecture~}{I}}
+\def\IT#1{\CODE{Dirac Index}{#1}{Lecture~}{I}}
+\def\KK#1{\CODE{Compact\-ifi\-ca\-tions}{#1}{Lecture~}{II}}
+%\def\KQGT#1{\CODE{Kazhdan obsolete}{#1}{Lecture~}{I}}
+\def\LSS#1{\CODE{Super\-sym\-metry}{#1}{Chapter~}{I}}
+\def\NCFT#1{\CODE{Chiral Alge\-bras}{#1}{\S }{II}}
+\def\PQFT#1{\CODE{Pertur\-ba\-tive QFT}{#1}{Lecture~}{I}}
+\def\PST#1{\CODE{Strings}{#1}{Lecture~}{II}}
+\def\QGT#1{\CODE{Faddeev}{#1}{Lecture~}{I}}
+\def\RG#1{\CODE{Renorm Groups}{#1}{Lecture~}{I}}
+\def\SCFT#1{\CODE{N=2 SUSY}{#1}{Lecture~}{II}}
+\def\SH#1{\CODE{Home\-work}{#1}{Problem~SH}{I}}
+\def\SM#1{\CODE{Signs}{#1}{\S }{I}}
+\def\SQCD#1{\CODE{N=1 Dy\-nam\-ics}{#1}{Lecture~}{II}}
+\def\SS#1{\CODE{Super\-solu\-tions}{#1}{Chapter~}{I}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\catcode`\@=13
+
+
+\def\amsversion{2.1}
+\endinput

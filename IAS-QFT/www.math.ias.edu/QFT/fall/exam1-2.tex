@@ -1,0 +1,173 @@
+\input amstex
+\magnification=1200
+\documentstyle {amsppt}
+\pagewidth{6.5 true in}
+\pageheight{8.9 true in}
+\baselineskip-18pt
+
+\font\dotless=cmr10 
+
+\font\itdotless=cmti10
+                    
+\def\umi{{\"{\dotless\char'020}}}
+\def\umj{{\"{\dotless\char'021}}}
+\nologo
+\input pictex
+
+\noindent
+{\bf Fall Term Exam, N$^{\text{o}}$. 2}\qquad\qquad\qquad
+\qquad\qquad\qquad\qquad\qquad(solution by D. Freed)
+\smallskip
+\hbox to \hsize{\hrulefill}
+\bigskip
+\noindent
+{\bf Problem:}
+\medskip
+Compute in $\phi^4$ theory in four dimensions the
+anomalous dimension of the operator $\phi^2$, in one--loop
+approximation.
+\bigskip
+\noindent
+{\bf Solution:}
+\medskip
+Consider the Lagrangian density in Euclidean space
+$$
+\Cal
+L=\frac{1}{2}\,|d\phi|^2+\frac{m^2}{2}\,\phi^2+\frac{\lambda}
+{4!}\,\phi^4-j\phi^2.
+$$
+The coefficient $j$ is renormalized to 1-loop 
+by the diagram shown,\hfill\break
+%\input aa.tex
+%%% beginning of file aa.tex
+%\input pictex
+%\font\thinlinefont=cmr5
+%
+%\begingroup\makeatletter\ifx\SetFigFont\undefined
+% extract first six characters in \fmtname
+%\def\x#1#2#3#4#5#6#7\relax{\def\x{#1#2#3#4#5#6}}%
+%\expandafter\x\fmtname xxxxxx\relax \def\y{splain}%
+%\ifx\x\y   % LaTeX or SliTeX?
+%\gdef\SetFigFont#1#2#3{%
+%  \ifnum #1<17\tiny\else \ifnum #1<20\small\else
+%  \ifnum #1<24\normalsize\else \ifnum #1<29\large\else
+%  \ifnum #1<34\Large\else \ifnum #1<41\LARGE\else
+%     \huge\fi\fi\fi\fi\fi\fi
+%  \csname #3\endcsname}%
+%\else
+%\gdef\SetFigFont#1#2#3{\begingroup
+%  \count@#1\relax \ifnum 25<\count@\count@25\fi
+%  \def\x{\endgroup\@setsize\SetFigFont{#2pt}}%
+%  \expandafter\x
+%    \csname \romannumeral\the\count@ pt\expandafter\endcsname
+%    \csname @\romannumeral\the\count@ pt\endcsname
+%  \csname #3\endcsname}%
+%\fi
+%\fi\endgroup
+$$
+\hbox{\beginpicture
+\setcoordinatesystem units < 1.000cm, 1.000cm>
+%\unitlength= 1.000cm
+\linethickness=1pt
+%\setplotsymbol ({\makebox(0,0)[l]{\tencirc\symbol{'160}}})
+%\setshadesymbol ({\thinlinefont .})
+\setlinear
+%
+% Fig ELLIPSE
+%
+\linethickness= 0.500pt
+%\setplotsymbol ({\thinlinefont .})
+\ellipticalarc axes ratio  1.048:0.572  360 degrees 
+	from  4.413 20.923 center at  3.365 20.923
+%
+% Fig POLYLINE object
+%
+\linethickness= 0.500pt
+%\setplotsymbol ({\thinlinefont .})
+\plot  3.778 19.082  3.778 19.082 /
+%
+% Fig POLYLINE object
+%
+\linethickness= 0.500pt
+%\setplotsymbol ({\thinlinefont .})
+\plot  3.778 19.082  3.778 19.082 /
+%
+% Fig POLYLINE object
+%
+\linethickness= 0.500pt
+%\setplotsymbol ({\thinlinefont .})
+\plot  4.255 20.669  5.524 21.780 /
+%
+% Fig POLYLINE object
+%
+\linethickness= 0.500pt
+%\setplotsymbol ({\thinlinefont .})
+\plot  4.413 20.987  5.048 19.558 /
+%
+% Fig TEXT object
+%
+\put{$j$} [lB] at  2.032 20.352
+%
+% Fig TEXT object
+%
+\put{$-\lambda$} [lB] at  4.255 20.034
+%
+% Fig TEXT object
+%
+\put{$x$} [lB] at  2.191 20.828
+\linethickness=0pt
+\putrectangle corners at  2.032 21.780 and  5.524 19.082
+\endpicture}
+$$
+%%% end of file aa.tex
+\noindent
+which contributes to the correlation function
+$\langle\phi^2\phi\phi\rangle$.  Evaluating in momentum
+space, we obtain
+$$
+\frac{-j\lambda}{2}\,\,\int\,\,\frac{d^4q}{(2\pi)^4}\quad\frac
+{1}{(q^2+m^2)\,((k-q)^2+m^2)},
+$$
+where the factor of 2 comes from the symmetry of the diagram.
+This is logarithmically divergent, and cutting off at
+$\Lambda$ we compute the divergence as
+$\Lambda\longrightarrow\infty$ to be 
+$$
+\frac{-j\lambda}{2}\cdot\frac{1}{(2\pi)^4}\cdot\text{vol}\,
+S^3\cdot
+\ell n\,\Lambda\slash\mu =
+\frac{-j\lambda}{16\pi^2}\,\,\ell
+n\,\Lambda\slash\mu,
+$$
+where $\mu$ is a fixed constant.
+\medskip
+To cancel this divergence, we renormalize $j$ to 
+$$
+\hat{\jmath}_0=j\,\left(1+\frac{\lambda}{16\pi^2}\,\ell
+n\,\Lambda\slash\mu\right).
+$$
+The anomalous dimension of $j$ is computed as
+$\gamma_j=\frac{\mu}{j}\,\,\,\frac{\partial j}{\partial\mu}$
+with $\hat{\jmath}_0$ fixed and $\Lambda\longrightarrow\infty$.
+Thus
+$$
+0=\gamma_j\,\left(1+\frac{\lambda}{16\pi^2}\,\ell
+n\,\Lambda\slash
+\mu\right)-
+\frac{\lambda}{16\pi^2}+\frac
+{\beta}{16\pi^2}\,\ell n
+\Lambda\slash\mu,
+$$
+where $\beta=\mu\,\frac{\partial\lambda}{\partial\mu}$ is
+the $\beta$-function.  Since $\gamma_j=O(\lambda)$ and
+$\beta=O(\lambda^2)$ we find
+$\gamma_j=\frac{\lambda}{16\pi^2}$.  Now the anomalous
+dimension of the Lagrangian vanishes, and so the anomalous
+dimension $\gamma_{\phi^2}$ of $\phi^2$ equals 
+$-\gamma_j$, or 
+$$
+\gamma_{\phi^2}=-\frac{\lambda}{16\pi^2}.
+$$
+\bye
+
+

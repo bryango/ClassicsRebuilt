@@ -1,0 +1,2012 @@
+%% This is a plain TeX file
+%%
+\magnification=1200
+\hsize=6.5 true in
+\vsize=8.7 true in
+\input epsf.tex
+
+\font\dotless=cmr10 %for the roman i or j to be
+                    %used with accents on top.
+                    %(\dotless\char'020=i)
+                    %(\dotless\char'021=j)
+\font\itdotless=cmti10
+\def\itumi{{\"{\itdotless\char'020}}}
+\def\itumj{{\"{\itdotless\char'021}}}
+\def\umi{{\"{\dotless\char'020}}}
+\def\umj{{\"{\dotless\char'021}}}
+\font\smaller=cmr5
+\font\boldtitlefont=cmb10 scaled\magstep2
+\font\smallboldtitle=cmb10 scaled \magstep1
+\font\ninerm=cmr9
+\font\sans=cmss10 scaled\magstep1
+
+\footline={\hfil {\tenrm II.\folio}\hfil}
+
+\def\eps{{\varepsilon}}
+\def\Eps{{\epsilon}}
+\def\kap{{\kappa}}
+\def\lam{{\lambda}}
+\def\Lam{{\Lambda}}
+
+\def\undertext#1{$\underline{\vphantom{y}\hbox{#1}}$}
+\def\nspace{\lineskip=1pt\baselineskip=12pt%
+     \lineskiplimit=0pt}
+\def\dspace{\lineskip=2pt\baselineskip=18pt%
+     \lineskiplimit=0pt}
+
+\def\w{{\mathchoice{\,{\scriptstyle\wedge}\,}
+  {{\scriptstyle\wedge}}
+  {{\scriptscriptstyle\wedge}}{{\scriptscriptstyle\wedge}}}}
+\def\Le{{\mathchoice{\,{\scriptstyle\le}\,}
+{\,{\scriptstyle\le}\,}
+{\,{\scriptscriptstyle\le}\,}{\,{\scriptscriptstyle\le}\,}}}
+\def\Ge{{\mathchoice{\,{\scriptstyle\ge}\,}
+{\,{\scriptstyle\ge}\,}
+{\,{\scriptscriptstyle\ge}\,}{\,{\scriptscriptstyle\ge}\,}}}
+\def\plus{{\hbox{$\scriptscriptstyle +$}}}
+\def\xdot{\dot{x}}
+\def\Item#1{\par%
+     \smallskip\hang\indent\llap{\hbox to\parindent
+     {#1\hfill\enspace}}\ignorespaces}
+\def\Condition#1{\item{#1}}
+\def\Firstcondition#1{\hangindent\parindent{#1}\enspace
+     \ignorespaces}
+\def\Proclaim#1{\medbreak
+  \medskip\noindent{\bf#1\enspace}\it\ignorespaces}
+  %the way to use this is:
+  %"\Proclaim{Theorem 1.1.}" for instance.
+\def\finishproclaim{\par\rm
+     \ifdim\lastskip<\medskipamount\removelastskip
+     \penalty55\medskip\fi}
+
+\def\im{{\rm Im}}      \def\Open{{\rm open}}
+\def\Diff{{\rm Diff}}  \def\Closed{{\rm closed}}
+\def\Map{{\rm Diff}}   \def\spurious{{\rm spurious}}
+\def\Met{{\rm Met}}    \def\phys{{\rm phys}}
+\def\diag{{\rm diag}}  \def\Vir{{\rm Vir}}
+\def\spin{{\rm spin}}  \def\Res{{\rm Res}}
+\def\Null{{\rm null}}  \def\mass{{\rm mass}}
+\def\SO{{\rm SO}}      \def\Tr{\hbox{\rm Tr}}
+\def\SU{{\rm SU}}      \def\tr{{\rm tr}}
+\def\Sp{{\rm Sp}}
+
+\def\fbar{\bar{f}}  \def\mubar{\bar{\mu}}
+\def\barh{\bar{h}}  \def\gammabar{\bar{\gamma}}
+\def\kbar{\bar{k}}  \def\lambar{\bar{\lambda}}
+\def\wbar{\bar{w}}  \def\Lambar{\bar{\Lambda}}
+\def\zbar{\bar{z}}
+\def\Abar{\bar{A}}
+\def\Kbar{\bar{K}}
+\def\Sbar{\bar{S}}
+\def\Tbar{\bar{T}}
+
+\def\htil{\tilde{h}}
+\def\xtil{\tilde{x}}
+\def\Ltil{\tilde{L}}
+\def\Ntil{\widetilde{N}}
+\def\Ttil{\widetilde{T}}
+\def\scrFtil{\widetilde{\scrF}}
+\def\epstil{\tilde{\eps}}
+
+\def\dbR{{\Bbb R}}
+\def\dbZ{{\Bbb Z}}
+
+%These two files (in this order!!) are necessary
+%in order to use AMS Fonts 2.0 with Plain TeX
+
+\input amssym.def
+\input amssym.tex
+
+%Capital roman double letters(Blackboard bold)
+\def\db#1{{\fam\msbfam\relax#1}}
+
+\def\dbA{{\db A}} \def\dbB{{\db B}}
+\def\dbC{{\db C}} \def\dbD{{\db D}}
+\def\dbE{{\db E}} \def\dbF{{\db F}}
+\def\dbG{{\db G}} \def\dbH{{\db H}}
+\def\dbI{{\db I}} \def\dbJ{{\db J}}
+\def\dbK{{\db K}} \def\dbL{{\db L}}
+\def\dbM{{\db M}} \def\dbN{{\db N}}
+\def\dbO{{\db O}} \def\dbP{{\db P}}
+\def\dbQ{{\db Q}} \def\dbR{{\db R}}
+\def\dbS{{\db S}} \def\dbT{{\db T}}
+\def\dbU{{\db U}} \def\dbV{{\db V}}
+\def\dbW{{\db W}} \def\dbX{{\db X}}
+\def\dbY{{\db Y}} \def\dbZ{{\db Z}}
+
+\font\teneusm=eusm10  \font\seveneusm=eusm7 
+\font\fiveeusm=eusm5 
+\newfam\eusmfam 
+\textfont\eusmfam=\teneusm 
+\scriptfont\eusmfam=\seveneusm 
+\scriptscriptfont\eusmfam=\fiveeufm 
+\def\scr#1{{\fam\eusmfam\relax#1}}
+
+
+%Upper-case Script Letters:
+
+\def\scrA{{\scr A}}   \def\scrB{{\scr B}}
+\def\scrC{{\scr C}}   \def\scrD{{\scr D}}
+\def\scrE{{\scr E}}   \def\scrF{{\scr F}}
+\def\scrG{{\scr G}}   \def\scrH{{\scr H}}
+\def\scrI{{\scr I}}   \def\scrJ{{\scr J}}
+\def\scrK{{\scr K}}   \def\scrL{{\scr L}}
+\def\scrM{{\scr M}}   \def\scrN{{\scr N}}
+\def\scrO{{\scr O}}   \def\scrP{{\scr P}}
+\def\scrQ{{\scr Q}}   \def\scrR{{\scr R}}
+\def\scrS{{\scr S}}   \def\scrT{{\scr T}}
+\def\scrU{{\scr U}}   \def\scrV{{\scr V}}
+\def\scrW{{\scr W}}   \def\scrX{{\scr X}}
+\def\scrY{{\scr Y}}   \def\scrZ{{\scr Z}}
+
+\parindent=18pt
+\line{\sans --- DRAFT ---\hfill{\rm IASSNS-HEP-97/72}}
+
+\bigskip\bigskip
+\centerline{\boldtitlefont Lectures 2, 3, 4}
+\medskip
+\centerline{\smallboldtitle II. Spectrum of Free Bosonic
+Strings}
+
+\medskip
+\centerline{Eric D'Hoker}
+
+\frenchspacing
+
+\dspace
+\bigskip
+
+We begin by constructing the Hilbert space of physical
+states and the spectrum of a single free bosonic
+closed oriented string, whose worldsheet has the
+topology of a cylinder (or equivalently an annulus)
+and of a single free open oriented string, whose
+worldsheet has the topology of half a cylinder (or
+equivalently half an annulus).
+
+A free string should not couple to any other strings,
+or to any non-trivial background fields in the
+space-time manifold $M$.
+Thus we take $M=\dbR^D$, with constant $G_{\mu\nu}$
+and $B_{\mu\nu}=\Psi=T=0$ to start.
+We wish to examine the properties of physical strings
+in physical space-time, so it is essential that the
+space-time metric be Minkowskian, with
+$G_{\mu\nu}=\eta_{\mu\nu}=\diag(- ++\cdots+)$ and
+$\mu,\nu=0,1,\ldots,D-1$.
+In quantum field theory, the problem of constructing
+the Hilbert space of states and the spectrum of a
+single particle amounts to finding the $1$-particle
+unitary representations of the Poincar\'e group --- a
+problem for which the Minkowski nature of space-time
+is again essential.
+
+A single string has an infinite number of excitation
+states, each of which corresponds to a representation
+of the Poincar\'e group.
+In this lecture, we wish to identify which
+representations of the Poincar\'e group occur (i.e.
+find the spectrum) and determine the conditions under
+which all these representations are unitary.
+We will find that conformal invariance plays an
+essential r\^{o}le.
+
+
+Before we discuss the details of this fundamental
+analysis of string theory, let us outline the main
+steps of our strategy.
+
+\medskip\noindent
+1)\enspace
+In the first lecture, we postulated a prescription for
+the transition amplitudes of $N$ external string
+states --- represented by vertex operators $V_i$,
+$i=1,\ldots,N$ --- in a general Riemannian space-time
+$M$ with metric $G$ (as well as possibly other fields
+$B_{\mu\nu}$, $\Phi$, $T$)
+$$
+A=\sum\limits_{h=0}^\infty\int\nolimits_{\Met(\Sigma)}
+Dg{1\over\scrN(g)}\int\nolimits_{\Map(\Sigma,M)}
+Dx\,V_1\ldots V_N\,e^{-S[x,g]}
+\eqno{(2.1)}
+$$
+
+\medskip\noindent
+2)\enspace
+To investigate the spectrum of the string in Minkowski
+$\dbR_M^D$ we shall start with the above amplitudes in
+Euclidean $\dbR_E^D$ with
+$G_{\mu\nu}=\delta_{\mu\nu}$, $B_{\mu\nu}=\Phi=T=0$
+and action
+$$
+S[x,g]={1\over 8\pi}\int\nolimits_{\Sigma}
+d\mu_g g^{mn}\partial_m x\cdot\partial_n x\,\,.
+\eqno{(2.2)}
+$$
+(For flat Euclidean or Minkowskian metric, we have
+$x\in\dbR_E^D$ or $\dbR_M^D$ respectively
+ and we use the notation
+$(v,v')=v\cdot v'$.)
+The worldsheet metric $g$ is always kept Riemannian.
+The string tension $\kap$ introduced in \S{I} has been
+set to $\kap=1/8\pi$.
+In the physics literature one often finds the string
+tension expressed in terms of $\alpha'$ (the Regge
+slope parameter) by $\kap={1\over 4\pi \alpha'}$; so in
+our conventions $\alpha'=2$.
+
+\medskip\noindent
+3)\enspace
+At fixed $g$, the quantum field theory defined by
+$S[x,g]$ provides an example of a {\it conformal
+field theory} (see also the lectures by Gawedzki).
+All we shall need of the conformal field theory to
+solve for the free string spectrum is contained in the
+operator product expansions.
+
+\medskip\noindent
+4)\enspace
+Once we have derived the OPE's for  Euclidean
+$\dbR_E^D$, we shall continue the time component of
+the map $x$, let $x^0\to ix^0$ and obtain
+well-defined OPE's for the operators in Minkowskian
+$\dbR_M^D$.
+In particular, we obtain two Virasoro algebras
+$\Vir_L\otimes\Vir_R$ for the closed string, and a
+single Virasoro algebra $\Vir_L$ for the open string.
+
+\medskip\noindent
+5)\enspace
+{}From the Minkowskian OPE's and associated algebra, we
+construct Fock spaces $\scrF_{\Open}$ and
+$\scrF_{\Closed}$ for open and closed strings
+respectively along the same lines
+that Gawedzki constructed a Hilbert space.
+Due to the Minkowski signature of the space-time
+metric, however,
+the Fock space we obtain does {\it not} carry
+a positive definite inner product.
+$\Vir_L\otimes\Vir_R$ acts on $\scrF_{\Closed}$ 
+and $\Vir_L$ acts on $\scrF_{\Open}$.
+
+\medskip\noindent
+6)\enspace
+The remaining integration over $g$ --- which is {\it
+not} present in conformal field theory, but
+characteristic to string theory --- effectively
+selects out of $\scrF$ (either $\scrF_{\Closed}$ or
+$\scrF_{\Open}$) a subspace $\scrF^{\plus}$ on
+which we have a positive definite inner product, under
+certain conditions which we shall determine.
+In particular, this is how the critical dimension
+$D=26$ arises.
+
+(The occurrence of negative norm states in a standard
+Fock space construction is not unique to string
+theory.
+It will take place for gauge theories and for gravity
+as well, or more generally in any theory with
+particles of $\spin\Ge 1$.)
+
+\bigskip\noindent
+A) \ {\bf Basics of Conformal Field Theory}
+
+\smallskip\noindent
+$\bullet$ \ An oriented surface $\Sigma$, with a
+(fixed) Riemannian
+metric $g$ automatically carries a complex
+structure, and we choose local complex coordinates $z$
+and $\zbar$ in which $g$ is conformally flat, and
+given by
+$$
+g=g_{z\zbar}(dz\otimes d\zbar+d\zbar\otimes dz)=
+2g_{z\zbar}\vert dz\vert^2
+\eqno{(2.3)}
+$$
+This metric is left invariant under analytic or {\it
+conformal} diffeomorphisms $z\to z'=f(z)$,
+with $f$ complex analytic, combined with Weyl
+transformations on $g$.
+A quantum theory invariant under this transformation
+is a conformal field theory (abbreviated CFT).
+
+\medskip\noindent
+$\bullet$ \ Fundamental operators in CFT 
+are conformal tensors or
+{\it primary fields} $\phi$ of conformal weight $(h,\barh)$
+satisfying the transformation law
+$$
+\phi=\phi(z,\zbar)(dz)^h(d\zbar)^{\barh}=
+\phi'(z',\zbar')(dz')^h(d\zbar)^{\barh}\,\,.
+\eqno{(2.4)}
+$$
+For integer weights $h$ and $\barh$, these are
+operator-valued sections of $K^h\otimes\Kbar^{\barh}$,
+where $K$ is the holomorphic cotangent (or canonical)
+bundle of $\Sigma$.
+In general, $h$ and $\barh$ don't have to be integers, but
+their difference is the spin of the field $\phi$ and must
+satisfy $h-\barh=\spin\in{1\over 2}\dbZ$.
+
+\medskip\noindent
+$\bullet$ \ In the conformal 
+field theories we shall deal with
+in these lectures, the matrix elements of products of
+primary fields (and other fields) may be expressed
+in terms of functional integrals:
+$$
+\left<\phi_1(\xi_1)\ldots\phi_N(\xi_N)\right>_g=
+\int Dx\,\,\phi_1(\xi_1)\ldots\phi_N(\xi_N)
+e^{-S[x,g]}
+\eqno{(2.5)}
+$$
+where it is understood that $\phi_i$ can be expressed
+in terms of the canonical fields $x$.
+Notice that here we do not normalize correlation functions
+ by dividing out by the partition function
+$\left<1\right>_g$.
+
+\medskip\noindent
+$\bullet$ \ The stress tensor is defined as the variation
+of the action $S$ with respect to the inverse metric
+$g^{-1}=g^{mn}\partial_m\otimes\partial_n$, 
+where the metric $g$ is viewed as a background source field.
+$$
+\delta_g S=-{1\over 4\pi}\int\nolimits_{\Sigma}
+d\mu_g T_{mn}\delta g^{mn}
+\eqno{(2.6)}
+$$
+Assuming that the variation $g$ has support away from
+the operator positions $\xi_1,\ldots,\xi_N$, the
+variation of correlation functions is given by
+$$
+\delta_g\left<\phi_1(\xi_1)\ldots\phi_N(\xi_N)\right>=
+{1\over 4\pi}\int\nolimits_{\Sigma}d\mu_g\delta g^{mn}
+\left<T_{mn}\phi_1(\xi_1)\ldots\phi_N(\xi_N)\right>
+\eqno{(2.7)}
+$$
+The latter equation may be used as a definition of
+$T_{mn}$, even in conformal field theories where no
+Lagrangian formulation is available.
+
+\medskip\noindent
+$\bullet$ \ Applying Noether's theorem to
+conformal symmetry yields the following
+{\it conserved currents}:
+$$
+j_z=v^zT_{zz}\qquad\qquad
+j_{\zbar}=v^{\zbar}T_{\zbar\zbar}\eqno{(2.8)}
+$$
+where $v^z$ (resp.  $v^{\zbar}$) is any (locally)
+holomorphic (resp. anti-holomorphic) vector field.
+Conformal symmetry requires $\partial_{\zbar}j_z=0$,
+$\partial_zj_{\zbar}=0$, so that we must also have
+$$
+\partial_{\zbar}T_{zz}=0\qquad\qquad
+\partial_z T_{\zbar\zbar}=0
+\eqno{(2.9)}
+$$
+Thus, $T(z)=T_{zz}$ and $\Ttil(\zbar)=T_{\zbar\zbar}$
+are complex analytic and anti-analytic respectively.
+In correlation functions, however, a product of $T(z)$ and
+another field $\phi(w)$ 
+may produce singularities, as $z\to w$, so the above
+analyticity condition is to be understood as valid
+when $T$ is away from other operators.
+
+\medskip\noindent
+$\bullet$ \ It was shown in  Gawedzki's lectures how
+to extract these OPE singularities from conformal Ward
+identities for locally flat metrics $g$; for the case
+of general metric $g$, the derivation is the subject
+of Problem Set \#2.
+One finds
+$$
+\eqalign{
+T(z)\phi(w,\wbar) &\sim\left({h\over (z-w)^2}+{1\over
+z-w} {\partial\over \partial w}\right)\phi(w,\wbar)\cr
+T(z)T(w) &\sim{c/2\over (z-w)^4}+{2\over(z-w)^2}
+T_{ww}+{1\over z-w}\partial_w T_{ww}\cr}
+\eqno{(2.10)}
+$$
+where $c$ is the {\it central charge} of the CFT and
+$h$ is the holomorphic conformal weight of $\phi$.
+(Analogous relations hold for $\Ttil$.)
+As always, these relations are to be understood as
+valid when inserted into any correlation function.
+The $\sim$ sign used in 
+(2.10) stands for the fact that we have
+retained only the singular part on the r.h.s.
+When $c=0$, $T(z)$ is a conformal tensor of weight
+$(2,0)$, but for $c\not=0$, $T$ transforms as a
+projective connection instead, with
+$$
+\eqalignno{T'(z')(dz')^2 &=T(z)(dz)^2-{c\over 12}
+  \{z';z\}(dz)^2 &(2.11)\cr
+\noalign{\hbox{where the Schwarzian derivative
+$\{~;~\}$ is
+defined by}}
+\{f;z\} &\equiv f'''/f'-(3/2)(f''/f')^2,\qquad
+  f'=\partial f/\partial z.\cr}
+$$
+
+\medskip\noindent
+$\bullet$ \ Analytic currents $j_\alpha=j_{\alpha z}dz$, 
+$\alpha$ labeling different species of
+currents, give rise to time-independent or conserved
+charges:
+$$
+Q_\alpha(C)={1\over 2\pi i}\oint\nolimits_{C}
+j_\alpha\qquad\qquad\qquad\lower35pt
+\hbox{\vbox{\epsfxsize=1.0in\epsfbox{fig1.eps}}}
+$$
+Here $Q_\alpha(C)$ is the charge enclosed in the
+region bounded by $C$ and equals $Q_\alpha(C')$
+provided no sources for $Q_\alpha$ occur between $C$
+and $C'$.
+The action of charges on fields $\phi$ may be
+evaluated using only the residues in the OPE of
+$j_\alpha$ with $\phi$:
+$$
+Q_\alpha(C)\phi(w,\wbar)={1\over 2\pi
+i}\oint\nolimits_{C}
+j_\alpha(z)\phi(w,\wbar)=\mathop{\Res}\limits_{z\to w}
+j_\alpha(z)\phi(w,\wbar)\eqno{(2.12)}
+$$
+provided no other sources for $j_\alpha$ lie within
+$C$.
+The commutator between two charges is recovered as
+follows:
+$$
+\eqalign{
+Q_\alpha(&C_1)Q_\beta(C_2)-Q_\alpha(C_3)Q_\beta(C_2)\cr
+&=[Q_\alpha,Q_\beta](C_2)\cr
+&={1\over 2\pi i}\oint\nolimits_{C_2}
+\mathop{\Res}\limits_{z\to z_2}j_\alpha(z)
+j_\beta(z_2)\cr}
+\qquad\qquad\lower30pt\hbox{\vbox{\epsfysize=1.0in\epsfbox{fig2.eps}}}
+\eqno{(2.13)}
+$$
+
+\medskip\noindent
+$\bullet$ \ The conserved charges associated with
+conformal transformations are obtained from vector fields
+$v_{(m)}^z=z^{m+1}$ and $v_{(m)}^{\zbar}=\zbar^{m+1}$:
+$$
+\eqalign{
+L_m &\equiv \oint {dz\over 2\pi i}z^{m+1}T(z)\cr
+\Ltil_m &\equiv\oint{d\zbar\over 2\pi i}\zbar^{m+1}
+  \Ttil(\zbar).\cr}
+\eqno{(2.14)}
+$$
+{}From the OPE of two $T$'s (and two $\Ttil$'s),
+we recover two Virasoro
+algebras
+$$
+\eqalign{
+[L_m,L_n] &=(m-n)L_{m+n}+{c\over
+12}m(m^2-1)\delta_{m+n,0}\cr
+[\Ltil_m,\Ltil_n] &=(m-n)\Ltil_{m+n}+{c\over 12}
+  m(m^2-1)\delta_{m+n,0}.\cr}
+\eqno{(2.15)}
+$$
+{}From the OPE of $T$ (and $\Ttil$)
+with a primary field $\phi$ of conformal weight
+$(h,\barh)$, we obtain
+$$
+\eqalign{
+[L_m,\phi(w,\wbar)] &=w^{m+1}\partial_w \phi(w,\wbar)+
+ h(m+1)w^m\phi(w,\wbar)\cr
+[\Ltil_m,\phi(w,\wbar)] &=\wbar^{m+1}\partial_{\wbar}
+  \phi(w,\wbar)+\barh(m+1)\wbar^m\phi(w,\wbar)\cr}
+\eqno{(2.16)}
+$$
+
+\medskip\noindent
+$\bullet$ \ An important example of a CFT is the free
+scalar field $x\colon\,\Sigma\to\dbR$ (or
+$\dbR/\lam\dbZ$ as discussed in Witten's lectures), 
+with action
+$$
+S[x]={1\over 4\pi}\int\nolimits_{\Sigma} d^2z\,\partial_z
+x\partial_{\zbar}x\eqno{(2.17)}
+$$
+The OPE is derived from the Green function for $x$:
+$$
+x(z,\zbar)x(w,\wbar)\sim -\ln\,\vert z-w\vert^2\eqno{(2.18)}
+$$
+It is customary to define normal ordering by
+$$
+:\,x(z,\zbar)x(w,\wbar):\equiv 
+x(z,\zbar)x(w,\wbar)+\ln\,\vert z-w\vert^2
+\eqno{(2.19)}
+$$
+The normal ordered product admits a smooth limit as
+$w\to z$.
+The renormalized (also called the quantum) 
+stress tensor may now
+be defined by
+$$
+T(z)=-{1\over 2}:\,(\partial_z x)^2:\equiv -{1\over 2}
+\lim\limits_{w\to z}\left(\partial_z x\partial_w
+x+{1\over (z-w)^2}\right)\,\,.\eqno{(2.20)}
+$$
+Elementary primary fields in this CFT are listed
+below, with their corresponding conformal weight.
+$$
+\eqalign{
+&\partial_z x\cr
+&\partial_{\zbar}x\cr
+:\,&\exp\,ikx:\cr}\qquad\qquad
+\eqalign{
+&(1,0)\cr
+&(0,1)\cr
+&\left({1\over 2}\,k^2,{1\over 2}\,k^2\right)\cr}
+\eqno{(2.21)}
+$$
+The central charge is $c=1$.
+Notice that while the derivative of $x$ and the
+exponential are primary fields, $x$ itself is not a
+well-defined quantum field
+(cf. Witten's lecture).
+
+\vfill\eject
+
+\noindent
+B) \ {\bf The free closed bosonic string conformal field
+theory}
+
+\smallskip
+The worldsheet topology for the free closed bosonic
+string is that of the cylinder or equivalently the
+annulus.
+$$
+\vbox{\epsfxsize=5.0in\epsfbox{fig3.eps}}
+$$
+The metric $g$ determines {\it global} complex
+coordinates $z$, $\zbar$ in which $g=2g_{z\zbar}\vert
+dz\vert^2$.
+
+Recall from 2) that our starting point is the flat
+Euclidean $\dbR_E^D$ worldsheet action
+$$
+S={1\over 4\pi}\int\nolimits_{\Sigma}d^2z\,
+\partial_z x\cdot\partial_{\zbar}x
+\eqno{(2.22)}
+$$
+which for fixed metric $g$ defines a CFT of $D$ scalar
+fields $x^\mu$, which are the coordinates of the map
+$x\colon\,\Sigma\to\dbR_E^D$.
+The quantum stress tensor is
+$$
+T(z)=-{1\over 2}: \partial_z x\cdot\partial_z x:
+\eqno{(2.23)}
+$$
+and the central charge is $c=D$.
+
+Following point 3), we obtain the OPE's and associated
+algebraic structure.
+To do this, we take advantage of the fact that
+$\partial_z x(z)$ and $T(z)$ are holomorphic, and thus
+admit a Laurent expansion inside the annulus:
+$$
+\eqalignno{
+\partial_z x(z) &=-i\sum\limits_{m\in\dbZ}x_m z^{-m-1}
+\qquad\qquad T(z)=\sum\limits_{m\in\dbZ}L_m
+z^{-m-2}\cr
+\partial_{\zbar}x(\zbar) &=-i\sum\limits_{m\in\dbZ}\xtil_m
+  \zbar^{-m-1}\qquad\qquad
+\Ttil(\zbar)=\sum\limits_{m\in\dbZ}\Ltil_m
+\zbar^{-m-2} &(2.24)\cr}
+$$
+{}From the definition of $T\equiv -{1\over 2}\colon\,
+\partial_z x\cdot\partial_z x\colon$, we have
+$$
+\eqalign{
+L_m &={1\over 2}\sum\limits_{n} x_{m-n}\cdot
+x_n\qquad\qquad m\not=0\cr
+L_0 &={1\over 2}x_0^2+\sum\limits_{n=1}^\infty
+  x_{-n}\cdot x_n\cr}
+\eqno{(2.25)}
+$$
+{}From the OPE of $\partial_z x$ with
+itself and with $T(z)$, we get
+$$
+[x_m^\mu,x_n^\nu] =m\delta_{m+n,0}\delta^{\mu\nu}
+\qquad\qquad [L_m,x_n] =-n x_{m+n}\,\,,\eqno{(2.26a)}
+$$
+also
+$$
+[\xtil_m^\mu,\xtil_n^\nu]
+=m\delta_{m+n,0}\delta^{\mu\nu}
+\qquad\qquad [\Ltil_m,\xtil_n] =-n\xtil_{m+n}\,\,,
+\eqno{(2.26b)}
+$$
+while tilded and untilded operators mutually commute.
+$L_m$ and $\Ltil_m$ satisfy Virasoro algebras with
+central charge $c=D$.
+
+Following point 4), we find that the above OPE's and
+their algebra contents can safely be continued to
+$x^0\to ix^0$ where $x^0$ is the time component of the
+map $x\colon\,\Sigma\to\dbR_M^D$.
+It is clear that this means
+$$
+\left.
+\eqalign{
+&x_m^0\to ix_m^0\cr
+&\xtil_m^0\to i\xtil_m^0\cr}
+\right\}\qquad\hbox{all $m\in\dbZ$}.
+\eqno{(2.27)}
+$$
+The stress tensor is now
+$$
+T(z)=-{1\over 2}\colon\,\partial_z x^\mu\partial_z
+x^\nu\colon\,\eta_{\mu\nu}\equiv -{1\over 2}\colon\,
+\partial_z x\cdot\partial_z x\colon
+\eqno{(2.28)}
+$$
+and the algebraic relations are
+$$
+\eqalign{
+[x_m^\mu,x_n^\nu] &=m\delta_{m+n,0}\eta^{\mu\nu}
+\quad [L_m,x_n^\mu] =-n x_{m+n}^\mu\cr
+L_m &={1\over 2}\sum\limits_{n}\colon\,x_{m-n}^\mu
+x_n^\nu\colon\,\eta_{\mu\nu}\cr}
+\eqno{(2.29)}
+$$
+and analogously for $\xtil$ and $\Ltil$.
+The central charge is unchanged, and we still have
+$\Vir_L\otimes\Vir_R$.
+
+The field $x$ itself is not a conformal tensor, but
+may be obtained by integrating $\partial_z x$ and
+$\partial_{\zbar}x$:
+$$
+x(z,\zbar)=x_L(z)+x_R(\zbar)\eqno{(2.30)}
+$$
+with
+$$
+\eqalign{
+x_L(z) &=q_L-i x_0\ln\,z+i\sum\limits_{m\not=0}x_m
+  {z^{-m}\over m}\cr
+x_R(\zbar)
+&=q_R-i\xtil_0\ln\,\zbar+i\sum\limits_{m\not=0}
+  \xtil_m{\zbar^{-m}\over m}.\cr}
+\eqno{(2.31)}
+$$
+Since $x:\Sigma\to \dbR_M^D$, $x$ must be a
+single-valued map as a function of $z$.
+This will require that $x_0=\xtil_0=p$, and $p$ is to
+be identified with the {\it momentum} operator of the string,
+while $q=q_L+q_R$ is the overall position operator of the
+string.
+
+It will turn out to be useful to record the explicit
+form of the operators $L_0$ and $\Ltil_0$, expressed
+in terms of $p$.
+$$
+\eqalign{
+L_0 &={1\over 2}p^2+\sum\limits_{n=1}^\infty
+x_{-n}\cdot x_n\cr
+\Ltil_0 &={1\over
+2}p^2+\sum\limits_{n=1}^\infty\xtil_{-n}\cdot\xtil_n\cr}
+\eqno{(2.32)}
+$$
+For non-simply connected space-time manifolds $M$,
+the map $x$ need not be single-valued, since the
+string can wrap around non-trivial $1$-cycles in $M$.
+As a result, $x_0$ need not be equal to $\xtil_0$,
+but the difference $x_0-\xtil_0$ belongs 
+to a lattice, dual to
+$H^1(M,\dbZ)$.
+
+\bigskip\noindent
+C) \ {\bf The free open bosonic string conformal field
+theory}
+
+\smallskip
+The worldsheet of a free open string has the topology
+of a strip or a half annulus.
+$$
+\vbox{\epsfxsize=4.5in\epsfbox{fig4.eps}}
+$$
+Fundamental open strings should have freely moving
+boundary points.
+Thus Neumann conditions $\partial_{\im\,z}x=0$ at the
+boundary $B$ are appropriate.
+(Dirichlet b.c. would fix the end points of the
+string on some submanifold $\scrD$ of $M$.
+Such submanifolds are $D$-branes, or depending upon
+their space dimension $p\colon\,p$-branes.
+In certain string theories, $D$-branes become
+dynamical (extended) objects, perhaps to be discussed
+later on.)
+
+It is standard to double $\Sigma$ by reflecting
+$\Sigma$ onto the lower half plane into $\Sigma^*$
+and then considering the union
+$\Sigma'=\Sigma\cup\Sigma^*$ which is the full annulus.
+Functions on $\Sigma$ with Neumann boundary
+conditions on $B$ are
+then even functions under $z\to\zbar$.
+Thus, the mode expansion of the open string is
+obtained from this restriction applied to
+$x(z,\zbar)$
+$$
+x(z,\zbar)=x_L(z)+x_L(\zbar)\eqno{(2.33)}
+$$
+and only involves the oscillators $x_m$ but
+there are no oscillators $\xtil_m$. 
+Similarly, we only have Virasoro generators $L_n$ but
+there are no $\Ltil_n$.
+As a result, the energy-momentum tensor satisfies
+$$
+T(z)=\Ttil(\zbar)=0\qquad\hbox{on}\qquad
+\im(z)=0.\eqno{(2.34)}
+$$
+This condition guarantees conservation of $T$ across
+$B$, and results from the fact that $\Diff(\Sigma)$
+leaves $B$ invariant.
+We have the mode expansion
+$$
+x(z,\zbar)=x+2ip\ln\,\vert z\vert^2-i
+\sum\limits_{m\not=0}x_m\left({z^{-m}\over m}+
+{\zbar^{-m}\over m}\right)\eqno{(2.35)}
+$$
+Notice that $x_0=2p$, in contrast with the closed
+string.
+It is useful to also record the Virasoro generators
+$$
+\eqalign{
+L_0 &=2p^2+\sum\limits_{n=1}^\infty x_{-n}\cdot x_n\cr
+L_m &=\sum\limits_{n\in\dbZ} x_{m-n}\cdot
+x_n\qquad\qquad m\not=0\cr}\eqno{(2.36)}
+$$
+Thus the open string only has a single Virasoro
+algebra $\Vir_L$. 
+
+\bigskip\noindent
+D) \ {\bf Fock Space, Negative Norm States}
+
+\smallskip
+We now follow point 5) and construct the Fock space of
+the conformal field theory of $x$, continued to
+Minkowski space-time.
+(This parallels Gawedzki's construction).
+
+To do so, we must choose a polarization and split the
+operators $\{x_m^\mu\}$ and $\{\xtil_m^\mu\}$ into a
+group of raising, lowering and central generators.
+This choice must be consistent with Poincar\'e
+invariance.
+(Also, here we must use a property inherited from the
+Minkowski nature of the worldsheet, namely that $x_m$ and
+$\xtil_m$ oscillators are independent, except at
+$m=0$.
+We shall not expand upon this issue now, but come back to
+this part later on.)
+The correct choice is $(x_0^\mu)^\dagger =x_0^\mu$,
+while $x_m^\mu$ and $\xtil_m^\mu$ are raising
+(resp. lowering) for $m<0$ (resp. $m>0$).
+Also
+$$
+\eqalignno{
+(x_m^\mu)^\dagger=x_{-m}^\mu\qquad\qquad
+&(\xtil_m^\mu)^\dagger=\xtil_{-m}^\mu &(2.37)\cr
+\noalign{\hbox{and this implies}}
+L_m^\dagger=L_{-m}\qquad\qquad  
+   &\Ltil_m^\dagger=\Ltil_{-m}. &(2.38)\cr}
+$$
+The Fock space $\scrF_k$ is constructed from $x_m^\mu$
+oscillators only.
+The ground state $\vert\left.0,k\right>_L$ 
+(also called the highest weight state) is labeled by
+the momentum $k$ (the eigenvalue of the momentum
+operator $p$)
+$$
+\eqalignno{
+&\cases{
+p\vert \left.0,k\right>_L=k \vert \left. 0,k\right>_L &\cr
+&\cr
+x_m^\mu\vert\left.0,k\right>_L=0 &$m>0$.\cr}&(2.39)\cr
+\noalign{\medskip\hbox{We may choose its
+normalization as follows:}}
+&_L\!\left<0,k\vert 0,k'\right>_L=\delta(k-k')\,\,.
+&(2.40)\cr}
+$$
+Arbitrary vectors in $\scrF_k$ are obtained by
+applying $x_{-m}^\mu$'s for $m>0$ to the ground state
+$$
+\vert\left.\eps,k\right>_L
+=\eps_{\mu_1\ldots\mu_n}(k;m_1,\ldots,m_n)
+x_{-m_1}^{\mu_1},\ldots
+x_{-m_n}^{\mu_n}\vert \left.0,k\right>_L
+\eqno{(2.41)}
+$$
+for all possible Lorentz {\it polarization tensors}
+$\eps_{\mu_1\ldots\mu_n}$ $(k;m_1,\ldots,m_n)$; $n\in\dbN$,
+with all possible $m_i\in\dbN$.
+
+\medskip\noindent
+$\bullet$ \ The open string Fock space is 
+a sum over all momenta $k$ of $\scrF_k$:
+$$
+\scrF_{\Open}=\bigoplus\limits_{k\in\dbR_M^D}\scrF_k
+$$
+
+\medskip\noindent
+$\bullet$ \ 
+The closed string Fock space is a sum over all
+momenta --- which must be the same for left and right
+movers, in view of the constraint $x_0=\xtil_0$ ---
+of the tensor product of $\scrF_k$ and $\scrFtil_k$,
+where $\scrFtil_k$ is built from $\xtil_m^\mu$:
+$$
+\scrF_{\Closed}
+=\bigoplus\limits_{k\in\dbR_M^D}\scrF_k\otimes\scrFtil_k.
+$$
+
+\medskip\noindent
+$\bullet$ \ Using the norm on $\vert \left. 0,k\right>_L$
+introduced in (2.40), $\scrF_k$ naturally inherits a
+quadratic form.
+However, $\scrF_k$ automatically contains {\it
+negative norm states}.
+To see this, consider states $\vert\left.\eps,k\right>_L=
+\eps_\mu x_{-m}^\mu\left.\vert 0,k\right>_L$ and with
+$m>0$ evaluate their norm:
+$$
+{}_L\left<\eps,k\vert\eps,k'\right>_L
+=\left<0,k\right.\vert
+\eps\cdot x_{-m}^\dagger \eps\cdot x_{-m}\left.\vert
+0,k'\right>=m\eps^2\delta(k-k')\eqno{(2.42)}
+$$
+For $\eps^2>0$, the norm of the state
+$\vert\left.\eps,k\right>_L$ is positive.
+But, for $\eps^2<0$, which is allowed with Minkowski metric,
+the norm of $\vert\left.\eps,k\right>_L$ is negative.
+Such states are called {\it ghosts} and their presence
+violates quantum mechanics: they cannot be present in a
+physically sensible theory.
+
+\bigskip\noindent
+E) \ {\bf Integration over $\Met(\Sigma)$ --- Virasoro
+Constraints}
+
+\smallskip
+We now deal with point 6): \ the integration over
+$\Met(\Sigma)$, and the elimination of ghosts from the
+spectrum.
+We shall perform this integration with great care in 
+forthcoming lectures, but we can already here extract its key
+effects.
+
+The metric $g$ enters in the action $S$ as a
+non-dynamical field, i.e. without derivatives.
+The r\^{o}le of the metric $g$ here is completely
+analogous to that of the time-like component $A_0$ of the
+gauge field in Yang-Mills theory (see also Faddeev's lecture).
+The effect of such non-dynamical fields is to supply a
+constraint on the dynamics of the remaining degrees of
+freedom, and to reduce their phase space.
+(You may loosely view the effect in the functional
+integral as generating a delta function $\int
+dA_0e^{iA_0x}=\delta(x)$.)
+The constraints also generate a group action on the phase
+space, and the reduced phase space may be viewed as the
+quotient by this group action.
+
+Let us analyze the effect of the constraints at the {\it
+classical level} first.
+The variational equations are
+$$
+\cases{
+\partial_{\zbar}\partial_z x=0 &by varying $x$\cr
+&\cr
+T(z)=\Tbar(\zbar)=0 &by varying $g$\cr}
+\eqno{(2.43)}
+$$
+The second equation is a constraint on $x$ since
+$T(z)=-{1\over 2}\partial_z x\cdot\partial_z x$
+(similarly for $\Ttil(\zbar)$).
+Since $\partial_{\zbar}T(z)=0$, the
+first equation shows that 
+$T$ will vanish throughout $\Sigma$ as
+long as $T=0$ has been imposed on the boundary.
+The action of the constraints at the classical level
+is something we have
+already analyzed, namely
+the Virasoro algebra but with zero central charge.
+Geometrically, the constraint reflects the fact that
+vibrations of $x(\Sigma)$ tangent to
+the surface $x(\Sigma)$ are eliminated,
+leaving only transverse direction:
+$$
+\raise3.5cm\hbox{$\Bigl.\eqalign{
+&(D-2) \hbox{ transverse}\cr
+\noalign{\vskip-10pt}
+&\hbox{directions}\cr}\Bigr\}$}\quad
+\vbox{\epsfxsize=1.5in\epsfbox{fig5.eps}}
+\kern-10pt
+\raise1.5cm\hbox{$\left.\phantom{\vrule
+height15pt}\right\}
+\eqalign{
+&2\hbox{ longitudinal directions}\cr
+\noalign{\vskip-10pt}
+&\hbox{eliminated by $\Tbar=T=0$}\cr}$}
+$$
+
+\medskip
+We now analyze the effects of the constraints at the
+{\it quantum level}.
+There are basically three ways of dealing with the
+constraints:
+
+\medskip\noindent
+1) \ Eliminate the longitudinal degrees of freedom at the
+classical level by solving for them in terms of the
+transverse degrees of freedom, and then quantize the
+transverse degrees of freedom.
+This procedure goes under the name of {\it light-cone
+gauge} quantization. 
+It cannot be achieved in a manifestly Lorentz invariant
+parametrization.
+We shall discuss it very briefly later on in this
+lecture.
+
+\medskip\noindent
+2) \ Ultimately, in lecture VII, we shall reformulate
+this constraint problem in terms of the powerful BRST
+quantization method.
+This is a more complex scheme based on introducing extra,
+unphysical degrees of freedom, called Faddeev-Popov
+ghosts, and enforcing BRST (Becchi-Rouet-Stora-Tyutin)
+invariance.
+This method is manifestly Lorentz invariant.
+The physical Hilbert space will in fact arise as a
+cohomology group of a semi-infinite cohomology complex,
+as developed by Feigin and later on by Freeman and Olive
+in physics and Frenkel, Garland and Zuckerman in
+mathematics.
+
+\medskip\noindent
+3) \ Before launching into BRST, however, we shall
+analyze the quantum effects of the constraints in a more
+direct fashion, which will also yield immediate results
+on the spectrum.
+In this third method, we impose the constraint as an
+invariance condition and use it to select an invariant
+subspace out of the full Fock space $\scrF$
+(either $\scrF_{\Open}$ for open strings or
+$\scrF_{\Closed}$ for closed strings).
+In Yang-Mills theory, the corresponding constraint was
+just Gauss' law, enforcing gauge invariance on physical
+states.
+In string theory, the constraints are the vanishing of
+the stress tensor, enforcing $\Diff(\Sigma)$ invariance
+on physical states.
+Due to the central extension in $\Vir$, the reduced Fock
+space $\scrF^{\plus}=\scrF/\Vir$ will have a positive
+definite norm 
+only when certain extra conditions are satisfied, which
+we now determine.
+
+\bigskip\noindent
+F) \ {\bf Physical Spectrum, No-Ghost Theorem}
+
+\smallskip\noindent
+We use the Virasoro constraints to select an
+invariant subspace out of the full Fock space $\scrF$.
+It is tempting to try and impose $L_n\vert\left.\phi\right>
+=\Ltil_n\vert\left.\phi\right>=0$ for all $n\in\dbZ$.
+However, unless $c=0$, these conditions imply that
+$\vert\left.\phi\right>=0$.
+Instead, we impose invariance under half of $\Vir$.
+The correct physical state conditions are therefore
+$$
+\matrix{
+\vert\left.\phi\right>_L &\kern-5pt \in\scrF_k^{\phys}
+  &\quad {\rm if} &\quad (L_m-a\delta_{m,0})\vert
+  \left.\phi\right>_L=0 &\quad m\in\dbN\cr
+\noalign{\smallskip}
+\vert\left.\phi\right>_R &\kern-5pt\in\scrFtil_k^{\phys}
+  &\quad {\rm if} &\quad (\Ltil_m-a\delta_{m,0})
+  \vert\left.\phi\right>_R=0 &\quad m\in\dbN.\cr}
+\eqno{(2.44)}
+$$
+and the full physical Fock spaces are obtained by
+$$
+\eqalign{
+\scrF_{\Open}^{\phys} &=\mathop{\oplus}\limits_{k}
+     \scrF_k^{\phys}\,\,,\cr
+\scrF_{\Closed}^{\phys} &=\mathop{\oplus}\limits_{k}
+\scrF_k^{\phys}\otimes\scrFtil_k^{\phys}\,\,.\cr}
+$$
+
+The constant $a$ is undetermined at this
+point, and is allowed for since $L_0$ and $\Ltil_0$ were
+naturally defined only up to an additive constant in view
+of the ordering choice we made in their definition.
+For closed strings,
+the value of $a$ is taken the same for $L_0$ and
+$\Ltil_0$ so that $L_0-\Ltil_0={\partial\over\partial
+\sigma}$ enforces rotation invariance on the annulus. 
+Notice that states
+$\vert\left.\phi\right>,\,\vert\left.\psi\right>\in
+\scrF^{\phys}$ automatically yield zero matrix 
+elements of Virasoro generators
+$L_m-a\delta_{m,0}$ for all $m\in\dbZ$
+(similarly for $\Ltil_m-a\delta_{m,0}$ in the case of the
+closed string).
+Hence, we have now realized the physical state condition
+$\left<\phi\vert T\vert\psi\right>=\bigl<\phi
+\vert\Ttil\vert\psi\bigr>=0$!
+
+States of the form
+$\vert\left.\phi\right>=L_{-m}\vert\left.\psi\right>$,
+for $m>0$, are called {\it spurious}, and we define
+$$
+\scrF_k^{\,\spurious} =\left\{\vert\left.\phi\right>=
+\bigoplus\limits_{m=1}^\infty L_{-m}\vert\left.
+\chi_m\right>\right\}
+$$
+It is easy to see that $\scrF_k^{\spurious}$ is
+generated by states of the form
+$L_{-1}\vert\left.\chi_1\right>\oplus
+L_{-2}\vert\left.\chi_2\right>$, using the
+commutation relations of the Virasoro algebra which
+imply that $[L_{-1},L_{-n}]$ is a non-zero multiple
+of $L_{-1-n}$ for $n\Ge 2$.
+Notice that spurious states
+are orthogonal to all physical states.
+States that are both physical and spurious
+are {\it null},
+$$
+\scrF_k^{\,\spurious}\cap
+\scrF_k^{\phys}\subset \scrF_k^{\Null}\,\,,
+$$
+where $\scrF_k^{\Null}$ stands for the space of null
+states of momentum $k$.
+
+The special Virasoro conditions
+$(L_0-a)\vert\left.\phi\right>
+=(\Ltil_0-a)\vert\left.\phi\right>=0$ determine the value
+of $k^2$ for a given level of operators, and thus
+determines the mass of the state.
+To see this, introduce the number (also called
+level) operators
+$$
+N\equiv\sum\limits_{n=1}^\infty x_{-n}\cdot x_n
+\qquad\qquad\Ntil\equiv\sum\limits_{n-1}^\infty
+\xtil_{-n}\cdot\xtil_n\,\,.
+\eqno{(2.45)}
+$$
+The operators
+$N$ and $\Ntil$ count the number of operators $x_{-n}$ and
+$\xtil_{-n}$, $n\Ge 1$ with weight $n$, 
+applied to the ground state
+$\vert\left.0,k\right>$.
+The special Virasoro conditions thus become
+$$
+\matrix{
+{\Closed}\hfill &\quad (k^2+M^2)\vert\left.\phi\right>=0
+  &\quad M^2=2N-2a &\quad \hbox{and $N=\Ntil\vert
+  \left.\phi\right>=0$}\cr
+\noalign{\smallskip}
+{\Open}\hfill &\quad (k^2+M^2)\vert\left.\phi\right>=0
+  &\quad M^2={1\over 2}N-{1\over 2}a\,\,. &\cr}
+\eqno{(2.46)}
+$$
+Thus, the $\mass$ squared of various string states are spread
+by $2\times$ integers for closed strings
+and ${1\over 2}\times$ integers for open strings.
+
+
+The $\mass$ squared of a state is one of the Casimir values
+that label the representation of the Poincar\'e group
+under which the state transforms.
+The remaining data that fully specify the Poincar\'e
+representation are those given by the representation of
+the stabilizer group (i.e. the subgroup
+that leaves the momentum invariant).
+This information is contained in the expression of the
+Lorentz generators of the string.
+$$
+\eqalign{
+J^{\mu\nu}=q^u p^\nu -q^\nu &p^\mu -i\sum\limits_{n=1}^\infty
+{1\over n}(x_{-n}^\mu x_n^\nu -x_{-n}^\nu x_n^\mu)\cr
+&\left(-i\sum\limits_{n=1}^\infty{1\over n}
+(\xtil_{-n}^\mu \xtil_n^\nu-\xtil_{-n}^\nu
+\xtil_{-n}^\mu)\quad\hbox{for closed strings}\right)\cr}
+\eqno{(2.47)}
+$$
+It follows that the string ground state
+$\vert\left.0,k\right>$ transforms as a scalar (i.e.
+trivial representation under the stabilizer).
+
+We observed in the first lecture that, at long
+distances compared to the Planck length $\ell_P$,
+the size of strings effectively becomes unobservable. 
+We can then approximate the dynamics of the string by that of
+point particles, and string theory by quantum field theory.
+Thus, we shall seek to identify string states with states
+in quantum field theory.
+To do so, we require that string and quantum field states
+transform under the same representations of the
+Poincar\'e group, as well as of
+other symmetry groups that are available. 
+Also their interactions should agree in this 
+long distance limit.
+
+We examine under what conditions the Virasoro
+constraints eliminate all negative norm states, so that
+$\scrF_k^{\phys}$ has positive norm.
+Before stating the general result, let's look at the lowest
+level cases (for the closed string; for the open string
+it suffices to let $M^2\to M^2/4$).
+
+\medskip\noindent
+(1) \ Ground state $\vert\left.0,k\right>_L$ with
+mass square $M^2=-2a$ (actually
+  $\vert\left.0,k\right>_L\otimes\vert
+\left.0,k\right>_R$ for the closed string).
+The Virasoro conditions are automatically satisfied.
+
+\medskip\noindent
+(2) \ First excited state
+$\vert\left.\eps,k\right>_L=\eps\cdot
+x_{-1}\vert\left.0,k\right>_L$ with mass square
+$M^2=-2a+2$:
+
+$$
+L_1 \vert\left.\eps,k\right>_L=0  \Longrightarrow
+  \eps\cdot k=0\,\,.
+$$
+The remaining Virasoro conditions
+$L_n \vert\left.\eps,k\right>_L=0,\,\, n\Ge 2$,
+are automatically satisfied.
+
+\noindent
+There are three possibilities:
+
+{\narrower{\narrower{\narrower{\medskip\noindent
+\item{(i)} $a>1$, so that $k^2$ is space-like. If we
+ pick $k=(0,k^1,0\ldots 0)$ then we are allowed to
+choose $\eps=(\eps^0,0\ldots 0)$, and
+we see that ghosts are still present.
+
+\smallskip
+\item{(ii)} $a<1$, so that $k^2$ time-like. If we pick
+$k=(k^0,0\ldots0)$ we see that we always have 
+$\eps^2>0$ and there are $D-1$
+independent states with positive norm.
+
+\smallskip
+\item{(iii)} $a=1$, so that
+$k^2$ is light-like. If we pick
+$k=(k^1,k^1,0\ldots0)$, we see that there are 
+$(D-2)$ massless states of positive norm, and one
+of zero norm.\medskip}}}}
+
+\noindent
+Case (i) is clearly eliminated: \ Virasoro constraints do
+not suffice to eliminate all negative norm states.
+Case (ii) has massive $M^2>0$ vector states (open
+string), or massive rank $2$ tensor states (closed
+string).
+Case (iii) has massless $M^2=0$ vector states (open
+strings), which suggests the presence of massless
+Yang-Mills states, and has massless $M^2=0$ rank $2$
+tensor states (closed strings) which suggests the
+presence of gravity (for symmetric tensors).
+
+\medskip\noindent
+3) \ At the next level $\vert\left.\eps,k\right>_L=
+\{\eps_{\mu \nu}x_{-1}^\mu x_{-1}^\nu +\eta_\mu
+x_{-2}^\mu\}\vert\left.0,k\right>_L$, with mass
+squared $M^2=-2a+4$ and
+$$
+\matrix{
+L_1 &\null\kern-5pt\vert\left.\eps,k\right>_L=0\cr
+\noalign{\smallskip}
+L_2 &\null\kern-5pt\vert\left.\eps,k\right>_L=0\cr}
+\qquad\cases{
+\eps_{\mu\nu}k^\nu+\eta_\mu=0 &\cr
+&\cr
+\eps_\mu^\mu+2k_\mu\eta^\mu=0\,.\cr}
+$$
+The norm of the state is 
+$$
+{}_L\!\!\left<\eps,k\vert\eps,k'\right>_L=2\scrN
+{}_L\!\!\left<0,k\vert 0,k'\right>_L
+$$
+with
+$$
+\eqalign{
+\scrN &=\eps_{\mu \nu}\eps^{\mu\nu}+\eta_\mu \eta^\mu\cr
+&=(\eps_{00})^2-2(\eps_{0i})^2+(\eps_{ij})^2-
+  (\eta_0)^2+(\eta_i)^2.\cr}
+$$
+Choosing a rest frame where $k^0=M$, $k^i=0$,  the
+Virasoro conditions become
+$$
+\cases{
+\eps_{00}M+\eta_0=0 &\cr
+\eps_{i0}M+\eta_i=0\cr
+-\eps_{00}+\eps_{ii}+2M\eta_0=0\,\,.\cr}
+$$
+The Virasoro conditions impose no constraints on the
+traceless part of $\eps_{ij}$, and its contribution to
+$\scrN$ is $\Ge 0$.
+Hence, we may retain only the trace part: \
+$\eps_{ij}=\eps \delta_{ij}$.
+Eliminating $\eta_i$ and $\eta_0$ and $\eps_{00}$ in
+favor of $\eps_{0i}$ and $\eps$, we have
+$$
+\scrN={\eps^2(D-1)\over(2M^2+1)^2}\left\{
+(2M^2+1)^2-(M^2-1)(D-1)\right\}+(M^2-2)(\eps_{0i})^2.
+$$
+Assuming $D>1$, we find the conditions
+$$
+\cases{
+M^2\Ge 2 &\cr
+&\cr
+(2M^2+1)^2-(M^2-1)(D-1)\Ge 0\,\,. &\cr}
+$$
+the first of which is already satisfied since
+$M^2=-2a+4$ and we have seen before that we must have
+$a\Le 1$.  
+For $M^2=2$ (corresponding to massless states at level
+$1$), we find from the second inequality that $D\Le 26$.
+In fact, for $D=26$, the second inequality implies $M^2\Le
+2$, so that we must have $M^2=2$ for $D=26$.
+
+For $D\Le 25$, the quadratic form
+$(2M^2+1)^2-(M^2-1)(D-1)$ is non-negative
+for all $M^2\Ge 2$, so 
+the state $\vert\left.\eps,k\right>$ always has
+non-negative norm.
+
+For $D\Ge 27$, the quadratic form is negative for a
+region in which $M^2\Ge 2$.
+In fact, by analyzing higher level states it can be
+shown that for $D\Ge 27$ no value of $a$ can be
+chosen so as to eliminate all ghosts.
+The complete result can be summarized in the
+following
+
+\Proclaim{No Ghost Theorem {\rm (R. Brower, P. Goddard
+and C. Thorn)}.}
+
+\noindent
+$\bullet$ \ For $D>26$ {\bf or} $a>1$
+
+{\narrower{\narrower\smallskip\noindent
+$\scrF^{\phys}$ contains negative norm states;\medskip}}
+
+\noindent
+$\bullet$ \ For $D=26$ {\bf and} $a<1$
+
+{\narrower{\narrower\smallskip\noindent
+$\scrF^{\phys}$ contains negative norm states;\medskip}}
+
+\noindent
+$\bullet$ \ For $D=26$ {\bf and} $a=1$
+
+{\narrower{\narrower\smallskip\noindent
+$\scrF^{\phys}$ contains {\it only} non-negative norm
+states, in particular, two towers of null states
+and $\scrF^{\plus} \equiv \scrF^{\phys}/\scrF^{\Null}$
+has positive definite norm;
+$$
+\scrF^{\Null} =\left\{(L_{-2}+{3\over 2}L_{-1}^2)\vert
+  \left.\chi_2\right>\oplus
+L_{-1}\vert\left.\chi_1\right>\right\}
+$$
+\medskip}}
+
+
+\noindent
+$\bullet$ \ For $D<26$ {\bf and} $a\Le 1$
+
+{\narrower{\narrower\smallskip\noindent
+$\scrF^{\phys}$ but contains only positive norm states for 
+$a<1$ $($contains one tower of null states
+$L_{-1}\vert\left.\chi_1\right>$ for $a=1$$)$.\smallskip}}
+\finishproclaim
+
+We shall not prove the no ghost theorem here, since later
+on, using BRST quantization, a simple proof can be given.
+
+The case $D\Le 25$ and $a\Le 1$ is contained in $D=26$,
+$a=1$ by setting $26-D$ space-like operators to zero, and
+adjusting the $26-D$ positive squared momenta
+$p_i^2$, $i=1,\ldots,26-D$, so that 
+$$
+{1\over 2}\,\sum\limits_{i}\,p_i^2-a+1=0\,\,.
+$$
+
+\vfill\eject
+
+\noindent
+G) \ {\bf Spectrum of the critical bosonic string with
+$D=26$, $a=1$}
+
+\smallskip
+Based on the masses and Lorentz tensor structure of the
+lowest lying states of the spectrum, we may identify which
+particles they naturally correspond to in field theory.
+
+It is easy to see that the spectrum consists entirely
+of bosons.
+
+\bigskip\noindent
+{\bf Open strings}
+
+\medskip\noindent
+(1) \ States corresponding to
+$\vert\left.0,k\right>$ have $M^2=-{1\over 2}$, hence
+they are {\it tachyons} (particles traveling faster
+than light), and Lorentz scalars;
+
+\smallskip\noindent
+(2) \ States of the form $\eps\cdot
+x\vert\left.0,k\right>$ with $M^2=0$ are vectors
+under $\SO(1,D-1)$.
+There are $(D-2)$ positive norm states and one null
+state, which constitute a massless gauge
+boson in $\dbR^D$.
+Gauge transformations have the form
+$\eps_\mu\to\eps_\mu+k_\mu\gamma$ (invariance under
+these transformations is clear since they amount
+to shifting the state by a null state $\gamma
+L_{-1}\vert\left.0,k\right>=\gamma
+k\cdot x_{-1}\vert\left.0,k\right>$);
+
+\medskip\noindent
+(3) \ $M^2>0$ states, with $M^2={1\over 2}n$,
+$n\in\dbN$, transform under various tensor
+representations of $\SO(1,D-1)$.
+
+\bigskip\noindent
+{\bf Closed strings}
+
+\medskip\noindent
+(1) \ States corresponding to $\vert
+\left.0,k\right>=\vert\left.0,k\right>_L\otimes
+\vert\left.0,k\right>_R$ have $M^2=-2$, so they are
+{\it tachyons}, and Lorentz scalars;
+
+\medskip\noindent
+(2) \ States of the form
+$\eps_{\mu\nu}x_{-1}^\mu\xtil_{-1}^\nu\vert\left.0,k\right>$
+have $M^2=0$.
+Corresponding to the trace-part of $\eps$ there is a
+Lorentz scalar, the {\it dilaton}, with positive
+norm.
+The symmetric traceless part of $\eps$ gives a
+Lorentz rank $2$ tensor, the {\it graviton}.
+There are ${D(D+1)\over 2}-1$ such states,
+${D(D-1)\over 2}-1$ of them having positive norm.
+As for the antisymmetric part of $\eps$, it gives a
+Lorentz rank $2$ tensor called the {\it
+anti-symmetric tensor} with ${D(D-1)\over 2}$ states,
+out of which ${(D-1)(D-2)\over 2}$ have positive
+norm.
+These states exhibit gauge invariance under 
+$$
+\eps_{\mu\nu}\to\eps_{\mu\nu}+\gamma_\mu
+k_\nu+\gamma'_\nu k_\mu\eqno{(2.48)}
+$$
+(which amounts to shifting by null states);
+
+\medskip\noindent
+(3) \ $M^2>0$ states, with $M^2=-2n$, $n\in\dbN$,
+transform under various tensor representations of
+$\SO(1,D-1)$.
+
+
+
+\bigskip\noindent
+\noindent
+H) \ {\bf Lightcone gauge, density of states}
+
+\smallskip
+For $D=26$ and $a=1$, the null states in $\scrF^{\Null}$
+may be ignored completely.
+We may retain positive norm states only at the cost of
+giving up manifest Lorentz invariance, $\SO(1,25)$, by
+retaining $D-2=24$ transverse oscillators only.
+Let $M'$ be a space-like sub-vector space of $M$, with
+$\dim\,M'=24$, and let $\eps$, $\epstil$ be in $M'$;
+then $\eps\cdot x_{-n}$ and $\widetilde{\eps}\cdot
+\xtil_{-n}$ for $n>0$ create only positive norm states.
+This construction has manifest $\SO(24)$ invariance.
+It can be checked that the full Lorentz algebra 
+$\SO(1,25)$ closes in this realization.
+Also, it can be shown in this case that there is a 
+one-to-one
+correspondence between those states constructed
+above and the states in $\scrF^{\plus}=\scrF^{\phys}/
+\scrF^{\Null}$ in the covariant approach.
+
+If the same construction were attempted for $D\not= 26$
+or $a\not=1$, one would find that the Lorentz algebra in
+this realization does not close.
+
+Using the above correspondence, it is very easy to
+estimate the total number of states at each mass level.
+Introducing a generating function
+$$
+\eqalign{
+G(w) 
+&=\Tr_{\scrF^{\plus}}(w^{2M^2+2})=\prod\limits_{n=1}^\infty
+  (1-w^n)^{-24}\cr
+&\equiv\sum\limits_{n=1}^\infty d_n w^{2n}\,\,.\cr}
+\eqno{(2.49)}
+$$
+We find the number of states asymptotically for large
+$M^2$: $d_{M^2}=M^{-25/2}e^{M/4\pi\sqrt{2}}$.
+
+\bigskip\noindent
+I) \ {\bf Primary fields and Vertex Operators for
+Physical States}
+
+\smallskip
+The construction given above for the physical Hilbert
+space has the disadvantage that the operators
+$x_{-n}^\mu$ with $n>0$,
+create states in Fock space that are not
+in general physical.
+We now construct {\it vertex operators}, which have
+the property that they send physical states into
+physical states, and spurious states into other
+spurious states.
+
+Since physical states obey
+$(L_n-\delta_{n,0})\vert\left.\psi\right>
+=(\Ltil_n-\delta_{n,0})\vert\left.\psi\right>=0$,
+$n\Ge 0$, it is clear that any operator commuting
+with the entire Virasoro algebra will yield such a
+vertex operator.  
+Also, since $[L_n,V]=[\Ltil_n,V]=0$,
+$V$ automatically sends spurious states into
+spurious states.
+
+Since $L_n$ generates conformal reparametrizations, $V$
+should be conformal invariant.
+To construct $V$'s, we consider general tensors,
+then construct invariants.
+We use the action of $L_n$ on any {\it primary
+field}:
+$$
+\eqalign{
+[L_n,\phi(z,\zbar)] &=z^{n+1}\partial_z\phi(z,\zbar)
+  +h(n+1)z^n\phi(z,\zbar)\cr
+&=\partial_z(z^{n+1}\phi(z,\zbar))+(h-1)(n+1)
+  z^n\phi(z,\zbar)\cr
+[\Ltil_n,\phi(z,\zbar)] &=\partial_{\zbar}
+  (\zbar^{n+1}\phi(z,\zbar))+(\barh-1)(n+1)
+  \zbar^n\phi(z,\zbar)\,\,.\cr}
+\eqno{(2.50)}
+$$
+It is clear that amongst primary fields, the only
+operator that commutes with all of $L_n$ and $\Ltil_n$ is the
+unit operator $\phi=1$.
+
+However, integrals of $\phi$ may be invariant.
+For any primary field of conformal weight $(h,\barh)=(1,1)$,
+its commutators with $L_n$, $\Ltil_n$ are
+total derivatives, and so its integral will be
+Virasoro invariant.
+In addition, primary fields $\phi$ of weight $(1,1)$ form
+natural volume forms on $\Sigma$.
+Hence the integral of $\phi$
+$$
+V=\int \phi (z,\zbar)\qquad\hbox{\rm satisfies}
+\qquad [L_n,V]=[\Ltil_n,V]=0\,\,.
+\eqno{(2.51)}
+$$
+This is not the only way to construct vertex
+operators though: if $\phi$ is a holomorphic primary
+field (e.g. $\partial_z x^\mu$), then it will commute
+with $\Ltil_n$ provided $\barh=0$ and its commutator
+with $L_n$ is a total derivative if  $h=1$.
+In addition $(1,0)$ and $(0,1)$ forms are naturally
+integrated along contours.
+Thus, the operators
+$$
+\eqalignno{
+&\oint dz\,\phi_{(1,0)}\cr
+\noalign{\hbox{and}}
+&\oint d\zbar\,\phi_{(0,1)}\cr}
+$$
+are also vertex operators provided that
+$\partial_{\zbar}\phi_{(1,0)}=0$ and $\partial_z
+\phi_{(0,1)}=0$.
+The operators $\phi_{(1,0)}$ and $\phi_{(0,1)}$
+ are precisely what we
+defined previously as conformal currents; their
+charges are conserved.
+Such operators do not in fact create new physical
+states, as will become clear by considering examples
+below.
+
+Vertex operators for the closed bosonic string are
+now easily reconstructed from the basic 
+field $x^\mu$ associated with $D$ copies of the $c=1$ CFT.
+We have the following primary fields
+$$
+\matrix{
+\partial_z x^\mu 
+   &\hbox{\rm holomorphic, weight}\hfill &(1,0)\cr
+\noalign{\medskip}
+\partial_{\zbar}x^\mu 
+   &\hbox{\rm anti-holomorphic, weight}\hfill &(0,1)\cr
+\noalign{\medskip}
+:\,e^{ik\cdot x}:  
+&\hbox{weight }
+   \left({k^2\over 2},{k^2\over 2}\right)\hfill &\cr}
+$$
+{}From the holomorphic current $\partial_x x^\mu$ we
+get the conserved charge of {\it momentum}:
+$$
+p^\mu={1\over 2\pi}\oint dz\,\partial_z x^\mu\,\,.
+\eqno{(2.52)}
+$$
+Physical states in $\scrF_k^{\phys}$ will just be
+eigenstates of $p^\mu$, so $p^\mu$ does not really
+create any new states, but simply measures their
+momentum $k$.
+
+A single exponential yields a vertex operator for
+$k^2=2$, i.e. when the conformal weight is $(1,1)$:
+$$
+V_T(k)=\int\nolimits_{\Sigma} d^2z\,:e^{ikx}:
+\eqno{(2.53)}
+$$
+This scalar operator creates a state of mass
+$M^2=-2$, which is the tachyon discovered previously.
+But the exponential may also be combined with
+derivatives for $k^2=0$
+$$
+V_{G,B,\Phi}(k)=\int\nolimits_{\Sigma}
+d^2z \, \eps_{\mu\mubar}(k)\,\partial_z x^\mu
+\partial_{\zbar}x^{\mubar}\,:e^{ik\cdot x}:
+\eqno{(2.54)}
+$$
+which reproduces the states for the graviton, the
+antisymmetric tensor, and the dilaton
+as symmetric traceless, anti-symmetric,
+and trace part respectively, with
+$k_\mu\eps^{\mu\mubar}(k)=k_{\mubar}\eps^{\mu\mubar}(k)=0$.
+For higher powers of $\partial_z x^\mu$ and
+$\partial_{\zbar}x^{\mubar}$, we will have masses of
+the form $M^2=2n-2$ in general.
+However, higher derivatives $\partial_z^2 x^\mu$ may
+also appear.
+While these are not primary fields (they mix with
+$\partial_z x$ under conformal reparametrizations),
+they may combine with other operators and still yield
+primary fields.
+
+When we obtained the Virasoro conditions on the
+polarization tensors $\eps_{\mu\mubar}$, we
+established an invariance of the states in
+$\scrF^{\phys}$ under the transformations
+$$
+\eps_{\mu\mubar}\to \eps_{\mu\mubar}+
+k_\mu\gammabar_{\mubar}+k_{\mubar}\gamma_\mu\quad
+\eqno{(2.55)}
+$$
+(We shall shortly interpret this invariance as a
+manifestation of $\Diff(M)$-invariance for the closed
+string.)
+This invariance is also easily established for the
+vertex operators: for example a shift by $\gammabar$ yields
+$$
+\eqalign{
+\int\nolimits_{\Sigma} d^2z\, k_\mu\gammabar_{\mubar}
+\partial_z x^\mu\partial_{\zbar}x^{\mubar}\,:e^{ikx}:
+&=-i\int\limits_{\Sigma}d^2z\gammabar_{\mubar}
+\partial_{\zbar}x^{\mubar}(\partial_z e^{ikx})\cr
+&=i \int\nolimits_{\Sigma}d^2z \gammabar_{\mubar}
+ (\partial_z\partial_{\zbar}x^{\mubar})e^{ik\cdot x}\cr}
+\eqno{(3.56)}
+$$
+But we have $\partial_z\partial_{\zbar}x^\mu=0$ by the field
+equations --- away from any other singularities ---
+and thus the integral vanishes.
+(The effects of the singularities may also be taken
+into account, as we shall show later on and do not
+modify the conclusion above.)
+
+\bigskip\noindent
+J) \ {\bf Identifying the graviton: vertex operators
+from background fields}
+
+\smallskip
+One of the most important discoveries in string
+theory is that the $k^2=0$, $\eps_{\mu\mubar}(k)$-symmetric 
+traceless physical state, found above, should be
+identified with the graviton. 
+This is the particle in quantum
+field theory that represents excitations of the
+space-time metric and that mediates the force of
+gravity.
+Here, we provide further evidence for this
+identification.
+Along the same lines, we provide evidence for the
+identification of the open string $k^2=0$,
+$\eps_\mu(k)$-state with the Yang-Mills particle in
+this section and in \S{K}.
+
+Consider a space-time $M$ which is almost flat with
+the following metric
+$$
+G_{\mu \nu}(x)=\eta_{\mu \nu}+\eps_{\mu \nu}(x)
+\eqno{(2.57)}
+$$
+where $\eps_{\mu \nu}(x)$ is everywhere small compared
+to $\eta_{\mu \nu}$.
+The tensor 
+$\eps_{\mu \nu}(x)$ may be viewed as a superposition of
+plane waves by Fourier transform:
+$$
+\eps_{\mu \nu}(x)=\int d^{26}k\,\, 
+\eps_{\mu \nu}(k)e^{ik\cdot x}
+\eqno{(2.58)}
+$$
+Now, consider string theory in this background:
+the action on the worldsheet is given by
+$$
+S_G={1\over 8\pi}\int\nolimits_{\Sigma}
+d\mu_g\,g^{mn}\partial_m x^\mu\partial_n x^\nu
+G_{\mu \nu}(x)
+\eqno{(2.59)}
+$$
+and the transition amplitude involves the exponential
+of $S_G$.
+Since $\eps_{\mu \nu}$ is small, we may expand in
+powers of $\eps_{\mu \nu}$:
+$$
+e^{-S_G} =e^{-S_\eta}\sum\limits_{n=0}^\infty
+  {(-1)^n\over n!}S_n {1\over (8\pi)^n}\eqno{(2.60)}
+$$
+with $S_\eta$ the action
+corresponding to the flat metric and $S_n$ defined by
+$$
+S_n =\int d^{26}k_1\ldots d^{26}k_n 
+  V(k_1)\ldots V(k_n) \eqno{(2.61)}
+$$
+where
+$$
+V(k) =\eps_{\mu \nu}(k)\int\nolimits_{\Sigma}
+d\mu_g g^{mn}\partial_m x^\mu\partial_n x^\nu
+e^{ikx} 
+$$
+The operator $V(k)$ is precisely the vertex operator we
+constructed for the graviton --- written now in
+general metric $g$ --- for a definite momentum $k$.
+
+Thus, we see that strings couple to the fluctuations
+in the background metric precisely by the graviton
+vertex operator.
+The plane waves may be regarded as creating
+excitations in the background space-time metric,
+which make it deviate from the flat metric.
+(A completely analogous correspondence holds for the
+other massless states, the dilaton and the anti-symmetric
+tensor.)
+
+We have however established more precise information:
+in order to maintain conformal invariance and
+eliminate negative norm states, the momentum $k$ and
+the polarization tensor $\eps_{\mu \nu}$ had to satisfy
+{\it on-shell conditions}
+$$
+\eqalign{
+k^2\eps_{\mu \nu}(k)=0 &\Longrightarrow
+  \square \eps_{\mu \nu}(x)=\square G_{\mu \nu}(x)=0\cr
+k^\mu\eps_{\mu \nu}(k)=0 &\Longrightarrow
+\partial^\mu\eps_{\mu\nu}(x)=\partial^\mu G_{\mu \nu}(x)=0\cr
+\eps_\mu^\mu(k)=0 &\Longrightarrow
+  \eps_\mu ^\mu(x)=0\,\,,\cr}
+\eqno{(2.62)}
+$$
+where we have listed to the right of the double
+arrows the restatement of the conditions on the
+metric.
+
+Now, since $G_{\mu \nu}$ is almost flat 
+($\eps$ being small), corrections  quadratic and higher
+in $\eps$ may be neglected.
+Considering the Ricci tensor in this
+approximation, we have
+$$
+\eqalign{
+R_{\mu \nu} &=R_{\mu\lam\nu}^\lam=\partial_\nu
+  \Gamma_{\mu\lam}^\lam-\partial_\lam\Gamma_{\mu \nu}^\lam+
+O(\eps^2)\cr
+2R_{\mu \nu} &=\partial_\mu\partial_\nu \eps_\lam^\lam-
+ \partial_\lam\partial_\mu\eps_\nu^\lam-\partial_\lam
+  \partial_\nu \eps_\mu^\lam+\square\eps_{\mu \nu}\cr}
+\eqno{(2.63)}
+$$
+The conditions on $G_{\mu \nu}$ obtained from the
+on-shell conditions of $\eps_{\mu \nu}(k)$ now imply
+that
+$$
+R_{\mu \nu}=0\,\,,
+\eqno{(2.64)}
+$$
+within the almost flat (or linearized)
+approximation.
+
+In addition, the fact that shifts by null states are
+physically unobservable implies the gauge invariance
+of the physical states in $\scrF^{\plus}$ under the
+shifts
+$$
+\eps_{\mu \nu}(k)\longrightarrow \eps_{\mu \nu}(k)
++k_\mu\gamma_\nu+k_\nu\gamma_\mu
+\eqno{(2.65)}
+$$
+(with $k^\mu\gamma_\mu=0$ for on-shell states).
+In terms of the metric, this gauge invariance
+translates into
+$$
+\eps_{\mu \nu}(x)\to\eps_{\mu \nu}(x)+\partial_\mu
+\gamma_\nu(x)+\partial_\nu\gamma_\mu(x).
+\eqno{(2.66)}
+$$
+We recognize this transformation as an infinitesimal
+diffeomorphism generated by the
+vector field $\gamma^\mu(x)$, in
+the approximation where $O(\eps^2)$ terms are
+neglected.
+$R_{\mu \nu}=0$ is invariant under these
+transformations, as can be checked explicitly.
+
+In fact $R_{\mu \nu}=0$ is the only 
+$\Diff(M)$-invariant equation that 
+reduces to $\square G_{\mu \nu}(x)=0$ 
+in the linearized limit.
+Thus, we find that --- to leading order in metric
+fluctuations -- the conformal invariance constraints
+translate into Ricci flatness, i.e. Einstein's
+equations in the absence of matter.
+This discovery supports our proposed identification
+of $\eps_{\mu \nu}(k)$, $k^2=0$ string states with
+gravitons.
+
+Later on (Lecture VIII), we shall further confirm this
+identification in another important limit, that of
+small variations in the derivatives of the metric,
+the so-called low energy limit.
+
+\bigskip\noindent
+K) \ {\bf Internal degrees of freedom of open strings:
+Chan-Paton rules}
+
+\smallskip
+The end points of the open string are distinguished
+points.
+It is consistent with Poincar\'e and $2$-$d$ conformal
+invariance to put degrees of freedom or {\it charges}
+at the end points.
+During interactions of several strings, the charges
+simply flow along the boundary, and should thus be
+{\it conserved}.
+$$
+\vbox{\epsfxsize=2.75in\epsfbox{fig6.eps}}
+$$
+The simplest case corresponds to adding {\it electric
+charge} to the end points of oriented strings:
+$$
+\vbox{\epsfxsize=2.75in\epsfbox{fig7.eps}}
+$$
+\noindent
+Consistency with the interactions requires that the
+charges be opposite (i.e. corresonding to conjugate
+representatives) at the two ends.
+An external $U(1)$ gauge field $A_\mu$ couples to
+these charges just in the same way as it couples to
+point particles with electric charge $\pm e$, moving
+on worldlines:
+$$
+S_A=ie\int\nolimits_{B}d\tau\,\xdot^\mu(\tau)A_\mu(x(\tau)).
+\eqno{(2.67)}
+$$
+Following the derivation of vertex operators from the
+coupling to background fields that we used for the
+closed string, we easily obtain the vertex operators
+for the open string gauge states, by decomposing
+$A_\mu$ into Fourier modes
+$$
+A_\mu(x)=\int d^Dk\,\eps_\mu(k)e^{ik\cdot x}\,\,,
+\eqno{(2.68)}
+$$
+where $\eps_\mu(k)$ is the polarization tensor.
+Thus, the vertex operators are
+$$
+V(\eps,k)=\eps_\mu(k)\int\nolimits_{B}
+d\tau\,\xdot^\mu(\tau)e^{ik\cdot x(\tau)}
+\eqno{(2.69)}
+$$
+with conformal invariance for $k^2=0$.
+
+We may add further degrees of freedom to the end
+points of the string in the following way.
+Let $\lam^i$, $i=1,\ldots,N$ be Grassmann valued
+fields that live only on the boundary $B$ 
+of the string worldsheet 
+(recall that Neumann b.c. were imposed on $B$ for the map
+$x\colon\,\Sigma\to M$).
+A natural candidate for the action for such degrees
+of freedom is
+$$
+S_0(\lam)=\int\nolimits_{B}d\tau\,\lambar^i
+{d\over d\tau}\lam_i\,\,.
+\eqno{(2.70)}
+$$
+This action is $\Diff(B)$ invariant, and does not
+depend upon the $\Sigma$ metric.
+The equation of motion for $\lam_i$ simply requires
+that $\lam_i$ be $\tau$-indepenent, so that $\lam_i$
+may indeed be interpreted as conserved charges.
+The action $S_0$ automatically has $\SO(N)$ symmetry
+when $\lam_i$ are real (and
+$\lambar^i=\delta^{ij}\lam_j$) and $\SO(2N)$ symmetry
+when $\lam_i$ is complex.
+As a result, quantization automatically produces a
+Hilbert space of states on which a spinor
+representation of $\SO(N)$ (for $\lam_i$ real) or
+$\SO(2N)$ (for $\lam_i$ complex) acts.
+
+To restrict to a subgroup $G$ of $\SO(N)$ or
+$\SO(2N)$, and/or a subrepresentation $\Lam$ of the
+corresponding spinor representations, it is necessary
+to restrict the Hilbert space of states.
+This is conveniently achieved by introducing a
+Lagrange multiplier, $\sigma\colon\,B\to\dbR$.
+For $G=U(N)$, for example, the restriction to the
+rank $p$ ($0\Le p\Le N$) totally anti-symmetric
+tensor representation of $U(N)$, we use the following
+modification of $S_0$:
+$$
+S(\lam)=\int\nolimits_{B} d\tau\left(\lambar^i\,
+{d\over d\tau}\,\lam_i+\sigma(\tau)(\lambar^i\lam_i-
+p)\right)
+\eqno{(2.71)}
+$$
+Analogous modifications may be used for $G=\SO(N)$
+and $\Sp(N)$.
+Let us now restrict to $G=U(N)$, and $p=1$, so that
+$\Lam$ equals the defining representation.
+Quantization of $\lam_i$ generates $N$ conserved
+charges attached to the boundaries of the string
+$$
+\vbox{\epsfxsize=2.75in\epsfbox{fig8.eps}}
+$$
+The string for $U(N)$ gauge group should be {\it
+oriented}, since the charges at both ends of the
+string transform under inequivalent representations
+of $U(N)$.
+The string state now transforms under the
+representation $\Lambar\otimes\Lam$ of $U(N)$, which
+is the adjoint of $U(N)$.
+The representation matrices $T^a$, with $a=1,\ldots,
+\dim\,U(N)=N^2$ describe the string state belonging
+to the representation $\Lambar\otimes\Lam$, by the
+index $a$.
+The matrix elements $(T^a)_i^j$ of $T^a$ specify
+which $\lam_i$ and $\lambar^j$ are created at the
+boundary $B$ of the open string.
+The full Fock space of the open string is given by
+$\scrF_{\Open}\otimes\Lambar\otimes\Lam$, and the
+physical state space is
+$\scrF_{\Open}^{\phys}\otimes\Lambar\otimes\Lam$.
+
+We observe that for $G=U(N)$ and $\Lam$ the defining
+representation, $\Lambar\otimes\Lam$ transforms in
+the adjoint representation and the open string states
+are thus natural candidates for Yang-Mills particles
+with gauge group $G=U(N)$.
+Had we considered any other representation for
+$\Lam$ (other than the defining or its complex 
+conjugate), the
+string states would not have tranformed precisely
+under the adjoint representation of $U(N)$, and could
+not have been interpreted as Yang-Mills particles.
+Thus the defining representation is singled
+out by its relevance to describing Yang-Mills
+particles.
+
+The strings for $\SO(N)$ and $\Sp(N)$ should be
+unoriented, since the charges at both ends transform
+under equivalent representations of $\SO(N)$ and
+$\Sp(N)$, respectively.
+Considering $\Lam$ to be the defining representation
+of $\SO(N)$, we obtain string states in the adjoint
+of $\SO(N)$ by the anti-symmetrized tensor product of
+$\Lam$ by itself $(\Lam\otimes\Lam)_A$.
+On the other hand, for $\Lam$ the defining
+representation of $\Sp(N)$, we obtain the string
+states in the adjoint of $\Sp(N)$ by the symmetrized
+tensor product of $\Lam$ by itself
+$(\Lam\otimes\Lam)_S$.
+In each case we recover precisely the string states
+suitable for Yang-Mills particles.
+
+For exceptional groups, no construction is known that
+produces string states in the adjoint representation
+only, and it is widely believed that it is impossible
+to obtain Yang-Mills particles from open strings with
+these groups.
+
+A non-Abelian gauge field can couple to the
+boundaries of the open string, much in the same way
+as this happens for Abelian gauge fields.
+Here, however, we must include the coupling of the
+charges of the gauge field $A_\mu^a$ to those
+of the string.
+Let us restrict again to the defining representation
+of $U(N)$.
+The coupling of $A_\mu^a$ is given as follows:
+$$
+S_A(\lam)=\int\nolimits_{B}d\tau
+\lambar^i\left(\delta_i^j{d\over d\tau}+iA_\mu^a
+\xdot^\mu(T^a)_i^j\right)\lam_j+\sigma(\tau)
+  (\lambar^i\lam_i-1)\,\,.\eqno{(2.72)}
+$$
+The coupling to the gauge field $A_\mu^a$ may again
+be used to construct the vertex operators for the
+creation and annihilation of gauge states of the
+string.
+One finds upon quantization that the vertex opertor
+for the $U(1)$ case is simply to be multiplied by the
+matrices $(T^a)_i^j$:
+$$
+V^a(\eps,k)=T^aV(\eps,k)\,\,.
+\eqno{(2.73)}
+$$
+As the internal degree of freedom and the matrices
+$T^a$ commute with Virasoro, the physical state
+conditions on $V^a$ are satisfied whenever they are
+on $V(\eps,k)$.
+
+It is instructive to examine the effects of these
+degrees of freedom on interactions as well.
+For simplicity, we restrict to $A_\mu^a=0$.
+Charges then simply continue to be translated along the
+boundary $B$ in a conserved way, as shown
+schematically in the figure below.
+
+\line{\hfill\epsfxsize=1.50in\epsfbox{fig9.eps}
+\qquad
+\vtop{\vskip-50pt\hbox{Interactions are only
+allowed}
+\hbox{if charges are conserved.}}\hfill}
+
+\noindent
+In a full string diagram, the effect will be to
+include a trace over the matrices $T$, just as in
+Yang-Mills Feynman rules, as shown schematically
+below.
+
+\line{\hfill\epsfxsize=1.50in\epsfbox{fig10.eps}
+\quad
+\vtop{\vskip-50pt\hbox{$\sim
+\tr\,T^a\,T^b\,T^c\,T^d$}}\hfill}
+
+\noindent
+With the help of the Yang-Mills vertex operators
+$V^a$ of (2.73) and (2.69), one recovers Yang-Mills
+scattering amplitudes in the limit where momenta are
+small compared to the Planch length.
+
+
+\bye
+

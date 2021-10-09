@@ -1,0 +1,485 @@
+%revised version of part 2 of lecture 8:
+
+
+
+\documentstyle[12pt]{amsart}
+
+\setlength{\textwidth}{450pt}
+\setlength{\textheight}{600pt}
+\setlength{\topmargin}{0pt}
+\setlength{\oddsidemargin}{0pt}
+\setlength{\evensidemargin}{0pt}
+
+% automatic loading of rsfs fonts, if present
+\batchmode
+  \newfont{\footscrfont}{rsfs10}
+  \newfont{\footbbbfont}{msbm10}
+\errorstopmode
+
+\newif\ifscrf\scrftrue
+\ifx\footscrfont\nullfont
+  \scrffalse
+\fi
+
+\ifscrf
+  \newfont{\scrfont}{rsfs10 scaled\magstep1}  % rsfs12 does not exist
+  \newfont{\smallscrfont}{rsfs7}
+  \newfont{\tinyscrfont}{rsfs7}
+% \newfont{\footscrfont}{rsfs10}
+  \newfont{\smallfootscrfont}{rsfs7}
+  \newfont{\tinyfootscrfont}{rsfs7}
+\fi
+
+\makeatletter
+
+\newif\iffn\fnfalse
+
+\@ifundefined{reset@font}{\let\reset@font\empty}{} %needed for ancient LaTeX
+\long\def\@footnotetext#1{\insert\footins{\reset@font\footnotesize
+    \interlinepenalty\interfootnotelinepenalty
+    \splittopskip\footnotesep
+    \splitmaxdepth \dp\strutbox \floatingpenalty \@MM
+    \hsize\columnwidth \@parboxrestore
+   \edef\@currentlabel{\csname p@footnote\endcsname\@thefnmark}\@makefntext
+    {\rule{\z@}{\footnotesep}\ignorespaces
+      \fntrue#1\fnfalse\strut}}}
+\makeatother
+
+\ifscrf
+  \newcommand{\Scr}[1]{\iffn
+    \mathchoice{\mbox{\footscrfont #1}}{\mbox{\footscrfont #1}}
+    {\mbox{\smallfootscrfont #1}}{\mbox{\tinyfootscrfont #1}}\else
+    \mathchoice{\mbox{\scrfont #1}}{\mbox{\scrfont #1}}
+    {\mbox{\smallscrfont #1}}{\mbox{\tinyscrfont #1}}\fi}
+\else
+  \def\Scr{\cal}
+\fi
+
+
+%integral sign with cirlce is \oint
+
+%Hodge star (hstar) should probably not be \star
+\newcommand{\hstar}{\mathop{*}}
+
+% a wedgeproduct of a more reasonable size and spacing (from Robert Bryant)
+\def\wdg{{\mathchoice{\,{\scriptstyle\wedge}\,}{{\scriptstyle\wedge}}
+{{\scriptscriptstyle\wedge}}{{\scriptscriptstyle\wedge}}}}
+%should it be a mathbin?
+
+% upper half plane
+\def\upperhalf{{\frak{h}}}
+
+% Sl(2,Z)
+\newcommand{\Sl}{\operatorname{Sl}}
+
+%line bundle (lb) and Lagrangian (lg) -- should have distinct fonts
+\newcommand{\lb}{{\Scr L}}
+\newcommand{\lbm}{{\Scr M}} % a second line bundle
+\newcommand{\lbn}{{\Scr N}} % and a third
+\renewcommand{\lg}{{\cal L}}
+
+%same font for circle bundles
+\newcommand{\cb}{{\Scr S}}
+
+%coupling constant in gauge theory (\ee) should not be in mathitalic, to avoid
+%confusion with exponential
+
+\newcommand{\ee}{\text{e}}
+
+%script D, for use in pathspace measures
+\newcommand{\cD}{{\cal D}}
+
+%notation for operators
+\newcommand{\cO}{{\cal O}}
+
+%other caligraphic letters
+\newcommand{\cF}{{\cal F}}
+\newcommand{\cG}{{\cal G}}
+\newcommand{\cH}{{\cal H}}
+
+%standard blackboard bold items
+\newcommand{\IR}{{\Bbb R}}
+\newcommand{\IZ}{{\Bbb Z}}
+
+%operatornames
+\newcommand{\vol}{\operatorname{\rm vol}}
+\newcommand{\volbar}{\operatorname{\overline{\rm vol}}}
+\newcommand{\voltilde}{\operatorname{\widetilde{\rm vol}}}
+\newcommand{\Tr}{\operatorname{\rm Tr}}
+\newcommand{\Hol}{\operatorname{\rm Hol}}
+\newcommand{\Funct}{\operatorname{\rm Funct}}
+
+\numberwithin{equation}{section}
+
+%\addtolength{\marginparwidth}{-.32in}
+\addtolength{\marginparwidth}{-.4in}
+\newcommand{\note}[1]{\marginpar{\scriptsize #1 }}
+
+\begin{document}
+
+\title[]{Lecture II-8, part II: Abelian Duality in Four Dimensions and
+$\Sl(2,\IZ)$}
+\author[]{Edward Witten$^*$}
+\thanks{$^*$Notes by David R. Morrison}
+\date{6 March 1997}
+\maketitle
+
+\section{Duality and $\Sl(2,\IZ)$}
+
+In this second part of lecture II-8, we discuss abelian duality in four
+dimensions, and give an application to an $\Sl(2,\IZ)$ symmetry of the free
+$U(1)$ theory in four dimensions.  We postpone discussion of $\Sl(2,\IZ)$
+symmetries of non-free theories to a later lecture, since all
+known examples of
+that involve supersymmetry.
+
+We work with a $U(1)$ bundle $\lb$ on a $4$-manifold $M$, and a connection
+$A$ on $\lb$, whose curvature is $F{=}F_A$.
+The gauge theory Lagrangian (in Euclidean signature) including the
+topological term is
+\begin{equation}\label{lgrone}
+\begin{aligned}
+\lg(A) &= \frac1{4\ee^2}\int d^4x\,\sqrt{g} F_{mn}F^{mn}
++
+\frac{i\theta}{16\pi^2}\int d^4x\,\sqrt{g} \epsilon_{mnpq}F^{mn}F^{pq} \\
+ &=\frac1{2\ee^2}\int F_A\wdg\hstar F_A + \frac{i\theta}{4\pi^2}\int
+F_A\wdg F_A .
+\end{aligned}
+\end{equation}
+We have used the standard normalization on the kinetic term, and have
+normalized the
+topological term so that replacing $\theta$ by $\theta+2\pi$ does not change
+the physics.  (This property of the topological term derives from the fact
+that $c_1(\lb)^2=\int (F_A/2\pi)\wdg (F_A/2\pi)$ is always an integer.  Notice
+that on a spin manifold,  $c_1(\lb)^2$ is always an {\it even}\/ integer,
+and we gain an additional equivalence under replacement of $\theta$ by
+$\theta+\pi$.)
+
+Let $\tau=\frac{\theta}{\pi}+\frac{2\pi i}{e^2}\in \upperhalf$.
+As we have just observed, $\tau\mapsto\tau+2$ is a symmetry of this theory,
+and $\tau\mapsto \tau+1$ is a symmetry when working on a spin manifold.
+To extend this to an $\Sl(2,\IZ)$ action (in the spin manifold case) we
+also need
+a symmetry which maps $\tau$ to $-1/\tau$; this will be
+given by a {\it duality}\/ transformation $F_A\leftrightarrow\hstar F_C$
+(with $C$ being a new ``dual'' connection).
+
+The computations for this duality transformation are similar to those in
+lecture II-7.  We begin by defining
+ $F_\pm=\frac12(F_A\pm\hstar F_A)$, and
+rewriting our Lagrangian (\ref{lgrone}) as
+\begin{equation}
+\begin{aligned}
+\lg(A)&=\frac{i\overline{\tau}}{4\pi}\int F_+\wdg F_+ +\frac{i\tau}{4\pi}\int
+F_-\wdg F_- \\
+&=\frac{i\overline{\tau}}{4\pi}\int \|F_+\|^2-\frac{i\tau}{4\pi}\int
+\|F_-\|^2 .
+\end{aligned}
+\end{equation}
+Letting $\cG$ denote the gauge group associated to $A$, the partition
+function for this theory can be written as
+\begin{equation}
+Z(\tau)=\frac1{\vol(\cG)}\sum_{\lb}\int \cD A\,
+e^{-\frac{i\overline{\tau}}{4\pi}\int\| F_+\|^2
++\frac{i\tau}{4\pi}\int\| F_-\|^2} .
+\end{equation}
+
+Our earlier examples of duality began with a theory of a scalar field
+$\phi$ which entered into the Lagrangian only through its derivative
+$d\phi$ so that the theory had a symmetry under $\phi\mapsto \phi+c$ (with
+$c$ constant); the first step in the duality transformation was to gauge
+this symmetry, introducing also an appropriate Lagrange multiplier field.
+
+The present theory is already a gauge theory, being a theory of a
+connection $A$ which enters into the Lagrangian only through its curvature
+$F_A$, so that there is a symmetry under $A\mapsto A+B$ (with $B$ a flat
+connection).  We want to do the analogue of gauging this symmetry, by
+allowing $B$ to be an arbitary connection on an arbitrary bundle,
+introducing a kind of ``exotic gauge field'' $G$ which is a $2$-form field,
+and extending the symmetry to
+\begin{equation}
+\begin{aligned}
+A&\to A+B\\ G&\to G+F_B.
+\end{aligned}
+\end{equation}
+Then $\cF:=F_A-G$ plays the role of the ``gauge-invariant'' quantity,
+analogous to the covariant derivative of a scalar field.
+It is to be stressed that two $G$ fields will be considered gauge-equivalent
+if they differ by $G\to G+F_B$ for $F_B$ the curvature of any connection
+on any line bundle.  In our analysis, we will assume
+for simplicity that there is no torsion in $H^2(M)$.
+
+
+We need a ``gauge-invariant'' extension of our Lagrangian.  We might try
+\begin{equation}
+\lg(A,G)=\frac{i\overline{\tau}}{4\pi}\int
+\|\cF_+\|^2-\frac{i\tau}{4\pi}\int\|\cF_-\|^2,
+\end{equation}
+but this is too simple (because, for example, we could gauge $\cF$ to zero).
+To improve this, we introduce a new connection $C$ on a line bundle $\lbn$,
+with curvature $F_C$,
+and consider the Lagrangian
+\begin{equation}
+\lg(A,G,C)=\frac{i\overline{\tau}}{4\pi}\int
+\|\cF_+\|^2-\frac{i\tau}{4\pi}\int\|\cF_-\|^2 -\frac{i}{2\pi}\int
+F_C\wdg G.
+\end{equation}
+The partition function for this new theory can be represented as a path
+integral,
+which includes sectors associated to all choices of
+bundles $\lb$ and $\lbn$:
+\begin{equation}\label{pathbig}
+\frac1{\vol(\widetilde{\cG})}\,\frac1{\vol(\cG)}\,\frac1{\vol(\cG_C)}
+\sum_{\lb,\lbn} \int\cD A\,\cD G\,\cD C\,
+e^{-\frac{i\overline{\tau}}{4\pi}\int
+\|\cF_+\|^2+\frac{i\tau}{4\pi}\int\|\cF_-\|^2 +\frac{i}{2\pi}\int
+F_C\wdg G},
+\end{equation}
+where $\cG$ and $\cG_C$ denote the gauge groups associated to $A$ and $C$,
+respectively, and $\widetilde{\cG}$ denotes the ``exotic'' gauge group.
+
+To see that this new theory is equivalent to the original one, we first
+do the $C$-integral in (\ref{pathbig}): write $C=C_0+C'$, for $C_0$ a fixed
+connection on the
+line bundle $\lbn$.  Then the $C'$ integral is
+\begin{equation}
+\frac1{\vol{\cG_C}}\int \cD C'\,e^{\frac{i}{2\pi}\int C'\wdg dG}=\delta(dG).
+\end{equation}
+Thus, when
+we sum over $\lbn$ we find
+\begin{equation}
+\frac1{\vol{\cG_C}}\sum_{\lbn} \int \cD Ce^{-\frac{i}{2\pi}\int F_C\wdg G}
+= \sum_{x\in H^2(M)}
+e^{i (x,G)}\delta(dG)=\delta(\left[\frac G{2\pi}\right] \in \IZ)\delta(dG).
+\end{equation}
+The conditions that $dG=0$ and that $[G/2\pi]$ is an integral class
+precisely mean that $G$ is of the form $F_B$ for some connection
+on some line bundle and hence that $G$ can be gauged to zero.
+After doing this,
+it follows that the partition function (\ref{pathbig}) coincides with
+$Z(\tau)$, and we recover the original theory.
+
+Alternatively, we can evaluate the  partition function (\ref{pathbig}) by
+gauging $A$ to $0$,
+using the ``exotic'' gauge invariance (which has an ordinary gauge
+invariance as an ambiguity).  This leaves the path integral
+\begin{equation}\label{remaining}
+\frac1{\vol{\cG_C}} \sum_{\lbn} \int\cD G\int \cD C\,
+e^{-\frac{i\overline{\tau}}{4\pi}\int \|G_+\|^2+\frac{i\tau}{4\pi}\int
+\|G_-\|^2 +\frac{i}{2\pi}\int F_C\wdg G} .
+\end{equation}
+To evaluate the $G$ integral, we complete the square,
+bearing in mind that
+\begin{equation}
+\int F_C\wdg G=\int (F_C{}_+\wdg \hstar G_+-F_C{}_-\wdg \hstar G_-).
+\end{equation}
+In fact, if we define $G'=G - \frac1{\overline\tau} F_C{}_+ +
+\frac1\tau F_C{}_-$, then we can write the exponent from
+eq.~(\ref{remaining}) as
+\begin{equation}
+-\frac{i\overline{\tau}}{4\pi}\int \|G'_+\|^2
++\frac{i\tau}{4\pi}\int \|G'_-\|^2
++\frac{i}{4\pi\overline{\tau}}\int\| F_C{}_+\|^2
+-\frac{i}{4\pi\tau}\int\| F_C{}_-\|^2 .
+\end{equation}
+When we carry out the $G'$ integral, the first two terms give a Gaussian
+integral which contributes to the overall normalization; integrating out
+$G'$ leaves the path integral
+\begin{equation}
+\frac1{\vol{\cG_C}}\sum_{\lbn}\int \cD C \,
+e^{\frac{i}{4\pi\overline{\tau}}\int\| F_C{}_+\|^2
+-\frac{i}{4\pi\tau}\int\| F_C{}_-\|^2} .
+\end{equation}
+This is the same as the original path integral, but with $\tau$ replaced by
+$-1/\tau$, precisely what we wanted to show.
+
+As we did in the case of two dimensions, it is possible to analyze the
+$\tau$-dependence of the normalization of the path-integral, and obtain
+further interesting results.  Some hint of the flavor of the results to be
+obtained this way is seen if we evaluate the Gaussian integral indicated
+above, which yields
+\begin{equation}
+\left(\frac{2\pi}{\sqrt{i\overline{\tau}}}\right)^{n_2{}_+}
+\left(\frac{2\pi}{\sqrt{-i{\tau}}}\right)^{n_2{}_-}  ,
+\end{equation}
+where $n_2{}_\pm$ denote the numbers of self-dual and anti-self-dual
+$2$-forms.  Of course, these numbers are infinite, so there must be some
+cancellation against other normalization factors.  When this is worked out
+in detail,\footnote{E. Witten, {\it On $S$-duality in abelian gauge
+theory}, Selecta Math (N.S.) {\bf 1} (1995), 383--410.}
+the result is found to be
+\begin{equation}
+Z(\tau)=\tau^{-\frac{\chi+\sigma}4}\overline{\tau}^{-\frac{\chi-\sigma}4}
+Z(-1/\tau),
+\end{equation}
+where $\chi$ and $\sigma$ are the Euler number and signature of $M$,
+respectively.   Thus, the partition function $Z(\tau)$ is actually a
+modular form for $\Sl(2,\IZ)$ (or for a subgroup, when the manifold is not
+spin) of weight
+$(\frac{\chi+\sigma}4,\frac{\chi-\sigma}4)$.
+
+We can also follow certain operator insertions through the duality
+transformation, as we did in lower dimensions.  An insertion of $F_\pm$ in
+the original theory can be realized by inserting $\cF_\pm=F_\pm-G$ in the
+extended theory, which can be written
+\begin{equation}
+\cF_+=F_+-G'_+-\frac1{\overline{\tau}}F_C{}_+, \text{\ or\ }
+\cF_-=F_--G'_-+\frac1{\tau}F_C{}_-,
+\end{equation}
+respectively,
+after making the change of variables to $G'$.  Thus, when we gauge $A$ to
+zero, and integrate out $G'$, we are left with operator insertions
+proportional to $F_C{}_\pm$, namely:
+\begin{equation}\label{opmap}
+F_+\mapsto(-1/{\overline{\tau}})F_C{}_+, \text{\ and\ }
+F_-\mapsto(1/{\tau})F_C{}_- .
+\end{equation}
+Notice that as a consequence of the $\tau$-dependence of these mappings,
+a correlation function involving insertions of $F_+$ and $F_-$ will
+have a different modular weight than that of the partition function.
+
+
+
+\section{The Hamiltonian formalism}
+
+Returning to the case that the gauge group is $U(1)$,
+let us briefly discuss abelian four-dimensional duality in a Hamiltonian
+framework.  Take a
+$4$-manifold of the form $M_3\times {\Bbb R}$, where ${\Bbb R}$ is a
+timelike direction. Note that this is a spin manifold, so we expect
+full $Sl(2,\IZ)$ symmetry. For simplicity we suppose that there is no
+torsion in $H_1(M_3)$. Each class
+$x\in H^2(M_3)$ determines a complex line bundle $\lb_x$ on the
+$3$-manifold $M_3$ (satisfying $c_1(\lb_x)=x$).  The Hilbert space for our
+theory on the $3$-manifold $M_3$ can be written in the form
+\begin{equation}
+{\cal H}_\tau(M_3)=\bigoplus_{x\in H^2(M_3,{\Bbb Z})} \cH_x,
+\end{equation}
+where $\cH_x$ is the Hilbert space which comes from quantizing connections
+on $\lb_x$.  (On the left,
+we have explicitly indicated the dependence on the coupling
+constant $\tau$.)  To construct $\cH_x$,
+write an arbitrary connection in the form $A=A_0+\beta$, where
+$A_0$ is a harmonic connection (a connection whose curvature is a harmonic
+two-form) and
+$\beta$ is a $1$-form which is co-closed.
+\def\T{{\cal T}}
+Let $\T_x$ be the space of harmonic connections on the line bundle ${\cal
+L}_x$.
+Then the quantization
+yields
+\begin{equation}
+\cH_x=\cH_\beta\otimes L^2(\T_x).
+\end{equation}
+Here $\cH_\beta$ is a Hilbert space obtained by quantizing the space of
+$\beta$'s, and $L^2(\T_x)$ is just the space of $L^2$ functions on $\T_x$.
+
+Note that the factor $\cH_\beta$ is independent of $x$, since the space
+of co-closed one-forms is defined with no reference to $x$.  Duality
+maps $\cH_\beta$ to itself while  acting separately
+on $\cH'=\oplus_x L^2(\T_x)$.   The duality action on $\cH_\beta$
+follows from the operator mapping in (\ref{opmap}).
+
+The action of duality on $\cH'$ can be described as follows.  Note that
+the $\T_x$'s are all principal homogeneous spaces acted on by the torus
+$H^1(M_3,\IR/\IZ)$, which parametrizes flat line bundles on $M_3$; the
+action is defined by tensoring any given line bundle with connection
+by a flat line bundle determined by a point in $H^1(M_3,\IR/\IZ)$.
+Let $y$ denote a character of the abelian group $H^1(M_3,\IR/\IZ)$.
+There is a decomposition $L^2(\T_x)=\oplus_y\T_{x,y}$, where $\T_{x,y}$
+is the subspace of $L^2(\T_x)$ transforming in the character $y$.  Each
+$\T_{x,y}$ is one-dimensional.
+Hence
+\begin{equation}
+\cH'=\oplus_{x,y}\T_{x,y}
+\end{equation}
+Note that, by Poincar\'e and Pontryagin duality, the character group
+of $H^1(M_3,\IR/\IZ)$ is $H^2(M_3,\IZ)$.  Thus, $x$ and $y$ take values
+in the same space.  It is hence possible to exchange them, and this
+is what the $\tau\to -1/\tau$ transformation does (more precisely,
+it acts by $(x,y)\to (-y,x)$).
+  Thus duality exchanges a classical
+notion -- the decomposition with respect to $x$ -- with a quantum notion
+-- the decomposition with respect to $y$.
+The claim about how the duality acts will be justified below
+where we introduce the operators $Q_E$ and $Q_M$.
+
+Upon quantization---and suppressing $\theta$ for a
+moment---one writes the four-dimensional curvature as
+$F_A'+e^2\pi_A dt$, where $F_A'$ is a two-form on $M_3$ and $\pi_A$---a
+one-form on $M_3$---is the momentum conjugate to the connection $A$.
+The Hamiltonian becomes
+\begin{equation}
+H=\frac1{2\ee^2}\int F_{A_0}^2+{\ee^2\over 2}\nabla_{A_0}+ H(\beta).
+\end{equation}
+Here $H(\beta)$ is
+the part of the Hamiltonian that acts on $\cH_\beta$.  The other
+terms act on $\cH'$.  The first term is the magnetic energy
+of the harmonic connection $A_0$; it comes from the part of the Lagrangian
+quadratic in $F_A'$ and is a multiple of $\int_{M_3}x
+\wdg\hstar x$.  The second term, which comes from the part of the Lagrangian
+quadratic in $\pi_A$, is the electric energy, the Laplacian
+on $\T_x$; it is a multiple of $\int_{M_3}y\wdg\hstar y$.
+
+
+Including the $\theta$ term  shifts the quantization.  In fact, the
+canonical momentum $F_A^\vee=\hstar \pi_A$  as determined from the
+original Lagrangian (\ref{lgrone}) is
+\begin{equation}\label{fvee}
+F_A^\vee
+ = 2\pi i \,\frac{\delta S}{\delta F_A}
+=\frac{2\pi i}{\ee^2} \hstar F_A - \frac{\theta}{\pi} F_A
+\end{equation}
+At non-zero $\theta$, one has not $\cH'=\oplus_x L^2(\T_x)$
+but $\cH'=\oplus_x\Gamma_{L^2}(\T_x,{\cal S}_\theta)$, where
+${\cal S}_\theta$ is a certain flat line bundle over $\T_x$ and
+$\Gamma_{L^2}$ is the space of $L^2$ sections.
+  I leave it as an exercise to the reader
+to identify ${\cal S}_\theta$.  Of course, ${\cal S}_\theta$ is trivial
+at $\theta=0$ and only
+depends on $\theta$ modulo $2\pi$.
+
+
+Rewriting the formula for $F_A^\vee$
+ in terms of $\tau$, we can determine how this operator transforms
+ under $\tau\to -1/\tau$.  Indeed, under the operator mapping
+(\ref{opmap}) one gets
+\begin{equation}\label{fveeto}
+F_A^\vee = -\overline{\tau}F_+ + \tau F_-
+\mapsto F_C{}_++F_C{}_-=F_C.
+\end{equation}
+We will also need the ``dual'' version of this computation:
+\begin{equation}\label{dualcomp}
+F_A=F_++F_-\mapsto\overline{(-1/\tau)}F_C{}_+-(-1/\tau)F_C{}_- = -F_C^\vee.
+\end{equation}
+
+In the Hamiltonian formalism, for any $2$-cycle $\Sigma\subset M_3$
+we can define associated ``electric'' and ``magnetic'' operators on the
+Hilbert space ${\cal H}_\tau(M_3)$ for any $2$-cycle $\Sigma\subset M_3$,
+by
+\begin{equation}
+\begin{aligned}
+Q_E(\Sigma) &= \int_\Sigma \frac{F_A^\vee}{2\pi}
+=\int_\Sigma\frac{F_C}{2\pi}  \\
+Q_M(\Sigma) &= \int_\Sigma \frac{F_A}{2\pi}=-\int_\Sigma \frac{F_C^\vee}{2\pi}.
+\end{aligned}
+\end{equation}
+(These operators only depend on the class of $\Sigma$ in $H_2(M_3,{\Bbb
+Z})$.)
+Clearly, under $\tau\to -1/\tau$, that is under $A\to C$, one has $Q_E\to
+Q_M$, $Q_M\to -Q_E$.  Since $x$ and $y$ are the eigenvalues of $Q_M$
+and $Q_E$, this means that $\tau\to -1/\tau$ acts by $(x,y)\to (-y,x)$.
+Moreover,
+from the explicit formula (\ref{fvee}) for $F_A^\vee$, one sees that when
+$\theta$ is
+increased by $2\pi$ (an operation which leaves
+ the Hilbert space unchanged), the operator
+$Q_M$ is unaltered, but the operator $Q_E$ maps to $Q_E+Q_M$.
+
+The statements made in the last paragraph can be combined to the following:
+$Sl(2,\IZ)$ acts on $\cH'$ via the natural action of $Sl(2,\IZ)$ on the
+pair $(x,y)$.
+\end{document}
+
+
+

@@ -1,0 +1,166 @@
+%Date: Wed, 19 Feb 1997 17:46:42 -0500
+%From: Edward Witten <witten@sns.ias.edu>
+
+\input harvmac
+
+Term 2
+
+Problem Set 5
+
+(1) Consider in two dimensions an $SO(n)$ gauge theory with
+scalar fields $\phi$ consisting of $n-1$ copies of the $n$ dimensional
+representation of $SO(n)$ and a potential energy
+\eqn\guggo{V=\sum_{i=1}^{n-1}\lambda_i\left[(\phi_i,\phi_i)-a_i^2\right]^2
++\sum_{i<j}c_{ij}(\phi_i,\phi_j)^2.}
+The $\lambda_i$ and the $c_{ij}$ are all positive.  Here $(~,~)$ is
+the invariant quadratic form on the $n$ dimensional representation of
+$SO(n)$.
+
+Because $\pi_1(SO(n))={\bf Z}/2{\bf Z}$, this theory
+has a two-valued ``theta angle.''  Explain how you would
+calculate, for weak coupling, the energy difference between the vacua
+with the two possible values of theta.
+
+(If you are unsure of how to think about theta for the case
+that $\pi_1(G)$ is a finite group, you can consult my paper
+on ``Theta Vacua In Two Dimensional Gauge Theories'' which
+will be available from Paula Bozzay in C building.)
+
+(2) Consider in two dimensions the $(\psi_+\psi_-)^2$
+model (introduced in Gross's last lecture in December)
+with the fields being two dimensional fermions $\psi_i$
+with Lagrangian
+\eqn\hobo{L=\int d^2x\left(\sum_i(\psi_{+i}\partial_-\psi_{+i}
++\psi_{-i}\partial_+\psi_{-i})+g\sum_i(\psi_{+i}\psi_{-i})^2\right) .}
+
+(a) Consider the classical conservation law $\partial_-S=0$
+where $S=\psi_{+1}\psi_{+2}\dots\psi_{+n}$.  By considering
+its deformation in quantum mechanics, show that the model is
+integrable.
+
+In this way you obtain a conserved charge $R$ with
+$[K,R]=(n/2-1)R$ where $K$ is the generator of the Lorentz
+group (the subgroup $SO(1,1)$ of the two dimensional Poincar\'e group.)
+By exchanging $+$ and $-$, you get another conserved charge $R'$ with
+$[K,R']=-(n/2-1)R'$.
+
+(b) Now set $n=4$, so $(n/2) -1 = 1$. Hence $R$ and $R'$ have
+the same Lorentz transformation law as the momentum components $P_+$ and
+$P_-$.  
+
+You should be able to sharpen the argument in (a) above to show
+for $n=4$ that the theory has two stress tensors  $T_{mn}$ and
+$T'_{mn}$ where $T$ is the standard stress tensor whose
+appropriate integrals give the Poincar\'e generators, and
+$T'_{mn}$ has the property that its suitable moments are $R$ and $R'$.
+But now, by ``contracting'' $T'$ with the generator  of $SO(1,1)$,
+you get a new ``Lorentz generator'' $K'$; show that the usual
+Poincar\'e operators together with $R,R'$, and $K'$ generate
+two commuting copies of the Poincar\'e group.
+(To get the commuting copies, you have to take sums and differences
+of ``old'' and ``new'' operators.)
+
+Show that no linear combination of $P_+$ and $R$ (or $P_-$ and $R'$)
+vanishes so that each copy of the Poincar\'e group acts nontrivially.
+In fact, you should be able to see that the outer automorphism of
+$SO(4)$ (which acts in this theory by $\psi_1\to -\psi_1$ with
+$\psi_i\to\psi_i$ for $i>1$) exchanges the two copies of Poincar\'e.
+
+Deduce that for $n=4$ this theory is ``reducible'' as the product
+of two decoupled theories, in one of which one copy of Poincar\'e acts
+and in the other the second.
+
+
+(c) Use the  bose-fermi correspondence to verify this and identify
+the factors.  You should be able to draw an inference about the
+symmetries of the quantum sine-Gordon model at a special value
+of the coupling.  (You drew the same inference last week in a different
+way.)
+
+(d) Now consider the case $n=3$. Show that $R$ and $R'$ are
+supersymmetries, so that the model is supersymmetric for $n=3$.
+Can you verify this using the bose-fermi correspondence?
+
+A reference for this problem is my paper ``Some Properties Of
+The $(\bar\psi\psi)^2$ Model in Two Dimensions'' which will be available
+from Paula Bozzay in C building.
+
+(3) The following problem is actually one that was assigned in the fall but
+not discussed (see problem set 3 from term one, which
+you can also consult for some additional background).  
+It is the beginning of a series that will hopefully
+prepare us to do some things with supersymmetric  gauge theories
+in two and four dimensions.
+
+We work locally for the present; it takes some more work to make
+a global version.
+
+\def\R{{\bf R}}\def\Z{{\bf Z}}
+
+
+
+We consider a (4,4) supermanifold $W$ with
+the structure described in Bernstein's lectures -- two complex
+conjugate integrable distributions $A_+$ and $A_-$ of dimension $(0,2)$
+such that $\{A_+,A_-\}$ generates $TM/(A_+\oplus A_-)$,  $A_+$ and $A_-$
+are endowed with volume forms.
+A chiral superfield is a field $\phi$ that is a function on
+$W/A_-$.  If $M$ is a complex manifold, a chiral map $\Phi:W\to M$ is
+one such that, for $f$ a local holomorphic function on $M$, 
+$\Phi^*(f)$ is a chiral function on $W$.  In that case, $\Phi^*(\bar f)$ is
+antichiral, that is, it is a function on $W/A_+$.
+
+Let $K$ be a function on $W$ and consider the Lagrangian
+\eqn\uggu{L=\int_Wd^4yd^4\theta\,  \Phi^*(K).}
+$d^4y\,d^4\theta$ is the section of the Berezinian coming from the
+volume forms on $A_\pm$.  
+
+(a) Show that $L$ is invariant under $K\to K+f+\bar f$, where $f$ is
+a local holomorphic function on $W$.
+
+(b) Recall that any $K$ determines the two-form 
+$\omega=-i\bar\partial\partial K$
+which for a suitable class of $K$'s is the Kahler class of a Kahler
+metric $g$ on $M$.  Of course, $\omega$ is invariant under the
+transformation considered in (a).
+
+Show that $L$ can be written just in terms of $\omega$ (or equivalently
+$g$) and that the ``reduced'' part of $L$ is the harmonic map action,
+specialized to maps to a Kahler manifold:
+\eqn\huggu{L=\int_{W_{red}} d^4y g_{i\bar j}(d X^i,dX^{\bar j})}
+where $  X^i$ are local holomorphic coordinates on $M$.
+
+(c) Specialize now to the flat model with $W=\R^{4,4}$.
+$A_+$ is generated by
+\eqn\ppp{D_A={\partial\over\partial\theta^A}-
+i\sigma^{m}_{A\dot A}\bar\theta^{\dot A}
+{\partial\over\partial y^m}}
+where $\theta^A$ are odd coordinates transforming as ``positive''
+spinors of $Spin(1,3)=SL(2,{\bf C})$, $\bar \theta^{\dot A}$ are
+their complex conjugates, and $y^m$ are even coordinates.
+$\sigma$ is the isomorphism $S_+\otimes S_-= V$.
+$A_-$ is generated by 
+\eqn\ppp{D_{\dot A}={\partial\over\partial\theta^{\dot A}}-
+i\sigma^{m}_{A\dot A}\bar\theta^{ A}
+{\partial\over\partial y^m}.}
+
+Impose invariance under a space-like translation of $W$, say
+a translation of $y^3$ (the metric being $(dy^0)^2-\sum_{i=1}^3 (dy^i)^2$ 
+to get a model on $\R^{3,4}$.  Show that this is equivalent to
+the $\R^{3,2}$ 
+$\sigma$ model described in problem 1(e) of term 1, problem
+set 3 (but specialized to the
+case that $M$ is Kahler).  Here is an attempt  to explain the strategy:
+under $Spin(1,2)$, the two spinor representations of $Spin(1,3)$
+become isomorphic.  So after the reduction, $A_+$ and $A_-$ are
+naturally isomorphic.  One can in an $SO(1,2)$-invariant way
+take the ``real'' combination $\chi^A=\theta^A+\bar\theta^A$ of
+the  $\theta$'s and $\bar\theta$'s. The $\R^{3,2} $ we want
+has even coordinates $y^i$,          $i=0,1,2$, and odd coordinates
+$\chi^A$.  By ``integrating over the fibers'' of a map from $\R^{3,4}$
+to $\R^{3,2}$, one reduces \huggu\ (specialized to $y^3$-independent maps)
+to the $\R^{3,2}$ Lagrangian of problem 1(e).
+
+\end
+
+

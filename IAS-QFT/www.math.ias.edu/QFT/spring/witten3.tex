@@ -1,0 +1,682 @@
+%From: David Kazhdan <kazhdan@math.ias.edu>
+%Date: Thu, 20 Feb 1997 15:31:47 -0500
+
+\input amstex
+\documentstyle{amsppt}
+\magnification 1200
+\NoRunningHeads
+\NoBlackBoxes
+\document
+
+\def\h{\frak h}
+\def\tW{\tilde W}
+\def\Aut{\text{Aut}}
+\def\tr{{\text{tr}}}
+\def\ell{{\text{ell}}}
+\def\Ad{\text{Ad}}
+\def\u{\bold u}
+\def\m{\frak m}
+\def\O{\Cal O}
+\def\tA{\tilde A}
+\def\qdet{\text{qdet}}
+\def\k{\kappa}
+\def\RR{\Bbb R}
+\def\be{\bold e}
+\def\bR{\overline{R}}
+\def\tR{\tilde{\Cal R}}
+\def\hY{\hat Y}
+\def\tDY{\widetilde{DY}(\g)}
+\def\R{\Bbb R}
+\def\h1{\hat{\bold 1}}
+\def\hV{\hat V}
+\def\deg{\text{deg}}
+\def\hz{\hat \z}
+\def\hV{\hat V}
+\def\Uz{U_h(\g_\z)}
+\def\Uzi{U_h(\g_{\z,\infty})}
+\def\Uhz{U_h(\g_{\hz_i})}
+\def\Uhzi{U_h(\g_{\hz_i,\infty})}
+\def\tUz{U_h(\tg_\z)}
+\def\tUzi{U_h(\tg_{\z,\infty})}
+\def\tUhz{U_h(\tg_{\hz_i})}
+\def\tUhzi{U_h(\tg_{\hz_i,\infty})}
+\def\hUz{U_h(\hg_\z)}
+\def\hUzi{U_h(\hg_{\z,\infty})}
+\def\Uoz{U_h(\g^0_\z)}
+\def\Uozi{U_h(\g^0_{\z,\infty})}
+\def\Uohz{U_h(\g^0_{\hz_i})}
+\def\Uohzi{U_h(\g^0_{\hz_i,\infty})}
+\def\tUoz{U_h(\tg^0_\z)}
+\def\tUozi{U_h(\tg^0_{\z,\infty})}
+\def\tUohz{U_h(\tg^0_{\hz_i})}
+\def\tUohzi{U_h(\tg^0_{\hz_i,\infty})}
+\def\hUoz{U_h(\hg^0_\z)}
+\def\hUozi{U_h(\hg^0_{\z,\infty})}
+\def\hg{\hat\g}
+\def\tg{\tilde\g}
+\def\Ind{\text{Ind}}
+\def\pF{F^{\prime}}
+\def\hR{\hat R}
+\def\tF{\tilde F}
+\def\tg{\tilde \g}
+\def\tG{\tilde G}
+\def\hF{\hat F}
+\def\bg{\overline{\g}}
+\def\bG{\overline{G}}
+\def\Spec{\text{Spec}}
+\def\tlo{\hat\otimes}
+\def\hgr{\hat Gr}
+\def\tio{\tilde\otimes}
+\def\ho{\hat\otimes}
+\def\ad{\text{ad}}
+\def\Hom{\text{Hom}}
+\def\hh{\hat\h}
+\def\a{\frak a}
+\def\t{\hat t}
+\def\Ua{U_q(\tilde\g)}
+\def\U2{{\Ua}_2}
+\def\g{\frak g}
+\def\n{\frak n}
+\def\hh{\frak h}
+\def\sltwo{\frak s\frak l _2 }
+\def\Z{\Bbb Z}
+\def\C{\Bbb C}
+\def\d{\partial}
+\def\i{\text{i}}
+\def\ghat{\hat\frak g}
+\def\gtwisted{\hat{\frak g}_{\gamma}}
+\def\gtilde{\tilde{\frak g}_{\gamma}}
+\def\Tr{\text{\rm Tr}}
+\def\l{\lambda}
+\def\I{I_{\l,\nu,-g}(V)}
+\def\z{\bold z}
+\def\Id{\text{Id}}
+\def\<{\langle}
+\def\>{\rangle}
+\def\o{\otimes}
+\def\e{\varepsilon}
+\def\RE{\text{Re}}
+\def\Ug{U_q({\frak g})}
+\def\Id{\text{Id}}
+\def\End{\text{End}}
+\def\gg{\tilde\g}
+\def\b{\frak b}
+\def\S{\Cal S}
+\def\L{\Lambda}
+\def\tl{\tilde\lambda}
+
+\topmatter
+\title Lecture II-3: Infrared behavior and the S-matrix of
+the 2-dimensional sigma-model  with target space $S^{N-1}$
+\endtitle
+\author {\rm {\bf Edward Witten} }\endauthor
+\endtopmatter
+
+\centerline{Notes by Pavel Etingof and David Kazhdan}
+
+\vskip .1in
+
+{\bf 3.1. Infrared behaviour of 2-dimensional sigma-models with target space 
+$S^{N-1}$.}
+
+Consider the theory of $N$ scalar bosons, with the Lagrangian
+$$
+\Cal L=\int d^dx(\frac{1}{2}(\nabla\phi)^2+\frac{g}{4!}(\phi^2-a^2)^2),\tag 3.1
+$$
+where $\phi:\R^d\to\R^N$. 
+In Lecture II-1 we saw that above $d=2$ this theory has symmetry breaking, 
+from $SO(N)$ to $SO(N-1)$. In particular, for any 
+point $y$ on the sphere $\phi^2=a^2$ there exists a realization 
+$\Cal H_y$ of this theory, with $\<\phi\>=y$. 
+We also saw that the low energy effective theory for (2.1) is the  
+sigma-model with target space $S^{N-1}$. 
+
+In 2 dimensions the first statement fails: there is no symmetry breaking, and 
+there is only one realization, with an action of $SO(N)$. However, the
+second statement remains valid: the low energy effective theory is
+the sigma-model. 
+
+In $d>2$, we know that the sigma-model is infrared free (in the zero 
+approximation); more precisely, it converges in the infrared limit 
+to a free theory of N-1 massless scalars (Goldstone bosons).
+This is not the case in 2 dimensions. Indeed, in 2 dimensions 
+the sigma-model is renormalizable, so it has marginal 
+interactions (i.e. interactions with a 0-dimensional coupling).
+On the other hand, it was shown in Gawedzki's lecture
+on sigma-models that the $\beta$-function of the 2-dimensional sigma model 
+into a space of positive curvature is negative (the model is asymptotically
+free in the UV limit). Therefore, the marginal interactions are 
+relevant in the infrared, and apriori
+we cannot conclude that the model is not infrared free, even 
+in the zero approximation. In fact, what happens (as we will see today)
+is that instead of $N-1$ massless particles that we had in $d>2$,
+we will have $N-1$ massive particles, so the infrared limit 
+is trivial (the correlation functions are analytic at the origin in the 
+momentum space, and decay exponentially at infinity in position space). 
+
+In the first half of the lecture, 
+we will show that the 2-dimensional sigma-model is indeed infrared 
+trivial for large $N$. Namely, we will show that 
+all coefficients of the expansion
+of the correlation functions in a series in $1/N$ are analytic 
+at the origin in momentum space, and the first term of this expansion 
+gives the correlation functions for $N$ free massive particles.  
+
+{\bf Remark 1.} Since the $\beta$-function of the 2-dimensional 
+sigma-model into the sphere is negative, it is believed that this theory 
+actually exists. So we will now study the infrared behavior of 
+a (probably) actual quantum field theory.  
+
+{\bf Remark 2.} Since the theory defined by the quartic Lagrangian (3.1) 
+exists rigorously in $d=2$, it can be regarded as an ultraviolet
+cutoff of the sigma-model. The characteristic momentum scale $\Lambda$ 
+of this cutoff is the mass of the radial component of $\phi$. 
+This cutoff is called the linear sigma-model, as opposed to the nonlinear 
+sigma-model, which is the model of maps to the sphere. 
+
+\vskip .1in
+
+{\bf 3.2. Computation of the infrared behavior in the $N\to\infty$ limit.}
+
+Now we will compute the infrared behavior of the sigma model in the limit 
+$N\to\infty$ using the saddle point approximation in the path integral. 
+We will operate with path integrals formally, without worrying 
+whether they exist or not. 
+
+The path integral which defines the generating series for
+ the Euclidean correlation functions 
+of the sigma-model is given by the formula
+$$
+Z(J)=\int_{\phi:\phi^2=1} D\phi e^{-\frac{1}{2\l}\int d^2x |d\phi|^2 
++Z_J\int d^2x J\phi },\tag 3.2
+$$
+where $\phi,J:\R^2\to \R^N$, and $\l$ is a coupling constant. 
+The factor $Z_J$ is added because 
+the operator $\phi$ has anomalous dimension 
+(see Gross' lecture 3) and requires multiplicative renormalization. 
+(As we know, $Z_J$ is cutoff-dependent, and diverges 
+as the cutoff goes to infinity.)
+ 
+It is more convenient to integrate over maps to a linear space
+than over maps to a curved manifold. Therefore, it is useful to rewrite
+integral (3.2) in the form
+$$
+Z(J)=\int_{\phi:\R^2\to\R^N} D\phi 
+\prod_{x\in \R^2}\delta(\phi^2(x)-1)e^{-\frac{1}{2\l}\int d^2x |d\phi|^2 
++Z_J\int d^2x J\phi }.\tag 3.3
+$$
+We will now use the formula
+$$
+\delta(a)=\frac{1}{2\pi}\int_{-\infty}^{\infty}e^{ia\sigma}d\sigma.\tag 3.4
+$$
+Substituting (3.4) into (3.3), we get (up to a factor):
+$$
+Z(J)=\int D\phi\int D\sigma 
+e^{i\int d^2x(\frac{\sigma}{2}(\phi^2-1)) -\frac{1}{2\l}\int d^2x |d\phi|^2 
++Z_J\int d^2x J\phi }.\tag 3.5
+$$
+Thus, the use of formula (3.4) led to introduction of an auxiliary scalar field
+$\sigma$.
+
+Now we will change the order of integration and integrate with respect to 
+$\phi$. Our goal is to reduce the integral to the form 
+in which $N$ (the dimension of the target space) enters analytically. 
+We are lucky that the sphere is a quadric, so the integral with 
+respect to $\phi$ is Gaussian. So we can compute it explicitly, and get 
+$$
+Z(J)=\int D\sigma \text{det} \biggl(-\frac{\Delta}{\l}-i\sigma\biggr)^{-N/2}
+e^{-i\int d^2x\frac{\sigma}{2} -\frac{1}{2}Z_J^2\int d^2x
+J\cdot (\Delta/\l+i\sigma)^{-1}J }\tag 3.6
+$$
+(the power $-N/2$ of the determinant appears because we are doing $N$ 
+independent Gaussian integrals in the components $\phi_i$ of $\phi$). 
+It is useful to raise the determinant into the exponential:
+$$
+Z(J)=\int D\sigma e^{-\frac{N}{2}\text{Tr}\ln(-\frac{\Delta}{\l}-i\sigma)
+-i\int d^2x\frac{\sigma}{2} -\frac{1}{2}Z_J^2\int d^2x
+J\cdot (\Delta/\l+i\sigma)^{-1}J }.\tag 3.7
+$$
+Now we want to bring integral (3.6) to the form where there is a factor of $N$
+in front of all terms in the exponential (except for the J-term, which 
+serves to expand the answer in the formal series in $J$), and then evaluate 
+the integral using the saddle-point approximation. 
+For this purpose we have to make the change of variable
+$\rho=\sigma/N$ and rescale the coupling constant by $\tl
+=\l N$. After these changes the integral, up to a factor, looks like
+$$
+Z(J)=\int D\sigma e^{-\frac{N}{2}[\text{Tr}\ln(-\Delta-i\tl\rho)
++i\int d^2x\frac{\rho}] -\frac{\tl}{2N}Z_J^2\int d^2x
+J\cdot (\Delta+i\tl\rho)^{-1}J }.\tag 3.8
+$$
+In this form, we can already apply the saddle point approximation.
+(This is really saddle point and not stationary phase, as the function in the 
+exponential is complex). 
+
+The most natural thing is to look for a Poincare invariant saddle point, since
+the integral we are considering is Poincare-invariant. Thus, we should look 
+for a saddle point $\rho(x)$ which is a constant, $\rho(x)=\rho$. 
+The value of $\rho$ is found from the saddle point equation
+$$
+\frac{d}{d\rho}
+[\text{Tr}\ln(-\Delta-i\tl\rho)
++i\rho\int d^2x]=0.\tag 3.9
+$$
+(at this point we are making an IR cutoff $L$, i.e. assume that the spacetime 
+is a torus of size $L\times L$). Let us rewrite (3.9) using the momentum space
+reprsentation of the operator $-\Delta-i\tl\rho$,  
+and send $L$ to infinity. Then we get
+$$
+\tl\int \frac{d^2k}{(2\pi)^2}\frac{1}{k^2-i\tl\rho}
+=1.\tag 3.10
+$$ 
+The integral on the left hand side is logarithmically UV divergent. 
+So we should introduce an UV cutoff $\L$ in momentum space
+(i.e. consider the integral over the ball $|k|<\L$). Then 
+(3.10) becomes 
+$$
+\frac{\tl}{4\pi}\ln\frac{\L^2}{-i\tl\rho}=1.\tag 3.11
+$$
+This shows that
+$$
+\rho=\frac{i\L^2}{\tl}e^{-\frac{4\pi}{\tl}}.\tag 3.12
+$$ 
+In Gross' lecture 3 it was shown that in an asymptotically free theory, 
+the effective coupling constant at scale $\L$ depends on the scale 
+according to the formula
+$$
+\tl(\L)=\frac{1}{A\ln \L}+o(\frac{1}{\ln \L}), \L\to\infty,\tag 3.13
+$$
+where $A$ is minus the coefficient of the 1-loop beta-function. 
+In the sigma-model it turns out that $A=(2\pi)^{-1}\frac{N-2}{N}$,
+so it equals to $(2\pi)^{-1}$ 
+modulo $1/N$ (see the end of Gawedzki lecture 3). 
+It can be shown, that modulo $1/N$, the beta-function equals 
+to its 1-loop approximation. This implies that  
+there exists a limit $M^2=\lim_{\L\to\infty}(-i\tl\rho)$, which is positive. 
+
+{\bf Remark.} 
+Thus, in the quantum theory we have a characteristic momentum scale
+defined by $M$, despite the fact that the classical theory 
+is conformally invariant, and the Lagrangian has only a dimensionless coupling
+$\l$ and defines no particular momentum (or length) scale.
+This phenomenon is called ``dimensional transmutation''.
+It gives a very vivid demonstration of the fact (which we already know), that 
+there may be no canonical way of renormalizing a 
+theory defined by a scale-invariant Lagrangian. 
+
+Recalling the form of the J-term in the integral $Z(J)$, we conclude 
+that the $J^2$ term of the expansion of $Z(J)$ has order $1/N$.
+Thus, we should rescale the fields $\phi$, $\phi\to N^{1/2}\phi$,  
+to get a nonzero limit of correlation functions as 
+$N\to\infty$. After this change it turns out that 
+the 2-point functions of $\phi_i$ have a nonzero limit, 
+while the connected $4,6,...$-point functions vanish modulo $1/N$.  
+ Thus,  
+in the first order approximation in $1/N$, our theory is free.
+Moreover, the propagator of this first order theory 
+is $\frac{1}{k^2+M^2}$, where $M$ is defined as above. 
+Thus, the limiting theory is the theory of $N$ independent free 
+massive scalars of mass $M$. 
+
+The connected 4-point function is of order $1/N$. Therefore, the effective 
+coupling constant between the massive scalars is of order $1/N$. 
+
+The fact that the fields $\phi_i$ decouple in the large $N$ limit 
+and become massive scalar fields, has the following probabilistic 
+explanation. 
+   
+Consider the theory of $N$ free massive bosons $a_i$, described by the 
+Lagrangian  
+$$
+\Cal L=\int (\prod Da_i) e^{-N\sum_i(|da_i|^2+M^2a_i^2)}.\tag 3.14
+$$
+Consider the expectation value 
+$\<a_i^2\>$ of the operator $a_i^2$ in this theory for a fixed $i$. 
+This value requires renormalization: it is given by the
+integral 
+$$
+\int \frac{d^2k}{(2\pi)^2}\frac{1}{N(k^2+M^2)},\tag 3.15 
+$$
+which is UV divergent. So we should introduce an UV cutoff $\L$.
+Then we have $\<a_i^2\>= 
+\frac{1}{4\pi N}\ln \L^2/M^2$. 
+ Therefore, 
+$\<\sum_i a_i^2\>=\frac{1}{4\pi}\ln \L^2/M^2$. 
+On the other hand, by the law of large numbers, 
+if $d$ is the dispersion of $a_i^2$, then the dispersion of
+$\sum a_i^2$ is $d/\sqrt{N}$, so for large $N$ the vector 
+$(a_1,...,a_N)$ stays close to the the sphere $\sum x_i^2=
+\frac{1}{4\pi}\ln \L^2/M^2$. 
+Thus, the theory of $N$ independent massive fields for large $N$ 
+ behaves like the sigma-model for the sphere, whose radius 
+varies logaritmically with the cutoff. 
+
+{\bf 3.3. Computation of the S-matrix.}
+
+Now we will study the sigma-model into the sphere in a totally different way.
+Namely we will show that this model is integrable even for finite $N$, 
+which means that its S-matrix can be computed explicitly. 
+
+Recall the Coleman-Mandula theorem (Bernstein's lecture 1): in a field theory 
+of dimension $d>2$ with a mass gap and a nondegenerate 
+S-matrix, any even infinitesimal symmetry of the S-matrix is  
+a linear combination of an element 
+of the Poincare Lie algebra and a symmetry which commutes with the Poincare
+Lie algebra. In other words, if there exists a ``forbidden'' symmetry
+(not having such a decomposition), then the S-matrix, under some technical 
+conditions, equals 1, i.e. the theory is free. 
+
+In two dimensions, the Coleman-Mandula theorem is false. That is, there 
+exist 2-dimensional 
+quantum field theories with $S\ne 1$  which have an infinitesimal 
+symmetry forbidden by the Coleman-Mandula theorem. 
+In fact, we will see that the 2-dimensional sigma-model 
+has this property. 
+
+Thus, in 2 dimensions the information that there exists a ``forbidden''
+symmetry is not enough to conclude that $S=1$. However, 
+this information still allows to compute the S-matrix. In this section we will
+show how to do it for the sigma-model into $S^{N-1}$. 
+
+We will work on a flat Minkowski spacetime with coordinates 
+$x_+,x_-$ and the metric $dx_+dx_-$. Let 
+$$
+\Cal L=\frac{1}{2\l}\int d^2x(\d_+\phi\d_-\phi), \phi^2=1.\tag 3.16
+$$ 
+be the Lagrangian of
+the sigma-model with target $S^{N-1}$ ($\phi\in\R^N$). 
+Since this Lagrangian can be written naturally on a curved spacetime,
+it has a stress-energy tensor $T=\frac{\delta \Cal L}{\delta g}$. 
+This is a symmetric, rank 2 tensor, so it has 3 components in coordinates 
+$x_+,x_-$: $T_{++},T_{--},T_{+-}$.  
+
+Let us consider some properties of the stress-energy tensor. 
+Classically, we have 
+$$
+T_{++}=(\d_+\phi)^2, T_{--}=(\d_-\phi)^2.\tag 3.17
+$$
+Since the sigma-model is classically conformally invariant, 
+we have $T_{+-}=0$. However, 
+we should expect that quantum mechanically 
+conformal invariance is broken (in fact, we know this from the large $N$ 
+limit), so quantum mechanically, $T_{+-}\ne 0$; in fact, we will  
+see that it is proportional to 
+$\d_+\phi\d_-\phi$ (see below). Still, the
+current conservation equations 
+$$
+\d_-T_{++}+\d_+T_{+-}=0, \d_+T_{--}+\d_-T_{+-}=0,\tag 3.18
+$$
+(which classically reduce to $\d_-T_{++}=0, \d_+T_{--}=0$, because
+of vanishing of $T_{+-}$) are still satisfied quantum mechanically, 
+if the operator $T_{+-}$ is suitably renormalized (this follows from the fact 
+that the Poincare symmetry exists in the quantum theory). 
+
+Let us give another demonstration of why the equation
+$$
+\d_-T_{++}+\d_+T_{+-}=0.\tag 3.19
+$$ 
+is satisfied under a suitable renormalization 
+of $T_{+-}$. For this purpose recall that classically operators 
+in our theory have a bigrading $(d_+,d_-)$ (with respect to 
+dilations of $x_+$, $x_-$). In quantum theory, 
+since conformal invariance is broken, 
+only the diagonal grading $d_+-d_-$ survives, and the 
+bigrading becomes a (bi)filtration. 
+
+Let us classify $SO(N)$-invariant  operators of various bidegrees
+(under $(d_+,d_-)$ we will list operators of bidegree $d_+-n,d_--n$, 
+$n\ge 0$). 
+
+(0,0): 1
+
+(0,1): none
+
+(1,0): none 
+
+(2,0): $(\d_+\phi)^2=T_{++}$
+
+(0,2): $(\d_-\phi)^2=T_{--}$
+
+(1,1): $\d_+\phi\d_-\phi, 1$
+
+(2,1): $\d_+^2\phi\d_-\phi$
+
+This table shows that (3.19) has to be satisfied, 
+under a suitable renormalization of $T_{ij}$, for dimensional
+reasons (to be more specific, because any operator of
+bidegree (2.1) is $\d_+$ of an operator of bidegree (1,1), and
+there is no operators of bidegree (1,0). 
+
+{\bf Remark.} In fact, it can be shown that $T_{+-}=\beta\d_+\phi\d_-\phi$,
+where $\beta$ is the beta-function. Thus, the beta-function measures the 
+failure of conformal invariance. 
+
+We will now construct a symmetry forbidden by the Coleman-Mandula theorem
+using the (quantum) stress-energy tensor. The idea of constructing this 
+symmetry is the following. Suppose that we found two 
+local operators $X_+,X_-$ such that $\d_+X_-=-\d_-X_+$, but 
+$X_-\ne  \d_+ Y$ for any $Y$. In this case the 
+operator-valued form $J=X_+dx_+-X_-dx_-$ is a nontrivial conserved current, 
+and the charge operator $Q=\int_CJ$, where $C$ is a spacelike cycle, is
+an infinitesimal symmetry. So we should construct $X_+,X_-$. 
+
+Classically, $X_+=T_{++}^2$ satisfies the above condition, as
+$\d_-(T_{++})^2=0$. Quantum mechanically, however, this 
+equation is not satisfied. 
+So we will again use dimension counting to demonstrate the existence
+of a conservation law.
+
+We want to show that there exist 
+operators $X_+,X_-$ of degrees (4,0) and (3,1), 
+such that $\d_-X_++\d_+X_-=0$, and $X_+\ne  \d_+ Y$. 
+To do this, let us extend 
+the above table of operators:
+
+(3,0): $\d_+\phi\d_+^2\phi$
+
+(3,1): $(\d_-\phi\d_+\phi)(\d_+\phi)^2$, 
+$\d_-\phi\d_+^3\phi$, $(\d_+\phi)^2$. 
+
+(4,0): $((\d_+\phi)^2)^2$, $(\d_+^2\phi)^2$, $\d_+^3\phi\d_+\phi$
+
+(4,1): $\d_-\phi\d_+^4\phi$, 
+$(\d_-\phi\d_+\phi)(\d_+\phi\d_+^2\phi)$, $(\d_-\phi\d_+^2\phi)(\d_+\phi)^2$, 
+$\d_+\phi\d_+^2\phi$. 
+
+Let $H_{d_+,d_-}$ be the space of operators of bidegree $d_+-n,d_--n$
+for all $n\ge 0$.
+We have: $\text{dim}H_{3,0}=1$, $\text{dim}H_{3,1}=3$,
+$\text{dim}H_{4,0}=3$, $\text{dim}H_{4,1}=4$.
+We have two maps $\d_+: H_{3,1}\to H_{4,1}$, $\d_-: H_{4,0}\to H_{4,1}$. 
+For dimensional reasons, there is a 2-dimensional subspace $Z$ in
+$H_{4,0}$ such that for $X\in Z$ $\d_-X\in \text{Im}\d_+$. 
+On the other hand, the image $B$ of $\d_+$ in $H_{4,0}$ is 1-dimensional.
+Therefore, the ``cohomology'' group $H=Z/B$ is not zero (it is 1-dimensional).
+This ``cohomology'' group represents the conservation law that we are looking 
+for.     
+
+{\bf Remark.} It is easy to define the complex for which $Z$ are cocycles,
+$B$ are coboundary, and $H$ are cohomology. 
+
+Denote the charge operator corresponding to this conservation law by $Q$. 
+It is easy to show that $[Q,P_\pm]=0$, and $[K,Q]=3Q$, where
+$K$ is the infinitesimal boost operator of the Poincare group (the 
+generator of $\frak{so}(1,1)$), normalized in such a way that 
+$[K,P_\pm]=\pm P_{\pm}$, where $P_\pm$ are infinittesimal translations of 
+$x_+,x_-$. 
+
+Thus, $Q$ is an infinitesimal symmetry violating the 
+conclusion of the Coleman-Mandula 
+theorem.
+
+{\bf Remark.} Of course, by interchanging $+$ and $-$ in the definition of 
+$Q$, we can obtain another ``forbidden'' conserved charge $Q'$,
+with $[K,Q']=-3Q'$.  
+
+Now let us see how we can use $Q$. Let $H_m\subset \Cal H$ be a 
+subrepresentation of the Poincare group which represents a particle
+of mass $m$ ($H=L^2(\O_m^+)$). Let $|k\>$ denote the state of this particle 
+in which its momentum is $k=(k_+,k_-)$, where $k_+k_-=m^2$. (Of course, 
+$|k\>\notin H_m$, but for an $L^2$-function $f$ on $\O_m^+$, 
+$\int f(k)|k\>dk\in H_m^+$.) We have $P_\pm |k\>=k_\pm|k\>$, and 
+$Q|k\>=ck_+^3|k\>$, where $c$ is a $k$-independent constant. 
+
+Let $\l$ be the parameter on the hyperbola $k_+k_-=m^2$ defined by the 
+equations $k_\pm=me^{\pm \l}$.  
+As we know, a 1-particle state is represented by a wave function,
+which satisfies the Klein-Gordon equation:
+$$
+\psi(x_+,x_-)=\int_{-\infty}^{\infty}\hat\psi(\l)e^{i(k_+x_++k_-x_-)}d\l,
+\tag 3.20
+$$
+
+The operator $e^{i\gamma P_\pm}$ 
+of the Poincare group acts on the wave function by translating 
+$x_+,x_-$ by $\gamma$. 
+Let us now compute how the ``forbidden'' symmetry $e^{i\delta Q}$ 
+acts on the wave function:
+$$
+e^{i\delta Q}\psi(x_+,x_-)=
+\int_{-\infty}^{\infty}\hat\psi(\l)e^{i(\delta ck_+^3+k_+x_++k_-x_-)}d\l\tag 3.21
+$$
+Thus, the operator $e^{i\delta Q}$ transforms the weight function of a particle
+with momentum $k$ by translating $x_+$ by the effective amount 
+$\gamma_{\text{eff}}=\delta c k_+^2$. 
+
+Suppose now that we have a particle whose wave function is localized near 
+a classical worldline $x=x_0+vt$ ($t+x=x_+,t-x=x_-$). Then the symmetry 
+$e^{i\delta Q}$ shifts the worldline in a way dependent on the velocity $v$. 
+(This property is characteristic for all symmetries which don't commute 
+with the Poincare group, and don't belong to it).
+
+Now it is easy to explain the idea of proof of the Coleman-Mandula theorem,
+and why it fails in 2 dimensions. 
+
+In dimension $d>2$, two lines 
+generically don't intersect. So, in a theory with a ``forbidden'' symmetry,  
+if we have two particles heading 
+for a collision (i.e. their worldlines intersect), we can apply the 
+``forbidden'' symmetry and obtain two other worldlines which don't intersect,
+and are arbitrarily far from each other.
+Since the S-matrix is invariant under the symmetry, this argument shows
+that it equals $1$. 
+
+In two dimensions, however, two lines generically do intersect, so we cannot 
+conclude from the above argument that the S-matrix is 1. Still, since three
+lines generically do not intersect at the same point, 
+the above argument shows that scattering 
+reduces to a successive 2-particle collisions, in which 
+two particles are produced. 
+
+The presence of symmetry $Q$ also shows that 
+in the 2-2 scattering, the momenta (and hence masses) of incoming particles 
+are equal to those of outgoing particles.
+Indeed, let $1,2$ label incoming particles, and $3,4$ label outgoing 
+particles. The charge $Q$ acts on the state of the i-th particle by 
+by multiplication by $C_i(k_i)_+^3$. So by charge conservation
+$C_1(k_1)_+^3+C_2(k_2)_+^3=C_3(k_3)_+^3+C_4(k_4)_+^3$.
+On the other hand, by momentum conservation 
+$(k_1)_++(k_2)_+=(k_3)_++(k_4)_+$. So if $k_1,k_2$ are known, 
+$(k_3,k_4)$ can take only a discrete set of values. 
+This implies that $(k_3,k_4)=(k_1,k_2)$ or $(k_3,k_4)=(k_2,k_1)$. 
+
+Now let us return to the sigma-model with target space $S^{N-1}$.
+In this case, as we know for large $N$ (and believe for all $N\ge 3$),  
+we have $N$ massive particles of the same mass $m$, which form 
+an $N$-dimensional representaion $V$ of $SO(N)$
+(i.e. the space of 1-particle states is $V\o L^2(\O_m^+)$). 
+The above arguments allow us to make the following conclusions about 
+the scattering matrix.
+
+(i) The scattering matrix is in this case an honest matrix, i.e. 
+a function of the form $S(\l_1-\l_2)$ with values in $\End_{SO(N)}(V\o V)$, 
+where $\l_i$ are defined by $k_i=(me^{\l_i},me^{-\l_i})$, and 
+$k_i$ are the momenta of the incoming particles.
+Thus, 
+$$
+S(\theta)_{ij}^{kl}=F(\theta)\delta_i^k\delta_j^l+
+G(\theta)\delta_i^l\delta_j^k+H(\theta)\delta_i^j\delta_k^l,\tag 3.22
+$$
+where $F,G,H$ are complex-valued functions. 
+
+(ii) $S(\l)$ satisfies the quantum Yang-Baxter equation:
+$$
+S_{12}(\l_1-\l_2)S_{13}(\l_1-\l_3)S_{23}(\l_2-\l_3)=
+S_{23}(\l_2-\l_3)S_{13}(\l_1-\l_3)S_{12}(\l_1-\l_2).\tag 3.23
+$$
+
+(iii) $S(\l)$ is unitary. 
+  
+(iv) Crossing symmetry: $S$ continues 
+meromorphically to the complex 
+plane, and $S_{ij}^{kl}(\l)=S_{li}^{jk}(\pi i-\l)$.
+
+Property (i) we have already explained. Property (ii) follows 
+from the fact that the 3-3 scattering matrix factors as a product 
+of three 2-2 scattering matrices, and the order in which 
+these three 2-2 collisions occur can be reversed by the ``forbidden'' 
+symmetry. Property (iii) is satisfied for the S-matrix of any field theory. 
+Property (iv), roughly,
+ follows from the fact that the 2-2 S-matrix is the residue
+of the pole of the 4-point function, which extends to the complex 
+values of momenta, so the S-matrix has to be invariant under the 
+discrete part of the Poincare group, which permutes past ant future.
+
+A.Zamolodchikov and Al.Zamolodchikov showed in 1979 
+(Annals of Physics, vol. 120) that the S-matrix
+is uniquely determined by these conditions for $N\ge 3$, 
+up to a scalar $\theta$-dependent factor, provided it is nontrivial
+(which we can get from the large $N$ expansion). 
+The functions $F,G,H$ for this S-matrix is given by 
+an easy explicit formula: 
+$$
+F(\theta)=1, G(theta=-\frac{2\pi i}{N-2}\theta, H(\theta)=
+-\frac{2\pi i}{(N-2)(\pi i-\theta)}.\tag 3.24
+$$
+This solution of the quantum Yang-Baxter equation was one of the main examples
+from which the theory of quantum groups has originated. 
+The quantum group corresponding to it is now called 
+``the Yangian of $\frak{so}(N)$'' (see Drinfeld's talk ``Quantum groups''
+at the International Congress of Mathematicians at Berkeley).
+
+As we indicated, the S-matrix is defined by (3.24) up to 
+multiplication by a scalar function 
+$f(\theta)$, which satisfies the conditions
+$f(\theta)f(-theta)=1$, and $f(\pi i-\theta)=f(\theta)$. 
+Thus, the function $f$ is $2\pi i$-periodic. 
+Which periodic function corresponds to the actual S-matrix of
+the theory is a nontrivial question. A perturbative calculation indicates
+that this function should be chosen in such a way that the S-matrix has 
+the smallest possible number of singularities. There are two such choices,
+and one of the is believed to be realized in the sigma-model. 
+The other choice is believed to be realized similarly in the Gross-Neveu 
+model. 
+
+Thus, we have shown the integrability of the sigma-model into 
+$S^{N-1}$. 
+
+One can show in a similar way the the Gross-Neveu model introduced
+in Gross' lecture 4 is also integrable, in the sense that
+its S-matrix and 1-particle matrix elements of composite operators 
+can be computed. The S-matrix turns out to be the same as above, 
+up to the scalar factor. 
+
+But these two models are an exception. Already in the next lecture 
+we will consider a slightly more complicated sigma-model -- with target 
+space $\C P^N$, for which the explicit form of the S-matrix 
+is unknown. 
+ 
+\end
+  
+Also define the space and time coordinates 
+$t,x$ by
+$t=\frac{1}{2}(x_++x_-)$, $x=\frac{1}{2}(x_+-x_-)$.
+
+At $t=0$ we have
+$$
+\psi(x,0)=\int_{-\infty}^{\infty}\hat\psi(\l)e^{i(k_+-k_-)x}d\l,
+\tag 3.21
+$$
+and the wave function is completely determined by its value at $x=0$,
+via the Klein-Gordon equation, and the energy positivity condition. 
+

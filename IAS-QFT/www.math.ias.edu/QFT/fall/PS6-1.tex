@@ -1,0 +1,235 @@
+%From: Pierre Deligne <deligne@math.ias.edu>
+%Date: Thu, 23 Jan 1997 17:51:44 -0500
+%Subject: set6-1.tex
+
+\input amstex
+\documentstyle{amsppt}
+\magnification=1200
+\pagewidth{6.5 true in}
+\pageheight{8.9 true in}
+\loadeusm
+
+\catcode`\@=11
+\def\logo@{}
+\catcode`\@=13
+
+\NoRunningHeads
+
+\input pictex.tex
+
+\font\boldtitlefont=cmb10 scaled\magstep2
+\font\bigsym=cmsy10 at 14.40pt 
+\font\biggersym=cmsy10 scaled \magstep3
+
+\def\dspace{\lineskip=2pt\baselineskip=18pt\lineskiplimit=0pt}
+\def\wedgeop{\operatornamewithlimits{\wedge}\limits}
+\def\w{{\mathchoice{\,{\scriptstyle\wedge}\,}
+  {{\scriptstyle\wedge}}
+  {{\scriptscriptstyle\wedge}}{{\scriptscriptstyle\wedge}}}}
+\def\Le{{\mathchoice{\,{\scriptstyle\le}\,}
+  {\,{\scriptstyle\le}\,}
+  {\,{\scriptscriptstyle\le}\,}{\,{\scriptscriptstyle\le}\,}}}
+\def\Ge{{\mathchoice{\,{\scriptstyle\ge}\,}
+  {\,{\scriptstyle\ge}\,}
+  {\,{\scriptscriptstyle\ge}\,}{\,{\scriptscriptstyle\ge}\,}}}
+\def\vrulesub#1{\hbox{\vrule height7pt depth5pt\,}_{#1}}
+\def\mapright#1{\smash{\mathop{\,\longrightarrow\,}%
+     \limits^{#1}}}
+\def\plus{{\sssize +}}
+\def\upvee{{\sssize\vee}}
+\def\underSim#1{\mathop{\vtop{\ialign{##\crcr
+  \hfil {\bigsym\char'030}\hfil\crcr
+  \noalign{\nointerlineskip}${\ssize #1}$\crcr
+  \noalign{\nointerlineskip}\crcr}}}}
+
+\def\eps{{\varepsilon}}
+\def\Lam{{\Lambda}}
+\def\mynabla{{\nabla\!}}
+
+\def\xtil{\widetilde{x}}
+
+\def\Adot{\Dot{A}}
+\def\Bdot{\Dot{B}}
+\def\Xdot{\Dot{X}}
+\def\xdot{\Dot{x}}
+\def\psidot{\Dot{\psi}}
+
+\def\dbR{{\Bbb R}}
+
+%\def\GL{\text{\rm GL}} \def\Hom{\text{\rm Hom}}
+%\def\aff{\text{\rm aff}} \def\red{\text{\rm red}}
+%\def\Map{\text{\rm Map}} \def\Lie{\text{\rm Lie}}
+%\def\Diff{\text{\rm Diff}} \def\Vol{\text{\rm Vol}}
+%\def\Tr{\text{\rm Tr}}
+\def\I{\text{\rm I}}
+\def\II{\text{\rm II}}
+\def\III{\text{\rm III}}
+
+
+\def\scr#1{{\fam\eusmfam\relax#1}}
+
+\def\scrA{{\scr A}}   \def\scrB{{\scr B}}
+\def\scrC{{\scr C}}   \def\scrD{{\scr D}}
+\def\scrE{{\scr E}}   \def\scrF{{\scr F}}
+\def\scrG{{\scr G}}   \def\scrH{{\scr H}}
+\def\scrI{{\scr I}}   \def\scrJ{{\scr J}}
+\def\scrK{{\scr K}}   \def\scrL{{\scr L}}
+\def\scrM{{\scr M}}   \def\scrN{{\scr N}}
+\def\scrO{{\scr O}}   \def\scrP{{\scr P}}
+\def\scrQ{{\scr Q}}   \def\scrR{{\scr R}}
+\def\scrS{{\scr S}}   \def\scrT{{\scr T}}
+\def\scrU{{\scr U}}   \def\scrV{{\scr V}}
+\def\scrW{{\scr W}}   \def\scrX{{\scr X}}
+\def\scrY{{\scr Y}}   \def\scrZ{{\scr Z}}
+
+
+\document
+\line{{\boldtitlefont Witten's Problems}, Set Six --- 
+N$^{\text{o}}$. 1 
+\hfill (solution written by D. Freed)}
+\smallskip
+\hbox to \hsize{\hrulefill}
+
+\bigskip\noindent
+{\bf Problem:} 
+
+\smallskip
+(1) In free scalar field theory in four dimensions,
+with mass $m$, 
+calculate the operator product expansion
+$\phi^2(x)\phi^2(x')|_{x\to x'}$ up to and including
+all operators of dimension four or less.  (This means,
+relative to what we did in class, working out contributions
+of some operators with derivatives.  This should not be a long
+exercise.)
+
+
+\bigskip\bigskip\noindent
+{\bf Solution:}
+
+\smallskip
+We represent $\phi^2(x)$ by $\bigwedge\limits^{{\overset
+x\to{\sssize\otimes}}}$ 
+and then there are 3 diagrams in $\phi^2(x) \phi^2(x')$:
+$$
+\spreadmatrixlines{1\jot}
+\matrix
+\operatornamewithlimits{\hbox{\biggersym\char'136}}
+\limits^{{\overset x\to{\ssize\otimes}}}\quad
+\operatornamewithlimits{\hbox{\biggersym\char'136}}
+\limits^{{\overset \,\,x'\to{\ssize\otimes}}}
+&\qquad \vbox{\beginpicture
+\setcoordinatesystem units < .50cm, .50cm>
+\setlinear
+%
+% Fig POLYLINE object
+%
+\linethickness= 0.500pt
+\plot  8.922 19.494  9.207 20.130 /
+%
+% Fig POLYLINE object
+%
+\linethickness= 0.500pt
+\putrule from  9.557 20.320 to 10.859 20.320
+%
+% Fig POLYLINE object
+%
+\linethickness= 0.500pt
+\plot 11.113 20.066 11.398 19.431 /
+%
+% Fig TEXT object
+%
+\put{\null\kern-2pt$\ssize\otimes$} [lB] at 10.986 20.161
+%
+% Fig TEXT object
+%
+\put{$\ssize\otimes$} [lB] at  9.112 20.193
+%
+% Fig TEXT object
+%
+\put{$\ssize x$} [lB] at  9.207 20.574
+%
+% Fig TEXT object
+%
+\put{\null\kern-2pt$\ssize x'$} [lB] at 11.081 20.574
+\linethickness=0pt
+\putrectangle corners at  8.922 21.082 and 11.398 19.431
+\endpicture}
+&\qquad \vbox{\beginpicture
+\setcoordinatesystem units < .50cm, .50cm>
+\setlinear
+%
+% Fig CIRCULAR ARC object
+%
+\linethickness= 0.500pt
+\circulararc 65.352 degrees from 11.303 18.796 center at 10.430 17.435
+%
+% Fig CIRCULAR ARC object
+%
+\linethickness= 0.500pt
+\circulararc 65.352 degrees from  9.557 18.224 center at 10.430 19.586
+%
+% Fig TEXT obje-t
+%
+\put{\null\kern-3pt $\ssize\otimes$} [lB] at  9.493 18.383
+%
+% Fig TEXT object
+%
+\put{$\ssize\otimes$} [lB] at 11.113 18.383
+%
+% Fig TEXT object
+%
+\put{\null\kern-1pt $\ssize x$} [lB] at  9.081 18.351
+%
+% Fig TEXT object
+%
+\put{$\ssize x'$} [lB] at 11.494 18.383
+\linethickness=0pt
+\putrectangle corners at  9.081 19.114 and 11.494 17.939
+\endpicture}\\
+\I &\qquad \II &\qquad \III
+\endmatrix
+$$
+
+
+\noindent
+The first diagram is the ordinary Taylor series, which to
+operators of dimension four is simply
+$$
+I=\phi(x)^4+\cdots
+$$
+The second diagram occurs 4 times and is
+$$
+\align
+\II &=4G(x-x')\phi(x)\phi(x')\\
+&=4G(x-x')\Bigl[\phi(x)^2+(x'-x)^\mu\phi(x)\partial_\mu
+  \phi(x)+\tfrac12(x'-x)^\mu(x'-x)^\nu
+  \phi(x)\partial_\mu\partial_\nu
+  \phi(x)\\
+&\null\kern10.0 true cm +\cdots\Bigr].
+\endalign
+$$
+The third diagram occurs twice and is simply
+$$
+\III=2G(x-x')^2.
+$$
+Since $G(x-x')\sim\frac{1}{\vert x-x'\vert^2}$ as $x'\to
+x$, we have the operator product expansion up to
+operators of dimension four:
+$$
+\align
+\phi^2(x)\phi^2(x') \underSim{x'\to x}
+\tfrac{2}{\vert x-x'\vert^4} &+\tfrac{4\phi(x)^2}{\vert
+x-x'\vert^2}+4\tfrac{(x-x')^\mu}{\vert x-x'\vert^2}
+  \phi(x)\partial_\mu\phi(x)\\
+&+\left\{\phi(x)^4+4\tfrac{(x-x')^\mu(x-x')^\nu}{\vert
+x-x'\vert^2}\phi(x)\partial_\mu\partial_\nu\phi(x)\right\}\\
+&+\cdots
+\endalign
+$$
+
+\enddocument
+
+
+
+

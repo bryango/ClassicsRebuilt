@@ -1,0 +1,104 @@
+Hello.  As you probably know, one of the activities at the Institute
+for Advanced Study this coming year is a special program on quantum
+field theory.  This program will feature a series of lectures designed
+to teach mathematicians how physicists think about some of the fundamental
+tools of their subject.  We thought it would be useful to accompany the
+lecture series with some kind of "study group": an informal meeting
+once or twice a week during which the lectures could be discussed by
+the participants in this special program.  The goal (for us at least)
+is to really learn this stuff, not just let it float by in a lecture
+setting.
+
+We are writing to a group of the 1996-97 members in the School of Math
+which we hope includes everyone who might be interested in this study
+group.  We want to get the group organized now, so that we can "hit the
+ground running".  We also want to find out when the group members are
+planning to arrive in Princeton, so that we can advise Deligne, Kazhdan
+and Witten about the scheduling of the lectures.  The first series of
+lectures will be delivered by Joseph Bernstein, on super-geometry
+(how to write Lagrangians with fermionic variables).  Bernstein will be 
+in Princeton Sept. 1 - Oct. 15, and there has been some discussion of 
+starting his lectures on Sept. 16, or perhaps even earlier.
+
+Undoubtedly there are some people receiving this who are not interested;
+if that applies to you, please ignore the message.  If you *are* interested
+in the special program and this study group, please send a brief reply to
+that effect, also mentioning when you plan to arrive in Princeton.
+We realize that a few of you won't arrive until the spring
+semester; nevertheless, you might wish to remain on this mailing list
+to be apprised of what is going on.
+
+For those who haven't seen it, we append to the end of this message a 
+letter sent by MacPherson last December which describes the goals and
+aims of the program.  (Of course the last few paragraphs are now obsolete.)
+
+We look forward to seeeing you in the fall.
+
+  Dave Morrison and Dan Freed
+
+
+
+
+Letter of December 15, 1995 from R. MacPherson:
+
+Dear Colleagues,
+
+The Institute for Advanced Study will have a special program during the
+academic year 1996-97 on quantum field theory, directed by P. Deligne, D.
+Kazhdan and E. Witten.  It will be sponsored jointly by the School of
+Mathematics and the School of Natural Sciences.
+
+The goal is to create and convey an understanding, in terms congenial to
+mathematicians, of some fundamental notions of physics, such as quantum
+field theory, supersymmetry and string theory.  The emphasis will be on
+developing the intuition stemming from functional integrals.
+
+One way to define the goals of the program is by negation, excluding certain
+important subjects commonly pursued by mathematicians whose work is
+motivated by physics.  In this spirit, it is not planned to treat except
+periferally the magnificent new applications of field theory, such as
+Seiberg-Witten equations to Donaldson theory.  Nor is the plan to consider
+fundamental new constructions within mathematics that were inspired by
+physics, such as quantum groups or vertex operator algebras.  Nor is the aim
+to discuss how to provide mathematical rigor for physical theories.  Rather,
+the goal is to develop the sort of intuition common among physicists for
+those who are used to thought processes stemming from geometry and algebra.
+
+During the year there will be several series of lectures, including:
+
+Quantum field theory including Yang-Mills theory and renormalization, by L.
+Faddeev
+
+Conformal field theories from the point of view of functional integrals, by
+K. Gawedzki
+
+Super-symmetry, by D. Kazhdan
+
+String theory leading to Yang-Mills theory and super-symmetry, by E. D'Hoker
+
+S-duality, by E. Witten.
+
+The Institute will have funds to support a limited number of
+mathematicians and physicists at the postdoctoral level.  Traditionally
+our application deadline is December 1.  However, we will be
+considering candidates for this special program until February 1.
+Application materials may be requested from Mr. Richard Lloyd, School
+of Mathematics, Institute for Advanced Study, Olden Lane, Princeton, NJ
+08540, (609) 734-8112.  His e-mail address is:  lloyd@math.ias.edu.
+Also, forms may be accessed via a "gopher" connection to:
+gopher.math.ias.edu, or via a "web" connection to:
+http://www.math.ias.edu/.
+
+If you know any outstanding recent Ph.D. who might be in a position to
+benefit from this program, please give them this information and
+encourage them to apply.
+
+It would be helpful to both the applicant and to us to have letters of
+recommendation which focus on the ability of the applicant to benefit from
+being at the Institute during this special program.
+
+                                        Sincerely,
+
+
+
+                                        Robert MacPherson

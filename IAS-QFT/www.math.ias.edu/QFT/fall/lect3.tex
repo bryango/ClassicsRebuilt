@@ -1,0 +1,1075 @@
+
+%% This is an AMS-TeX file.
+%% The command to compile it is: amstex <file>
+%%
+\input amstex
+\documentstyle{amsppt}
+\loadeusm
+\magnification=1200
+\pagewidth{6.5 true in}
+\pageheight{8.9 true in}
+
+\catcode`\@=11
+\def\logo@{}
+\catcode`\@=13
+
+\NoRunningHeads
+
+\font\boldtitlefont=cmb10 scaled\magstep1
+\font\bigboldtitlefont=cmb10 scaled\magstep2
+
+\def\dspace{\lineskip=2pt\baselineskip=18pt\lineskiplimit=0pt}
+
+
+\def\SO{\text{\rm SO}} 
+\def\plus{{\sssize +}}
+\def\oplusop{\operatornamewithlimits{\oplus}\limits}
+\def\Piop{\operatornamewithlimits{\Pi}\limits}
+\def\prodop{\operatornamewithlimits{\prod}\limits}
+%\def\w{{\mathchoice{\,{\scriptstyle\wedge}\,}
+%  {{\scriptstyle\wedge}}
+%  {{\scriptscriptstyle\wedge}}{{\scriptscriptstyle\wedge}}}}
+\def\Le{{\mathchoice{\,{\scriptstyle\le}\,}
+  {\,{\scriptstyle\le}\,}
+  {\,{\scriptscriptstyle\le}\,}{\,{\scriptscriptstyle\le}\,}}}
+\def\Ge{{\mathchoice{\,{\scriptstyle\ge}\,}
+  {\,{\scriptstyle\ge}\,}
+  {\,{\scriptscriptstyle\ge}\,}{\,{\scriptscriptstyle\ge}\,}}}
+\def\vrulesub#1{\hbox{\,\vrule height7pt depth5pt\,}_{#1}}
+%\def\rightsubsetarrow#1{\subset\kern-6.50pt\lower2.85pt
+%     \hbox to #1pt{\rightarrowfill}}
+%\def\mapright#1{\smash{\mathop{\,\longrightarrow\,}\limits^{#1}}}
+\def\arrowsim{\smash{\mathop{\to}\limits^{\lower1.5pt
+  \hbox{$\scriptstyle\sim$}}}}
+\def\Fdots{\hbox{$:\!\!F\!\!:$}}
+
+\def\Fbar{\overline{F}}
+\def\hhbar{\bar{h}}
+\def\Vbar{\overline{V}} \def\tr{{\text{\rm tr}}}
+%\def\Qbar{\overline{Q}}
+%\def\Ebar{\overline{E}}
+%\def\fbar{\overline{f}}
+%\def\gbar{\overline{g}}
+%\def\Sbar{\overline{S}}
+%\def\scrRbar{\overline{\scrR}}
+%\def\scrSbar{\overline{\scrS}}
+
+%\def\Stil{\widetilde{S}}
+\def\scrEtil{\widetilde{\scrE}}
+%\def\scrStil{\widetilde{\scrS}}
+%\def\scrTtil{\widetilde{\scrT}}
+%\def\rhotil{\tilde{\rho}}
+\def\grStil{\widetilde{\grS}}
+\def\tilSt{\widetilde{St}}
+\def\tilG'{\widetilde{G'}}
+
+\def\spinact{s}
+\def\spinel{\tau}
+
+
+\def\uhat{\widehat{u}}
+\def\Phat{\widehat{P}}
+\def\Ghat{\widehat{G}}
+
+\def\QFT{\text{\rm QFT}}
+\def\End{\text{\rm End}} \def\Spec{\text{\rm Spec}}
+\def\Cl{\text{\rm Cl}} \def\Sol{\text{\rm Sol}}
+\def\id{\text{\rm id}} \def\odd{\text{\rm odd}}
+\def\im{\text{\rm Im}} \def\even{\text{\rm even}}
+\def\const{\text{\rm const}} \def\Ker{\text{\rm Ker}}
+\def\supp{\text{\rm supp}}
+\def\Map{\text{\rm Map}}
+\def\Sym{\text{\rm Sym}}
+%\def\Stab{\text{\rm Stab}}
+%\def\Hom{\text{\rm Hom}}
+%\def\Vbarspace{\overline {V}_{space}}
+%\def\Vspace{ V_{space}}
+%\def\SO{\text{\rm SO}} 
+\def\Spin{\text{\rm Spin}} \def\spin{\text{\rm spin}}
+%\def\Res{\text{\rm Res}}
+%\def\Aut{\text{\rm Aut}}
+%\def\Out{\text{\rm Aut}}
+%\def\QFT{\text{\rm QFT}}
+%\def\SU{\text{\rm SU}} \def\Lie{\text{\rm Lie}}
+%\def\SL{\text{\rm SL}} 
+
+\def\dbC{{\Bbb C}} 
+\def\dbR{{\Bbb R}}
+\def\dbZ{{\Bbb Z}} 
+
+\def\gr#1{{\fam\eufmfam\relax#1}}
+
+%Euler Fraktur letters (German)
+\def\grA{{\gr A}}	\def\gra{{\gr a}}
+\def\grB{{\gr B}}	\def\grb{{\gr b}}
+\def\grC{{\gr C}}	\def\grc{{\gr c}}
+\def\grD{{\gr D}}	\def\grd{{\gr d}}
+\def\grE{{\gr E}}	\def\gre{{\gr e}}
+\def\grF{{\gr F}}	\def\grf{{\gr f}}
+\def\grG{{\gr G}}	\def\grg{{\gr g}}
+\def\grH{{\gr H}}	\def\grh{{\gr h}}
+\def\grI{{\gr I}}	\def\gri{{\gr i}}
+\def\grJ{{\gr J}}	\def\grj{{\gr j}}
+\def\grK{{\gr K}}	\def\grk{{\gr k}}
+\def\grL{{\gr L}}	\def\grl{{\gr l}}
+\def\grM{{\gr M}}	\def\grm{{\gr m}}
+\def\grN{{\gr N}}	\def\grn{{\gr n}}
+\def\grO{{\gr O}}	\def\gro{{\gr o}}
+\def\grP{{\gr P}}	\def\grp{{\gr p}}
+\def\grQ{{\gr Q}}	\def\grq{{\gr q}}
+\def\grR{{\gr R}}	\def\grr{{\gr r}}
+\def\grS{{\gr S}}	\def\grs{{\gr s}}
+\def\grT{{\gr T}}	\def\grt{{\gr t}}
+\def\grU{{\gr U}}	\def\gru{{\gr u}}
+\def\grV{{\gr V}}	\def\grv{{\gr v}}
+\def\grW{{\gr W}}	\def\grw{{\gr w}}
+\def\grX{{\gr X}}	\def\grx{{\gr x}}
+\def\grY{{\gr Y}}	\def\gry{{\gr y}}
+\def\grZ{{\gr Z}}	\def\grz{{\gr z}}
+
+
+\def\scr#1{{\fam\eusmfam\relax#1}}
+
+\def\scrA{{\scr A}}   \def\scrB{{\scr B}}
+\def\scrC{{\scr C}}   \def\scrD{{\scr D}}
+\def\scrE{{\scr E}}   \def\scrF{{\scr F}}
+\def\scrG{{\scr G}}   \def\scrH{{\scr H}}
+\def\scrI{{\scr I}}   \def\scrJ{{\scr J}}
+\def\scrK{{\scr K}}   \def\scrL{{\scr L}}
+\def\scrM{{\scr M}}   \def\scrN{{\scr N}}
+\def\scrO{{\scr O}}   \def\scrP{{\scr P}}
+\def\scrQ{{\scr Q}}   \def\scrR{{\scr R}}
+\def\scrS{{\scr S}}   \def\scrT{{\scr T}}
+\def\scrU{{\scr U}}   \def\scrV{{\scr V}}
+\def\scrW{{\scr W}}   \def\scrX{{\scr X}}
+\def\scrY{{\scr Y}}   \def\scrZ{{\scr Z}}
+
+\def\gr#1{{\fam\eufmfam\relax#1}}
+
+%Euler Fraktur letters (German)
+\def\grg{{\frak g}}
+\def\grp{{\frak p}}
+
+
+%\NoBlackBoxes
+\document
+
+\centerline{\bigboldtitlefont Lecture 3}
+
+\bigskip\centerline{\boldtitlefont Free QFT}
+
+\centerline{David Kazhdan}
+
+
+\dspace
+\bigskip\bigskip
+
+
+
+
+
+\subhead{3.1} {Some examples of free classical field theories}\endsubhead
+As was explained in Bernstein's lectures, for any classical
+field theory the space $\Sol$ of stationary points of
+Lagrangian carries a canonical symplectic form, or at least 
+a closed $2$-form.
+%%%%%%%%%%It is obtained from a canonical 2-form on $M$ with values in
+%%%%%%%%%%$H^{\text{top}-1}(M)$,  by integrating %%%%%%%%%%
+%%%%%%%%%%the  $H^{\text{top}-1}(M)$-classes along a ``space-like''
+%%%%%%%%%%codimension 1 cycle  on $M$.  
+ 
+The theory is called free if $\Sol$ is isomorphic to a
+linear space with a constant $2$-form and linear action of the
+Poincar\'e group.
+Let us consider some examples.
+
+%\smallskip\noindent
+\example{Example 1. 
+A scalar boson field in dimension $(1,d-1)$}
+
+\noindent
+A classical field is a real-valued function on
+$\dbR^{1,d-1}$.
+The Langrangian is given by:
+$$
+\scrL(\varphi)=\vert d\varphi\vert^2-m^2\varphi^2.
+$$
+The space of stationary points is: $\Sol=\{\varphi\vert
+\square \varphi+m^2\varphi=0\}$.
+It is linear, the symplectic form is constant.
+It is given by:
+ $[\varphi_1,\varphi_2]=\int\limits_{\Gamma}
+*(\varphi_1 d\varphi_2-\varphi_2 d\varphi_1)$ for
+$\varphi_1,\varphi_2\in\Sol$, where $\Gamma$ is a space-type
+hypersurface in $V$.
+By a space-like hypersurface we mean a complete smooth
+oriented hypersurface such that the normal vector at each
+point lies in $V_+$ (for example the hyperplane
+$\{t=\const\}$ is space-like).
+Since $*(\varphi_1 d\varphi_2-\varphi_2 d\varphi_1)$ is
+closed and sufficiently rapidly decaying the integral does
+not depend on the choice of a hypersurface. (The condition of Schwartz
+decay in space directions is tacitly imposed on the classical solutions
+under consideration throughout the lecture). 
+\endexample
+
+%\smallskip\noindent 2)\enspace
+\example{Example 2. Spinors}
+Let $V$ be $10$-dimensional, or of any dimension $n=8k+2$.
+Then the spinor representation $S$ decomposes as $S=S^+\oplus
+S^-$, and $S^+$, $S^-$ are real.
+There exists a unique symmetric pairing
+$\pi\colon\,S^+\times S^+\to V$ (see \S {3.16} in Deligne's 
+``Notes on spinors'' on this site). 
+We also have a pairing $(\quad,\quad)\colon\, S^+\times
+S^-\to\dbR$ and the action map $\spinact :S^\pm \otimes V\to
+S^\mp$.
+The space of classical fields is defined to be the space of maps:
+$\Map(V,\dbR^{0,1}\otimes
+S^+)=\Pi\overline{\Sol}$ where
+$\overline{\Sol}=\Map(V,S^+)$.
+We define Lagrangian by: $\scrL(\psi)=(\partial\psi,\psi)$.
+Here $d\psi\in\Omega^1(V,\dbR^{0,1}\otimes
+S^+)=\Gamma(V,\dbR^{0,1}\otimes S^+\otimes V)$, and
+$\partial\psi \overset\text{def}\to=
+\spinact d\psi\in\Gamma(V,\dbR^{0,1}\otimes S^-)$.
+We have: $\Sol=\{\psi\vert \partial\psi=0\}$,
+it is a purely odd vector space.
+Giving a symplectic form on $\Sol$ is equivalent to giving a
+symmetric form on $\overline{\Sol}$.
+The symmetric form is constant and is given by:
+$(\psi_1,\psi_2)=\int\limits _\Gamma\pi(\psi_1,\psi_2)$ where $\Gamma$
+is a space-type hypersurface, and we use the
+isomorphism $V\simeq\Lambda^{d-1}(V^*)$ provided by the
+volume form on $V$ to interpret $\pi(\psi_1,\psi_2)$
+as a $(d-1)$-form on $V$.
+\endexample
+
+
+\example{Example 3. Free electro-dynamics in any dimension}
+
+\noindent
+Let $M$ be the space of $1$-forms on $V$ modulo the exact
+forms.
+The Lagrangian $\scrL\colon\,M\to\Omega^d(V)$ is as follows:
+$$
+\scrL(\alpha)=\alpha\cdot (d*d)\alpha.
+$$
+We have: $\Sol=\{\alpha\vert d*d\alpha=0\}/\{\text{exact
+$1$-forms}\}$.
+We will write down the symplectic form using Fourier
+transform.
+The Fourier transform of the exact sequence
+$$
+0 @>>> \Omega^0(V)/\dbR @>d>> \Omega^1(V)
+@>{*d*d}>> \Omega^1(V)
+$$
+looks as follows:
+$$
+0 @>>> \scrS(V) @>{\nu}>> \scrS(V)\otimes V
+@>{\eta}>> \scrS(V)\otimes V
+$$
+where $\scrS(V)$ is the Schwartz space, and:
+$$
+\align
+\nu(f)(p) &=f(p)p\quad\text{for $p\in V,\,f\in\scrS(V)$},\\
+\eta(G)(p) &=(G(p),p)p-(p,p)G(p).
+\endalign
+$$
+Let $\scrO_0=\{p\vert p^2=0,\, p\not=0\}$.
+Let $\scrN$ denote a vector bundle over $\scrO_0$, such
+that $\scrN_p=p^\perp/\dbR p$.
+
+\proclaim{Lemma}
+\roster
+\runinitem"a)"
+For any $G\in\Ker\,\eta$ we have $G(p)\in p^\perp$ for all
+$p\in\scrO_0$.
+
+\item"b)"
+The map $\Ker\,\eta\to\Gamma(\scrO_0,\scrN)$ given by $G\to
+G(p)/\dbR p$ is an isomorphism between $\Sol$ and
+$\{\gamma\in\Gamma(\scrO_0,\scrN)\vert
+\gamma(-p)=\overline{\gamma(p)}\}$.
+The symplectic form $[\quad,\quad]$ on $\Sol$ is constant
+and is given by
+$[\gamma_1,\gamma_2]=\int\limits_{\scrO_0^+}\im\,
+\gamma_1\overline{\gamma_2}$.
+\endroster
+\endproclaim
+\endexample
+
+\remark{Remark} It is a useful exercise to find an expression 
+for the symplectic form $[\quad,\quad]$ in terms of Fourier transform
+in examples 1,2 also.
+\endremark
+
+\subhead{3.2} {Clifford module}\endsubhead
+Quantization of  a free classical field theory is based on the following
+linear algebra construction.
+
+
+Let $H$ be a real superspace, equipped with an even 
+super-symplectic form $[\quad,\quad]: H\times H\to\dbR$.
+Let $\Cl^H$ be the corresponding Clifford (=Heisenberg) algebra.
+
+A complex polarization of $H$ is an automorphism
+$I\colon\,H\to H$, preserving $[\quad,\quad]$ and such that
+$I^2=-\id$.
+
+Define the maps $i_\pm\colon\, H\to H_\dbC$ by:
+$i_\pm(v)=v\pm i^{-1}Iv$.
+Let $H_\pm=\im$ $i_\pm$.
+Then $H_\pm$ is a complex isotropic subspace.
+We also have an antilinear isomorphism $^{\hbox{--}}\colon\,
+H_+\to H_-$.
+Define $(\quad,\quad)\colon\, H_+\times H_+\to\dbC$ by
+$(h_1,h_2)=\frac {i}{2}[h_1,\hhbar_2]$.
+
+\proclaim{Claim}
+\roster
+\runinitem"a)"
+$(\quad,\quad)$ is a super-hermitian form on $H_+$.
+
+\item"b)"
+$(\quad,\quad)$ is positive iff: $[h,h]>0$ for $h\in
+H^{\odd}-\{0\}$ and $[Ih,h]>0$ for $h\in H^{\even}-\{0\}$.
+\endroster
+\endproclaim
+
+\proclaim{Proposition}
+Let $(H,[\quad,\quad],I)$ be as before such that
+$(\quad,\quad)$ is positive.
+Then
+\roster
+\item"a)"
+there exists a unique up to unique isomorphism triple
+$(j_I,\scrD,\Omega)$ where: $j_I$ is a complex representation of
+$\Cl^H$ on $\scrD$ and $\Omega\in \scrD-\{0\}$ such that:
+
+%%%%%%%%%%\itemitem
+$j_I(\Cl^H)(\Omega)=\scrD$
+
+%%%%%%%%%%\itemitem
+$j_I(H_-)(\Omega)=0$.
+
+\item"b)"
+There exists a unique positive Hermitian form
+$(\quad,\quad)_\scrD$ on $\scrD$ such that
+$(\Omega,\Omega)=1$ and $j_I(h)$ is an antiHermitian operator
+on $\scrD$ for $h\in H$.
+\endroster
+\endproclaim
+
+\remark{Remark}
+We have an embedding $\Sym(H_+)\hookrightarrow \Cl^H$, which
+induces an isomorphism:\break
+ $j_{H_+}\colon\,\Sym(H_+)\arrowsim
+\scrD$, where $j_{H_+}(h)=j_I(h)(\Omega)$.
+The algebra $\Cl^H$ acts on $\scrD=\Sym(H_+)$ by
+differential operators.
+\endremark
+
+\remark{Remark}
+If $H$ is infinite-dimensional, then the representation
+depends essentially on the complex polarization $I$.
+For finite dimensional $H$ the $L^2$-completions of
+representations constructed via different polarizations are
+isomorphic.
+\endremark
+
+\remark{Remark}
+The above construction for the finite dimensional case is discussed in 
+Deligne's notes on quantization \S 3--7.
+\endremark
+
+\subhead{3.3} {Examples of free QFT's} \endsubhead
+\subsubhead
+Scalars
+\endsubsubhead  Let $H$ be the space of real solutions of:
+$\square\varphi+m^2\varphi=0$ and $[\quad,\quad]$ be the
+form on $H$ given by $[\varphi_1,\varphi_2]=\int_\Gamma *(\varphi_1
+d\varphi_2-\varphi_2 d\varphi_1)$ (Example 1 above).
+
+To  $f\in \scrS(V)$ there corresponds a classical observable,
+i.e. a function on $H$, given by $h\to \langle h, f\rangle _{L^2(V)}$. So in
+quantum theory  an operator
+ $\phi(f)$  should be defined for $f\in \scrS(V)$.
+
+Let us construct a positive complex polarization $I$ on
+$(H,[\quad,\quad])$.
+We describe $I$ in terms of Fourier transform.
+The Fourier transform gives an isomorphism
+$H=\{f\in\scrS_\dbC(\scrO_m)\vert f(-p)=\overline{f(p)}\}$,
+where $\scrO_m=\{p\in V-\{0\}\vert p^2=m^2\}$.
+We have: $\scrO_m=\scrO_m^+\sqcup \scrO_m^-$ (union of $2$
+connected components).
+Restriction to $\scrO_m^+$ defines an isomorphism
+$H\arrowsim \scrS_\dbC(\scrO_m^+)$.
+Since $\scrS_\dbC(\scrO_m^+)$ has natural complex structure
+and
+$\scrS_\dbC(\scrO_m^+)\subset\scrS_\dbC(\scrO_m)=H_\dbC$
+is an isotropic subspace, we get a positive complex
+polarization of $H$.
+Consider the ``canonical'' representation
+$j_I\colon\,\Cl^H\to\End\,\scrD$ described above.
+Let $\scrH=\overline{\scrD}$ be the Hilbert space completion
+with respect to the invariant Hermitian form (see
+Proposition).
+Since the action of $P$ on $H$ commutes with $I$, we get an
+action of $P$ on $\scrH$.
+
+We define  the field operators
+$\phi\colon\scrS(V)\to\End(\scrD)$ as the composition 
+$$\scrS(V)\owns f @>>> \scrF(f) @>>> \scrF(f)|_{\scrO_m}
+@> j_I>> \End \scrD$$
+where we consider the restriction $ \scrF(f)|_{\scrO_m}$ as
+an element of $H$. 
+
+
+Let us finally analyze the support of the spectral measure
+of $\scrH$ considered as a $V$-module.
+We obviously have: $\Spec\,\rho\vrulesub{V}=\scrO_m^+$,
+where $\rho$ denotes the action of $P$ on $H_+$.
+Recall that $j_{H_+}\colon\,\Sym\,H_+\arrowsim \scrD$ is an
+isomorphism.
+
+Hence $\Spec\,U\vrulesub{V}$ is the closure of the set 
+$\{0\}\cup \scrO_m^+\cup
+\scrO_m^++\scrO_m^+\cup\ldots$ where we use the notation
+$A+B=\{a+b\, \vert \, a\in A, b\in B\}$, and $U$ stands for the
+representation of $P$ on $\scrH$.
+It is easy to see that $\Spec\,U\vrulesub{V}=\{0\}\sqcup
+\scrO_m^+\sqcup\{p\in V_+\vert p^2\Ge 2m\}$.
+
+\subsubhead
+Spinors
+\endsubsubhead
+We keep the notations of Example 2 above.
+Let $H=\Pi(\{\psi\vert \partial\psi=0\})$.
+(Recall that $\Pi$ denotes change of parity of a
+superspace).
+
+A classical observable is associated with $f\in \scrS^{\scrS^-}(V)$,
+ and is given
+by $h\to \int _V \left( f(v), h(v) \right) dv$.
+
+In Fourier coordinates the classical field equation becomes:
+$s(p,\scrF (\psi)(p) )=0$.
+Since $\scrD^2=\square$ we see that for any $\psi\in H$:
+$\supp(\scrF(\psi))\subset\scrO_0$.
+
+Let $\scrA$ be a subbundle of the trivial bundle over $\scrO_0$
+with fiber $S^+$, such that $\scrA_p\subset
+S^+=\Ker\,\spinact(p)$.
+
+Then $H\cong \{f\in\scrS_\dbC(\scrO_0,\scrA)\vert f(-p)=
+\overline{f(p)}\}$.
+The symplectic form on $\Sol$ is the same as symmetric
+pairing on $H$, and it is given by:
+$(f_1,f_2)=\int\limits_{\scrO_0^+}\frac{\pi(f_1(p),f_2(-p))}{p}
+\mu_0$, where we use linear dependence of the vectors
+$\pi(f_1(p),f_2(-p))\,$, $p$, and denote by
+$\frac{\pi(f_1(p),f_2(-p))}{p}$ the coefficient of
+proportionality. (This formula is equivalent to the one given in Example
+2).
+
+Using the decomposition $\scrO_0=\scrO_0^+\sqcup
+\scrO_0^-$, we obtain  a polarization and the
+canonical representation $j_I\colon\,\Cl^H\to\End\,\scrD$.
+If $U$ is, as usually, the action of $P$ on $\scrD$, then
+$\Spec\,U\vrulesub{V}=\Vbar_+$.
+
+The field operators are also defined similarly to the above. 
+Namely, for $f\in \scrS(V,S^-)$ the section
+ $\varkappa(f)$ such that $\varkappa (f)(p)=s(p,\scrF(f)\vrulesub{\scrO_0}
+(p) )$ 
+ lies in $H$ because $s(p)^2=0$ for $p\in \scrO_0$.
+We  define
+$\phi(f)=j_I(\varkappa(f))\in \End\,\scrD$. 
+
+\subsubhead
+Photones {\rm (Free quantum electro-dynamics
+= free abelian gauge theory)}
+\endsubsubhead
+Here $\Sol\cong \{f\in\scrS(\scrO_0,\scrN)\vert
+f(-p)=\overline{f(p)}\}$.
+Polarization comes again from the decomposition:
+$\scrO_0=\scrO^+\sqcup\scrO^-$.
+Thus we obtain the canonical representation
+$j_I\colon\,\Cl^H\to\End\,\scrD$.
+
+Recall that in classical situation (Example 3)
+the space Sol is a subspace in $\Omega^1(V)/$
+$d\Omega^0(V)$.
+So to any 2-form $\omega \in \Omega^2(V)$ there corresponds
+a classical gauge-invariant observable:
+$$\Omega ^1/d\Omega ^0 \owns \alpha \to \int \limits _V d\alpha
+\wedge *\omega$$
+
+%%%%%%%%%%Thus we have to associate with $\omega \in \Omega ^2(V)$
+%%%%%%%%%%a quantum observable $\phi (\omega)\in \End (\scrD)$.
+
+Consider the map $\varkappa\colon\,\Omega^2(V)=\scrS^{\Lambda^2 V}\to H =
+S_\dbC(\scrO_0,\scrN)$ given by
+$\varkappa(\omega)(p)=i_p\scrF(\omega)(p)\in p^\perp$.
+Now we define the field map: $\phi(\omega)=j_I(\varkappa(\omega))$.
+
+
+
+\subhead{3.4} {Free QFT of arbitrary spin}\endsubhead
+A QFT is called  free of mass $m$ if the field operator $\phi(f)$ depends
+only on $\scrF(f)|_{\scrO_m}$. (In other words, the classical field equation
+$\square +m^2=0$ is satisfied  on quantum level).  
+
+All examples considered in the previous section are of this kind.
+
+In this section we give a construction of a  free QFT of mass
+$m$ which generalizes these examples. 
+
+To describe it we need some preliminaries. 
+
+Recall that  $G=\Spin(d-1,1)$, and $\spinel\in G$ is the spin-element.
+
+ We fix the mass 
+of theory $m \Ge 0$. Let $St$ denote the stabilizer of a point 
+$p \in \scrO _m ^+$. 
+
+ If $m>0$ then  $St=\Spin (p^\perp) \cong \Spin (d-1)$.
+If $m=0$ then $St$ has nontrivial 
+unipotent radical $N$ and $St/N =\Spin (p^\perp/\dbR p)\cong \Spin(d-2)$.
+ Let $G'$ denote a maximal semisimple subgroup of $St$.
+ (So $G'=St$ if $m>0$, and $G'=St/N$ if $m=0$). 
+
+
+ We fix a real representation $R$ of $G$, and
+$\rho$ of $G'$.
+ We will view $R,\,\rho$ as representations of real algebraic
+groups defined over $\dbR$.
+
+  $\rho$ can be also viewed as representation of
+the group $St$. We  fix a nonzero morphism
+ $ i:R|_{St}\to \rho$.
+
+We do not have to assume that  $R,\,\rho$ are irreducible, but it is
+convenient to require that $\spinel$ acts on $R$ and $\rho$
+by constant, i.e. $R$ and $\rho$ are sums of irreducible representations of
+equal spin. This constant will be denoted by $(-1)^{\spin(R)}$, 
+$(-1)^{\spin (\rho)}$ respectively. 
+  Obviously  $(-1)^{\spin(R)}=(-1)^{\spin (\rho)}$.
+
+Let $\tilSt$ denote the subgroup $\{g\in G| g(p)=\pm p\}$; let 
+$\tilG'$ denote a maximal semisimple
+ subgroup of $\tilSt$. (So $\tilG'=\tilSt$
+if $m>0$, and  $\tilG'=\tilSt/N$ if $m=0$). Clearly $G'$ is a subgroup of
+$\tilG'$ of index 2. 
+
+More precisely, if $m>0$ then $\tilG' \cong Pin(n)$. If $m=0$ then $\tilG'
+\cong  
+(\Spin(d-2)\times \dbZ _4 )/(\spinel , -1)$.
+
+ $\tilG'$ carries the structure of algebraic group  over
+$\dbR$. Note that 
+ the nontrivial connected component of $\tilG'$ has {\it no real points}.
+
+We assume that complexification of $\rho$ extends to a representation
+of $\tilG'$ in such a way that  the map $i$ is $\tilG'$-equivariant.
+ (The representation extends automatically if $m=0$
+or if $d$ is even).
+
+Let $K$ be the normalizer in $\tilG' (\dbC)$ of the subgroup of real points
+ $\tilG' (\dbR)=G'(\dbR)$. Then $K$ is a compact Lie subgroup in the
+Lie group  $\tilG' (\dbC)$; moreover, $K$ has 2 connected components
+and the connected component of 1 is $G'(\dbR)$. 
+
+We have: $K = \{g\in \tilG'(\dbC) |\pi (g) \in
+\SO(d-1,1)(\dbR)\}$ where $\pi: \Spin \to \SO$ is the projection. 
+
+ Note that  $K$ is {\it not} the set of real points of $\tilG'$.
+ More precisely, for  $g\in K-G'(\dbR)$ we have $\overline g = g\cdot \spinel$.
+
+
+Since $K$ is compact, the space of $\rho_\dbC$ carries a $K$-invariant
+Hermitian form $\left<\quad,\quad\right>$. It also yields a quadratic form
+$(\quad,\quad)$, where $(x,y)=\left< x, \overline y \right>$. The quadratic
+form restricted to the subspace of real vectors (the space of $\rho$)
+is real and positive definite. 
+
+\medskip
+
+Now let us return to QFT.   
+
+
+ 
+To $\rho$ there corresponds 
+a $G$-equivariant real vector bundle $\scrA _\rho$ on $\scrO _m^+$;
+its complexification will be denoted by $ \scrA _\rho^\dbC$.
+Let  $H$ be the space of Schwartz sections  of  $ \scrA
+_\rho^\dbC$ viewed as a real vector space. 
+
+ As usual we get  the
+structure of a super-space on $H$ by declaring the parity of $H$ to be 
+$(-1)^{\spin(\rho)}$. 
+
+
+The bundle  $\scrA_\rho^\dbC$ carries a
+$G$-equivariant Euclidean and Hermitian metrics, obtained
+from metrics $(\quad , \quad)$, $\left<\quad,\quad \right>$
+on the space of $\rho_\dbC$ in the standard way. 
+We will abuse notations by denoting the metrics on the vector bundle by
+ $(\quad , \quad)$, $\left<\quad,\quad \right>$ also. Of course
+  $(\quad , \quad)|_{\scrA_\rho}$ is real and positive.  
+
+  A super-symplectic form on $H$ is  given by:
+$[h_1,h_2]=\int\limits_{\scrO_m^+} Im \left<h_1,\overline{h_2} \right>$
+if $H$ is even, and 
+$[h_1,h_2]=\int\limits_{\scrO_m^+} Re \left<h_1,\overline{h_2} \right>$
+if $H$ is odd. The obvious complex structure on $H$ yields the
+ positive polarization to be denoted  $I$.
+ Thus we get the canonical representation $\scrD\owns
+\Omega$ and its Hilbert space completion $\scrH$. 
+
+
+
+To  provide the field  map
+$\phi : \scrS^R \to \End (\scrD) $ we first construct 
+a map $\varkappa : \scrS^R \to H$ and then take $\phi = j_I \circ \varkappa$.
+
+
+To the morphism $i: R|_{St} \to \rho$
+there corresponds a map $\iota:R \to \Gamma (\scrA_\rho)$, where
+$\Gamma(\scrA_\rho)$ is the space of sections.
+
+
+
+Now we can define $\varkappa$. For $f\otimes r \in 
+ \scrS^R = \scrS \otimes R $ we put  
+$\varkappa (f\otimes r) = \scrF(f)|_{\scrO_m^+}\cdot \iota(r)$ 
+ where $\scrF$ stands for  Fourier transform as usual.  
+
+The data of QFT is constructed.
+
+\remark{Remark} In fact the maps $\varkappa$, $\phi$ are defined
+on a larger function space then the space of Schwartz section $\scrS^R$.
+Indeed, let $F$ be a Schwartz function on $\dbR^{d-1}$. Let $f$ be a
+generalized function on $V=\dbR \times \dbR^{d-1}$ of the form: $f =\delta
+_{t=t_0} \times F$ where $t$ is the coordinate on $\dbR$.  Then it is easy
+to see that $\scrF(f)|_{\scrO_m^+}$ is a Schwartz function on the
+hyperboloid $\scrO _m^+$. Thus $\varkappa$ and $\phi$ are defined on the
+generalized sections of $\scrR$ of the form $f\cdot r$ for $f$ as above
+and $r\in \dbR$. 
+
+
+\endremark
+
+ Let us now check the axiom $\epsilon)$ of
+Wightman QFT (the space-locality property).
+
+We need the following
+
+\proclaim{Key lemma} 
+For any $r_1,\,r_2 \in R$ the real-valued function on $\scrO_m^+$
+defined by $P_{r_1,r_2}(p)=(\iota(r_1),\iota(r_2))|_p$ extends to  a polynomial
+function on $\scrO_m$. This polynomial function is even if $R$ and $\rho$
+have trivial spin, and odd otherwise.
+\endproclaim
+
+\demo{Proof of the Lemma} We can view $\scrA_\rho$ as an algebraic
+vector
+bundle on the real algebraic variety $\sigma_m$, and $\iota(r)$
+for $r\in R$ -- as  an algebraic section of  this vector bundle. 
+
+Since the metric on $\scrA_\rho$ is algebraic as well, 
+the first part of the claim is clear. 
+
+For any $g\in G(\dbC)$ such that $g(p)=-p$
+we have by the definition 
+$$
+(\iota(r_1),\iota(r_2))_{-p}=
+(\iota(g(r_1)),\iota(g(r_2)))_{p}=
+(i(g(r_1)),i(g(r_2)))
+$$
+
+In particular the last equality holds for any $g\in K-G'(\dbR)$.
+
+As was mentioned above for
+$g\in K-G'(\dbR)$ we have $g^{-1} \overline g
+=\spinel$. So for such $g$:
+$$
+\multlinegap{0pt}
+\multline
+(i(g(r_1)),i(g(r_2)))=\langle i(g(r_1)),
+\overline{i(g(r_2))}\rangle= \langle(i(r_1)),
+\overline g(i(r_2))\rangle= \langle i(r_1),
+g^{-1} \overline g(i(r_2))\rangle\\
+= \langle i(r_1),
+\spinel (i(r_2))\rangle=(-1)^{\spin (\rho)} \langle i(r_1),
+i(r_2)\rangle=(-1)^{\spin (\rho)}(\iota(r_1),\iota(r_2))_{p}
+\endmultline
+$$
+
+So  for $r_1,\,r_2 \in R$ 
+we proved that $\left(\iota(r_1),\iota(r_2)\right)_{-p}=
+(-1)^{\spin (\rho)}\left(\iota(r_1),\iota(r_2)\right)_{p}$. 
+Since the map
+$(r_1,r_2)\to P_{r_1,r_2}$ is $G$-equivariant it 
+follows that the same
+holds for any $p'\in \sigma _m ^+$, and the Lemma is proven. 
+\enddemo
+
+\demo{Proof of space-locality}
+It is enough to check that if
+$\varphi_1, \varphi  _2 \in \scrS^R$ are 
+space-like separated then the
+scalar product $[\varkappa (\varphi _1),\varkappa(\varphi_2)]$ 
+vanishes.
+
+Let us take $F_1,\, F_2 \in \scrS(\dbR^{d-1})$ such that
+$\supp (F_1)\cap \supp (F_2) 
+=\emptyset$. Let $f_j = \delta _{t=0} \times
+F _j$ for $j=1,2$. For $r_1,\, r_2 \in R$ the expression $f_j\cdot
+r_j$ is a generalized section of $\scrR$. As was mentioned above
+$\varkappa$ is actually defined on such sections.
+
+Since $\varkappa$ and $[\quad , \quad]$ are $P$-equivariant 
+it sufficies
+to check that $[\varkappa(f_1\cdot r_1),\varkappa(f_2\cdot r_2)]=0$
+for $f_j, \, r_j$ as above.
+
+Put $g_j=\scrF(f_j)$. 
+Then the functions $g_j$ satisfy
+$g_j(p+(t,\vec 0))=g_j(p)$, so we can write $g_j(t, q)=
+g_j(q)$ where $t\in \dbR$, $q\in \dbR^{d-1}$.
+We also have $g_j(-p)=\overline{g_j(p)}$ 
+since  $f_j$ is a real function. So:
+$$
+\multlinegap{0pt}
+\multline
+[\varkappa (f_1\cdot r_1),\varkappa (f_2\cdot r_2)]
+=\const \cdot 
+\int\limits_{\sigma_m^+} 
+\left(g_1 \overline{g_2} - (-1)^{\spin (\rho)} 
+g_2\overline{g_1}\right)\left(\iota (r_1),\iota (r_2)\right)d\mu\\
+=\const \cdot 
+\int\limits_{\dbR^{d-1}} \left(g_1(q) \overline{g_2(q)} -
+(-1)^{\spin (\rho)}g_2(q) \overline{g_1(q)}\right)
+P_{r_1,r_2}(|q|,q) \cdot |q|^{-1} d q
+\endmultline
+$$
+(notations of the Key Lemma). It can be rewritten as: 
+$$
+\multlinegap{0pt}
+\multline
+\int\limits
+_{\dbR^{d-1}} \left(g_1(q) \overline {g_2(q)} -
+ (-1)^{\spin (\rho)} 
+g_1(-q) \overline {g_2(-q)}\right)
+P_ {r_1,r_2}(|q|,q) \cdot |q|^{-1} d q\\
+=\int\limits_{\dbR^{d-1}} (g_1(q) \overline {g_2(q)})
+\left(P_{ r_1,r_2}(|q|,q)
+- (-1)^{\spin (\rho)} P_{ r_1,r_2}
+(|q|,-q) \right)
+ \cdot |q|^{-1} d q
+\endmultline
+$$
+
+By the Key Lemma 
+$$ 
+P_{ r_1,r_2}(|q|,q)
+- (-1)^{\spin (\rho)} P_{ r_1,r_2}
+(|q|,-q)  = P_{ r_1,r_2}(|q|,q)
+-  P_{ r_1,r_2} (-|q|,q)
+$$ 
+and $ P_{ r_1,r_2}(|q|,q)$ is a polynomial function. 
+
+But then it follows that the 
+function $Q(q)=\vert q\vert^{-1}(P_{ r_1,r_2}(\vert q\vert,q)
+-P_{r_1,r_2}(-\vert q\vert,q))$ is again polynomial. 
+
+Fourier transform of
+multiplication by a polynomial function is a differential operator,
+in particular  is local. Thus we have:
+$$
+\align
+[\varkappa(f_1\cdot r_1),\varkappa(f_2\cdot r_2)]&=
+\int\limits _{\dbR^{d-1}}(g_1(q)\overline{g_2(q)})Q(q)dq
+=(Q(q)\cdot g_1, g_2)_{L^2(\dbR^{d-1})}\\
+&=(\hat{Q}(F_1), F_2)_{L^2(\dbR^{d-1})} = 0
+\endalign
+$$
+where $\hat {Q}$ is the differential operator with constant coefficients
+corresponding to $Q$ and the last equality is obvious because  
+$F_1, \, F_2$ have separated supports.
+
+Space-locality is proved.
+\enddemo
+
+
+\subhead{3.5} {Wightman functions of a free
+field theory; truncated Wightman functions} \endsubhead
+The next statement characterizes free theories in terms of Wightman
+functions. 
+
+\proclaim{Claim}
+Let $\scrW_n$ be the Wightman functions of the free scalar
+$\QFT$ of mass $m$.
+Then we have
+$\scrW_2(v_1,v_2)=\scrF(\delta_{\scrO_m^\plus})$ 
+$(v_1-v_2)$; $\scrW_n=0$ if $n$ is odd, and
+$$
+\scrW_{2k}(v_1,\dotsc,v_{2k})=\sum
+\scrW_2(v_{i_1},v_{j_1})\scrW_2(v_{i_2},v_{j_2})\ldots
+\scrW_2(v_{i_k},v_{j_k}),
+$$
+where the sum is taken over all partitions of
+$\{1,\dotsc,n\}$ in pairs $(i_1,j_1),\dotsc,(i_k,j_k)$,
+and $i_r<j_r$.
+\endproclaim
+
+Proof is straightforward.
+
+This statement can be easily generalized to other free
+$\QFT$'s. 
+
+It also can be reformulated using the so-called {\it truncated Wightman
+functions}. 
+
+Since these objects will be used in the next lecture, let us give their
+definition. 
+We set: $$\scrW_n^{\tr}\,\,{\overset\text{def}\to=}
+\sum\limits_{\pi=(\pi_1,\dotsc,\pi_k)}(-1)^{k-1}
+ (k-1)!
+\Piop_{\ell=1}^k
+\scrW_{ |\pi_\ell |}
+(v_{i_1}, v_{i_2},\dotsc,
+v_{i_{|\pi_\ell |}})$$
+
+Here the sum is over all decompositions of $\{1,..,n\}$
+into the union of disjoint nonempty subsets $\pi_1,..,\pi_k$,
+(the order of  $\pi_1,..,\pi_k$ does not matter), 
+and $i_1<i_2  \dotsc < i_{|\pi_\ell|}$
+are the elements of $\pi_\ell$.
+ 
+An equivalent equality is
+$$
+\scrW_n=\sum\limits_{\pi=(\pi_1,\dotsc,\pi_k)}
+\prod\limits_{\ell=1}^k \scrW^\tr_{ |\pi_\ell|}
+(v_{i_1}, \dotsc,
+v_{i_{|\pi_\ell|}})$$
+
+\proclaim{Corollary} For a free QFT we have $W^{\tr}_n = 0$ for $n> 2$. 
+\endproclaim
+
+
+
+
+
+
+\subhead{3.6} {Gaussian measures}\endsubhead
+One can also easily describe free field theory in Euclidean
+formulation.
+
+For a free QFT one can make sense of the measure $\nu$ on the space of
+tempered distributions discussed in lecture 2 (\S 2.3);
+ the corresponding measure is
+Gaussian. Here is the formal definition for the case of the scalar theory.
+
+\proclaim{Claim}
+Let $\grS$ ($e_1,\dotsc,e_n$) be the Schwinger functions of
+the free Euclidean scalar $\QFT$ of mass $m$.
+Then $\grS$ ($e_1,\dotsc,e_n$) is the moment of a Gaussian
+measure $\nu_m$ on the space of tempered distributions
+$\scrS'(E)$ with covariance  $ (-\square_E+m^2)^{-1}$.
+[So for $f\in\scrS$ we have
+$\scrF(\nu_m)(f)=e^{((-\square_E+m^2)^{-1} f,f)}$].
+\endproclaim
+
+
+\remark{Remark} Gaussian measure on a finite dimensional real vector space
+$H$ corresponding  to a quadratic form $\left<\quad,\quad\right>$
+is characterized by the equalities 
+$$
+\nu(1)=1;\ \  \ \,\nu\left(\frac{\partial\, P}{\partial h}\right)
+=-h^{\sssize\vee}\nu(P)
+$$
+ for any $h\in H$, and $P\in \Sym(H')$ a polynomial function on $H$. 
+(Here $\frac{\partial}{\partial h}$ is a constant vector field, and
+$h^{\sssize\vee}=\left<h,\quad\right>$ is a linear functional on
+$H$.)
+
+In our setting of kernel spaces ($H=\scrS'$, $H'=\scrS$
+and $\left<f,f\right>=
+\left((-\square +m^2) f,f\right)$) this is still so, if one requires that
+the equality holds for all $h$ for which it makes sense, namely for all
+$h\in \scrS\subset \scrS'$. 
+\endremark
+
+Reconstruction of the Hilbert space of a free QFT in terms of the Gaussian
+measure is based on the next Lemma.
+
+
+
+Let $I$ be a positive polarization of $H$, $[\quad,\quad]$ and let
+$\left<h_1,h_2\right>=[Ih_1,h_2]$. Then we have an imbedding
+$\scrD=\Sym(H_+)\hookrightarrow A_H$ defined by the
+decomposition $H_\dbC=H_+\oplus H_-$.
+
+\proclaim{Lemma}
+For $F_1,F_2\in\scrD$ we have
+$(F_1,F_2)_\scrD=\nu(F_1\Fbar_2)$
+\endproclaim
+
+We finish the lecture with discussion of 
+
+\subhead{3.7} {Normal ordering}\endsubhead
+In general in QFT one is interested in behavior of correlation functions near
+diagonals. Naively speaking, we would like to consider along with
+ operator-valued generalized function $\phi(v)$ also an operator-valued
+generalized
+ function $\phi^n(v)$. As usual such operator-valued
+functions should be encoded in correlation functions on $V_k$
+whose ``value at $(v_1,\ldots,v_k)$'' equals to $\left(\Omega,
+\phi^{n_1}(v_1)\cdot
+\ldots \cdot \phi^{n_k}(v_k)\Omega\right)$. If the naive definition would work,
+these correlators would obviously be the restrictions
+ of the original Wightman function to the corresponding diagonal.
+Of course this is not possible, since  Wightman functions are
+ singular along diagonals. Techniques to overcome this difficulty are
+ discussed in Witten's lecture 3; here we only present a simple
+ device, which leads to an answer in the free theory case (see also
+\S \S 3.2, 3.5 in Witten's lecture 3).
+
+Let $(\scrH, \phi, \scrD, \Omega)$ be the free scalar QFT. (The assumption
+ that the theory is scalar is not essential, and made for
+ notational convenience).
+
+ For any function $f\in \scrS$ let us write $f=f_++f_-$
+where $f_\pm \in \scrS_\dbC$ and $\scrF(f_\pm)|_{\scrO_m^\mp}=0$.
+
+Then define normally ordered power of the field operator by
+$$:\phi(f)^n:{\overset\text{def}\to=}
+ \sum \binom ni
+\phi(f_+)^i\phi(f_-)^{n-i}.$$ 
+
+\proclaim{Claim}
+
+ \roster
+\item"a)" For any $v\in V$, $x,y \in \scrD$ and $f\in \scrS$
+the limit ${\underset{f\to \delta_v}\to
+\lim} \left( :\phi( f)^n : (x),y\right)$ exists; we will write 
+$\left(:\phi^n(v):(x),y\right){\overset\text{def}\to=}
+{\underset{f\to \delta_v}\to \lim}\left( : \phi( f)^n : x,y\right)$. Thus the
+correlator $\left(\phi(v_1),..,:\phi^n(v_i) :,..,\phi(v_n)\right)$ is 
+a well-defined distribution.
+
+
+\item"b)" If $d=2$, then for $f\in \scrS$ there exists a well-defined
+endomorphism $:\phi^n(f):\in \End(\scrH)$ such that $\left(:\phi^n(f):
+(x),y\right)=\int f(v)\left(:\phi^n(v):(x),y\right) dv$.
+\endroster
+\endproclaim 
+
+In fact Claim b) is valid for much wider class of 2-dimensional theories
+than free ones; see \S 8.6 of [Glimm-Jaffe]. 
+
+One can define normal ordering more algebraically as follows.
+
+Recall that we have $H=\{\varphi\vert\square\varphi + m^2\varphi=0\}$,
+$[\varphi_1,\varphi_2]=\int *(\varphi_1
+d\varphi_2-\varphi_2 d\varphi_1)$.
+Consider a  Lagrangian subspace $L\subset H$,
+$L=\left\{\varphi\colon\frac{\partial}{\partial t}\,\varphi
+\vrulesub{t=0}=0\right\}$.
+Since $L$ is isotropic we have an embedding:
+$\Sym(L)\hookrightarrow\Cl^H$.
+Then the map  $F\to j_I(F)\Omega$ induces an isomorphism
+$j_L\colon\,\Sym(L)\arrowsim \scrD$ (because $H_\dbC=L\oplus
+H_-$).
+Also, the projection along $H_-$ induces an isomorphism
+$u\colon H_+\arrowsim L$.
+
+Now consider the endomorphism of $\Sym\,L$ given by the
+composition of the arrows:
+$$
+\spreadmatrixlines{1\jot}
+\matrix
+\Sym\,L &\overset{u^*}\to\longrightarrow & \Sym\,H_+\\
+\null\qquad\hbox{$\lower4pt\hbox{$\ssize j_L^{-1}$}\!\!\!\nwarrow$} 
+     &&\swarrow\!\!{\ssize j_{_{H_+}}}\\
+&\scrD&
+\endmatrix
+$$
+We denote this endomorphism by $F\to \Fdots\,\,$.
+
+
+\proclaim{Lemma}
+
+\roster
+\item"a)" For $\ell \in L$ we have $:\phi^n(\ell):=j_I(:\ell^n:)$.
+(The LHS is defined by Remark in \S 3.4).
+
+\item"b)"
+$F-\Fdots\in\oplusop_{k=0}^{n-1}\Sym^k(L)$ for  $F\in\Sym^nL$.
+
+\smallskip
+\item"c)"
+$\left( j_L(\Fdots ) \, ,j_L(G)\right)_\scrD=0$ for $F\in\Sym^nL$,
+ $G\in\Sym^k(L)$ $k<n$.
+\endroster
+\endproclaim
+
+\proclaim{Lemma}
+For any $F_1,F_2\in\Sym(L)$ we have:
+$$
+\left( j_L(F_1),j_L(F_2)\right)_\scrD=
+\nu_{\left<\,\,,\,\,\right>\vrulesub{L}}(F_1\cdot\Fbar_2)
+$$
+\endproclaim
+
+Let $\varkappa\in\End(\Sym\, L)$ be the second order
+differential operator corresponding to the form
+$\left<\quad,\quad\right>$.
+(So we have: $\varkappa(a^k)=k(k-1)$ $\left<a,a\right>a^{k-2}$
+for $a\in L$.)
+
+\proclaim{Lemma}
+$\Fdots=\exp\left(-\frac{\varkappa}{2}\right)F$.
+\endproclaim
+
+\proclaim{Corollary}
+$:\exp(\ell^{\sssize \vee}):=\exp\left(-\frac{(\ell , \ell)}{2}\right)
+\exp(\ell^{\sssize\vee})$, for $\ell\in L$.
+\endproclaim
+
+
+
+\centerline{\bf References}
+
+\medskip
+\ref
+\by B. Simon
+\book The $P(\phi)_2$ Euclidean (quantum) field theory; \S II.5
+\publ Princeton University Press
+\yr 1974
+\endref
+
+For a discussion of the Gaussian measure approach to free QFT see Chapter 3
+of {\it loc. cit.} or 
+\medskip
+\ref
+\by J. Glimm, A. Jaffe
+\book Quantum Physics. (A functional integral point of view), \S 6.2
+\publ Springer-Verlag
+\yr 1987
+\endref
+
+
+
+
+
+ 
+\enddocument
+
+
+
+

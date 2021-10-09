@@ -1,0 +1,1050 @@
+\documentstyle[12pt,epsf]{amsart}
+
+
+\setlength{\textwidth}{450pt}
+\setlength{\textheight}{600pt}
+\setlength{\topmargin}{0pt}
+\setlength{\oddsidemargin}{0pt}
+\setlength{\evensidemargin}{0pt}
+
+% automatic loading of rsfs fonts, if present
+\batchmode
+  \newfont{\footscrfont}{rsfs10}
+  \newfont{\footbbbfont}{msbm10}
+\errorstopmode
+
+\newif\ifscrf\scrftrue
+\ifx\footscrfont\nullfont
+  \scrffalse
+\fi
+
+\ifscrf
+  \newfont{\scrfont}{rsfs10 scaled\magstep1}  % rsfs12 does not exist
+  \newfont{\smallscrfont}{rsfs7}
+  \newfont{\tinyscrfont}{rsfs7}
+% \newfont{\footscrfont}{rsfs10}
+  \newfont{\smallfootscrfont}{rsfs7}
+  \newfont{\tinyfootscrfont}{rsfs7}
+\fi
+
+\makeatletter
+
+\newif\iffn\fnfalse
+
+\@ifundefined{reset@font}{\let\reset@font\empty}{} %needed for ancient LaTeX
+\long\def\@footnotetext#1{\insert\footins{\reset@font\footnotesize
+    \interlinepenalty\interfootnotelinepenalty
+    \splittopskip\footnotesep
+    \splitmaxdepth \dp\strutbox \floatingpenalty \@MM
+    \hsize\columnwidth \@parboxrestore
+   \edef\@currentlabel{\csname p@footnote\endcsname\@thefnmark}\@makefntext
+    {\rule{\z@}{\footnotesep}\ignorespaces
+      \fntrue#1\fnfalse\strut}}}
+\makeatother
+
+\ifscrf
+  \newcommand{\Scr}[1]{\iffn
+    \mathchoice{\mbox{\footscrfont #1}}{\mbox{\footscrfont #1}}
+    {\mbox{\smallfootscrfont #1}}{\mbox{\tinyfootscrfont #1}}\else
+    \mathchoice{\mbox{\scrfont #1}}{\mbox{\scrfont #1}}
+    {\mbox{\smallscrfont #1}}{\mbox{\tinyscrfont #1}}\fi}
+\else
+  \def\Scr{\cal}
+\fi
+
+
+%integral sign with cirlce is \oint
+
+%GIT quotient
+\newcommand{\catquot}{\mathchoice
+{\mathrel{\mskip-4.5mu/\!/\mskip-4.5mu}}
+{\mathrel{\mskip-4.5mu/\!/\mskip-4.5mu}}
+{\mathrel{\mskip-3mu/\mskip-4.5mu/\mskip-3mu}}
+{\mathrel{\mskip-3mu/\mskip-4.5mu/\mskip-3mu}}
+}
+
+%Hodge star (hstar) should probably not be \star
+\newcommand{\hstar}{\mathop{*}}
+
+% a wedgeproduct of a more reasonable size and spacing (from Robert Bryant)
+\def\wdg{{\mathchoice{\,{\scriptstyle\wedge}\,}{{\scriptstyle\wedge}}
+{{\scriptscriptstyle\wedge}}{{\scriptscriptstyle\wedge}}}}
+%should it be a mathbin?
+
+%line bundle (lb) and Lagrangian (lg) -- should have distinct fonts
+\newcommand{\lb}{{\Scr L}}
+\renewcommand{\lg}{{\cal L}}
+
+%same font for circle bundles
+\newcommand{\cb}{{\Scr S}}
+
+%coupling constant in gauge theory (\ee) should not be in mathitalic, to avoid
+%confusion with exponential
+\newcommand{\ee}{\text{e}}
+\newcommand{\gee}{\text{g}}
+
+%script A, the space of connections
+\newcommand{\cA}{{\cal A}}
+
+%script D, for use in pathspace measures
+\newcommand{\cD}{{\cal D}}
+
+%script H, for Hilbert space
+\newcommand{\cH}{{\cal H}}
+
+%notation for operators
+\newcommand{\cO}{{\cal O}}
+
+%standard blackboard bold items
+\newcommand{\IR}{{\Bbb R}}
+\newcommand{\IZ}{{\Bbb Z}}
+
+%operatornames
+\newcommand{\Hol}{\operatorname{\rm Hol}}
+\newcommand{\Maps}{\operatorname{\rm Maps}}
+\renewcommand{\Re}{\operatorname{\rm Re}}
+\newcommand{\Tr}{\operatorname{\rm Tr}}
+\newcommand{\vol}{\operatorname{\rm vol}}
+
+\numberwithin{equation}{section}
+
+\begin{document}
+
+\title[]{Lecture II-7: Abelian Duality}
+\author[]{Edward Witten$^*$}
+\thanks{$^*$Notes by David R. Morrison}
+\date{27 February 1997}
+\maketitle
+
+\section{Introduction}
+
+Today, we will discuss abelian duality in two and three dimensions (with a
+brief mention of four dimensions, which will be further developed in the next
+lecture).
+In two dimensions, abelian duality is
+often referred to as the ``$R$ goes to $1/R$'' equivalence.  In a certain
+supersymmetric version, it leads to a linear version of mirror symmetry.
+
+In three dimensions, after studying the duality we will give an application
+to Polyakov's model of confinement.
+
+Abelian duality in four dimensions will eventually have an application to
+Donaldson theory, that is, to $N=2$ supersymmetric theories in dimension 4.
+This again gives a model of confinement.  In fact, these two applications
+of duality are the most concrete models of the phenomenon of confinement
+which are known.
+
+We begin with the classical statements of duality.  In two dimensions, consider
+a theory which involves fields $\phi$, $\sigma$, both obeying the
+Laplace equation
+\begin{equation}
+\nabla^2\phi=0; \qquad \nabla^2\sigma=0,
+\end{equation}
+and which are related by
+\begin{equation}
+d\phi=\hstar d\sigma.
+\end{equation}
+Classically, either of these fields can be taken as the fundamental field of
+the
+theory.  For example, if we begin with $\sigma$ such that
+$\nabla^2\sigma=\hstar d\hstar d\sigma=0$ then $d\hstar
+d\sigma=0$ so locally we can write $\hstar d\sigma=d\phi$ for some field
+$\phi$,
+i.e., $\sigma$ determines $\phi$ (locally and up to an additive constant).
+
+Likewise in three dimensions, consider a theory with a field $\phi$ obeying
+the Laplace
+equation, as well as a connection $A$ on some line bundle $\lb$ with curvature
+$F=dA$ obeying Maxwell's equations
+\begin{equation}
+dF=d\hstar F=0,
+\end{equation}
+whose duality relationship is
+\begin{equation}
+\hstar d\phi=F.
+\end{equation}
+Again, as above, either of these fields can be taken as fundamental.
+
+In four dimensions, the analogue is two connections $A$ and $B$ on line bundles
+$\lb_A$ and $\lb_B$, each satisfying Maxwell's equations, and related by
+\begin{equation}
+F_A=\hstar F_B.
+\end{equation}
+For abelian duality, we could keep going to higher dimensions if we wish, but
+we quickly run out of field theory applications.  (There are some applications
+in string theory.)
+
+\section{Duality in two dimensions}
+
+We wish to study quantum versions of these classical statements.  We begin with
+the two-dimensional case.  We identify $S^1$ with $\IR/2\pi\IZ$, and use
+additive coordinates on the circle.  We take $\phi$ to be a map
+$\phi:\Sigma\to S^1$ where
+$\Sigma$ is a compact oriented surface equipped with a Riemannian metric
+$g_{\alpha\beta}$.
+(We will consider a variant later on, in
+which $\phi$ is not required to be defined at some specified points $P_i$, that
+is, $\phi$ will map $\Sigma-\{ P_i\}$ to $S^1$.)  Our Lagrangian\footnote{All
+Lagrangians in this lecture are written in Euclidean signature.} is
+\begin{equation}
+\lg(\phi) = \frac{R^2}{4\pi}\int d^2x\,\sqrt{g}\,\partial_\alpha\phi \,
+\partial^\alpha\phi = \frac{R^2}{4\pi}\int d\phi\wdg\hstar d\phi.
+\end{equation}
+The equations of motion $dd\phi=d\hstar d\phi=0$ reproduce the classical theory
+discussed above.
+
+We will study this theory in various ways.
+The usual trick is to introduce new variables with the
+property that
+integrating them out would lead back to the original theory, and then integrate
+out the old variables instead of the new ones in order to produce a dual
+formulation of the theory.
+
+So we actually wish to study a different theory, one which will contain fields
+$\phi$ and $A$, with $\phi$ a section of a trivial $S^1$-bundle $\cb$ and $A$
+a connection
+on $\cb$.  Choosing a trivialization $\phi_0$ of $\cb$ (so that
+$A=\phi_0^*\tilde{A}$ for some $1$-form $\tilde{A}$
+on the total space of the bundle), we can define a
+covariant derivative
+\begin{equation}
+D_A\phi = d\phi + A ,
+\end{equation}
+and introduce a new Lagrangian
+\begin{equation}
+\lg(\phi,A)=\frac{R^2}{4\pi}\int d^2x\,\sqrt{g}(\partial_\alpha\phi +
+A_\alpha)(\partial^\alpha\phi + A^\alpha) =
+\frac{R^2}{4\pi}\int D_A\phi\wdg\hstar D_A\phi.
+\end{equation}
+While we can recover the old Lagrangian by setting $A$ to zero, there is no
+mechanism which enforces this, unless we introduce yet a third field $\sigma$
+which plays the role of a Lagrange multiplier.  We take $\sigma$ to be a map
+from $\Sigma$ to $S^1$, and write a Lagrangian
+\begin{equation}
+\lg(\phi,A,\sigma)=\frac{R^2}{4\pi}\int D_A\phi\wdg\hstar D_A\phi
+-\frac{i}{2\pi}\int \sigma\wdg F_A,
+\end{equation}
+where $F_A$ is the curvature of $A$.
+
+This last term requires some comment.  Since we are assuming that the circle
+bundle $\cb$ is
+trivial, we can globally write $F_A=dA$ and the last term should be interpreted
+as $\frac{i}{2\pi}\int d\sigma \wdg A$ (after integration by parts); this
+step is needed because $\sigma$ is not single-valued.  More
+generally, to
+define such a term even when $\cb$ is nontrivial, one can use a bit of
+topology to define $\exp(\frac{i}{2\pi}\int\sigma\wdg F_A)$, similar to
+defining a Chern--Simons form.
+
+The point of writing this Lagrangian is that $\lg(\phi,A,\sigma)$ is equivalent
+to $\lg(\phi)$, as we will now show.  A na\"{\i}ve analysis goes as follows:
+$\sigma$ appears without derivatives, and its equation of motion is
+$F_A=0$; imposing this, we can then go to a gauge where $A=0$ and recover
+the original theory.
+
+More globally, we consider the path integral
+\begin{equation}\label{pathintegral}
+Z=\frac1{\vol(G)}\int \cD \phi\,\cD A\,\cD\sigma\,\exp\left[
+-\frac{R^2}{4\pi}\int D_A\phi\wdg\hstar D_A\phi
++ \frac{i}{2\pi}\int\sigma\wdg F_A
+\right].
+\end{equation}
+(We focus on the partition function for now, but path integrals with operator
+insertions can also be treated this way, as we will discuss later.)
+In light of the standard formula
+\begin{equation}
+\int \frac{dx}{2\pi} e^{ixy}=\delta(y),
+\end{equation}
+we would like to say that doing the $\sigma$-integral will set $F_A$ to zero.
+We should treat this statement with care, since we are studying circle-valued
+functions.
+
+Bearing in mind our identification of $S^1$ with $\IR/2\pi\IZ$, our map
+$\sigma:\Sigma\to S^1$ can be locally
+written as a real-valued function, but it might not be globally single-valued;
+however, $d\sigma$ will be a (single-valued) real $1$-form on $\Sigma$.
+Choose a circle-valued function $\sigma_h:\Sigma\to S^1$ such that
+$d\sigma_h$ is the {\it harmonic}\/ representative in the de~Rham cohomology
+class
+of $d\sigma$.  (We normalize the choice of $\sigma_h$ by picking some point
+$P\in\Sigma$
+and demanding that $\sigma_h(P)\in 2\pi\IZ$.)
+Then we can write $\sigma=\sigma_h+\sigma_{\IR}$, with $\sigma_{\IR}$
+a single-valued real function.
+
+Notice that $\frac1{2\pi}d\sigma$, or equivalently $\frac1{2\pi}d\sigma_h$,
+must have integral periods.
+In particular, if
+we choose a basis $\lambda_j$ of integral harmonic $1$-forms, and write
+$d\sigma_h=\sum2\pi m_j\lambda_j$, then $m_j\in \IZ$.
+
+Now we compute:
+\begin{equation}
+\begin{align}
+\int\cD\sigma\, e^{\frac{i}{2\pi}\int\sigma\wdg F_A}
+&=\int \cD\sigma_{\IR}\,e^{\frac{i}{2\pi} \int \sigma_{\IR}\wdg F_A}
+\sum_{d\sigma_h\in H^1(\Sigma,2\pi\IZ)}e^{-\frac{i}{2\pi}d\sigma_h\wdg A}
+\\&= \delta(F_A)\,\prod_j\left(\sum_{m_j\in\IZ} e^{-i
+m_j\int\lambda_j\wdg A}\right).
+\end{align}
+\end{equation}
+The first factor tells us that $A$ is a flat connection.  Moreover, among
+flat connections the gauge equivalence classes $[A]$ are labeled by the
+holonomies,
+or equivalently by the quantities $\int \lambda_j\wdg A$.  Since the
+remaining part of the integrand is gauge invariant, we can gauge fix (omitting
+the
+factor of $(\det G)^{-1}$) and
+integrate over the space of gauge equivalence classes (a finite dimensional
+integral):
+\begin{equation}
+\begin{align}
+Z&=\int\cD\phi\,\cD[A]\,e^{-\frac{R^2}{4\pi}\int D_A\phi\wdg\hstar D_A\phi}
+\delta(F_A)\,\prod_j\left(\sum_{m_j\in\IZ} e^{-i
+m_j\int\lambda_j\wdg A}\right)
+\\&=\int\cD\phi\,e^{-\frac{R^2}{4\pi}\int D_A\phi\wdg\hstar D_A\phi}
+\delta(F_A)\,\delta(\int \lambda_i\wdg A=0\mod 2\pi\IZ).
+\end{align}
+\end{equation}
+So there are delta functions setting the holonomies as well
+as curvature to zero.
+So $A$ is zero modulo gauge transformations, and our new theory
+is indeed equivalent to the original theory, with partition function
+\begin{equation}
+Z=\int\cD\phi\,e^{-\frac{R^2}{4\pi}\int d\phi\wdg\hstar d\phi}.
+\end{equation}
+
+
+Now let us integrate out in the opposite order, integrating out $\phi$ and $A$
+but keeping $\sigma$.  To integrate out $\phi$, we fix the gauge in such a
+way that
+$\phi=0$, and suppress the factor of $(\vol(G))^{-1}$ from the path integral.
+Then the path integral \eqref{pathintegral} reduces to
+\begin{equation}
+\int \cD A\,\cD\sigma\,\exp\left[
+-\frac{R^2}{4\pi}\int A\wdg\hstar A
++ \frac{i}{2\pi}\int\sigma \wdg F_A
+\right].
+\end{equation}
+An exercise you might enjoy is verifying that the Faddeev-Popov determinant
+associated with this gauge fixing is
+\begin{equation}
+\int\cD c\,\cD\overline{c}\,\exp\left[-\frac{R^2}{4\pi}\int d^2x\,
+\overline{c}c \right].
+\end{equation}
+
+
+To do the integral over $A$, we need to complete the square, thinking of
+the second
+term in the exponent as
+$-\frac{i}{2\pi}\int A\wdg d\sigma$,
+i.e., it is the term linear in $A$.  We make a change of variables
+$A'=A+\frac{i}{R^2}\hstar d\sigma$;
+the result, including the Faddeev-Popov integral, is
+\begin{equation}
+\left(
+\int\cD c\,\cD\overline{c}\,e^{-\frac{R^2}{4\pi}\int d^2x\,
+\overline{c}c }\right)
+\left(
+\int \cD A' e^{-\frac{R^2}{4\pi}\int A'\wdg\hstar A'}\right)
+\left(
+\int \cD \sigma e^{-\frac1{4\pi R^2}\int
+d\sigma\wdg\hstar d\sigma}\right).
+\end{equation}
+(The Gaussian integral over $A'$, like the Faddeev-Popov determinant, can
+be thought of as a
+normalization factor.)
+
+The Faddeev-Popov integral gives a factor of $(\int dt\,e^{-tR^2/4\pi})^{-1}$
+for
+each $0$-form and
+each $2$-form on $\Sigma$; the integral over $A'$ gives a factor of $\int
+dt\,e^{-tR^2/4\pi}$
+for each $1$-form on $\Sigma$.  Thus, if $n_j$ denotes the ``number of
+$j$-forms
+on $\Sigma$'', those terms combine to give an overall factor of
+\begin{equation}
+(\sqrt{\pi/(R^2/4\pi)})^{(-n_0+n_1-n_2)} = (R/2\pi)^{\chi(\Sigma)}.
+\end{equation}
+That is, the transformation rule which relates these dual formulations is
+\begin{equation}
+\int \cD\phi\,\exp\left[-\frac{R^2}{4\pi}\int d\phi\wdg\hstar d\phi\right]
+= (R/2\pi)^{\chi(\Sigma)}
+\int \cD\sigma \exp\left[-\frac1{4\pi R^2}\int d\sigma\wdg\hstar
+d\sigma\right].
+\end{equation}
+(The factor of $(R/2\pi)^{\chi(\Sigma)}$ did not show up in previous explicit
+calculations
+we have done because they were done in genus 1.)  A coupling of $R$ in the
+first
+theory maps to a coupling of $1/R$ in the second theory, which is why this
+duality
+is sometimes referred to as ``$R$ goes to $1/R$.''
+
+Now we would like to follow the operators in this theory through the duality
+transformation, and determine the effect on correlation functions as well as
+the
+partition function.  The easy case is $d\phi$, which we expect to map to
+$\hstar d\sigma$, as in the classical theory (actually it will map to a
+multiple
+of $\hstar d\sigma$, when normalizations are taken into account).
+We need to repeat the above calculation with an insertion of operators
+$\prod \cO_i(\phi)$, one of which is $d\phi$.  In order to do this, we need
+a gauge-invariant extension of the operator $d\phi$, which is provided by
+the covariant derivative:
+\begin{equation}
+d\phi(x) \text{ in first theory} \longrightarrow D_A\phi(x) \text{ in big
+theory}.
+\end{equation}
+One then easily checks that this maps back to $d\phi$ when we integrate out
+$\sigma$ (and gauge fix $A$ to zero).
+
+The difficult thing about mapping operators in general will be finding the
+appropriate extension to an operator in the larger theory, which reduces to
+the original operator when $\sigma$ has been integrated out.
+
+How will our calculation be modified?  Earlier, when we completed the square,
+we made a change of variables $A'=A+\frac{i}{R^2}\hstar d\sigma$.  This
+means that if $D_A\phi$
+has been inserted in the path integral, it now becomes $D_{A'}\phi
+-\frac{i}{R^2}\hstar d\sigma$.
+Thus, when $A'$ is integrated out, we are left with an insertion of
+$-\frac{i}{R^2}\hstar d\sigma$
+in the dual theory.
+
+Some care must be used in manipulating these mappings between operator
+insertions.  For example, even though $d\phi$ maps to  $-\frac{i}{R^2}\hstar
+d\sigma$,
+$(d\phi)^2$ will {\it not}\/ map to $(\frac{i}{R^2}\hstar d\sigma)^2$ in the
+dual theory, due to
+nonlinearities introduced when we complete the square.
+
+What made this case easy was that the covariant derivative is a natural
+gauge-invariant extension of the ordinary derivative.
+
+The hard operator insertion to deal with is $e^{i\phi}$.  There is no
+gauge-invariant
+version of this.  On the other hand, we don't really need it, because
+$\langle e^{i\phi}(P)\rangle=0$.  On the other hand, the two-point correlators
+$\langle e^{i\phi}(P)\, e^{-i\phi}(Q)\rangle$ are not zero in general, so
+we should try to dualize such insertions, when $P\ne Q$.
+
+We are going to do something rather strange.
+It is impossible to construct a gauge-invariant extension {\it locally}\/ for
+this pair of operator insertions, so we work non-locally during the duality
+(i.e., in the intermediate theory), introducing a term in the path integral
+of the form
+\begin{equation}\label{nonlocal}
+e^{i\phi}(P) e^{-i\phi}(Q) e^{\frac{i}{2\pi}\int \theta\wdg A}
+\end{equation}
+where $\theta$ is a $1$-form such that
+\begin{equation}
+\frac1{2\pi}d\theta=\delta_P-\delta_Q
+\end{equation}
+and all periods of $\theta $ are $0$ modulo $2\pi \IZ$.
+
+To find such a $\theta$, take a path $\ell$ from $P$ to $Q$ and let $\theta$ be
+Poincar\'e dual to $\ell$ (regarded as a
+distribution).  We can rewrite our term \eqref{nonlocal} as
+\begin{equation}
+e^{i\phi}(P) e^{\frac{i}{2\pi}\int_\ell  A} e^{-i\phi}(Q) ,
+\end{equation}
+from which we see that this is a gauge-invariant expression.  (This is an
+example of a choice of $\theta$, but we allow
+more general $\theta$'s than that.)  We will eventually think of $\theta $
+as a connection form on a trivial $S^1$-bundle on $\Sigma- P- Q$.
+
+Thus, we have found a gauge-invariant nonlocal object \eqref{nonlocal}.
+Suppose we try to insert this into the path integral.  First, if we set $A$ to
+zero, we recover our original operator insertion $e^{i\phi}(P)
+e^{-i\phi}(Q)$, so we have correctly
+extended this pair of operators to the gauge theory.
+
+To integrate out the other way, we gauge fix $\phi$ to zero, which reduces
+\eqref{nonlocal} to $e^{\frac{i}{2\pi}\int \theta\wdg A}$.  This is a new
+contribution to the term linear in $A$ in the exponent of the path
+integral, of the form $-\frac{i}{2\pi}\int A\wdg\theta$,
+so to complete the square we now must make the change of variables
+$A'=A+\frac{i}{R^2}\hstar(d\sigma+\theta)$,
+and this makes our dualized path integral take the form
+\begin{equation}
+\int \cD\sigma\,\exp\left[-\frac1{4\pi R^2}\int
+(d\sigma+\theta)\wdg\hstar(d\sigma+\theta)\right].
+\end{equation}
+That is, we have obtained the same theory as before, but now formulated on
+$\Sigma-P-Q$, and now performing the path integral over maps to ${ S}^1$
+that do {\it not} extend over $P$ or $Q$.  That is, we write
+$\widetilde{\sigma}=\sigma+\alpha$, with $d\alpha=\theta$, $\alpha$ being a map
+from $\Sigma-P-Q$ to $S^1$, and then $\widetilde{\sigma}$ is the map
+of $\Sigma-P-Q$ to $S^1$ that does not extend over $P$ or $Q$.
+In fact, it has winding numbers 1 and $-1$ around $P$ and $Q$,
+respectively.
+
+
+\epsfxsize3in
+\vskip.2in
+\centerline{\epsfbox{winding.eps}}
+\vskip.2in
+
+There are two kinds of operators now, one local in one picture, and the other
+local in the other picture.  The operator $e^{in\phi}(P)$ in one
+description is mapped to an instruction ``delete $P$ from $\Sigma$,
+and perform the path integral over $\sigma$'s that have winding number
+$n$ around $P$'' in the other description.  Conversely, there is
+an ordinary local operator $e^{in\sigma}(P)$ in the second description,
+that corresponds to a nonlocal recipe in the first description.
+
+
+\section{Duality in three dimensions}
+
+We now turn to three-dimensional theories.  Our initial theory is the theory
+of an $S^1$-valued function $\phi$ on a (fixed) compact $3$-manifold $M$
+(possibly
+with boundary),
+governed by the Lagrangian
+\begin{equation}
+\lg=\frac{\Lambda}{4\pi} \int
+d^3x\,\sqrt{g} \, \partial_\alpha\phi \, \partial^\alpha\phi
+= \frac{\Lambda}{4\pi} \int d\phi\wdg\hstar d\phi .
+\end{equation}
+One novel feature of three dimensions is that the prefactor
+$\Lambda$ has the dimensions of mass.
+Since $\Lambda$ is a dimensionful quantity rather than a constant, it will be
+impossible for anything special to happen at a numerical value of $\Lambda$.
+
+We reinterpret $\phi$ as a section of a trivial $S^1$-bundle $\lb_B$ with a
+connection
+$B$, and write a Lagrangian which includes the covariant derivative
+$D_B\phi=d\phi+B$:
+\begin{equation}
+\lg(\phi,B)=\frac{\Lambda}{4\pi}\int d^3x\,
+(\partial_\alpha\phi+B_\alpha)(\partial^\alpha\phi+B^\alpha)
+=\frac{\Lambda}{4\pi}\int D_B\phi\wedge\hstar D_B\phi
+\end{equation}
+This would be a trivial theory if left as it is.  To get somewhere, we
+introduce
+a line bundle $\lb$ with connection $A$, and the Lagrangian
+\begin{equation}
+\lg(\phi,B,A)=\frac{\Lambda}{4\pi}\int D_B\phi\wedge\hstar D_B\phi
+-\frac{i}{2\pi}\int A\wdg F_B,
+\end{equation}
+interpreting the last term as $\frac{-i}{2\pi}\int F_A\wdg B$ (after
+integrating
+by parts) which makes sense since  $\lb_B$ is trivial.
+As before, the extension to the case of $\lb_B$ not being trivial is a term in
+the
+path integral
+$e^{-\frac{i}{2\pi}\int A\wdg F_B}$,
+the Chern--Simons form for the structure
+group $U(1)\times U(1)$ of the bundle
+$\lb\oplus \lb_B$.
+
+In order to carry out the duality transformation, we need to sum over line
+bundles $\lb$, producing a path integral
+\begin{equation}
+\frac1{\vol(G)\vol(G')}\sum_{\lb}\int\cD\phi\,\cD A\,\cD B\,
+\exp\left[-\frac{\Lambda}{4\pi}\int D_B\phi\wedge\hstar D_B\phi
++ \frac{i}{2\pi}\int F_A\wdg B\right].
+\end{equation}
+where $G$ and $G'$ are gauge groups for $\lb$ and $\lb_B$.
+
+We would like to integrate out $A$.  The crude statement is that we get
+$\delta(F_B)$,
+which implies that $B$ is a flat connection.  As in the computation we
+did in two dimensions, the complications arise from
+the possibility of nontrivial holonomies for $B$.
+In fact, if $F_B=0$ we can regard $B$ as an element of $H^1(M,\IR/\IZ)$ and
+define for each $x=c_1(\lb)$, the quantity
+$e^{i\int x\wdg [B]}$.  When this is summed over $[x]$
+in doing the path integral,  the result is $\delta([B])$, showing that
+$B$ is gauge-equivalent to the trivial flat connection.
+Thus, we reduce back to the original theory;
+we've learned that the extended theory with $A$ and ${\cal L}$ is equivalent
+to the original theory.
+
+Now we do the integral in the opposite direction, by doing the $\phi$ and $A$
+integrals.  As in the two-dimensional case, we set $\phi$ to zero by a gauge
+transformation, removing the normalization factor $(\vol(G))^{-1}$.  (Unlike
+in two dimensions, the Faddeev-Popov determinant does not contribute anything
+interesting, so we will not explicitly include it.)  The square can be
+completed in the resulting path integral
+\begin{equation}
+\begin{align}
+&\frac1{\vol(G')}\sum_{\lb}\int\cD A\,\cD B\,
+\exp\left[-\frac{\Lambda}{4\pi}\int  B\wdg\hstar B
++ \frac{i}{2\pi}\int B\wdg F_A\right]
+\\&=
+\frac1{\vol(G')}\sum_{\lb}\int\cD A\,\cD B'\,
+\exp\left[-\frac{\Lambda}{4\pi}\int  B'\wdg\hstar B'
+-\frac1{4\pi\Lambda}\int F_A\wdg\hstar F_A\right],
+\end{align}
+\end{equation}
+where we shifted $B'=B-\frac{i}{\Lambda}\hstar F_A$.
+
+\noindent
+The integral in $B'$ is Gaussian, and can be absorbed into the normalization
+of the path integral, leaving us with
+\begin{equation}
+\frac1{\vol(G')}\sum_{\lb}\int\cD A\,
+\exp\left[
+-\frac1{4\pi\Lambda}\int F_A\wdg\hstar F_A\right],
+\end{equation}
+the familiar path-integral from Yang--Mills theory!  (With gauge coupling
+$\ee=\sqrt{\Lambda}$.)
+
+Now we want to map operators.  An analogous calculation to the one we did in
+two dimensions shows that $d\phi$ extends to the covariant derivative
+$D_B\phi=d\phi+B$ in the larger theory, and becomes
+$\frac{i}{\Lambda}\hstar F_A$ in the dual theory.
+This is the meaning in the quantum theory of the duality between solutions
+of the Laplace equation and solutions of Maxwell's equation.
+
+What about  operators such as $e^{i\phi}(P)$?  We will not do this, though
+I will state the answer. $e^{in\phi}(P)$ is mapped, in the dual gauge theory,
+to the instruction: delete the point $P$ from the 3-manifold $M$ and consider
+the path integral for connections on a line bundle ${\cal L}$ whose
+first Chern class evaluates to $n$ on a small sphere around $P$.  The argument
+leading to this is quite along the lines of what we did in two dimensions.
+
+I will not present that argument (which I recommend as an exercise)
+and instead discuss what is roughly the reverse.  We
+consider Wilson loop operators in the gauge theory, and try to map those
+back to the scalar field theory.
+
+Let $C$ be a circle in $M$ which is a boundary, and let $\lambda\in\IR$.
+We have an operator $\exp(i\lambda \oint _C A)$  in the gauge theory.
+Let us insert this into the path integral of the big theory (the one with
+Lagrangian $\lg(\phi,B,A)$).
+(More generally, we can do this even if $C$ is not a boundary, but then
+$\lambda$ must be restricted to be an integer.  $C$ being a boundary, say
+of a two-surface $D$, lets us write $\exp(i\lambda \oint _C A)
+= \exp(i\lambda\int_DF)$, showing gauge-invariance for any $\lambda$. )
+
+When we integrate out $A$ with this insertion, instead of getting
+$\delta(F_B=0)$
+we get $\delta(F_B=2\pi\lambda[C])$ with $[C]$ being the Poincar\'e dual to
+$C$.    In other words,
+performing the $A$ integral determines $B$ to be such that
+$F_B=2\pi\lambda[C]$,
+and the modified Lagrangian after integrating out is $\int D_B\phi\wedge\hstar
+D_B\phi$.
+Here $B$ is a
+flat $U(1)$-connection with monodromy $e^{2\pi i \lambda}$ around the circle.
+So the Wilson loop operator for a circle $C$ is dual to a recipe
+``delete $C$ and interpret $\phi$ as a section of a flat bundle with
+monodromy around $C$.''
+In other words, we modify $\phi$ to $\widetilde{\phi}$ such that
+$d\widetilde{\phi}=d\phi+B$, and interpret $\widetilde{\phi}$ as a section of
+a trivial $S^1$-bundle on $M-C$ with a flat connection of monodromy
+$e^{2\pi i\lambda}$
+around $C$.  (To get such a trivial $S^1$-bundle, we either need to assume that
+$C$ is a boundary, or that $\lambda$ is an integer.)
+
+\section{Application to the Polyakov model}
+
+We will describe a model constructed by Polyakov around 1975.  It was the first
+use of duality in a nonlinear relativistic theory.  The model exhibits the
+phenomenon known as confinement.
+
+We work in three dimensions, and study $SO(3)$ gauge theory with a scalar
+field $s$ in the $3$-dimensional representation, governed by the Lagrangian
+\begin{equation}
+\lb=\frac1{4\pi \ee^2}\int d^3x\, \Tr|F|^2 + \int d^3x\,(D\vec{s})^2
++\int d^3x\,\lambda(\vec{s}\,{}^2-a^2)^2.
+\end{equation}
+This model exhibits the Higgs mechanism at tree level.
+
+Classically, the vacuum can be rotated to
+\begin{equation}
+\langle\vec{s}\rangle=\begin{pmatrix}a\\0\\0\end{pmatrix}
+\end{equation}
+by a gauge transformation.  In the vacuum state, the $SO(3)$ symmetry of
+the Lagrangian is broken to an $SO(2)=U(1)$ symmetry, and the only massless
+field is the $U(1)$-connection.  (This is the so-called Higgs mechanism.)
+The low-energy theory looks like the $U(1)$ theory in three dimensions.
+
+{\bf First Step}.
+This theory looks classically, at low energies, like a $U(1)$ gauge theory with
+Lagrangian
+\begin{equation}
+ \lg = \frac1{4\ee^2}\int F\wdg\hstar F.
+\end{equation}
+Is that the answer?  Is the Gaussian fixed point of the free $U(1)$ theory
+stable?
+
+One possible source of instability is a Chern--Simons interaction
+\begin{equation}
+\frac{-in}{2\pi}\int A\wdg F_A
+\end{equation}
+which could be added to the original Lagrangian $\lg$.  (In the flow to the
+infrared, this term is more relevant than those appearing in $\lg$, hence
+the instability.)
+
+There are two obstacles to this being a source of instability in our problem.
+The first is that the coefficient $n$ in the Chern--Simons term must be an
+integer.  This implies that even if you can only approximately calculate the
+theory, you can determine $n$ if the approximation can be made arbitrarily
+accurate. One can, in particular, calculate $n$ in perturbation theory,
+and -- as higher loop terms would involve positive powers of $e$ -- it could
+only arise from a one-loop term.
+So the effective $n$ in any three-dimensional gauge theory can be determined
+by an explicit one-loop computation.
+In the specific example we are considering here,
+one  can simply notice that the Chern--Simons term is odd under parity
+(i.e., it depends on a choice of orientation of the $3$-manifold) whereas
+our original theory was not.  The parity-invariance is  a symmetry of the
+one-loop determinants (whether or not parity ultimately is spontaneously
+broken at low energies) and ensures that $n=0$.
+
+
+
+Thus, anything which could make this theory unstable will be hard to
+describe in terms of $A$.  However, we know that the $U(1)$ gauge theory is
+equivalent (dual) to a scalar theory
+\begin{equation}
+\lg=\frac{\ee^2}{4\pi}\int d^3x\,\partial_\alpha\phi\partial^\alpha\phi
+\end{equation}
+In this theory, we could add a term
+\begin{equation}
+g\int d^3x\,\cos n\phi
+\end{equation}
+for some $n$.
+We have chosen the potential to be periodic as $\phi$ is really a map
+to a circle.
+Notice that the theory with $g\ne0$ has a mass gap, the theory with $g=0$
+does not.
+Thus, we have identified something which qualitatively changes the physics,
+but can only be conveniently interpreted by means of the dual variables.
+This is strange, because doing the duality requires going to a low
+energy description to begin with!
+
+How do we see this effect in the original $SO(3)$ theory?  Consider the Feynman
+diagrams of the $SO(3)$ theory.  We represent these with massless modes given
+by wavy lines, massive ones by solid lines.  A typical Feynman diagram such as
+
+\vskip.2in
+\centerline{\epsfxsize=1in\epsfbox{feyn3.eps}}
+\vskip.2in
+
+\noindent
+will be completely tame: we have massive propagators, which are analytic in the
+momenta at low momentum.  Such diagrams merely give corrections to the
+effective action for the $U(1)$ gauge field $A$ which can be described
+as additional local, gauge-invariant terms in the Lagrangian.
+
+We need something completely different: {\it instantons}.  Let us work on
+$\IR^3$.
+We have an $SO(3)$ bundle on $\IR^3$ whose structure group has been
+reduced to $U(1)$ at infinity.  On the $S^2$ at infinity, a $U(1)$ bundle $\lb$
+can have a nontrivial first Chern class, $c_1(\lb)\ne0$.
+
+
+
+Pick a trivialization of the $SO(3)$ bundle, so that we can identify the
+spatial $\IR^3$ with the bundle $\IR^3$, and simply treat our section $s$
+as a  map $s:\IR^3\to\IR^3$.  To construct such a map with nontrivial topology
+on the $S^2$ at infinity, we take $s$ of the form
+\begin{equation}
+s(\vec{x})=a\frac{\vec{x}}{|x|}f(|x|),
+\end{equation}
+with $f(|x|)$ an increasing function satisfying $f(0)=0$,
+$\lim_{|x|\to\infty}f(|x|)=a$, e.g.,
+
+\centerline{\epsfxsize=2in\epsfbox{plot4.eps}}
+
+\noindent
+Such a section is invariant under combined
+ rotations of space and gauge rotations.
+
+We would like the minimum action solution $s$ in this class.  It should be
+spherically symmetric, with asymptotic behavior $Ds\sim\frac1{|x|^2}$ for
+$|x|\to\infty$.  This leads to an ODE, which has a unique
+solution.  The action
+can be written as $(I/\ee^2)$ for some constant $I$, so it will diverge as
+the coupling goes to $0$.
+
+Note that since $\vec s$ vanishes precisely
+at the origin, the structure group is
+reduced to $U(1)$ away from the origin, but this reduction does not
+extend over the origin.  In fact, over a sphere surrounding the origin,
+the line bundle has a nonzero first Chern class (which actually is 2
+if we work in $SO(3)$; that is, the adjoint bundle of $SO(3)$ decomposes
+over a two-sphere surrounding the origin as ${\cal O}\oplus {\cal L}
+\oplus {\cal L}^{-1}$ where ${\cal L}$ has degree 2).
+
+{}From this point of view, the difference between a pure $U(1)$ theory
+and a theory that looks like a $U(1)$ theory only at long distances
+is that the latter can have bundles that over a large ${\bf S}^2$
+at infinity have a nonzero first Chern class.  The Chern class can
+be any multiple of the 2 that was found in the explicit solution that
+we just described.
+
+
+Note that in abelian gauge theory, it was not possible to use a bundle $\lb$
+for which $c_1(\lb)\ne0$ over a sphere around the origin.  The qualitative
+difference between an $SO(3)$ theory broken to $U(1)$ and a $U(1)$ theory
+is that the former admits singularities where the $U(1)$ description
+breaks down in this way.
+
+If we did a similar thing in $3+1$ dimensions, we would find a time-independent
+solution of finite energy (rather than finite action).  This solution looks
+like a particle sitting there, and in fact is a magnetic monopole.  (The
+nonzero magnetic charge comes from the fact the $c_1(\lb)\ne0$ which implies
+that the magnetic field integrates to a nonzero amount.)  The point of making
+this analogy is that we can think of the instanton as behaving like a zero-time
+slice of a magnetic monopole.
+
+
+What do instantons look like at long distances?  A monopole has a field which
+behaves like
+\begin{equation}
+F=\text{const}\,\frac{\vec{x}}{|x|^3}=\text{const}\,\frac{\hat{x}}{|x|^2}
+\end{equation}
+(by Maxwell's equations).
+
+The contribution to the path integral from each instanton is $e^{-I/\ee^2}$,
+which is small.
+
+To return to our theory, we now ask how it behaves at long distance.  For
+example, how does a two-point function $\langle F(x)\,F(0)\rangle$ behave as
+$|x|\to\infty$?
+
+The answer in the free theory, by dimensional analysis, is $-1/|x|^3$.  (One
+sees that the curvature $F$ has dimension $3/2$ in three-dimensional theories
+by considering the basic term $\frac1{4\pi\ee^2}\int F\wdg\hstar F$ in the
+Lagrangian.)  A bit more precisely, we are asserting that
+\begin{equation}
+\langle
+F_{ij}(x)\,F_{k\ell}(0)\rangle=\frac1{|x|^3}(\delta_{ik}\delta_{j\ell}+\dots).
+\end{equation}
+
+The Feynman diagrams don't affect this asymptotic behavior: there is a slight
+renormalization of $\ee^2$, plus other corrections which are unimportant at big
+ distances.
+
+How does an instanton affect this analysis?  Consider an instanton localized
+near $y$, and its effect on the two-point function between $x$ and $0$.
+
+\epsfxsize=4in
+\centerline{\epsfbox{instanton.eps}}
+
+\noindent
+The leading approximation to the path integral in the instanton sector is
+\begin{equation}
+e^{-I/\ee^2}\int d^3y\,\frac{(\vec{x}-\vec{y})}{|x-y|^3}\,
+\frac{\vec{y}}{|y|^3}.
+\end{equation}
+Thus, the overall behavior is
+\begin{equation}
+\begin{align}
+\langle F(\vec{x})\,F(\vec{0})\rangle
+&\cong
+\frac1{Z}\left(\text{pert. theory} + e^{-I/\ee^2}(\text{instanton
+sector})\right)
+\\&\cong
+\frac1{Z}\left((1+\dots)\frac1{|x|^3}+e^{-I/\ee^2}(\frac1{|x|}+\dots)\right).
+\end{align}
+\end{equation}
+Since the instanton contribution is more important in the infrared than the
+free theory term ($1/|x|$ compared to $1/|x|^3$),
+the instanton triggers an instability.
+
+To see in more detail what is happening in the infrared, we first note that
+instantons are {\it rare}: the probability to have an instanton in
+a small volume $V_0$ is proportional to $V_0e^{-I/\ee^2}$, so
+the volume of space per
+ instanton is given by $V\sim
+e^{I/\ee^2}$, and  the spatial separation between two of them is $R\sim
+{V}^{1/3}\sim e^{I/3\ee^2}$.
+
+In the infrared, though, if we consider a large enough volume of space,
+we will get lots of instantons, which we can treat as
+a gas of particles of definite size.  The particles are {\it charged}, so
+we can't ignore the interactions between them, given by Coulomb potentials.
+The picture is as follows
+
+\epsfxsize=3in
+\centerline{\epsfbox{gas.eps}}
+
+\noindent
+We have labeled the positions of instantons (which are positively charged) with
+$s_i$'s, and the positions of anti-instantons (which are negatively charged) by
+$t_j$'s.  The sum over all of these takes the form
+\begin{equation}
+\sum_{n,m=0}^\infty \frac1{n!m!}\int d^3s_i|_{i=1}^{n}
+\int d^3t_j|_{j=1}^{m} e^{-\frac{I}{\ee^2}(n+m)}
+e^{
+\sum_{i<j}\left(\frac1{|s_i-s_j|}+\frac1{|t_i-t_j|}\right)
+-\sum_{i,j}\frac1{|s_i-t_j|}
+}.
+\end{equation}
+We also need an operator insertion, of
+\begin{equation}
+F(x)=\sum \frac{x-s_i}{|x-s_i|^3}-\sum \frac{x-t_j}{|x-t_j|^3},
+\end{equation}
+and similarly for $F(0)$.
+
+
+The physics involved is the classical statistical mechanics of a plasma in
+space, with chemical potential $I/\ee^2$; energy $E$ given by the Coulomb
+potential between the instantons and anti-instantons, and temperature
+ $T=4\pi\ee^2$.
+
+The phenomenon we need is known as ``Debye screening''---a plasma screens
+external charges.  As a result of this screening, the system will have a mass
+gap.
+
+Here is a quick mathematical derivation of Debye screening (in this context).
+We go back to our low-energy theory, writing in dual variables---a scalar
+theory with $F=\hstar d\phi$.  We will add a term to the Lagrangian to account
+for the instanton effect: the term we will use (justified by the results of the
+calculation to come) is $\int e^{-I/\ee^2}(e^{2i\phi}+e^{-2i\phi})$.
+(The 2 is present in the exponent because the basic instanton has first
+Chern class 2.)
+The operator
+insertions of $F$ become insertions of $\hstar d\phi$, and the quantity we are
+calculating can be written:
+\begin{equation}
+\Omega=\int \cD\phi\,\left(\hstar d\phi(x)\right)\left(\hstar d\phi(0)\right)
+\exp\left[-\frac1{4\pi\ee^2}\int|d\phi|^2+\int
+e^{-I/\ee^2}(e^{2i\phi}+e^{-2i\phi})\right].
+\end{equation}
+First we want to show that this is a correct description in the dual variables,
+then we will analyze this version.
+
+We will expand $\Omega$ in perturbation theory:
+\begin{equation}\label{expanded}
+\Omega=\sum_{n,m=0}^\infty \frac1{n!m!}\int \cD\phi\,
+e^{-\frac1{4\pi\ee^2}\int d\phi\wdg\hstar d\phi}
+\left(\hstar d\phi(x)\right)\left(\hstar d\phi(0)\right)
+\left(\int e^{-I/\ee^2}e^{2i\phi(y)}d^3y\right)^n
+\left(\int e^{-I/\ee^2}e^{-2i\phi(z)}d^3z\right)^n.
+\end{equation}
+We expand further, using the principle that $\left(\int dy\,f(y)\right)^n
+=\int dy_1\dots dy_n\,f(y_1)\dots f(y_n)$.  Thus, we can rewrite
+\eqref{expanded} as
+\begin{equation}
+\Omega=\sum_{n,m=0}^\infty \int \cD\phi\int d^3s_i|_{i=1}^n d^3t_j|_{j=1}^m
+\left(\hstar d\phi(x)\right)\left(\hstar d\phi(0)\right)
+e^{-\frac{I}{\ee^2}(n+m)} e^{2i\sum(\phi(s_i)-\phi(t_j))}
+e^{-\frac1{4\pi\ee^2}\int|d\phi|^2}.
+\end{equation}
+
+The $\phi$-integral is Gaussian after the square has been completed; that
+integral will contribute
+\begin{equation}
+e^{\sum_i\sum_j G(s_i,t_j)}
+\end{equation}
+to the overall answer, where $G(s,t)=1/|s-t|$ is the Green's function for the
+Laplacian.  We thus recover the previous formula.
+Note that the
+$i=j$ terms contributed a divergence which is renormalized, so they do not
+appear.
+
+\bigskip\bigskip
+
+The lesson we have learned is this: our original problem ($SO(3)$ gauge theory)
+can be described in the infrared, using dual variables, by means of the
+Lagrangian
+\begin{equation}
+\frac1{4\pi\ee^2}\int|d\phi|^2+e^{-I/\ee^2}\int d^3x\,\cos 2\phi.
+\end{equation}
+The second term in unrenormalizable, but is well-behaved in the infrared.
+Expanding around the minimum of the potential, we see that $\phi$ has
+a mass.  Thus, what used to be a massless $U(1)$ photon was
+(i) dualized and reinterpreted as a scalar, and (ii) got a mass
+that was more easily described in that language.
+
+Here is another way to understand the above derivation.  Start
+with the massless scalar field and dualize it, as in section 3
+of this lecture, to a massless gauge field $A$.  Now perturb the
+theory of the massless scalar by adding a weak perturbation
+$\int d^3x \epsilon(e^{22i\phi}+e^{-2i\phi})$.  In terms of the gauge
+field, the operator $e^{2i\phi(P)}$ becomes, as we noted at the end of
+section 3, an instruction ``delete the point $P$, and consider bundles
+with  first Chern class 2 on a small sphere around $P$.''  In other words,
+from the point of view of an $SO(3)$ that looks like $U(1)$ at low energies,
+the instruction is ``include an instanton at $P$.''
+If we take the interaction term $\int d^3x \epsilon(e^{2i\phi}+e^{-2i\phi})$,
+and expand in powers of $\epsilon$, we simply generate the instanton
+gas, with each insertion of $e^{2i\phi}$ or $e^{-2i\phi}$ corresponding
+to an instanton or antiinstanton.
+
+Now we want to study confinement.
+An important preliminary is to note the symmetries of the problem.
+In general, in the duality from an abelian gauge theory, $\phi$
+is an angular variable, a map to a circle, so $\phi$ is equivalent to
+$\phi+2\pi$.  However, because the instanton-induced interaction is
+a trigonometric function of $2\phi$, there is a symmetry under $\phi\to
+\phi+\pi$.
+
+
+In the original description, we could
+consider a curve $C\subset M$
+
+\epsfxsize=1.5in
+\centerline{\epsfbox{trefoil.eps}}
+
+\noindent
+and the associated Wilson line operator
+\begin{equation}
+\langle \Tr_R\Hol(A,C)\rangle
+\end{equation}
+where $R$ is the $2$-dimensional representation of $SU(2)$ and $\Hol$
+denotes the
+holonomy. What does this operator translate to in our infrared description?
+As we have seen at the end of section 3, it translates into a recipe ``delete
+$C$ from spacetime and interpret $\phi$ as a section of a flat circle
+bundle with monodromy around $C$.'' The monodromy is given by the angle
+$2\pi \lambda$ where $\lambda$, introduced in the discussion in section
+three,
+is the $U(1)$ charge appearing in the Wilson loop, modulo 1.  We have chosen
+a Wilson line in the two-dimensional representation of $SU(2)$; the
+$U(1)$ charges are $\pm 1/2$ in units of the weight lattice of $SO(3)$.
+Hence our example has $\lambda=1/2$.
+The monodromy around the circle is thus $\phi\to\phi+\pi$, which,
+as we noted a moment ago, is a symmetry of the theory even with
+the instanton-induced interaction.
+
+The problem is now classical: we want to find the minimum of the action
+\begin{equation}
+ \frac1{4\pi\ee^2}\int|d\phi+B|^2-e^{-I/\ee^2}\int
+d^3x\,\cos 2\phi
+\end{equation}
+with $\phi$ required to have monodromy $\pi$ around $C$.
+Thus, in particular, $\phi$ cannot be constant.
+   In fact, the least action solution will be given
+approximately in terms of a
+surface $\Sigma$ with $\partial\Sigma=C$ of least area; $\phi$ will be constant
+ far
+from $\Sigma$, and will jump by $\pi $ in crossing $\Sigma$.
+
+The easiest case is when $C$ is a large curve in the plane, say    given by
+$x=0$, with $x$ a linear function on ${\bf R}^3$.
+We want $\phi$ to jump by $\pi$ in going from negative $x$ to positive
+$x$.   In the limit that $C$ is very large, $\phi$, if observed
+somewhere deep in the interior of $C$, becomes a function of
+$x$ only.
+  What needs to be minimized is then
+\begin{equation}
+\int dx\,((\frac{d\phi}{dx}+B(x))^2-(\cos 2\phi-1))
+\end{equation}
+with the boundary conditions that $\phi\to 0$ for $x\to -\infty$ and
+$\phi\to \pi$ for $x\to+\infty$.
+This variational problem,
+with the boundary conditions, has a solution that is unique
+up to translation of $x$, with $\phi$ approaching its asymptotic
+value exponential fast (because of the mass gap) and with some action $L$.
+
+\noindent
+
+Now in general, if $D$ is the minimal area surface with boundary
+$C$, and $A(D)$ is its area, the minimum action $\phi$ that is a section
+of the appropriate flat bundle has the property that $\phi$ is very
+near zero or $\pi$ except near $D$, jumps by $\pi$ in crossing $D$,
+and looks in profile near $D$ just like the solution of the idealized
+one-dimensional problem discussed in the last paragraph.
+Its action is very nearly $A(D)L$, so the expectation value of the Wilson
+line is approximately $e^{-A(D)L}$, showing the area law and confinement.
+
+\end{document}

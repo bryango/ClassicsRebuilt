@@ -1,0 +1,115 @@
+
+
+	    Lectures on Conformal Field Theory (Krzysztof Gawedzki)
+
+
+TENTATIVE OUTLINE
+
+1.  Simple functional integrals for free theory in geometric background.
+
+2.  Circle and toroidal compactifications, also with SUSY.
+
+3.  Main properties of CFT, operator product expansion of energy-momentum and
+primary fields.
+
+4.  The Hilbert space approach and axiomatics a la Segal.
+
+5.  Geometric sigma models, the beta function calculation, the SUSY version.
+
+6.  WZW via functional integral, current algebra OPE's, the relation to
+moduli space of bundles, the free field representations,
+
+7.  Coset models, also in the SUSY case (N=2 superconformal cosets).
+
+
+
+REFERENCES
+
+
+A set of Gaussian integration formulae may be found
+e.g. in "Quantum Field Theory and Critical Phenomena"
+by J. Zinn-Justin (Sects. 1.1 & 1.2). See also Sects. 2.0-2.2
+& 2.5 for the discussion  of of the path integral and
+the Feynman-Kac formula. Of course, for the latter topic, 
+"Quantum Mechanics and Path Integral" by Feynman-Hibbs is 
+the physics classic. Rigorous theory of infinite-dimensional 
+Gaussian integrals may be found e.g. in the 4th volume of
+Gelfand-Vilenkin. See also Simon's "The Euclidean $P(\phi)_2$
+Quantum Field Theory".
+
+
+The free field with values in $S^1$ are discussed
+briefly e.g. in the Ginspargs contributions to Les Houches 1988 School
+(Session XLIV "Fields, Strings and Critical Phenomena", eds.
+Brezin-Zinn-Justin) or in "Th\'{e}orie Statistique des Champs"
+de Drouffe-Itzykson (Sects. 3.2 & 3.6). For the case of fields
+with values in a torus see the paper by Narain-Sarmadi-Wittem 
+in Nucl. Phys. B 279 (1987) p. 369 and for the case of complex torus
+read Vafa's contribution to "Essays on Mirror Symmetry", ed. S.-T. Yau, 
+International Press, Hong Kong 1992.
+
+
+The operator product expansion in the 2-dimensional conformal field 
+theory is a starting point of the famous Belavin-Polyakov-Zamolodchikov
+paper in Nucl. Phys. B 241 (1984), p. 333. My discussion will be somewhat 
+in the spirit of the article of Eguchi-Ooguri in Nucl. Phys. B 282 (1987), 
+p. 308 and should make the BPZ formalism transparent.
+
+
+For the Segal's axiomatics of CFT see:
+G. Segal, "Two dimensional conformal field tgheory and modular functors" 
+in IXth International Congress in Math. Phys., Simon, Truman, Davies (eds), 
+Adam Hilger, Bristol 1989 and G. Segal, "The definition of conformal field 
+theory," preprint of variable size. A general discussion of CFT 
+designed for the mathematical audience may be found in: K. Gawedzki, 
+"Conformal field theory" in Asterisque 177/178 (1989), p.95.
+
+
+For the rudiments of the perturbative approach to functional 
+integrals, Feynman graphs etc. see again the book by Zinn-Justin,
+Sects. 5.1-5.3. The original reference to the renormalization of
+geometric sigma models is Fiedan's thesis published with few
+years delay in Ann. Phys. 163 (1985), p. 318. The SUSY case
+is discussed in Alvarez-Gaume-Freedman-Mukhi, Ann. Phys. 134 (1981)
+p. 85.
+
+
+The basic papers on the Wess-Zumino-Witten model are:
+
+Witten: "Non-abelian bosonization in 2 dimensions",
+CMP 92 (1984), p. 455, Polyakov-Wiegmann: "Goldstone fields in two
+dimensions with multivalued actions", Phys. Lett. B 141, (1984), p. 223,
+Knizhnik,Zamolodchikov: "Current algebra and Wess-Zumino model in two
+dimensions", Nucl. Phys. B 247 (1984), p. 83, Gepner, Witten: 
+"String theory on group manifolds", Nucl. Phys. B 278 (1986), p. 493,
+Verlinde: "Fusion rules and modular transformations in 2d CFT", Nucl. 
+Phys. B 300 (1988), p. 360, Tsuchiya, Kanie: "Vertex operators 
+in the conformal field theory on P1 ...", Adv. Sud. Pure Math. 16 (1988), 
+p. 297, Tsuchiya, Ueno, Yamada: Conformal field theory on universal 
+family of stable curves ...", Adv. Stud. Pure Math. 19 (1989), p. 459.
+
+I will follow a geometric approach sketched in my Karpacz lectures: 
+"Constructive conformal field theory" in Functional Integration,
+Geometry and Strings, Haba, Sobczyk (eds), Birkhaeuser, Basel 1989, p. 277.
+
+
+The original papers on the coset models are:
+
+Goddard, Kent Olive in Phys. Lett. B 152 (1985), p. 88 (short version) and
+CMP 103 (1896), p. 105. The N=2 SUSY case was discussed in: Kazama-Suzuki,
+Y. Kazama, H. Suzuki, Phys. Lett. B 216 (1989), p. 112
+and Nucl. Phys. B 321 (1989), p. 232. I will stick to the functional 
+integral approach of Gawedzki-Kupiainen: Nucl. Phys. B 320 (1989), p. 625.
+
+
+
+
+
+
+
+
+
+
+
+     
+

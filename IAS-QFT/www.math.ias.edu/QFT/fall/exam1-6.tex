@@ -1,0 +1,110 @@
+\input amstex
+\magnification=1200
+\documentstyle {amsppt}
+\pagewidth{6.5 true in}
+\pageheight{8.0 true in}
+\nologo
+
+\noindent
+{\bf Fall Term Exam, N$^{\text{0}}$. 6}\qquad\qquad\qquad
+\qquad\qquad\qquad\qquad\qquad(solution by D. Freed)
+\smallskip
+\hbox to \hsize{\hrulefill}
+\bigskip
+\noindent
+{\bf Problem:}
+\medskip
+Let $\Cal O(x)$ be a local operator which annihilates the
+vacuum:
+$$
+\Cal O(x)|\Omega\rangle=0.\tag1
+$$
+Show at least at a physical level of rigor that $\Cal
+O(x)=0$.
+\medskip
+Now extend this slightly.  Suppose that for some distinct
+points $x$ and $y\langle\Omega|\Cal O^*(y)\Cal
+O(x)|\Omega\rangle$\hfill\break 
+$=0$.  ($\Cal O^*$ is the hermitian
+adjoint of $\Cal O$.)  Prove that $\Cal O=0$.
+\bigskip
+\noindent
+{\bf Solution:}
+\medskip
+We recall that in a quantum field theory the correlation
+function (better distribution) 
+$F(x_1,\ldots,x_n)=\langle\Cal O_1(x_1)\Cal
+O_2(x_2)\ldots\Cal O_n(x_n)\rangle$ is initially defined
+for $x_1,\ldots,x_n$ distinct points in Minkowski space
+$V$.  It is the boundary value of an {\it analytic}
+function on a connected domain $\Cal D\subset(V_{\Bbb
+C})^{\times n}$ where $\Cal D$ includes:
+\roster
+\item"{(1)}"  The subspace of $E^{\times n}$ consisting of $n$
+distinct points where $E$ is Euclidean space; and
+\smallskip
+\item"{(2)}"  an open set in $V^{\times n}$ consisting of $n$
+spacelike separated points.  
+\endroster
+\smallskip
+\noindent
+(The precise description of
+some admissible open sets in (2) is given in the lemma of
+Jost.) The restriction of $F$ to either of the two sets
+described determines $F$.
+\medskip
+Now suppose $\Cal O$ is an operator which annihilates the
+vacuum:  $\Cal O(x)|\Omega\rangle=0$.  We would like to
+show that $\Cal O=0$, which means that any correlation
+function involving $\Cal O$ vanishes identically.  For this
+we restrict the correlation function to a set of the form
+(2) above, and then
+$$
+\align
+\langle\Cal O_1(x_1)\cdots\Cal O(x)\cdots\Cal
+O_n(x_n)\rangle&=\langle\Cal O_1(x_1)\cdots\Cal
+O_n(x_n)\Cal O(x)\rangle\\
+&=\langle\Omega|\Cal O_1(x_1)\cdots\Cal O_n(x_n)\Cal
+O(x)|\Omega\rangle\\
+&=0.
+\endalign
+$$
+\medskip
+For the second assertion, we suppose $\langle\overline{\Cal
+O(y)}\Cal O(x)\rangle=0$ for distinct points $x,y$ in
+Euclidean space; we want to show that any correlation
+function with $\Cal O$ vanishes (in Euclidean space).  Let
+$\pi$ denote the perpendicular bisecting hyperplane to the
+segments joining $x$ and $y$, and denote by $\overline p$
+the reflection of $p$ in $\pi$.  Thus $y=\overline x$.
+Now let
+$$
+\align
+\Cal O'&=\Cal O_1(p_1)\cdots\Cal O_n(p_n),\\
+\overline{{\Cal O}'}&=\overline{\Cal O_1(\overline p_1)}
+\cdots\overline{\Cal O_n(\overline p_n)},
+\endalign
+$$
+denote some product of operators.  We must show
+$\langle\Cal O(x)\Cal O'\rangle=0$.
+Consider
+$$
+\langle(\overline{\Cal O(\overline x)}+\lambda\Cal
+O')\,\,(\Cal O(x)+\lambda\overline{\Cal O'})\rangle.
+$$
+By reflection positivity this is nonnegative.
+Set
+$$
+\lambda=\frac{-\text{Re}\langle\Cal O(x)\Cal
+O'\rangle}{\langle\Cal O'\overline{\Cal O'}\rangle}
+$$
+to conclude
+$$
+(\text{Re}\langle\Cal O(x)\Cal O'\rangle^2\leq\langle\overline
+{\Cal O(\overline x)}\Cal O(x)\rangle\,\,\langle\Cal
+O'\overline{\Cal O'}\rangle=0.
+$$
+Thus Re$\langle\Cal O(x)\Cal O'\rangle=0$.  The arguments
+applied to $\sqrt{-1}\Cal O'$ show the imaginary part
+vanishes as well.
+\bye

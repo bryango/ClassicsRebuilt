@@ -1,0 +1,2058 @@
+%% This is a plain TeX file
+%%
+\magnification=1200
+\hsize=6.5 true in
+\vsize=8.7 true in
+\input epsf.tex
+
+%These two files (in this order!!) are necessary
+%in order to use AMS Fonts 2.0 with Plain TeX
+
+\input amssym.def
+\input amssym.tex
+
+\font\boldtitlefont=cmb10 scaled\magstep2
+\font\smallboldtitle=cmb10 scaled \magstep1
+\font\sans=cmss10 scaled\magstep1
+
+\footline={\hfil {\tenrm III.\folio}\hfil}
+
+\def\eps{{\varepsilon}}
+\def\Eps{{\epsilon}}
+\def\kap{{\kappa}}
+\def\lam{{\lambda}}
+
+\def\undertext#1{$\underline{\vphantom{y}\hbox{#1}}$}
+\def\nspace{\lineskip=1pt\baselineskip=12pt%
+     \lineskiplimit=0pt}
+\def\dspace{\lineskip=2pt\baselineskip=18pt%
+     \lineskiplimit=0pt}
+
+\def\half{{\textstyle 1\over\textstyle 2}}
+\def\w{{\mathchoice{\,{\scriptstyle\wedge}\,}
+  {{\scriptstyle\wedge}}
+  {{\scriptscriptstyle\wedge}}{{\scriptscriptstyle\wedge}}}}
+\def\Le{{\mathchoice{\,{\scriptstyle\le}\,}
+{\,{\scriptstyle\le}\,}
+{\,{\scriptscriptstyle\le}\,}{\,{\scriptscriptstyle\le}\,}}}
+\def\Ge{{\mathchoice{\,{\scriptstyle\ge}\,}
+{\,{\scriptstyle\ge}\,}
+{\,{\scriptscriptstyle\ge}\,}{\,{\scriptscriptstyle\ge}\,}}}
+\def\plus{{\hbox{$\scriptscriptstyle +$}}}
+\def\Proclaim#1{\medbreak
+  \medskip\noindent{\bf#1\enspace}\it\ignorespaces}
+  %the way to use this is:
+  %"\Proclaim{Theorem 1.1.}" for instance.
+\def\finishproclaim{\par\rm
+     \ifdim\lastskip<\medskipamount\removelastskip
+     \penalty55\medskip\fi}
+\def\Item#1{\par\smallskip\hang\indent%
+  \llap{\hbox to\parindent {#1\hfill\enspace}}\ignorespaces}
+
+\def\strutdepth{\dp\strutbox}
+\def\marginmark{\strut\vadjust{\kern-\strutdepth
+     \hskip-25pt\specialmark}}
+\def\specialmark{\vtop to \strutdepth{%
+     \baselineskip8pt\vss
+     \llap{\raise20pt\hbox{\vtop{\hbox{\sevenrm See Prob.}
+\hbox{\sevenrm Set \#5.}}}}}\null}
+
+\def\im{{\rm Im}}  \def\Open{{\rm open}}
+\def\Diff{{\rm Diff}}  \def\Closed{{\rm closed}}
+\def\Map{{\rm Diff}}  \def\spurious{{\rm spurious}}
+\def\Met{{\rm Met}} \def\phys{{\rm phys}}
+\def\diag{{\rm diag}}  \def\Vir{{\rm Vir}}
+\def\spin{{\rm spin}} \def\Res{{\rm Res}}
+\def\Null{{\rm null}} \def\mass{{\rm mass}}
+\def\SO{{\rm SO}} \def\Tr{{\rm Tr\,}}
+\def\SU{{\rm SU}} \def\tr{{\rm tr}}
+\def\Weyl{{\rm Weyl}} \def\Ker{{\rm Ker}}
+\def\Range{{\rm Range}} \def\SL{{\rm SL}}
+\def\Det{{\rm Det}} \def\re{{\rm Re}}
+\def\dist{{\rm dist}} \def\psl{{\rm psl}}
+\def\Vol{{\rm Vol}} \def\PSL{{\rm PSL}}
+
+\def\fbar{\bar{f}}  \def\mubar{\bar{\mu}}
+\def\barh{\bar{h}}  \def\gammabar{\bar{\gamma}}
+\def\kbar{\bar{k}}  \def\lambar{\bar{\lambda}}
+\def\mbar{\bar{m}}  \def\phibar{\bar{\phi}}
+\def\wbar{\bar{w}}  \def\etabar{\bar{\eta}}
+\def\xbar{\bar{x}}
+\def\zbar{\bar{z}}
+\def\Abar{\bar{A}}
+\def\Kbar{\bar{K}}
+\def\Pbar{\bar{P}}
+\def\Sbar{\bar{S}}
+\def\Tbar{\bar{T}}
+
+\def\ghat{\hat{g}}
+\def\muhat{\hat{\mu}}
+
+\def\htil{\tilde{h}}
+\def\xtil{\tilde{x}}
+\def\Dtil{\widetilde{D}}
+\def\Ltil{\tilde{L}}
+\def\Ntil{\widetilde{N}}
+\def\Ttil{\widetilde{T}}
+\def\scrFtil{\widetilde{\scrF}}
+\def\epstil{\tilde{\eps}}
+
+\def\dbR{{\Bbb R}}
+\def\dbZ{{\Bbb Z}}
+
+%Capital roman double letters(Blackboard bold)
+\def\db#1{{\fam\msbfam\relax#1}}
+
+\def\dbA{{\db A}} \def\dbB{{\db B}}
+\def\dbC{{\db C}} \def\dbD{{\db D}}
+\def\dbE{{\db E}} \def\dbF{{\db F}}
+\def\dbG{{\db G}} \def\dbH{{\db H}}
+\def\dbI{{\db I}} \def\dbJ{{\db J}}
+\def\dbK{{\db K}} \def\dbL{{\db L}}
+\def\dbM{{\db M}} \def\dbN{{\db N}}
+\def\dbO{{\db O}} \def\dbP{{\db P}}
+\def\dbQ{{\db Q}} \def\dbR{{\db R}}
+\def\dbS{{\db S}} \def\dbT{{\db T}}
+\def\dbU{{\db U}} \def\dbV{{\db V}}
+\def\dbW{{\db W}} \def\dbX{{\db X}}
+\def\dbY{{\db Y}} \def\dbZ{{\db Z}}
+
+\font\teneusm=eusm10  \font\seveneusm=eusm7 
+\font\fiveeusm=eusm5 
+\newfam\eusmfam 
+\textfont\eusmfam=\teneusm 
+\scriptfont\eusmfam=\seveneusm 
+\scriptscriptfont\eusmfam=\fiveeufm 
+\def\scr#1{{\fam\eusmfam\relax#1}}
+
+
+%Upper-case Script Letters:
+
+\def\scrA{{\scr A}}   \def\scrB{{\scr B}}
+\def\scrC{{\scr C}}   \def\scrD{{\scr D}}
+\def\scrE{{\scr E}}   \def\scrF{{\scr F}}
+\def\scrG{{\scr G}}   \def\scrH{{\scr H}}
+\def\scrI{{\scr I}}   \def\scrJ{{\scr J}}
+\def\scrK{{\scr K}}   \def\scrL{{\scr L}}
+\def\scrM{{\scr M}}   \def\scrN{{\scr N}}
+\def\scrO{{\scr O}}   \def\scrP{{\scr P}}
+\def\scrQ{{\scr Q}}   \def\scrR{{\scr R}}
+\def\scrS{{\scr S}}   \def\scrT{{\scr T}}
+\def\scrU{{\scr U}}   \def\scrV{{\scr V}}
+\def\scrW{{\scr W}}   \def\scrX{{\scr X}}
+\def\scrY{{\scr Y}}   \def\scrZ{{\scr Z}}
+
+\def\gr#1{{\fam\eufmfam\relax#1}}
+
+%Euler Fraktur letters (German)
+\def\grA{{\gr A}}	\def\gra{{\gr a}}
+\def\grB{{\gr B}}	\def\grb{{\gr b}}
+\def\grC{{\gr C}}	\def\grc{{\gr c}}
+\def\grD{{\gr D}}	\def\grd{{\gr d}}
+\def\grE{{\gr E}}	\def\gre{{\gr e}}
+\def\grF{{\gr F}}	\def\grf{{\gr f}}
+\def\grG{{\gr G}}	\def\grg{{\gr g}}
+\def\grH{{\gr H}}	\def\grh{{\gr h}}
+\def\grI{{\gr I}}	\def\gri{{\gr i}}
+\def\grJ{{\gr J}}	\def\grj{{\gr j}}
+\def\grK{{\gr K}}	\def\grk{{\gr k}}
+\def\grL{{\gr L}}	\def\grl{{\gr l}}
+\def\grM{{\gr M}}	\def\grm{{\gr m}}
+\def\grN{{\gr N}}	\def\grn{{\gr n}}
+\def\grO{{\gr O}}	\def\gro{{\gr o}}
+\def\grP{{\gr P}}	\def\grp{{\gr p}}
+\def\grQ{{\gr Q}}	\def\grq{{\gr q}}
+\def\grR{{\gr R}}	\def\grr{{\gr r}}
+\def\grS{{\gr S}}	\def\grs{{\gr s}}
+\def\grT{{\gr T}}	\def\grt{{\gr t}}
+\def\grU{{\gr U}}	\def\gru{{\gr u}}
+\def\grV{{\gr V}}	\def\grv{{\gr v}}
+\def\grW{{\gr W}}	\def\grw{{\gr w}}
+\def\grX{{\gr X}}	\def\grx{{\gr x}}
+\def\grY{{\gr Y}}	\def\gry{{\gr y}}
+\def\grZ{{\gr Z}}	\def\grz{{\gr z}}
+
+%\overfullrule=0pt
+
+\parindent=18pt
+\line{\sans --- DRAFT ---\hfill{\rm IASSNS-HEP-97/72}}
+
+\bigskip\bigskip
+\centerline{\boldtitlefont Lectures 5, 6}
+\medskip
+\centerline{\smallboldtitle III. String Amplitudes
+and Moduli Space of Curves}
+
+\medskip
+\centerline{Eric D'Hoker}
+
+\frenchspacing
+
+\dspace
+\bigskip
+In the previous Chapter, we have quantized free
+bosonic strings, determined their spectrum and Hilbert
+space of states under certain conditions:
+$D=26$ and the presence of massless gravitons and
+Yang-Mills particles.
+(The case $D\Le 25$, allowed by the no-ghost theorem,
+was shown to be a subcase.)
+
+Now, we shall quantize interacting strings, and
+investigate quantum mechanical transition amplitudes
+for the scattering of string states.
+While operator methods were convenient for
+determining the spectrum of free strings, the
+functional integral formulation in terms of a
+summation over surfaces is better suited for dealing
+with interactions.
+Thus, our starting point is the transition
+amplitude
+$$
+A=\sum\limits_{{{\scriptstyle {\rm topologies}\,
+\Sigma}\atop{\scriptstyle (h=0,\ldots,\infty)}}}
+\int\nolimits_{\Met(\Sigma)}Dg{1\over
+\scrN(g)}\int\nolimits_{\Map(\Sigma,M)}
+V_1\ldots V_N e^{-S[x,g]}\eqno{(3.1)}
+$$
+with Riemannian space-time $M$, and external string
+states represented by vertex operators $V_i$,
+$i=1,\ldots,N$.
+This was precisely our original starting point with
+Euclidean signature metric on $M$.
+Minkowski amplitudes (for example, for flat $M=\dbR_M^D$) are
+obtained by analytic continuation in external momenta
+and polarization tensors.
+The vertex operators were determined in \S{II} in
+terms of conformal primary fields of weight $(1,1)$.
+The summation in the transition amplitude $A$
+ is over topologies of compact oriented
+surfaces, since we shall limit ourselves here to the
+study of the closed oriented string.
+
+The strategy is as follows:
+
+\medskip\noindent
+1)\enspace
+At fixed topology of $\Sigma$, we use the product
+structure of $\Met(\Sigma)=\Weyl(\Sigma)\times$
+conformal classes $(\Sigma)$ to decompose the measure
+$Dg$ on $\Met(\Sigma)$ into a product of measures on
+the orbits of Weyl, on the orbits of $\Diff(\Sigma)$
+and on the moduli space
+$\scrM_h=\Met(\Sigma)/\Diff(\Sigma)\ltimes
+\Weyl(\Sigma)$.
+A Jacobian determinant arises, which is essentially
+the Faddeev-Popov determinant.
+This decomposition holds for any matter conformal
+field theory, in particular for any space-time $M$,
+defining a conformal field theory.
+
+\medskip\noindent
+2)\enspace
+For flat Euclidean space-time $M$, the combined
+measure --- including the Faddeev-Popov determinant
+--- and the correlation functions, are found to be
+Weyl-invariant (i.e. $\Weyl(\Sigma)$ is a
+symmetry group) if and only if $D=26$ and gravitons
+are massless on surfaces of any topology
+(equivalently, the $a=1$ condition of \S{II} holds).
+
+\medskip\noindent
+3)\enspace
+Under the assumptions of 2) the string theory is usually
+called critical. 
+In this case, the formal measure $Dg/\scrN(g)$ on
+$\Met(\Sigma)$, divided by the volume of the orbits of
+the symmetry group
+$\Diff(\Sigma)\ltimes\Weyl(\Sigma)$, {\it naturally
+projects down} to an {\it intrinsically defined
+measure on $\scrM_h$}.
+Thus, the transition amplitudes for critical strings
+reduce to well-defined integrals over $\scrM_h$
+of the matter conformal field theory correlation functions.
+
+\medskip\noindent
+4)\enspace
+More generally, the assumptions of 2) may be relaxed,
+and the matter part may be any conformal field theory
+of central charge $c=26$ and with correlation
+functions satisfying certain Weyl invariance conditions.
+
+\medskip\noindent
+5)\enspace
+In particular, in Lecture 9, we shall generalize the
+Weyl invariance conditions to the case of curved
+space-time manifolds $M$ --- in certain limits.
+
+\medskip\noindent
+6)\enspace
+Under the assumptions of 2), we shall obtain in this
+chapter $0$- and $1$-loop transition amplitudes for
+critical bosonic string theory.
+
+\bigskip\noindent
+\Item{\bf A.} {\bf Finite-Dimensional Case}
+
+\smallskip
+Let $P$ be a finite-dimensional manifold, with
+Riemannian metric $G$, and associated measure
+$d\mu_G$.
+Let $H$ be a Lie group acting on $P$, and assume that
+$d\mu_G$ is $H$-invariant.
+We wish to reduce the integrals of $H$-invariant
+functions on $P$ to integrals on the quotient
+$\Pbar=P/H$.
+Let $f(x)\colon\,P\to\dbC$ be $H$-invariant,
+$$
+f(xh)=f(x)\qquad\hbox{for all}\qquad
+x\in P,\,\, h\in H.
+$$
+Then for any section $s\colon\,\Pbar\to P$, we have
+$$
+\int\nolimits_{P}d\mu_G f=\int\nolimits_{\Pbar}
+d\mubar\,\,s^*(f)J\int\nolimits_{H}d\nu_H\,\,,
+$$
+where $d\mubar$ is the measure on $\Pbar$ induced from
+$d\mu_G$, $d\nu_H$ is the left-invariant measure on $H$, and $J$
+is a Jacobian (or Faddeev-Popov)
+determinant which we define below, as follows.
+First, let us present a figure:
+$$
+\vbox{\epsfxsize=2.5in\epsfbox{fig1.eps}}
+$$
+The tangent space at $x$ to $P$ may be decomposed
+into the part tangent to the orbit of $H$,
+generated by the Lie algebra $\scrH$,
+$$
+i\colon\,\scrH\to T_x P
+$$
+and a part from the push-forward of the tangent space to
+$T_{\xbar}\Pbar$:
+$$
+s_*\colon\,T_{\xbar}\Pbar\to T_x(P)\,\,,
+$$
+as follows:
+$$
+s_*\oplus i\colon\,T_{\xbar}\Pbar \oplus\scrH\to
+T_x(P).
+$$
+The Jacobian $J$ is now obtained as
+$$
+J=\det(T_{\xbar}\Pbar\oplus\scrH\to T_x P).
+$$
+\vfill\eject
+%\bigskip\noindent
+\noindent
+\Item{\bf B.} {\bf Basic Notation: Tensors,
+Derivatives}
+
+\smallskip
+Fix a positive definite metric $g$ on $\Sigma$ and
+choose local complex coordinates $z$, $\zbar$ in which
+$$
+g=g_{z\zbar}(dz\otimes d\zbar+d\zbar\otimes dz)=
+2g_{z\zbar}\vert dz\vert^2
+$$
+Tensors decompose into one-dimensional components of weight
+$(m,n)$, which are sections of a line bundle $K^{(m,n)}$:
+$$
+\phi=\phi_{{\underbrace{z\ldots z}_m}\,\,
+  {\underbrace{\zbar\ldots\zbar}_n}}
+(dz)^m (d\zbar)^n\in K^{(m,n)}\,\,.
+$$
+Using the metric $g$, we identify tensors  of weight
+$(m,n)$ with tensors of weight $(m-n,0)$.
+The space of tensors of weight $(m,0)$ is denoted
+$K^m$, with $K^1$ the space of sections of the
+canonical line bundle $T_{(1,0)}^*(\Sigma)$.
+(Generally, we do not distinguish between a bundle and
+the space of its sections.)
+
+On sections of $K^m$ we have the $L^2$ inner product
+$$
+(\phi_1,\phi_2)_g=\int\nolimits_{\Sigma} d\mu_g
+(g_{z\zbar})^{-m}\phi_1^*\phi_2\eqno{(3.2)}
+$$
+as well as the covariant derivatives
+$$
+\eqalignno{
+\nabla\phi
+   &=\nabla_{\zbar}^{(m)}\phi+\nabla_z^{(m)}\phi\cr
+\noalign{\hbox{where
+$\nabla_{\zbar}^{(m)}=\bar{\partial}_{(m)}$ is the
+Cauchy Riemannn operator}}
+\nabla_{\zbar}^{(m)}\colon\,K^m &\to K^{(m,1)}\,\,
+\nabla_{\zbar}^{(m)}\phi 
+  ={\partial\over\partial\zbar}\,\phi
+\otimes d\zbar\,\,. &(3.3)\cr}
+$$
+Equivalently, identifying $(m,1)\sim(m-1,0)$, we have
+$$
+\cases{
+\nabla_{(m)}^z\colon\,K^m\to K^{m-1}
+  &\qquad $\nabla_{(m)}^z\phi=(g_{z\zbar})^{-1}
+   {\partial\over\partial\zbar}\phi\otimes(dz)^{-1}$\cr
+&\cr
+\nabla_z^{(m)}\colon\,K^m\to K^{m+1}
+  &\qquad $\nabla_z^{(m)}\phi=(g_{z\zbar})^m
+   {\partial\over\partial z}(g_{z\zbar})^{-m}\phi\otimes
+  dz\,\,.$\cr}
+\eqno{(3.4)}
+$$
+(In general, we shall not exhibit the differentials $dz$
+and $d\zbar$ in $\nabla$.)
+The adjoints of these operators with respect to
+$(\quad,\quad)_g$ are
+$$
+\left(\nabla_{(m)}^z\right)^\dagger=
+  -\nabla_{z}^{(m-1)};\quad
+  \left(\nabla_z^{(m)}\right)^\dagger=-
+  \nabla_{(m+1)}^z\eqno{(3.5)}
+$$
+and the Laplace operators are
+$$
+\eqalign{
+\Delta_{(m)}^{\plus}
+&=-2\nabla_{(m+1)}^z\nabla_z^{(m)}\cr
+\Delta_{(m)}^-
+&=-2\nabla_z^{(m-1)}\nabla_{(m)}^z\cr}
+\eqno{(3.6)}
+$$
+We also make use of the Riemann-Roch-Atiyah-Singer
+theorem
+$$
+\dim\,\Ker\nabla_z^{(m)}-\dim\,\Ker\nabla_{(m+1)}^z=
+\left(m+{1\over 2}\right)\chi(\Sigma)=(2m+1)(1-h)\,\,,
+\eqno{(3.7)}
+$$
+as well as the vanishing theorems:
+
+{\narrower\medskip
+\noindent
+$$
+\matrix{
+\bullet &h=0, m\Ge 1,  
+     &\Ker\,\nabla_{\zbar}^{(m)}=0\cr
+&&\hbox{(no holomorphic forms on the sphere)}\cr
+\noalign{\bigskip}
+\bullet &h\Ge 2, m\Le -1,  
+&\Ker\,\nabla_{\zbar}^{(m)}=0\,\,.\cr
+&&\hbox{(no holomorphic vector fields for $h\Ge 2$)}\cr}
+\eqno{(3.8)}
+$$
+\medskip}
+
+\bigskip\noindent
+\Item{\bf C.} {\bf Space of Metrics -- Moduli Space
+of Riemann Surfaces}
+
+\smallskip
+Let $\Met(\Sigma)$ denote the space of positive
+definite metrics on $\Sigma$, and $T_g\Met(\Sigma)$
+its tangent space at $g$, consisting of infinitesimal
+deformations $\delta g\in K^{(1,1)}\oplus
+K^{(2,0)}\oplus K^{(0,2)}$.
+Following the results of \S{B}, we have an $L^2$ norm
+$\Vert\delta g\Vert_g^2=(\delta g,\delta g)_g$ on
+$T_g\Met(\Sigma)$, which makes $\Met(\Sigma)$ into an
+infinite dimensional Riemannian manifold.
+The measure $Dg$ is defined with respect to
+$\Vert\delta g\Vert$.
+
+$\Diff(\Sigma)$ acts isometrically on $\Met(\Sigma)$,
+but $\Weyl(\Sigma)$ does not.
+The space of orbits of $\Diff(\Sigma)\ltimes
+\Weyl(\Sigma)$ in $\Met(\Sigma)$ is the {\it moduli
+space} of Riemann surfaces (or complex curves) of genus $h$:
+$$
+\scrM_h\equiv\Met(\Sigma)/\Diff(\Sigma)
+\ltimes\Weyl(\Sigma)\,\,.\eqno{(3.9)}
+$$
+Actually, the group $\Diff(\Sigma)$ is not connected.
+The group of connected components is the {\it mapping
+class group} $G_\Sigma$:
+$$
+G_\Sigma=\pi_0(\Diff(\Sigma))\,\,,
+$$
+which is an infinite discrete group for $h\Ge 1$.
+The component connected to the identity in
+$\Diff(\Sigma)$ is denoted by $\Diff_0(\Sigma)$.
+Thus, there arises another natural space: $J_h$,
+which is Teichm\"uller space
+$$
+\scrT_h\equiv\Met(\Sigma)/\Diff_0(\Sigma)\ltimes
+  \Weyl(\Sigma)\,\,,
+$$
+which is the simply connected covering space of
+$\scrM_h$:
+$$
+\scrM_h=\scrT_n/G_\Sigma\,\,.
+$$
+Teichm\"uller space is a complex finite dimensional
+manifold, while moduli space is a complex finite
+dimensional orbifold (the action of $G_\Sigma$ on
+$\scrT_h$ produces singularities), both of dimension
+$$
+\dim_{\dbC}\scrT_h=\dim_{\dbC}\scrM_h=
+\cases{0 &$h=0$\cr
+1 &$h=1$\cr
+3h-3 &$h\Ge 2\,\,.$\cr}
+\eqno{(3.10)}
+$$
+We have explained that
+string transition amplitudes can be reduced to an
+integral over moduli space.
+We wish to factorize the measure $Dg$ into its
+components along $\Diff(\Sigma)$, $\Weyl(\Sigma)$ and
+$\scrM_h$, i.e. we want to fix the gauge.
+To examine this factorization concretely, we
+decompose $T_g\Met(\Sigma)$ into the tangent spaces
+to the orbits of $\Diff_0(\Sigma)$ and
+$\Weyl(\Sigma)$, as explained in the finite
+dimensional example.
+We perform this factorization at an arbitrary metric
+$g\in\Met(\Sigma)$, and shall choose a section later on.
+
+We use the fact that $\Diff_0(\Sigma)$ is generated by
+vector fields $v=v^z\oplus v^{\zbar}\in
+K^{(-1,0)}\oplus K^{(0,-1)}$.
+A Weyl transformation will in general be denoted by
+$e^{2\sigma}$, where $\sigma$ takes real values.
+
+Let the reference metric be $g=2g_{z\zbar}\vert
+dz\vert^2$; an arbitrary metric $g+\delta g$ in
+the neighborhood of $g$ may then be conveniently
+parametrized by a change in $g_{z\zbar}$ as well as by
+Beltrami differentials $\delta\eta_{\zbar}^z\in
+K^{(-1,1)}$ and $\delta\etabar_z^{\zbar}\in
+K^{(1,-1)}$.
+$$
+g+\delta g=2\left(g_{z\zbar}+\delta g_{z\zbar}\right)
+\vert dz+\delta\eta_{\zbar}^z d\zbar\vert^2\,\,.\eqno{(3.11)}
+$$
+The space $T_g\Met(\Sigma)$ admits the orthogonal
+decomposition
+$$
+\eqalignno{
+T_g\Met(\Sigma) &=K^{(1,1)}\oplus K^{(2,0)}\oplus
+  K^{(0,2)}\cr
+\delta g &=2\delta g_{z\zbar}\vert dz\vert^2+
+  2g_{z\zbar}\delta\eta_{\zbar}^z(d\zbar)^2
+ +2g_{z\zbar}\delta\etabar_z^{\zbar}(dz)^2\,\,. &(3.12)\cr}
+$$
+The infinitesimal action of $(\delta v^z$, $\delta
+v^{\zbar}$, $2\delta\sigma)$ in the Lie aglebra of
+$\Diff_0(\Sigma)\ltimes\Weyl(\Sigma)$ is
+then simply
+$$
+\left\{
+\eqalign{
+\delta g_{z\zbar} &=(2\delta\sigma+\nabla_z\delta
+v^z+\nabla_{\zbar}\delta v^{\zbar})g_{z\zbar}\cr
+\delta\eta_{\zbar}^z  &=\nabla_{\zbar}\delta v^z\cr
+\delta\etabar_z^{\zbar} &=\nabla_z \delta v^{\zbar}\,\,.\cr}
+\right.
+\eqno{(3.13)}
+$$
+While the range of $\Weyl(\Sigma)$ is the full
+$K^{(1,1)}$, in general the range of
+$\Diff_0(\Sigma)$ need not be all of $K^{(2,0)}\oplus
+K^{(0,2)}$.
+Instead, we have the orthogonal decomposition
+$$
+K^{(2,0)}=\Range\,\nabla_z^{(1)}\oplus
+\Ker(\nabla_z^{(1)})^\dagger\,\,.\eqno{(3.14)}
+$$
+
+The space $\Ker\,(\nabla_z^{(1)})^\dagger=
+\Ker\,\nabla_{\zbar}^{(2)}$ consists of holomorphic
+quadratic differentials on $\Sigma$, and can be
+identified with the holomorphic cotangent space of
+$\scrM_h$:
+$$
+T_{(1,0)}^*(\scrM_h)=\Ker\,\nabla_{\zbar}^{(2)}\eqno{(3.15)}
+$$
+(Analogously, we have
+$T_{(0,1)}^*(\scrM_h)=\Ker\,\nabla_z^{(-2)}$.)
+To see this, we notice that holomorphic
+differentials
+$\phi_j\in\Ker\,\nabla_{\zbar}^{(2)}$ provide
+linear forms on the space of differentials
+$\delta\eta$:
+$$
+(\delta\eta,\phi_j)=\int\nolimits_{\Sigma}dz\,d\zbar\,\,
+\delta\eta_{\zbar}^z \phi_{jzz}\eqno{(3.16)}
+$$
+The above pairing is $\Weyl(\Sigma)$-invariant and
+the kernel of $(\,\,\cdot\,\,,\phi_j)$ (and
+$(\,\,\cdot\,\,,\phi_j^*)$) is precisely the tangent
+space to the orbits of $\Diff_0(\Sigma)$ and
+$\Weyl(\Sigma)$; hence the identification.
+By the Riemann-Roch theorem, and the vanishing
+theorems listed above, it is easy to see that the
+dimensions of $\scrM_h$ and of
+$\Ker\,\nabla_{\zbar}^{(2)}
+\oplus\Ker\,\nabla_z^{(-2)}$ coincide.
+
+More precisely, the holomorphic quadratic
+differentials $\phi_j\in\Ker\,\nabla_{\zbar}^{(2)}$
+form a complex vector space, thus providing a natural
+almost complex structure on the tangent space of $\scrM_h$.
+In fact, this almost complex structure is integrable and
+results in a complex structure on $\scrM_h$;
+for a given choice of $\phi$, the above
+linear forms define local complex coordinates $m_j$,
+$\mbar_j$ on $\scrM_h$ given by
+$$
+\delta m_j=(\delta\eta,\phi_j)\qquad\qquad
+\delta\mbar_j=(\delta\etabar,\phibar_j)\,\,.\eqno{(3.17)}
+$$
+We may represent this projection onto $\scrM_h$ by a
+picture analogous to the one used ot discuss the
+finite dimensional example at the beginning of this
+lecture.
+$$
+\vbox{\epsfxsize=3.5in\epsfbox{fig2.eps}}
+$$
+
+Vice-versa, for a given set of complex coordinates
+$(m_j,\mbar_j)$ on $\scrM_h$, we may choose a section
+$s$ of $\scrM_h$ in $\Met(\Sigma)$ --- also called a
+slice --- of dimension $\dim\,\scrM_h$, and
+parametrized by $(m_j,\mbar_j)$:
+$$
+\vbox{\epsfxsize=2.5in\epsfbox{fig3.eps}}
+$$
+The tangent space at $g(m_j,\mbar_j)$ then decomposes
+into the tangent directions to
+the action of $\Weyl(\Sigma)$, the action of
+$\Diff_0(\Sigma)$ on
+the differentials $\delta\eta$, $\delta\etabar$,
+and  moduli deformation, given by a basis of
+{\it Beltrami differentials} $\mu_j$ and $\mubar_j$:
+$$
+\eqalignno{
+&\cases{
+\delta\eta_{\zbar}^z=\nabla_{\zbar}^{(-1)}
+  \delta v^z+\sum\limits_{j=1}^{\dim\,\scrM_h}
+  \delta m_j\mu_{j\zbar}^z &\cr
+\noalign{\medskip}
+\delta\etabar_z^{\zbar}=\nabla_z^{(1)}\delta
+v^{\zbar}+\sum\limits_{j=1}^{\dim\,\scrM_h}
+  \delta\mbar_j\mubar_{jz}^{\zbar}\,\,. &\cr} &(3.18) \cr
+\noalign{\hbox{We may choose the Beltrami 
+     differentials as follows}}
+&\cases{
+\mu_{j\zbar}^z=g^{z\zbar}{\partial
+g_{\zbar\zbar}\over\partial m_j}(m,\mbar) &\cr
+\noalign{\medskip}
+\mubar_{jz}^{\zbar}=g^{z\zbar}{\partial g_{zz}\over
+  \partial\mbar_j}(m,\mbar)\,\,,\cr} &(3.19)\cr}
+$$
+so that $\mu_j$ and $\mubar_j$ are unchanged under
+Weyl transformations $g\to
+e^{2\sigma}g\colon\,\mu_j\to\mu_j$;
+$\mubar_j\to\mubar_j$.
+Thus, under a change of section $s$, $\mu_j$ and
+$\mubar_j$ will be shifted only by the action of a
+vector field in the Lie algebra of $\Diff_0(\Sigma)$.
+
+Finally, for $\Sigma$ with the topology of either
+the sphere or the torus, we also have holomorphic
+vector fields in $\Ker\,\nabla_{\zbar}^{(-1)}$.
+These generate conformal automorphisms, and do not
+act on $\eta$ at all.
+We have
+$$
+\left\{
+\matrix{
+h=0 &\dim\,\Ker\nabla_{\zbar}^{(-1)}=3
+  &\SL(2,\dbC)\cr
+h=1 &\dim\,\Ker\nabla_{\zbar}^{(-1)}=1
+  &T^2\cr
+h\Ge 2 &\dim\,\Ker\nabla_{\zbar}^{(-1)}=0
+  &\hbox{possibly finite automorphism group}\,\,.\cr}\right.
+\eqno{(3.20)}
+$$
+
+\bigskip\noindent
+\Item{\bf D.} {\bf Factorizing the Integration Measure}
+
+\smallskip
+We decompose the integration measure $Dg$ on
+$\Met(\Sigma)$ into measures on the orbits of
+$\Diff(\Sigma)$ and $\Weyl(\Sigma)$ and on $\scrM_h$
+by using the parametrization developed above for
+$\delta g$ in terms of Weyl changes $\delta\sigma$
+and differentials $\delta\eta$, $\delta\etabar$:
+$$
+\delta g=2\delta\sigma
+g+2g_{z\zbar}\delta\eta_{\zbar}^z(d\zbar)^2+
+2g_{z\zbar}\delta\etabar_z^{\zbar}(dz)^2\,\,.\eqno{(3.21)}
+$$
+The relation
+$$
+\Vert\delta g\Vert_g^2=4\Vert\delta\sigma\Vert_g^2
++2\Vert\delta\eta\Vert_g^2+2\Vert\delta\etabar\Vert_g^2
+\eqno{(3.22)}
+$$
+implies that $Dg=D\sigma\,D\eta\,D\etabar$, in
+obvious notation.
+
+Next, we make use of the decomposition of
+$\delta\eta$ and $\delta\etabar$ into orbits of
+$\Diff_0(\Sigma)$ and moduli deformations, which we
+parametrize by coordinates 
+$(\delta m_j,\delta\mbar_j)$ on $\scrM_h$ and a
+choice of Beltrami differentials $\mu_{j\zbar}^z$ and
+$\mubar_{jz}^{\zbar}$, as in (3.18).
+Using the orthogonal decomposition of the
+differentials $\delta\eta_z^{\zbar}$ $g_{z\zbar}$ according to
+$$
+K^{(2,0)}=\Range\nabla_z^{(1)}\oplus
+\Ker\,\nabla_{\zbar}^{(2)}\,\,,\eqno{(3.23)}
+$$
+we evaluate $\Vert\delta\eta\Vert_g^2$ and find
+$$
+2\Vert\delta\eta\Vert_g^2=2\Vert\nabla_{\zbar}^{(-1)}
+\delta v^z\Vert_g^2+\Vert\delta\eta\bot
+\hbox{ \rm projection of $\delta\eta_z^{\zbar}$ 
+$g_{z\zbar}$ onto }
+\Ker\,\nabla_{\zbar}^{(2)} \Vert_g^2\,\,.\eqno{(3.24)}
+$$
+The second term on the right hand side is easily
+worked out by choosing an orthogonal basis for 
+$\Ker\,\nabla_{\zbar}^{(2)}$, with basis vectors
+$\phi_j$, $j=1,\ldots,\dim\,\scrM_h$:
+$$
+\eqalign{
+\Vert\delta\eta &\bot \hbox{ projection of
+$\delta\eta_z^{\zbar}$ $g_{z\zbar}$ onto } 
+  \Ker\,\nabla_{\zbar}^{(2)}\Vert_g^2\cr
+&=\sum\limits_{j}(\delta\eta,\phi_j)_g(\phi_j,\phi_j)_g^{-1}
+  (\phi_j,\delta\eta)_g\cr
+&=\sum\limits_{j,k,\ell}\delta m_k\delta\mbar_\ell
+  (\mu_k,\phi_j)_g(\phi_j,\phi_j)_g^{-1}
+  (\phi_j,\mu_\ell)_g\cr}
+\eqno{(3.25)}
+$$
+
+The first term on the right hand side of (3.24) is conveniently
+rewritten in terms of the Laplace operator
+$\Delta_{(-1)}^-$:
+$$
+2\Vert\nabla_{\zbar}^{(-1)}\delta v^z\Vert_g^2=
+  (\delta v^z,\Delta_{(-1)}^-\delta v^z)_g
+$$
+
+A last point must be clarified before evaluating the
+measure $D\eta\,D\etabar$.
+For the special cases of the sphere $(h=0)$ and the
+torus $(h=1)$,
+$\Ker\,\nabla_{\zbar}^{(-1)}\not=0$, and there
+are (continuous families of) conformal automorphisms of $\Sigma$:
+$\SL(2,\dbC)$ for $h=0$ and $T^2$ for $h=1$.
+The corresponding vector fields leave $\eta$ and $\etabar$
+invariant.
+Thus, in the change of variables,
+$\delta\eta\to(\delta v,\delta m_j)$, we must
+restrict to vector fields $\delta v$ that are
+orthogonal to $\Ker\,\nabla_{\zbar}^{(-1)}$.
+The corresponding restricted volume element on vector
+fields $v$ is denoted by $D'v$.
+The associated determinant of $\Delta_{(-1)}^-$ must
+be similarly restricted to non-zero modes.
+
+Putting all together, we find
+$$
+Dg=\det{'}\Delta_{(-1)}^-
+{\vert\det(\mu_j,\phi_k)_g\vert^2\over
+\det(\phi_j,\phi_k)_g}\prod\limits_{j}
+dm_j\,d\mbar_j\,D'v\cdot D\sigma\,\,.\eqno{(3.26)}
+$$
+While originally we chose
+$\phi_j\in\Ker\,\nabla_{\zbar}^{(2)}$ to form an
+orthogonal basis, it is now clear that the above
+formula holds for any basis 
+$\Ker\,\nabla_{\zbar}^{(2)}$.
+(The finite dimensional determinants are of
+$\dim\,\scrM_h\times\dim\,\scrM_h$ dimensional
+matrices.)
+
+It is standard practice --- and extremely useful ---
+to introduce the following combination of
+determinants
+$$
+Z_{(n)}^{\pm}(g)\equiv
+{\Det'\Delta_{(n)}^{\pm}\over\det(\phi_j,\phi_k)_g\det
+(\psi_a,\psi_b)_g}\eqno{(3.27)}
+$$
+where
+$$
+\matrix{
+{\scriptstyle \bullet} 
+  &\phi_j\in\Ker\,\nabla_{(n+1)}^{z}\hfill
+  &\hbox{ for $\plus$ }; &\quad
+\phi_j\in\nabla_{z}^{(n-1)} 
+  &\hbox{ for $-$}\hfill &\qquad \cr
+{\scriptstyle \bullet} 
+  &\psi_a\in\Ker\,\nabla_{z}^{(n)}\hfill
+  &\hbox{ for $\plus$ }; &\quad
+  \psi_a\in\nabla_{(n)}^{z}\hfill &\hbox{ for
+$-$}\hfill\,\,. &\qquad \cr}
+$$
+While $Z_{(n)}^{\,\pm}$ have non-trivial Weyl
+transformation properties, we shall show in the next
+section that this particular combination has simple
+transformation properties.
+
+Putting all together, we have the following
+expression for the measure $Dg$: 
+
+\Proclaim{Theorem:}
+$$
+Dg=D\sigma\,\Dtil v\,Z_{(-1)}^-(g)\,\,
+\vert\det(\mu_j,\phi_k)\vert_g^2
+\prod\limits_{j=1}^{\dim\,\scrM_h}dm_j\,d
+  \mbar_j\,\,,\eqno{(3.28)}
+$$
+\finishproclaim
+
+\noindent
+where we have
+
+\medskip
+\item{\rm 1)}
+$\Dtil v\equiv D'v$ $\det(\psi_a,\psi_b)_g$.
+For $h\Ge 2$, we have $\Dtil v=Dv$, i.e. the measure
+over all vector fields of $\Diff_0(\Sigma)$.
+For $h=0,1$, we shall postpone the explicit
+construction of $\Dtil v$ until \S{G}.
+
+\smallskip
+\item{\rm 2)}
+The measure
+$$
+\vert\det(\mu_j,\phi_k)_g\vert^2\prod\limits_{j}
+dm_j\,d\mbar_j\eqno{(3.29)}
+$$
+is intrinsically defined on $\scrM_h$.
+To see this, notice that we chose $\mu_j$ to be Weyl
+independent, that $\phi_j$ can be chosen Weyl
+independent, and that the pairing $(\mu_j,\phi_k)_g$
+is Weyl invariant.
+Furthermore, we defined Beltrami differentials by
+$$
+\mu_{j\zbar}^z=g^{z\zbar}
+{\partial g_{\zbar\zbar}\over\partial m_j}\eqno{(3.30)}
+$$
+so that the above combination is manifestly unchanged
+under reparametrizations of $m_j$ and $\mbar_j$.
+
+\smallskip
+\item{\rm 3)}
+$Z_{(-1)}^-(g)$ will be Weyl dependent, as we shall
+establish in the next section.
+This object is called the Faddeev-Popov determinant
+(up to the finite dimensional determinants),
+expressing the fact that we gauge fixed the
+$\Diff_0(\Sigma)$-invariance.
+
+\smallskip
+\item{\rm 4)}
+To complete the construction outlined in the
+finite-dimensional case, for the projection down onto
+$\scrM_h$ of the measure $Dg$ on $\Met(\Sigma)$, we
+will have to understand the Weyl dependence of the
+combined $Z_{(-1)}^-(g)$ and matter contributions,
+which we do in the next section.
+\finishproclaim
+
+\vfill\eject
+
+\noindent
+\Item{\bf E.} {\bf Weyl Rescalings of Functional
+Determinants}
+
+\smallskip
+The determinant combinations $Z_{(n)}^{\pm}$
+(including those with $n\in{1\over 2}+\dbZ$, which
+will enter when dealing with the
+superstring, as we shall see later on) will be
+considered repeatedly, and we shall need their
+behavior under $\Weyl(\Sigma)$ rescalings of the
+metric.
+Throughout, we shall adopt a regularization and
+renormalization scheme that preserves $\Diff(\Sigma)$
+invariance.
+
+\Proclaim{Theorem.}
+$$
+Z_{(n)}^{\pm}(ge^{2\sigma})=Z_{(n)}^{\pm}(g)
+e^{-2c_{(n)}^{\pm}S_L(\sigma,g)}\eqno{(3.31)}
+$$
+where $c_{(n)}^{\pm}$ is given by
+$$
+c_{(n)}^{\pm}\equiv 6n^2\pm 6n+1\eqno{(3.32)}
+$$
+and the {\rm Liouville action} is independent of $n$ and
+given by
+$$
+S_L(\sigma,g)={1\over 12\pi}\int\nolimits_{\Sigma}
+d\mu_g\left[\half g^{mn}\partial_m\sigma
+\partial_n\sigma+R_g\sigma+\beta^2(e^{2\sigma}-1)\right]\,\,.
+\eqno{(3.33)}
+$$
+The constant $\beta$ depends upon the renormalization
+scheme used, and will vanish when determinants are
+defined with $\zeta$-function regularization, or with
+dimensional regularization.
+\finishproclaim
+
+Since special care must be paid to the effects of the
+zero modes, we outline the proof.
+(Various intermediate steps will be proven in Problem
+Set IV.)
+First, it suffices to prove the formula for the Weyl
+transformation of $Z_{(n)}^{\pm}$ by infinitesimal
+$\sigma$; the result for general $\sigma$ follows by
+straightforward integration (Gaw\c{e}dzki, prob. 8).
+Thus, we must prove
+$$
+\delta_\sigma \ln\,Z_{(n)}^{\pm}(g)=-
+{c_{(n)}^{\pm}\over 6\pi}\int\nolimits_{\Sigma}
+d\mu_g[R_g\delta\sigma+2\beta^2\delta\sigma]
+$$
+(Notice that from the form of this infinitesimal variation, it is
+clear that the determinant $Z_{(n)}^{\pm}$ defines a
+conformal field theory with central charge related to $\pm
+c_{(n)}^{\pm}$.)
+
+We define determinants by introducing the
+$\zeta$-function associated with the eigenvalues
+$\lam_\alpha$ of $\Delta_{(n)}^{\pm}$:
+$$
+\zeta(s)\equiv
+\mathop{{\sum}'}\limits_{\alpha}
+\lam_\alpha^{-s}
+$$
+Here, $\sum'$ denotes the sum over all non-zero
+eigenvalues $\lam_\alpha$ of $\Delta_{(n)}^{\pm}$.
+It is standard to represent this sum in terms of the
+heat-kernel of $\Delta_{(n)}^{\pm}$:
+$$
+\zeta(s)={1\over \Gamma(s)}\int\nolimits_0^\infty
+dt\,t^{s-1}(\Tr\,e^{-t\Delta_{(n)}^{\pm}}-N_{(n)}^{\pm})
+\eqno{(3.35)}
+$$
+where $N_{(n)}^{\pm}=\dim\,\Ker\,\Delta_{(n)}^{\pm}$.
+
+The $\zeta(s)$ function series and the heat-kernel
+integral representation are absolutely convergent for
+$\re(s)>1$.
+$\zeta(s)$ is holomorphic for $\re(s)>1$, but may be
+analytically continued throughout $\dbC$, with a
+simple pole at $s=1$.
+The determinants are then defined by
+$$
+\ln\,\Det'\Delta_{(n)}^{\pm}=-\zeta'(0)
+\eqno{(3.36)}
+$$
+The non-zero spectra of $\Delta_{(n)}^{\plus}$ and
+$\Delta_{(n+1)}^-$ coincide and thus their
+determinants are equal, so we shall henceforth focus
+on $\delta_{(n)}^-$.
+
+To evaluate the Weyl dependence of determinants, we
+compute that of $\zeta(s)$ and analytically continue to
+$s=0$.
+We use the following intermediate results (proven in
+Problem Set IV).
+
+\medskip
+\item{1)}
+$N_{(n)}^{\pm}$ are Weyl independent
+
+\smallskip
+\item{2)}
+$\delta_\sigma\Tr
+e^{-t\Delta_{(n)}^-}=-t{\partial\over\partial t}\Tr
+[2n\delta\sigma e^{-t\Delta_{(n-1)}^{\plus}}-
+  (2n-2)\delta\sigma e^{-t\Delta_{(n)}^-}]$
+
+\smallskip
+\item{3)}
+$\Tr\delta\sigma e^{-t\Delta_{(n)}^{\pm}}=
+{1\over 4\pi t}\int\nolimits_{\Sigma}d\mu_g
+\delta\sigma +{1\pm 3n\over
+12\pi}\int\nolimits_{\Sigma}d\mu_g \,
+R_g\,\delta\sigma +O(t)$ \hfill (3.37)
+
+\smallskip
+\item{4)}
+$\Tr\delta\sigma e^{-t\Delta_{(n)}^-}=-{1\over
+2n-2}\delta_\sigma
+\ln\,\det(\phi_j,\phi_k)_g+O(e^{-\lam_1 t})$
+
+\smallskip
+\item{5)}
+$\Tr\delta\sigma e^{-t\Delta_{(n-1)}^{\plus}}=
+{1\over 2n}\delta_\sigma \ln\,\det(\psi_a,\psi_b)_g+O
+ (e^{-\lam_1 t})$
+
+\medskip\noindent
+where $\lam_1$ is the smallest non-zero eigenvalue of
+$\Delta_{(n)}^-$.
+
+We make use of the above results and carry out the
+analytic continuation of $\delta_\sigma$ $\zeta(s)$ to $s=0$,
+and then consider $\delta\sigma\zeta'(0)$.
+For $\re(s)>1$, using 1) and 2), we have
+$$
+\delta_\sigma\zeta(s)=-{1\over \Gamma(s)}
+\int\nolimits_0^\infty dt\,t^s{\partial\over\partial t}
+\Tr[\,\,\cdot\,\,](t)\eqno{(3.38)}
+$$
+where we introduced the abbreviation
+$$
+\Tr[\,\,\cdot\,\,](t)\equiv\tr[2n\delta\sigma
+e^{-t\Delta_{(n-1)}^{\plus}}-
+(2n-2)\delta\sigma e^{-t\Delta_{(n)}^-}]\eqno{(3.39)}
+$$
+We shall make use of the asymptotic behaviors of
+$\Tr[\,\,\cdot\,\,](t)$ as $t\to 0$ and $t\to\infty$,
+which are obtained from 3), 4), 5):
+$$
+\cases{
+\Tr[\,\,\cdot\,\,](t)={1\over 2\pi
+t}\int\nolimits_{\Sigma}d\mu_g \delta\sigma +
+{c_{(n)}^-\over 6\pi}\int\nolimits_{\Sigma}d\mu_g
+  \delta\sigma R_g+O(t)\cr
+\noalign{\bigskip}
+\Tr[\,\,\cdot\,\,](t)=\delta_\sigma \ln
+\,\det(\phi_j,\phi_k)_g
+  \det(\psi_a,\psi_b)_g+O(e^{-\lam_1 t})\,\,.\cr}
+\eqno{(3.40)}
+$$
+Here, $c_{(n)}^-$ was defined in (3.32).
+
+To separate the asymptotic behaviors as $t\to 0$,
+$t\to\infty$, we cut $[0,\infty]$ at $t=t_0>0$, and
+define
+$\delta_\sigma\zeta(s)
+=\delta_\sigma\zeta_0(s)+\delta_\sigma\zeta_\infty(s)$
+$$
+\cases{
+\delta_\sigma \zeta_0(s)=-{1\over\Gamma(s)}\int\nolimits_0
+  ^{t_0}dt\,t^s{\partial\over\partial
+t}\Tr[\,\,\cdot\,\,](t) &\cr
+\noalign{\bigskip}
+\delta_\sigma\zeta_\infty(s)=-{1\over \Gamma(s)}
+  \int\nolimits_{t_0}^\infty dt\,t^s
+  {\partial\over\partial t}
+\Tr[\,\,\cdot\,\,](t)\,.\cr} \eqno{(3.41)}
+$$
+The first term fails to converge at $s=0$, so we
+subtract the asymptotic behavior of $\Tr[\,\,\cdot\,\,](t)$ in
+$1/t$ as $t\to 0$:
+$$
+\eqalign{
+\delta_\sigma\zeta_0(s)= &-{1\over \Gamma(s)}
+  \int\nolimits_0^{t_0}dt\,t^s{\partial\over\partial t}
+\left(\Tr[\,\,\cdot\,\,](t)-{1\over 2\pi
+t}\int\nolimits_{\Sigma}d\mu_g \delta\sigma\right)\cr
+&+{1\over \Gamma(s)}{1\over
+2\pi}\int\nolimits_{\Sigma}d\mu_g\delta\sigma
+  \int\nolimits_0^{t_0}dt\,t^{s-2}\,\,.\cr}
+$$
+The first integral on the right hand side is
+convergent at $s=0$, while the second may be
+explicitly analytically continued to $s=0$.
+Taking the derivative at $s=0$:
+$$
+\eqalign{
+\delta_\sigma\zeta'_0(0) &=-\int\nolimits_0^{t_0}dt
+  {\partial\over\partial t}\left(\Tr[\,\,\cdot\,\,]
+(t)-{1\over 2\pi t}\int\nolimits_{\Sigma}
+  d\mu_g \delta\sigma\right)
+  -{1\over 2\pi t_0}\int\nolimits_{\Sigma}
+  d\mu_g \delta\sigma\cr
+&=-\Tr[\,\,\cdot\,\,](t_0)+\left.\left(\Tr[\,\,\cdot\,\,]
+  (t)-{1\over 2\pi t}\int\nolimits_{\Sigma}d\mu_g
+  \delta\sigma\right)\right\vert_{t=0}\cr
+&=-\Tr[\,\,\cdot\,\,](t_0)+{c_{(n)}^-\over 6\pi}
+  \int\nolimits_{\Sigma}d\mu_g
+R_g\delta\sigma\,\,.\cr}
+$$
+The term $\delta_\sigma\zeta_\infty(s)$ is given by
+$$
+\delta_\sigma\zeta_\infty(s)=-{1\over \Gamma(s)}
+\int\nolimits_{t_0}^\infty
+dt\,t^s{\partial\over\partial t}\Tr[\,\,\cdot\,\,](t)
+$$
+As $t\to\infty$, $\Tr[\quad]\to \hbox{\rm constant }
++O(e^{-\lam_1 t})$, $\lam_1>0$, so that the integral
+is exponentially convergent, and analytic around
+$s=0$.
+Hence, using the asymptotics of $\Tr[\,\,\cdot\,\,](t)$
+as $t\to\infty$:
+$$
+\eqalign{
+\delta_\sigma\zeta'_\infty(0)
+&=-\int\nolimits_{t_0}^\infty
+dt{\partial\over\partial t}
+Tr[\quad](t)\cr
+&=-\delta_\sigma
+\ln\,\det(\phi_j,\phi_k)_g\det(\psi_a,\psi_b)_g
++\Tr[\,\,\cdot\,\,](t_0)\,\,.\cr}
+$$
+Putting all together, we have
+$$
+\eqalign{
+\delta_\sigma \ln\,\Det'\Delta_{(n)}^- &=-\delta\sigma\zeta'(0)\cr
+&=\delta_\sigma
+\ln\,\det(\phi_j,\phi_k)_g\det(\psi_a,\psi_b)_g
++{c_{(n)}^-\over 6\pi}\int\nolimits_{\Sigma}
+  d\mu_g R_g\delta\sigma\,\,,\cr}
+$$
+as announced previously.
+Notice that in $\zeta$-function definitions of the
+determinants, no ``area term'' involving the
+additional constant $\beta$ arises.
+
+\bigskip\noindent
+\Item{\bf F.} {\bf Critical Central Charge -- 
+ Critical Dimension}
+
+\smallskip
+We complete the reduction of the measure $Dg$ to a
+measure on $\scrM_h$, making use of the Weyl
+transformation properties of functional determinants,
+derived in \S{E}.
+
+Just as we did in the case of the finite-dimensional
+example, we choose a section $s$ of $\Met(\Sigma)$
+and denote the corresponding metric
+$\ghat(m_j,\mbar_j)$.
+A general metric $g\in\Met(\Sigma)$ may then be
+parametrized in terms of the action
+of $\Diff(\Sigma)$ and $\Weyl(\Sigma)$ on
+$\ghat(m_j,\mbar_j)$:
+let $f\in\Diff(\Sigma)$ and
+$e^{2\sigma}\in\Weyl(\Sigma)$, then
+$$
+\vbox{\epsfxsize=2.5in\epsfbox{fig4.eps}}
+$$
+The action of $\Diff(\Sigma)$ is by isometries, and our
+definition of functional determinants was invariant
+with respect to $\Diff(\Sigma)$.
+Thus, the effect of $f^*$ is immaterial and may be
+dropped.
+The effect of Weyl transformations is obtained by
+combining the results of \S{D, E}, and we have
+$$
+Dg=\Dtil vD\sigma
+Z_{(-1)}^-(\ghat)e^{-26S_L(\ghat,\sigma)}\vert\det
+(\muhat_j,\phi_k)_{\ghat}\vert^2\,dm_j\, d\mbar_j\,\,.
+\eqno{(3.42)}
+$$
+
+We now consider a full transition amplitude $A_h$,
+evaluated on surfaces $\Sigma$ of genus $h$.
+(To avoid certain complications due to conformal
+automorphisms, we postpone the cases $h=0,1$ and
+restrict to $h\Ge 2$.
+The cases $h=0,1$ are completely analogous and will
+be dealt with separately in \S{I}.)
+Recall that
+$$
+A_h=\int\nolimits_{\Met(\Sigma)}Dg\,
+{1\over \scrN(g)}\left<V_1\ldots V_N\right>_g\,\,,
+\eqno{(3.43)}
+$$
+where
+$$
+\left<V_1\ldots
+V_N\right>_g=\int\nolimits_{\Map(\Sigma,M)}Dx\,V_1\ldots
+V_N e^{-S[x,g]}\,\,. \eqno{(3.44)}
+$$
+
+Given the Weyl transformation properties of $Dg$
+established above, it is clear that a {\it matter
+theory} (i.e. the quantum field theory of $x$ fields for
+given metric $g$) is singled out that makes the Weyl
+dependence of the amplitude trivial.
+We define a {\it critical $($bosonic$)$ string
+theory} as one governed by a matter conformal field
+theory with central charge $c=26$, and with physical
+vertex operators $V_i$, $i=1,\ldots,N$ such that
+$$
+\left<V_1\ldots V_N\right>_{e^{2\sigma}\ghat}
+=e^{26S_L(\ghat,\sigma)}
+\left<V_1\ldots V_N\right>_{\ghat}\,\,.\eqno{(3.45)}
+$$
+(This last condition puts restrictions on the allowed
+vertex operators in the theory.)
+For critical string theories, the amplitudes at fixed
+topology $(h\Ge 2)$ reduce to
+$$
+\eqalign{
+A_h=\int\nolimits_{\scrM_h}\prod\limits_{j}dm_j\,
+d\mbar_j
+  &\vert\det(\muhat_j,\phi_k)_{\ghat}\vert^2
+  Z_{(-1)}^-(\ghat)\left<V_1\ldots
+V_N\right>_{\ghat}\cr
+&\cdot\int\nolimits_{\Weyl(\Sigma)}D\sigma
+\int\nolimits_{\Diff_0(\Sigma)}Dv/\scrN_0(g)\cr}
+\eqno{(3.46)}
+$$
+(Recall that for $h\ge 2$, $\Dtil v=Dv$.)
+Now, recall that the formal measure $Dg/\scrN(g)$ was
+the measure on $\Met(\Sigma)$, divided by the volume
+of the orbits of the group
+$\Weyl(\Sigma)\times\Diff(\Sigma)$.
+Since we restricted our integration to one over
+$\scrM_h$ (and not Teichm\"uller space $T_h$), we
+effectively quotiented by the mapping class group.
+The remaining normalization factor is
+$\scrN_0(g)$, formally the volume of
+$\Weyl\times\Diff_0(\Sigma)$.
+Thus, the formal integrals over $\Weyl(\Sigma)$ and
+$\Diff_0(\Sigma)$ cancel $\scrN_0(g)$:
+$$
+\int\nolimits_{\Weyl(\Sigma)}D\sigma
+\int\nolimits_{\Diff_0(\Sigma)} Dv/\scrN_0(g)=1\,\,.
+\eqno{(3.47)}
+$$
+
+Thus, we finally obtain an ultimate expression for
+amplitudes in {\it critical string theory} 
+at fixed topology ($h\Ge 2$); the expression reduces to
+integrals over moduli of Riemann surfaces: 
+$$
+A_h
+=\int\nolimits_{\scrM_h}\prod\limits_{\scrM_h}dm_j\,d\mbar_j
+\vert\det(\muhat_j,\phi_k)_{\ghat}\vert^2
+Z_{(-1)}^-(\ghat)\left<V_1\ldots V_N\right>_{\ghat}
+\eqno{(3.48)}
+$$
+The cases for $h=0,1$ will be discussed in \S{I, J}.
+
+\bigskip\noindent
+\Item{\bf G.} {\bf Flat Space-Time Manifold $M$}
+
+\smallskip
+For flat Euclidean space-time $M=\dbR^D$, we have
+already established that the central charge of the
+conformal field theory defined by maps
+$x\in\Map(\Sigma,M)$ is $c=D$.
+Thus, the flat space-time string theory is a critical
+string theory precisely when $D=26$.
+(We now notice that this condition is the same as the
+one found for the free string: this is rather
+fortunate!)
+Let us work out in detail under what conditions the
+vertex operators also satisfy the criteria of a
+critical string.
+
+To do so, it is convenient to start with a study of
+the Weyl transformation properties of correlation
+functions of unintegrated exponents:
+$$
+\bigl<\prod\limits_{i=1}^N e^{ik_i\cdot
+x(z_i)}\bigr>_g=\int\nolimits_{\Map(\Sigma,M)}
+Dx \prod\limits_{i=1}^N e^{ik_i\cdot x(z_i)}
+e^{-S_0[x,g]}
+\eqno{(3.49)}
+$$
+where $S_0$ is the Gaussian action, including
+the constant dilaton $\Phi_0$:
+(We ignore the constant tachyon.)
+$$
+S_0[x,g]={1\over 8\pi}
+\int\nolimits_{\Sigma}d\mu_g\,x\cdot \Delta_{(0)}x+
+{\Phi_0\over 4\pi}\int\nolimits_{\Sigma}d\mu_g R_g
+\eqno{(3.50)}
+$$
+The Gaussian integral is carried out by separating
+the constant mode in $x$:
+$$
+x=x_0+x'\,\,,\qquad\qquad
+\int\nolimits_{\Sigma}d\mu_g\,x'=0
+$$
+and making use of the Green functions for $x'$:
+$$
+\left\{
+\eqalign{
+&\Delta_{(0)}G_g(z,w)=4\pi\delta_g(z,w)-
+{4\pi\over \int_\Sigma d\mu_g}\,\,.\cr
+&\int\nolimits_{\Sigma}d\mu_g G_g(z,w)=0\cr}
+\right.
+\eqno{(3.51)}
+$$
+
+The Green function at coincident points must be
+regularized and renormalized in a $\Diff(\Sigma)$-invariant way.
+This may be carried out with the help of heat-kernel
+methods, or simply by renormalizing by the
+$\Diff(\Sigma)$-invariant distance:
+$$
+G_g^R(z,z)\equiv\lim\limits_{w\to z}
+(G_g(z,w)+2\ln\dist_g(z,w))\,\,.
+\eqno{(3.52)}
+$$
+The Weyl scaling properties of the Green function are
+then
+$$
+\left\{
+\eqalign{
+G_{e^{2\sigma}\ghat}(z,w) &=G_{\ghat}(z,w)+
+  f(z)+f(w)\cr
+G_{e^{2\sigma}\ghat}^R(z,w) &=G_{\ghat}^R(z,z)+
+  2f(z)+2\sigma(z)\,\,,\cr}
+\right.
+\eqno{(3.53)}
+$$
+where $f(z)$ is a function required to maintain
+$\int\nolimits_{\Sigma}d\mu_g G_g=0$ under Weyl
+rescalings.
+We do not need its explicit form here.
+One finds
+$$
+\Bigl<\prod\limits_{i}e^{k_i\cdot x(z_i)}\Bigr>_g=
+\delta(k) e^{-{1\over 2}\chi\Phi_0}
+\left({\Det'\Delta_{(0)}\over\int\nolimits_{\Sigma}d\mu_g}
+\right)^{-D/2}\prod\limits_{i,j}e^{{1\over 2}k_i\cdot
+k_j G_g(z_i,z_j)}\,\,,\eqno{(3.54)}
+$$
+where $k\equiv\sum\limits_{i}k_i$, $\delta(k)$ is the
+$D$-dimensional $\delta$-function, and the factor
+$\int\nolimits_{\Sigma}d\mu_g$ under the determinant
+arises from the normalization of the zero mode $x_0$.
+As a result, under $g=e^{2\sigma}\ghat$, we have
+$$
+\prod\limits_{i,j}e^{-{1\over 2}k_i\cdot
+k_jG_g(z_i,z_j)}=\prod\limits_{i,j}
+e^{-{1\over 2}k_i\cdot k_j G_{\ghat}(z_i,z_j)}
+e^{-k_i^2\sigma(z_i)}\,\,.\eqno{(3.55)}
+$$
+All dependence on $f(z)$ cancels in view of momentum
+conservation $k=\sum\limits_{i}k_i=0$, as guaranteed
+by the overall $\delta(k)$ factor in $(3.54)$.
+The Weyl scaling property of the determinant factor
+is precisely that of $Z_{(0)}(g)^{-D/2}$.
+($Z_{(0)}(g)$ contains an additional factor involving
+holomorphic Abelian differentials, but this factor is
+manifestly Weyl invariant.)
+
+Combining all of the above, we find for $D=26$
+$$
+\Bigl<\prod\limits_{i}^N e^{ik_i\cdot
+x(z_i)}\Bigr>_{\ghat
+e^{2\sigma}}=\prod\limits_{i=1}^N
+e^{-k_i^2\sigma(z_i)}
+e^{26 S_L(\ghat,\sigma)}\Bigl<\prod\limits_{i=1}^N
+e^{ik_i\cdot x(z_i)}\Bigr>_{\ghat}\,\,.
+\eqno{(3.56)}
+$$
+It is now straightforward to examine the Weyl
+covariance conditions of vertex operators for low
+mass cases.
+
+\medskip\noindent
+1)\enspace
+Tachyon vertex operator
+$$
+V_T(k)=\eps(k)\int\nolimits_{\Sigma}d\mu_g
+e^{ik\cdot x}\,\,.
+$$
+In order to cancel the explicit Weyl dependence of
+the measure $d\mu_g$ on $\Sigma$:
+$$
+d\mu_{e^{2\sigma}\ghat}=d\mu_{\ghat}e^{2\sigma}
+$$
+against the Weyl dependence of the correlation
+function, we recover the familiar condition $k^2=2$
+for the tachyon.
+(This condition also corresponded to $a=1$ in
+\S{III}.)
+
+\medskip\noindent
+2)\enspace
+The massless vertex operators
+$$
+V_\eps(k)=\eps_{\mu\nu}(k)\int\nolimits_{\Sigma}
+d\mu_g g^{mn}\partial_m x^\mu
+\partial_n x^\nu e^{ik\cdot x}\,\,;
+$$
+the Weyl dependence of the part $d\mu_g g^{mn}$ is
+trivial, so we need the familiar condition $k^2=0$.
+In addition, Weyl dependence appears through the
+contraction of $\partial_m x^\mu$ with the
+exponential, and is cancelled by the transversality
+conditions
+$$
+k^\mu\eps_{\mu\nu}(k)=k^\nu\eps_{\mu\nu}(k)=0\,\,.
+$$
+Finally, from the contraction  of $\partial_m x^\mu$
+and $\partial_n x^\nu$, (actually only the trace-part
+contributes), a curvature $R_g$ term appears, and Weyl
+invariance for the trace-part is achieved through the
+addition of a (classically non-Weyl invariant) part
+involving the curvature:
+\marginmark 
+$$
+V_\eps(k)=\eps_{\mu\nu}(k)\int\nolimits_{\Sigma}d\mu_g
+g^{mn}\partial_m x^\mu \partial_n x^\nu
+e^{ikx}+\alpha\eps_\mu^\mu\int\nolimits_{\Sigma}
+d\mu_g R_g e^{ik\cdot x}\,\,.
+$$
+The physical particle corresponding to this vertex
+operator is the dilaton.
+Recall that the dilaton field $\Phi$
+entered the generalized sigma model
+action with a Gaussian curvature term $R_g$ as well.
+
+\medskip\noindent
+3)\enspace
+Higher mass states: the general structure of vertex
+operators is given by
+$$
+V_\eps(k)=\eps_{\mu_1\ldots\mu_{2p}}\int\nolimits_{\Sigma}
+d\mu_g g^{m_1n_1}\ldots g^{m_pn_p}\partial_{m_1}
+x^{\mu_1}\ldots\partial_{n_p}x^{\mu_{2p}}
+e^{ik\cdot x}
+$$
+plus terms involving higher derivatives on $x$.
+To cancel the overall exponential Weyl dependence, we
+must require $k^2=-2p+2$, yielding the same mass
+spectrum as in the free string case.
+In complete analogy with the case 2), there will be
+further conditions of transversality on $\eps$ and
+and further terms involving $R_g$ will have to be
+added to render the trace parts Weyl invariant.
+
+\bigskip\noindent
+\Item{\bf H.} {\bf Non-Critical Strings}
+
+\smallskip
+Conformal matter field theories with $c\not=26$ are
+called {\it non-critical string theories}.
+The amplitudes for these theories retain a
+non-trivial Weyl dependence through the Liouville
+action, and through the vertex operators.
+Its direct quantization requires understanding the
+dynamics of Liouville theory.
+Despite much effort, there is no complete picture to
+date of how this can be achieved consistently, and
+without the presence of a tachyon.
+
+A tremendous number of results was obtained
+indirectly (by matrix model techniques) when
+$c$ is less than $1$ and rational.
+
+\bigskip
+\Item{\bf I.} {\bf Tree Level Amplitudes}
+
+\smallskip
+Tree level amplitudes correspond to the worldsheet
+topology of a sphere $S^2$, which we
+stereographically project onto the complex plane
+$\dbC$.
+The moduli space $\scrM_0$ of the sphere consists of
+just a single point, which we may choose to represent
+by the {\it round metric}, of curvature $R_{\ghat}=1$,
+and area $4\pi$:
+$$
+\ghat={4\vert dz\vert^2\over(1+\vert z\vert^2)^2}
+\qquad\qquad z\in\dbC\,\,.\eqno{(3.57)}
+$$
+The group of conformal automorphisms is $\PSL(2,\dbC)$
+and acts by M\"obius transformations
+$$
+\zeta\colon\, z\to \zeta(z)={az+b\over cz+d}\qquad
+\qquad \pmatrix{a &b\cr c &d\cr}\in \PSL(2,\dbC)\,\,.
+$$
+A convenient basis for the associated vector fields
+(called conformal Killing vectors) is
+$$
+\psi_1^z=1\qquad\qquad
+\psi_2^z=z\qquad\qquad
+\psi_3^z=z^2\,\,,
+$$
+and similarly for $\psi_a^{\zbar}$, $a=1,2,3$.
+
+To obtain the general expression for tree level
+transition amplitudes, we must first complete the
+treatments of conformal automorphisms, which we had
+postponed in \S{F}, and of Weyl transformation of the
+measure.
+The starting point is our expression (3.28) for the
+measure $Dg$, considered now for $h=0$
+$$
+Dg=D_\sigma \Dtil v Z_{(-1)}^-(\ghat)
+e^{-26 S_L(\ghat,\sigma)}\eqno{(3.58)}
+$$
+where $\Dtil v=D'v\det(\psi_a,\psi_b)_g$,
+$\psi_a\in\Ker\nabla_{\zbar}^{(-1)}$, and the measure
+$D'v$ is over $\Diff_0(\Sigma)$ vector fields orthogonal
+to $\Ker\nabla_{\zbar}^{(-1)}\oplus\Ker\nabla_z^{(1)}$.
+Tree level amplitudes are then given by
+$$
+A_0=\int\nolimits_{\Weyl(\Sigma)}D\sigma
+\int\nolimits_{\Diff_0(\Sigma)/\PSL(2,\dbC)}
+\Dtil v/\scrN(g) Z_{(-1)}^-(\ghat)
+\left<V_1\ldots V_N\right>_{\ghat}\eqno{(3.59)}
+$$
+using the same notations as in III.19.
+
+While the group $\PSL(2,\dbC)$ leaves the metric $g$
+invariant (up to Weyl rescaling), 
+it does transform the positions of vertex
+operator insertions non-trivially.
+It is natural and --- as we shall establish later on ---
+required for unitarity of the transition amplitudes, 
+to divide by the (formal) volume of the {\it full}
+$\Diff_0(\Sigma)$ group, and not just of
+$\Diff_0(\Sigma)/\PSL(2,\dbC)$.
+To achieve this, we proceed as follows.
+
+\bigskip\noindent
+{\it 1)\enspace For $N\Ge 3$ cases}
+
+Let the last three vertex operators be given by (of
+course, we may choose {\it any} three vertex operators)
+$$
+V_i=\int\limits_{\dbC}d^2z_i\,W_i(z_i)\,\,,\qquad\qquad
+i=N-2,\,N-1,\,N\,\,.
+$$
+We propose to make a change of variables from the vertex
+insertion points $z_i$, $\zbar_i$
+$i=N-2,\,N-1,\,N$ to the group elements of
+$\PSL(2,\dbC)$, thus completing the measure $D'v$ into
+$Dv$.
+This is possible since, given any three points
+$z_i\in\dbC$, there is a unique element
+$\zeta\in\PSL(2,\dbC)$, such that $\zeta$ maps $z_i^0$ onto
+any triplet $z_i\in\dbC$, with
+$$
+z_i=\zeta(z_i^0)\,\,.
+$$
+to carry this out in detail, let $\psi_a^z$ be a basis of
+the $\Ker\nabla_{\zbar}^{(-1)}$, $a=1,2,3$, chosen to be
+Weyl invariant.
+We parametrize general vector fields $v$ in
+$\psl(2,\dbC)$ by complex parameters $\lam_a$,
+$\lambar_a$ with
+$$
+v^z=\sum\limits_{a=1}^3 \lam_a\psi_a^z\qquad\qquad
+v^{\zbar}=\sum\limits_{a=1}^3 \lambar_a\psi_a^{\zbar}\,\,.
+$$
+The measure on $\PSL(2,\dbC)$ vector fields is then
+$$
+d\mu_v^{(6)}=Dv/D'v=\prod\limits_{a=1}^3
+d\lam_a\,d\lambar_a\,\,\det(\psi_a,\psi_b)_g
+$$
+where the determinant $\det(\psi_a,\psi_b)_g$ arises as 
+the Jacobian of the coordinate change from $v$ to $\lam$.
+On the other hand, from the action of $\PSL(2,\dbC)$ on
+the points $z_i^0\colon\, z_i=\zeta(z_i^0)=e^v z_i^0$, we
+have $dz_i=\sum\limits_{a}d\lam_a\,\psi_a(z_i)$, so that
+the measure on $d^2 z_i$ becomes:
+$$
+\prod\limits_{i=N-2}^N d^2 z_i=\prod\limits_{a=1}^3
+d\lam_a\,d\lambar_a\,\vert\det\,\psi_a(z_i)\vert^2\,\,.
+$$
+Clearly, all factors in this identity are Weyl-invariant.
+Combining all the results obtained, we have
+$$
+\eqalign{
+\Dtil v\prod\limits_{i=N-2}^N d^2z_i &=D'v\,
+  \det(\psi_a,\psi_b)_g\prod\limits_{a=1}^3
+d\lam_a\,d\lambar_a\,\vert\det\,\psi_a(z_i)\vert^2\cr
+&=Dv\,\vert\det\,\psi_a(Z_i)\vert^2\cr}
+\eqno{(3.60)}
+$$
+We may now divide by the formal volume of
+$\Weyl(\Sigma)\ltimes \Diff(\Sigma)$ just as in the cases
+$h\Ge 2$, and we obtain the final expression for tree
+level amplitudes with $N\Ge 3$:
+$$
+A_0=z_{(-1)}^-(\ghat)\vert\det\,\psi_a(z_i)\vert^2
+\bigl<V_1\ldots V_{N-3}\prod\limits_{i=N-2}^N
+W(Z_i)\bigr>_{\ghat}\,\,,
+\eqno{(3.61)}
+$$
+valid for any $3$-points $z_i$.
+We shall evaluate some of these amplitudes momentarily
+for flat space-time.
+
+\bigskip\noindent
+{\it 2)\enspace $N=0$, $1$, $2$ cases}
+
+Clearly, here, no three vertex operators are available to
+complete the integration $D'v$ into $Dv$.
+In fact, these amplitudes vanish! 
+To justify this, notice that $D'v$ can at most be
+completed by the vector fields in $\PSL(2,\dbC)/S_N$
+where $S_N$ is the stabilizer of $N$ points 
+on the sphere.
+Thus, we are left to divide out by the volume of $S_N$
+$$
+\int\nolimits_{\Weyl(\Sigma)}D\sigma
+\int\nolimits_{\Diff_0/(\PSL(2,\dbC)/S_N)}
+D'v/\scrN(g)\sim{1\over \Vol(S_N)}=0\,\,.
+\eqno{(3.62)}
+$$
+For $N=2$, fix the two points at $0$ and $\infty$, and
+$S_2$ is the group of dilations, whose volume is
+$\infty$.
+
+An alternative argument that the amplitudes should vanish
+is that no conformal invariant amplitudes can be
+constructed, except with value $0$.
+The physical interpretations of these vanishing
+amplitudes are as follows:
+
+{\narrower{\narrower\smallskip
+$$
+\vbox{
+\halign{#\hfill &\qquad #\hfill &\qquad #\hfill\cr
+1) &$N=0$ &tree-level vacuum energy is zero\cr
+&&``vanishing of the cosmological constant''.\cr
+2) &$N=1$ &the ``tadpole'' amplitudes vanish,\cr
+&&i.e. conformal field theory provides solutions\cr
+&&(no linear terms) to string theory, at tree level.\cr
+3) &$N=2$ &no mass corrections to tree level.\cr}
+}
+$$
+\smallskip}}
+
+\bigskip\noindent
+{\it 3)\enspace Green function and determinants}
+
+The scalar Green function on the sphere, with metric
+$\ghat$, is given by
+$$
+G(z,z')=-\ln\,
+{\vert z-z'\vert^2\over (1+\vert z\vert^2)(1+\vert
+z'\vert^2)}\,\,.\eqno{(3.63)}
+$$
+The determinants involving $\Delta_{(0)}$ and
+$\Delta_{(-1)}^-$ are just constants.
+They may be computed explicitly, but we shall not do so
+here.
+Instead, we abbreviate
+$$
+\grz\equiv Z_{(-1)}^-(\ghat)
+\left({\Det'\Delta_{(0)}\over
+\int\limits_{\Sigma}d\mu_{\ghat}}\right)^{-13}\,\,.\eqno{(3.64)}
+$$
+Furthermore, the only remaining finite-dimensional
+determinant is
+$$
+\eqalign{
+\vert\det\,\psi_a(z_i)\vert^2 &=\vert\det
+\pmatrix{
+1\hfill &1\hfill &1\hfill\cr
+z_{N-2}\hfill &z_{N-1}\hfill &z_N\hfill\cr
+z_{N-2}^2\hfill &z_{N-1}^2\hfill &z_N^2\cr}\vert^2\cr
+\noalign{\medskip}
+&=\vert(z_{N-2}-z_{N-1})(z_{N-1}-z_N)(z_N-z_{N-2})\vert^2\,\,.
+\cr}
+\eqno{(3.65)}
+$$
+
+\bigskip\noindent
+\noindent
+{\it 4)\enspace Tachyon Amplitudes}
+
+The tachyon vertex operator is particularly simple:
+$$
+V_T(k)=\int\nolimits_{\Sigma}d^2 z\,W_T(z,k)\qquad\qquad
+W_T(z,k)=\eps \sqrt{\ghat\,\,}e^{ik\cdot x}\,\,.\eqno{(3.66)}
+$$
+Here, $\eps$ is a constant, independent of $k$, and plays
+the same r\^{o}le as the field normalization
+ $Z$-factors in the Lehmann Symanzik Zcmmerman (LSZ)
+formalism in quantum field theory:
+$\left<k\vert\varphi(x)\vert0\right>=Z\,e^{ik\cdot x}$
+for a scalar field $\varphi(x)$ and its associated
+$1$-particle state $\left.\vert k\right>$ momentum $k$,
+and $\left.\vert 0\right>$ the ground state.
+
+We now make use of the results in p. II.23 on the
+correlation function of exponential operators.
+We introduce the renormalized $\eps_R$ by absorbing a
+multiplicative renormalization factor of the exponential
+$$
+\eps_R=\eps\,e^{-G_R(z_i,z_i)_{\ghat}}\eqno{(3.67)}
+$$
+The amplitude now takes the form
+$$
+A_0=\delta(k)e^{-2\Phi_0}\eps_R^N\,\,\grz
+\prod\limits_{i=1}^{N-3}\int\nolimits_{\dbC}
+d^2z_i\prod\limits_{i=1}^N\sqrt{\ghat(z_i)\,\,\,}e^{-{1\over 2}
+\sum\limits_{i\not=j}k_i\cdot k_j G(z_i,z_j)}
+\cdot\vert\det(\psi_a(z_i))\vert^2\,\,.\eqno{(3.68)}
+$$
+The contributions to $G$ of the form $\ln(1+\vert
+z_i\vert^2)$ sum up and, using momentum conservation and
+$k_i^2$, precisely cancel the $\sqrt{\ghat\,\,}$
+prefactors.
+We are left with
+$$
+A_0(k_1\ldots k_N)=\delta(k)e^{-2\Phi_0}\eps_R^N\,\,\grz
+\vert\det\,\psi_a(z_i)\vert^2\prod\limits_{i=1}^{N-3}d^2z_i
+\prod\limits_{i<j}^N\vert z_i-z_j\vert^{2k_i\cdot k_j}
+\eqno{(3.69)}
+$$
+
+Now, $z_{N-2}$, $z_{N-1}$, $z_N$ were {\it any} 3 points
+on the space, so we may let them equal $0$, $1$, $\infty$,
+respectively, and we find
+$$
+A_0(k_1,\ldots,k_N)=\delta(k)e^{-2\Phi_0}\eps_R^N\,\,
+\grz\prod\limits_{i=1}^{N-3}\int\nolimits_{\dbC}
+d^2z_i \prod\limits_{i<j}^{N-1}\vert
+z_i-z_j\vert^{2k_i\cdot k_j}\,\,.
+\eqno{(3.70)}
+$$
+It is very instructive to examine amplitudes for small
+$N$:
+
+\medskip\noindent
+(1)\enspace\undertext{three point function}
+$$
+A_0(k_1,k_2,k_3)=\grz\,\, e^{-2\Phi_0}\eps_R^3\delta(k)\,\,.
+\eqno{(3.71)}
+$$
+This $3$-point function provides the $3$-tachyon on shell
+coupling.
+
+\medskip\noindent
+(2)\enspace\undertext{four point function}
+$$
+A_0(k_1,\ldots,k_4)=\grz\,\, e^{-2\Phi_0}\eps_R^4\delta(k)
+\int\nolimits_{\dbC}d^2z\,\, \vert z\vert^{2k_1\cdot k_2}
+\vert 1-z\vert^{2k_1\cdot k_3}\,\,.
+\eqno{(3.72)}
+$$
+It is standard to introduce the $3$ Lorentz invariants
+$s$, $t$, $u$
+that characterize the kinematics of the $4$-point
+function:
+$$
+\lower25pt\hbox{\vbox{\epsfxsize=1.75in\epsfbox{fig5.eps}}}\qquad
+\cases{
+s\equiv -(k_1+k_2)^2 &\cr
+t\equiv -(k_2+k_3)^2 &\cr
+u\equiv -(k_1+k_3)^2\,\,. &\cr}
+\eqno{(3.73)}
+$$
+(Note that $s+t+u=-8$.)
+In terms of $s$, $t$, $u$ the four point function is
+$$
+A_0(k_1,\ldots,k_u)=\grz\,\, e^{-2\Phi_0}\eps_R^4\delta(k)
+\int\nolimits_{\dbC}d^2z \vert z\vert^{-s-4}
+\vert z-1\vert^{-u-4}\,\,.\eqno{(3.74)}
+$$
+This integral expression is absolutely convergent in the
+following region $\scrD$, defined by
+$$
+\cases{
+\re(s)<-2 & \cr
+\re(u)<-2 &\cr
+\re(t)<-2 &\cr}\qquad\qquad\hbox{or}
+\qquad\qquad\cases{
+\re(s)<-2 &\cr
+\re(t)<-2 &\cr
+\re(s+t)>-6\,\,. &\cr}
+\eqno{(3.75)}
+$$
+Taking just the real parts:
+$$
+\vbox{\epsfxsize=3.0in\epsfbox{fig6.eps}}
+$$
+Let $s,t\in\scrD$, then we may evaluate the amplitude by
+elementary methods, and we find the {\it
+Virasoro-Shapiro} amplitude:
+$$
+A_0(s,t)=\grz e^{-2\Phi_0}\eps_R^4\delta(k)\pi\,
+{\Gamma(-1-s/2)\Gamma(-1-t/2)\Gamma(-1-u/2)\over
+\Gamma(2+s/2)(\Gamma(2+t/2)\Gamma(2+u/2)}\,\,.
+\eqno{(3.76)}
+$$
+Since we know the analytic continuation of $\Gamma(z)$
+throughout $\dbC$, with poles only at $z\in -\dbN$, we
+automatically have an analytic continuation of the full
+amplitude $A_0(s,t)$, throughout
+$(s,t)\in\dbC\times\dbC$.
+As a byproduct, we also immediately have the amplitude in
+Minkowski space-time momenta, by letting
+$$
+\eqalignno{
+&\null\quad
+\raise30pt\hbox{$k_i^0\to -ik_i^0$}\qquad\qquad\qquad
+\vbox{\epsfxsize=1.5in\epsfbox{fig7.eps}}\cr
+&\cases{
+s\to s+i\epsilon &\cr
+t\to t+i\epsilon &\null\qquad\qquad $\delta(k)\to i\delta(k)$\cr
+u \to u+i\epsilon &\cr}\cr} 
+$$
+where it is understood that $\epsilon>0$ and that we only
+consider the limit in which $\epsilon\to 0$.
+Thus, the $4$-point amplitude in Minkowski space-time is
+given by
+$$
+A_0(s,t)=\grz e^{-2\Phi_0}\epsilon_R^4 \delta(k)\pi i
+{\Gamma(-1-2/2-i\epsilon)\Gamma(-1-t/2-i\epsilon)
+  \Gamma(-1-u/2-i\epsilon)\over
+\Gamma(2+s/2+i\epsilon)\Gamma(2+t/2+i\epsilon)
+  \Gamma(2+u/2+i\epsilon)}\,\,.\eqno{(3.77)}
+$$
+The amplitude has only pole singularities --- as expected
+at tree level --- and their location is easily
+identified.
+The $\Gamma$-function contributions from the denominator
+are entire.
+{}From the numerator, we have poles at
+$$
+\cases{
+s=-2+2n_s &$n_s\in\dbN$\cr 
+&\cr
+t=-2_2n_t &$n_t\in\dbN$\cr 
+&\cr
+u=-2+2n_u &$n_u\in\dbN\,\,.$\cr}
+\eqno{(3.78)}
+$$
+These poles precisely correspond to the creation of
+intermediate string states whose mass is the above value
+for $s$, $t$ or $u$.
+The states may occur either in the {\it $s$, $t$ or $u$
+channel\/}:
+$$
+\kern.75true cm\vbox{\epsfxsize=5.00in\epsfbox{fig8.eps}}
+$$
+It is instructive to identify where these singularities
+arise from in the integral representation for the
+amplitude:
+$$
+\eqalign{
+&s\hbox{ poles:} \qquad z\to 0\cr
+&t\hbox{ poles:} \qquad z\to\infty\cr
+&u\hbox{ poles:} \qquad z\to 1\,.\cr}
+\qquad\qquad
+\lower15pt\hbox{\vbox{\epsfxsize=2.00in\epsfbox{fig9.eps}}}
+$$
+The fact that three QFT diagrams arise from a single string
+diagram is the simplest example of a general
+phenomenon mentioned in the introduction.
+
+Let us concentrate on the $s=-2$ pole, which corresponds
+to a tachyon intermediate state.
+The diagram there {\it factorizes} into a propagator, and
+2 three point functions for external tachyon:
+$$
+\vbox{\epsfxsize=4.50in\epsfbox{fig10.eps}}
+$$
+Insisting upon this factorization, we obtain a non-linear
+equation between the $3$-point function and $4$-point
+function, expressing factorization --- or unitarity ---
+of the transition amplitudes (or so-called $S$-matrix
+elements).
+This relation fixes $\eps_R$:
+$$
+\eps_R^2={2\pi\over \grz}\,e^{2\Phi_0}\,\,.
+\eqno{(3.79)}
+$$
+
+\vfill\eject
+
+\noindent
+\Item{\bf J.} {\bf One loop amplitudes}
+
+\smallskip
+At one loop, the worksheet has the topology of a torus,
+and there is a single complex modulus $\tau\in\dbC$.
+We represent $\Sigma$ by
+$$
+\Sigma=\dbC/(\dbZ+\tau Z)\qquad\qquad\qquad
+\im\,\tau>0
+$$
+with the flat metric $\ghat=2\vert dz\vert^2$.
+Teichm\"uller space is $\scrT_1=\{\tau\in\dbC,\,\,
+\im\,\tau>0\}$, the mapping class 
+group is $G_\Sigma=\SL(2,\dbZ)$,
+acting on $\tau$ as $\PSL(2,\dbZ)$ by
+$$
+\tau\to\tau'={a\tau+b\over c\tau+d}\qquad\qquad
+\left(\matrix{a &b\cr c &d\cr}\right)\in\SL(2,\dbZ).
+\eqno{(3.80)}
+$$
+Moduli space is conveniently taken as
+$\scrT_1/\PSL(2,\dbZ)=\scrM_1$, but we shall have to recall
+that the full mapping class group also divides out by
+$\{\pm I\}$ in $\SL(2,\dbZ)$.
+It is standard to take the fundamental domain
+$$
+\scrM_1=\left\{\tau=\tau_1+i\tau_2, \tau_{1,2}\in\dbR,
+\,\,\tau_2>0,\,\,
+\vert\tau_1\vert\Le \half,\,\,
+\vert\tau\vert\Ge 1\right\}\,\,.
+\eqno{(3.81)}
+$$
+
+Determinants of Laplace operators on tensors of any
+integer weight are given by the case of Laplacians on
+functions, which was computed by Gaw\c{e}dzki:
+$$
+\eqalign{
+\Det'\Delta_{(0)} &=\tau_2^2\,\vert\eta(\tau)\vert^4\cr
+\eta(\tau)\equiv e^{i\pi\tau/12}
+&\prod\limits_{n=1}^\infty(1-e^{2\pi i n\tau})\,\,.\cr}
+\eqno{(3.82)}
+$$
+The Green function on the scalar field $x$ is given by
+$$
+G(z,w\vert \tau)=-\ln
+\left\vert{\vartheta_1(z-w\vert\tau)\over
+\vartheta'_1(0\vert\tau)}\right\vert^2-
+{\pi\over 2\tau_2}(z-w-\zbar+\wbar)^2\,\,,\eqno{(3.83)}
+$$
+where $\vartheta_1(z\vert\tau)$ is the Jacobi theta
+function that has a zero at $z=0$.
+
+The $N$-string transition amplitude is given by the
+following expression
+$$
+A_1(k_1,\ldots,k_N)=\int_{\scrM_1}
+{d^2\tau\over 2\tau_2^2}{1\over (4\pi^2\tau_2)^{12}}
+{1\over \vert\eta(\tau)\vert^{48}}
+\ll V_1,\ldots,V_N\gg\eqno{(3.84)}
+$$
+where $\ll V_1\ldots V_N\gg$ stands for the {\it
+normalized} correlation function of the vertex operators
+$V_1\ldots V_N$: $\ll V_1\ldots V_N\gg=\left<V_1\ldots
+V_N\right>/\left<1\right>$.
+
+For example, considering only tachyon vertex operators,
+we have
+$$
+\ll V_1\ldots V_N\gg=\delta(k)\eps _R^N
+\prod\limits_{i=1}^N \int d^2z_i\exp\left(
+-\half \sum\limits_{i\not=j}k_i\cdot k_j
+G(z_i,z_j\vert\tau)\right)\eqno{(3.85)}
+$$
+There is no dependence on the dilaton constant $\Phi_0$
+here, because the Euler number on the torus vanishes.
+Other correlation functions may be similarly derived.
+
+To one loop order, we may now also have non-zero
+$N=0,1,2$ point functions.
+Let us consider $N=0$ first:
+$\ll 1\gg=1$.
+$$
+A_1(\,\,\cdot\,\,)=\Vol(M)\int_{\scrM_1}
+{d^2\tau\over 2\tau_2^2}\,\,{1\over (4\pi^2\tau_2)^{12}}\,\,
+{1\over \vert\eta(\tau)\vert^{48}}\,\,.\eqno{(3.86)}
+$$
+Using the asymptotics for $\im\,\tau\to\infty$,
+$$
+\eta(\tau)\sim e^{i\pi \tau/12}=e^{i\pi \tau_1/12}
+e^{-\pi \tau_2/12}\eqno{(3.87)}
+$$
+we see immediately that this amplitude diverges for large
+$\tau_2$.
+In fact, this $\eta(\tau)$ factor is common to all
+amplitudes, for any type of vertex operators, and
+produces a divergence in any amplitude, for any
+arrangement of external momenta.
+We shall not show this here in general, but leave this
+point to be checked by the reader.
+Thus, bosonic closed oriented string theory is divergent
+in flat space-time.
+
+\bigskip\noindent
+{\it Nature of Divergence}
+
+Let us try to gain additional insight into the physical
+origin of this divergence.
+To do so, it is helpful to exhibit the dependence on
+internal momenta by inserting a factor:
+$$
+1=\int d^{26}k\,\,\delta\left(k-{1\over 2\pi i}
+\oint_A dz\,\partial_z x\right)\,\,,\eqno{(3.88)}
+$$
+where $A$ is the cycle in $\Sigma$ whose pre-image in
+$\dbC$ runs from $z=0$
+to $z=1$.
+We find
+$$
+A_1(\,\,\cdot\,\,)=\Vol(M)\int\limits_{\dbR^{26}} 
+d^{26} k\int_{\scrM_1}
+{d^2\tau\over 2\tau_2}\,\,{1\over (4\pi^2)^{12}}\,\,
+{1\over \vert\eta(\tau)\vert^{48}}e^{-2\pi\tau_2 k^2}\,\,.
+\eqno{(3.89)}
+$$
+$$
+\vbox{\epsfxsize=4.00in\epsfbox{fig11.eps}}
+$$
+Substituting the asymptotics of the $\eta(\tau)$-function
+$$
+A_1(\,\,\cdot\,\,)=\Vol(M)\int\limits_{\dbR^{26}} d^{26}k
+\int_{\scrM_1}{d^2\tau\over 2\tau_2}\,\,
+{1\over (4\pi^2)^{12}}e^{-2\pi\tau_2(k^2-2)}
+(1+\#e^{-2\pi\tau_2}+\cdots\,\,\,)\,\,,\eqno{(3.90)}
+$$
+it is now immediately apparent why a divergence occurs,
+and where it occurs.
+For $\tau_2\to\infty$, the momentum range $0\Le k^2<2$
+contributes an exponentially growing factor.
+In fact, integrating out $\tau_2$ for large $\tau_2$:
+$$
+\int\,\,{d\tau_2\over \tau_2} e^{-2\pi\tau_2(k^2-2)}\sim
+{1\over k^2-2}
+$$
+This contribution arises from the tachyon!
+It is an I.R. problem related to the stability of flat
+space-time.
+
+It is equally instructive to see where the integral is
+convergent: at large $k^2$, since the range of $\tau_2$
+is cut off from below by the choice of $\scrM_2$, the
+integral is exponentially suppressed for large momenta
+$k^2$.
+Thus, this loop amplitude is superconvergent at high
+energy, in contrast with field theory.
+
+In fact, we can use this simple example to exhibit the
+distinction between what this partition function would
+look like in quantum field theory and what it looks like
+in string theory.
+In field theory, we may imagine the partition function
+for the same states, given by the same generating
+function.
+The only difference is the region $\scrM_1$:
+$$
+\eqalignno{
+\vbox{\epsfxsize=2.00in\epsfbox{fig12.eps}}
+&\qquad
+\raise50pt\hbox{\vtop{\hbox{\rm Integration region for QFT}
+\hbox{\rm with the same states as string theory.}}}\cr}
+$$
+Now, since $\tau_2$ reaches down to $\tau_2=0$, the
+superconvergence disappears and the integrand is power
+behaved in momenta.
+Thus, we see here that a crucial difference between
+string theory and quantum field theory arises from
+modular invariance, producing ultraviolet finite answers
+in the case of strings
+
+
+
+\bye
+
+
+

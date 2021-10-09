@@ -1,0 +1,18 @@
+%Date: Mon, 14 Apr 1997 10:59:40 -0400
+%From: Edward Witten <witten@sns.ias.edu>
+
+The reading for the next two lectures consists of two papers
+
+``Mirror Manifolds And Topological Field Theory''
+
+`` On the Landau-Ginzburg Description Of N=2 Minimal Models''
+
+where the n^{th} paper, for n=1,2, corresponds to the n^{th} lecture.
+
+The reading for the next lecture after that will be a review
+article by Affleck, Dine, and Seiberg on N=1 models in four dimensions.
+
+
+
+
+

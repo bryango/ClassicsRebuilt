@@ -1,0 +1,910 @@
+%**start of header
+\input amstex
+\documentstyle{amsppt}
+\magnification=\magstephalf
+%%%%%%%%%%%% changes to amsppt.sty %%%%%%%%%%%%%%%%%%%%%%%
+ \addto\tenpoint{\baselineskip 15pt
+  \abovedisplayskip18pt plus4.5pt minus9pt
+  \belowdisplayskip\abovedisplayskip
+  \abovedisplayshortskip0pt plus4.5pt
+  \belowdisplayshortskip10.5pt plus4.5pt minus6pt}\tenpoint
+\pagewidth{6.5truein} \pageheight{8.9truein}
+\subheadskip\bigskipamount
+\belowheadskip\bigskipamount
+\aboveheadskip=3\bigskipamount
+\catcode`\@=11
+\def\output@{\shipout\vbox{%
+ \ifrunheads@ \makeheadline \pagebody
+       \else \pagebody \fi \makefootline 
+ }%
+ \advancepageno \ifnum\outputpenalty>-\@MM\else\dosupereject\fi}
+\outer\def\subhead#1\endsubhead{\par\penaltyandskip@{-100}\subheadskip
+  \noindent{\subheadfont@\ignorespaces#1\unskip\endgraf}\removelastskip
+  \nobreak\medskip\noindent}
+\outer\def\enddocument{\par% \par will do a runaway check for \endref
+  \add@missing\endRefs
+  \add@missing\endroster \add@missing\endproclaim
+  \add@missing\enddefinition
+  \add@missing\enddemo \add@missing\endremark \add@missing\endexample
+ \ifmonograph@ % do nothing
+ \else
+ \vfill
+ \nobreak
+ \thetranslator@
+ \count@\z@ \loop\ifnum\count@<\addresscount@\advance\count@\@ne
+ \csname address\number\count@\endcsname
+ \csname email\number\count@\endcsname
+ \repeat
+\fi
+ \supereject\end}
+\catcode`\@=\active
+%%%%%%%%%%%%%%% other macros %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\CenteredTagsOnSplits
+\NoBlackBoxes
+\nologo
+\def\today{\ifcase\month\or
+ January\or February\or March\or April\or May\or June\or
+ July\or August\or September\or October\or November\or December\fi
+ \space\number\day, \number\year}
+\define\({\left(}
+\define\){\right)}
+\define\Ahat{{\hat A}}
+\define\Aut{\operatorname{Aut}}
+\define\CC{{\Bbb C}}
+\define\CP{{\Bbb C\Bbb P}}
+\define\Conf{\operatorname{Conf}}
+\define\Diff{\operatorname{Diff}}
+\define\EE{\Bbb E}
+\define\FF{\Bbb F}
+\define\End{\operatorname{End}}
+\define\Free{\operatorname{Free}}
+\define\HH{{\Bbb H}}
+\define\Hom{\operatorname{Hom}}
+\define\Map{\operatorname{Map}}
+\define\Met{\operatorname{Met}}
+\define\QQ{{\Bbb Q}}
+\define\RP{{\Bbb R\Bbb P}}
+\define\RR{{\Bbb R}}
+\define\SS{\Bbb S}
+\define\Spin{\operatorname{Spin}}
+\define\Tor{\operatorname{Tor}}
+\define\Trs{\operatorname{Tr\mstrut _s}}
+\define\Tr{\operatorname{Tr}}
+\define\ZZ{{\Bbb Z}}
+\define\[{\left[}
+\define\]{\right]}
+\define\ch{\operatorname{ch}}
+\define\chiup{\raise.5ex\hbox{$\chi$}}
+\define\cir{S^1}
+\define\coker{\operatorname{coker}}
+\define\dbar{{\bar\partial}}
+\define\endexer{\bigskip\tenpoint}
+%\define\exertag #1#2{\removelastskip\bigskip\medskip\eightpoint\noindent%
+%\hbox{\rm\ignorespaces#2\unskip} #1.\ }  
+\define\exertag #1#2{#2\ #1}
+\define\free{\operatorname{free}}
+\define\index{\operatorname{index}}
+\define\ind{\operatorname{ind}}
+\define\inv{^{-1}}
+\define\mstrut{^{\vphantom{1*\prime y}}}
+\define\protag#1 #2{#2\ #1}
+\define\rank{\operatorname{rank}}
+\define\res#1{\negmedspace\bigm|_{#1}}
+\define\temsquare{\raise3.5pt\hbox{\boxed{ }}}
+\define\theexertag{\theprotag}
+\define\theprotag#1 #2{#2~#1}
+\define\tor{\operatorname{tor}}
+\define\xca#1{\removelastskip\medskip\noindent{\smc%
+#1\unskip.}\enspace\ignorespaces }
+\define\endxca{\medskip}
+\define\zmod#1{\ZZ/#1\ZZ}
+\define\zn{\zmod{n}}
+\define\zt{\zmod2}
+\redefine\Im{\operatorname{Im}}
+\redefine\Re{\operatorname{Re}}
+\let\germ\frak
+
+
+\catcode`\@=11
+\def\Head#1#2{\add@missing\endroster \add@missing\enddefinition
+  \add@missing\enddemo \add@missing\endexample
+  \add@missing\endproclaim
+  \par\penaltyandskip@{-100}\subheadskip
+  \noindent{\subheadfont@\ignorespaces \S#1. #2\unskip\endgraf}\removelastskip
+  \nobreak\medskip\noindent}
+\catcode`\@=\active
+
+\NoRunningHeads % USE IN FINAL VERSION; THEN COMMENT OUT NEXT LINE
+% \headline{\eightpoint PRELIMINARY VERSION \hfil \today}
+
+\define\Grk{Gr(k,N)}
+\define\Gtil{\tilde{G}}
+\define\Herm{\operatorname{HermitianEnd}}
+\define\Hf{\scrH_\phi }
+\define\Hgauge{\Cal H_{\text{gauge}}}
+\define\Ne{N_e}
+\define\Qf{Q_{\phi }}
+\define\Seff{S_{\text{eff}}}
+\define\Sym{\operatorname{Sym}}
+\define\TT{\Bbb T}
+\define\Vol{\operatorname{Vol}}
+\define\Wbar{\overline{W}}
+\define\bphi{\bar{\phi }}
+\define\geff{g_{\text{eff}}}
+\define\gtil{\tilde{g}}
+\define\hol{\operatorname{hol}}
+\define\id{\operatorname{id}}
+\define\modn{\Cal M_n}
+\define\pf{\pi _\phi }
+\define\phih{\hat{\phi}}
+\define\scrA{\Cal{A}}
+\define\scrG{\Cal{G}}
+\define\scrH{\Cal{H}}
+\define\sigtil{\tilde{\sigma}}
+\define\voll{\operatorname{vol}}
+\define\wbar{\bar{w}}
+
+\input epsf
+
+\document
+%**end of header
+
+
+	\topmatter
+ \title\nofrills Lecture II-4: The large~$N$ limit of the $\CP^{N-1}$ model
+\endtitle 
+ \author Edward Witten  \endauthor
+	\endtopmatter
+
+\centerline{Notes by Dan Freed}
+\bigskip 
+\bigskip
+
+\document
+
+
+ \comment
+ lasteqno @ 34
+ \endcomment
+
+        \proclaim{Remark}
+ The lecture treated the $\sigma $-model into projective space, but these
+notes cover the generalization to a Grassmannian, as requested in Problem
+Set~3.
+        \endproclaim
+
+\bigskip 
+ 
+In this lecture we discuss the large~$N$ behavior of the two dimensional
+$\sigma $-model into the Grassmannian~$Gr(k,N)$ of $k$~dimensional subspaces
+of~$\CC^N$.  Here $k$~is fixed as~$N\to\infty $.  We also consider the real
+Grassmannian.  Since Grassmannians have positive Ricci curvature these field
+theories are asymptotically free, but in any case our task is to investigate
+the infrared behavior. 
+ 
+The Euclidean action of the $\sigma $-model is 
+  $$ S[\phi ] = \frac{1}{g^2}\int_{\Sigma }d^2x\,|d\phi |^2 - i\theta
+     \int_{\Sigma} \phi ^*(\alpha ), \tag{1} $$
+where $\Sigma$~is a Riemann surface, $\phi \:\Sigma \to Gr(k,N)$ a map into
+the Grassmannian, $\alpha \in H^2\bigl(Gr(k,N),\ZZ \bigr)$ a generator of the
+cohomology, and $g,\theta $~are parameters of the theory.  We specify the
+metric on~$Gr(k,N)$ shortly.  The second term is a topological
+term;\footnote{The factor of~$i$ is present in the {\it Euclidean\/} action
+so that the action conjugates under orientation reversal.  In this way its
+continuation to Minkowski space is real.  See Freed's notes {\it Actions and
+Reality\/} for more details.} for $\Sigma $~closed the integral is
+integer-valued.  Thus a shift $\theta \to\theta +2\pi $ does not affect the
+model.  The parameter~$\theta $ is also a parameter of the quantum theory,
+but renormalization exchanges the dimensionless coupling constant~$g$ with a
+mass parameter~$\mu $.
+
+The rescaled coupling constant~$\gtil$, defined by 
+  $$ g^2 = \gtil^2/N,  \tag{2} $$
+is more natural in the large~$N$ limit, as we will see.
+
+
+ \Head{4.1}{The Questions}
+We ask specific questions about the behavior of the model. 
+
+ \roster
+ \item"1." Is there a mass gap? 
+ \item"2." What is the $\theta $ dependence of the partition function?
+
+\noindent {\it Remark.\/}
+ For $\Sigma $~small the partition function 
+  $$ Z(\theta ) = \int_{} D\phi \;\;e^{-\frac{1}{\geff^2}\int_{\Sigma
+     }d^2x\,|d\phi |^2} \,e^{i\theta \int_{\Sigma }\phi ^*(\alpha )}
+      $$
+can be studied using perturbation theory.  Here $\geff$~is the effective
+coupling, which varies with the distance scale in the theory set by the size
+of the surface~$\Sigma $.  (Classically the model is conformally invariant,
+so does not depend on the size of~$\Sigma $, but quantum mechanically this is
+no longer true.)  By asymptotic freedom this coupling is small at small
+distances, hence the assertion that perturbation theory applies in this
+regime.  Now the classical solutions to~\thetag{1} are harmonic maps $\Sigma
+\to Gr(k,N)$.  Note that the only $\theta $~dependence is through the degree
+of~$\phi $, and so we split the integral as a sum over maps~$\phi $ of
+varying degrees.  In degree~0 we obtain constant maps and in general for
+degree~$n$ some moduli space~$\modn$ of harmonic maps, which are the {\it
+instantons\/} of this model.  Degree~1 instantons are (anti)holomorphic maps.
+The perturbation expansion around these solutions has the rough form
+  $$ Z(\theta ) \sim \frac{\Vol\bigl(Gr(k,N) \bigr)}{\sqrt{\det(\cdot
+     )}}(1+\cdots ) \,+\, \sum\limits_{\pm}e^{\pm i\theta }e^{-cN/\geff^2}
+     \frac{\Vol{\Cal{M}_1}}{\sqrt{\det(\cdot )}}(1+\cdots ) + \text{higher
+     instantons} \tag{3} $$
+The constant~$c$ in the exponential is the action of a $1$-instanton, which
+is independent of~$N$.  The factor of~$N$ comes from~\thetag{2}.  If $\geff
+<< 1$ we see that the $\theta $~dependent term of~$Z(\theta )$ vanishes
+exponentially as~$N\to\infty $.  As the area of~$\Sigma $ increases the
+effective coupling~$\geff$ also increases.  Equation~\thetag{3} is the answer
+for $\Sigma $~compact and of small area, but we will find a vastly different
+result for~$\Sigma =\RR^2$.
+
+ \item"3." {\it Symmetry Breaking.\/}  Symmetry breaking in two dimensions
+is possible for a discrete symmetry, and in this model we have the parity
+symmetry
+  $$ \aligned
+      P\:\Sigma &\longmapsto \overline{\Sigma}\qquad \qquad
+     \text{($\overline{\Sigma}$~is $\Sigma$ with the opposite orientation)}
+     \\
+      \theta &\longmapsto -\theta \endaligned \tag{4} $$
+For $\Sigma =\RR^2$ we implement the orientation reversal by an
+orientation-reversing isometry, i.e., a reflection.  Then for $\theta =0$~
+and $\theta =\pi$ ~the parity symmetry~$P$ acts on a fixed theory and we ask
+if it is broken in the quantum theory.
+ 
+ \item"4." The group~$PSU(N)$ of isometries of the Grassmannian acts in the
+classical theory.  Since continuous symmetry groups are unbroken in two
+dimensions, this symmetry acts in the quantum theory as well.  However, it is
+possible that a realization of the theory has a symmetry group which is a
+cover of~$PSU(N)$, the latter being the group which acts on the operator
+algebra.  Does that happen here?
+ \endroster
+
+
+ \Head{4.2}{An Equivalent Formulation}
+To study the model we rewrite it, that is, we construct an action with the
+same classical and quantum physics.  As a preliminary we recall some basic
+geometry of the Grassmannian.  Over~$Gr(k,N)$ lies a canonical sequence of
+vector bundles
+  $$ 0 @>>> S @>s>> Gr(k,N)\times \CC^N @>>> Q @>>> 0,  \tag{5} $$
+where the fiber of~$S$ at a $k$-plane~$\pi $ is simply $\pi $~viewed as a
+subspace of~$\CC^N$.  Fix the standard metric on~$\CC^N$. It induces a metric
+on~$S$ and identifies~$Q\cong S^\perp$.  There is a canonical
+connection~$\nabla $ on~$S$, obtained by projecting the natural connection on
+the trivial bundle~$\Grk\times \CC^N$.  We easily compute
+  $$ \nabla =d-s^*ds, \tag{6} $$
+where $s$~is the inclusion $S@>s>>\Grk\times \CC^N$.  Then 
+  $$ \nabla s\:T\bigl(\Grk\bigr)\longrightarrow \Hom(S,S^\perp) \tag{7} $$
+is an isomorphism.  We use it to induce a metric on~$\Grk$, the metric needed
+to write down the $\sigma $-model action~\thetag{1}. 
+ 
+Now if $\phi \:\Sigma \to\Grk$ we pullback~\thetag{5} to obtain a sequence of
+bundles over~$\Sigma $, and by~\thetag{7} the lagrangian density of~$\phi$ is
+  $$ |d\phi |^2 = |(\phi ^*\nabla )\phi ^*s|^2. \tag{8} $$
+Note $\phi ^*s\:\phi ^*S\to\Sigma \times \CC^N$ determines~$\phi $.  The idea
+is to replace~$\phi $ by such a bundle map, and so first to replace~$\phi
+^*S$ by a fixed bundle.  Note $\deg(\phi ^*S)=\deg(\phi )$ so that the
+topology of~$\phi ^*S$ determines the cohomology class~$\phi ^*(\alpha )$,
+which appears in the second term of the action~\thetag{1}.  Hence fix a
+vector bundle $E\to\Sigma $ of rank~$k$ and degree~$d$.  Also fix a hermitian
+metric on~$E$.  We introduce a new field 
+  $$ \phih\:E\longrightarrow \Sigma \times \CC^N  $$
+which we constrain to be an isometric immersion: 
+  $$ \phih^*\phih=\id_E. \tag{9} $$ 
+The image of~$\phih$ determines a map $\phi \:\Sigma \to\Grk$ which is
+unchanged if we shift~$\phih$ by a unitary gauge transformation of~$E$.  To
+rewrite~\thetag{8} in terms of~$\phih$ we need a connection on~$E$, and as
+there is no natural choice we introduce a variable unitary connection~$A$.
+Using~$\phih$ we identify~$E$ with a subbundle of the trivial bundle $\Sigma
+\times \CC^N$, so can differentiate~$\phih$ using the usual derivative~$d$.
+Writing~$A$ as a 1-form plus this trivial connection we find
+  $$ \aligned
+      |d_A\phih|^2 &= |d\phih + \phih A|^2 \\ 
+      &= |d\phih|^2 + 2\Re(d\phih,\phih A) + |A|^2,\endaligned \tag{10} $$
+since~$\phih^*\phih=\id_E$.  This expression is quadratic in~$A$, so if
+\thetag{10}~is a classical lagrangian for~$A$ we can use the equations of
+motion to obtain
+  $$ A_0 = - \phih^*d\phih. \tag{11} $$
+Comparing with~\thetag{6} we see that $A_0$~is the pullback of the canonical
+connection on~$S$, and so by~\thetag{8} 
+  $$ |d\phi |^2 = |d_{A_0}\phih|^2.  $$
+In other words, the lagrangian~\thetag{10} is equivalent to~$|d\phi |^2$ for
+fields which satisfy the constraint~\thetag{9}.  We impose the constraint
+via a lagrange multiplier field
+  $$ \sigma \:\Sigma \longrightarrow \Herm(E). $$ 
+The $\theta $~term in the original action~\thetag{1} can be computed using
+the (skew-Hermitian) curvature~$F_A$ via Chern-Weil theory.  Altogether we
+obtain for our new action\footnote{Some explanation about the lagrange
+multiplier term is in order.  It is based on the general formula
+  $$ \int_{}e^{i(\sigma ,x)}d\sigma  = \delta (x), $$ 
+where $\sigma $~lies in the dual space to~$x$, the measure~$d\sigma $ is
+suitable normalized, and $\delta (x)$~is the $\delta $-distribution
+supported at the origin.  In the Minkowski space lagrangian the lagrange
+multiplier term is 
+  $$ \int_{\Sigma }\Tr \sigma (\phih^*\phih - \id_E), $$ 
+and $\sigma $~should be interpreted as a 2-form (or density);  it lies in the
+dual space to the function $\phih^*\phih-\id_E$.  Rotation to Euclidean space
+yields the second term of~\thetag{12}.} 
+  $$ S[\phih,A,\sigma ] = \frac{1}{g^2}\int_{\Sigma }|d_A\phih^2| -
+     i\int_{\Sigma} \Tr\sigma (\phih^*\phih-\id_E) + \frac{\theta }{2\pi
+     }\int_{\Sigma }\Tr F_A. \tag{12} $$
+As we have explained, the classical equations of motion (and other classical
+constructs) computed from~\thetag{12} are equivalent to those computed from
+the original action~\thetag{1}.  The classical computation which led
+to~\thetag{11} is valid quantum mechanically since the dependence
+of~\thetag{12} on~$A$ is quadratic and the Hessian is the identity operator
+(see~\thetag{10}).  (We ignore the constant determinant factor which we
+obtain from the $A$ integral.)  Thus the quantum physics is the same as well.
+
+
+ \Head{4.3}{The Large~$N$ Effective Theory}
+The argument here is almost identical to that for the large~$N$ $\sigma
+$-model into a sphere (see lecture~II@-3).  So we will be brief. 
+ 
+First, the $\phih$~integral is Gaussian, so the partition function is 
+  $$ \aligned
+      Z &= \sum\limits_{E}\int_{}\frac{DA}{\voll}D\sigma
+     D\phih\,e^{-S[\phih,A,\sigma ]} \\
+      &= \sum\limits_{E}\int_{}\frac{DA}{\voll}D\sigma \exp -\left[ \Tr \ln
+     \left( \frac{d_A^*d_A}{g^2}-i\sigma \right) + i\int_{\Sigma }\Tr\sigma +
+     \frac{\theta }{2\pi }\int_{\Sigma }\Tr F_A \right]. \endaligned
+     \tag{13} $$
+Here $\sum\limits_{E}$~is the sum over bundles~$E$.  We take~$\Sigma =\RR^2$.
+Then the sum over~$E$ is irrelevant, as is the topological term.  In a first
+approach to this problem, the topology of the bundle will not be important,
+since it is spread over an infinite volume.  Once we get a basic
+understanding of what the quantum vacuum looks like, it will not be hard to
+go back and see how the topology enters.  We evaluate the leading behavior in
+large~$N$ by evaluating at a stationary point of the exponential in the
+integrand, i.e., a classical solution of the effective action.
+ 
+The only Poincar\'e invariant (that is, Euclidean invariant) possibility for
+the gauge field is~$A=0$.  In that case we rewrite minus the integrand in the
+last line of~\thetag{13} as
+  $$ \Seff[A,\sigma ] = N\Tr\ln\left( \frac{d^*d}{g^2} - i\sigma  \right) +
+     i\int_{}\;\Tr\sigma ,   $$
+where the operator in the first term acts on sections of~$E^*$.  Now the only
+Poincar\'e invariant possibility is $\sigma $~constant, and so we
+diagonalize~$\sigma $ and pass to $k$~one dimensional problems for an
+eigenvalue.  At this point we rescale 
+  $$ \aligned
+      \sigma &=N\sigtil \\ 
+      g^2 &= \tilde{g}^2/N,\endaligned \tag{14} $$
+and so for each eigenvalue we have exactly the problem we had for the
+large~$N$ $\sigma $-model in to a sphere.  Thus the solution~$\sigtil _0$ has
+all eigenvalues equal and is specified by
+  $$ -i\tilde{g}^2\sigtil_0 = \Lambda ^2e^{-4\pi /\tilde{g}^2} = M^2 
+     $$
+for $\Lambda $~an ultraviolet cutoff and now $\tilde{g}^2$~the running
+coupling constant.  We define~$M^2$ to be this dynamically generated mass
+squared. 
+ 
+So in the large~$N$ effective action $\sigtil $~acquires a mass.  Note that
+the $A$~field has no transverse degrees of freedom---it is a gauge field in
+two dimensions---so does not enlarge the spectrum of the model (though, of
+course, it affects the Hamiltonian as we will see, and in fact diminishes the
+spectrum).  Thus the large~$N$ limit
+has a mass gap.  This is the answer to the first in our list of questions.
+ 
+To answer the other questions we need to compute something more precise,
+namely the leading approximation to the large~$N$ effective action.  This
+means that we do perturbation theory for the action~\thetag{12} about the
+point $\phih_0=0$, $A_0=0$, $\sigtil_0= iM^2/\tilde{g}^2$.  So
+shifting~$\sigtil$ by~$\sigtil_0$ and rescaling~$\phih$ we have
+from~\thetag{12}
+  $$ S'[\phih,A,\sigtil] = \int_{\Sigma} |d_A\phih|^2 \;+\; M^2\!\int_{\Sigma}
+     |\phih|^2 \;-\;i\tilde{g}^2\!\int_{\Sigma } \Tr\sigtil\phih^*\phih \;+\;
+     \frac{\theta }{2\pi }\int_{\Sigma }\Tr F_A. \tag{15} $$
+Here we omit a constant term (which only shifts the partition function by a
+constant) and a linear term in~$\sigtil$ (since we are expanding around a
+solution of the effective action).  
+
+ \midinsert
+ \bigskip
+ \centerline{
+  \epsfxsize= 200pt
+  \epsfysize= 66pt
+ \epsffile{Figure1.eps}}
+ \nobreak
+ \botcaption{Figure~1: The inverse $\sigtil$ propagator}  
+ \endcaption
+ \bigskip
+ \endinsert
+
+The effective action is computed in perturbation theory using one particle
+irreducible Feynman diagrams with external lines for~$A$ and~$\sigma $ and
+with internal $\phih$~lines.  So the inverse propagator for~$\sigtil$ is
+computed from the diagram shown in Figure~1, where the solid line
+represents~$\phih$ and the dotted line represents~$\sigma $.  (Note that
+\thetag{15}~has no quadratic term in~$\sigtil$, else Figure~1 would be a
+correction to such a term.)  We evaluate the diagram in momentum space as
+  $$ \aligned
+      -\gtil^4Nk\int_{}\frac{d^2q}{(2\pi)^2}\,
+     \frac{1}{q^2+M^2}\,\frac{1}{(p-q)^2 + M^2}
+      &= -\frac{\gtil^4Nk}{4\pi ^2}\int_{0}^1 \!\!d\alpha
+     \int_{}d^2q\,\frac{1}{[q^2 + (M^2 + \alpha (1-\alpha )p^2)]^2} \\
+      &= -\frac{\gtil^4Nk}{\pi }\int_{0}^1\frac{d\alpha }{M^2 + \alpha
+     (1-\alpha )p^2} \\
+      &= - \frac{\gtil^4Nk}{\pi M^2} + O(p^2)\qquad
+     \text{as~$p\to0$}.\endaligned \tag{16} $$
+This corresponds to a term
+  $$ C|\sigtil|^2 $$ 
+in the effective action, with~$C>0$.  (The minus sign comes since in the
+Euclidean theory diagrams compute negative contributions to the effective
+action.)  This is the dominant term in the infrared, which means that
+$\sigtil$~is massive and does not affect the long range behavior of the
+theory.
+
+ \midinsert
+ \bigskip
+ \centerline{
+  \epsfxsize=300pt
+  \epsfysize=80pt
+ \epsffile{Figure2.eps}}
+ \nobreak
+ \botcaption{Figure~2: The inverse $A$~propagator}  
+ \endcaption
+ \bigskip
+ \endinsert
+
+
+ \midinsert
+ \bigskip
+ \centerline{
+  \epsfxsize=250pt
+  \epsfysize=130pt
+ \epsffile{Figure3.eps}}
+ \nobreak
+ \botcaption{Figure~3: The interaction vertices for the $A$~field}  
+ \endcaption
+ \bigskip
+ \endinsert
+
+
+The inverse propagator for~$A$ is computed by the diagrams in Figure~2, which
+come from the first term in~\thetag{15}.  Here the wavy line represents~$A$.
+To compute these diagrams we need the Feynman rules for the vertices
+indicated in Figure~3, which correspond to the terms  
+  $$ \gathered
+      2\Re(d\phih,\phih A) \\ 
+      |\phih A|^2\endgathered  $$
+in the action~\thetag{15}.  The indices refer to a standard orthonormal basis
+for~$\RR^2$.  The Feynman rule (in momentum space) for the second vertex is
+easy:
+  $$ II=-\delta _{\mu \nu }.  $$
+(There is a minus sign since the Euclidean functional integral
+involves~$e^{-S}$.)  For the vertex~$I$ we must remember that $\phih$~is
+complex and that $A$~is skew-Hermitian: 
+  $$ 2\Re(\partial _\mu \phih,\phih A_\mu ) = -\partial _\mu \phih A_{\mu
+     }\phih^* + \phih A_\mu \partial _\mu \phih^*. $$ 
+Thus the vertex is 
+  $$ I = -i(k_1 - k_2)_\mu .  $$
+Note that one of the solid lines in the vertex represents~$\phih$ and the
+other solid line represents~$\phih^*$.  So the sum of the diagrams in
+Figure~2 is 
+  $$ \int_{}\frac{d^2q}{(2\pi)^2 } \frac{(p-2q)_\mu (p-2q)_{\nu }}{(q^2 +
+     M^2)((p-q)^2+M^2)} \;-\;2\delta _{\mu \nu } \int_{}\frac{d^2q}{(2\pi)^2
+     } \frac{1}{(q^2 + M^2)}. \tag{17} $$
+The factor of~2 in the second term is from the two ways of attaching the
+$A$~lines to the external vertices; the corresponding factor of~2 in the
+first term is canceled by the symmetry which exchanges the two internal
+vertices in the first diagram.  (That is, there is a factor of~$1/2$ from the
+expansion of the exponential, since we have two triple vertices.)  Each term
+in~\thetag{17} is divergent, but the divergences cancel in the difference,
+and after some computation similar to~\thetag{16} the answer to leading order
+in~$p$ is
+  $$ \frac{N}{12\pi M^2}(p_{\mu} p_\nu - p^2\delta _{\mu \nu }). \tag{18} $$
+This corresponds to a term 
+  $$ \frac{N}{24\pi M^2} |F_A|^2 \tag{19} $$
+in the effective action.  (Again we must recall that diagrams contribute
+negatively to the effective action.)  In fact, \thetag{18}~and
+\thetag{19}~correspond precisely if~$k=1$ (the $\sigma $-model into
+projective space), since then $A$~is an abelian connection.  In the
+nonabelian case there are cubic and quartic terms, but by gauge invariance
+their leading contribution must be as in~\thetag{19}.  We remark that
+\thetag{19}~is the lowest order gauge invariant term we can write, and so its
+appearance can be predicted from gauge invariance alone, but of course we
+must do a computation to determine the coefficient.
+ 
+So, finally, the long distance behavior of the two dimensional $\sigma
+$-model into the Grassmannian~$\Grk$, in the large~$N$ limit, is equivalent
+to the long distance behavior of a two dimensional gauge theory with gauge
+group~$U(k)$ and charged massive scalars.  The action is 
+  $$ \frac{N}{2e^2}\int_{\Sigma }|F_A|^2 + \frac{\theta }{2\pi }\int_{\Sigma
+     }\Tr F_A + \int_{\Sigma }|d_A\phi |^2 + M^2\int_{\Sigma }|\phi
+     |^2. \tag{20} $$
+The first term in~\thetag{20} was just computed, where the coupling~$e^2$
+summarizes the numerical factor in~\thetag{19}.  The second term is the
+$\theta $~term in~\thetag{15}.  The last two terms are the first two terms
+in~\thetag{15}, except we now drop the `$\hat{\ }$' for convenience.  So
+$\phi $~is a section of~$(E^*)^{\oplus N}$.
+
+
+ \Head{4.4}{Real Grassmannians}
+From the beginning we can replace the complex Grassmannian with the real
+Grassmannian.  In that case the bundle~$E$ is real, $\phih\:E\to\Sigma \times
+\RR^N$, and there is no other change except in the representation of the
+$\theta $~term.  For simplicity we consider the $\sigma $-model into the
+Grassmannian~$Gr_\RR^0(k,N)$ of {\it oriented\/} $k$-planes in~$\RR^N$.  (It
+is a double cover of the Grassmannian of unoriented $k$-planes.)  Now
+$H^2\bigl(Gr_\RR^0(k,N);\ZZ \bigr)\cong \ZZ/2\ZZ$ and the $\theta $~term is
+meant to detect this class.  Thus the second term of~\thetag{1} is replaced
+by
+  $$ i\theta \deg_2\alpha ,  $$
+where $\deg_2$~is the mod~2 degree (0 or~1) and $\theta =0$ or~$\theta =\pi
+$.  In the reformulation of the problem $E$~is an oriented real $k$-plane
+bundle over~$\Sigma$, and the topological term in~\thetag{12} and subsequent
+formulas is
+  $$ i\theta w_2(E)[\Sigma ], \tag{21} $$
+where $w_2$~is the second Stiefel-Whitney class.  For $\Sigma =\RR^2$~we can
+rewrite~\thetag{21} in terms of a {\it Wilson line\/} operator.  Namely, a
+field configuration with finite action~\thetag{12} has $A$~essentially flat
+at infinity.  Since $\RR^2$~is contractible we can lift the
+$SO(k)$~connection A to a $\Spin(k)$ connection~$\tilde{A}$, and the holonomy
+on a large loop~$C\subset \RR^2$ is approximately~$\pm1$ depending on the
+Stiefel-Whitney class of the induced bundle on~$S^2$.  (We let `$-1$'~denote
+the nontrivial element of~$\Spin(k)$ covering $1\in SO(k)$.)  Choose a
+representation~$R$ of~$\Spin(k)$ and consider
+  $$ W_R(C) = \frac{\Tr_R\hol_C(A)}{\dim R}. \tag{22} $$
+In the limit where the loop~$C$ becomes large, this computes the exponential
+of~\thetag{21}, where $\theta =0$ if $R$~is a representation of~$SO(k)$ and
+$\theta =\pi $ if $R$~is a representation of ~$\Spin(k)$ but not of~$SO(k)$.
+ 
+The generalization to an arbitrary connected compact Lie group~$G$ is clear.
+A $G$~bundle over~$\Sigma $ has a characteristic class in~$H^2(\Sigma ,\pi
+_1G)$.  It pairs with a homomorphism $e^{i\theta }\:\pi _1G\to\TT$ to give a
+term in the exponentiated action.  Here $\TT=U(1)$~is the circle group.  On
+the other hand a representation of the simply connected covering group
+induces a homomorphism $e^{i\theta }\:\pi _1G\to\TT$, so we can use the
+Wilson operator~\thetag{22} to write the $\theta $~term on~$\RR^2$. 
+
+ \Head{4.5}{Pure Gauge Theory}
+ We still must determine the quantum behavior of the theory with effective
+action~\thetag{20}.  For this, we will first practice by analyzing the pure
+gauge theory in two dimensions, whose action is the sum of the first two
+terms of~\thetag{20}.  We may as well consider an arbitrary connected compact
+Lie group~$G$.  The norm in the first term of~\thetag{20} is defined via a
+bi-invariant metric on~$G$.  We quantize the theory on the circle~$\cir_V$ of
+circumference (=volume)~$V$.  In general, to quantize a gauge theory in
+$n$~dimensions on an $n$-manifold~$Y$, we consider connections on~$\RR\times
+Y$ in {\it temporal gauge\/} and take solutions to the equations of motion up
+to time-independent gauge transformations.  (See Kazhdan's lectures on the
+quantization of gauge theories.)  For pure gauge theory without the $\theta
+$~term the resulting space is the (co)tangent bundle of the space of
+connections on~$Y$ modulo gauge transformations.  For $Y=\cir_V$ we first fix
+a basepoint; then a connection up to gauge equivalence is specified by the
+holonomy, an element of~$G$.  A change of basepoint conjugates the holonomy,
+and so the quantum Hilbert space is
+  $$ \Hgauge(\theta \!=\!0) \;=\; L^2(G)^G,  $$
+the space of conjugacy invariant functions on~$G$.  A basis for this space is
+the set of characters of irreducible representations. 
+ 
+Next we compute the Hamiltonian.  Let $A_t=A_t(x)dx$ be a connection
+on~$\RR\times \cir_V$ (with coordinates~$t,x$) in temporal gauge, relative to
+some trivialization, and let $g_t\in G$ be the corresponding path of
+holonomies.  In a gauge where $A_t$~is constant, we have $g_t=e^{VA_t}$.
+Then the first term in the action~\thetag{20} is
+  $$ \frac{N}{2e^2}\int_{}\int_{}\;\left| \frac{dA}{dt} \right| \,dtdx =
+     \frac{N}{2e^2V}\int_{}\;|\dot{g}|^2\,dt. \tag{23} $$
+This is the lagrangian for a classical particle of mass~$N/e^2V$ moving on
+the Riemannian manifold~$G$; the corresponding quantum Hamiltonian is
+  $$ H_{\text{gauge}} = \frac{e^2V}{2N}\Delta_G, \tag{24} $$
+where $\Delta_G$~is the laplacian on~$G$.  The eigenfunctions are the
+characters of the irreducible representations with eigenvalues proportional
+to the Casimir.   
+ 
+Now consider the $\theta $~term in~\thetag{20}.  For $G=U(k)$ we have a
+natural closed imaginary 1-form~$\alpha \in i\Omega ^1_{G}$ which is the
+trace of the Maurer-Cartan form.  Then in terms of the path~$g_t$ of
+holonomies the $\theta $~term in the action is 
+  $$ \frac{\theta }{2\pi }\int_{}\;g^*\alpha . \tag{25} $$
+This is a topological term---it is invariant under reparametrizations of the
+path~$g_t$.  More geometrically, $\theta \alpha $~is a flat connection on a
+topologically trivial hermitian line bundle~$L_\theta $ over~$G$, and up to
+equivalence it is given by an element in~$H^1(G;\TT)$.  Then \thetag{25}~is
+parallel transport in this flat bundle.\footnote{In general, the classical
+field theory action on a manifold with boundary---here the interval---is not
+a number, but we do not stress that point here.}  More generally, we can
+``twist'' our mechanical system by any hermitian line bundle~$L$ with
+connection.  Physically this describes a particle moving in an
+electromagnetic field.  The quantum Hilbert space is the the space of
+sections of~$L$ with Hamiltonian the laplacian for such sections.  In our
+case we obtain the space
+  $$ \Hgauge(\theta ) = L^2(G,L_\theta )^G  $$
+of invariant sections with Hamiltonian~\thetag{24}.  For arbitrary~$G$ an
+element $e^{i\theta} \in H^1(G;\TT)$ corresponds to a homomorphism
+$e^{i\theta }\:\pi _1G\to\TT.$  Recall that $\pi _1G$~is a subgroup of the
+center of~$G$.  Then the eigenfunctions of the laplacian acting
+on~$\Hgauge(\theta )$ are the characters of representations of the simply
+connected cover of~$G$ whose restriction to~$\pi _1G$ is~$e^{i\theta }$; the
+eigenvalue is again proportional to the Casimir.
+ 
+For the unitary group~$G=U(k)$ we identify~$\theta \in \RR/2\pi \ZZ$ as
+before.  The smallest Casimir occurs for a
+representation~$\det^{\tilde{\theta}/2\pi }$, where $\tilde{\theta }\in \RR$
+is a representative of~$\theta $ of smallest absolute value.  If $\theta
+\not= \pi $~there is a unique such~$\tilde{\theta }$, but for~$\theta =\pi $
+there are two possibilities: $\tilde{\theta }=\pi $ and~$\tilde{\theta }=-\pi
+$.  For $G=SO(k)$ the simply connected cover is~$\tilde{G}=\Spin(k)$.
+For~$\theta =0$ there is a unique lowest representation, the trivial
+representation of~$SO(k)$.  For~$\theta =\pi$ the lowest representation is
+the spin representation if $k$~is odd, and the two half spin representations
+if $k$~is even.  In the large volume limit only the lowest eigenvalue
+survives, so we have two vacuua for~$\theta =\pi $ in the complex~$\bigl(U(k)
+\bigr)$ case and for $k$~even in the real $\bigl(SO(k) \bigr)$~case.  Observe
+that the two vacuua correspond under the involution $g\mapsto -1\cdot g$ in
+these cases.  (Notice also that the bundle~$L_{\theta =0}$ is real.)  We will
+see that this vacuum structure persists when we add matter.  Thus parity
+symmetry~\thetag{4} is spontaneously broken at~$\theta =\pi $ for $G=U(k)$
+and~$G=SO(2\ell )$.  This answers the third of our questions.
+ 
+As the volume $V\to\infty $ the eigenvalues of~\thetag{24} become widely
+separated.  In particular, in the infinite volume limit there is no state of
+finite energy above the vacuum (or vacuua).  So the physical Hilbert space in
+infinite volume consists only of the vacuum (or vacuua)---pure gauge theory
+on~$\RR^2$ is trivial.
+
+Specialize to~$G=U(1)$.  Then the {\it vacuum energy density\/}, which is the
+minimum eigenvalue of the Hamiltonian~\thetag{24} divided by the volume~$V$,
+is 
+  $$ E_{\text{vac}}(\theta ) = \frac{e^2}{2N}\min\limits_{n\in
+     \ZZ}(n-\frac{\theta }{2\pi })^2. \tag{26} $$
+Notice that the derivative of~$E_{\text{vac}}$ has a discontinuity at~$\theta
+=\pi $.   
+ 
+For $G=U(k)$ formula~\thetag{26} is simply multiplied by~$k$. 
+ 
+The partition function~$Z_{\Sigma }(\theta )$ of the pure gauge theory
+for~$\Sigma =[0,T]\times S^1_V$ has the Hilbert space interpretation
+  $$ Z_\Sigma(\theta ) \sim \langle \Omega |e^{-TH(\theta )}|\Omega
+     \rangle\quad \text{as $T\to\infty$},  $$
+where $H(\theta )$~is the Hamiltonian and $\Omega $~the vacuum.  For the pure
+gauge theory, we obtain from~\thetag{26} for $G=U(1)$
+  $$ Z_\Sigma(\theta ) \sim \exp\bigl(cTV - \frac{e^2TV}{2N}\min\limits_{n\in
+     \ZZ}(n-\frac{\theta }{2\pi })^2 \bigr)\quad \text{as
+     $T\to\infty$}. \tag{27} $$
+Here $c$~is a constant which represents the indeterminacy of the path
+integral, or equivalently the fact that we are free to add a constant
+(independent of~$\theta $) to the Hamiltonian.  This is quite different than
+the prediction~\thetag{3} from the instanton sum.  Note that due to the
+classical conformal invariance of the $\sigma $-model, the instantons used in
+deriving~\thetag{3} do not have a definite size; they can be rescaled.  For
+that reason the instanton sum is not reliable at large distances.  In any
+case \thetag{27}~answers question~2 for pure gauge theory.
+
+
+ \Head{4.6}{Classical Electromagnetism in Two Dimensions}
+Before analyzing the quantum gauge theory with bosonic matter---the $\phi
+$~field in the action~\thetag{20}---we discuss the classical physics.  For
+the classical analysis we work in the $G=U(1)$~theory.  The classical
+equations---Maxwell's equations---for pure gauge theory are
+  $$ \frac{N}{e^2}d^*_AF_A=0. \tag{28} $$
+Since we are in two spacetime dimensions, this implies that the electric
+field~$f=f_A=*F_A$ is a constant.  Let `$x$'~denote the coordinate on space,
+which is simply a copy of~$\RR$.  Add a point charge of charge~1 at~$x=x_0$.
+Then the electric field~$f$ as a function of~$x$ satisfies~\thetag{28} with a
+right hand side due to the charge:
+  $$ \frac{N}{e^2}\frac{df}{dx}=-\delta (x-x_0).  $$
+Thus the value of the electric field jumps by~$-e^2/N$ across a charge.
+(See Figure~4.)  Allowing for many charges, and assuming all of them are
+multiples of the basic charge (which is a conclusion of the quantum theory),
+we see that
+  $$ \theta =\frac{2\pi Nf}{e^2}\in \RR/2\pi \ZZ \tag{29} $$
+is a constant.  So there is an angle in the classical theory (assuming charge
+quantization).
+
+ \midinsert
+ \bigskip
+  $$ \hfil f \ \ \uparrow\ \  f - \frac{e^2}{N} \qquad\qquad \qquad   
+   f \ \ \downarrow\ \  f + \frac{e^2}{N}\hfil 
+  $$
+ \nobreak
+ \botcaption{Figure~4: Change in electric field across a positive or negative
+charge}   
+ \endcaption
+ \bigskip
+ \endinsert
+
+
+The classical energy density of an electric field~$f$ is computed from the
+action~\thetag{23} (where $f=dA/dt$) to be~$\frac{N}{2e^2}f^2$.  As in the
+quantum theory, for a fixed value of~$\theta $ in~\thetag{29} there is a
+unique minimum obtained at some~$f=f_0$ as long as $\theta \not=\pi $.  Any
+valid configuration must have finite energy compared to the vacuum energy.
+Thus if~$\theta \not= \pi $ we must have $f(x)\to f_0$ as $x\to\pm\infty $.
+Using the formula above for the jump of the electric field across a charge,
+we see that the total charge of a finite energy configuration is zero.  This
+means that there is {\it confinement\/}---it is impossible to have a single
+charged particle or any other isolated collection of charges with nonzero
+total charge.  On the other hand, for~$\theta =\pi $ we have minimum energy
+density at~$f_0=\pm e^2/2N$, and so for any finite energy configuration
+$f(x)\to\pm e^2/2N$ as~$x\to\pm\infty $.  Thus there is a finite energy
+configuration with a single particle: the electric field satisfies~$f(-\infty
+)=e^2/2N$, $f(\infty )=-e^2/2N$.  (See Figure~5.)  In this case there is no
+confinement.  Also, in this case there are four components of finite energy
+configurations, depending on the value of~$f$ at~$\pm\infty $.
+
+ \midinsert
+ \bigskip
+  $$   \frac{e^2}{2N}\ \ \uparrow \ \ \frac{-e^2}{2N}$$
+
+ \nobreak
+ \botcaption{Figure~5:  A one particle state for~$\theta =\pi $}  
+ \endcaption
+ \bigskip
+ \endinsert
+
+
+Notice that whereas in three space dimensions the Coulomb potential between
+point charges separated by distance~$r$ is proportional to~$1/r$, the Coulomb
+potential in one space dimension is proportional to~$r$.  This means the
+potential energy grows as the charges separate, which is another way of
+understanding that confinement occurs. 
+
+
+ \Head{4.7}{Quantum theory with matter}
+Now we want to show that there is confinement in the quantum theory of the
+lagrangian~\thetag{20} as long as~$\theta \not= \pi $.  This is the assertion
+that every finite energy configuration in the quantum theory has total charge
+zero. 
+ 
+As a preliminary, consider the theory of matter only (no gauge field).  In
+the simplest case~$k=N=1$ there is a single free complex scalar field~$\phi $
+with mass~$M$.  The Hilbert space~$\Hf$ of this theory is the completed
+symmetric algebra of~$W\oplus \Wbar$, where $W$~is the scalar representation
+of Poincar\'e with mass~$M$.  There is a global $U(1)$~symmetry which
+rotates~$\phi $.  The corresponding quantum operator~$\Qf$, the Noether
+charge, has value~1 on~$W$ and~$-1$ on~$\Wbar$, so value~$p-q$
+on~$\Sym^pW\otimes \Sym^q\Wbar$.  A state in this subspace represents
+$p$~positively charged particles and $q$~negatively charged particles.  For
+arbitrary~$k,N$ we have $kN$~copies of this picture.  In particular,
+for~$k=1$ there is a global $SU(N)$~symmetry (beyond the $U(1)$~symmetry
+already discussed.)
+ 
+Now add the gauge field.  For~$k=N=1$ we have a $U(1)$~gauge theory with a
+single charged scalar field.  The global $U(1)$~symmetry of the preceding
+paragraph is now a local symmetry.  Consider first the case~$\theta =0$.  For
+small coupling~$e^2$ we construct the quantum Hilbert space of the joint
+system by quantizing the symplectic manifold of classical solutions
+to~\thetag{20}.  Thus take~$\Sigma $ to be the cylinder~$\RR\times S^1_V$.
+Then the space of classical solutions is a vector bundle over the cotangent
+bundle~$T^*\scrA$ to the space~$\scrA$ of connections on~$S^1_V$; the fiber
+of this vector bundle at the trivial connection~$A=0$ is the real symplectic
+vector space underlying~$W\otimes \Wbar$.  (Note we quantize by a complex
+polarization, which leads to the Hilbert space~$\Hf$ described above.)  To
+implement gauge symmetry we must take the symplectic quotient by the
+group~$\scrG$ of gauge transformations.  Fix a basepoint (infinity)
+on~$S^1_V$.  Then the subgroup~$\scrG_0$ of gauge transformations which equal
+the identity at the basepoint acts freely on~$\scrA$, and the quotient is
+identified with~$U(1)$ via holonomy.  In the pure gauge theory the symplectic
+quotient of~$T^*\scrA$ by~$\scrG_0$ is diffeomorphic to~$T^*U(1)$; its
+quantization~$L^2\bigl(U(1) \bigr)$ was discussed previously.  As the
+length~$V\to\infty $ recall that the only state which remains of finite
+energy is the vacuum state.  Classically, the vacuum corresponds to the zero
+section, a lagrangian submanifold of~$T^*U(1)$.  The subgroup~$U(1)\subset
+\scrG$ of constant gauge transformations acts trivially on~$\scrA$---hence
+trivially on~$T^*\scrA$---so does not enter into pure gauge theory.  In the
+theory with matter the symplectic quotient by~$\scrG_0$ is a vector bundle
+over~$T^*U(1)$ with fiber~$W\oplus \Wbar$ at the identity.  Now the constant
+gauge transformations act nontrivially in the fibers by scalar
+multiplication.  To implement the symmetry we have two choices: we can
+quantize the symplectic quotient or we can consider the subspace of Hilbert
+space annihilated by the corresponding quantum operator~$\Ne$.  Pursuing
+first the latter, we see that in the infinite volume limit the quantum
+Hilbert space before implementing the~$U(1)$ is simply~$\Hf$, since the gauge
+field contributes only the vacuum state.  The operator~$N_e$ is simply equal
+to~$\Qf$.  Thus the Hilbert space of the theory is the subspace of states
+with total charge~$\Qf=0$.  Therefore, just as in the classical theory we
+have confinement.  There is a mass gap, and the smallest mass is~$2M$.  In
+the theory with small coupling, the qualitative picture is the same.
+ 
+If instead we take the symplectic quotient of~$W\oplus \Wbar$ by~$U(1)$, we
+are led to a singular space.  The moment map is $\mu (w,\wbar') = |w|^2 -
+|\wbar'|^2$, and $\mu \inv (0)$~is singular at~$(0,0)$.  In the quantization
+this singular point corresponds to the vacuum, and it is not hard to see
+heuristically that we are led to the same description as before. 
+ 
+Now allow~$\theta \not= 0$.  In the language of geometric quantization the
+prequantum line bundle over~$T^*U(1)$ is now twisted by the pullback
+of~$L_\theta \to U(1)$.  Quantum states correspond to ``Bohr-Sommerfeld''
+leaves of the given polarization, which are equally spaced parallel circles
+in the cylinder~$T^*U(1)$.  More precisely, if $p$~is the (momentum)
+coordinate in the cotangent space, the circles occur at $p=n-\theta /2\pi $
+for integral~$n$.  The energy of the corresponding quantum state (in pure
+gauge theory) is given in~\thetag{26}, and as $V\to\infty $ we only keep the
+closest circle(s) to~$p=0$, which corresponds to the vacuum state.
+If~$\theta \not= \pi $ there is a unique such circle, and we have the same
+picture of confinement as above.  For~$\theta =\pi $ there are two such
+circles, corresponding to the two vacuum states.  Thus in the theory with
+matter, before dividing out by the constant gauge transformations, we must
+quantize two disjoint copies of~$W\oplus \Wbar$ to obtain~$\Hf\oplus \Hf$.
+If, as before, we assign zero charge to each of the vacuum states, then the
+operator~$N_e$ which corresponds to the $U(1)$~symmetry is~$\Qf\oplus \Qf$.
+The subspace of~$\Hf\oplus \Hf$ annihilated by~$\Qf\oplus \Qf$ is simply two
+copies of the system seen previously, each copy with a vacuum.  These are two
+``realizations'' of the quantum theory, each with a mass gap of size~$2M$.
+It turns out---and this is hard to explain from this viewpoint---that we can
+also assign {\it different\/} charges to the two vacuua.  In that case the
+operator~$N_e$ is $(\Qf-1)\oplus \Qf$ or $\Qf\oplus (\Qf+1)$.  The kernel in
+each case has one particle states of mass~$M$, and there is no confinement.
+There is no vacuum state in either realization.  The four realizations
+correspond to the classical picture of the previous section.
+
+To justify these heuristic pictures we compute.  From~\thetag{20} we see that
+the Hamiltonian is 
+  $$ H = \int_{-\infty }^{\infty}dx\;\bigl(\frac 12|\pi _\phi |^2 + |d_A\phi
+     |^2 + M^2|\phi |^2 + \frac{N}{2e^2}|f_A|^2 \bigr), \tag{30} $$
+where $\phi $~is a field on~$\RR$.  Here $\pi _\phi $~is the conjugate
+momentum to~$\phi $, and $f=f_A$ is the Hodge star of the curvature as
+before.  We derive an effective Hamiltonian for~$\phi $ by plugging in the
+equation of motion of~$A$.  The latter is obtained by varying the
+lagrangian~\thetag{20} with respect to~$A$: 
+  $$ \frac{N}{e^2}\frac{df}{dx} = j, \tag{31} $$
+where the current is 
+  $$ j = \phi \pf - \overline{\phi\pf}.  $$
+We integrate~\thetag{31} to obtain 
+  $$ f(x) = \frac{e^2}{N} \left\{ \int_{-\infty }^{\infty}dy\;G(x-y)j(y) + c
+     \right\}  \tag{32} $$
+for some constant~$c$, where 
+  $$ G(x-y) = \cases 1 ,&x\ge y;\\0,&x<y.\endcases  $$
+Note that 
+  $$ \lim\limits_{x\to-\infty } f(x) = \frac{e^2c}{N}. \tag{33} $$
+Plugging into~\thetag{30} we see 
+  $$ H = H_0 + \Delta H,  $$
+where $H_0$~is the Hamiltonian for the free scalar particle (if we compute
+at~$A=0$), and 
+  $$ \Delta H = \frac{e^2}{2N}\int_{-\infty }^{\infty}dx\;\left\{
+     \int_{-\infty }^{\infty}dy\;G(x-y)j(y) + c \right\}^2.   $$
+The perturbation term~$\Delta H$ is nonlocal and singular. 
+ 
+Now we must determine the subspace of states~$\Psi $ on which $\Delta H$~is
+finite.  Consider first~$c=0$.  Then $\langle \Psi |\Delta H | \Psi
+\rangle$ is finite if and only if 
+  $$ \lim\limits_{x\to\infty }\langle \Psi |f(x)|\Psi   \rangle=0, 
+     $$
+where $f(x)$ ~is defined by~\thetag{32}.  Now 
+  $$ \lim\limits_{x\to\infty }\int_{-\infty }^{\infty}dy\;G(x-y)j(y) =
+     \int_{-\infty } ^{\infty}dy\; j(y) = \Qf  $$
+is the charge operator in the Hilbert space ~$\Hf $.  So if~$c=0$ we have
+confinement: 
+  $$ \langle \Psi |\Qf|\Psi   \rangle = 0. $$ 
+In general, $c$~is related to~$\theta $ through~\thetag{33} and~\thetag{29}:
+  $$ |c| = \min\limits_{n} \left( \frac{\theta }{2\pi }+n \right).  
+     $$
+This is the value of the electric field at~$-\infty $.  Also, we subtract an
+(infinite) constant from~$\Delta H$ to account for the nonzero energy
+at~$\infty $:  
+  $$ (\Delta H)_{\text{normalized}} = \frac{e^2}{2N}\int_{-\infty
+     }^{\infty}dx\;\Biggl[\left\{ \int_{-\infty }^{\infty}dy\;G(x-y)j(y) + c
+     \right\}^2 - c^2\Biggr].  $$
+This is finite on states~$\Psi$ which satisfy
+  $$ \Qf(\Qf+2c)|\Psi\rangle=0, \tag{34} $$
+i.e., $\Qf|\Psi \rangle=0$ or~$\Qf|\Psi\rangle=-2c$.  For $\theta \not= \pi $
+the only possibility is~$\Qf|\Psi\rangle=0$ and we have confinement.
+For~$\theta =\pi $ we have either~$c = \pm1/2$, and \thetag{34}~is satisfied
+by states with~$\Qf|\Psi\rangle=0$ or~$\Qf|\Psi\rangle=\mp1$.  As in the
+classical theory, this gives four sectors.  We denote them $\scrH_{++},
+\scrH_{+-}, \scrH_{-+}, \scrH_{--}$ according to the value of the electric
+field at~$-\infty $ and~$+\infty $.  There is a vacuum state and confinement
+in~$\scrH_{++}, \scrH_{--}$; there is neither a vacuum nor confinement
+in~$\scrH_{+-}, \scrH_{-+}$.
+ 
+In the confining cases the symmetry group~$PSU(N)$ acts.  In the sectors of
+the $\theta =\pi $~theory with no confinement the covering group
+$SU(N)$~acts.   
+ 
+The story for $k>1$ is similar.
+
+Finally, we make a remark about the electric charge.  In the quantum picture
+it is an operator~$Q_e$, and from Noether's theorem applied to~\thetag{20} we
+compute the relation to~$\Ne$: 
+  $$ Q_e = \frac{e^2}{N}(\Ne+\frac{\theta }{2\pi }).  $$
+The eigenvalues of~$\Ne$ are integral, but those of~$Q_e$ are shifted
+from~$\frac{e^2}{N}\ZZ$ if~$\theta \not= 0$.  Note the flow (monodromy) in
+the eigenvalues of~$Q_e$ as $\theta $~runs around the circle from~$\theta =0$
+to~$\theta =2\pi $.  We will encounter this phenomenon again in four
+dimensional gauge theory.
+
+
+\enddocument

@@ -1,0 +1,1213 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%% THIS IS AN AMSLATEX FILE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Style section
+\documentstyle[amscd,amssymb,verbatim,12pt]{amsart}
+
+%Declaration section
+\theoremstyle{plain}
+\newtheorem{Thm}[subsection]{Theorem}
+\newtheorem{Cor}[subsection]{Corollary}
+\newtheorem{Lem}[subsection]{Lemma}
+\newtheorem{Prop}[subsection]{Proposition}
+\newtheorem{Exc}{Exercise}
+\newtheorem{Claim}[subsection]{Claim}
+
+\theoremstyle{definition}
+\newtheorem{Def}[subsection]{Definition}
+
+\theoremstyle{remark}
+\newtheorem{notation}{Notation}
+\renewcommand{\thenotation}{}
+\newtheorem{Rem}{Remark}
+
+%\newtheorem{exs}{Examples}
+%\renewcommand{\theexs}{}
+
+\newtheorem{note}{Note}
+\renewcommand{\thenote}{}
+
+
+%Commandsection
+\errorcontextlines=0
+\numberwithin{equation}{section}
+\renewcommand{\rm}{\normalshape}
+
+
+
+   
+
+%Labeling macros
+\newif\ifShowLabels
+\ShowLabelstrue
+\newdimen\theight
+\def\TeXref#1{%
+	\leavevmode\vadjust{\setbox0=\hbox{{\tt
+		\quad\quad  {\small \rm #1}}}%
+	\theight=\ht0
+	\advance\theight by \lineskip
+	\kern -\theight \vbox to
+	\theight{\rightline{\rlap{\box0}}%
+	\vss}%
+	}}%
+
+\ShowLabelsfalse% comment this out if labels should be printed
+
+%Section titles that can be referenced
+\renewcommand{\sec}[2]{\section{#2}\label{S:#1}%
+	\ifShowLabels \TeXref{{S:#1}} \fi}
+\newcommand{\ssec}[2]{\subsection{#2}\label{SS:#1}%
+	\ifShowLabels \TeXref{{SS:#1}} \fi}
+\newcommand{\sssec}[2]{\subsubsection{#2}\label{SSS:#1}%
+	\ifShowLabels \TeXref{{SSS:#1}} \fi}
+
+%Referencing sections and declarations
+\newcommand{\refs}[1]{\ref{S:#1}}
+\newcommand{\refss}[1]{\ref{SS:#1}}
+\newcommand{\refsss}[1]{\ref{SSS:#1}}
+\newcommand{\refe}[1]{\eqref{E:#1}}
+
+\newenvironment{theor}{\sl}{\relax}
+
+\newcommand{\sth}[1]{\subsection{Theorem}\label{SS:#1} \begin{theor} }
+\newcommand{\th}{\subsection*{Theorem} \begin{theor} }
+\renewcommand{\eth}{\end{theor} }
+
+\newcommand{\sclaim}[1]{\subsection{Claim}\label{SS:#1} \begin{theor} }
+\newcommand{\claim}{\subsection*{Claim}\begin{theor} }
+\newcommand{\eclaim}{\end{theor}}
+
+\newcommand{\slem}[1]{\subsection{Lemma}\label{SS:#1}\begin{theor} }
+\newcommand{\lem}{\subsection*{Lemma}\begin{theor} }
+\newcommand{\elem}{\end{theor}}
+
+
+
+\newcommand{\sprop}[1]{\subsection{Proposition}\label{SS:#1}\begin{theor} }
+\newcommand{\prop}{\subsection*{Proposition}\begin{theor} }
+\newcommand{\eprop}{\end{theor}}
+
+
+\newcommand{\scor}[1]{\subsection{Corollary}\label{SS:#1} \begin{theor} }
+\newcommand{\cor}{\subsection*{Corollary} \begin{theor} }
+\newcommand{\ecor}{\end{theor}}
+
+
+\newcommand{\sdefe}[1]{\subsection{Definition}\label{SS:#1} \begin{theor} }
+\newcommand{\defe}{\subsection*{Definition}\begin{theor} }
+\newcommand{\edefe}{\end{theor}}
+
+\newcommand{\sconj}[1]{\subsection{Conjecture}\label{SS:#1}\begin{theor}  }
+\newcommand{\conj}{\subsection*{Conjecture}\begin{theor}  }
+\newcommand{\econj}{\end{theor}}
+
+\newcommand{\fact}{\subsection*{Fact}\begin{theor} }
+\newcommand{\efact}{\end{theor}}
+
+\newcommand{\eq}[1]%
+	{ \ifShowLabels \TeXref{E:#1} \fi 
+	   \begin{equation} \label{E:#1} }
+\newcommand{\eeq}{ \end{equation} }
+
+\newcommand{\prf}{ \begin{pf} }
+\newcommand{\epr}{ \end{pf} }
+
+
+%----------------------------------------------
+
+
+
+
+
+%------------------------------------------------------------
+%------------------------------------------------------------ 
+ 
+%Greek letters
+\newcommand\alp{\alpha}		\newcommand\Alp{\Alpha}
+\newcommand\bet{\beta}		
+\newcommand\gam{\gamma}		\newcommand\Gam{\Gamma}
+\newcommand\del{\delta}		\newcommand\Del{\Delta}
+\newcommand\eps{\varepsilon}		
+\newcommand\zet{\zeta}
+\newcommand\tet{\theta}		\newcommand\Tet{\Theta}
+\newcommand\iot{\iota}
+\newcommand\kap{\kappa}
+\newcommand\lam{\lambda}		\newcommand\Lam{\Lambda}
+\newcommand\sig{\sigma}		\newcommand\Sig{\Sigma}
+\newcommand\vphi{\varphi}
+\newcommand\ome{\omega}		\newcommand\Ome{\Omega}
+
+%Caligraphic roman letters
+\newcommand\calA{{\cal{A}}}
+\newcommand\calB{{\cal{B}}}
+\newcommand\calC{{\cal{C}}}
+\newcommand\calD{{\cal{D}}}
+\newcommand\calE{{\cal{E}}}
+\newcommand\calF{{\cal{F}}}
+\newcommand\calG{{\cal{G}}}
+\newcommand\calH{{\cal{H}}}
+\newcommand\calI{{\cal{I}}}
+\newcommand\calJ{{\cal{J}}}
+\newcommand\calK{{\cal{K}}}
+\newcommand\calL{{\cal{L}}}
+\newcommand\calM{{\cal{M}}}
+\newcommand\calN{{\cal{N}}}
+\newcommand\calO{{\cal{O}}}
+\newcommand\calP{{\cal{P}}}
+\newcommand\calQ{{\cal{Q}}}
+\newcommand\calR{{\cal{R}}}
+\newcommand\calS{{\cal{S}}}
+\newcommand\calT{{\cal{T}}}
+\newcommand\calU{{\cal{U}}}
+\newcommand\calV{{\cal{V}}}
+\newcommand\calW{{\cal{W}}}
+\newcommand\calX{{\cal{X}}}
+\newcommand\calY{{\cal{Y}}}
+\newcommand\calZ{{\cal{Z}}}
+
+
+
+%Bold roman letters
+\newcommand\bfa{{\bf a}}		\newcommand\bfA{{\bf A}}
+\newcommand\bfb{{\bf b}}		\newcommand\bfB{{\bf B}}
+\newcommand\bfc{{\bf c}}		\newcommand\bfC{{\bf C}}
+\newcommand\bfd{{\bf d}}		\newcommand\bfD{{\bf D}}
+\newcommand\bfe{{\bf e}}		\newcommand\bfE{{\bf E}}
+\newcommand\bff{{\bf f}}		\newcommand\bfF{{\bf F}}
+\newcommand\bfg{{\bf g}}		\newcommand\bfG{{\bf G}}
+\newcommand\bfh{{\bf h}}		\newcommand\bfH{{\bf H}}
+\newcommand\bfi{{\bf i}}		\newcommand\bfI{{\bf I}}
+\newcommand\bfj{{\bf j}}		\newcommand\bfJ{{\bf J}}
+\newcommand\bfk{{\bf k}}		\newcommand\bfK{{\bf K}}
+\newcommand\bfl{{\bf l}}		\newcommand\bfL{{\bf L}}
+\newcommand\bfm{{\bf m}}		\newcommand\bfM{{\bf M}}
+\newcommand\bfn{{\bf n}}		\newcommand\bfN{{\bf N}}
+\newcommand\bfo{{\bf o}}		\newcommand\bfO{{\bf O}}
+\newcommand\bfp{{\bf p}}		\newcommand\bfP{{\bf P}}
+\newcommand\bfq{{\bf q}}		\newcommand\bfQ{{\bf Q}}
+\newcommand\bfr{{\bf r}}		\newcommand\bfR{{\bf R}}
+\newcommand\bfs{{\bf s}}		\newcommand\bfS{{\bf S}}
+\newcommand\bft{{\bf t}}		\newcommand\bfT{{\bf T}}
+\newcommand\bfu{{\bf u}}		\newcommand\bfU{{\bf U}}
+\newcommand\bfv{{\bf v}}		\newcommand\bfV{{\bf V}}
+\newcommand\bfw{{\bf w}}		\newcommand\bfW{{\bf W}}
+\newcommand\bfx{{\bf x}}		\newcommand\bfX{{\bf X}}
+\newcommand\bfy{{\bf y}}		\newcommand\bfY{{\bf Y}}
+\newcommand\bfz{{\bf z}}		\newcommand\bfZ{{\bf Z}}
+
+%Capital roman double letters 
+\newcommand\QQ{\Bbb{Q}}
+\newcommand\WW{\Bbb{W}}
+\newcommand\EE{\Bbb{E}}
+\newcommand\RR{\Bbb{R}}
+\newcommand\TT{\Bbb{T}}
+\newcommand\YY{\Bbb{Y}}
+\newcommand\UU{\Bbb{U}}
+\newcommand\II{\Bbb{I}}
+\newcommand\OO{\Bbb{O}}
+\newcommand\PP{\Bbb{P}}
+\renewcommand\AA{\Bbb{A}}
+\newcommand\SS{\Bbb{S}}
+\newcommand\DD{\Bbb{D}}
+\newcommand\FF{\Bbb{F}}
+\newcommand\GG{\Bbb{G}}
+\newcommand\HH{\Bbb{H}}
+\newcommand\JJ{\Bbb{J}}
+\newcommand\KK{\Bbb{K}}
+\newcommand\LL{\Bbb{L}}
+\newcommand\ZZ{\Bbb{Z}}
+\newcommand\XX{\Bbb{X}}
+\newcommand\CC{\Bbb{C}}
+\newcommand\VV{\Bbb{V}}
+\newcommand\BB{\Bbb{B}}
+\newcommand\NN{\Bbb{N}}
+\newcommand\MM{\Bbb{M}}
+
+
+  %Euler Fraktur letters
+\newcommand\grA{{\frak{A}}}	\newcommand\gra{{\frak{a}}}
+\newcommand\grB{{\frak{B}}}	\newcommand\grb{{\frak{b}}}
+\newcommand\grC{{\frak{C}}}	\newcommand\grc{{\frak{c}}}
+\newcommand\grD{{\frak{D}}}	\newcommand\grd{{\frak{d}}}
+\newcommand\grE{{\frak{E}}}	\newcommand\gre{{\frak{e}}}
+\newcommand\grF{{\frak{F}}}	\newcommand\grf{{\frak{f}}}
+\newcommand\grG{{\frak{G}}}	\newcommand\grg{{\frak{g}}}
+\newcommand\grH{{\frak{H}}}	\newcommand\grh{{\frak{h}}}
+\newcommand\grI{{\frak{I}}}	\newcommand\gri{{\frak{i}}}
+\newcommand\grJ{{\frak{J}}}	\newcommand\grj{{\frak{j}}}
+\newcommand\grK{{\frak{K}}}	\newcommand\grk{{\frak{k}}}
+\newcommand\grL{{\frak{L}}}	\newcommand\grl{{\frak{l}}}
+\newcommand\grM{{\frak{M}}}	\newcommand\grm{{\frak{m}}}
+\newcommand\grN{{\frak{N}}}	\newcommand\grn{{\frak{n}}}
+\newcommand\grO{{\frak{O}}}	\newcommand\gro{{\frak{o}}}
+\newcommand\grP{{\frak{P}}}	\newcommand\grp{{\frak{p}}}
+\newcommand\grQ{{\frak{Q}}}	\newcommand\grq{{\frak{q}}}
+\newcommand\grR{{\frak{R}}}	\newcommand\grr{{\frak{r}}}
+\newcommand\grS{{\frak{S}}}	\newcommand\grs{{\frak{s}}}
+\newcommand\grT{{\frak{T}}}	\newcommand\grt{{\frak{t}}}
+\newcommand\grU{{\frak{U}}}	\newcommand\gru{{\frak{u}}}
+\newcommand\grV{{\frak{V}}}	\newcommand\grv{{\frak{v}}}
+\newcommand\grW{{\frak{W}}}	\newcommand\grw{{\frak{w}}}
+\newcommand\grX{{\frak{X}}}	\newcommand\grx{{\frak{x}}}
+\newcommand\grY{{\frak{Y}}}	\newcommand\gry{{\frak{y}}}
+\newcommand\grZ{{\frak{Z}}}	\newcommand\grz{{\frak{z}}}
+
+
+
+\newcommand\nek{,\ldots,}
+\newcommand\sdp{\times \hskip -0.3em {\raise 0.3ex
+\hbox{$\scriptscriptstyle |$}}} % semidirect product
+
+%words in roman font
+
+\newcommand\area{\operatorname{area}}
+\newcommand\Aug{\operatorname{Aug}}
+\newcommand\Aut{\operatorname{Aut}}
+\newcommand\Char{\operatorname{Char}}
+\newcommand\Cl{\operatorname{Cl}}
+\newcommand\cf{{\rm \,cf\,}}
+\newcommand\Cone{\operatorname{Cone}}
+\newcommand\cont{\operatorname{cont}}
+\newcommand\codim{\operatorname{codim}}
+\newcommand\conv{\operatorname{conv}}
+\newcommand\Conv{\operatorname{Conv}}
+\newcommand\const{\operatorname{const}}
+\newcommand\Const{\operatorname{Const}}
+\newcommand\Det{\operatorname{Det}}
+\newcommand\diag{\operatorname{diag}}
+\newcommand\diam{\operatorname{diam}}
+\newcommand\Diam{\operatorname{Diam}}
+\newcommand\dist{\operatorname{dist}}
+\newcommand\Dom{\operatorname{Dom}}
+\newcommand\dom{\operatorname{dom}}
+\newcommand\End{\operatorname{End\,}}
+\newcommand\Ext{\operatorname{Ext}}
+\newcommand\esssup{\operatorname{ess\ sup}}
+\newcommand\Ran{{\rm Ran}}
+\newcommand\RANK{\operatorname{rank}}
+\newcommand\Geo{\operatorname{Geo}}
+\newcommand\GL{\operatorname{GL}}
+\newcommand\Gr{\operatorname{Gr}}
+\newcommand\gl{\operatorname{gl}}
+\newcommand\grad{\mathop {\rm grad}}
+\newcommand\Hom{\operatorname{Hom}}
+\newcommand\RHom{\operatorname{RHom}}
+\newcommand\im{\operatorname {im}}
+\newcommand\IM{\operatorname{Im}}
+\newcommand\Ind{\operatorname{Ind}}
+\newcommand\ind{\operatorname{ind}}
+\newcommand\Inf{\operatorname{Inf}}
+\newcommand\Int{\operatorname{Int}}
+\newcommand\Min{\operatorname{Min}}
+\newcommand\MOD{\operatorname{mod}}
+\newcommand{\Mor}{\operatorname{Mor}}
+\newcommand{\Ob}{\operatorname{Ob\,}}
+\newcommand\ord{\operatorname{ord}}
+\newcommand\Ka{\operatorname{Ka}}
+\newcommand\Ker{\operatorname{Ker}}
+\newcommand\PGL{{\rm PGL}}
+\newcommand\PGSp{{\rm PGSp}}
+\newcommand\Plt{\operatorname{Plt}}
+\newcommand\proj{\operatorname{proj}}
+\newcommand\Proj{\operatorname{Proj}}
+\newcommand\res{\rm res}
+%\newcommand\rank{\rm rank}
+\newcommand\rk{\operatorname{rk}}
+\newcommand\Range{\operatorname{Range}}
+%\newcommand\RE{\operatorname{Re}} 
+\newcommand\Res{\operatorname{Res}}
+\newcommand\rot{\operatorname{rot}}
+\newcommand\Max{\operatorname{Max}}
+\newcommand\Maximum{\operatorname{Maximum}}
+\newcommand\Minimum{\operatorname{Minimum}}
+\newcommand\Minimize{\operatorname{Minimize}}
+\newcommand\Prob{\operatorname{Prob}}
+\newcommand\sech{\rm sech}
+\newcommand\sgn{\operatorname{sgn}}
+\newcommand{\sign}{\operatorname{sign}}
+\newcommand\SL{{\rm SL}}
+\newcommand\Sbm{\operatorname{Sbm}}
+\newcommand\SO{{\rm SO}}
+\newcommand\SPAN{\operatorname{span}}
+\newcommand\spec{{\rm spec}}
+\newcommand\supess{\operatorname{sup\ ess}}
+\newcommand\supp{\operatorname{supp}}
+\newcommand\Supp{\operatorname{Supp}}
+\newcommand\Sup{\operatorname{Sup}}
+\newcommand\Sym{\operatorname{Sym}}
+\newcommand\tr{\operatorname{tr}}
+\newcommand\Tr{\operatorname{Tr}}
+\newcommand\Tor{\operatorname{Tor}}
+\newcommand\Var{\operatorname{Var}}
+\newcommand\Vol{\operatorname{Vol}}
+%\newcommand\vol{\operatorname{vol}}
+
+%overlined math alphabet
+\newcommand\oa{{\overline{a}}}
+\newcommand\oA{{\overline{A}}}
+\newcommand\ob{{\overline{b}}}
+\newcommand\oB{{\overline{B}}}
+\newcommand\oc{{\overline{c}}}
+\newcommand\oC{{\overline{C}}}
+\newcommand\oD{{\overline{D}}}
+\newcommand\od{{\overline{d}}}
+\newcommand\oE{{\overline{E}}}
+\renewcommand\oe{{\overline{e}}}
+\newcommand\of{{\overline{f}}}
+\newcommand\oF{{\overline{F}}}
+\newcommand\og{{\overline{g}}}
+\newcommand\oG{{\overline{G}}}
+\newcommand\oh{{\overline{h}}}
+\newcommand\oH{{\overline{H}}}
+\newcommand\oI{{\overline{I}}}
+\newcommand\oj{{\overline{j}}}
+\newcommand\oJ{{\overline{J}}}
+\newcommand\ok{{\overline{k}}}
+\newcommand\oK{{\overline{K}}}
+\newcommand\oL{{\overline{L}}}
+\newcommand\om{{\overline{m}}}
+\newcommand\oM{{\overline{M}}}
+\newcommand\oN{{\overline{N}}}
+\newcommand\oO{{\overline{O}}}
+\newcommand\oo{{\overline{o}}}
+\newcommand\op{{\overline{p}}}
+\newcommand\oP{{\overline{P}}}
+\newcommand\oq{{\overline{q}}}
+\newcommand\oQ{{\overline{Q}}}
+\newcommand\OR{{\overline{r}}}
+\newcommand\oS{{\overline{S}}}
+\newcommand\os{{\overline{s}}}
+\newcommand\ot{{\overline{t}}}
+\newcommand\oT{{\overline{T}}}
+\newcommand\ou{{\overline{u}}}
+\newcommand\oU{{\overline{U}}}
+\newcommand\ov{{\overline{v}}}
+\newcommand\oV{{\overline{V}}}
+\newcommand\ow{{\overline{w}}}
+\newcommand\oW{{\overline{W}}}
+\newcommand\ox{{\overline{x}}}
+\newcommand\oX{{\overline{X}}}
+\newcommand\oy{{\overline{y}}}
+\newcommand\oY{{\overline{Y}}}
+\newcommand\oz{{\overline{z}}}
+\newcommand\oZ{{\overline{Z}}}
+
+%overlined Greek alphabet
+\newcommand\oalp{{\overline{\alpha}}}
+\newcommand\obet{{\overline{\bet}}}
+\newcommand\odel{{\overline{\del}}}
+\newcommand\oDel{{\overline{\Del}}}
+\newcommand\ocup{{\overline{\cup}}}
+\newcommand\ovarphi{{\overline{\varphi}}}
+\newcommand\ochi{{\overline{\chi}}}
+\newcommand\oeps{{\overline{\eps}}}
+\newcommand\oeta{{\overline{\eta}}}
+\newcommand\ogam{{\overline{\gam}}}
+\newcommand\okap{{\overline{\kap}}}
+\newcommand\olam{{\overline{\lambda}}}
+\newcommand\oLam{{\overline{\Lambda}}} 
+\newcommand\omu{{\overline{\mu}}}
+\newcommand\onu{{\overline{\nu}}}
+\newcommand\oOme{{\overline{\Ome}}}
+\newcommand\ophi{\overline{\phi}}
+\newcommand\oPhi{{\overline{\Phi}}}
+\newcommand\opi{{\overline{\pi}}}
+\newcommand\oPsi{{\overline{\Psi}}}
+\newcommand\opsi{{\overline{\psi}}}
+\newcommand\orho{{\overline{\rho}}}
+\newcommand\osig{{\overline{\sig}}}
+\newcommand\otau{{\overline{\tau}}}
+\newcommand\otet{{\overline{\theta}}}
+\newcommand\oxi{{\overline{\xi}}}
+\newcommand\oome{\overline{\ome}}
+\newcommand\opart{{\overline{\partial}}}
+
+
+%underlined math alphabet
+\newcommand\ua{{\underline{a}}}
+\newcommand\ub{{\underline{b}}}
+\newcommand\uc{{\underline{c}}}
+\newcommand\uD{{\underline{D}}}
+\newcommand\uk{{\underline{k}}}
+\newcommand\ue{{\underline{e}}}
+\newcommand\uj{{\underline{j}}}
+\newcommand\ul{{\underline{l}}}
+\newcommand\uL{{\underline{L}}}
+\newcommand\uo{{\underline{o}}}
+\newcommand\uO{{\underline{O}}}
+\newcommand\uP{{\underline{P}}}
+\newcommand\uQ{{\underline{Q}}}
+\newcommand\um{{\underline{m}}}
+\newcommand\uM{{\underline{M}}}
+\newcommand\un{{\underline{n}}}
+\newcommand\us{{\underline{s}}}
+\newcommand\ut{{\underline{t}}}
+\newcommand\uu{{\underline{u}}}
+\newcommand\uv{{\underline{v}}}
+\newcommand\uV{{\underline{V}}}
+\newcommand\ux{{\underline{x}}}
+\newcommand\uX{{\underline{X}}}
+\newcommand\uy{{\underline{y}}}
+\newcommand\uz{{\underline{z}}}
+
+%underline Greek alphabet
+\newcommand\ualp{{\underline{\alp}}}
+\newcommand\ubet{{\underline{\bet}}}
+\newcommand\uchi{{\underline{\chi}}}
+\newcommand\udel{{\underline{\del}}}
+\newcommand\uell{{\underline{\ell}}}
+\newcommand\ueps{{\underline{\eps}}}
+\newcommand\ueta{{\underline{\eta}}}
+\newcommand\uGam{{\underline{\Gamma}}}
+\newcommand\unu{{\underline{\nu}}}
+\newcommand\uome{{\underline{\omega}}}
+\newcommand\utet{{\underline{\tet}}}
+\newcommand\ulam{{\underline{\lam}}}
+
+
+%math alphabet with hat
+\newcommand\hata{{\widehat{a}}}
+\newcommand\hatA{{\widehat{A}}}
+\newcommand\hatb{{\widehat{b}}}
+\newcommand\hatc{{\widehat{c}}}
+\newcommand\hatC{{\widehat{C}}}
+\newcommand\hatB{{\widehat{B}}}
+\newcommand\hatD{{\widehat{D}}}
+\newcommand\hatd{{\hat{d}}}
+\newcommand\hate{{\widehat{e}}}
+\newcommand\hatE{{\widehat{E}}}
+\newcommand\hatf{{\widehat{f}}}
+\newcommand\hatF{{\widehat{F}}}
+\newcommand\hatg{{\widehat{g}}}
+\newcommand\hatG{{\widehat{G}}}
+\newcommand\hath{{\widehat{h}}}
+\newcommand\hatH{{\widehat{H}}}
+\newcommand\hati{{\hat{i}}}
+\newcommand\hatI{{\hat{I}}}
+\newcommand\hatj{{\widehat{j}}}
+\newcommand\hatJ{{\widehat{J}}}
+\newcommand\hatk{{\widehat{k}}}
+\newcommand\hatK{{\widehat{K}}}
+\newcommand\hatL{{\widehat{L}}}
+\newcommand\hatm{{\widehat{m}}}
+\newcommand\hatM{{\widehat{M}}}
+\newcommand\hatn{{\widehat{n}}}
+\newcommand\hatN{{\widehat{N}}}
+\newcommand\hatp{{\widehat{p}}}
+\newcommand\hatP{{\widehat{P}}}
+\newcommand\hatr{{\widehat{r}}}
+\newcommand\hatR{{\widehat{R}}}
+\newcommand\hatq{{\widehat{q}}}
+\newcommand\hatQ{{\widehat{Q}}}
+\newcommand\hatT{{\widehat{T}}}
+\newcommand\hatu{{\widehat{u}}}
+\newcommand\hatU{{\widehat{U}}}
+\newcommand\hatV{{\widehat{V}}}
+\newcommand\hatv{{\widehat{v}}}
+\newcommand\hatw{{\widehat{w}}}
+\newcommand\hatW{{\widehat{W}}}
+\newcommand\hatx{{\widehat{x}}}
+\newcommand\hatX{{\widehat{X}}}
+\newcommand\haty{{\widehat{y}}}
+\newcommand\hatY{{\widehat{Y}}}
+\newcommand\hatZ{{\widehat{Z}}}
+\newcommand\hatz{{\widehat{z}}}
+
+%Greek alphabet with hat
+\newcommand\hatalp{{\widehat{\alpha}}}
+\newcommand\hatdel{{\widehat{\delta}}}
+\newcommand\hatDel{{\widehat{\Delta}}}
+\newcommand\hatbet{{\widehat{\beta}}}
+\newcommand\hateps{{\hat{\eps}}}
+\newcommand\hatgam{{\widehat{\gamma}}}
+\newcommand\hatGam{{\widehat{\Gamma}}}
+\newcommand\hatlam{{\widehat{\lambda}}}
+\newcommand\hatmu{{\widehat{\mu}}}
+\newcommand\hatnu{{\widehat{\nu}}}
+\newcommand\hatOme{{\widehat{\Ome}}}
+\newcommand\hatphi{{\widehat{\phi}}}
+\newcommand\hatPhi{{\widehat{\Phi}}}
+\newcommand\hatpi{{\widehat{\pi}}}
+\newcommand\hatpsi{{\widehat{\psi}}}
+\newcommand\hatPsi{{\widehat{\Psi}}}
+\newcommand\hatrho{{\widehat{\rho}}}
+\newcommand\hatsig{{\widehat{\sig}}}
+\newcommand\hatSig{{\widehat{\Sig}}}
+\newcommand\hattau{{\widehat{\tau}}}
+\newcommand\hattet{{\widehat{\theta}}}
+\newcommand\hatvarphi{{\widehat{\varphi}}}
+\newcommand\hatZZ{{\widehat{\ZZ}}}
+
+
+%roman with widetilde
+
+\newcommand\tilA{{\widetilde{A}}}
+\newcommand\tila{{\widetilde{a}}}
+\newcommand\tilB{{\widetilde{B}}}
+\newcommand\tilb{{\widetilde{b}}}
+\newcommand\tilc{{\widetilde{c}}}
+\newcommand\tilC{{\widetilde{C}}}
+\newcommand\tild{{\widetilde{d}}}
+\newcommand\tilD{{\widetilde{D}}}
+\newcommand\tilE{{\widetilde{E}}}
+\newcommand\tilf{{\widetilde{f}}}
+\newcommand\tilF{{\widetilde{F}}}
+\newcommand\tilg{{\widetilde{g}}}
+\newcommand\tilG{{\widetilde{G}}}
+\newcommand\tilh{{\widetilde{h}}}
+\newcommand\tilk{{\widetilde{k}}}
+\newcommand\tilK{{\widetilde{K}}}
+\newcommand\tilj{{\widetilde{j}}}
+\newcommand\tilm{{\widetilde{m}}}
+\newcommand\tilM{{\widetilde{M}}}
+\newcommand\tilH{{\widetilde{H}}}
+\newcommand\tilL{{\widetilde{L}}}
+\newcommand\tilN{{\widetilde{N}}}
+\newcommand\tiln{{\widetilde{n}}}
+\newcommand\tilO{{\widetilde{O}}}
+\newcommand\tilP{{\widetilde{P}}}
+\newcommand\tilp{{\widetilde{p}}}
+\newcommand\tilq{{\widetilde{q}}}
+\newcommand\tilQ{{\widetilde{Q}}}
+\newcommand\tilR{{\widetilde{R}}}
+\newcommand\tilr{{\widetilde{r}}}
+\newcommand\tilS{{\widetilde{S}}}
+\newcommand\tils{{\widetilde{s}}}
+\newcommand\tilT{{\widetilde{T}}}
+\newcommand\tilt{{\widetilde{t}}}
+\newcommand\tilu{{\widetilde{u}}}
+\newcommand\tilU{{\widetilde{U}}}
+\newcommand\tilv{{\widetilde{v}}}
+\newcommand\tilV{{\widetilde{V}}}
+\newcommand\tilw{{\widetilde{w}}}
+\newcommand\tilW{{\widetilde{W}}}
+\newcommand\tilX{{\widetilde{X}}}
+\newcommand\tilx{{\widetilde{x}}}
+\newcommand\tily{{\widetilde{y}}}
+\newcommand\tilY{{\widetilde{Y}}}
+\newcommand\tilZ{{\widetilde{Z}}}
+\newcommand\tilz{{\widetilde{z}}}
+
+%Greek alphabet with widetilde
+\newcommand\tilalp{{\widetilde{\alpha}}}
+\newcommand\tilbet{{\widetilde{\beta}}}
+\newcommand\tildel{{\widetilde{\delta}}}
+\newcommand\tilDel{{\widetilde{\Delta}}}
+\newcommand\tilchi{{\widetilde{\chi}}}
+\newcommand\tileta{{\widetilde{\eta}}}
+\newcommand\tilgam{{\widetilde{\gamma}}}
+\newcommand\tilGam{{\widetilde{\Gamma}}}
+\newcommand\tilome{{\widetilde{\ome}}}
+\newcommand\tillam{{\widetilde{\lam}}}
+\newcommand\tilmu{{\widetilde{\mu}}}
+\newcommand\tilphi{{\widetilde{\phi}}}
+\newcommand\tilpi{{\widetilde{\pi}}}
+\newcommand\tilpsi{{\widetilde{\psi}}}
+\renewcommand\tilome{{\widetilde{\ome}}}
+\newcommand\tilOme{{\widetilde{\Ome}}}
+\newcommand\tilPhi{{\widetilde{\Phi}}}
+\newcommand\tilQQ{{\widetilde{\QQ}}}
+\newcommand\tilrho{{\widetilde{\rho}}}
+\newcommand\tilsig{{\widetilde{\sig}}}
+\newcommand\tiltau{{\widetilde{\tau}}}
+\newcommand\tiltet{{\widetilde{\theta}}}
+\newcommand\tilvarphi{{\widetilde{\varphi}}}
+\newcommand\tilxi{{\widetilde{\xi}}}
+
+
+\newcommand\twolongrightarrow{\ \hbox{$\longrightarrow\hskip -17pt
+\longrightarrow$}\ }
+ 
+ 
+\renewcommand\+{\oplus }
+\newcommand\x{\times }
+\newcommand\ten{\otimes}
+\newcommand\opd{\oplus\cdots\oplus}
+\newcommand\oxd{\otimes\cdots\otimes}
+\renewcommand\pd{+\cdots +}
+\newcommand\dm{-\cdots -}
+\newcommand\dx{\cdot\dots\cdot}
+
+\renewcommand{\>}{\rangle}
+\newcommand{\<}{\langle}
+
+%\newcommand\gt{\text{{\bf $>$--}}}
+%\newcommand\gf{{\bf >\text{--}<}}
+%\newcommand\gc{\text{{\bf --$\bigcirc$--}}}
+
+\newcommand\loc{\calL oc}
+\newcommand\la{\langle}
+\newcommand\ra{\rangle}
+
+
+
+
+
+
+\renewcommand\d{\partial}
+\newcommand\Lie{\text{Lie}}
+\newcommand\boxx{\boxtimes}
+\begin{document}
+\title[]{
+Solution of homeworks in string theory}
+
+\author[]{by Alexander Braverman and Dennis Gaitsgory}
+
+\maketitle
+
+
+\sec{}{Solutions to problem sets 1 and 2}
+%---------------------------------------------------------------------------
+\ssec{not}{Remarks on notations}
+In what follows $\Sigma$ will denote a compact Riemann surface of genus $h$,
+usually with a fixed complex structure. We let $\Delta:\Ome^{0,0}(\Sig)\to
+\Omega^{1,1}(\Sigma)$ denote the corresponding Laplace operator $\Delta=
+\d{\overline\d}$. Let us now choose a metric $g$ on $\Sigma$ compatible 
+with the complex structure. Then we denote by $R_g\in \Omega^{1,1}(\Sigma)$
+the curvature of the corresponding Levi-Civita connection and by
+$d\mu_g$ -- the corresponding measure ($(1,1)$-form) on $\Sig$. We set 
+$\Ome_{\Sig}=\Ome^{1,0}(\Sig)$.
+
+Assuming again that the metric $g$ as above is chosen we may define
+an operator ${\Delta}_g^{-1}:\Omega^{1,1}(\Sig)\to \calO(\Sig)$.
+By definition, $\Del^{-1}_g(w)$ (for any $(1,1)$-form $\ome$) 
+is the unique function on 
+$\Sig$, such that 
+
+%------------------------------------------------------------------------
+\eq{}
+\int\limits_{\Sig}\Del^{-1}_g(w)d\mu_g=0\quad\text{and}\quad
+\Del(\Del^{-1}_g(\ome))=\ome-{d\mu_g
+\over \text{vol}(\Sigma)}\cdot\int\limits_{\Sig}\ome
+\end{equation}
+%-------------------------------------------------------------------------
+\ssec{}{Problem set 1: Problem 1b}
+%-------------------------------------------------------------------------
+\sssec{proj}{Digression on projective connections}
+Let $\Sig$ and $\Omega$ be as in \refss{not}.
+Take $c\in \CC$. 
+We want to associate to it a canonical
+torsor $\calP_c$ over the line bundle $\Omega^{\ten 2}_{\Sig}$, 
+called the torsor
+of projective $c$-connections. In fact,
+we will construct an $\calO$-module, which is an extension of
+$\calO$ by $\Omega^{\ten 2}$ and $\calP_c$ will be the preimage of 
+$c\in\CC\subset \calO$.
+The basic property of $E$ is that it is natural. In particular, vector fields
+on $\Sig$ act on $E$ by Lie derivatives.
+
+First a simple observation.
+%-----------------------------------------------------------------------
+\claim For any $i,j,k\in \ZZ$ there exists a canonical isomorphism 
+%--------------------------------------------------------------------------
+\eq{}
+\Omega^{\ten i}\boxtimes \Omega^{\ten j}(k\Delta)/
+\Omega^{\ten i}\boxtimes \Omega^{\ten j}((k-1)\Delta)
+\simeq
+\Delta_*(\Omega^{\ten(i+j-k)})
+\end{equation}
+%-------------------------------------------------------------------------
+Here $\Delta$ is the diagonal in $\Sig\x \Sig$.
+\eclaim
+%----------------------------------------------------------------------------
+
+Consider now the sheaf (it's not a sheaf of $\calO$-modules) on
+$\Sig\x \Sig$
+$$
+(\Omega\boxtimes\Omega(2\Delta)/\Omega\boxtimes\Omega(-\Delta))^{S_2}
+$$
+
+Here $S_2$ denotes the corresponding symmetric group, which acts naturally
+on $\Omega\boxtimes\Omega(2\Delta)/\Omega\boxtimes\Omega(-\Delta)$.
+
+Let $E$ denote the sheaf-theoretic direct image of this sheaf to $\Sig$
+with respect to either the first or the second projection (the two 
+direct images are canonically isomorphic, since we took $S_2$-invariants). 
+It is easy to see that $E$ acquires a canonical structure of an 
+$\calO_{\Sig}$-module (which, however, will not be used in the sequel).
+We have canonical exact sequence
+%--------------------------------------------------------------------------
+\eq{}
+0\to \Ome^{\ten 2}\to E\to \calO\to 0
+\end{equation}
+%-------------------------------------------------------------------------
+We let $p$ denote the above morphism $E\to \calO$ and set $\calP_c=p^{-1}(c)$.
+
+If $z$ is a local coordinate on an open subset of $\Sigma$, the torsor
+$\calP_c$ acquires a canonical section $P^c_z$ given by 
+$(c/2){dz_1\boxtimes dz_2\over (z_1-z_2)^2}
+\in \Omega\boxtimes\Omega(2\Delta)$ (one has to divide $c$ by $2$ in this
+formula, since the residue of ${dz_1\boxtimes dz_2\over (z_1-z_2)^2}$ on
+the diagonal in the natural normalization is equal to $2$).
+
+Let now  $z'=f(z)$ be another local coordinate on the same open subset.
+
+\claim $P^c_z-P^c_{z'}=-{c\over 12}(dz)^{\ten 2}\{f(z),z\}$, where
+$\{f(z),z\}$ is the Schwartzian derivative of $f$ with respect to $z$
+$$
+\{f(z),z\}={f'''f'-{3\over 2}(f'')^2\over (f')^2}
+$$
+
+\eclaim
+%----------------------------------------------------------------------
+\sssec{}{Solution of (b)}Now we are ready to solve part (b) of the problem.
+We are working with free conformal field theory, whose classical action
+is
+\eq{action}
+S[\phi,g]={1\over 4\pi}\int\limits_{\Sigma} {1\over 2}\d \phi{\overline \d}
+\phi
+\end{equation}
+Here $\phi$ is a map from $\Sigma$ to $\RR^c$.
+We want to make sense of $:(\d\phi(x))^2:$ as of a quantum field with 
+values in projective $c$-connections (note that $c$ is precisely the
+central charge of our theory). This means that for
+any collection of points $y_1,...,y_n\in\Sigma$, such that
+$y_i\neq y_j$ for $i\neq j$ and $y_i\neq x$, and a collection
+of fields $\phi_1,...,\phi_n$, the correlation function
+$\la :(\d\phi(x))^2: \phi_1(y_1)...\phi_n(y_n)\ra$ is a section
+of the torsor $\calP_c$ in the variable $x$.
+
+The normal ordering $:(\d\phi(x))^2:$ is defined as follows.
+Let $z$ be a local complex coordinate on an open
+subset $U\subset \Sigma$ and let $y_1,...,y_n,\phi_1,...\phi_n$
+be as above. Assume also that $y_i\not\in U$ for any $i=1,...,n$. Then we
+have a section
+%---------------------------------------------------------------------------
+\eq{}
+\la \d\phi(x)\d\phi(x')\phi_1(y_1)...\phi_n(y_n)\ra\in 
+\Gamma(U\x U\backslash \Delta(U),\Omega\boxtimes\Omega)
+\end{equation}
+%----------------------------------------------------------------------------
+The correlation function $\la :(\d\phi(x))^2: \phi_1(y_1)...\phi_n(y_n)\ra$
+is defined by
+%----------------------------------------------------------------------------
+$$
+\begin{aligned}
+\la :(\d\phi(x))^2: \phi_1(y_1)...\phi_n(y_n)\ra=&\\
+\lim_{x'\to x}(\la \d\phi(x)\d\phi(x')\phi_1(y_1)...\phi_n(y_n)\ra
++c{dz\boxtimes dz\over (z(x_1)-z(x_2))^2}&
++P^c_z\la \phi_1(y_1)...\phi_n(y_n)\ra
+\end{aligned}
+$$
+%---------------------------------------------------------------------------
+%\end{equation}
+
+It is now obvious that $\la :(\d\phi(x))^2: \phi_1(y_1)...\phi_n(y_n)\ra$
+as a section of $\calP_c$ (when $y_1,...y_n$ are kept fixed)
+does not depend on the choice of the coordinate $z$ due to the definition
+of $P^c_z(x)$ and to the fact that 
+$\la :(\d\phi(x)\d\phi(x')\phi_1(y_1)...\phi_n(y_n)\ra$ is independent of $z$ (as a section of 
+$\Omega\boxtimes\Omega)(2\Delta)$.
+
+Now, in order to solve the other items of this problem 
+we will first explain the solution of problem 1 in problem set 2
+(i.e. we will explain the invariant meaning of the operator product
+expansion for the stress tensor).
+
+%------------------------------------------------------------------------------
+\ssec{}{Problem set 2: problem 1}In this problem we have to show that
+the right hand side of the OPE of the holomorphic stress tensor
+with itself is independent of the choice of coordinates. Let us
+say what it means using the abvoe notations.
+
+We are working again with conformal field theory described by \refe{action}.
+Let $z$ be a local coordinate
+on some open subset $U$ of $\Sigma$. We are given the following section of
+$E$ on $U$ denoted by $T(x)$
+$$
+\la :(\d\phi(x)^2):\phi_1(y_1)...\phi_n(y_n)\ra
+$$
+where $\phi_1...\phi_n$, $y_1,...,y_n$ are as above. The right-hand side 
+of the OPE is the following section of 
+$\Omega^{\ten 2}\boxtimes\Ome^{\ten 2}(4\Delta)/
+\Omega^{\ten 2}\boxtimes\Ome^{\ten 2}$
+over $U\times U$:
+\eq{key}
+{(c/2) dz^{\ten 2}\boxtimes dz^{\ten 2}\over (z(x)-z(y))^4} +
+{2dz^{\ten 2}\boxtimes(T(y)-P^c_z(y))\over (z(x)-z(y))^2}+
+{\Lie_{\d_z}(T(y)-P^c_z(y))\over z(x)-z(y)}
+\end{equation}
+
+Our task is to show that this expression is, in fact, independent of
+the choice of the coordinate $z$. We claim, that it has, in fact, 
+the following invariant meaning. 
+
+Let $T$ be any projective $c$-connection on $U$, i.e. a section
+of $(\Ome\boxtimes\Ome(2\Delta)/\Ome\boxx\Ome(-\Del))^{S_2}$.
+Then {\it a priori} $T^2=T\ten T$ is a well-defined section of 
+$(\Ome^{\ten 2}\boxtimes\Ome^{\ten 2}(4\Delta)/
+\Ome^{\ten 2}\boxx\Ome^{\ten 2}(\Del))^{S_2}$.
+However, it is easy to see, that
+%-------------------------------------------------------------------------- 
+\eq{}
+(\Ome^{\ten 2}\boxtimes\Ome^{\ten 2}(4\Delta)/
+\Ome^{\ten 2}\boxx\Ome^{\ten 2}(\Del))^{S_2}=
+(\Ome^{\ten 2}\boxtimes\Ome^{\ten 2}(4\Delta)/
+\Ome^{\ten 2}\boxx\Ome^{\ten 2})^{S_2}
+\end{equation}
+%-------------------------------------------------------------------------
+(on $U\x U$). Therefore, $T^2$ is a well defined section
+of $(\Ome^{\ten 2}\boxtimes\Ome^{\ten 2}(4\Delta)/
+\Ome^{\ten 2}\boxx\Ome^{\ten 2})^{S_2}$.
+
+The invariance property of \refe{key} follows from the next 
+
+%--------------------------------------------------------------------------
+\claim For any choice of a coordinate $z$
+\eq{}
+T^2= 
+{c\over 2}({(c/2) dz^{\ten 2}\boxtimes dz^{\ten 2}\over (z(x)-z(y))^4} +
+{2dz^{\ten 2}\boxtimes(T(y)-P^c_z(y))\over (z(x)-z(y))^2}
+{dz^{\ten 2}\boxx\Lie_{\d_z}(T(y)-P^c_z(y)\over z(x)-z(y)})
+\end{equation}
+\eclaim
+%--------------------------------------------------------------------------
+
+\prf
+Let our projective connection $T$ be written in the local 
+coordinate $z$ as 
+\eq{}
+T={{c\over 2} dz\boxx dz\over (z(x)-z(y))^2} + 
+f(x,y)dz\boxx dz
+\end{equation}
+where $f(x,y)=f(y,x)$.
+Then $T^2$ as a section of 
+$\Ome^{\ten 2}\boxx\Ome^{\ten 2}(4\Del)/\Ome\boxx\Ome$ equals
+$$
+\begin{aligned}
+T^2=({{c\over 2} dz\boxx dz\over (z(x)-z(y))^2} + 
+f(x,y)dz\boxx dz)^2=&\\
+{c^2\over 4} {dz^{\ten 2}\boxx dz^{\ten 2}\over (z(x)-z(y))^4}+
+cf(x,y)&{dz^{\ten 2}\boxx dz^{\ten 2}\over (z(x)-z(y))^2}=\\
+{c^2\over 4} {dz^{\ten 2}\boxx dz^{\ten 2}\over (z(x)-z(y))^4}+
+cf(y,y){dz^{\ten 2}\boxx dz^{\ten 2}\over (z(x)-z(y))^2}+&
+c{dz^{\ten 2}\boxx dz^{\ten 2}\over z(x)-z(y)}
+({f(x,y)-f(y,y)\over z(x)-z(y)}=\\
+{c\over 2}({c\over 2}{dz^{\ten 2}\boxx dz^{\ten 2}\over (z(x)-z(y))^4}+
+{2dz^{\ten 2}\boxx (T(y)-P^c_z(y))\over (z(x)-z(y))^2}+&
+{dz^{\ten 2}\boxx\Lie_{d_z}(T(y)-P^c_z(y)\over z(x)-z(y)})
+\end{aligned}
+$$
+\epr
+%----------------------------------------------------------------------------
+\ssec{1a}{Problem 1a}
+
+Here we are going to prove the OPE for the stress tensor in
+an arbitrary conformal field theory of central charge $c$.
+Let us remind that a conformal field theory assigns to a 
+finite collection of labels $\phi_1,...,\phi_n$ a correlation
+function $\la \phi(x_1)...\phi(x_n)\ra$, which is an element
+in $\Gamma(\Sigma^n\backslash\text{Diag},\calL_1\boxx...\boxx\calL_n)$
+where $\calL_i$ is a natural $\calO_{\Sigma}$-module, assigned to the field
+$\phi_i$ (the word ``natural'' should be understood in the sense that vector
+fields on $\Sigma$ act on the sections of $\calL_i$ by Lie
+derivatives).
+
+We will use also the following notation. Let $\calM$ be an $\calO$-module
+on $\Sigma$ and $m$ its section. The expression
+$\< (m\ten\phi(x))\phi_1(y_1)...\phi_n(y_n)\>$ is by definition a section of
+$\calM\ten \calL\boxx\calL_1...\calL_n$, equal to the tensor product
+of $m$ by $\<\phi(x)\phi_1(y_1)...\phi_n(y_n)\>$.
+
+The holomorphic stress tensor is a field, 
+denoted by $T$, with the corresponding
+$\calO$-module being $E$ (cf. solution of problem 1b), with the property
+that
+%--------------------------------------------------------------------------- 
+\eq{}
+p_x(\la T(x)\phi(x_1)...\phi(x_n)\ra)=c\la \phi(x_1)...\phi(x_n)\ra
+\end{equation}
+%------------------------------------------------------------------------
+(recall that $p:E\to \calO$ denotes 
+the natural projection -- cf. \refss{not}).
+
+The basic property of the stress tensor $T$ is its connection with
+Noether's currents (cf. Dan Freed's lecture). Namely, let $U$ be an
+open subset of $\Sigma$ with a coordinate $z$. The choice
+of $z$ allows us to view all projective $c$-connections
+on $U$ as quadratic differentials by means
+of $P\to P-P^c_z$. Let now $v$ be a holomorphic vector field defined
+in a neighbourhood of a point $x_0$ in $U$.
+
+\claim 
+\eq{}
+\Res_{x\to x_0}\la (v\ten (T(x)-P_z^c(x)))\phi_0(x_0)\phi(y_1)...\phi(y_n)\ra=
+\text{Lie}_{x_0}v(\la\phi_0(x_0)\phi(y_1)...\phi(y_n)\ra)
+\end{equation}
+
+where $\text{Lie}_{x_0}v(\la\phi_0(x_0)\phi(y_1)...\phi(y_n)\ra)$ 
+denotes the Lie derivative of the correlation function 
+$\la\phi_0(x_0)\phi(y_1)...\phi(y_n)\ra$
+with respect to $v$ acting on the zero-th component.
+Note that the right-hand side is {\it a priori} independent of the
+choice of the coordinate $z$.
+\eclaim
+
+\
+
+This formula can be used to derive the OPE between the stress
+tensor and any other fields. Here we will use it in the case of
+the OPE for $T(x)T(y)$.
+
+Let $z$ be once again a coordinate on $U\subset \Sigma$.
+We must prove the following
+%--------------------------------------------------------------
+\lem 
+$$
+\begin{aligned}
+(T(x)-&P_z^c(x))T(x_0)-\\& ({(c/2) dz^{\ten 2}\boxtimes 
+dz^{\ten 2}\over (z(x)-z(x_0))^4} +
+{dz^{\ten 2}\boxtimes(T(x_0)-P^c_z(x_0))\over (z(x)-z(x_0))^2}+
+{\Lie_{\d_z}(T(x_0)-P^c_z(x_0)\over z(x)-z(x_0)})
+\end{aligned}
+$$
+is a regular section of 
+$\Ome^{\ten 2}\boxx E$ (meaning that it becomes such, when
+inserted into a correlation function with any other fields).
+\elem
+
+\prf
+We assume that $z(x_0)=0$.
+According to the above claim, all we have to check is the following:
+\begin{itemize}
+\item
+\eq{zero}
+\Lie_{\d _z}(T_{x_0})=\Lie_{\d _z}(T_{x_0}-P_z^c(x_0))
+\end{equation}
+
+This holds since $\Lie_{\d _z}(P_z^c(x_0))=0$ (as $\d _z$ belongs to 
+the Lie algebra of $\text{PGL}(2)$ when $U$ is embedded into $\PP^1$
+by means of $z$).
+\item
+\eq{one}
+\Lie_{z\d _z}(T_{x_0})=2(T_{x_0}-P_z^c(x_0))
+\end{equation}
+
+This holds because $\Lie_{z\d _z}(P_z^c(x_0))=0$ for the same reason
+as above, and for any quadratic differential $\ome$ one has
+$\Lie_{z\d _z}(\ome)(0)=2\ome(0)$.
+\item
+\eq{three}
+\Lie_{z^3\d _z}(T_{x_0})=(c/2)(dz)^{\ten 2}
+\end{equation}
+
+Indeed, $\Lie_{z^i\d _z}(T_{x_0}-P_z^c(x_0))=0$ for $i\geq 2$
+(this holds for any quadratic differential) and
+$\Lie_{z^3\d _z}(P_z^c(x_0))=(c/2)(dz)^{\ten 2}$
+which is easy to check by a direct calculation.
+\item
+\eq{two}
+\Lie_{z^i\d _z}(T_{x_0})=0\qquad \text{for $i=2$ or $i>3$}
+\end{equation}
+
+This holds since $\Lie_{z^i\d _z}(T_{x_0}-P_z^c(x_0))=0$
+as explained above and also one has $\Lie_{z^i\d _z}(P_z^c(x_0))=0$,
+since $z^2\d _z$ still belongs to the Lie
+algebra of $\text{PGL}(2)$, and $\Lie_{z^i\d _z}(P)=0$
+for $i>3$ for any projective $c$-connection $P$ 
+(for $i>3$ $z^i\d _z$ is a trivial vector field on 
+$\text{Spec}(\CC[z]/z^4)$). 
+\end{itemize}
+\epr
+
+%--------------------------------------------------------------------------
+\ssec{}{Problem set 1: problem 2}
+\sssec{}{Formulation of the problem}
+Let $\Sigma$ be Riemann surface of
+genus $h$, endowed with a complex structure. 
+We are dealing with the action 
+\eq{}
+S[\phi,g]={1\over 4\pi}\int\limits_{\Sigma} {1\over 2}\d \phi{\overline \d}
+\phi+Q\phi R_g
+\end{equation}   
+where $\phi$ is a real-valued function on $\Sigma$ and $g$ and $R_g$ are as in
+\refss{not}. The goal of the problem is to investigate the corresponding
+quantum theory. Namely, we have to do the following
+
+\begin{itemize}
+\item to show that the quantum theory is conformal and to 
+determine its central
+charge (part (c))
+
+\item to compute the OPE of $\d\phi(x)\d\phi(y)$ and to determine whether
+$\d\phi$ is a primary field (parts (a) and (e))
+
+\item to show that $\exp(\beta\phi(x))$ is a primary field
+and to compute its conformal weight
+\end{itemize}
+%-----------------------------------------------------------------------
+\sssec{}{Computation of the partition function and the central charge}
+Let us first compute the partition function. From it will be able to read
+off the central charge of the theory. 
+We must compute the following functional integral:
+\eq{statsumma}
+Z^Q_g=\int D\phi 
+e^{-S[\phi,g]}=\int D\phi 
+\exp(-{1\over 4\pi}\int\limits_{\Sigma} 
+{1\over 2}\d \phi{\overline \d}
+\phi+Q\phi R_g)
+\end{equation}
+where the integral is taken over all functions $\phi:\Sigma\to \RR$
+such that 
+$$
+\int\limits_{\Sig}\phi d\mu_g=0
+$$
+The action is a non-homogeneous quadratic function in $\phi$ and therefore
+we may compute the functional integral by completing the square and we
+obtain 
+\eq{}
+Z_g^Q=Z_g^0\exp({Q^2\over 8\pi}\int\limits_{\Sig}\Delta^{-1}_g(R_g)\cdot R_g)
+\end{equation}
+
+Let us now compute how the partition function changes when we replace $g$
+by a new metric $g'$ of the form $e^{\sigma}g$, where $\sigma$ is a real-
+valued function on $\Sigma$. We know that
+\eq{}
+Z_{g'}^0=Z_g^0\exp( {1\over 96\pi}(\int\limits_{\Sigma}(\sigma,\Del\sig)+
+4\sig R_g))
+\end{equation}
+(cf. Gawedzki's second lecture).
+
+Therefore, since $R_{g'}=R_g+{\Del(\sig)\over 2}$, 
+\eq{}
+\begin{aligned}
+Z_{g'}^Q=Z_g^Q e^{ {1\over 96\pi}\int\limits_{\Sigma}((\sigma,\Del\sig)+
+4\sig R_g)}
+e^{{Q^2\over 8\pi}(\int\limits_{\Sig}\Delta^{-1}_g(R_{g'})\cdot R_{g'}-
+\Delta^{-1}_g(R_g)\cdot R_g}=\\
+Z_g^Q\exp( {1+3Q^2\over 96\pi}\int\limits_{\Sigma}((\sigma,\Del\sig)+
+4\sig R_g))
+\end{aligned}
+\end{equation}
+
+Therefore the central charge of the theory is equal to $1+3Q^2$ (note that 
+we haven't defined our theory as a quantum conformal field theory yet, which 
+is done below).
+%-----------------------------------------------------------------------------
+\sssec{}{Computation of the correlation functions}
+We will now define the basic fields of our CFT and compute some of their
+correlation functions.
+
+For $Q=0$ we had a primary field $\d \phi$ which took values in
+$\Ome^{1,0}(\Sig)$. 
+
+For general $Q$ we will show that $\d\phi$ is a section of
+the $\Ome^{1,0}(\Sig)$-torsor $\Ome^{1,0}_Q(\Sig)$ 
+of affine $2\pi Q$-connections. This torsor
+can be explicitly described as follows. 
+For any metric $g$, compatible with the complex structure on $\Sigma$,
+$\Ome^{1,0}_Q(\Sig)$ acquires a canonical trivialization (this corresponds to
+the fact, that given a metric, one can trivialize the torsor of affine
+connections by means of
+the $(1,0)$-part of the corresponding Levi-Civita connection) and when the
+metric $g$ is replaced by $g'=e^{\sig}g$, the trivialization is changed
+by $2\pi Q\d\sig$. 
+%--------------------------------------------------------------------------
+\claim $\d\phi$ is 
+a quantum field which takes values in $\Ome^{1,0}_Q(\Sig)$ 
+\eclaim
+%---------------------------------------------------------------------------
+
+\prf We will sketch the computation of a one-point function of $\d\phi$.
+So, let $g$ be a metric on $\Sigma$, $x\in \Sig$ -- a point of $\Sig$
+and $\xi$ -- a holomorphic tangent vector to $\Sigma$ at $x$.
+Then the expression  $\la \d\phi(x)\xi\ra^Q_g$ makes sense as a complex
+number. 
+%--------------------------------------------------------------------------
+\eq{one-point}
+\la \d\phi(x)\xi\ra^Q_g={1\over Z_g^Q}\int D\phi(\d\phi(x),\xi)\cdot\exp
+({1\over 4\pi}\int\limits_{\Sigma} 
+{1\over 2}\d \phi{\overline \d}
+\phi+Q R_g)
+\end{equation}
+%-----------------------------------------------------------------------------
+Arguing as above (by completing the square) we obtain that 
+\refe{one-point} is equal to
+\eq{}
+\Lie_{\xi}(\Delta^{-1}_g(R_g))
+\end{equation}
+
+Therefore, when $g$ is replaced by $g'=e^{\sig}g$,  
+$\la \d\phi(x)\xi\ra^Q_{g'}=\la \d\phi(x)\xi\ra^Q_g+2\pi\d\sig$, as claimed.
+\epr
+
+The above claim implies, in particular, that the field $\d\phi(x)$ is
+not primary, since primary fields were defined as fields whose correlation
+functions are sections of $\Ome^{p,q}$ (for some $p, q$) and
+$\Ome^{1,0}_Q$ is definitely not of this form for $Q\neq 0$.
+This solves (e).
+%----------------------------------------------------------------------
+\sssec{}{Solution of (a)}In order to establish the OPE of $\d\phi(x)$ and
+$\d\phi(y)$ we will make the computation only for the 2-point function.
+
+\claim
+$\la \d\phi(x)\d\phi(y)\ra^Q_g-\la \d\phi(x)\d\phi(y)\ra^0$ is regular
+when $x\to y $.
+\eclaim
+
+\prf
+In fact, it is easy to compute in the same way as above, that
+\eq{}
+\la \d\phi(x)\d\phi(y)\ra^Q_g=\la \d\phi(x)\d\phi(y)\ra^0_g+
+\la\d\phi(x)\xi\ra_g^Q\otimes \la\d\phi(x)\xi\ra_g^Q
+\end{equation}
+
+which proves the claim
+\epr
+Therefore, the OPE of $\d\phi(x)$ and
+$\d\phi(y)$ is the same as for $Q=0$.
+%----------------------------------------------------------------------------
+\sssec{}{Solution of (d)}
+We claim that classical field $\exp(\beta\phi(x))$ can be quantized to
+a primary field of conformal weight 
+$(Q\beta+{\beta^2\over 2},Q\beta+{\beta^2\over 2})$.
+We will calculate the two-point function
+\eq{}
+\la e^{\beta\phi(x)}e^{-\beta\phi(y)}\ra^Q_g=
+\la e^{\beta\phi(x)}e^{-\beta\phi(y)}\ra^0_g
+\cdot \exp(Q\int\limits_{\Sig}(\Delta^{-1}_gR_g)\cdot (\delta(x)-\delta(y)))
+\end{equation}
+
+When we make a Weyl transformation of the metric $g\to g'=e^{\sig}g$, we
+see that 
+$$
+\begin{aligned}
+\la &e^{\beta\phi(x)}e^{-\beta\phi(y)}\ra^Q_{g'}= \\
+&\la e^{\beta\phi(x))}e^{-\beta\phi(y))}\ra^Q_g
+\cdot \exp({\beta^2\over 2}(\sig(x)-\sig(y)))\cdot
+\exp(Q\beta(\sig(x)-\sig(y))
+\end{aligned}
+$$
+
+This shows that $\exp(\beta \phi(x))$ is a field whose correlators
+take values in $(\Ome^{1,1})^{({\beta^2\over 2}+Q\beta)}$.
+
+
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

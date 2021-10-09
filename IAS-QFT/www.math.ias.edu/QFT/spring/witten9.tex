@@ -1,0 +1,554 @@
+%Date: Wed, 10 Jun 1998 13:06:55 -0400 (EDT)
+%From: Pavel Etingof <etingof@abel.math.harvard.edu>
+
+\input amstex
+\documentstyle{amsppt}
+\magnification 1200
+\NoRunningHeads
+\NoBlackBoxes
+\document
+
+\def\h{\frak h}
+\def\tW{\tilde W}
+\def\Aut{\text{Aut}}
+\def\tr{{\text{tr}}}
+\def\ell{{\text{ell}}}
+\def\Ad{\text{Ad}}
+\def\u{\bold u}
+\def\m{\frak m}
+\def\O{\Cal O}
+\def\tA{\tilde A}
+\def\qdet{\text{qdet}}
+\def\k{\kappa}
+\def\RR{\Bbb R}
+\def\be{\bold e}
+\def\bR{\overline{R}}
+\def\tR{\tilde{\Cal R}}
+\def\hY{\hat Y}
+\def\tDY{\widetilde{DY}(\g)}
+\def\R{\Bbb R}
+\def\h1{\hat{\bold 1}}
+\def\hV{\hat V}
+\def\deg{\text{deg}}
+\def\hz{\hat \z}
+\def\hV{\hat V}
+\def\Uz{U_h(\g_\z)}
+\def\Uzi{U_h(\g_{\z,\infty})}
+\def\Uhz{U_h(\g_{\hz_i})}
+\def\Uhzi{U_h(\g_{\hz_i,\infty})}
+\def\tUz{U_h(\tg_\z)}
+\def\tUzi{U_h(\tg_{\z,\infty})}
+\def\tUhz{U_h(\tg_{\hz_i})}
+\def\tUhzi{U_h(\tg_{\hz_i,\infty})}
+\def\hUz{U_h(\hg_\z)}
+\def\hUzi{U_h(\hg_{\z,\infty})}
+\def\Uoz{U_h(\g^0_\z)}
+\def\Uozi{U_h(\g^0_{\z,\infty})}
+\def\Uohz{U_h(\g^0_{\hz_i})}
+\def\Uohzi{U_h(\g^0_{\hz_i,\infty})}
+\def\tUoz{U_h(\tg^0_\z)}
+\def\tUozi{U_h(\tg^0_{\z,\infty})}
+\def\tUohz{U_h(\tg^0_{\hz_i})}
+\def\tUohzi{U_h(\tg^0_{\hz_i,\infty})}
+\def\hUoz{U_h(\hg^0_\z)}
+\def\hUozi{U_h(\hg^0_{\z,\infty})}
+\def\hg{\hat\g}
+\def\tg{\tilde\g}
+\def\Ind{\text{Ind}}
+\def\pF{F^{\prime}}
+\def\hR{\hat R}
+\def\tF{\tilde F}
+\def\tg{\tilde \g}
+\def\tG{\tilde G}
+\def\hF{\hat F}
+\def\bg{\overline{\g}}
+\def\bG{\overline{G}}
+\def\Spec{\text{Spec}}
+\def\tlo{\hat\otimes}
+\def\hgr{\hat Gr}
+\def\tio{\tilde\otimes}
+\def\ho{\hat\otimes}
+\def\ad{\text{ad}}
+\def\Hom{\text{Hom}}
+\def\hh{\hat\h}
+\def\a{\frak a}
+\def\t{\hat t}
+\def\Ua{U_q(\tilde\g)}
+\def\U2{{\Ua}_2}
+\def\g{\frak g}
+\def\n{\frak n}
+\def\hh{\frak h}
+\def\sltwo{\frak s\frak l _2 }
+\def\Z{\Bbb Z}
+\def\C{\Bbb C}
+\def\d{\partial}
+\def\i{\text{i}}
+\def\ghat{\hat\frak g}
+\def\gtwisted{\hat{\frak g}_{\gamma}}
+\def\gtilde{\tilde{\frak g}_{\gamma}}
+\def\Tr{\text{\rm Tr}}
+\def\l{\lambda}
+\def\I{I_{\l,\nu,-g}(V)}
+\def\z{\bold z}
+\def\Id{\text{Id}}
+\def\<{\langle}
+\def\>{\rangle}
+\def\o{\otimes}
+\def\e{\varepsilon}
+\def\RE{\text{Re}}
+\def\Ug{U_q({\frak g})}
+\def\Id{\text{Id}}
+\def\End{\text{End}}
+\def\gg{\tilde\g}
+\def\b{\frak b}
+\def\S{\Cal S}
+\def\L{\Lambda}
+
+\topmatter
+\title Lecture II-9: Wilson loops,'t Hooft's loops, 
+and 't Hooft's model of confinement
+\endtitle
+\author {\rm {\bf Edward Witten} }\endauthor
+\endtopmatter
+
+\centerline{Notes by Pavel Etingof and David Kazhdan}
+
+\vskip .1in
+
+\head 9.1. 't Hooft loop operator\endhead
+
+Let us 
+recall abelian duality in 4 dimensions, which we discussed two lectures ago. 
+Consider a free $U(1)$ gauge theory with a 
+$\theta$-angle. Thus we have two dimensionless couplings $e$, $\theta$ 
+which combine into a single complex coupling $\tau=\frac{2\pi i}{e^2}+
+\frac{\theta}{\pi}$, and the Lagrangian is 
+$$
+\Cal L=\int_M\biggl(\frac{i\bar\tau}{4\pi}F_+^2-
+\frac{i\tau}{4\pi}F_-^2\biggl),\tag 9.1
+$$
+where $F$ is the curvature of a $U(1)$ connection $A$ 
+and $F_+,F_-$ are the selfdual and antiselfdual parts of the curvature.  
+We have seen that if the spacetime $M$ is a spin manifold then 
+this theory is ``modular 
+invariant'' as a function of $\tau$. One modular symmetry $\tau\to\tau+1$ 
+is obvious, as it corresponds to shifting the $\theta$-angle by $\pi$,
+which does nothing because $c_1^2$ for a spin manifold is even.  (On
+a manifold that is not a spin manifold, the symmetry would be only
+$\tau\to\tau+2$.)
+The symmetry under the 
+second generator of the modular group, $\tau\to -1/\tau$,
+is more interesting and corresponds to electromagnetic duality discovered by 
+Maxwell. More precisely, this means that the theory of a connection 
+$A$ with coupling constant $\tau$ is identical
+both classically and quantum mechanically to the same theory with coupling
+$-1/\tau$ and the connection $B$ such that $dA=const*dB$. 
+Now, like two lectures ago, we want to see what happens to operators 
+under this duality. In particular, we want to know what happens to 
+the Wilson loop operator. 
+
+Recall that the Wilson loop operator has the form 
+$W_\gamma(C)=e^{i\gamma Hol_C(A)}$,
+where $Hol_C(A)$ denotes the integral of the connection $A$ along 
+a closed oriented curve $C$ in the spacetime $M$. 
+This operator is      gauge-invariant and well-defined if $\gamma$ is
+an integer, or for any real $\gamma$ if the curve $C$ is homotopically
+trivial in $M$.  (More generally, there could be several components
+$C_i$ with real numbers $\gamma_i$, and the condition is that $\sum_i\gamma_i
+C_i$ should be an integral class in $H_1(M)$.)
+Matrix elements 
+of this operator are computed, 
+as usual, by inserting the above exponential into the 
+path integral. Similarly to what we found in similar problems in
+two and three dimensions, we should get 
+that the dual description of the Wilson loop is a recipe which says 
+that rather than insert in the path integral an object living 
+on $C$, we should integrate over connections having a singularity 
+along $C$. 
+
+The precise answer is the following. For any curve $C$ 
+the expectation value
+$\<W_{\gamma}(C)\O_1...\O_n\>$ equals to 
+$\int e^{-\Cal L(B)}\O_1...\O_nDB$, 
+where the integral is taken over connections 
+on $M\setminus C$ such that the integral of the curvature of $B$
+over a small 2-sphere $S$ in a normal 3-space to $C$ at any point equals 
+$2\pi \gamma$. 
+
+Let us prove this. We assume that $C$ is a boundary. 
+Let $D$ be a 2-chain whose boundary is $C$. 
+Recall the calculation from the lecture on Abelian duality:
+our fields are $A$ -- the original connection, $G$- the 2-form, and $B$ -- 
+the dual connection. We have 
+$$
+\gather
+\int e^{-L(A)}W_\gamma(C)DA=\\
+\int DA\,DG\,DB e^{\frac{-i\bar\tau}{4\pi}
+\int\Cal F_+^2+\frac{i\tau}{4\pi}
+\int\Cal F_-^2}e^{\frac{i}{2\pi}\int G\wedge F_B}
+e^{i\gamma\int_D(F_A-G)},\tag 9.1
+\endgather
+$$  
+where $\Cal F=F_A-G$, and the last factor corresponds to 
+the insertion of the Wilson loop (recall from the abelian duality discussion 
+that the Wilson loop classically 
+is $e^{i\gamma\int_DF_A}$, and $F_A$ is to be replaced with $F_A-G$
+in the extended theory). Gauging $A$ to $0$, we get 
+$$
+\gather
+\int e^{-L(A)}W_\gamma(C)DA=\\
+\int DG\,DB e^{\frac{-i\bar\tau}{4\pi}
+\int G_+^2+\frac{i\tau}{4\pi}
+\int G_-^2}e^{\frac{i}{2\pi}\int G\wedge F_B}
+e^{-i\gamma\int_D G}=\\
+\int DG\,DB e^{\frac{-i\bar\tau}{4\pi}
+\int G_+^2+\frac{i\tau}{4\pi}
+\int G_-^2}e^{i\int G\wedge(\frac{1}{2\pi}F_B-\gamma [D])},
+\tag 9.2
+\endgather
+$$  
+where $[D]$ is the delta-function of $D$. Now we define $\tilde F_B:=
+F_B-2\pi\gamma [D]$. Then 
+after integrating out $G$, (9.2) can be written as
+$$
+\gather
+\int e^{-L(A)}W_\gamma(C)DA=\\
+\int DB e^{\frac{i}{4\pi\bar\tau}
+\int (\tilde F_B)_+^2+\frac{-i}{4\pi\tau}
+\int (\tilde F_B)_-^2},
+\tag 9.3
+\endgather
+$$  
+Thus, the effect of the insertion $W_\gamma(C)$ is that $F_B$ is 
+replaced in the final answer by $\tilde F_B$. So $B$ is now a connection 
+on a line bundle with singularity along $C$, as discussed above.
+
+Note that if $C$ is not a boundary then $\<W_\gamma(C)\>=0$
+(even with insertion of any number of local operators). Indeed, we have  
+symmetry $A\to A+d\phi$, and $\phi$ does not have to be globally defined
+as a map to a circle; in fact, $d\phi$ can be any closed one-form.
+So if $C$ is not a boundary then we can choose $d\phi$ in such a way 
+that the operator $W_\gamma(C)$ will multiply by $e^{i\alpha}$ for some
+nonzero $\alpha$. Hence its expectation value (even with inclusion
+of local operators, which are invariant under this transformation) vanishes.
+More generally, the correlator 
+$\<W_{\gamma_1}(C_1)...W_{\gamma_n}(C_n)\>$ (with any local operators) 
+is zero if $\sum \gamma_iC_i\ne 0$ in $H_1(M)$, where $M$ is the spacetime. 
+As noted before, for the product of operators in question to be well-defined,
+we only need $\sum\gamma_iC_i$ to be an integral class.
+
+ From our construction so far, for any curve $C$ we have two operators: 
+
+1) $W_\gamma(C)=e^{i\gamma\int_CA}$
+
+2) $T_\gamma(C)=e^{i\gamma\int_CB}$.
+
+
+The second operator, which is dual to the Wilson loop, is called 
+the 't Hooft loop operator.  
+
+\head 9.2. Hilbert space interpretation of the 't 
+Hooft loop operator
+\endhead
+
+Now let us consider this picture from the Hamiltonian point of view. 
+Then the spacetime $M$ has the form $M=M^3\times \R$ with Minkowski 
+metric. Let $C,C'$ be two nonintersecting closed simple 
+ curves in $M^3$. They define operators 
+$W_\gamma(C)$ and $T_{\gamma'}(C')$ on the Hilbert space $\Cal H$. 
+The following commutation relation for these operators is due to 
+'t Hooft:
+$$
+W_\gamma(C)T_{\gamma'}(C')=e^{2\pi i\gamma\gamma'l(C,C')}
+T_{\gamma'}(C')W_\gamma(C).\tag 9.4
+$$
+
+Let us prove this formula. Let us work in terms of the original connection
+$A$. Then the Hilbert space consists of wave functions $\Psi(A)$. 
+In this realization, the Wilson loop operator 
+ $W_\gamma(A)$ is simply the operator of multiplication by
+$e^{i\gamma\int A}$. 
+
+However, the 't Hooft loop operator is 
+a bit harder to define. To do this, 
+consider the homomorphism $\pi_1(M^3\setminus 
+C',x_0)\to\Z$ given by the linking 
+number with $C'$. Let $\pi_1^0$ be the kernel of this homomorphism 
+and $X$ be the $\Z$-cover of $M_3\setminus C'$ corresponding to 
+$\pi_1^0$. Let $\phi$ be a 
+function $X\to U(1)$ such that the monodromy corresponding to 
+the generator of $\Z$ is $e^{i\gamma}$. Any two such functions 
+differ by a gauge transformation, but $\phi$ itself is not an honest gauge 
+transformation. Then it is not difficult to check that the 't Hooft loop 
+operator $T_{\gamma'}(C')$ is just the ``illegal'' gauge transformation 
+by $\phi$: 
+$$
+(T_{\gamma'}(C')\Psi)(A)=\Psi(A^{\phi}).\tag 9.5
+$$ 
+Note that this is well-defined since any two such $\phi$'s differ by an 
+honest gauge transformation. 
+
+Now formula (9.4) is clear since $TWT^{-1}=e^{i\gamma_{C}\int d\phi}W$,
+because of the way that $T$ transforms the connection in the definition of
+$W$.
+
+\head 9.3. The 2+1-dimensional analogue of the 3+1-dimensional picture
+\endhead
+
+Consider the 2+1-dimensional analogue of this picture. As we saw before, 
+in 2+1 dimensions the theory of a scalar field $\phi$ is dual to a gauge 
+theory of the dual field $A$. The path integral in $\phi$ with 
+insertion of $e^{i\phi(x)}$ is the same as path integral in $A$ where $A$ is 
+a connection on $M\setminus x$ which has $\int F=2\pi$, where the 
+integral is over a small sphere around $x$. Thus, the operator 
+$e^{i\phi}$ corresponds to a magnetic monopole in gauge theory. 
+
+Now consider the 3-dimensional cosine theory, defined by the path integral 
+$$
+\int D\phi e^{-\int (|d\phi|^2+\e(e^{i\phi}+e^{-i\phi}))}.\tag 9.6
+$$
+Decomposing this path integral in a power series, and passing to the dual 
+variable $A$, we get the sum 
+$$
+\sum_{m,n}\e^{m+n}\int \frac{dx_1...dx_m}{m!}\int \frac{dy_1...dy_n}{n!}
+\int_{\Cal A_{x,y}} e^{-\int F_A^2},\tag 9.7
+$$
+where $\Cal A_{x,y}$ is the space of connections with monopoles 
+at $x_i$ and antimonopoles at $y_j$. Thus the cosine theory maps to 
+the theory with monopoles. We saw this more computationally 
+when we discussed the Polyakov model two lectures ago. 
+
+\head 9.4. The model of confinement
+\endhead
+
+Now we discuss a picture of confinement developed by 't Hooft. 
+In general we don't assume that the gauge group is abelian. 
+Recall the definition of confinement.
+We have a gauge group $G$ and with universal cover $\widehat G$. 
+We assume that
+ $G$ is the quotient of $\widehat G$ 
+which acts faithfully on all fields in the Lagrangian.
+We let $R$ be a representation of $\widehat G$. 
+As we discussed before, if there is a mass gap, 
+there are two usual patterns of decay 
+of the expectation value $\<W_R(C)\>$ of the Wilson line operator 
+corresponding to the representation $R$ as $C$ gets big:
+
+Pattern 1:
+$$
+\<W_R(C)\>\sim 
+e^{-\l \,\text{Length}(C)}\tag 9.8
+$$
+
+Pattern 2:
+$$
+\<W_R(C)\>\sim 
+ e^{-\l\, \text{Area}(C)}\tag 9.9
+$$
+(here the parameter $\gamma$ is a fixed nonzero number and 
+the area of $C$ means the minimal area of the spanning surface).  
+The first regime is called the Higgs regime (the length law) 
+and the second one is called the 
+confinement regime (the area law). 
+
+As we discussed in the previous lecture on confinement, the first regime is 
+the case when $R$ is a representation of $G$ itself, and to see confinement 
+one needs to consider 
+the case when $R$ is a representation of $\widehat G$ but not of $G$. 
+Thus interesting $W_R(C)$ correspond to elements of $\pi_1(G)^*$. 
+
+Now let us consider the 't Hooft loop operator $T_\gamma(C)$.  It
+is defined for any $G$ by analogy with the definition in the abelian
+case.  We fix an element $\gamma\in \pi_1(G)$.  Recall that 
+$G$-bundles on a two-sphere $S^2$ are classified by a characteristic class
+that takes values in $H^2(S^2,\pi_1(G))$, which is canonically
+isomorphic to $\pi_1(G)$.  The choice of $\gamma$ therefore canonically
+determines an isomorphism class of $G$-bundles on $S^2$. We can now
+define the 't Hooft operator: a path integral
+with insertion of $T_\gamma(C)$ is computed by integrating over
+connections on $M\setminus C$ which have the property that when restricted
+to a small sphere $S$ that links $C$, the bundle has characteristic class
+$\gamma$.
+
+
+'t Hooft's idea was to consider $T_\gamma(C)$ instead of $W_R(C)$ 
+and find conditions under which there is an
+ area law for its expectation value.   This occurs, as he showed,
+ for certain Higgs theories.  Then, 't Hooft proposed (following earlier
+ ideas of Nambu, Mandelstam, and others) that confinement would be related
+ to the Higgs mechanism by a duality that maps 't Hooft loop operators
+ into  Wilson loop operators.  This does not explain confinement, but
+ it reformulates the problem: to reduce the mysterious phenomenon of 
+confinement
+ to the much more easily understood Higgs phenomenon, one must understand
+ the nonlinear duality that exchanges 't Hooft and Wilson loop operators.
+
+To illustrate the area law for the 't Hooft loop in Higgs theories,
+we consider a familiar example:
+the $U(1)$ gauge theory with a charged complex scalar $\phi$ 
+(of charge 1). The Lagrangian is
+$$
+\int(\frac{|F|^2}{4e^2}+|D_A\phi|^2+V(\phi\bar\phi)),\tag 9.10 
+$$
+where $V$ is a (quartic) potential. We will study the 't Hooft loop 
+$T_\gamma(C)$, where $\gamma\in\Z$. Thus 
+$A$ is a connection and $\phi$ is a section for a hermitian line bundle over 
+$M\setminus C$ such that it has first Chern class $\gamma$ when restricted
+to a small sphere linking $C$. We will compute 
+$\<T_\gamma(C)\>$ for two classes of $V$:
+
+1) $V=\l(\phi\bar\phi+a^2)^2$;
+
+2) $V=\l(\phi\bar\phi-a^2)^2$. 
+
+This theory was considered in Lecture 2. Recall the results of this 
+consideration. 
+
+Case 1. In the infrared the theory behaves like the product 
+of the theory of a free massive field with a free gauge theory. 
+In particular, there is no mass gap. 
+Thus, we can calculate $\<T_\gamma(C)\>$ for large $C$ using the free theory. 
+But in the free theory this expectation value 
+ is the same as $\<W_\gamma(C)\>$  
+in the dual theory. It is easy to see that the expectation 
+values of both $W_\gamma$ and $T_\gamma$ behave 
+according to the length law, because of Coulomb law of charge interaction. 
+A theory behaving in this way is said to be in the  ``Coloumb phase.''
+
+Case 2. In the infrared this theory has breaking of gauge symmetry 
+and a Higgs mechanism. In particular, speaking classically,
+we have a circle of vacua, and at each of 
+these vacua the low energy part of the Hamiltonian spectrum 
+contains a massive vector and a real massive scalar. So there is a mass gap. 
+This theory is not believed to exhibit confinement, i.e. it is believed 
+that it exhibits the length law for the Wilson loop.  This is certainly
+what one computes in perturbation theory.
+
+In case 2, we will show that there is an area law for the 't Hooft loop 
+operator, because of the Higgs mechanism. This happens for topological 
+reasons, as explained below.  
+
+As a warmup consider a closed spacetime $M$ and a line bundle 
+$\Cal L$ with a nontrivial $c_1$. Let us consider the path integral 
+for our theory over sections of this bundle. It turns out that 
+the action of all field configurations in this integral has to be very large:
+it is bounded below by a constant (which is independent of $M$) times
+ the area of the minimal 2-surface which represents a cycle 
+Poincare dual to $c_1(\Cal L)$. 
+
+Indeed, if $\phi$ is a section of $\Cal L$ then $\phi$ has to vanish 
+on a 2-cycle $\Sigma$ which is dual to $c_1(\Cal L)$. If we 
+fix $\Sigma$, we can look at the configuration of minimal action
+with such a zero.  For this, we can (if the metric of $M$ is scaled
+up) reduce to the case that $M=\R^4=\R^2\times \R^2$,
+with $\Sigma$ equal to the first factor.  We can assume that $\phi$ and $A$
+are invariant under translations of the first factor in $M$.
+In the second factor, we want $\phi$ to vanish at the origin and to
+approach the vacuum at infinity (up to gauge transformation), such that
+the first Chern class of the bundle, relative to the trivialization at
+infinity given by $\phi$, equals 1.
+The same problem appeared in lecture 2 (in the guise of finding an instanton
+solution of the two-dimensional version of the same model), and we
+discussed qualitative properties of the solution.
+Anyway, let $I$ be the action of this solution in the two-dimensional
+sense (that is, integrated over just the second factor in $M$).   
+Going back to a global $\Sigma\subset M$ of smallest area representing
+the first Chern class, the minimum action field looks in the normal
+directions to $\Sigma$ like the instanton just described; its action
+is approximately $I\cdot \text{Area}(\Sigma)$.
+
+Now let us come back to the 't Hooft loop in $\R^4$. 
+In this case the bundle is 
+over $M\setminus C$, where $M$ is the spacetime. If $D$ is a 
+2-chain in $M$ whose boundary is $C$ then $D$ plays 
+the role of the $\Sigma$ of the previous discussion. Indeed, if 
+$\Cal L$ is a line bundle over $M\setminus C$ with Chern class 1, 
+and $\phi$ its section then $\phi$ must vanish on a 2-surface whose boundary 
+is $C$. Thus, the same argument as above shows that 
+$\<T_1(C)\>\sim e^{-\l\text{ area(D)}}$, where $\text{area}(D)$ is the 
+smallest 
+area of a disk spanning $C$. This is the area law which we wanted to 
+demonstrate. 
+
+This behavior is characteristic of what is called  the Higgs regime, or phase. 
+
+Now let us discuss in more detail the relation of 
+the established behavior of the 't Hooft loop operator with confinement. 
+It is believed that if $\pi_1(G)\ne 0$ there are at least
+three possible phases:
+
+1) Coulomb: no mass gap, gauge bosons in the infrared, 
+$W$ and $T$ behave like in the free theory and exhibit the length law. 
+
+2) Higgs: mass gap, length law for $W$, area law for $T$.
+
+3) Confinement: mass gap, area law for $W$, length law for $T$.
+   
+As already suggested,
+'t Hooft's idea was that there should be a nonabelian analogue of duality 
+which interchanges $W$ with $T$, the Higgs and the confinement regimes, 
+and maps the Coloumb phase to itself. Thus, the area law for 
+$T$ in a theory implies confinement in the dual theory. This is what happens
+for some supersymmetric theories, e.g. the theory relevant to
+Donaldson theory. 
+
+In fact, 't Hooft showed that if $R$ and $\gamma$ are such that 
+$\gamma|_R\ne 1$ then either $W_R$ on $T_\gamma$ exhibit the area law. 
+More specifically, he proved an even stronger statement, namely that 
+the set $H$ of all $(c,\gamma)\in\pi_1(G)^*\times \pi_1(G)$ such that 
+for some representation $R$ with central character $c$ the operator 
+$W_R(C)T_\gamma(C)$ (suitably renormalized) does not exhibit the area law,
+is an isotropic subgroup of $\pi_1(G)^*\times \pi_1(G)$ 
+with respect to the natural symplectic form. The reason for this, very 
+roughly, is the following.  If $A(C)=W_{R_1}T_{\gamma_1}(C)$ and $B(C)=
+W_{R_2}T_{\gamma_2}(C)$ 
+exhibit the length law then, when acting on the vacuum, they produce
+only effects that are localized along $C$ (or there would be an area
+law instead of a length law).  So
+$$
+\<A(C)B(C')\>=\<A(C)\>\<B(C')\>(1+o(1)),d\to\infty\tag 9.11
+$$ 
+where $d$ 
+is the distance between $C$ and $C'$. This shows that if $AB=qBA$ 
+where $q$ is a constant then $q$ must be equal to 1. 
+By 't Hooft's formula (9.4) (which is clearly valid in the 
+nonabelian case as well), this implies that $H$ is isotropic.
+By further physical arguments, one shows that if there is a mass gap,
+then $H$ is maximal isotropic.  This leads to a more refined classification
+of massive phases than was stated above: associated to each massive
+phase is a maximal isotropic subgroup of $\pi_1(G)^*\times \pi_1(G)$.
+All possibilities can arise, in general.
+
+{\bf Remark.} The  argument showing that loop operators $A$ and $B$ must
+commute fails if one of the operators, 
+say $A$, exhibits the 
+area law.  In  this case, acting on the vacuum with this operator produces
+an effect that is not in any way localized 
+near $C$; it rather has an effect which is localized near a minimal area disk 
+$D$ whose boundary is $C$; such a disk will always intersect $C'$ when the 
+linking number is not zero. Formula (9.11) is now valid only if 
+$d$ is the distance from $C'$ to $D$, which is always 0, so the formula 
+does not tell us anything. 
+  
+{\bf Remark.} The area law for the 't Hooft operator in a Higgs
+phase has many physical and mathematical applications.  For example,
+with some small adjustments, what we said above  in analyzing the
+behavior of the Higgs phase with a bundle of nonzero first Chern class
+could serve as an explanation
+of the Meissner effect, the fact that a superconductor (which is described
+approximately by the  abelian Higgs model that we examined) expels
+magnetic flux.
+Perhaps the reader has, at a science fair, seen a demonstration of a
+magnet floating above a superconductor; this effect has the same origin.
+Mathematically, C. Taubes's analysis of the Seiberg-Witten invariants
+of symplectic four-manifolds made use of the same facts: the localization
+(in a closely analogous system of equations) of the zeroes of $\phi$
+on a surface of smallest area.
+\end
+
+
+
+
+
+
+

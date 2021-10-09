@@ -1,0 +1,202 @@
+%Date: Tue, 17 Dec 1996 13:19:56 -0500
+%From: Edward Witten <witten@IAS.EDU>
+
+\input harvmac
+\overfullrule=0pt
+{\it Exam}
+
+(1) Prove via path integrals the character-valued index theorem for the Dirac 
+operator.
+That is, let $M$ be a spin manifold and $g$ an isometry of $M$ with a lift to 
+the
+spin bundles.  Calculate
+\eqn\hgg{\Tr\,g(-1)^F}
+via path integrals.
+
+That is, write down the path integral for sections of a suitable $M$ bundle
+over a circle.  Taking the circumference of the circle to be small, compute
+the integral explicitly and obtain the Atiyah-Bott formula for \hgg.
+
+(2) Compute in $\phi^4$ theory in four dimensions the anomalous dimension of 
+the
+operator $\phi^2$, in one-loop approximation.
+
+(3) Determine the asymptotic behavior of perturbation theory in soft or cutoff
+scalar field theories, as follows.  (Fermions and gauge fields introduce 
+different
+behavior, not to mention other types of theories such as sigma models.)
+
+(a) Consider the integral
+\eqn\gg{Z(g)=\int_\infty^\infty d\phi\,\exp(-\half \phi^2-g\phi^4/4!).}
+Expand in an asymptotic series in $g$
+\eqn\ipp{Z(g)=\sum_ka_kg^k}
+and determine the large $k$ behavior of $a_k$.   Hint: write an integral 
+representation
+for $a_k$ and find a method of computing the integral for large $k$, for 
+instance,
+Where is the maximum of the integrand?
+
+(b) Interpret the answer to (a) as a statement about the number of graphs of
+a particular kind, weighted according to their automorphism groups.
+
+(c) Now consider the path integral
+\eqn\ingo{Z(g)=\int D\phi\,e^{-L}}
+in a scalar field theory in $n$ dimensions, with 
+\eqn\pp{L=\int d^nx\left(\half |d\phi|^2+\half m^2\phi^2+{g\over 
+4!}\phi^4.\right).}
+Write down, again, an integral representation for the coefficients $a_k$
+in the asymptotic expansion of $Z(g)$ and determine the large $k$ behavior,
+at least at a physical level of rigor, by finding the maximum of the integrand.
+
+You should get a non-linear differential equation, and you should be able to 
+prove
+that it has a spherically symmetric solution; it is believed that this solution
+does determine the large $k$ behavior of the $a_k$ in a cutoff $\phi^4$ theory
+or in dimensions below four.  In four dimensions, the  much more complicated
+renormalization, which you've presumably ignored in the computation above,
+changes things ($L$ must be redefined by incorporation of counterterms and the
+expansion in powers of $g$ is not made as simply as you've presumably done 
+above).
+
+(4) Consider in two dimensions a theory of $n$ fermi fields $\psi^i$, 
+$i=1,\dots, n$.  Each
+of the     $\psi^i$ is the sum of a section of $S_+$ and a section of $S_-$, 
+those
+being the two spin bundles, which we recall are real if the two-dimensional 
+world
+has Lorentz signature. (But you will actually compute with Euclidean 
+signature.)
+
+The Lagrangian is
+\eqn\nomo{L=n\int d^2x\left(\half\sum_i(\psi^i,D\psi^i)+\half 
+m_0(\psi^i,\psi^i)
+-{g_0\over 8}\left(\sum_i(\psi^i,\psi^i)\right)^2\right).}
+Notice the crucial factor of $n$ in front of the Lagrangian.
+Here $D$ is the Dirac operator.  In what follows, you can think of the
+fermion propagator as being
+\eqn\orpo{{1\over \Gamma\cdot p+im_0}.}  
+Expressions such as $(\psi,\psi)$ (which physicists write as $\bar \psi \psi$)
+are the only possible invariants of the given kind.
+
+Consider the operator $\Sigma={1\over n}\sum_i(\psi^i,\psi^i).$
+
+(a) Consider the problem of computing the one point function 
+$\langle\Sigma\rangle$
+(which is an abbreviation for the vacuum expectation value 
+$\langle\Omega|\Sigma|
+\Omega\rangle$
+in perturbation theory.  In $k$-loop order, which Feynman diagrams survive
+as $n\to\infty$?
+
+(b) Write down an integral equation that formally sums all the Feynman diagram 
+contributions
+to $\langle \Sigma\rangle$ that survive for $n\to\infty$.
+
+(c) The integral equation in (b) needs some regularization and renormalization.
+Do this and obtain the renormalized equation obtained as the cutoff goes
+to infinity.  
+
+\def\Z{{\bf Z}}
+(d) If one had set $m_0=0$ in \nomo, one would have an extra $\Z_2$ symmetry
+that is broken by the mass.  What is this?          Is the operator $\Sigma$
+even or odd under this symmetry?
+
+The renormalization in (c) can be done so that one of the parameters, a 
+renormalized
+mass $m$, is odd under the $\Z_2$, while the other parameters are even.
+Hopefully you've done so!
+
+If $m$ is zero, how many solutions are there to the integral equation found in 
+(c)?
+Are they invariant under the $\Z_2$?
+
+(5) QCD is an $SU(3)$ gauge theory with fermions (quarks) which describes the 
+nuclear
+forces.  For this problem you only need to know a few facts.
+For instance, the theory contains a ``current''
+operator, which is simply a Lorentz vector $J^i$  (that is a local operator
+of spin one) that is conserved, $d_iJ^i=0$ (or $d*J=0$), has zero anomalous
+dimension (we'll learn why later), and has the property that its two point 
+function
+needs an additive $c$-number renormalization.
+
+The renormalized two point function of $J$ 
+is therefore the limit as a cutoff $\Lambda$ goes to infinity
+of
+\eqn\jury{\int d^4x e^{ik\cdot x}\langle J^i(x)J^j(0)\rangle 
+~~~ -~A(\Lambda/\mu,g) (k^ik^j-\delta^{ij}k\cdot k).}
+Here $g$ is the (dimensionless)
+coupling constant, $\Lambda$ the cutoff, $\mu$ a mass that
+must be introduced in renormalization, and $A$ is a function of the
+indicated arguments which must be ``subtracted'' to make the two point function
+finite.  Also, the theory is asymptotically
+free and for present purposes you can ignore quark bare masses and assume that
+there are no parameters in the theory except $g, $ $\mu$, and $\Lambda$
+(and of course $\Lambda$ is eventually eliminated by taking it to infinity).  
+There is no multiplicative
+renormalization of $J$ in \jury\ because the anomalous dimension vanishes.
+Because $J$ is conserved, the expression in \jury\ is of the form
+\eqn\ury{(k^ik^j-\delta^{ij}k^2)B(k^2,g,\mu)}
+where $\Lambda$ is omitted as we want to consider the limit $\Lambda\to\infty$.
+
+I suppose it also helps to know that $J$ is built in terms of quarks as
+$J=\bar q\Gamma^i q$, so that the one loop approximation to $\langle J 
+J\rangle$
+is given by a one loop diagram with a fermion loop that we computed in 
+homework.
+(For those who are getting a paper and not internet copy of this, the loop
+is drawn below at the end of problem 7.)  
+But all you  really need to know is that in the free field
+theory, that is if $g=0$, 
+$A=a \ln(\Lambda/\mu)$, where $a$ is a constant, independent of $g$.
+
+(a) Write down the  renormalization group equation obeyed by $B$.
+
+(b) Use this equation, together with the fact that QCD is asymptotically
+free, to determine the large $k^2$ behvavior of $B$.
+
+This large $k^2$ behavior, after including some additional theoretical
+wrinkles to put it in a form that can be compared with experiment,  
+is one of the classic tests of QCD.
+
+(6) Let ${\cal O}(x)$ be a local operator which annihilates the vacuum:
+\eqn\hbb{{\cal O}(x)|\Omega\rangle=0}
+Show at least at a physical level of rigor that ${\cal O}(x)=0$.
+
+Now extend this slightly: suppose that for some distinct points $x$ and $y$
+$\langle \Omega|{\cal O}^*(y) {\cal O}(x)|\Omega\rangle=0$.
+(${\cal O}^*$ is the hermitian adjoint of ${\cal O}$.) Prove that ${\cal O}=0$.
+
+(7) Prove that a $U(1)$ gauge theory in four dimensions (without magnetic 
+monopoles) cannot
+be conformally invariant unless it is free.
+
+For present purposes, a $U(1)$ gauge theory is any theory in
+four dimensions that has  a two-form valued local field $F$
+which obeys the Bianchi identity
+\eqn\polp{dF=0.}
+Now in four-dimensions with Euclidean signature we can decompose $F=F_++F_-$
+where $F_+$ and $F_-$ are selfdual and antiselfdual.
+
+\def\R{{\bf R}}
+\def\S{{\bf S}}
+(a) Work in    four-dimensional (flat) Euclidean space $\R^4$
+and show that conformal invariance implies vanishing of the two point function
+$\langle F_+(x)R_-(y)\rangle$ for $x\not= y$.
+
+(Conformal invariance means that the correlation functions can be extended
+to be defined for points in the one-point compactification $\S^4$ of $\R^4$
+and that when so extended the correlation functions are invariant under the
+group of conformal motions of $\S^4$, which is $SO(5,1)$.  Use $SO(5,1)$ to
+prove vanishing of $\langle  F_+(x)F_-(y)\rangle$.)
+
+
+(b) Given this, use the Bianchi identity to prove that
+$\langle d^*F(x) d^*F(y)\rangle=0$.
+
+(c) To conclude the argument, use the result of  (6) to deduce that
+$d^*F=0$, which (together with the Bianchi identity   $dF=0$) implies that
+$F$ is a free field.
+\end
+
+

@@ -1,0 +1,110 @@
+%From: "Eric D'Hoker" <dhoker@sns.ias.edu>
+%Date: Wed, 5 Mar 1997 15:13:17 -0500 (EST)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%
+%%%%    STRING THEORY : Problem Set 6, March 6, 1997
+%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\magnification=\magstep1
+\overfullrule=0pt
+\baselineskip=17pt
+\def\det{{\rm det}}
+\def\Det{{\rm Det}}
+\def\tr{{\rm tr}}
+\def\Tr{{\rm Tr}}
+\def\12{{1 \over 2}}
+\def\ker{{\rm Ker}}
+\def\O{{\cal O}}
+
+\centerline{{\bf STRING THEORY}}
+\centerline{ Problem Set \# 6}
+\centerline{March 6, 1997}
+
+\bigskip
+\bigskip
+
+In this problem set, we investigate a number of properties 
+of the combined matter (for flat space-time of dimension $D$) 
+and ghost system.
+Recall that the worldsheet action in locally flat complex 
+coordinates $z$ and $\bar z$ is given by
+$$
+S= { 1 \over 2 \pi} \int _\Sigma d^2z
+\bigl ( \12 \partial x \cdot \bar \partial x 
+        + b \bar \partial c + \bar b \partial \bar c \bigr ).
+$$
+The matter stress tensor is denoted by $T^{(x)} (z)$ and 
+the quantum ghost stress tensor is given by
+$$
+T^{(bc)} (z) = \lim _{w \to z} \bigl ( - \partial b (z) c(w)
+-2 b(z) \partial c (w) + {1 \over (z-w)^2 } \bigr ).
+$$
+The classical BRST current is given by
+$$
+j ^B (z) = c(z) \bigl ( T^{(x)} (z) + \12 T^{(gh)} (z) \bigr ) + 
+{3 \over 2} \partial ^2 c(z).
+$$
+
+\noindent
+{\it Problem 1}
+
+\medskip
+
+a) Give a suitable definition of the quantum BRST current,
+by subtracting OPE singularities.
+
+b) Compute the OPE of $j^B$ with $b,~c$ and $x$, and deduce the 
+(anti-) commutators of the BRST operator
+$$
+Q^B = \oint {dz \over 2 \pi i} j^B_z
+$$
+with these fields.
+
+c) Show that the resulting transformation laws on the fields
+$b,~c$ and $x$ give rise to a classical symmetry of $S$ for
+any dimension $D$ of space-time, and that $j^B$ is related 
+to the Noether current of this symmetry.
+
+d) Show that $Q^B$ is nilpotent as a quantum mechanical 
+operator if and only if $D=26$, using your favorite method.
+(Hint : It is easy to show that when $D\not=26$, $Q^B$ 
+cannot be nilpotent, by using the relation between the full
+stress tensor $T= T^{(x)} + T^{(bc)}$ and the anti-commutator
+of $Q^B$ with $b$.)
+
+\bigskip
+
+\noindent
+{\it Problem 2}
+
+\medskip
+
+Henceforth, set $D=26$, and consider correlation functions 
+of vertex operators $V_i$, including ghosts :
+$$
+\langle V_1 \cdots V_N \rangle 
+= \int Dx \int D(b\bar b) D(c\bar c) V_1 \cdots V_N \prod _{j=1} ^\nu
+|(\mu _j , b)|^2 e^{-S}
+$$
+For simplicity, we restrict to surfaces $\Sigma$ of genus $h >1$;
+$\mu _j$ is a basis of Beltrami differentials, associated 
+with moduli coordinates $m_j$, and $\nu = 3h-3$.
+
+Assume that $V_i$ are physical vertex operators, so that $V_i$
+commutes with the BRST operator $Q^B$. Now assume that one vertex 
+operator, say $V_N$, is BRST exact, i.e. 
+$$
+V_N = \int _\Sigma d^2 w \oint _C {dz \over 2\pi i} j^B(z) W_N (w)
+$$
+for {\it some} operator $W_N$, which is not necessarily a
+physical vertex operator. The curve $C$ is a simple contour
+around the point $w$. By deforming the contour $C$, show that 
+$\langle V_1 \cdots V_N \rangle$ is a total derivative in the
+moduli $m_j$. 
+ 
+\end
+--1268_5c2-251c_6a2-50b7_231--
+

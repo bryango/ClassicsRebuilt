@@ -1,0 +1,725 @@
+\input amstex
+\documentstyle{amsppt}
+\magnification 1200
+\NoRunningHeads
+\NoBlackBoxes
+\document
+
+\def\opsi{\overrightarrow{\psi}}
+\def\h{\frak h}
+\def\tW{\tilde W}
+\def\Aut{\text{Aut}}
+\def\tr{{\text{tr}}}
+\def\ell{{\text{ell}}}
+\def\Ad{\text{Ad}}
+\def\u{\bold u}
+\def\m{\frak m}
+\def\O{\Cal O}
+\def\tA{\tilde A}
+\def\qdet{\text{qdet}}
+\def\k{\kappa}
+\def\RR{\Bbb R}
+\def\be{\bold e}
+\def\bR{\overline{R}}
+\def\tR{\tilde{\Cal R}}
+\def\hY{\hat Y}
+\def\tDY{\widetilde{DY}(\g)}
+\def\R{\Bbb R}
+\def\h1{\hat{\bold 1}}
+\def\hV{\hat V}
+\def\deg{\text{deg}}
+\def\hz{\hat \z}
+\def\hV{\hat V}
+\def\Uz{U_h(\g_\z)}
+\def\Uzi{U_h(\g_{\z,\infty})}
+\def\Uhz{U_h(\g_{\hz_i})}
+\def\Uhzi{U_h(\g_{\hz_i,\infty})}
+\def\tUz{U_h(\tg_\z)}
+\def\tUzi{U_h(\tg_{\z,\infty})}
+\def\tUhz{U_h(\tg_{\hz_i})}
+\def\tUhzi{U_h(\tg_{\hz_i,\infty})}
+\def\hUz{U_h(\hg_\z)}
+\def\hUzi{U_h(\hg_{\z,\infty})}
+\def\Uoz{U_h(\g^0_\z)}
+\def\Uozi{U_h(\g^0_{\z,\infty})}
+\def\Uohz{U_h(\g^0_{\hz_i})}
+\def\Uohzi{U_h(\g^0_{\hz_i,\infty})}
+\def\tUoz{U_h(\tg^0_\z)}
+\def\tUozi{U_h(\tg^0_{\z,\infty})}
+\def\tUohz{U_h(\tg^0_{\hz_i})}
+\def\tUohzi{U_h(\tg^0_{\hz_i,\infty})}
+\def\hUoz{U_h(\hg^0_\z)}
+\def\hUozi{U_h(\hg^0_{\z,\infty})}
+\def\hg{\hat\g}
+\def\tg{\tilde\g}
+\def\Ind{\text{Ind}}
+\def\pF{F^{\prime}}
+\def\hR{\hat R}
+\def\tF{\tilde F}
+\def\tg{\tilde \g}
+\def\tG{\tilde G}
+\def\hF{\hat F}
+\def\bg{\overline{\g}}
+\def\bG{\overline{G}}
+\def\Spec{\text{Spec}}
+\def\tlo{\hat\otimes}
+\def\hgr{\hat Gr}
+\def\tio{\tilde\otimes}
+\def\ho{\hat\otimes}
+\def\ad{\text{ad}}
+\def\Hom{\text{Hom}}
+\def\hh{\hat\h}
+\def\a{\frak a}
+\def\t{\hat t}
+\def\Ua{U_q(\tilde\g)}
+\def\U2{{\Ua}_2}
+\def\g{\frak g}
+\def\n{\frak n}
+\def\hh{\frak h}
+\def\sltwo{\frak s\frak l _2 }
+\def\Z{\Bbb Z}
+\def\C{\Bbb C}
+\def\d{\partial}
+\def\i{\text{i}}
+\def\ghat{\hat\frak g}
+\def\gtwisted{\hat{\frak g}_{\gamma}}
+\def\gtilde{\tilde{\frak g}_{\gamma}}
+\def\Tr{\text{\rm Tr}}
+\def\l{\lambda}
+\def\I{I_{\l,\nu,-g}(V)}
+\def\z{\bold z}
+\def\Id{\text{Id}}
+\def\<{\langle}
+\def\>{\rangle}
+\def\o{\otimes}
+\def\e{\varepsilon}
+\def\RE{\text{Re}}
+\def\Ug{U_q({\frak g})}
+\def\Id{\text{Id}}
+\def\End{\text{End}}
+\def\gg{\tilde\g}
+\def\b{\frak b}
+\def\S{\Cal S}
+\def\L{\Lambda}
+\def\tl{\tilde\lambda}
+
+\topmatter
+\title Lecture II-5: The Bose-Fermi correspondence and its applications
+\endtitle
+\author {\rm {\bf Edward Witten} }\endauthor
+\endtopmatter
+
+\centerline{Notes by Pavel Etingof and David Kazhdan}
+
+{\bf 5.1. 2-dimensional gauge theories with fermions.}
+
+Today we will consider 2-dimensional gauge theories with fermions. 
+We will work with Euclidean Lagrangians. 
+
+In 2 dimensions, the two spinor representations $S_+,S_-$ are 1-dimensional
+and complex. They are 
+defined by the formula $\theta\to e^{\pm i\theta/2}$, $\theta\in 
+[0,4\pi)$, where $\theta$ is the parameter on $Spin(2)$.  
+
+Let $\Sigma$ be a Riemann surface with a specified Spin structure.
+Then $S_+,S_-$ define holomorphic line bundles on $\Sigma$, which
+are called the Spin bundles, and denoted by the same letter. 
+We have $S_+S_-=\C$, and $S_+^2=T\Sigma,S_-^2=T^*\Sigma$. 
+Sections of $\Pi S_-$ (respectively, $\Pi S_+$) will be called left 
+(respectively, right) moving fermions, by analogy with the 
+Minkowski picture.
+  
+We denote by $D_+:S_-\to S_+$, $D_-: S_+\to S_-$ the corresponding 
+Dirac operators in Spin bundles. 
+
+We will do gauge theory with gauge group $G$ (a compact Lie group).
+Let $E_L,E_R$ be orthogonal, unimodular representations of $G$. 
+Let $P$  be a principal G-bundle on $\Sigma$, and let $E_R,E_L$ 
+denote the orthogonal vector bundles associated to 
+the representations $E_R,E_L$.  
+Let $\overrightarrow{\psi_+},\overrightarrow{\psi_-}$ 
+be sections of the bundles $E_R\o S_+$, $E_L\o S_-$. 
+
+The Lagrangian of a 2-dimensional gauge theory with fermions is
+$$
+\Cal L=\int d^2x\left(\frac{1}{4e^2}|*F_A|^2+\frac{1}{4\pi}
+\overrightarrow{\psi_+}(D_-^A)\overrightarrow{\psi_+}
++\frac{1}{4\pi }\overrightarrow{\psi_-}(D_+^A)
+\overrightarrow{\psi_-}\right),\tag 5.1
+$$
+where $A$ is a connection in $P$, and $D_\pm^A$ are the corresponding 
+Dirac operators.
+
+In order for this theory to make sense quantum mechanically, the 
+representations $E_L,E_R$ have to satisfy an additional condition.
+To derive this condition, recall that the partition function of
+(5.1) is given by 
+$$
+Z=\int DA\int D\overrightarrow{\psi_+}D\overrightarrow{\psi_-}e^{-\Cal L}.\tag 5.2
+$$ 
+(in this integral, we sum over all topological types of principal bundles).
+The fermion integral is easy to compute: it equals
+$I_A=Pf(D_-^A|_{E_R})Pf(D_+^A|_{E_L})$, where $Pf$ denotes the Pfaffian. 
+The expression $I_A$ is a section of the Pfaffian line bundle
+$B=PF(D_-^A|_{E_R})PF(D_+^A|_{E_L})$ on the space of 
+gauge classes of connections. 
+In order for the A-integral to make sense, this expression 
+should be a function, i.e. the bundle $B$ has to be trivial.
+It is easy to show that this boils down to the condition
+$$
+\Tr(\rho_L(t)\rho_L(t'))=\Tr(\rho_R(t)\rho_R(t')),\tag 5.3
+$$
+where $t,t'\in \g$, where
+$\g$ is the Lie algebra of the Gauge group $G$, 
+and $\rho_{L,R}: \g\to SO(E_{L,R})$
+are the representation maps. If $G$ is simple, and $E_L,E_R$ are irreducible, 
+this condition means that the Casimirs of $E_L,E_R$ are the same.
+Equation (5.3) is called the condition of cancelations of anomalies. 
+
+Today we will consider a simple case: $G=U(1)$, and $E_L,E_R$ are irreducible 
+2-dimensional real representations. In this case (5.3) says that 
+$E_L,E_R$ are the same: $E_L=E_R=E$. We will take $E=\C$
+with metric $|z|^2$, and $U(1)$ acting
+by multiplication (but remember that tensor products 
+$S_\pm\o E$ are over $\R$). We 
+decompose $S_\pm\o E$ in  a direct sum of two 
+2-dimensional representations. Using this decomposition, we will write 
+ $\opsi_\pm=(\psi_\pm,\bar\psi_\pm)$, where
+for $z\in U(1)$ one has $z(\psi,\bar\psi)=(z\psi,\bar z\bar\psi)$.
+
+In the new notation, Lagrangian (5.1) has the form
+$$
+\Cal L=\int d^2x\left(\frac{1}{4e^2}|*F_A|^2+\frac{1}{2\pi}
+\bar\psi_+D_-^A\psi_+
++\frac{1}{2\pi}\bar\psi_-D_+^A\psi_-\right),\tag 5.4
+$$
+We can also add to this Lagrangian a topological term:
+$$
+\Cal L_\theta=\Cal L-\frac{i\theta}{2\pi}\int F,\tag 5.5
+$$
+and a mass term:
+$$
+\Cal L_{\theta,m}=\Cal L_\theta+\frac{m}{2\pi}\bar\psi_-\psi_++
+\frac{\bar m}{2\pi}\bar\psi_+\psi_-,
+\tag 5.6
+$$
+(here $m$ is complex). 
+
+{\bf 5.2. Chiral symmetry.} 
+
+Chiral symmetry is a $U(1)$-symmetry of the classical Lagrangian (5.4) or (5.5)
+given by
+$$
+\psi_+\to \psi_+,\psi_-\to e^{i\gamma}\psi_-.\tag 5.7
+$$
+This symmetry is violated by the mass term. However, even if there is
+no mass term, this symmetry may be violated quantum-mechanically, for the 
+following topological reason.
+
+Let the spacetime be a closed Riemann surface. Then 
+ under the chiral symmetry, 
+the ``measure'' $\mu=D\psi_-D\bar \psi_-$ transforms as  
+$\mu\to e^{i\gamma I}\mu$, where $I$ is the index of the operator $D_+^A:
+S_-\o_{\C} E\to S_+\o_\C E$. ``Proof'': $I=dim(\{\psi_-\})-dim
+(\{\bar\psi_-\})$; since $(\{\bar\psi_-\})=(\{\psi_-\})^*$, 
+we have $I=dim(\{\psi_-\})-dim
+(\{\psi_+\})=ind(D_+^A|_{S_+\o_{\C}E})$.
+
+It is known that the index $I$ equals $c_1(P)=\int \frac{F_A}{2\pi}$. 
+Thus, since the bundle $P$ may be nontrivial topologically, chiral symmetry 
+is violated in the quantum theory. 
+
+This effect is called an anomaly: a classical symmetry 
+does not hold quantum mechanically, because the measure is not invariant. 
+The difference with spontaneous symmetry breaking, discussed in 
+Lecture II-1, is that in the case of spontaneous symemtry breaking, 
+the classical symmetry does exist in the quantum theory, but cannot be
+realized. Unlike spontaneous symmetry breaking, 
+anomalies can occur even in 1 dimension. 
+
+Let us discuss the mechanism of chiral symmetry breaking in the language 
+of currents. Classically, chiral symmetry is generated by the current
+$$
+J_A=\bar\psi_-\psi_-\tag 5.8
+$$
+(this is a 1-form of type (0,1)),
+which is of course conserved: $dJ_A=0$. 
+Quantum mechanically, this differential equation 
+may be deformed: $dJ_A=\O$, where $\O$ is some operator
+with values in 2-forms on the surface. 
+It is not hard to show by listing all possible operators
+that there is only one operator 
+(up to a factor) that can arise: it is the curvature operator $F$. 
+Namely, it is enough to show that $dJ_A$ is a functional of $F$, which can 
+be seen by considering Feynman diagrams.  
+Thus, $dJ_A=\alpha F$, where $\alpha$ is a constant, and the previous 
+topological computation shows that $\alpha=1/2\pi$. 
+
+Now consider Lagrangian (5.5), which depends on the theta-angle. 
+The thing we learn from the above index computation is that the value of
+the correlation functions 
+defined by the path integral with Lagrangian (5.5) depend on $\theta$
+in a very trivial way. 
+Namely, if $\O_i$ are any operators such that $\prod_i \O_i\to e^{in\gamma}
+\prod_i \O_i$ under chiral symmetry, then all nontrivial contributions 
+to the correlator $\<\prod \O_i\>$ are from bundles $P$ with $c_1=n$, so 
+this correlator has the form $e^{in\theta}\<\prod O_i\>_0$, where 
+$\<\prod O_i\>_0$ is $\theta$-independent. For example, 
+$\<\psi_-\psi_+^*\>=Ce^{i\theta}$, where $C$ is theta-independent. 
+
+If instead of (5.5) we consider Lagrangian (5.6) with the mass term, 
+then this argument shows that 
+$$
+\<\prod \O_i\>(m,\theta)=
+e^{in\theta}\<\prod \O_i\>_0(\tilde m),\tag 5.9
+$$
+where $\tilde m=me^{-i\theta}$. Thus, the really important parameter 
+of the theory is $\tilde m$, which we will write as $m_*e^{-i\theta_*}$,
+$m_*\ge 0$. Our goal in this lecture to study this theory 
+as a function of $\tilde m$. 
+
+{\bf 5.3. Behavior of 2-dimensional gauge theory with massive fermions}
+
+Now we will describe the behavior of the theory defined by 
+Lagrangian (5.6), and later will justify this conclusion. 
+
+First of all,  we will see that for large $m_*$ (i.e. $m_*>>e$) 
+the theory is similar to the 2-dimensional gauge theory with 
+massive bosons, considered in the previous lecture. In particular, it has
+a mass gap. It also has a unique vacuum for $\theta\ne \pi$, and 
+two of them for $\theta=\pi$. The 
+discrete symmetry of reversal of space
+orientation ($t\to t,x\to -x$), which acts by $m_*\to m_*$, 
+$\theta_*\to -\theta_*$, is broken on the negative real axis
+(far away from $0$), but not on positive real axis.   
+
+Next, we will show that for $\tilde m=0$ the theory is in fact free,
+i.e. becomes a free massive theory after a change of variables.
+Thus the theory has a unique vacuum and a mass gap for small $m_*$
+(i.e. for $m_*<<e$).  
+
+Unfortunately, we do not know for sure what happens in the region $m_*\sim e$. 
+The most natural thing would be
+that the cut in the plane of $m_*$, representing points with symmetry 
+breaking which starts at $-\infty$, ends at some point $-m_c$,
+$m_c=e/\l$, and $\l$ is  dimensionless. 
+At $\tilde m=-m_c$, the theory should have no mass gap (since it is a point 
+of transition from two vacua to one vacuum).
+
+This is what is in fact believed. Furthermore, there is a conjecture 
+that the theory at the critical value $\tilde m=-m_c$ is in fact conformal, 
+and isomorphic to the theory of a free neutral fermion. 
+
+{\bf 5.4. Heavy fermions.}
+
+In this section we will study the case $m_*>>e$. In this case we can regard 
+our theory as a perturbation of a theory with $e=0$ with perturbation 
+parameter $\l=e/m_*$. At $\l=0$, we have a direct product of a 2-dimenisonal
+pure gauge theory (which is free), and a free theory of massive 
+fermions (to be safe here, we should introduce $B=A/e$; this makes sense, as 
+for $e=0$, only the trivial $U(1)$-bundle contributes to the path integral). 
+
+It turns out that the situation here is similar to the bosonic case.
+Namely, the small $e$ perturbation of the free theory for $e=0$ is singular. 
+This means, the space of states 
+of the deformed theory is actually smaller
+than that of the undeformed theory. More precisely, confinement of 
+fermions takes place: the only allowed states 
+(for $\theta\ne \pi$) are 
+states of total charge $0$ (here the charge of $\psi_\pm$ is 
+$1$ and of $\bar\psi_\pm$ is $-1$, and $\theta\in [0,2\pi)$). 
+In particular, the fermions can 
+only exist in pairs, quadruples, and so on, and a single fermion cannot 
+exist.   
+
+Like in the bosonic case, the theory has a mass gap
+by deformation argument (the fact that the deformation is singular
+does not invalidate this argument, since the Hilbert space does not 
+increase but only becomes smaller). More precisely, we have 
+one realization for $\theta\ne \pi$, and two of them for $\theta=\pi$
+(as in the pure gauge theory), and any realization has a mass gap.
+
+
+{\bf 5.5. Bose-Fermi correspondence.}
+
+Before studying the case of light fermions, we will consider Bose-Fermi 
+correpondence, which will be useful in studying the case of small $m_*$. 
+
+Consider two 2-dimensional free field theories
+
+1. The fermionic theory defined by the Lagrangian
+$$
+\Cal L_f=\frac{1}{2\pi}
+\int d^2x(\bar\psi_-D_+\bar \psi_-+\bar\psi_+D_-\bar\psi_+).
+\tag 5.10
+$$
+
+2. The bosonic theory defined by the Lagrangian 
+$$
+\Cal L_b=\frac{1}{4\pi R^2}\int d^2x |d\phi|^2,\tag 5.11
+$$
+
+These two theories are conformal (both classically and quantum-mechanically),
+and have Virasoro central charge 1. So we can suspect there may be some 
+connection between them. And indeed, such a connection exists, and 
+it is called the Bose-Fermi correspondence. 
+
+{\bf Remark.} Conformal field theories with small central charge are very 
+scarce. For instance, for $c<1$ they are completely classified
+by Friedan, Qiu, Shenker (Ref ???). The answer is that there is no continuous 
+parameters, and the theory is almost completely determined by $c$,
+which can take only a discrete sequence of values. For $c=1$, such a 
+classification is unavailable, but very few examples are known, and 
+all of them have a construction in terms of a free Bose field. 
+
+Let us now take a look at the bosonic theory (5.11). 
+As we remember from Lecture II-1, in order for this theory to make sense, 
+$\phi$ has to be angle-valued, i.e. take values in the circle
+$\R/2\pi \Z$. The constant $R$ in the Lagrangian has the meaning 
+of the radius of this circle.
+ 
+{\bf Remark.} We always model the target circle as $\R/2\pi \Z$, 
+but consider various Riemannian metrics on it, which are parametrized 
+by values of the radius $R$.
+ 
+Recall from Lecture II-1 that the Hilbert space 
+of this theory (in its unique realization)
+is of the form $\Cal H_b=\oplus_{k\in \Bbb Z}
+(F_b\o F_b^*)_k$, where $F_b$ is the bosonic Fock space. The operator algebra 
+$A_b$ of the theory is generated by the 
+derivatives of $\phi$ (but not $\phi$ itself), 
+and $:e^{in\phi}:$ (for brevity in the future we will drop 
+the colons). Operator product expansion is given by 
+formula (3.9) of Lecture 3 in the fall, where $D(x-y)=-R^2\ln|x-y|$.
+The action of $A_b$ in $\Cal H_b$:
+Derivatives of $\phi$ do not change $k$, and 
+$:e^{in\phi}:$ maps $(F_b\o F_b^*)_k$ to $(F_b\o F_b^*)_{k+n}$. 
+  
+Now consider the theory (5.12). The Hilbert space of this theory is
+$\Cal H_f=
+F_f\o F_f^*$, where $F_f$ is generated from the vacuum by holomorphic 
+operators $\psi_+,\bar\psi_+$, and $F_f^*$ is generated from the vacuum 
+by $\psi_-,\bar\psi_-$. The operator algebra $A_f$ is generated 
+by $\psi_+,\bar\psi_+, \psi_-,\bar\psi_-$, 
+with the standard OPE of the free theory. 
+  
+Consider more closely the operator $:e^{in\phi}:$ 
+for $n\in \Z$. As we know
+(Lecture 3 in the fall, Lecture II-1), 
+this operator has holomorphic dimension
+$n^2R^2/4$ and antiholomorphic dimension $n^2R^2/4$
+(the total of $n^2R^2/2$, as we saw in Lecture 3 in the fall). 
+
+Classically, the operator $e^{in\phi}$ 
+locally factors as a product of 
+a holomorphic one and an antiholomorphic one: 
+$e^{in\phi}=e^{in\phi_+}e^{in\phi_-}$, where $\phi=\phi_++\phi_-$, and
+$\d_-\phi_+=\d_+\phi_-=0$. (Of course, here $\phi_+,\phi_-$ are defined only 
+up to adding a constant). There is no analogs of $e^{in\phi_\pm}$ in our 
+operator algebra $A_b$. However, imagine for a second that the
+operators $e^{in\phi_\pm}$ make sense. Then we will find 
+from the OPE for $e^{i\phi}$ 
+that $e^{i\phi_+}$ has holomorphic dimension $R^2/4$ and antiholomorphic 
+dimension $0$, and 
+$$
+\gather
+\<e^{i\phi_+(x_1)}...e^{i\phi_+(x_n)}
+e^{-i\phi_+(y_1)}...e^{-i\phi_+(y_n)}\>=\\
+\frac{\prod_{1\le i<j\le n}
+(x_i-x_j)^{R^2/2}\prod_{1\le i<j\le n}
+(y_i-y_j)^{R^2/2}}{\prod_{1\le i,j\le n} (x_i-y_j)^{R^2/2}}.\tag 5.12
+\endgather
+$$
+where $x_i,y_j$ are viewed as complex numbers. 
+{}From this formula it is clear that in order for 
+$e^{i\phi_+}$ to make any sense, we need 
+$R^2/2\in \Bbb Z$, so that the function on the R.H.S. of (5.12) 
+is single-valued. Similarly, in order for $e^{in\phi_+}$ to make sense, 
+$n^2R^2/2$ has to be an integer. 
+
+Let us consider the simplest case where $e^{in\phi_+}$ can make sense, 
+i.e. $R=\sqrt{2}$. In this case, we have
+$$
+\<e^{i\phi_+(x_1)}...e^{i\phi_+(x_n)}
+e^{-i\phi_+(y_1)}...e^{-i\phi_+(y_n)}\>=\frac{\prod_{1\le i<j\le n}
+(x_i-x_j)\prod_{1\le i<j\le n}
+(y_i-y_j)}{\prod_{1\le i,j\le n} (x_i-y_j)}.\tag 5.13
+$$
+It is clear from (5.13) that 
+$e^{in\phi_+}$ behaves like a fermion when $n$ is odd, and like a boson 
+when $n$ is even. This makes us hope that it is at $R=\sqrt{2}$ that 
+our theory is related to the theory of fermions.  
+
+Let us see why this is indeed the case. 
+Let us compute the fermionic correlation function
+$\<\psi_+(x_1)...\psi_+(x_n)\bar\psi_+(y_1)...\bar\psi_+(y_n)\>$.
+Using Wick's formula, it is easy to find that 
+$$
+\<\psi_+(x_1)...\psi_+(x_n)\bar\psi_+(y_1)...\bar\psi_+(y_n)\>=
+\text{det}(\frac{1}{x_i-y_j}).\tag 5.14
+$$
+The coincidence of the right hand sides of (5.13),(5.14) is a famous 
+combinatorial identity, which follows from comparison of zeros and poles, 
+and asymptotics at infinity. 
+
+{\bf Remark.} In fact, the explicit form of (5.13),(5.14) is not relevant to 
+the proof of the fact that they are equal. What is relevant is only the 
+structure of zeros and poles, and the asymptotics at infinity, 
+which in both cases are obvious from the OPE. 
+
+Let $\hat A_b$ be the operator algebra generated 
+by $A_b$ and $e^{in\phi_\pm}$. Equalities (5.13),(5.14) show that 
+we have  a homomorphism $\xi: A_f\to \hat A_b$ defined by 
+$\xi(\psi_\pm)=e^{\pm i\phi_\pm}$, $\xi(\bar\psi_\pm)=e^{\mp i\phi_\pm}$, 
+which preserves expectation values. 
+
+Using the OPE, it is easy to find
+$$
+\xi(:\bar\psi_+\psi_+:)=\lim_{\e\to 0}\xi
+(\bar\psi_+(x+\e)\psi_+(x)-\frac{1}{\e})=
+\lim_{\e\to 0}(e^{-i\phi_+}(x+\e)e^{i\phi_+}(x)-\frac{1}{\e})=
+-i\d_+\phi.\tag 5.15
+$$
+Likewise, $\xi(:\bar\psi_-\psi_-:)=i\d_-\phi$. 
+Also, $\xi(\psi_+\bar\psi_-)=e^{i\phi}$, $\xi(\psi_-\bar\psi_+)=
+e^{-i\phi}$. 
+In fact, it is not difficult to see 
+that this homomorphism is an isomorphism. 
+
+At the level of Hilbert spaces, $\xi$ induces a 
+bigraded isomorphism $F_f\to F_b\o l_2(\Z)$
+(bidegree=(quantum scaling dimension, charge)), where
+the charge of $e^{i\phi_+}$ and the charge of $\psi_+$ 
+equal $1$. Writing the corresponding character formula, we obtain
+$$
+\frac{\sum_{n\in\Z}q^{n^2/2}z^n}{\prod_{n\ge 1}(1-q^n)}=
+\prod_{n\ge 1}(1+q^{n-1/2}z)(1+q^{n-1/2}z^{-1}),\tag 5.16
+$$
+which is the famous Jacobi triple product identity. 
+
+The correpondence $\xi$ is called the Bose-Fermi correspondence.
+
+{\bf Remark 1.} If the radius of the circle is not $\sqrt{2}$, but $1$, then 
+the operator $e^{i\phi_+}$ is meaningless, as its 2-point function 
+would be $(x-y)^{-1/2}$, which is not single-valued. However, the operator
+$e^{2i\phi}$ is defined, and its 2-point function is $\frac{1}{(x-y)^2}$. 
+This indicates that $e^{2i\phi}$ behaves like a current of some symmetry. 
+And indeed, it turns out that the corresponding model is equivalent to 
+the $\widehat{SU(2)}$-WZW model with Kac-Moody central charge 1, 
+so it has an $SU(2)$-symmetry. In fact, the Fourier components 
+of the operators 
+$e^{\pm 2i\phi_+}$ and $\d_+\phi$ generate the left-moving $\widehat{SU(2)}$, 
+and the  Fourier components 
+of the operators 
+$e^{\pm 2i\phi_-}$ and $\d_-\phi$ generate the right-moving $\widehat{SU(2)}$.
+  
+{\bf Remark 2.}
+In fact, the Bose-Fermi correspondence is true not only locally (at the level 
+of operators), but also globally (at the level of path integral). Namely, 
+for any Riemann surface $\Sigma$ one has the identity of partition functions
+$$
+\int D\phi\ e^{-\frac{1}{8\pi}\int |d\phi|^2}=
+\sum_{\e}
+\int D\psi_+D\bar\psi_+D\psi_-D\bar\psi_- e^{-\Cal L_f(\psi)},\tag 5.17
+$$
+where $\Cal L_f$ is the Lagrangian given by (5.10), and $\e$ runs over spin 
+structures on $\Sigma$ (the same spin structure is taken for $\psi_+$ and 
+$\psi_-$). There is a similar identity for correlation 
+functions of operators, if the correspondence between operators is made
+as explained above.   
+
+{\bf 5.6. Bose-Fermi correspondence for nonlinear theories.}
+
+We have established a correspondence between two free theories -- the 
+theory of a boson and the theory of fermions. A remarkable fact is
+that this correspondence generalizes to the case when the Lagrangian 
+of one or both of the theories is not free. Consider examples of such 
+situations.  
+
+1. Recall that under our correspondence $\Cal L_f\to \Cal L_b(\sqrt{2})$, 
+where $\Cal L_b(R)$ is given by (5.11). Since
+$\xi(\bar\psi_\pm\psi_\pm)=\mp i \d_\pm \phi$, we 
+find
+$$
+\Cal L_f+\frac{1}{2\pi}\int d^2x(g\bar\psi_+\psi_+\bar\psi_-\psi_-)\to 
+\Cal L_b(\sqrt{2}(1+ g)^{-1/2}).\tag 5.18
+$$ 
+This shows that, to our surprise, the theory with the Lagrangian
+$\Cal L_f+\frac{1}{2\pi}\int d^2x(g\bar\psi_+\psi_+\bar\psi_-\psi_-)$ is free. 
+In particular, its $\beta$-function is zero. This is obvious when 
+the theory is described in Bose variables, but not obvious 
+in Fermi variables.  
+
+2. On the other hand, consider the theory of free massive 
+fermions, with the Lagrangian 
+$\Cal L_f+\frac{1}{2\pi}\int d^2x(m\bar\psi_-\psi_++\bar m\bar\psi_+\psi_-)$. 
+Using the fact that $\xi(\bar\psi_\pm\psi_\mp)=-e^{\mp i\phi}$, we
+get that under $\xi$, this free Lagrangian goes to
+$$
+\Cal L_b(\sqrt{2})-\frac{1}{2\pi}
+\int d^2x(me^{i\phi}+\bar me^{-i\phi}).\tag 5.19
+$$   
+So we get another surprising fact that the nonlinear theory defined by 
+(5.19) is in fact free. 
+
+{\bf Remark.} It may appear that the second term in (5.19) has a wrong 
+scaling dimension. This is not the case, because the 
+operator $e^{\pm i\phi}$ has anomalous dimension 1. More precisely, 
+(5.19) does not fix a theory but fixes a family of theories 
+depending on a scale $\mu$ of momenta, which is introduced when the operators
+$e^{i\phi}$ are renormalized. This scale enters in front of the 
+corresponding term in the Lagrangian and cancels the discrepancy in 
+dimensions. 
+
+Using the symmetry $\phi\to \phi+\theta$
+ we can reduce (5.19) to the case of real $m$. In this case,
+(5.19) looks like
+$$
+\Cal L_b(\sqrt{2})-\frac{m}{\pi}\int d^2x \text{cos}\phi.\tag 5.20
+$$   
+Thus,  
+the classical equation of motion is $\Delta\phi=-4 m \text{sin} \phi$. 
+This equation is called the sine-Gordon equation, and it 
+is a well-known completely integrable soliton equation. 
+
+Now consider The Lagrangian
+$$
+\Cal L_b(R)-\frac{m}{\pi}\int d^2x \text{cos}\phi.\tag 5.21
+$$
+This Lagrangian is proportional to (5.20), 
+with $m'=mR^2/2$, so classically the two Lagrangians 
+are equivalent. However, quantum mechanically, this is not the case, 
+as the scale of Lagrangian is now relevant. In fact, the theory now 
+essentially depends on $R$. If $R=\sqrt{2}$, the theory is free, 
+but for a general $R$ it is not. The map $\xi$ shows that for a general 
+$R$ the theory is equivalent to the fermionic theory with the Lagrangian
+$$
+\Cal L_f+\int d^2x(m\bar\psi_-\psi_++m\bar\psi_+\psi_-+ 
+g\bar\psi_+\psi_+\bar\psi_-\psi_-),\tag 5.22
+$$
+where $R=\sqrt{2}(1+g)^{-1/2}$. 
+
+As we mentioned, 
+the theory described by the Lagrangian (5.21)
+is not free for $R\ne \sqrt{2}$. However, it is solvable, in the sense
+that its S-matrix can be computed explicitly. This computation and the 
+result are similar to the computation of Lecture II-3, for the sigma-model 
+into the sphere. Solvability for this theory for large $R$ 
+(i.e. in the classical limit) is related to the complete 
+integrability of the sin-gordon equation at the classical level. 
+
+Now we want to apply the Bose-Fermi correspondence to gauge theory. 
+Consider the Lagrangian $\Cal L_{\theta,m}$ given by (5.6).
+Define
+$$
+\Cal L^f_{\theta,m}=\Cal L_{\theta,m}+\frac{1}{2\pi}\int d^2x g\bar\psi_+ 
+\psi_+\bar\psi_-\psi_-.\tag 5.23 
+$$
+Let us rewrite it in Bose variables. Then we will get 
+the Lagrangian 
+$$
+\gather
+\Cal L^b_{\theta,m}=\\
+\int d^2x\left(
+\frac{1+ g}{8\pi}|d\phi|^2-\frac{m}{2\pi}e^{i\phi}-\frac{\bar m}{2\pi}
+ e^{-i\phi}+
+A_+(\frac{i\d_-\phi}{2\pi})+A_-(\frac{-i\d_+\phi}{2\pi})
++\frac{|*F|^2}{4e^2}-\frac{i\theta}{2\pi} F
+\right).\tag 5.24\endgather
+$$
+
+For simplicity we assume that $\phi$ is a homotopically trivial map. 
+(It is easy to generalize everything to the homotopically nontrivial case). 
+Then the integral $\int (A_-\d_+\phi-A_+\d_-\phi)$ can be taken by parts, 
+and it equals $\int \phi(\d_-A_+-\d_+A_-)$, where $\phi$ is now understood 
+as a lifting of the original $\phi$ to a map $\Sigma\to \R$. 
+The expression $\d_-A_+-\d_+A_-$ equals to the curvature $F$, so 
+(5.24) is simplified:
+$$
+\gather
+\Cal L^b_{\theta,m}=\\
+\int d^2x\left(
+\frac{1+ g}{8\pi}|d\phi|^2+\frac{m}{2\pi}e^{i\phi}+\frac{\bar m}{2\pi}
+ e^{-i\phi}
++\frac{|*F|^2}{4e^2}-\frac{i(\phi+\theta)}{2\pi} F
+\right).\tag 5.25\endgather
+$$
+
+{}From this equation it is clear that when $m=0$, the theory is 
+free, and there is no essential 
+$\theta$-dependence. This is the first thing we 
+promised to show. Now, for $m\ne 0$, by changing $\phi$ to $\phi+\theta$
+we find that theta can be absorbed in $m$.  
+
+Let us now see what happens for $m\ne 0$. It follows from 
+Lecture II-4 that 
+for an external field $\phi(x)$  
+$$
+\int DA\ e^{\frac{i}{2\pi}\int \phi F_A-\frac{1}{4e^2}\int |*F_A|^2}=
+Ce^{-\frac{e^2}{2\pi}\int d^2x\min_n(n-\frac{\phi(x)}{2\pi})^2},\tag 5.26 
+$$
+
+Therefore, the effective Lagrangian for $\phi$ for the Lagrangian (5.25) 
+is
+$$
+\gather
+\Cal L_{eff}^{\theta_*,m_*}=\\
+\int d^2x\left(
+\frac{1+ g}{8\pi}|d\phi|^2-\frac{m_*}{\pi}\text{cos}(\phi-\theta_*)+
+\frac{e^2}{2\pi}\min_n(n-\frac{\phi}{2\pi})^2
+\right).\tag 5.27\endgather
+$$
+
+{}From this formula, it is seen, that the theory has a mass gap for 
+small $m_*$: the potential 
+$$
+U(\phi)=-\frac{m_*}{\pi}\text{cos}(\phi-\theta_*)
++\frac{e^2}{2\pi}\min_n(n-\frac{\phi}{2\pi})^2 \tag 5.28
+$$
+has a unique global minimum (modulo $2\pi$) with positive second derivative. 
+This is the case for all $m_*$ if $\theta\ne \pi$. However, if $\theta=\pi$ 
+and $m_*$ grows from $0$ to $\infty$, the global minimum at 
+$\phi=0$ keeps flattening, and at some point splits in two symmetric 
+minima, when the second derivative becomes zero. This should indicate that 
+starting at some finite value of $e/m_*$ there should be symmetry breaking.
+Of course, this proves nothing, because (5.28) is not the quantum
+effective potential 
+for our system (it is the potential only classically). However, we hope 
+that the true effective potential behaves similarly, and the picture is 
+qualitatively the same. 
+
+For more on this model, see S.Coleman's article in Annals of Physics, 
+vol. 101, p. 239-267 (1976). 
+
+\end
+
+
+Let $J_0$ be the operator $\bar\psi_-\psi_-+\bar\psi_+\psi_+$ 
+with valuus in 1-forms on the surface. This operator is called
+``the charge density'' operator, and it is the current for the 
+diagonal $U(1)$ symmetry acting on fermions. This current is conserved, 
+and moreover by Gauss's law it is proportional to the derivative of the 
+field strength $*F$:
+$$
+\frac{1}{e^2}d*F=J_0.\tag  5.8
+$$
+(One can easily see that Gauss' law survives quantum mechanically, 
+under suitable renormalization of the operators). 
+
+Integrating this differential equation, we find
+$$
+\frac{1}{e^2}(*F(\infty,t)-*F(-\infty,t))=
+\int_{\infty}^{\infty}J_0(x,t)dx\tag 5.9
+$$
+(here, as you might guess, we are working in Minkowski signature). 
+Denote the right hand side of (5.9) by $Q$. This is the operator of total 
+charge, and it is time-independent. We have commutation relations
+$[Q,\psi_\pm]=\psi_\pm,[Q,\bar\psi_\pm]=-\psi_\pm$, so 
+$\psi_\pm$ have charge 1, and $\bar\psi_\pm$ have charge $-1$. 
+
+Now we can see confinement: for $\theta\ne \pm \pi$, 
+any state has total charge zero. 
+This follows from the fact that even classically, total energy 
+of any nonzero-charge configuration minus total energy 
+of the vacuum is infinite. 
+

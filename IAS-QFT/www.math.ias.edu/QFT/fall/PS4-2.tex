@@ -1,0 +1,390 @@
+%From: Pierre Deligne <deligne@math.ias.edu>
+%Date: Mon, 25 Nov 1996 15:08:25 -0500
+%Subject: Set 4, No. 2
+
+
+\documentclass[12pt,leqno]{article}
+\usepackage{amsthm,amsbsy,amsfonts,amssymb,amsmath,amscd}
+\usepackage{latexsym}
+\usepackage{fontenc}
+\usepackage[mathscr]{euscript}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.5in}
+\setlength{\topmargin}{0pt}
+\setlength{\oddsidemargin}{0pt}
+\setlength{\evensidemargin}{0pt}
+\setlength{\headheight}{0pt}
+\setlength{\headsep}{0pt}
+
+%\hoffset=-1.75 true cm
+\font\fiverm=cmr5
+
+\input{pictex.tex}
+
+\DeclareMathAlphabet{\scrb}{U}{eus}{b}{n}%for bold script letters
+
+
+\newcommand{\dbA}{{\mathbb{A}}} %Blackboard Bold
+\newcommand{\dbB}{{\mathbb{B}}}
+\newcommand{\dbC}{{\mathbb{C}}}
+\newcommand{\dbD}{{\mathbb{D}}}
+\newcommand{\dbQ}{{\mathbb{Q}}}  
+\newcommand{\dbR}{{\mathbb{R}}}
+
+\newcommand{\grA}{{\mathfrak{A}}}  %Gothic or German
+\newcommand{\grB}{{\mathfrak{B}}}
+\newcommand{\grC}{{\mathfrak{C}}} 
+\newcommand{\grD}{{\mathfrak{D}}}
+\newcommand{\grG}{{\mathfrak{G}}} 
+
+\newcommand{\bfA}{{\mathbf A}}   %Bold
+\newcommand{\bfB}{{\mathbf B}}
+\newcommand{\bfC}{{\mathbf C}} 
+\newcommand{\bfD}{{\mathbf D}}
+
+\newcommand{\ScrA}{{\mathscr{A}}} %Script 
+\newcommand{\ScrB}{{\mathscr{B}}}
+\newcommand{\ScrC}{{\mathscr{C}}} 
+\newcommand{\ScrL}{{\mathscr{L}}} 
+\newcommand{\ScrS}{{\mathscr{S}}}
+
+
+%\newcommand{\bfscrA}{{\scrb{A}}} %for bold script letters
+%\newcommand{\bfscrB}{{\scrb{B}}}
+%\newcommand{\bfscrC}{{\scrb{C}}} 
+%\newcommand{\bfscrD}{{\scrb{D}}}
+
+
+%\renewcommand{\baselinestretch}{1.5}
+
+
+\theoremstyle{plain}
+{\theorembodyfont{}\newtheorem{thm}{Theorem}}
+\newtheorem{prop}{Proposition}
+\newtheorem{lem}{Lemma}
+\newtheorem{cor}{Corollary}
+\theoremstyle{remark}
+{\theorembodyfont{\rmfamily} \newtheorem*{Rem}{\bf Remark}}
+%\renewcommand{\theRem}{}
+
+
+\newcommand{\Le}{{{\mathchoice{\,{\scriptstyle\le}\,}
+  {\,{\scriptstyle\le}\,}
+  {\,{\scriptscriptstyle\le}\,}{\,{\scriptscriptstyle\le}\,}}}}
+\newcommand{\Ge}{{{\mathchoice{\,{\scriptstyle\ge}\,}
+  {\,{\scriptstyle\ge}\,}
+  {\,{\scriptscriptstyle\ge}\,}{\,{\scriptscriptstyle\ge}\,}}}}
+\newcommand{\Ln}{\text{\rm ln}}
+
+
+
+\font\boldtitlefont=cmb10 scaled\magstep1
+
+\newcommand{\dspace}{\lineskip=2pt
+     \baselineskip=18pt\lineskiplimit=0pt}
+\newcommand{\wedgeop}{\mathop{\wedge}\limits}
+\newcommand{\w}{{\mathchoice{\,{\scriptstyle\wedge}\,}
+  {{\scriptstyle\wedge}}
+  {{\scriptscriptstyle\wedge}}{{\scriptscriptstyle\wedge}}}}
+\newcommand{\vrulesub}[1]{\hbox{\vrule height7pt depth5pt\,}_{#1}}
+\newcommand{\mapright}[1]{\smash{\mathop{\,\longrightarrow\,}%
+     \limits^{#1}}}
+\newcommand{\plus}{{\sssize +}}
+\newcommand{\upvee}{{\sssize\vee}}
+
+\newcommand{\eps}{{\varepsilon}}
+\newcommand{\lam}{{\lambda}}
+\newcommand{\Lam}{{\Lambda}}
+\newcommand{\mynabla}{{\nabla\!}}
+
+\newcommand{\xtil}{\widetilde{x}}
+
+\newcommand{\Adot}{\Dot{A}}
+\newcommand{\Bdot}{\Dot{B}}
+\newcommand{\Xdot}{\Dot{X}}
+\newcommand{\xdot}{\Dot{x}}
+\newcommand{\psidot}{\Dot{\psi}}
+
+
+\newcommand{\GL}{\text{\rm GL}} 
+\newcommand{\Hom}{\text{\rm Hom}}
+\newcommand{\aff}{\text{\rm aff}} 
+\newcommand{\red}{\text{\rm red}}
+\newcommand{\Map}{\text{\rm Map}} 
+\newcommand{\Lie}{\text{\rm Lie}}
+\newcommand{\Diff}{\text{\rm Diff}} 
+\newcommand{\Vol}{\text{\rm Vol}}
+\newcommand{\Tr}{\text{\rm Tr}}
+
+\title{Witten's Problems, Set Four --- N$^{\text{o}}$. 2}
+\author{(solution written by D. Freed)}
+\date{}
+
+\overfullrule=5pt
+\begin{document}
+
+\maketitle
+
+\hbox to \hsize{\hrulefill}
+
+\bigskip
+\dspace
+For practice, we solve this problem using dimensional
+regularization.
+The dimensions of the fields and parameters are
+\begin{align*}
+[\phi] &=\tfrac{n-2}{2}\\
+[m] &=1\\
+[g] &=\tfrac{6-n}{2}
+\end{align*}
+Introduce a parameter $\mu$ with the dimension of mass and
+a dimensionless parameter $\lam$.
+Then the lagrangian density is
+$$
+\ScrL=\left\{\tfrac12\left(\vert d\phi\vert^2+m^2\phi^2\right)+
+\lam\mu^{\tfrac{6-n}{2}}\,\tfrac{\phi^3}{3!}\right\}d^nx\,\,.
+$$
+To order $\lam^3$ the $3$-point function is computed by
+the diagram shown.
+%\begin{figure}[htbp] 
+\begin{figure}[h]
+$$
+\vbox{\beginpicture
+\setcoordinatesystem units < .50cm, .50cm>
+\setlinear
+%
+% Fig ELLIPSE
+%
+\linethickness= 0.500pt
+\ellipticalarc axes ratio  1.905:1.905  360 degrees 
+	from 12.668 16.542 center at 10.763 16.542
+%
+% Fig POLYLINE object
+%
+\linethickness= 0.500pt
+\plot 12.351 17.494 13.938 18.605 /
+%
+% Fig POLYLINE object
+%
+\linethickness= 0.500pt
+\plot  9.144 17.558  7.620 18.542 /
+%
+% Fig POLYLINE object
+%
+\linethickness= 0.500pt
+\plot  8.255 18.129  8.509 17.939 /
+%
+% arrow head
+%
+\plot  8.268 18.040  8.509 17.939  8.344 18.142 /
+%
+%
+% Fig POLYLINE object
+%
+\linethickness= 0.500pt
+\plot 13.399 18.193 13.144 18.002 /
+%
+% arrow head
+%
+\plot 13.310 18.205 13.144 18.002 13.386 18.104 /
+%
+%
+% Fig POLYLINE object
+%
+\linethickness= 0.500pt
+\plot 10.446 18.383 10.636 18.415 /
+%
+% arrow head
+%
+\plot 10.396 18.311 10.636 18.415 10.375 18.436 /
+%
+%
+% Fig POLYLINE object
+%
+\linethickness= 0.500pt
+\plot 12.446 15.653 12.319 15.494 /
+%
+% arrow head
+%
+\plot 12.428 15.732 12.319 15.494 12.527 15.653 /
+%
+%
+% Fig POLYLINE object
+%
+\linethickness= 0.500pt
+\plot  9.366 15.272  9.271 15.431 /
+%
+% arrow head
+%
+\plot  9.456 15.245  9.271 15.431  9.347 15.180 /
+%
+%
+% Fig POLYLINE object
+%
+\linethickness= 0.500pt
+\putrule from 10.795 14.637 to 10.795 13.049
+%
+% Fig POLYLINE object
+%
+\linethickness= 0.500pt
+\putrule from 10.795 13.843 to 10.795 14.002
+%
+% arrow head
+%
+\plot 10.859 13.748 10.795 14.002 10.731 13.748 /
+%
+%
+% Fig TEXT object
+%
+\put{$\scriptstyle p_{_1}$} [lB] at  8.414 18.891
+%
+% Fig TEXT object
+%
+\put{$\scriptstyle p_{_2}$} [lB] at 12.795 18.860
+%
+% Fig TEXT object
+%
+\put{$\scriptstyle q+p_{_1}$} [lB] at 10.319 18.923
+%
+% Fig TEXT object
+%
+\put{$\scriptstyle q$} [lB] at  8.922 14.859
+%
+% Fig TEXT object
+%
+\put{$\scriptstyle -(p_{_1}+p_{_2})$} [lB] at 11.366 13.462
+%
+% Fig TEXT object
+%
+\put{$\scriptstyle q+p_{_1}+p_{_2}$} [lB] at 12.827 15.399
+\linethickness=0pt
+\putrectangle corners at  7.620 19.431 and 13.938 13.049
+\endpicture}
+$$
+\end{figure}
+Here we are working in momentum space and label the edges
+of the diagram with momenta.
+Applying the Feynman rules for  Euclidean space, we
+evaluate the diagram as
+$$
+\Gamma=-\lam^3\mu^{\frac32(6-n)}\int\tfrac{d^nq}{(2\pi)^n}
+\tfrac{1}{(q^2+m^2)((q+p_1)^2+m^2)((q+p_1+p_2)^2+m^2)}
+$$
+Now use Feynman parameters to rewrite the integral as
+\begin{align}
+\Gamma_n
+&=-\lam^3\mu^{\frac32(6-n)}\int\tfrac{d^nq}{(2\pi)^n}\int_0^1
+d\alpha\int_0^{1-\alpha}d\beta
+\tfrac{1}{[(1-\alpha-\beta)q^2+\alpha(q+p_1)^2+\beta
+  (q+p_1+p_2)^2+m^2]^3}\label{one}\\
+&=-\lam^3\mu^{\frac32(6-n)}\int_0^1d\alpha\int_0^{1-\alpha}d\beta
+\int\tfrac{d^nq}{(2\pi)^n}\tfrac{1}{[q^2+A^2]^3},\nonumber
+\end{align}
+where
+\begin{equation}
+A^2=m^2+\alpha(1-\alpha)p_1^2+\beta(1-\beta)(p_1+p_2)^2-
+2\alpha\beta p_1(p_1+p_2).  \label{two}
+\end{equation}
+the interchange of integrals is justified for $n$
+sufficiently small (here $n<6$).
+Note that we made a shift in the integration variable
+$q$.
+Now the rules for integrals in $n$ dimensions ($n$
+complex!) give
+\begin{equation}
+\begin{aligned}
+\int\tfrac{d^nq}{(2\pi)^n}\tfrac{1}{[q^2+a^2]^3}
+&=\tfrac{1}{(2\pi)^n}
+\tfrac{\pi^{n/2}}{\frac12\Gamma(n/2)}\int_0^\infty
+dr\,r^{n-1}\tfrac{1}{[r^2+A^2]^3}\\
+&=\tfrac{1}{2^{n-1}\pi^{n/2}\Gamma(n/2)}\cdot
+  \tfrac12\tfrac{\Gamma\left(\frac n2\right) \Gamma\left(
+3-\frac n2\right)}{\Gamma(3)}A^{n-6}\\
+&=\tfrac{\Gamma\left(3-\frac n2\right)}{2^{n+1}\pi^{n/2}}
+  A^{n-6}.
+\label{three}
+\end{aligned}
+\end{equation}
+Here $\frac{\pi^{n/2}}{\frac12\Gamma(n/2)}$ is the volume
+of the unit sphere in $n$ dimensions, and for any $N$, 
+\begin{equation*}
+\begin{align*}
+\int_0^\infty dr\,r^{n-1}\tfrac{1}{[r^2+A^2]^N}
+&=\int_0^\infty
+dr\,r^{n-1}\tfrac{1}{\Gamma(N)}\int_0^\infty
+dt\,e^{-(r^2+A^2)t}t^{N-1}\\
+&=\tfrac{A^{n-2N}}{\Gamma(N)}
+  \int_0^\infty \tfrac{dt}{t}\int_0^\infty
+ dr\,e^{-r^2t}r^{n-l}e^{-t}t^N\\
+&=\tfrac{A^{n-2N}}{2\Gamma(N)}\int_0^\infty
+   \tfrac{dt}{t} \int_0^\infty \tfrac{du}{u}
+  e^{-u}u^{\frac n2}e^{-t}t^{N-n/2}\\
+&=\tfrac12 \tfrac{\Gamma\left(\frac n2\right) \Gamma
+  (N-n/2)}{\Gamma(N)}A^{n-2N}\,\,.
+\end{align*}
+\end{equation*}
+The interchange of integrations is valid for $n$ small.
+Now (\ref{three}) is finite for $n<6$ and has a simple pole
+at $n=6$.
+Collecting (\ref{one}) and (\ref{three}), we find
+\begin{equation*}
+\begin{align*}
+\Gamma_n
+&=-\tfrac{\lam^3}{2^{n+1}\pi^{n/2}}\Gamma\left(\tfrac{6-n}{2}
+\right)\mu^{\frac32(6-n)}\int_0^1 d\alpha\int_0^{1-\alpha}
+d\beta A^{n-6}\\
+&=-\tfrac{\lam^3
+B_n}{2^{n+1}\pi^{n/2}}\mu^{\frac32(6-n)}\Gamma
+\left(\tfrac{6-n}{2}\right),
+\end{align*}
+\end{equation*}
+where
+$$
+B_n=\int_0^1 d\alpha\int_0^{1-\alpha}d\beta
+\left[m^2+\alpha(1-\alpha)p_1^2+\beta(1-\beta)(p_1+p_2)^2-2\alpha
+\beta p_1(p_1+p_2)\right]^{\frac{n-6}{2}}.
+$$
+Note $B_6=1/2$ and $B_n$ is a holomorphic function of $n$
+near $n=6$.
+Introduce $\eps=3-n/2$ and write
+$$
+\Gamma_n=-\lam^3\mu^\eps\left\{\tfrac{1}{2(4\pi)^3}
+\Gamma(\eps)(4\pi\mu^2)^\eps B_n\right\}
+$$
+and then expand around $\eps=0$:
+\begin{equation*}
+\begin{align*}
+&\Gamma_n=\\
+&-\lam^3\mu^\eps.\tfrac{1}{2(4\pi)^3}\left\{
+  \tfrac{1}{2\eps}-\tfrac{\gamma}{2}-\int_0^1\! d\alpha
+  \int_0^{1-\alpha}\!\!\! d\beta\,\Ln
+\left(\tfrac{m^2+\alpha(1-\alpha)p_1^2+\beta(1-\beta)(p_1+p_2)^2
+-2\alpha\beta
+p_1(p_1+p_2)}{4\pi\mu^2}\right)\right\}+O(\eps),
+\end{align*}
+\end{equation*}
+where $\gamma$ is Euler's constant.
+
+To renormalize for $n=6$, we introduce the new lagrangian
+density
+$$
+\ScrL'=\left\{\tfrac12\left(\vert d\phi\vert^2+m^2\phi^2\right)+
+\lam\left(1+\tfrac{\lam^2}{2(4\pi)^3}\,\tfrac{1}{6-n}\right)
+\mu^{\frac{6-n}{2}}\tfrac{\phi^3}{3!}\right\}d^nx\,\,.
+$$
+This introduces a diagram which cancels the pole in
+$\Gamma_n$ at $n=6$, and the new $3$-point function to one
+loop is the finite part of $\Gamma_n$ at $n=6$:
+$$
+\tfrac{\lam^3}{2(4\pi)^3}\left\{\tfrac{\gamma}{2}+\int_0^1
+ d\alpha \int_0^{1-\alpha}d\beta\Ln\left(
+\tfrac{m^2+\alpha(1-\alpha)p_1^2+\beta(1-\beta)(p_1+p_2)^2-2
+  \alpha\beta p_1(p_1+p_2)}{4\pi\mu^2}\right)\right\}\,\,.
+$$
+
+
+\end{document}
+
+
+
+

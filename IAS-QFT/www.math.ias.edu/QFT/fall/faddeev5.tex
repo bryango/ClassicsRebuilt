@@ -1,0 +1,597 @@
+%From: Lisa C Jeffrey <jeffrey@IAS.EDU>
+%Date: Wed, 27 Nov 1996 14:34:43 -0500
+%Subject: Faddeev Lecture 5
+
+\documentstyle[12pt]{article}
+\input amssym.def
+\input amssym.tex
+\newcommand{\Tr}{\,{\rm Tr}\,}
+\newcommand{\tr}{{\rm tr}\,}
+
+%L. Jeffrey preamble, 5 April 1996
+
+\newcommand{\nc}{\newcommand}
+
+\nc{\isq}{{i}}
+\newcommand{\colvec}[2]{\left  ( \begin{array}{cc} #1  \\
+     #2  \end{array} \right ) }
+
+%%%%%\newcommand{\Tr}{\,{\rm Tr}\,}
+\newcommand{\End}{\,{\rm End}\,}
+\newcommand{\Hom}{\,{\rm Hom}\,}
+
+\newcommand{\Ker}{ \,{\rm Ker} \,}
+
+\newcommand{\bla}{\phantom{bbbbb}}
+\newcommand{\onebl}{\phantom{a} }
+\newcommand{\eqdef}{\;\: {\stackrel{ {\rm def} }{=} } \;\:}
+\newcommand{\sign}{\: {\rm sign}\: }
+\newcommand{\sgn}{ \:{\rm sgn}\:}
+\newcommand{\half}{ {\frac{1}{2} } }
+\newcommand{\vol}{ \,{\rm vol}\, }
+
+
+% define abbreviations for most common commands
+%
+
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\beqst}{\begin{equation*}}
+\newcommand{\eeqst}{\end{equation*}}
+\newcommand{\barr}{\begin{array}}
+\newcommand{\earr}{\end{array}}
+\newcommand{\beqar}{\begin{eqnarray}}
+\newcommand{\eeqar}{\end{eqnarray}}
+\newtheorem{theorem}{Theorem}[section]
+%\newtheorem{conjecture}{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+%\newtheorem{problem}{Problem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{prop}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remit}[theorem]{Remark}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\newtheorem{example}[theorem]{Example}
+
+\newcommand{\matr}[4]{\left \lbrack \begin{array}{cc} #1 & #2 \\
+     #3 & #4 \end{array} \right \rbrack}
+
+
+
+\newenvironment{rem}{\begin{remit}\rm}{\end{remit}}
+
+
+
+
+% black board bold face
+%note \AA is already defined!
+\newcommand{\aff}{{ \Bbb A }}
+\newcommand{\RR}{{{\bf  R }}}
+\newcommand{\CC}{{{\bf  C }}}
+\nc{\FF}{ {\Bbb F} } 
+\newcommand{\ZZ}{{{\bf   Z }}}
+\newcommand{\PP}{ {\Bbb P } }
+\newcommand{\QQ}{{\Bbb Q }}
+\newcommand{\UU}{{\Bbb U }}
+
+
+
+
+
+
+
+
+%***************************
+
+
+
+
+%
+
+
+%
+
+
+%Replace greek letters by their roman equivalents with \
+%Slightly nonstandard:  theta is \t, tau is \ta, no omicron
+\def\a{\alpha}
+\def\b{\beta}
+\def\g{\gamma}
+\def\d{\delta}
+\def\e{\epsilon}
+\def\z{\zeta}
+\def\h{\eta}
+\def\t{\theta}
+%\def\i{\iota}
+\def\k{\kappa}
+\def\l{\lambda}
+\def\m{\mu}
+\def\n{\nu}
+\def\x{\xi}
+\def\p{\pi}
+\def\r{\rho}
+\def\s{\sigma}
+\def\ta{\tau}
+\def\u{\upsilon}
+\def\ph{\phi}
+\def\c{\chi}
+\def\ps{\psi}
+\def\o{\omega}
+
+\def\G{\Gamma}
+\def\D{\Delta}
+\def\T{\Theta}
+\def\L{\Lambda}
+\def\X{\Xi}
+\def\P{\Pi}
+\def\S{\Sigma}
+\def\U{\Upsilon}
+\def\Ph{\Phi}
+\def\Ps{\Psi}
+\def\O{\Omega}
+
+
+
+
+% calligraphic letters
+\newcommand{\calA}{{\mbox{$\cal A$}}}
+\newcommand{\calB}{{\mbox{$\cal B$}}}
+\newcommand{\calC}{{\mbox{$\cal C$}}}
+\newcommand{\calD}{{\mbox{$\cal D$}}}
+\newcommand{\calE}{{\mbox{$\cal E$}}}
+\newcommand{\calF}{{\mbox{$\cal F$}}}
+\newcommand{\calG}{{\mbox{$\cal G$}}}
+\newcommand{\calH}{{\mbox{$\cal H$}}}
+\newcommand{\calI}{{\mbox{$\cal I$}}}
+\newcommand{\calJ}{{\mbox{$\cal J$}}}
+\newcommand{\calK}{{\mbox{$\cal K$}}}
+\newcommand{\calL}{{\mbox{$\cal L$}}}
+\newcommand{\calM}{{\mbox{$\cal M$}}}
+\newcommand{\calN}{{\mbox{$\cal N$}}}
+\newcommand{\calO}{{\mbox{$\cal O$}}}
+\newcommand{\calP}{{\mbox{$\cal P$}}}
+\newcommand{\calQ}{{\mbox{$\cal Q$}}}
+\newcommand{\calR}{{\mbox{$\cal R$}}}
+\newcommand{\calS}{{\mbox{$\cal S$}}}
+\newcommand{\calT}{{\mbox{$\cal T$}}}
+\newcommand{\calU}{{\mbox{$\cal U$}}}
+\newcommand{\calV}{{\mbox{$\cal V$}}}
+\newcommand{\calW}{{\mbox{$\cal W$}}}
+\newcommand{\calX}{{\mbox{$\cal X$}}}
+\newcommand{\calY}{{\mbox{$\cal Y$}}}
+\newcommand{\calZ}{{\mbox{$\cal Z$}}}
+
+%% To load script letters:
+
+\font\teneusm=eusm10  \font\seveneusm=eusm7 
+\font\fiveeusm=eusm5 
+\newfam\eusmfam 
+\textfont\eusmfam=\teneusm 
+\scriptfont\eusmfam=\seveneusm 
+\scriptscriptfont\eusmfam=\fiveeusm 
+\def\Scr#1{{\fam\eusmfam\relax#1}}
+
+% Script letters
+\newcommand{\ScrA}{{\Scr A}} \newcommand{\ScrB}{{\Scr B}}
+\newcommand{\ScrC}{{\Scr C}} \newcommand{\ScrD}{{\Scr D}}
+\newcommand{\ScrE}{{\Scr E}} \newcommand{\ScrF}{{\Scr F}}
+\newcommand{\ScrG}{{\Scr G}} \newcommand{\ScrH}{{\Scr H}}
+\newcommand{\ScrI}{{\Scr I}} \newcommand{\ScrJ}{{\Scr J}}
+\newcommand{\ScrK}{{\Scr K}} \newcommand{\ScrL}{{\Scr L}}
+\newcommand{\ScrM}{{\Scr M}} \newcommand{\ScrN}{{\Scr N}}
+\newcommand{\ScrO}{{\Scr O}} \newcommand{\ScrP}{{\Scr P}}
+\newcommand{\ScrQ}{{\Scr Q}} \newcommand{\ScrR}{{\Scr R}}
+\newcommand{\ScrS}{{\Scr S}} \newcommand{\ScrT}{{\Scr T}}
+\newcommand{\ScrU}{{\Scr U}} \newcommand{\ScrV}{{\Scr V}}
+\newcommand{\ScrW}{{\Scr W}} \newcommand{\ScrX}{{\Scr X}}
+\newcommand{\ScrY}{{\Scr Y}} \newcommand{\ScrZ}{{\Scr Z}}
+
+%German (Faktur) letters
+
+\newcommand{\grA}{{\frak A}}
+
+
+
+\def\eps{\varepsilon}
+
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.1in}
+\setlength{\evensidemargin}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\topmargin}{-.75in}
+\setlength{\parskip}{0.3\baselineskip}
+
+%\renewcommand{\theequation}{\thesection.\arabic{equation}}
+%\newcommand{\renorm}{{ \setcounter{equation}{0} }}
+
+\newcommand{\Le}{{{\mathchoice{\,{\scriptstyle\le}\,}
+  {\,{\scriptstyle\le}\,}
+  {\,{\scriptscriptstyle\le}\,}{\,{\scriptscriptstyle\le}\,}}}}
+\newcommand{\Ge}{{{\mathchoice{\,{\scriptstyle\ge}\,}
+  {\,{\scriptstyle\ge}\,}
+  {\,{\scriptscriptstyle\ge}\,}{\,{\scriptscriptstyle\ge}\,}}}}
+
+
+%\renewcommand{\baselinestretch}{1.5}
+
+
+%more newcommands
+\nc{\bra}{  < }
+\nc{\ket}{ > }
+%\nc{\isq}{ { \sqrt{-1} } }
+%\nc{\isq}{{ i }}
+%\nc{\hbar}{{ h}}
+\nc{\triang}{ { \bigtriangleup} }
+
+\nc{\astar}{{ a^*}}
+\nc{\hata}{ { \hat{a} }}
+\nc{\hatastar}{{ \hat{\astar} }}
+\nc{\normfac}{{\frac{1}{\sqrt{2 \omega} } }}
+
+\begin{document}
+
+\title{Lecture 5:\\
+Quantization of Yang-Mills fields}
+\author{Ludwig Faddeev}
+\date{12  November  1996}
+
+\maketitle
+
+%\renorm
+\nc{\dphi}{\tilde{\phi}} 
+\nc{\vac}{{ \sl v}}
+\nc{\basvec}[1]{\Phi_{#1} (\astar) } 
+\nc{\basvecn}{\basvec{n} } 
+\nc{\kn}{(\vec{k})_{n}} 
+\nc{\vk}{\vec{k} }
+
+\nc{\vx}{\vec{x} }
+
+This lecture treats Yang-Mills theory, an analogue 
+of the field theory for electromagnetism (Example 2 of Lecture 4) in which
+the gauge  group  $C^\infty (\RR^4, U(1))$ is replaced by $\calG = C^\infty
+(\RR^4, G)$ where $G$ is a nonabelian compact Lie group. 
+In this case Feynman discovered the disturbing
+fact that if one attempts to treat  this theory 
+following the approaches which worked in the case of the electromagnetic
+field, one obtains an   S-matrix which is 
+ not unitary. 
+Here we shall see that the reason for this is a difference of the 
+geometry of the gauge orbits, which are linear in the electromagnetic
+case but nonlinear for the case of the nonabelian gauge field. 
+
+\nc{\lieg}{ {\rm Lie} (G) }
+
+We begin much as in our treatment of electromagnetism in Lecture 4.
+As in electromagnetism, we have a field $A_\mu(\vx, t) $
+which is a vector representation of the Lorentz group (in other words, 
+it is a one-form on $V = \RR^4$); however each component $A_0, $ $A_1, 
+$ $A_2, $ $A_3$ now takes values in the Lie algebra  ${\rm Lie}(G)$, 
+so the one-form $A = A_\mu dx^\mu$ 
+ takes values in ${\rm Lie}(G)$. (More generally it could
+be taken to have values in an arbitrary unitary  representation of $G$, 
+but for simplicity we take the representation to be ${\rm Lie}(G)$ endowed
+with the adjoint representation.)
+An element $g$ of the gauge group $\calG = C^\infty (\RR^4, G)$ acts on $A$ 
+by the transformation 
+\beq A \mapsto A^g \eqdef g A g^{-1} + (\partial_\mu g) g^{-1} \eeq
+The curvature is given by 
+\beq \label{curv} F = d A + A \wedge A, \eeq
+where if $A = \sum_a X_a \otimes \alpha_a$ for a basis 
+$X_a$ of $\lieg$ and a collection of one-forms $\alpha_a$, we 
+define
+ $$A \wedge A = \sum_{a,b} [X_a, X_b] \alpha_a \wedge \alpha_b. $$
+The curvature (which is a $\lieg$-valued two-form on $\RR^4$) 
+transforms under the gauge transformation $g$ as 
+\beq F \mapsto F^g = g F g^{-1}. \eeq
+As in the abelian case, the Lagrangian is
+\beq \calL = \frac{1}{\epsilon^2} \Tr (F^2), \eeq
+where if $F = \sum_a X_a \otimes \beta_a$ for a collection of two-forms
+$\beta_a$, we define
+\beq \Tr (F^2) =\sum_{a,b} < X_a, X_b> \beta_a \wedge * \beta_b. \eeq
+(A symmetric quadratic form on the space of two-forms on $\RR^4$ is 
+defined in the same way, and is also denoted by $\Tr$.) 
+Here, we have introduced an ${\rm Ad}$-invariant inner product $ < \cdot, 
+\cdot > $ on 
+$\lieg$, which in the case of matrix groups is given by the trace
+$\Tr$. We have also introduced a coupling constant $\epsilon$. 
+
+This Lagrangian contains terms of the form $(d A)^2$ as well 
+as    terms cubic in $A$ (of order $1$ in derivatives) and terms 
+quartic in $A$ (with no derivatives). There are thus two types of vertices,
+a 3-valent  vertex (corresponding to the term cubic in $A$) and a 4-valent
+vertex (corresponding to the term quartic in $A$). By studying the 
+corresponding perturbation expansion, Feynman found that the S-matrix 
+was not unitary. 
+
+To proceed further, we need to find the physical variables. We write the 
+Lagrangian in a form that is first order in derivatives, by the device
+introduced in Lecture 4 where we regarded $A$ and $F$ as independent
+variables. Thus we see that the Lagrangian is (suppressing the overall
+multiplicative constant $1/\epsilon^2$ for the moment)
+\beq \calL = \Tr (dA + A^2, F) - \half \Tr F^2. \eeq
+As in Lecture 4, we have ten variables
+$$ A_0, ~~A_k, ~~F_{0k} = E_k, ~~F_{ik} = \epsilon_{ikl} H_l. $$
+Exactly as in Lecture 4, the variables $A_k$ and $E_k$ are canonically 
+conjugate, while the $F_{ik}$ (or equivalently the $H_l$) are excludable
+variables and $A_0$ is a Lagrange multiplier multiplying a constraint
+\nc{\gauss}{\frak{G} }
+\beq \label{gauss}
+\gauss = \nabla_k E^k = \partial_k E^k + [A_k, E_k]. \eeq
+As in Lecture 4 we obtain an  equation of motion  ({\em Gauss's Law}) 
+$$ \gauss = 0;  $$
+the difference from the case of abelian $G$ (electromagnetism) is the
+presence in (\ref{gauss}) of the quadratic term 
+$[A_k, E_k]$. 
+
+
+\nc{\vy}{\vec{y} } 
+
+
+
+The canonical commutation relations are
+\beq \left \{  A_k^a (\vx), E_b^k(\vy)  \right \} = 
+\delta_l^a \delta_b^l \delta^{(3) } (\vx - \vy). \eeq
+Here, $a$ and $b$ index a basis $\{ X_a\} $ of the Lie algebra $\lieg$ and 
+we have decomposed 
+$A_k = \sum_a A_k^a \otimes X_a $ for functions $A_k^a$ which form a 
+one-form $A^a$ on $\RR^3$. 
+
+
+We introduce a source term $\gauss(\eta) = \int \Tr
+ \gauss(\vx) \eta(\vx) d\vx $
+(where $\eta : \RR^3 \to \lieg$ is an element of the Lie algebra of the
+gauge group). 
+We find that the Poisson brackets of the source terms are 
+\beq \left \{ \gauss(\eta_1), \gauss(\eta_2)  \right \} 
+= \gauss ([\eta_1, \eta_2]), \eeq
+in other words the map $\eta \mapsto 
+\gauss(\eta)$  (which may be regarded as the 
+momentum map for the gauge group action) is a homomorphism of Lie algebras 
+from 
+the Lie algebra of the gauge group (equipped with the Lie bracket
+induced by $[, ]$) to the Lie algebra of functions (equipped with the 
+Poisson bracket). Equivalently, the constraints are a representation
+of the Lie algebra of the gauge group. The constraint
+$\gauss$ generates gauge transformations through the Poisson bracket:
+\beq \left 
+\{ \gauss(\eta), A_k(x) \right \} = 
+\partial_k \eta + [A_k, \eta ]. \eeq
+The Hamiltonian is 
+$$ \calH = \half (E^2 + H^2). $$
+As in the case of electromagnetism, the variables $F_{ik}$ are excludable. 
+Likewise as in the case of electromagnetism, the constraint equations are
+first class: we must set $\gauss = 0 $ and also the 
+Poisson brackets $\{ \gauss, f \}  $ (for arbitrary
+functions $f$) must all be set to zero.
+
+The observables  the reduced system are thus functionals
+\beq \phi(A, E)|_{\gauss = 0 } \eeq 
+subject to the condition 
+\beq \{ \gauss, \phi \} = 0 . \eeq
+
+Reduction and solving constraints break the manifest Lorentz 
+invariance. So if we wish to retain this invariance, we must learn
+how to describe dynamics (the functional integral) without explicitly
+solving the constraints. 
+To understand how to treat a simpler case,  
+let us return to a finite dimensional phase space $\Gamma $,
+ and recall
+the treatment of this situation as at the beginning of Lecture 4. 
+We assume we have a Lagrangian 
+\beq l = \sum_{i = 1}^N p_i dq_i - H + \sum_{\alpha = 1}^M 
+\lambda_{\alpha} \varphi^\alpha;  \eeq
+here we assume that $M  < N $ (so that 
+the dimension $2(N-M)$ of the reduced phase
+space is positive).  To parametrize the physical phase 
+space, we take 
+\beq \tilde{\Gamma} = \{(p, q) \in \Gamma: \varphi^\alpha(p,q) = 0 
+~\mbox{for all} ~\alpha \}/\calG \eeq
+where $\calG$ is the gauge group generated by the constraints
+$\varphi^\alpha$ through the Poisson bracket. (In the Yang-Mills example
+the action of the constraints via
+Poisson bracket  actually  does exponentiate to  a group action,
+though this is not always true more generally.) 
+To parametrize the physical degrees of freedom we introduce a slice 
+\beq \label{slice} \chi_\beta (p,q) = 0 , ~~\alpha = 1, \dots, M \eeq
+which intersects each orbit of $\calG$ exactly once: 
+the slice (\ref{slice}) is called a {\em subsidiary condition}. 
+We choose the subsidiary conditions $\chi_\alpha$ to satisfy
+\beq \{ \chi_\alpha, \chi_\beta \} = 0 . \eeq
+In order to obtain a nondegenerate symplectic structure, we require 
+also that 
+\beq \det (\{ \varphi_\alpha, \chi^\beta \} ) \ne 0. \eeq
+Imposing the subsidiary conditions (\ref{slice}) and also 
+the constraint equations $$ \varphi_\alpha (p, q) = 0 $$ 
+we find a smaller phase space $\Gamma^*$. We may 
+take local coordinates on the big
+phase space $\Gamma $ given by 
+$$ q = (\chi^\alpha, q^*) $$ and 
+$$ p = (p^\alpha, p^*); $$ 
+here $p^*$ and $q^*$ are the 
+physical variables, while 
+$p^\alpha $ and $\chi^\alpha$ must be excluded. 
+Let us write the Liouville measure as 
+\beq \label{meas} 
+dp^* dq^* = \delta(\chi) \delta (\varphi) \det (\{ \varphi, 
+\chi \} ) dp dq;  \eeq
+if we were able to solve 
+\beq\varphi(p,q) = 0
+ \Longleftrightarrow p^\alpha = p^\alpha (p^*, q^*) \eeq
+this would correspond to the transformation of the delta function 
+under a change of variables, 
+\beq \delta (\varphi) = (\partial \varphi/\partial p )
+\delta (p - p (p^*, q^*) )
+\eeq
+which would give rise to the determinant in  (\ref{meas}). 
+
+We additionally make use of the fact that 
+$$ \delta (\varphi) =  \int e^{i \lambda \varphi} d\lambda,  $$
+so that we can omit the delta function $\delta(\varphi)$ if the 
+action already contains a term $\sum_\alpha\lambda_\alpha  \varphi^\alpha$. 
+Thus the functional integral giving rise to the evolution operator is 
+\beq \int \exp \frac{i}{\hbar} \int (p \dot{q} - H - \lambda \varphi) dt 
+\prod_t \frac{ dp(t) dq(t) d\lambda(t)}
+{ 2 \pi \hbar}  \delta (\chi) \det (\{ \chi, \varphi \} ) . \eeq
+To pass to the $S$-matrix only the {\em physical} degrees of freedom are
+fixed at the asymptotic values of $t$, while the Lagrange multiplier and
+the values of the constraints are allowed to vary freely. 
+Returning to the Yang-Mills case, we get the path integral 
+\beq \label{pint} \int \exp \left \{ \frac{i}{\hbar} 
+\int_{\RR^4}  (  (\partial_0 A) E - \half (E^2 + H^2) 
+- A_0 (\nabla\cdot E) ) dx  \right \}   \prod_t \prod_{\vx} 
+\delta (\partial_k A_k) (\det M_C)  d A_\mu d E_k ,  \eeq
+where 
+as our subsidiary condition we have taken the {\em Coulomb gauge} condition,
+\beq \label{subcon} \partial_k A_k = 0 , \eeq
+and have introduced the operator $M_C$ on $\lieg$-valued functions
+ on $\RR^3$, defined by 
+\beq \label{mcoul} M_C  \eta = - \partial_k \partial_k \eta  
+- [A_k, \eta]. \eeq
+
+The only objects appearing in   (\ref{pint}) which are not Lorentz invariant
+are $\det M_C$ and $\partial_k A_k$. 
+
+
+We can explicitly integrate in (\ref{pint}) over the variables 
+$E$ to get 
+\beq  \int \exp \left \{ \frac{i}{\hbar} \int_{\RR^4}
+ (F_{\mu \nu})^2  ) dx 
+\right \} 
+\prod_x d A_\mu(x) \prod_t \prod_{\vx}   \delta (\partial_k A_k) 
+\det M_C (t)  . \eeq
+We interpret this expression as an integral over $\calA/\calG$, where
+$\calA$ is a space of connections and $\calG$ is a gauge group. 
+ Our subsidiary condition 
+(\ref{subcon}) is the choice of a point on the orbit of $\calG$: 
+the determinant $\det M_C$ gives the correct measure. 
+
+To check that we have indeed obtained the correct measure on the space
+of $\calG$ orbits reduced from the measure $\prod_{x} \prod_\mu dA_\mu(x)$, 
+it suffices to check that
+\beq \label{meas2} 
+\int \delta (\partial_k A_k^g)  \prod_x \prod_{g \in \calG}  
+d g_x|_{\partial_k A_k = 0 } 
+= \frac{1}{\det M_C}; \eeq
+here $dg_x $ is the Haar measure on $G$ at the point $g_x $. 
+We can linearize the action of $\calG$ so that infinitesimally
+we obtain 
+$$ \int \delta  (M_C \eta) 
+\prod_x  d\eta_x = \frac{1}{\det M_C} $$
+where we have defined the operator $M_C $ by (\ref{mcoul}).
+After this understanding we can proceed to choose a different 
+subsidiary condition, in particular a manifestly Lorentz invariant
+one 
+\beq\partial_\mu A_\mu  = c,\eeq
+where $c$ is an arbitrary scalar function. The reduced measure is 
+given by 
+$$ \det M_L \prod_x 
+ \delta (\partial_\mu A_\mu - c(x) ) \prod dA_\mu(x)  $$ 
+where $\det M_L$ is obtained by averaging the 
+$\delta$-function 
+$$ \frac{1}{\det  M_L   } = \int 
+ \delta (\partial_\mu A_\mu^g  - c(x) ) \prod_x  dg(x). $$ 
+Here,  we have  defined the operator $M_L$ (compare the 
+definition  (\ref{mcoul}) of $M_C$) by 
+\beq \label{mlor}
+ M_L \eta = \square \eta   + \partial_\mu [A_\mu, \eta ].\eeq
+
+The path integral  now becomes 
+\beq \label{astnotes} \int \exp  \left \{ \frac{i}{\hbar} 
+\int (F_{\mu \nu}^2 dx ) \right \} 
+\prod_x \delta (\partial_\mu A_\mu - c) (\det M_L) 
+\prod_x d A_\mu(x). \eeq
+
+The final step is to average over $c(x)$. 
+Ultimately the expression (\ref{astnotes}) becomes
+\beq \label{pathint2}
+\int \exp \left \{  \frac{i}{\hbar}  \int_{\RR^4} (F_{\mu \nu})^2  d x 
+\right \} 
+\prod_x \delta (\partial_\mu A_\mu(x)  - c) 
+(\det M_L) \prod d A_\mu(x)  \prod_c e^{i \alpha \int c^2 d x} \eeq
+\beq = \int \exp\left \{  \frac{i}{\hbar} \int_{\RR^4}
+  (F_{\mu \nu})^2  + \alpha 
+(\partial_\mu A_\mu)^2  )dx \right \}  \prod_x  (\det M_C) \prod d A_\mu(x).
+ \eeq
+Here, $\alpha$ is an arbitrary constant. 
+The integrand in  (\ref{pathint2}) is not local (because the determinant
+of the operator $M_C$ is not local): to transform it into a local 
+expression we introduce Grassmann variables $c = 
+(c_1, \dots, c_r)  $ and $\bar{c} = (\bar{c}_1, \dots, 
+\bar{c}_r),  $ 
+in other words
+odd variables in a Grassmann algebra, satisfying the anticommutation 
+relations
+$$ c_i \bar{c}_j +  \bar{c}_j c_i = 0,  $$
+$$ c_i^2 = \bar{c_i}^2  = 0 $$ 
+ and recall
+the identity
+\beq \label{grassdet} \det A = \int e^{\bar{c}  \frak{A}  c} d c^* dc \eeq
+where $A$ is an endomorphism of a vector space of dimension $r$ 
+ and we have introduced the corresponding
+endomorphism of a vector space of dimension $2r$,
+\beq \frak{A} = \matr{0}{A}{A}{0}. \eeq
+We now replace the Grassmann variables $c$ and $\bar{c}$ (which took 
+values in a finite dimensional vector space) by Grassmann variables 
+$c$ and $\bar{c}$ taking values in the infinite
+dimensional space of  functions on $\RR^4$. 
+Rewriting the determinant in 
+(\ref{pathint2}) by formally applying
+(\ref{grassdet}),  (\ref{pathint2}) is transformed into the form
+\beq \label{pathint3} \int \exp \left \{ \frac{i}{\hbar \epsilon^2} 
+\Tr \int_{\RR^4} \Bigl (  (F_{\mu \nu})^2 + \alpha (\partial_\mu A^\mu)^2 + 
+(\partial_\mu \bar{c}, \partial_\mu c + [A_\mu, c] \Bigr )dx  \right \}
+\prod dA_\mu d c d \bar{c}. \eeq
+We have now  transformed the path integral into an integral of the 
+form $\int \exp (i {\rm Action} ) $, where the action is 
+local and has a nondegenerate quadratic form, and we integrate over all
+fields (which are assumed to satisfy appropriate boundary conditions). 
+Here $c$ and $\bar{c} $ are  fields which should be regarded as carrying
+charge (because of the terms mixing $A_\mu$,  $c$ and $\bar{c}$ ) and which 
+should be regarded as fermionic (because  they are  odd elements in a 
+superalgebra or Grassmann algebra).
+The expression (\ref{pathint3}) is the generating functional 
+from which the $S$-matrix of Yang-Mills theory may be extracted.
+There are still the 3-valent and 4-valent vertices in which 
+all the lines emanating from the vertex correspond to the propagator
+of $A$. Additionally we now have another
+ 3-valent vertex with one $A$ propagator, one $c$ propagator 
+and one $\bar{c}$ propagator: the $c$ and $\bar{c} $ propagators
+may be distinguished by writing an arrow on the 
+$c$ propagator pointing toward the vertex and an arrow on the 
+$\bar{c}$ propagator pointing away from the vertex. 
+
+Near a classical solution of the equations of motion for the 
+Yang-Mills fields, the correction terms entering the perturbation
+expansion are proportional to ${F_{\mu \nu}^2}$ 
+(recall that a term of the form ${F_{\mu \nu}^2}$  appeared in our
+original Lagrangian).
+The term $\frac{1}{\epsilon^2} (F_{\mu \nu}^2 ) $ in the Lagrangian
+is renormalized to 
+$$(\frac{1}{\epsilon^2} + a {\rm ln} (\Lambda)  )
+ F_{\mu \nu}^2   $$ for an appropriate cutoff parameter
+$\Lambda$ and a suitable constant $a$. We notice that $a$ must be negative
+in order for the renormalization procedure to succeed:
+this property is referred to in the literature as ``asymptotic freedom''.
+
+
+
+
+
+
+ 
+
+%%%%%\begin{thebibliography}{99}
+%%%%%\bibitem{FP} L.D. Faddeev, V.N. Popov, {\em Phys. Lett.}
+%%{\bf B25}, 30, 1967.
+
+%%%%%\bibitem{FS} 
+%L.D. Faddeev, A.A.  Slavnov, {\em Gauge Fields: An Introduction 
+%to Quantum Theory}, Addison-Wesley (Frontiers in Physics vol. 83), (second 
+%edition), 1991. 
+%\end{thebibliography}
+
+
+\end{document}
+

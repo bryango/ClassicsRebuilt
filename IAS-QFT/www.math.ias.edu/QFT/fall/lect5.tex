@@ -1,0 +1,657 @@
+
+%% This is an AMS-TeX file.
+%% The command to compile it is: amstex <file>
+%%
+\input amstex
+\documentstyle{amsppt}
+\loadeusm
+\magnification=1200
+\pagewidth{6.5 true in}
+\pageheight{8.9 true in}
+
+\catcode`\@=11
+\def\logo@{}
+\catcode`\@=13
+
+\NoRunningHeads
+
+\font\boldtitlefont=cmb10 scaled\magstep1
+\font\bigboldtitlefont=cmb10 scaled\magstep2
+
+\def\dspace{\lineskip=2pt\baselineskip=18pt\lineskiplimit=0pt}
+
+%\def\plus{{\sssize +}}
+%\def\oplusop{\operatornamewithlimits{\oplus}\limits}
+\def\otimesop{\operatornamewithlimits{\otimes}\limits}
+%\def\Piop{\operatornamewithlimits{\Pi}\limits}
+%\def\w{{\mathchoice{\,{\scriptstyle\wedge}\,}
+%  {{\scriptstyle\wedge}}
+%  {{\scriptscriptstyle\wedge}}{{\scriptscriptstyle\wedge}}}}
+\def\Le{{\mathchoice{\,{\scriptstyle\le}\,}
+  {\,{\scriptstyle\le}\,}
+  {\,{\scriptscriptstyle\le}\,}{\,{\scriptscriptstyle\le}\,}}}
+\def\Ge{{\mathchoice{\,{\scriptstyle\ge}\,}
+  {\,{\scriptstyle\ge}\,}
+  {\,{\scriptscriptstyle\ge}\,}{\,{\scriptscriptstyle\ge}\,}}}
+\def\vrulesub#1{\hbox{\,\vrule height7pt depth5pt\,}_{#1}}
+%\def\rightsubsetarrow#1{\subset\kern-6.50pt\lower2.85pt
+%     \hbox to #1pt{\rightarrowfill}}
+%\def\mapright#1{\smash{\mathop{\,\longrightarrow\,}\limits^{#1}}}
+%\def\arrowsim{\smash{\mathop{\to}\limits^{\lower1.5pt
+%  \hbox{$\scriptstyle\sim$}}}}
+\def\[[{[\![}
+\def\]]{]\!]}
+
+\def\eps{{\varepsilon}}
+\def\kap{{\kappa}}
+
+\def\ln{{\ell n}}
+
+
+%\def\pvec{\vec{p}}
+\def\udot{\Dot{u}}
+
+%\def\Ebar{\overline{E}}
+%\def\fbar{\overline{f}}
+%\def\gbar{\overline{g}}
+%\def\Sbar{\overline{S}}
+%\def\Vbar{\overline{V}}
+%\def\scrRbar{\overline{\scrR}}
+%\def\scrSbar{\overline{\scrS}}
+%\def\grSbar{\overline{\grS}}
+
+\def\Phat{\widehat{P}}
+
+%\def\xtil{\widetilde{x}}
+\def\btil{\tilde{b}}
+\def\stil{\tilde{s}}
+\def\Ptil{\widetilde{P}}
+%\def\scrStil{\widetilde{\scrS}}
+%\def\scrTtil{\widetilde{\scrT}}
+%\def\rhotil{\tilde{\rho}}
+\def\mutil{\widetilde{\mu}}
+\def\tautil{\widetilde{\tau}}
+\def\Ltil{\widetilde{L}}
+\def\grbtil{\tilde{\grb}}
+\def\btil{\tilde{b}}
+
+%\def\Stab{\text{\rm Stab}} \def\det{\text{\rm det}}
+%\def\space{\text{\rm space}} \def\const{\text{\rm const}}
+%\def\Vbarspace{\overline{V}_{\space}}
+%\def\Vspace{V_{\space}} \def\Spec{\text{\rm Spec}}
+%\def\SO{\text{\rm SO}}  \def\tr{\text{\rm tr}}
+%\def\Spin{\text{\rm Spin}}
+\def\tr{\text{\rm tr}}
+\def\Aut{\text{\rm Aut}} \def\Hom{\text{\rm Hom}}
+\def\aut{\text{\rm aut}}
+\def\con{{\text{\rm con}}}
+%\def\Out{\text{\rm Out}}
+%\def\End{\text{\rm End}}
+%\def\supp{\text{\rm supp}}
+%\def\SU{\text{\rm SU}} \def\Lie{\text{\rm Lie}}
+%\def\SL{\text{\rm SL}} 
+\def\Sym{\text{\rm Sym}} \def\char{\text{\rm char}}
+\def\QFT{\text{\rm QFT}} \def\ex{\text{\rm ex}}
+\def\In{\text{\rm in}} \def\pr{\text{\rm pr}}
+\def\map{\text{\rm map}} \def\irr{\text{\rm irr}}
+\def\det{\text{\rm det}}
+
+\def\dbC{{\Bbb C}} 
+%\def\dbR{{\Bbb R}}
+%\def\dbZ{{\Bbb Z}} 
+
+\def\gr#1{{\fam\eufmfam\relax#1}}
+
+%Euler Fraktur letters (German)
+\def\grA{{\gr A}}	\def\gra{{\gr a}}
+\def\grB{{\gr B}}	\def\grb{{\gr b}}
+\def\grC{{\gr C}}	\def\grc{{\gr c}}
+\def\grD{{\gr D}}	\def\grd{{\gr d}}
+\def\grE{{\gr E}}	\def\gre{{\gr e}}
+\def\grF{{\gr F}}	\def\grf{{\gr f}}
+\def\grG{{\gr G}}	\def\grg{{\gr g}}
+\def\grH{{\gr H}}	\def\grh{{\gr h}}
+\def\grI{{\gr I}}	\def\gri{{\gr i}}
+\def\grJ{{\gr J}}	\def\grj{{\gr j}}
+\def\grK{{\gr K}}	\def\grk{{\gr k}}
+\def\grL{{\gr L}}	\def\grl{{\gr l}}
+\def\grM{{\gr M}}	\def\grm{{\gr m}}
+\def\grN{{\gr N}}	\def\grn{{\gr n}}
+\def\grO{{\gr O}}	\def\gro{{\gr o}}
+\def\grP{{\gr P}}	\def\grp{{\gr p}}
+\def\grQ{{\gr Q}}	\def\grq{{\gr q}}
+\def\grR{{\gr R}}	\def\grr{{\gr r}}
+\def\grS{{\gr S}}	\def\grs{{\gr s}}
+\def\grT{{\gr T}}	\def\grt{{\gr t}}
+\def\grU{{\gr U}}	\def\gru{{\gr u}}
+\def\grV{{\gr V}}	\def\grv{{\gr v}}
+\def\grW{{\gr W}}	\def\grw{{\gr w}}
+\def\grX{{\gr X}}	\def\grx{{\gr x}}
+\def\grY{{\gr Y}}	\def\gry{{\gr y}}
+\def\grZ{{\gr Z}}	\def\grz{{\gr z}}
+
+
+\def\scr#1{{\fam\eusmfam\relax#1}}
+
+\def\scrA{{\scr A}}   \def\scrB{{\scr B}}
+\def\scrC{{\scr C}}   \def\scrD{{\scr D}}
+\def\scrE{{\scr E}}   \def\scrF{{\scr F}}
+\def\scrG{{\scr G}}   \def\scrH{{\scr H}}
+\def\scrI{{\scr I}}   \def\scrJ{{\scr J}}
+\def\scrK{{\scr K}}   \def\scrL{{\scr L}}
+\def\scrM{{\scr M}}   \def\scrN{{\scr N}}
+\def\scrO{{\scr O}}   \def\scrP{{\scr P}}
+\def\scrQ{{\scr Q}}   \def\scrR{{\scr R}}
+\def\scrS{{\scr S}}   \def\scrT{{\scr T}}
+\def\scrU{{\scr U}}   \def\scrV{{\scr V}}
+\def\scrW{{\scr W}}   \def\scrX{{\scr X}}
+\def\scrY{{\scr Y}}   \def\scrZ{{\scr Z}}
+\def\hatP{{\widehat{P}}}
+\def\hatQ{{\widehat{Q}}}
+\def\Qhat{{\widehat{Q}}}
+\def\ten{\otimes}
+\def\hatd{{\hat{d}}}
+\NoBlackBoxes
+\document
+
+\centerline{\boldtitlefont Lecture 5.}
+
+\medskip
+\centerline{\bigboldtitlefont Feynman graphs}
+
+\bigskip
+\centerline{David Kazhdan}
+
+
+\dspace
+\bigskip\bigskip
+
+
+\subhead{5.1}{Feynman graph expansion}\endsubhead
+The technique of Feynman graphs allows one to write down an
+asymptotic series for functional integral of a $\QFT$ in a
+neighborhood of a free QFT (see Witten's lecture 1). 
+Nevertheless, the technique itself can be applied to a
+purely finite dimensional integral.
+In this lecture we will discuss this application only.
+
+Let $V$ be a finite dimensional real vector space, let $V'$
+be its dual.
+We will view elements of symmetric algebra $\Sym(V')$ as
+polynomial functions on $V$.
+We fix a nondegenerate positive definite quadratic form
+$b\in\Sym^2(V')$.
+Let $b^{-1}\in\Sym^2(V)$ be the corresponding quadratic form
+on $V'$.
+
+Let $\mu_0=e^{-b^{-1}/2}dv$ be the Gaussian measure on $V'$; we
+have $\scrF(\mu_0)=e^{-b/2}$.
+
+Let $P$ be a polynomial function on $V'$.
+We want to study the ``perturbed'' measure $\mu=e^{\eps P}\mu_0$.
+This is a well-defined measure if $\eps>0$, and $P$ is
+negative.
+
+
+We are going to write down an asymptotic expansion for the Fourier
+transform $\scrF(\mu)$.
+
+More precisely, we will obtain a formal Taylor series
+$\mutil \in \dbC [[V', \eps]]$ in the following way.
+
+Let $D(P)$ be the differential operator with constant
+coefficients on $V$ corresponding to $P$. More precisely, $D$ is a
+homomorphism of the algebra of polynomial functions on $V'$ 
+to the algebra of  differential operators with constant
+coefficients on $V$, such that $D(x)=i \partial /\partial x$ for $x \in V$. 
+
+We write:
+$$
+\scrF(e^{\eps P}\mu_0)=e^{\eps D(P)}(e^{-b/2})
+=\sum\limits_{n=0}^\infty \tfrac{1}{n!}\eps^n D(P)^n
+(e^{-b/2})\,\,.
+$$
+This is obviously an element of $\dbC [[V', \eps]]$.
+
+
+
+This formal power series is connected with the original
+analytical problem via the notion of Borel summability.
+However in this lecture we will be interested in the formal
+expression only.
+
+It is notationally convenient to perform ``Wick rotation''. 
+So we consider the series
+$$
+\mutil (v)= \scrF(e^{\eps P}\mu_0)(iv)
+=\sum\limits_{n=0}^\infty \tfrac{1}{n!}\eps^n \Phat^n
+(e^{b/2})\,\,.
+$$
+where $\Phat = D(P(-ix))$, so that $\widehat x = \partial /\partial x$.
+
+The series $\mutil$  is defined for arbitrary nondegenerate quadratic form
+ $b$, and a polynomial function $P$ over any field of
+characteristic $0$. (The condition on $b$ to be positive definite
+is of course irrelevant in this setting.)
+
+
+
+
+There exists a  combinatorial way to ``compute''
+$\mutil$.
+To describe it we first fix some notations.
+
+By a graph we will mean the data consisting of: \
+two sets $\Gamma_1$ (edges) and $\Gamma_0$ (vertices) and a
+map $j\colon\,\Gamma_1\to\Gamma_0\times\Gamma_0$.
+We also assume an involution $\sigma$ of $\Gamma_1$ is fixed
+such that $j(\gamma)=(x,y)\Leftrightarrow j(\sigma(\gamma))=
+(y,x)$, and $\sigma$ has no fixed points.
+We will only consider graphs with no isolated vertices (i.e.
+$\pr_1\circ j$ is surjective).
+An edge of a graph is an element of $\Gamma_1/\sigma$.
+For a vertex $\gamma_0\in\Gamma_0$ we define its ``star'' as
+$\Gamma(\gamma_0)=\{\gamma_1\in\Gamma_1\vert \;
+\pr_2\circ j(\gamma_1)=\gamma_0\}$.
+The set of external vertices is $\Gamma_{\ex}=\{\gamma_0\in
+\Gamma_0\vert \#(\Gamma(\gamma_0))=1\}$, and the set of
+inner vertices is $\Gamma_{\In}=\Gamma_0-\Gamma_{\ex}$.
+We put: \ $L(\gamma_0)=\Sym^{\#(\Gamma(\gamma_0))}(V)$;
+$\Ltil(\Gamma)=\otimesop_{\gamma_0\in\Gamma_0}L(\gamma_0)$;
+$L(\Gamma)=\otimesop_{\gamma\in\Gamma_{\In}}L(\gamma)$.
+
+Assume that for any $\gamma_0\in\Gamma_0$ we are given an
+element $s(\gamma_0)\in L(\gamma_0)$.
+We then take $\ell_s=\otimesop_{\gamma_0\in\Gamma_0}
+s(\gamma_0)\in\Ltil(\Gamma)$.
+For any map $\stil\colon\,\Gamma_0\to V$ we define
+$s_{\stil}(\gamma_0)=
+\left(\stil(\gamma_0)\right)^{\#(\Gamma(\gamma_0))}\in
+L(\gamma_0)$, and denote $\ell_{\stil}=\ell_{s_{\stil}}$.
+
+\proclaim{Lemma 1}
+There exists a unique linear function $\tautil_b^\Gamma$ on
+$\Ltil(\Gamma)$ such that for any map $\stil\colon\,\Gamma_0\to
+V$ we have:
+$$
+\tautil_b^\Gamma(\ell_{\stil})=
+\tfrac{1}{\#\Aut(\Gamma)}\prod\limits_{\gamma_1\in\Gamma_1/\sigma}
+b\left(\stil(\pr_1\circ j(\gamma_1)),\stil(\pr_2\circ
+j(\gamma_1))\right)\,\,.
+$$
+\endproclaim
+
+\medskip\noindent
+Proof is clear.
+
+We can view $\tautil_b^\Gamma$ as a map
+$\tau_b^\Gamma\colon\,L(\Gamma)\to\Sym^{\#\Gamma_{\ex}}(V')$.
+
+\example{Example}
+$\Gamma_n$ is a disjoint union of $n$ copies of the graph: \
+$\bullet\!\raise1.85pt
+\hbox to 20pt{\hrulefill}\!\bullet\,\,\,$.
+(The nonoriented edge on the picture corresponds to two
+elements of $\Gamma_1$ permuted by $\sigma$.)
+Then $L(\Gamma)=\dbC$  canonically, because
+$\Gamma_{\In}$ is empty.
+We have:
+$$
+\tau_b^{\Gamma_n}(1)=\tfrac{b^n}{2^n n!}\,\,.
+$$
+
+Note the equality $\sum\limits_{n=0}^\infty
+\tau_b^{\Gamma_n}(1)
+=e^{b/2}$ where $\Gamma _0$ is the empty graph.
+
+
+Let $P$, $\mutil$ be as above.
+We write $P=\sum\limits_{n\Ge 2}
+P_n /n!$ where $P_n$ 
+is homogeneous of degree $n$ (thus we assume for
+convenience that $P$ contains no constant or linear term).
+\endexample
+
+\proclaim{Theorem}
+We have an equality of formal series:
+$$
+\mutil=\biggl(\,\sum\limits_{\Gamma\in\grg}\eps^{\#\Gamma_{\In}}
+\tau_b^\Gamma(s_P)\biggr)   e^{b/2}           %\mutil_0
+$$
+Here $\grg$ is the set of isomorphism classes of graphs and
+$s_P(\gamma_0)=P_{\#\Gamma(\gamma_0)}$.
+\endproclaim
+
+\demo{Proof} [Another proof appears in \S 1.3 of Witten's lecture 1].
+ 
+The idea of the proof is as follows. We want
+to prove an equality between 
+two expressions, which are power series in $\eps$
+and in $P_n$'s. We will show
+that both the left hand side and the right hand side
+satisfy the same system of linear differential equations
+in $P_n$'s as
+variables, and then we will check
+that the initial conditions coincide.
+
+So, let $\Gamma$ be a graph and let $\lambda\subset \Gamma_{\ex}$,
+be such that $|\lambda|=n$.
+We denote by $\Gamma^{\lambda}$ the ``cone over $\lambda$''. 
+This means that
+$\Gamma^{\lambda}$ is a graph, such that $\Gamma_0^{\lambda}=
+\Gamma_0\cup \{*\} -\lambda$ and
+$\Gamma^{\lambda}_1=\Gamma_1-\{$all
+edges of $\Gamma$ with an end in $\lambda\}
+\cup\{$all edges from $*$ to vertices connected
+with $\lambda\}$.   (We add all edges connecting $*$
+to a vertex in $\lambda$, and then erase the vertices belonging
+to $\lambda$.)
+Assume now 
+that $n>1$. Then $*$ is an internal vertex of $\Gamma^{\lambda}$.
+
+{}For any $d\in S^n(V)$ and $s\in L(\Gamma)$ we define 
+$s_{\lambda}^d=d\ten s\in L(\Gamma^{\lambda})$.
+
+\proclaim{Lemma 2}
+For any $d\in S^n(V)$, $\Gamma\in\grg$ and $s\in L(\Gamma)$ we have
+%\eq{lemma}
+$$
+{\hatd\over n!}(\tau_b(\Gamma)(s))
+=\sum_{\lambda\subset\Gamma_{\ex},|\lambda| =n}
+\tau_b(\Gamma^{\lambda})(s_{\lambda}^d)
+$$
+%\end{equation}
+(Here $\hatd$ is the differential operator with constant 
+coefficients on $V$ corresponding\break
+to $d$.)
+\endproclaim
+
+Now we can prove the theorem. Let $l(P)$ denote the left hand side 
+ and let $r(P)$ be the right hand side of the
+equality. 
+We want to write down a certain system of differential equations
+in $P_n$'s as variables, 
+which will be satisfied by both sides. 
+It is easy to see from the definitions
+that $l(P)$ satisfies the system of equations
+$$
+{\partial l(P)\over\partial P_n}(Q)=(\eps{\Qhat}/ n!)l(P)
+$$
+where $Q$ is an arbitrary polynomial 
+of degree $n$ on $V'$ and $\Qhat$
+is the corresponding differential operator on $V$; 
+in the left hand side
+$Q$ is considered as a tangent vector to the space of polynomials
+of degree $n$.
+ 
+But now Lemma 2 tells us precisely that the right hand side of this
+expression is equal to ${\partial r(P)\over\partial P_n}(Q)$. 
+
+Therefore $l(P)$ and $r(P)$ satisfy the same system of differential
+equations. Let's now check the initial conditions. 
+By the definition, $l\vrulesub{P=0}=e^{b/2}$. 
+On the other hand, one also has $r\vrulesub{P=0}=e^{b/2}$ by
+the above Example. Hence
+we have $l(P)=r(P)$ for any $P$, so the theorem is proved.
+\enddemo
+
+\remark{Remark 1} 
+The theorem and its proof along with all the statements
+below can be immediately generalized in the following way. 
+We can take $P$
+to be an element of $\dbC[V]\[[\eps\]]$ rather 
+than a polynomial, i.e. 
+$P=\sum\nolimits_{m=0}^\infty \eps^m P_{(m)}$ is a 
+Taylor series in $\eps$ 
+with polynomial functions on $V'$ as coefficients.  
+\endremark
+
+\remark{Remark 2}
+This  way of writing an asymptotic expansion for a measure 
+ uses Fourier transform, and hence the linear structure of
+$V$ heavily.
+For  example when one applies    the Feynman graph expansion to the 
+gauge theory, $V$ being the space of connections modulo gauge
+transformation,  then $V$ has no natural linear structure.
+In this case one still can write an asymptotic expansion 
+for functional integral, but an 
+individual term assigned to a particular
+graph is not canonically defined. 
+\endremark
+\medskip
+
+We denote $Z=\sum\nolimits_{\Gamma\in\grg}\tau_b^\Gamma(s_P)
+\eps^{\#\Gamma_{\In}}$.
+
+One of the difficulties in using this expansion is that there
+are ``too many'' terms; so we try to reduce it somehow.
+We denote $F=\sum\nolimits_{\Gamma\in\grg_{\con}}\tau_b^\Gamma
+(s_P)\eps^{\#\Gamma_{\In}}$, where $\grg_{\con}$ is the set
+of connected nonempty graphs.
+
+Note that $F$ (and all series that will be introduced below)
+lie in a subring $\dbC[V']\[[\eps\]]\subset \dbC \[[V',\eps\]]$.
+
+
+\proclaim{Claim 1}
+$F=\log\,Z$.
+\endproclaim
+
+\demo{Proof} Decomposing a graph into union of its irreducible components
+one can identify the two combinatorial expressions:
+$$Z= \sum\limits _{\Gamma\in \grg} \tau _b^\Gamma
+=  \sum\limits _{\Gamma_1,..,\Gamma_k \in \grg_\con ; n_1,..,n_k}
+\frac {1}{n_1!n_2!..n_k!}\tau_b^{\Gamma_1}\dotsc \tau_b^{\Gamma_k}=
+ \exp(F)$$
+where the summation is over all sets of  distinct elements $\Gamma_i\in
+\grg_\con$.  
+\enddemo
+
+We next want to study the ``quasi-classical approximation''
+to our integral.
+So we introduce another variable $\hbar$ and consider the
+expression:
+$$
+F_{\hbar}(v)=\log\,\scrF\left(e^{(b^{-1}/2+\eps
+P)/\hbar}dv\right)(\hbar v)\,\,.
+$$
+As an immediate corollary to the Theorem, we get:
+
+\proclaim{Lemma 3}
+$F_{\hbar}=\hbar^{-1}\sum\nolimits_{\Gamma\in\grg_{\con}}
+\hbar^{h^1(\Gamma)}\tau_b^\Gamma(s_P)\eps^{\#\Gamma_{\In}}$
+where $h^1(\Gamma)= \dim (H^1(\Gamma))= \# \Gamma_1/\sigma -\# 
+\Gamma_0$. 
+\endproclaim
+
+\demo{Proof}
+Apply the same formal procedure to the quadratic form
+$\btil=\hbar b$ and polynomial $\Ptil=\hbar^{-1}P$, and note that for a
+connected graph $\Gamma$ we have $\tau _{\hbar b}^\Gamma
+(s_{P/\hbar})\left( \hbar v\right) = \hbar ^{h^1(\Gamma)-1} \tau _b^\Gamma
+(s_P) (v)$.
+\enddemo
+
+\subhead{5.2} {Quasi-classical (low-loop) approximations}\endsubhead
+Recall  that the ``classical''
+approximation to Fourier transform is the Legendre transform. An appropriate
+version of the definition of Legendre transform is as follows. 
+
+If $f$ is a function on $V'$, then we can view its differential $df$ as a map
+$df\colon\,V'\to V$.
+
+If $d f$ is an isomorphism then the Legendre transform of $f$ is defined by
+$$L(f)(v)= \left< v , (df)^{-1}(v) \right> - f\left( (df)^{-1}(v)\right)$$
+i.e. $L(f)(v)$   is the critical value of the function $v-f$
+ where $v$ is considered as a linear function on $V'$.
+
+Let now $G\in \dbC \[[V, \eps\]]$ be a formal power series. Then its
+differential $dG$ (in the $V'$-direction) 
+is an element of $\Hom (V',V)\ten  \dbC \[[V, \eps\]]$.
+
+Assume that   $G=g_0 +g_1+\eps G_1$ where $g_0$ is a nondegenerate
+quadratic form on $V'$, and $g_1$ contains no terms of degree less then 3
+in $V$.
+ Then  $dG$ is invertible, i.e. there exists
+ $H=(dG)^{-1}\in  \Hom (V,V')\ten  \dbC \[[V,\eps\]]$ with no constant term 
+ such that $dG\circ
+H=id$ and $H\circ dG = id$. In this situation the Legendre transform
+$L(G) \in \dbC [[V', \eps]]$ can be defined by the same formula.
+
+To describe the next term of the asymptotics 
+we define for any function $f$
+on $V'$ as above a new function $H(f)$ on $V$ as follows. Let
+$Hess_f(p)=\det \bigl(\frac {\partial ^2 f}{\partial v_i \partial
+v_j}\bigr)|_p$ 
+be the Hessian of $f$ (we assume that a constant volume form 
+on $V$ is fixed so that the
+determinant of the quadratic form is taken with respect to that volume form).
+
+We put:  
+$H(f)(v)=Hess\left( (df)^{-1}(v)\right)$.
+  
+For $G=g_0 +g_1+\eps G_1 \in \dbC [[V', \eps]]$ as above we can define
+$Hess(G)$ and $H(G) \in \dbC [[V', \eps]]$ by the same formula.
+
+\proclaim{Claim 2} 
+\roster
+\runinitem"a)"
+Let $F_0=\sum\nolimits_{\Gamma\in T}\tau_b^\Gamma(s_P)
+\eps^{\#\Gamma_{\In}}$, where $T$ is the set of (nonempty) trees.
+Then $F_0$ is the  Legendre transform of
+$\frac{b^{-1}}{2}-\eps P$.
+
+\smallskip
+\item"b)" 
+Let $F_1 =\sum\limits_{\Gamma\in \grg _1}\tau_b^\Gamma(s_P)
+\eps^{\#\Gamma_{\In}}$ where $\grg _1$ is the 
+set of one-loop connected
+graphs (i.e. graphs with $h^0(\Gamma)=h^1(\Gamma)=1$. Then 
+$F_1=\log\bigl(H\bigl(\frac{b^{-1}}{2}-\eps P\bigr)^{-1}\bigr)$. 
+{\rm (We assume that
+the background volume form is such 
+that $\det (\frac{b^{-1}}{2})=1$. Then   
+$H(\frac{b^{-1}}{2}-\eps P) \in 1 
++\eps \dbC \[[V', \eps\]] +V'\dbC \[[V',\eps\]]$, 
+and  $\log (H(\frac{b^{-1}}{2}-\eps P))$ is a well-defined
+element of  $\dbC \[[V', \eps\]]$).}
+\endroster
+\endproclaim
+
+
+\demo{Proof of  the Claim} From  Lemma 3 we see
+that $F_{\hbar}( v)= F_0(v)/\hbar +F_1(v)+ O(\hbar)$.
+Thus  the claim follows from the stationary phase approximation applied
+to the integral
+ $$
+\scrF(f)(iv)=\frac{1}{(2\pi)^{d/2}}\int\limits_{V'}
+e^{(v,p)+(\eps P-b^{-1}/2)(p)}dp
+$$
+ 
+\medskip
+
+One can also  directly show the equality of the two combinatorial 
+expressions:
+$$
+\align
+F_0 \left(d(\frac{b^{-1}}{2}-\eps P)|_p \right) &=
+\frac{b^{-1}}{2}(p) -
+\eps\sum\limits_n \frac{P_n}{(n-1)!} (p)
++\eps\sum\limits_n\frac{P_n}{n!}(p)\\
+&=\langle p,d\Bigl(\frac{b^{-1}}{2}-\eps P\Bigr)|_p\rangle - 
+(b^{-1}/2-\eps P)\Bigl(d(\frac{b^{-1}}{2}-\eps P)\Bigr)\tag5.1
+\endalign
+$$
+and
+$$
+F_1\Bigl(d(\frac{b^{-1}}{2}-\eps P)|_p \Bigr)=
+-\log Hess\Bigl(\frac{b^{-1}}{2}-\eps P\Bigr)\tag5.2
+$$
+
+Here (5.1) is equivalent to $F_0=L\bigl(\frac{b^{-1}}{2}-\eps
+P\bigr)$ and (2) is equivalent to $F_1=\log \bigl(
+H\bigl(\frac{b^{-1}}{2}-\eps P\bigr) ^{-1}\bigr)$.
+
+Let us sketch the combinatorial proof of (5.1) and (5.2). 
+
+Let us identify $V$ and $V'$ by means of $b$ and  use an 
+equality $\eps^{\#\Gamma_{\In}}\tau _b^\Gamma(s_P)\circ
+d\bigl(\frac{b^{-1}}{2}-\eps 
+P\bigr)=\sum (-1)^{c_i}\eps^{\#\Gamma^i_{\In}} 
+\tau_b^{\Gamma^i}(s_P)$ 
+where the graph $\Gamma^i$ is obtained from the graph $\Gamma$
+by adding $c_i$ vertices of arbitrary valencies, 
+each one of which is connected
+with an external vertex of $\Gamma$ in such a way that any  
+external vertex of $\Gamma$ 
+is connected with no more then one new vertex.
+
+Now it is not hard to check that in the expansion of $F_0 \circ
+\bigl(d\bigl(\frac{b^{-1}}{2}-\eps P\bigr)\bigr)$ 
+all terms with $\eps ^i$ for
+$i\Ge 2$ cancel, and 
+identify the sum of remaining terms with the RHS of (5.1). 
+
+Likewise in the expansion of 
+$F_1  \circ \bigl(d\bigl(\frac{b^{-1}}{2}-\eps
+P\bigr)\bigr)$ only the terms with one-particle irreducible 
+one-loop graphs
+(``circles'') do not cancel; the sum 
+of these terms is identified with
+$\sum\nolimits_{n=1}^\infty\eps^i\tr{(dP)^n}/n=-\log\det(Id - dP)$
+which coincides with the RHS of (5.2).
+\enddemo
+
+\subhead{5.3} {Effective potential}\endsubhead
+Let us call a nonempty graph {\it $1$-particle irreducible} (or just
+ {\it 1-irreducible}) if it is
+connected and remains connected after removal of any
+internal edge.
+To any connected graph there corresponds a unique tree with
+a $1$-particle irreducible graph assigned to each vertex
+together with an identification of the set of edges coming
+to a vertex of a tree with the set of external vertices of
+the corresponding graph.
+Thus ``computation'' of $F_0$ can be reduced to summation
+over trees and over $1$-particle irreducible graphs
+separately.
+Denote
+$F_{1-\irr}=\sum\nolimits_{\Gamma\in\grg_{1-\irr}}
+\eps^{\#\Gamma_{\In}}
+\tau_b^\Gamma(s_P)$ where 
+$\grg_{1-\irr}$ is the set of 1-particle irreducible
+graphs. (Notice that the graph \ 
+$\bullet\!\raise1.85pt\hbox to 20pt{\hrulefill}
+\!\bullet\,\,\,$
+is 1-particle irreducible by the definition).
+ 
+\proclaim{Claim 3} 
+$F_{1-\irr}=b-b^*(L(F))$ where $b$ is viewed as a map from $V$ to
+$V'$ and $L$ is the Legendre transform.
+\endproclaim
+
+\demo{Proof}
+By  Remark 1 after the proof of the theorem we can apply 
+claim 2 to $P'=\eps ^{-1}(b^{-1})^*( F_{1-\irr}-b/2)
+\in \dbC [V']\[[\eps\]]$.
+
+
+
+From the  above combinatorial observation
+we see that $F= F_P = (F_0)_{P'}$. Hence claim 2
+implies that $F=L(b^{-1}/2 - \eps P')=L\left((b^{-1})^*(b-
+F_{1-\irr})\right)$. Since Legendre transform
+is involutive we get the claim. 
+\enddemo
+
+$F_{1-\irr}$ is called the effective potential of the
+theory.
+
+
+
+\enddocument
+
+
+
+
+

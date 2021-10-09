@@ -1,0 +1,2446 @@
+%% This is a plain TeX file
+%%
+\magnification=1200
+\hsize=6.5 true in
+\vsize=8.7 true in
+\input epsf.tex
+
+\input amssym.def
+\input amssym.tex
+
+\font\boldtitlefont=cmb10 scaled\magstep2
+\font\smallboldtitle=cmb10 scaled \magstep1
+\font\dun=cmdunh10 %scaled\magstep1
+
+\footline={\hfil {\tenrm VII.\folio}\hfil}
+
+\def\eps{{\varepsilon}}
+\def\Eps{{\epsilon}}
+\def\kap{{\kappa}}
+\def\lam{{\lambda}}
+\def\Lam{{\Lambda}}
+\def\mynabla{{\nabla\!}}
+
+\def\underNS{\underline{\NS}}
+\def\underR{\underline{\R}}
+
+\def\Bmu{{B_{\mu\nu}}}
+\def\Gmu{{G_{\mu\nu}}}
+
+\def\xdot{{\dot x}}
+\def\xddot{{\ddot x}}
+
+\def\undertext#1{$\underline{\vphantom{y}\hbox{#1}}$}
+\def\nspace{\lineskip=1pt\baselineskip=12pt%
+     \lineskiplimit=0pt}
+\def\dspace{\lineskip=2pt\baselineskip=18pt%
+     \lineskiplimit=0pt}
+
+\def\half{\raise4.5pt\hbox{{\vtop{\ialign{##\crcr
+  \hfil\rm $1$\hfil\crcr
+   \noalign{\nointerlineskip}--\crcr
+   \noalign{\nointerlineskip\vskip-1pt}$2$\crcr}}}}}
+\def\third{\raise4.5pt\hbox{{\vtop{\ialign{##\crcr
+  \hfil\rm $1$\hfil\crcr
+  \noalign{\nointerlineskip}--\crcr
+  \noalign{\nointerlineskip\vskip-1pt}$3$\crcr}}}}}
+\def\fourth{\raise4.5pt\hbox{{\vtop{\ialign{##\crcr
+  \hfil\rm $1$\hfil\crcr
+  \noalign{\nointerlineskip}--\crcr
+  \noalign{\nointerlineskip\vskip-1pt}$4$\crcr}}}}}
+\def\sixth{\raise4.5pt\hbox{{\vtop{\ialign{##\crcr
+  \hfil\rm $1$\hfil\crcr
+  \noalign{\nointerlineskip}--\crcr
+  \noalign{\nointerlineskip\vskip-1pt}$6$\crcr}}}}}
+\def\eighth{\raise4.5pt\hbox{{\vtop{\ialign{##\crcr
+  \hfil\rm $1$\hfil\crcr
+  \noalign{\nointerlineskip}--\crcr
+  \noalign{\nointerlineskip\vskip-1pt}$8$\crcr}}}}}
+
+\def\oplusop{\mathop{\oplus}\limits}
+\def\w{{\mathchoice{\,{\scriptstyle\wedge}\,}
+  {{\scriptstyle\wedge}}
+  {{\scriptscriptstyle\wedge}}{{\scriptscriptstyle\wedge}}}}
+\def\Le{{\mathchoice{\,{\scriptstyle\le}\,}
+{\,{\scriptstyle\le}\,}
+{\,{\scriptscriptstyle\le}\,}{\,{\scriptscriptstyle\le}\,}}}
+\def\Ge{{\mathchoice{\,{\scriptstyle\ge}\,}
+{\,{\scriptstyle\ge}\,}
+{\,{\scriptscriptstyle\ge}\,}{\,{\scriptscriptstyle\ge}\,}}}
+\def\plus{{\hbox{$\scriptscriptstyle +$}}}
+\def\xdot{\dot{x}}
+\def\Condition#1{\item{#1}}
+\def\Firstcondition#1{\hangindent\parindent{#1}\enspace
+     \ignorespaces}
+\def\Proclaim#1{\medbreak
+  \medskip\noindent{\bf#1\enspace}\it\ignorespaces}
+\def\finishproclaim{\par\rm
+     \ifdim\lastskip<\smallskipamount\removelastskip
+     \penalty55\medskip\fi}
+\def\Item#1{\par\smallskip\hang\indent%
+  \llap{\hbox to\parindent {#1\hfill\enspace}}\ignorespaces}
+\def\ItemItem#1{\par\indent\hangindent2\parindent
+     \hbox to \parindent{#1\hfill\enspace}\ignorespaces}
+\def\vrulesub#1{{\,\vrule height7pt depth5pt}_{\,#1}}
+\def\underbrake#1#2{\mathop{#1}\limits_{\raise3pt
+  \hbox{%
+\vrule height 3pt depth 0pt
+  %\kern.1pt
+  \hbox to #2{\hrulefill}
+  \kern-3.4pt
+  \vrule height 3pt depth 0pt}}}
+
+\def\ominus{{$-$\kern-9pt $\bigcirc$}}
+\def\Oplus{{+\kern-9pt $\bigcirc$}}
+\def\ssbullet{{\scriptstyle\bullet\,\,\,}}
+
+\def\Open{{\rm open}}
+\def\Sp{{\rm Sp}}
+\def\R{{\rm R}}  \def\NS{{\rm NS}}
+\def\RNS{{\rm RNS}}
+\def\Diff{{\rm Diff}}  \def\expt{{\rm expt}}
+\def\cm{{\rm cm}}  \def\annulus{{\rm annulus}}
+\def\cylinder{{\rm cylinder}}
+\def\Closed{{\rm closed}}
+\def\Map{{\rm Map}}  
+\def\Met{{\rm Met}} 
+\def\Spin{{\rm Spin}}
+\def\phys{{\rm phys}}
+\def\diag{{\rm diag}}  
+\def\Null{{\rm null}} 
+\def\mass{{\rm mass}}
+\def\SO{{\rm SO}} 
+\def\GSO{{\rm GSO}}
+\def\Tr{{\rm Tr\,}}
+\def\tr{{\rm tr}}
+\def\Weyl{{\rm Weyl}} 
+\def\Lorentz{{\rm Lorentz}}
+\def\Ker{{\rm Ker}}
+\def\Range{{\rm Range}} 
+\def\Det{{\rm Det}} 
+\def\IIA{{\rm II~A}}
+\def\IIB{{\rm II~B}}
+
+\def\mbar{\bar{m}}   \def\Lambar{\bar{\Lambda}}
+\def\nubar{\bar{\nu}}
+\def\Gammabar{\bar{\Gamma}}
+\def\chibar{\bar{\chi}}
+\def\rbar{\bar{r}}
+\def\zbar{\bar{z}}  
+\def\Gbar{\bar{G}}
+\def\Kbar{\bar{K}}
+\def\Sbar{\bar{S}}
+\def\Tbar{\bar{T}}
+
+\def\Ftil{\widetilde{F}}
+\def\btil{\tilde{b}}
+\def\dtil{\tilde{d}}
+\def\xtil{\tilde{x}}
+\def\Ptil{\widetilde{P}}
+\def\betatil{\tilde{\beta}}
+\def\scrFtil{\widetilde{\scrF}}
+
+
+%These two files (in this order!!) are necessary
+%in order to use AMS Fonts 2.0 with Plain TeX
+
+\input amssym.def
+\input amssym.tex
+
+%Capital roman double letters(Blackboard bold)
+\def\db#1{{\fam\msbfam\relax#1}}
+
+\def\dbA{{\db A}} \def\dbB{{\db B}}
+\def\dbC{{\db C}} \def\dbD{{\db D}}
+\def\dbE{{\db E}} \def\dbF{{\db F}}
+\def\dbG{{\db G}} \def\dbH{{\db H}}
+\def\dbI{{\db I}} \def\dbJ{{\db J}}
+\def\dbK{{\db K}} \def\dbL{{\db L}}
+\def\dbM{{\db M}} \def\dbN{{\db N}}
+\def\dbO{{\db O}} \def\dbP{{\db P}}
+\def\dbQ{{\db Q}} \def\dbR{{\db R}}
+\def\dbS{{\db S}} \def\dbT{{\db T}}
+\def\dbU{{\db U}} \def\dbV{{\db V}}
+\def\dbW{{\db W}} \def\dbX{{\db X}}
+\def\dbY{{\db Y}} \def\dbZ{{\db Z}}
+
+\font\teneusm=eusm10  \font\seveneusm=eusm7 
+\font\fiveeusm=eusm5 
+\newfam\eusmfam 
+\textfont\eusmfam=\teneusm 
+\scriptfont\eusmfam=\seveneusm 
+\scriptscriptfont\eusmfam=\fiveeufm 
+\def\scr#1{{\fam\eusmfam\relax#1}}
+
+
+%Upper-case Script Letters:
+
+\def\scrA{{\scr A}}   \def\scrB{{\scr B}}
+\def\scrC{{\scr C}}   \def\scrD{{\scr D}}
+\def\scrE{{\scr E}}   \def\scrF{{\scr F}}
+\def\scrG{{\scr G}}   \def\scrH{{\scr H}}
+\def\scrI{{\scr I}}   \def\scrJ{{\scr J}}
+\def\scrK{{\scr K}}   \def\scrL{{\scr L}}
+\def\scrM{{\scr M}}   \def\scrN{{\scr N}}
+\def\scrO{{\scr O}}   \def\scrP{{\scr P}}
+\def\scrQ{{\scr Q}}   \def\scrR{{\scr R}}
+\def\scrS{{\scr S}}   \def\scrT{{\scr T}}
+\def\scrU{{\scr U}}   \def\scrV{{\scr V}}
+\def\scrW{{\scr W}}   \def\scrX{{\scr X}}
+\def\scrY{{\scr Y}}   \def\scrZ{{\scr Z}}
+
+\def\gr#1{{\fam\eufmfam\relax#1}}
+
+%Euler Fraktur letters (German)
+\def\grA{{\gr A}}	\def\gra{{\gr a}}
+\def\grB{{\gr B}}	\def\grb{{\gr b}}
+\def\grC{{\gr C}}	\def\grc{{\gr c}}
+\def\grD{{\gr D}}	\def\grd{{\gr d}}
+\def\grE{{\gr E}}	\def\gre{{\gr e}}
+\def\grF{{\gr F}}	\def\grf{{\gr f}}
+\def\grG{{\gr G}}	\def\grg{{\gr g}}
+\def\grH{{\gr H}}	\def\grh{{\gr h}}
+\def\grI{{\gr I}}	\def\gri{{\gr i}}
+\def\grJ{{\gr J}}	\def\grj{{\gr j}}
+\def\grK{{\gr K}}	\def\grk{{\gr k}}
+\def\grL{{\gr L}}	\def\grl{{\gr l}}
+\def\grM{{\gr M}}	\def\grm{{\gr m}}
+\def\grN{{\gr N}}	\def\grn{{\gr n}}
+\def\grO{{\gr O}}	\def\gro{{\gr o}}
+\def\grP{{\gr P}}	\def\grp{{\gr p}}
+\def\grQ{{\gr Q}}	\def\grq{{\gr q}}
+\def\grR{{\gr R}}	\def\grr{{\gr r}}
+\def\grS{{\gr S}}	\def\grs{{\gr s}}
+\def\grT{{\gr T}}	\def\grt{{\gr t}}
+\def\grU{{\gr U}}	\def\gru{{\gr u}}
+\def\grV{{\gr V}}	\def\grv{{\gr v}}
+\def\grW{{\gr W}}	\def\grw{{\gr w}}
+\def\grX{{\gr X}}	\def\grx{{\gr x}}
+\def\grY{{\gr Y}}	\def\gry{{\gr y}}
+\def\grZ{{\gr Z}}	\def\grz{{\gr z}}
+
+%\overfullrule=0pt
+
+\parindent=25pt
+\line{\dun --- DRAFT ---\hfill{\rm IASSNS-HEP-97/72}}
+
+\bigskip\bigskip
+\centerline{\boldtitlefont Lectures 11 and 12}
+\bigskip
+\centerline{\smallboldtitle VII. Free Superstrings}
+
+\medskip
+\centerline{Eric D'Hoker}
+
+\frenchspacing
+
+\dspace
+\bigskip
+Purely bosonic string theory, as defined and studied in
+the preceding lectures, has a number of fundamental
+flaws, which we shall now briefly summarize.
+
+\medskip
+\Item{(i)}\enspace
+Bosonic string theory in flat --- or nearly flat ---
+space-time possesses a tachyonic state.
+The presence of a tachyon leads to a violation of the
+physical principle of causality.
+It signals an instability of (nearly) flat 
+space-time, which may be detected from the
+fact that the $1$-loop order dilaton tadople amplitude
+is non-zero (in fact it is infinite).
+Ultimately, the presence of the tachyon leads to the
+divergence of transition amplitudes beyond tree level.
+Thus, bosonic string, in (nearly) flat 
+space-time is in itself inconsistent.
+
+\medskip
+\Item{(ii)}\enspace
+Bosonic string theory does not possess any fermionic
+states (i.e. transforming under a spinor
+representation of the space-time Lorentz group).
+This fact by itself does not \`a priori lead to
+an inconsistency
+of the bosonic string.
+Rather, since Nature clearly displays fermionic states
+(electrons, quarks, etc.), any viable physical
+theory aimed at encompassing all physical particles in
+Nature, as well as their interactions, must contain
+fermions.
+{}From this point of view, the bosonic string cannot be
+a viable theory of Nature.
+
+\medskip
+\Item{(iii)}\enspace
+In addition, it is desirable 
+to have a theory of closed strings only that
+contains Yang-Mills gauge states.
+(We have shown already how Yang-Mills particles arise
+in open string theories.)
+
+\medskip
+\Item{(iv)}\enspace
+Finally, we do not perceive $26$ dimensions of
+space-time, but only $4$, at distance scales
+accessible to present day experiments.
+Thus, it must be understood why and how the remaining
+dimensions have remained invisible.
+
+\medskip
+Problems (i), (ii) and in some cases also (iii) may
+all be resolved by introducing certain additional
+dynamical degrees of freedom on the string worldsheet.
+In particular, extra degrees of freedom may be
+introduced that will result in
+fermionic string states in the physical Hilbert space.
+This extension will in general modify the critical
+dimension $D$ of space-time.
+
+There are several ways in which one can proceed to include
+fermionic string states in the Hilbert space of string
+states.
+
+\medskip
+\Item{(1)} {\it The Green-Schwarz (GS) formulation}.
+
+\Item{}The theory has space-time vector fields
+$x^\mu$, transforming under the vector representation
+of $\SO(1,D-1)$ as well as space-time spinor fields
+$\theta^\alpha$ transforming under a spinor representation
+of $\Spin(1,D-1)$.
+The ground state (i.e. lowest mass state of a single
+string) is in general degenerate, with both vector and
+spinor states.
+Bosonic and fermionic states are obtained by applying
+$x^\mu$ or $\theta^\alpha$ to the ground states.
+
+\medskip
+\Item{(2)} {\it The Neveu-Schwarz-Ramond (RNS) formulation}.
+
+\Item{}The fundamental fields in the theory are
+space-time vectors $x^\mu,\psi^\mu$.
+There
+are two sectors in the Hilbert space of states, built
+on two distinct ground states:
+The Neveu-Schwarz ground state is a boson, while the
+Ramond ground state is a fermion.
+All bosonic states are obtained by applying $x^\mu$ 
+and $\psi^\mu$ to the Neveu-Schwarz ground state; this
+generates the Neveu-Schwarz sector of the theory.
+All fermionic states are obtained by applying $x^\mu$
+and $\psi^\mu$ to the fermionic ground state; this
+generates the Ramond sector of the theory.
+
+\medskip\noindent
+By quantizing each formulation in the lightcone
+gauge, one demonstrates that (under certain
+coniditons) the GS and RNS formulations are equivalent.
+The Green-Schwarz formulation apears difficult (if not
+impossible) to quantize in a manifestly Lorentz
+ covariant way.
+
+One distinguishes the following five, consistent,
+tachyon free, space-time supersymmetric string
+theories in flat Minkowski space-time.
+
+\vfill\eject
+
+$$
+\vbox{\tabskip=8pt
+\offinterlineskip
+\halign to \hsize{#\hfill &#\hfill &\qquad #\hfill\cr
+$\bullet$ &Type I &Open and closed unoriented
+strings, with Yang-Mills\cr
+\noalign{\smallskip}
+&&degrees of freedom via Chan-Paton rules:\cr
+\noalign{\smallskip}
+&&$\SO(32)$ gauge group only.\cr
+\noalign{\bigskip}
+$\bullet$ &Type II$\,\,$A,B &Closed oriented strings
+only;\cr
+\noalign{\smallskip}
+&&A: \ opposite chirality Ramond ground states\cr
+\noalign{\smallskip}
+&&B: \ same chirality Ramond ground states.\cr
+\noalign{\bigskip}
+$\bullet$ &Heterotic &Type II left-movers, 
+     bosonic right movers,\cr
+\noalign{\smallskip}
+&$\Spin(32)/Z_2,$ &including gauge degrees of freedom:\cr
+\noalign{\smallskip}
+&$E_8\times E_8$ &\qquad $\Spin(32)/Z_2$ or 
+$E_8\times E_8$ gauge groups only.\cr}}
+$$
+The goal of this Chapter (\S{VII}) and the next one
+(\S{VIII}) is to define these theories, show their
+uniqueness and analyze the Hilbert space of states, in
+the RNS formulation.
+Space-time supersymmetry and the GS formulation will
+be discussed extensively in \S{X}.
+
+\bigskip\noindent
+\Item{\bf A)} {\bf Degrees of Freedom of the {\rm RNS} string}
+
+To obtain fermionic physical states, we add further
+degrees of freedom which are {\it spinors on the
+worldsheet $\Sigma$}.
+We begin by focussing on closed oriented worldsheets,
+without boundary.
+
+Worldsheet spinors exist on $\Sigma$, provided a spin
+bundle $S=K^{1/2}$ can be constructed as the square
+root of the canonical bundle $K$.
+The worldsheet spinor fields are then sections of $S$.
+Spin bundles exist on $\Sigma$ provided the second
+Stiefel-Whitney class $H^2(\Sigma,\dbZ_2)$, which is
+the first Chern class $\bmod{2}$ of $K$, vanishes.
+This is indeed the case, since
+$c_1(K)=-\chi(\Sigma)=2h-2$ which is even.
+The different spin bundles are labeled by
+$H^1(\Sigma,\dbZ_2)$ and may be distinguished by $\pm$
+sign assignments around the homology cycles of
+$\Sigma$.
+For compact $\Sigma$ without boundary, there are $2^{2h}$
+different spin structures.
+
+Following the introductory remarks, the worldsheet
+spinors transform as Lorentz $\SO(1,D-1)$ vectors.
+We denote them by $\psi_\pm^\mu(z,\zbar)$, where
+the subscript $\pm$ is the worldsheet spinor index.
+In addition, $\psi_+^\mu$ and $\psi_-^\mu$ are to be
+constrained by a requirement inherited from the
+Minkowski signature worldsheet: each is a worldsheet
+Majorana-Weyl spinor, which means that each is a one
+component real spinor in a suitable basis.
+
+On worldsheets with Euclidean signature, there are no
+Majorana-Weyl spinors.
+However, one may use a complex Weyl spinor
+$\psi_+^\mu$, and take $\psi_-^\mu$ to be its complex
+conjugate.
+This construction preserves the number of degrees of
+freedom.
+Chiral splitting techniques, relying on the holomorphic
+dependence on moduli --- as introduced and applied in
+\S{V} --- may then be invoked to separate correlation
+functions into parts arising from $\psi_+$ and
+$\psi_-$ separately.
+Thus, henceforth, $\psi_+^\mu$ is a complex Weyl
+spinor, which is a section of a spin bundle $K^{1/2}$
+for some given spin structure; $\psi_-^\mu$ is the
+complex conjugate of $\psi_+^\mu$, and a section of
+$\Kbar^{1/2}$ for the same spin structure.
+
+It is natural (but, as we shall find later, it is
+incomplete) to let the dynamics of $\psi_{\pm}^\mu$
+be governed by the action for massless spinors
+obtained from the $bc$ system of \S{IV} for $n=1/2$.
+For $n=1/2$, the $bc$ system decomposes into two
+identical spinor systems in a conformally invariant
+way:
+$$
+b={1\over \sqrt{2\,\,}}(\psi_++i\psi'_+)\qquad
+c={1\over\sqrt{2\,\,}}(\psi_+-i\psi'_+)\,\,.
+\eqno{(7.A.1)}
+$$
+The action for $\psi_{\pm}^\mu$ is then found to be
+$$
+S_\psi[\psi]={1\over 4\pi}\int\nolimits_{\Sigma}
+d\mu_g\left(\psi_+^\mu\nabla_{(1/2)}^z\psi_{+\mu}
++\psi_{-}^\mu\nabla_{(-1/2)}^{\zbar}\psi_{-\mu}\right)\,\,.
+\eqno{(7.A.2)}
+$$
+It describes a conformal field theory with central
+charge $D\times{1\over 2}={1\over 2}\,D$, namely
+$c=1/2$ for each Majorana fermion.
+We record here the stress tensor for this system:
+$$
+T_{zz}^{(\psi)}=\half\,\partial_z\psi_+^\mu\psi_{+\mu}
+\eqno{(7.A.3)}
+$$
+as well as the field equations and the OPE (both can be
+deduced from the $bc$ system)
+$$
+\nabla^z\psi_+^\mu=0\,;\qquad
+\psi_+^\mu(z)\psi_+^\nu(w)\sim{1\over z-w}\,\eta^{\mu
+\nu}\eqno{(7.A.4)}
+$$
+and analogously for $\psi_-^\mu$.
+
+We now specialize to the case of a flat cylindrical
+worldsheet, or by conformal mapping the annular
+worldsheet $\Sigma$.
+$$
+\vbox{\epsfxsize=3.5in\epsfbox{fig1.eps}}
+$$
+First of all, this topology supports a single homology
+cycle, and there are two different spin bundles,
+corresponding to $\pm$ assignments around this cycle.
+To preserve the action of Lorentz transformations
+under which $\psi^\mu$ transforms as a
+vector, all components of $\psi^\mu$,
+$\mu=0,\ldots,D-1$ must carry the same spin structure,
+i.e. be sections of the same spin bundle.
+It is conventional to denote these spin structures by
+Ramond (R) and Neveu-Schwarz (NS), defined as follows.
+(The correspondence between the assignments on the
+cylinder and annulus is unintuitive, so we shall be
+completely explicit here.)
+
+\noindent
+{\it On the Cylinder}
+$$
+\eqalign{
+\psi_\pm^\mu(\tau,\sigma+2\pi)=+\psi_\pm^\mu
+  (\tau,\sigma) &\null\qquad\qquad\hbox{\rm R: periodic
+on cylinder}\cr
+\psi_\pm^\mu(\tau,\sigma+2\pi)=-\psi_\pm^\mu
+  (\tau,\sigma) &\null\qquad\qquad\hbox{\rm NS:
+anti-periodic on cylinder}\cr}
+\eqno{(7.A.5)}
+$$
+
+\noindent
+To obtain the corresponding boundary conditions on the
+annulus, we use the conformal mapping $z=e^w$.
+On spinors $\psi_+$, the effect is
+$$
+\eqalign{
+\psi_+^{\annulus}(z)(dz)^{1/2} &=\psi_+^{\cylinder}(w)
+  (dw)^{1/2}\cr
+\left({dz\over dw}\right)^{1/2} &=e^{w/2}\cr}
+\eqno{(7.A.6)}
+$$
+Under a $2\pi$ rotation on the cylinder, which
+corresponds to a $2\pi$ rotation on the annulus, the
+transition factor $e^{{1\over 2}\,w}$ changes by a sign.
+Hence the (anti-) periodicity assignments are reversed
+between the cylinders and the annulus.
+
+\noindent
+{\it On the Annulus}
+$$
+\eqalign{
+\psi_\pm^\mu(e^{2\pi i})=-\psi_\pm^\mu(z)
+ &\null\qquad\qquad\hbox{\rm R: anti-periodic on annulus}\cr
+\psi_\pm^\mu(e^{2\pi i})=+\psi_\pm^\mu(z)
+  &\null\qquad\qquad \hbox{\rm NS: periodic on annulus}\cr}
+\eqno{(7.A.7)}
+$$
+
+We are now ready to decompose $\psi_{\pm}^\mu$ in
+modes and deduce the algebra of the modes, and the
+Virasoro algebra.
+We work on the annulus; translation to the cylinder
+is straightforward.
+In the Ramond sectors, we have
+$$
+\left\{
+\eqalign{
+\psi_+^\mu(z) &=\sum\limits_{n\in\dbZ}d_n^\mu
+  z^{-n-1/2}\cr
+\psi_-^\mu(\zbar) &=\sum\limits_{n\in\dbZ}\dtil_n^\mu
+  \zbar^{-n-1/2}\cr}
+\right.
+\qquad\qquad \hbox{\rm R (annulus)}
+\eqno{(7.A.8)}
+$$
+$$
+\null\qquad\qquad
+\{d_m^\mu,d_n^\nu\}
+  =\eta^{\mu\nu}\delta_{m+n,0}\qquad
+\{\dtil_m^\mu,\dtil_n^\nu\}
+ =\eta^{\mu\nu}\delta_{m+n,0}\,\,.
+\eqno{(7.A.9)}
+$$
+And in the Neveu-Schwarz sector, we have%
+\footnote{*}{It is conventional to denote the NS mode
+operators by $b_r^\mu$, but this notation does not
+suggest a direct relation with the $b$ operators of
+the $bc$ system.}
+$$
+\left\{
+\eqalign{
+\psi_+^\mu(z) &=\sum\limits_{r\in{1\over 2}+\dbZ}
+b_r^\mu\,z^{-r-1/2}\cr
+\psi_-^\mu(\zbar) &=\sum\limits_{r\in{1\over 2}+\dbZ}
+\btil_r^\mu\,\zbar^{-r-1/2}\cr}
+\right.
+\qquad\qquad\hbox{\rm NS (annulus)}
+\eqno{(7.A.10}
+$$
+$$
+\{b_r^\mu,\,b_s^\nu\}=
+  \eta^{\mu\nu}\delta_{r+s,0}\qquad
+\{\btil_r^\mu,\btil_s^\nu\}=\eta^{\mu\nu}
+\delta_{r+s,0}
+\eqno{(7.A.11)}
+$$
+
+\bigskip\noindent
+\Item{\bf B)} {\bf Ramond and Neveu-Schwarz Fock
+spaces}
+
+Let $\scrF_k$ and $\scrFtil_k$ denote the Fock spaces
+of the bosonic degrees of freedom at momentum $k$ for
+left and right movers, respectively.
+Let $\scrF^{\R}$ and $\scrF^{\NS}$ be the fock spaces
+for Ramond and Neveu-Schwarz degrees of freedom for
+left-movers and $\scrFtil^{\R}$ and $\scrFtil^{\NS}$
+their right-moving counterparts.
+Then, the ful RNS Fock spaces for open and closed RNS
+strings are
+$$
+\eqalign{
+\scrF_{\Open} &=\oplusop_{k}\,\scrF_k^{\RNS}\cr
+\scrF_{\Closed} &=\oplusop_{k}\,\scrF_k^{\RNS}
+\otimes\scrFtil_k^{\RNS}\qquad\qquad
+k\in\dbR^D\,\,.\cr}
+\eqno{(7.B.1)}
+$$
+Here we have defined the left and right moving RNS
+Fock spaces by
+$$
+\eqalign{
+\scrF_k^{\RNS} &=\scrF_k\otimes (\scrF^{\R}\oplus
+\scrF^{\NS})\cr
+\scrFtil_k^{\RNS} &=\scrFtil_k\otimes(\scrFtil^{\R}
+\oplus \scrFtil^{\NS})\,\,.\cr}
+\eqno{(7.B.2)}
+$$
+It thus suffices to construct $\scrF^{\R}$ and
+$\scrF^{\NS}$.
+
+The {\it Neveu-Schwarz ground state}
+$\left.\vert0;\NS\right>\in\scrF^{\NS}$ is defined by%
+\footnote{$^{**}$}{We use the notation $\dbN$,
+$\dbZ^+$, $\dbZ^-$ for the sets of positive, positive or
+zero and negative or zero integers, respectively.}
+$$
+b_r^\mu\left.\vert 0;\,\NS\right>=0\quad
+  r\in{1\over 2}+\dbZ^+
+\eqno{(7.B.3)}
+$$
+The full ground state in $\scrF_k\otimes\scrF^{\NS}$
+will be denoted by $\left.\vert0,k;\,\NS\right>\equiv
+\left.\vert0,k\right>\otimes\left.\vert0;\,\NS\right>$.
+We normalize the ground state by
+$\left<0;\,\NS\vert0;\,\NS\right>=1$, and the same for 
+$^{\textstyle\sim}$.
+By examining the Lorentz spin operator in the $\NS$
+sector
+$$
+S_{\NS}^{\mu\nu}=\sum\limits_{r\in{1\over 2}+\dbZ^+}
+\left(b_{-r}^\mu b_r^\nu-b_{-r}^\nu b_r^\mu\right)\,\,,
+\eqno{(7.B.4)}
+$$
+we see that $\left.\vert0;\,\NS\right>$ is a scalar
+under $\SO(1,D-1)$, and thus a {\it boson}.
+The NS Fock space
+$\scrF^{\NS}$ is now obtained by applying the algebra
+of raising operators $\{b_r^\mu,r<0\}$ to
+$\left.\vert0;\,\NS\right>$.
+All the states obtained this way transform under
+tensor representations of $\SO(1,D-1)$ and hence are
+{\it bosons}.
+
+The {\it Ramond ground state} is degenerate, just as
+the ground state of the $bc$ system was degenerate.
+We label the degenerate states in the ground state
+multiplet by an index $\alpha$, and we have as usual
+$$
+d_n^\mu\left.\vert 0,\alpha;\,R\right>=0\qquad\qquad
+n\in\dbN
+\eqno{(7.B.5)}
+$$
+The full ground state in $\scrF_k\otimes\scrF^R$
+will be denoted by $\left.\vert0,k;\alpha;R\right>\equiv 
+\left.\vert0,k\right>\otimes\left.\vert0,\alpha;R\right>$.
+The mode $d_0^\mu$ satisfies a  Clifford algebra
+$$
+\left\{d_0^\mu,d_0^\nu\right\}=\eta^{\mu\nu}
+\eqno{(7.B.6)}
+$$
+so that $\left.\vert0,\alpha;R\right>$ transforms under a
+spinor representation of the Lorentz group
+$\Spin(1,D-1)$. 
+Here, $\alpha$ ranges over the weights of the
+Dirac spinor $\alpha=1,\ldots,2^{D/2}$
+(we assume $D$ even).
+The fact that the ground state
+$\left.\vert0,\alpha;R\right>$ is a spinor may also be
+confirmed from examining the expression for the
+Lorentz spin operator in the R sector:
+$$
+S_R^{\mu\nu}=\half\,[d_0^\mu,d_0^\nu]+\sum\limits_{n\in\dbN}
+(d_{-n}^\mu d_n^\nu-d_{-n}^\nu d_n^\mu)
+\eqno{(7.B.7)}
+$$
+On $\left.\vert 0,\alpha;R\right>$, the operator
+$S_R^{\mu\nu}$ reduces to the familiar Lorentz
+generator in the spinor representation associated with
+the Clifford algebra of $d_0^\mu$.
+Thus, the Ramond ground state is a $\Spin(1,D-1)$
+spinor, and a space-time {\it fermion}.
+$\scrF^R$ is obtained by applying the algebra of
+raising oprators $\{d_n^\mu,\,\,n<0\}$ to $\left.\vert
+0,\alpha;R\right>$ and all states obtained this way are
+spinors of $\SO(1,D-1)$ and space-time fermions!
+The Ramond construction achieves the goal of
+introducing fermions into string theory.
+
+Both Fock spaces $\scrF^R$ and $\scrF^{\NS}$ contain
+{\it negative norm states}, just as $\scrF_k$
+contained negative norm states in the bosonic string.
+The reason is simply that both $b_r^\mu$ and $d_n^\mu$
+transform under vector representations, just as the
+bosonic modes $x_n^\mu$ did.
+Thus, we have for some vector $\Eps\in\dbR^D$:
+$$
+\eqalign{
+&\Vert\Eps\cdot b_{r}\left.\vert0;\NS\right>\Vert^2=
+  \Eps^2\cr
+&\Vert \Eps\cdot d_{-n} \left.\vert0,\alpha;R\right>\Vert^2=
+  \Eps^2\,\,\Vert\left.\vert0;\alpha;R\right>\Vert^2\cr}
+\eqno{(7.B.8)}
+$$
+which may become negative when $\Eps $ is time-like and
+$\Eps^2<0$.
+
+\bigskip\noindent
+\Item{\bf C)} {\bf Local supersymmetry on the
+worldsheet}
+
+In bosonic string theory, the negative norm states of
+$x^\mu$ are eliminated by the constraints of 
+diffeomorphism invariance (expressed through
+the Virasoro algebra) which
+result from the quantization of the worldsheet metric.
+
+In the RNS string, the bosonic fields
+$x^\mu$ of course still produce negative norm states,
+which are still eliminated by the Virasoro algebra
+constraints.
+But now, the RNS fields $\psi_\pm^\mu$ produce
+further negative norm states (independent of those
+of $x^\mu$) which are not eliminated by the Virasoro
+algebra.
+In fact, since the fields $\psi_\pm^\mu$ are
+Grassmannian, the constraints needed to eliminate 
+the states created by the time component
+$\psi_\pm^0$ will have to be Grassmannian.
+In addition, since we are to eliminate roughly an
+entire field component $\psi_\pm^0$, we need this
+invariance to be {\it local on $\Sigma$}.
+Grassmann odd local symmetries are so-called {\it
+local supersymmetries on $\Sigma$}, and actions 
+invariant under
+those symmetries are so-called {\it supergravity
+actions}.
+They involve, in addition to $x^\mu$,
+$\psi_\pm^\mu$ and the worldsheet metric
+$g_{mn}$, also a {\it gravitino field}
+$\chi_m^\pm$, which is a spinor-vector, i.e.
+$\chi\in K^{3/2}\oplus K^{1/2}\oplus\Kbar^{1/2}
+\oplus\Kbar^{3/2}$.
+This type of
+field was discovered by Rarita and Schwinger in their
+study of spin $3/2$ fields in $4$ space-time
+dimensions, and is therefore sometimes called the
+Rarita-Schwinger field.
+
+
+We shall here give the appropriate supergravity action
+on any worldsheet, with arbitrary metric $g_{mn}$ and
+$\chi_m^\sigma$-field with the spinor index
+$\sigma=\pm$.
+To do so, we introduce a local frame $e_m{}^a$, where
+the $m$-indices refer to coordinate vectors, while the
+$a$-indices refer to the frame vectors $a=1,2$.
+We denote the inverse frame by $e_a{}^m$.
+We then have
+$$
+g_{mn}=e_m{}^a e_n{}^b\delta_{ab}\,;\qquad\qquad
+e_a{}^me_m{}^b=\delta_a{}^b
+\eqno{(7.C.1)}
+$$
+where $\delta_{ab}$ is the $O(2)$-invariant frame
+metric.
+Replacing the metric by the frame introduces an
+additional field. 
+However, there is now also an entire
+group of local frame $O(2)$ rotations, which 
+can always be used to reduce the number of components to
+that of the metric.
+We shall denote the spin connection by $\omega_m$.
+
+We also have a $2$-dimension Clifford algebra, defined
+by
+$$
+\{\gamma^a,\gamma^b\}=-\delta^{ab}\,\,.
+\eqno{(7.C.2)}
+$$
+The $N=1$ supergravity action, with a single supersymmetry,
+is given by (for flat space-time
+$M$):
+$$
+\eqalign{
+S[x,\psi;g,\chi]={1\over 4\pi}\int\nolimits_{\Sigma}
+d\mu_g &\Bigl[\half\,g^{mn}\partial_m x^\mu\partial_n
+x_\mu+\psi^\mu \gamma^a e_a{}^m\partial_m\psi_\mu\cr
+&-\psi^\mu\gamma^a\gamma^b\chi_a e_b{}^m\partial_m x_\mu-
+\fourth\,\psi^\mu\gamma^a
+  \gamma^b\chi_a(\chi_b\psi_\mu)\Bigr]\cr}
+\eqno{(7.C.3)}
+$$
+(The generalization to arbitrary space-time manifolds
+$M$ is straightforward.)
+For this action to make sense, and be the integral of
+a single-valued function, it is necessary that the
+spin structures of $\psi^\mu$ and $\chi_m^\alpha$ be
+the same.
+The action is invariant under the following
+transformations.
+
+\medskip\noindent
+\Item{1)}
+Poincar\'e symmetry in $M$.
+
+\Item{2)}
+$\Diff(\Sigma)$.
+
+\Item{3)}
+$\Weyl(\Sigma)$ \qquad
+$(\delta\psi^\mu=-{1\over 2}\,\delta\sigma\psi^\mu
+\qquad 
+\delta\chi_m^\sigma={1\over 2}\,
+\delta\sigma\chi_m^\sigma)$.\hfill (7.C.4)
+
+\Item{4)}
+$\Lorentz(\Sigma)$ \qquad local $O(2)$ frame rotations.
+
+\Item{5)}
+super-Weyl\qquad $(\delta e_{}^a=0\qquad
+\delta\chi_m=\gamma_m\delta\lam)$\hfill\break
+(The spin structure of $\lam$ is the same as that of
+$\chi$.)
+
+\Item{6)}
+Local supersymmetry, generated by a spinor $\zeta$
+
+\medskip
+$$
+\left\{
+\eqalign{
+&\delta x^\mu=\zeta \psi^\mu\cr
+&\delta \psi^\mu=\gamma^m(\partial_m
+x^\mu-\half\,\chi_m\psi^\mu)\zeta\cr
+&\delta e_m{}^a=\zeta\gamma^a\chi_m\cr
+&\delta \chi_m^\sigma=-2\nabla_m\zeta^\sigma\cr}
+\right.
+$$
+The spin structure of $\zeta$ is the same as that of
+$\psi$ and $\chi$.
+In view of $\Diff(\Sigma)$ and $\Weyl(\Sigma)$
+invariance, the above action defines a conformal field
+theory; as we shall explain shortly it will in fact be
+{\it super-conformal}.
+
+\bigskip\noindent
+\Item{\bf D)} {\bf Functional Integral Representation
+of Transition Amplitudes}
+
+It will turn out to be useful in discussing the
+quantization of free strings to have available the
+general functional integral representation of
+transition amplitudes for interacting strings as well,
+on general worldsheet topologies.
+Thus, we briefly interrupt the discussion of free
+strings to include the functional integral
+representation.
+
+We give first a definition of the transition
+amplitudes in terms of the fields $x$, $\psi$, $g$,
+$\chi$.
+Later on, we shall make use of superfields to
+simplify the expressions.
+Let $V_i$ be a collection of vertex operators for the
+RNS string 
+(we shall postpone the construction of the vertex operators).
+The scattering amplitude of $N$
+strings represented by vertex oprators $V_1,\ldots,V_N$
+is given by: 
+$$
+\eqalign{
+A=\sum\limits_{{{\scriptstyle \rm topologies}\atop
+\scriptstyle h=0,\ldots,\infty}}
+\sum\limits_{{{\scriptstyle \rm
+spin}\atop{{\scriptstyle \rm structures}\atop
+\scriptstyle \nu,\nubar}}}
+\omega(\nu,\nubar) &\int\limits_{\Met(\Sigma)}
+Dg {1\over \scrN(g)}\int D\chi \cr
+\int\limits_{\Map(\Sigma,M)} D\chi\int D\psi
+&\cdot V_1\ldots V_N e^{-S[x,\psi;g,\chi]}\cr}
+\eqno{(7.D.1)}
+$$
+The measures are constructed with respect to the $L^2$
+norms on the corresponding spaces of sections of
+$K^r\otimes\Kbar^{\rbar}$ for a suitable choice of
+$r$, and $w(\nu,\nubar)$ is a weight
+factor that depends upon the spin structure, to be
+determined later.
+
+\vfill\eject
+\noindent
+\Item{1)} {\it A quick derivation of the critical dimension}
+
+Using our experience from the bosonic string, we may
+collect the various determinant factors that arise
+from integrating out $x$ and $\psi$
+$$
+\left(
+{\Det'\Delta_{(0)}\over \int\nolimits_{\Sigma}d\mu_g}
+\right)^{-D/2}\left(\Det\,\Delta_{(-1/2)}^+\right)^{D/2}
+\eqno{(7.D.2)}
+$$
+as well as from the Faddeev-Popov determinants arising
+from gauge fixing $\Diff(\Sigma)$ and local supersymmetry.
+$$
+\left(\Det'\Delta_{(-1)}^-\right)\left(\Det'\,
+\Delta_{(-1/2)}^-\right)^{-1}
+\eqno{(7.D.3)}
+$$
+The inverse power occurs for the local supersymmetry
+determinant because local susy is Grassmann valued.
+(We have ignored finite-dimensional determinant
+contributions.)
+Now, we have the following contribution to the Weyl
+anomaly from each determinant
+$$
+\left\{
+\matrix{
+C_{(0)}\hfill &= &1\cr
+C_{(-1/2)}^+\hfill &= &-1/2\cr
+C_{(-1)}^-\hfill &= &13\cr
+C_{(-1/2)}^-\hfill &= &\null\quad 11/2\,.\cr}
+\right.
+\qquad\qquad
+\left\{
+\matrix{
+-D/2(-2C_{(0)})\hfill &= &D\cr
+\null\quad D/2(-2C_{(-1/2)}^+)\hfill &= &D/2\cr
+\null\quad 1(-2C_{(-1)}^-)\hfill &= &-26\cr
+-\,1(-2\,C_{(-1/2)}^-)\hfill &= &11\cr}
+\right.
+\eqno{(7.D.4)}
+$$
+Hence the total Weyl scaling factor of the determinant
+parts is ${3\over 2}\,(D-10)$, and the critical
+dimension is $D=10$.
+The super-Weyl symmetry (item 5) in (7.C.4) 
+also has an anomaly, and one
+can show that it cancels in $D=10$.
+
+\bigskip\noindent
+\Item{2)} {\it A quick look at super-moduli}
+
+Later on, we shall carry out a careful study of the
+space of {\it super-geometries}, which is parametrized by
+$(g_{mn},\chi_m^\sigma)$.
+For the time being, let us take a quick approach that
+will suffice for the study of free strings.
+
+Given a metric $g$, and local complex coordinates $z$,
+$\zbar$, with $g=2g_{z\zbar}\vert dz\vert^2$, let us
+analyze the action of super-Weyl and supersymmetry on
+$\chi_m^\pm$:
+$$
+\left\{
+\eqalign{
+\delta\chi_z^+ &=-2\nabla_z \zeta^++\delta\lam^-\cr
+\delta\chi_{\zbar}^+ &=-2\nabla_{\zbar}\zeta^+\cr}
+\right.
+\eqno{(7.D.5)}
+$$
+and similarly for their complex conjugates.
+We see that by a super-Weyl transformation, we may
+always set $\chi_z^+=0$.
+Locally, we may also set $\chi_{\zbar}^+=0$, but
+globally, there will be obstructions, which are most
+easily identified when $\delta\chi$ is parametrized by
+$$
+\left\{
+\eqalign{
+\delta\chi_{\zbar}^+ &=\Range\,\nabla_{\zbar}^{(-1/2)}
+ \oplus\Ker\,\nabla_z^{(-3/2)}\cr
+\delta\chi_z^- &=\Range\,\nabla_z^{(1/2)}\oplus
+  \Ker\,\nabla_{\zbar}^{(3/2)}\,\,.\cr}
+\right.
+\eqno{(7.D.6)}
+$$
+The space $\Ker\,\nabla_{\zbar}^{(3/2)}$ is spanned by
+holomorphic $3/2$ differentials.
+
+Odd moduli are defined as the Grassmann odd
+coordinates that parametrize those parts of $\chi$
+that are in the quotient of $\delta\chi$ by super-Weyl and
+supersymmetry:
+$$
+\left\{
+\eqalign{
+\delta m_\kap &=(\delta\chi_z^-,\phi_\kap)
+  \qquad \phi_\kap\in \Ker\,\nabla_{\zbar}^{(3/2)}\cr
+\delta\mbar_\kap &=(\delta\chi_{\zbar}^+,\phi_\kap^*)
+\qquad \phi_\kap^*\in\Ker\,\nabla_z^{(-3/2)}\,\,.\cr}
+\right.
+\eqno{(7.D.7)}
+$$
+The number of odd moduli is given by the
+dimension of $\Ker\,\nabla_{\zbar}^{(3/2)}$:
+$$
+\dim\,\Ker\,\nabla_{\zbar}^{(3/2)}=
+\left\{
+\Biggl\{
+\matrix{
+0 &\qquad h=0\hfill\cr
+\noalign{\medskip}
+0 &\qquad h=1, \hbox{ even }\nu\hfill\cr
+\noalign{\medskip}
+1 &\qquad h=1, \hbox{ odd }\nu\hfill\cr
+\noalign{\medskip}
+2h-2 &\qquad h\Ge 2\,\,.\hfill\cr}
+\right.
+\eqno{(7.D.8)}
+$$
+Here, $\nu$ denotes the spin structure of $\chi$.
+
+Later on, we shall show that, together with the
+even moduli $m_k$, $\mbar_k$, 
+the odd moduli $m_\kap$, $\mbar_\kap$ 
+parametrize a so-called
+{\it super-moduli space} $s\scrM_k$, with supermoduli 
+coordinates $(m_k,m_\kap;\mbar_k,\mbar_\kap)$.
+Here, $k=1,\ldots,\dim\,\Ker\,\nabla_{\zbar}{}^{(2)}$
+and
+$\kap=1,\ldots,\dim\,\Ker\,\nabla_{\zbar}{}^{(3/2)}$.
+This space may be defined as the quotient of the space
+of all $\{e_m^a,\chi_m^\sigma\}$, denoted by
+$s\Met(\Sigma)$, by the group of superdiffeomorphisms
+$s\Diff(\Sigma)=\{\Diff(\Sigma)$, local susy $\}$, of
+super-Weyl transformations
+$s\Weyl(\Sigma)=\{\Weyl(\Sigma)$, super $\delta\lam\}$
+and local $O(2)$ frame rotations $\Lorentz(\Sigma)$:
+$$
+s\scrM_h=s\Met(\Sigma)/(s\Diff(\Sigma)\rtimes
+s\Weyl(\Sigma)\times\Lorentz(\Sigma))
+\eqno{(7.D.9)}
+$$
+
+\vfill\eject
+\noindent
+\Item{\bf E)} {\bf Super-Virasoro Algebra and Physical
+Spectrum}
+
+Having clarified the r\^{o}le of $\chi_m^\sigma$, we
+now apply the results obtained in \S{D} to the free
+string with $\Sigma$ of cylindrical topology.
+Using $\Diff(\Sigma)$, local supersymmetry, Weyl and
+super-Weyl invariance, in the critical dimension, we
+may choose a flat metric on $\Sigma$, $g=2\vert dz\vert^2$
+with vanishing $\chi_m^\sigma=0$.
+However, just as was the case in quantizing the free
+bosonic string, we must retain the constraints arising
+from the integration over $g$ and $\chi$.
+They are given by
+$$
+\left\{
+\eqalign{
+T(z) &=-\half\,\partial_z x\cdot\partial_z x+\half
+\,\partial_z\psi_+\cdot\psi_+\cr
+G(z) &=\psi_+\cdot\partial_z x\cr}
+\right.
+\eqno{(7.E.1)}
+$$
+along with their complex conjugates $\Tbar$, $\Gbar$.
+Their OPE's are easily obtained.
+$$
+\eqalign{
+T(z)T(w) &\sim {c/2\over (z-w)^4}+{2\over (z-w)^2}
+  T(w)+{1\over z-w}\partial_w T(w)\cr
+T(z) G(w) &\sim {3/2\over (z-w)^2}G(w)+{1\over
+  z-w}\partial_w G(w)\cr
+G(z)G(w) &\sim {2c/3\over (z-w)^2}+{2\over
+z-w}T(w)\,\,.\cr}
+\eqno{(7.E.2)}
+$$
+Here $c=3/2\,D$.
+The mode expansion must be carried out with care
+here, since we must distinguish between Ramond and
+Neveu-Schwarz sectors.
+$$
+\eqalign{
+&T(z)=\sum\limits_{m\in\dbZ}L_m z^{-m-2}\cr
+&G(z)=\sum\limits_{r}G_r z^{-r-3/2}\cr}
+\qquad\lower10pt\hbox{$\cases{
+r\in \half+\dbZ &$\underNS$\cr
+\noalign{\medskip}
+r\in\dbZ &$\underR\,\,.$\cr}$}
+\eqno{(7.E.3)}
+$$
+The (super) algebra formed by $L_m$ and $G_r$ is the
+{\it $N=1$ super-conformal} or {\it super-Virasoro
+algebra}, with the following structure relations
+$$
+\eqalign{
+[L_m,L_n] &=(m-n)L_{m+n}+{c\over
+12}\,m(m^2-1)\delta_{m+n,0}\cr
+[L_m,G_r] &=\left(\half\,m-r\right)G_{r+m}\cr
+\{G_r,G_s\} &=2 L_{r+s}+{c\over 3}(r^2-\eps)
+  \delta_{r+s,0}\cr}
+\eqno{(7.E.4)}
+$$
+where $\eps=0$ for $\underR$ and $\eps=1/2$ for $\underNS$.
+(Notice that $G_r$ and $G_s$ must be both either
+$\underR$ or $\underNS$!)
+It will be convenient in the sequel to have the
+expressions for $L_n$ and $G_r$ in terms of the modes
+$x_n^\mu$, $d_n^\mu$ and $b_r^\mu$.
+One readily finds by combining (7.E.1) and (7.E.3):
+$$
+\eqalignno{
+m\not=0\qquad
+&\cases{
+L_m =\half\sum\limits_{n}x_{m-n}\cdot x_n+\half
+  \sum\limits_{r}r b_{m-r}\cdot b_r &$\quad\underNS\,\,.$\cr
+\noalign{\medskip}
+L_m=\half\sum\limits_{n}x_{m-n}\cdot x_n+
+  \half \sum\limits_{n} nd_{m-n}\cdot 
+  d_n &$\quad\underR\,\,.$\cr} &(7.E.5)\cr
+\noalign{\bigskip}
+&\cases{
+L_0=\half\,p^2+\sum\limits_{n=1}^\infty x_{-n}\cdot
+x_n+
+\sum\limits_{r\in1/2+\dbZ^+}r 
+  b_{-r}\cdot b_r &$\underNS\,\,.$\cr
+\noalign{\medskip}
+L_0=\half\,p^2+\sum\limits_{n=1}^\infty(x_{-n}\cdot
+x_n+nd_{-n}\cdot d_n) &$\underR\,\,.$\cr}&(7.E.6)\cr
+\noalign{\medskip}
+&\cases{G_r=\sum\limits_{m}x_{-m}\cdot b_{r+m}
+  &\qquad $\underNS \quad r\in\half+\dbZ$\cr
+\noalign{\medskip}
+G_r=\sum\limits_{m}x_{-m}\cdot d_{r+m}
+  &\qquad $\underR\qquad r\in\dbZ\,\,$.\cr}&(7.E.7)\cr}
+$$
+
+The physical state conditions are enforced separately
+in the Ramond and Neveu-Schwarz sectors and may be
+formulated separately for left and right movers at
+fixed momentum.
+We have the following definitions for physical states
+in the left moving sector.
+(An analogous definition holds for the right-moving
+sector.)
+
+\medskip\noindent
+{\it Ramond} sector
+
+A left-moving state $\left.\vert\psi;k;R\right>_L$ 
+is physical of momentum $k$ in the Ramond sector 
+$(\left.\vert\psi;k;R\right>_L\in\scrF_{R,k}^{\phys})$ if
+
+\medskip\noindent
+$$
+\matrix{\displaystyle
+{\scriptstyle\bullet} 
+  &\left.\vert\psi;k;R\right>_L\in\scrF_k\otimes\scrF^R\hfill
+  &\quad\hbox{for some $k\in\dbR^{10}$\kern4.5 true cm}\cr
+\noalign{\bigskip}
+{\scriptstyle\bullet}
+&L_n\left.\vert\psi;k;R\right>_L=G_n
+\left.\vert\psi;k;R\right>=0\hfill
+  &\quad\hbox{for all $n\in\dbN$.}\kern4.5 true cm\hfill\cr}
+\raise0pt\hbox{(7.E.8)}
+$$
+
+\medskip\noindent
+and similarly $\scrFtil_{R,k}^{\phys}$ is defined from
+$\scrFtil_k\otimes\scrFtil^R$.
+
+\bigskip\noindent
+{\it Neveu-Schwarz}
+
+A left-moving state $\left.\vert\psi;k;\NS\right>_L$ 
+is  physical of momentum $k$
+in the Neveu-Schwarz sector
+$(\left.\vert\psi;k;\NS\right>_L\in\scrF_{\NS,k}^{\phys})$
+if
+$$
+\matrix{\displaystyle
+{\scriptstyle\bullet}
+&\left.\vert\psi;k;\NS\right>_L\in\scrF_k
+  \otimes\scrF^{\NS}\hfill
+&\quad \hbox{for some $k\in\dbR^{10}$\kern5.0 true cm}\cr
+\noalign{\bigskip}
+{\scriptstyle\bullet}
+&\left(L_n-\half\,a\delta_{n,0}\right)\left.\vert\psi;
+k;\NS\right>=0 &\quad \hbox{for all $n\in\dbN$\kern5.0
+true cm}\hfill\cr
+\noalign{\bigskip}
+{\scriptstyle\bullet}
+&G_r\left.\vert\psi;k;\NS\right>=0 \hfill
+&\quad \hbox{for all $r\in\dbZ+\half$\kern5.0 true cm}
+  \hfill\cr}
+\raise0pt\hbox{(7.E.9)}
+$$
+
+\medskip\noindent
+and similarly $\scrFtil_{\NS,k}^{\phys}$
+is defined from $\scrFtil_k\otimes\scrFtil^{\NS}$.
+{}From the Fock spaces of physical states,
+$\scrF_{R,k}^{\phys}$ and $\scrF_{\NS,k}^{\phys}$,
+we construct the Fock spaces of open and closed
+physical strings, in analogy with (7.B.1) and (7.B.2):
+$$
+\eqalign{
+\scrF_{\Open}^{\phys} &=\mathop{\oplus}\limits_{k\in
+\dbR^{10}}
+\left(\scrF_{\NS,k}^{\phys}\oplus\scrF_{R,k}^{\phys}\right)\cr
+\scrF_{\Closed}^{\phys}
+&=\mathop{\oplus}\limits_{k\in\dbR^{10}}\left(\scrF_{\NS,k}
+^{\phys}\oplus\scrF_{R,k}^{\phys}\right)\otimes
+\left(\scrFtil_{\NS,k}^{\phys}\oplus
+\scrFtil_{r,k}^{\phys}\right)\,\,.\cr}
+\eqno{(7.E.10)}
+$$
+In complete analogy with the bosonic theory, we have a
+
+\Proclaim{No Ghost Theorem.}
+$\scrF_{\Open}^{\phys}$ and $\scrF_{\Closed}^{\phys}$ have
+non-negative norm for $D=10$, $a=1$.
+The positive definite Hilbert space of the RNS string
+is obtained by taking the quotient by the null space,
+which we denote by $\scrF^{\Null}$:
+$$
+\eqalign{
+\scrF_{\Open}^+
+&=\scrF_{\Open}^{\phys}/\scrF_{\Open}^{\Null}\cr
+\scrF_{\Closed}^+ &=\scrF_{\Closed}^{\phys}/
+\scrF_{\Closed}^{\Null}\cr}
+\eqno{(7.E.11)}
+$$
+\finishproclaim
+
+\noindent
+We shall not prove this theorem here.
+
+\bigskip\noindent
+\Item{\bf F)} {\bf The spectrum of 
+physical states at low mass}
+
+In the {\it Ramond sector}, the ground state obeys
+$x_n^\mu,d_n^\mu \left.\vert0,k;\alpha;R\right>=0$
+for all $n\in\dbN$ as well as the physical state
+condition from (7.E.8)
+$$
+G_0 \left.\vert0,k;\alpha;R\right>=0\eqno{(7.F.1)}
+$$
+Since $L_0=G_0^2$, the constraint by $L_0$ is
+automatically satisfied; similarly the constraints by
+$G_n$, $L_n$, $n\Ge 1$ are automatically satisfied.
+Denoting the generators $d_0^\mu$ of the
+10-dimensional Clifford algebra by standard Dirac
+notation $d_0^\mu={1\over\sqrt{2}}
+\Gamma^\mu$, we find that the $G_0$
+condition amounts to the fact that the Ramond ground
+state satisfies the $10$-dimension massless Dirac
+equation:
+$$
+\Gamma_\mu k^\mu\left.\vert 0,k;\alpha;R\right>=0\,\,.
+\eqno{(7.F.2)}
+$$
+This equation on the Ramond ground state confirms once
+more that it is a fermion.
+Higher mass states transform under higher spinor
+representations of $\Spin(1,9)$, and are all {\it
+fermions} as well.
+
+In the {\it Neveu-Schwarz sector}, the ground state
+obeys
+$x_n^\mu,\, b_r^\mu \left.\vert 0,k;\NS\right>=0$ for
+all $n\in\dbN$, $r\in\half+\dbZ^+$ as well as the
+physical state condition from (7.E.9)
+$$
+\left(L_0-\half\right)
+\left.\vert0,k;\NS\right>=0\eqno{(7.F.3)}
+$$
+The constraints by $L_n$, $G_r$, $n,r\Ge\half$ are
+again automatically satisfied.
+These conditions imply that $k^2=1$, i.e. $M^2=-1$, so
+that this state is a {\it tachyon}! 
+It is also a Lorentz scalar and thus a boson.
+The first excited state in the NS sector is obtained
+by applying $b_{-1/2}^\mu$, 
+$\left\vert\zeta,k;\NS\right>\equiv\zeta_\mu b_{-1/2}^\mu
+\left.\vert0,k;\NS\right>$
+and obeys the constraints
+$$
+\left(L_0-\half\right),L_1 \left.
+\vert\zeta,k;\NS\right>=0 \eqno{(7.F.4)}
+$$
+We find $k^2=0$ and $\zeta\cdot k=0$, so 
+$\left.\vert\zeta,k;\NS\right>$
+is a {\it massless vector state}, such as we
+need for Yang-Mills particles.
+The transversality condition $\zeta\cdot k=0$ is also what
+we shall need for gauge invariance.
+It implies that the negative norm state is eliminated,
+and because $k^2=0$ that one further state is null.
+Thus, we are left with $8$ components with positive
+norm, just as expected for a gauge particle.
+Higher mass states transform under higher tensor
+representations of $\SO(1,9)$, and are all bosons as well.
+
+Let us note that by using lightcone gauge, we may
+construct all positive norm states by applying only
+the {\it transverse operators}
+$$
+x_n^i,\quad
+d_n^i,\quad
+b_r^i
+\qquad\qquad i=1,\ldots,8\eqno{(7.F.5)}
+$$
+to the ground states in each respective sector for
+$n,r<0$.
+This method in particular allows for an easy counting
+of the number of physical states modulo null states,
+at each mass level (see Problem Set \#9).
+
+Actually, we have looked only at the left-moving
+sector of the Hilbert space.
+This suffices to construct the Hilbert space of the
+{\it open strings}.
+To summarize, we have found that
+this sector contains a $\NS$ tachyon, a
+massless Dirac spinor and a massless vector.
+Adding Chan-Paton rules to the open string, the single
+vector may be promoted to a Yang-Mills gauge field
+multiplet under the Chan-Paton gauge group.
+Similarly, the Dirac spinor (and the tachyon) will
+form multiplets under this group.
+We shall work out this construction for Type I strings
+shortly.
+
+For {\it closed strings}, we must put left and right
+moving sectors together, in order to obtain the full
+spectrum, with the condition that left and right
+momenta should match $p_L=p_R$, i.e.
+$x_0^\mu=\xtil_0^\mu$.
+We have four sectors:
+  
+\medskip\noindent
+{\it $\NS$-$\NS$: bosons.}
+
+\Item{$\scriptstyle\bullet$}
+The ground state $\left.\vert0,k;\NS\right>_L\otimes
+  \left.\vert0,k;\NS\right>_R$ is a tachyon with mass
+squared equal to  $M^2=-1$.
+
+\smallskip
+\Item{$\scriptstyle\bullet$}
+The massless states are
+$\Eps_{\mu\nu}(k) 
+b_{-1/2}^\mu\btil_{-1/2}^\nu \left.\vert0,k;\NS\right>_L
+\otimes\left.\vert0,k;\NS\right>_R$ and contain
+
+\ItemItem{}\qquad
+the graviton (symmetric $\mu$, $\nu$),
+
+\ItemItem{}\qquad the anti-symmetric tensor (anti-symmetric
+  $\mu$, $\nu$),
+
+\ItemItem{}\qquad
+the dilaton (tracepart).
+
+\smallskip
+\Item{$\scriptstyle\bullet$}
+massive excited states.
+
+\medskip\noindent
+{\it $\R$-$\NS$ (and $\NS$-$\R$): fermions.}
+
+\Item{}The Ramond sector always has $\mass^2\Ge 0$, and thus
+no tachyons occur in the $\R$-$\NS$ and $\NS$-$\R$
+sectors.
+
+\Item{$\scriptstyle\bullet$}
+The ground state 
+$\left.\vert0,k,\alpha;\R\right>_L\otimes
+\zeta_\mu(k)\btil_{-1/2}^\mu\left.\vert0,k;\NS\right>_R$
+is massless.
+This state is reducible into a spinor $\lam$ called
+the {\it dilatino} and a
+spinor-vector, called the {\it gravitino}. 
+
+\Item{$\scriptstyle\bullet$}
+massive excited states
+
+\medskip\noindent
+{\it $\R$-$\R$: more bosons.}
+
+\Item{$\scriptstyle\bullet$}
+The ground state
+$\left.\vert0,k,\beta;\R\right>_L\otimes
+  \left.\vert0,k,\alpha;\R\right>_R$ is massless.
+
+\Item{}
+These states decompose into a sum of tensor
+representations of $\SO(1,9)$, that may be obtained as
+antisymmetrized products of the vector representation.
+In other words, these states transform as differential
+forms of degree $0,\ldots,10$.
+
+\Item{$\scriptstyle\bullet$}
+massive excited states.
+
+\medskip
+We shall establish in \S{X} that the $\RNS$ spectrum
+(after the $\GSO$ projection has been carried out in
+\S{G}) exhibits space-time supersymmetry, under which
+bosons and fermions are interchanged.
+We shall then find that the dilaton and the dilatino
+on the one hand, and the graviton and the gravitino on
+other other hand, form supersymmetry multiplets.
+
+\bigskip\noindent
+\Item{\bf G)} {\bf The GSO Projection, Space-time
+Supersymmetry}
+
+By combining the $\NS$ and $\R$ sectors of the $\RNS$
+string, we have obtained a string theory with both
+bosons and fermions, with massless graviton,
+anti-symmetric tensor, dilaton and anti-symmetric tensor
+$\R$-$\R$ states which are all bosons, plus 
+gravitino and dilatino states which are fermions.
+This theory is still inconsistent, for two reasons.
+First, in the $\NS$ sector, there is still a {\it
+tachyon} present, which gives rise to 
+the same type of problems as the tachyon
+did in the bosonic string.
+Second, there is a {\it massless gravitino}, which can
+interact consistently only by coupling to a conserved
+supercurrent.
+(The gravitino shares many properties 
+with a gauge field, which must couple to a conserved current.)
+But conservation of a supercurrent means that the
+theory must exhibit invariance under supersymmetry
+transformations.
+Clearly, the $\RNS$ theory is not supersymmetric
+as it stands. 
+The easiest way to see this is by
+noticing that the tachyon has no
+fermionic counterpart.
+On the other hand, if the theory could be made
+supersymmetric, the tachyon problem would be
+eliminated right away and then the gravitino could be
+coupled to a conserved supercurrent, thus eliminating
+both of the above problems.
+
+Gliozzi-Scherk and Olive (1976) proposed a truncation
+of the $\RNS$ string theory that produces a spectrum
+with space-time $(\dbR^{10})$ supersymmetry.
+We shall introduce the $\GSO$ projection first at the
+level of the free string Fock space, and later on show 
+how to enfore it in the functional integral
+formulation.
+It will turn out that the $\GSO$ projection
+corresponds there to carrying out a summation over all
+spin structures of $\Sigma$, with certain weight
+factors.
+The weight factors will be arranged in such a way that
+the amplitudes will be invariant under the action of
+the modular group of the worldsheet $\Sigma$.
+Such spin structure weight factors were already
+included in the functional integral formulation in
+(7.D.1) on general grounds.
+
+The $\GSO$ projection is defined by using the {\it
+worldsheet fermion number operator} $F$ in the form
+$(-1)^F$. 
+This operator has the property
+$$
+\left\{(-1)^F,\psi_\sigma^\mu(z,\zbar)\right\}=0
+\eqno{(7.G.1)}
+$$
+both in the $\R$ and $\NS$ sectors.
+This property defines the operator $(-1)^F$ only up to
+a factor of $\pm 1$, which one may think of as the
+assignment of the eigenvalue of $(-1)^F$
+ on the string ground state in each sector.
+We shall now provide a careful definition of
+$(-1)^F$ in each sector.
+
+In the {\it Neveu-Schwarz sector}, the renormalized
+worldsheet 
+fermion number operators in the left- and right-moving
+sectors are given by
+$$
+F_{\NS}\equiv\sum\limits_{r\in 1/2+\dbZ^+}b_{-r}\cdot
+b_r\qquad\qquad \Ftil_{\NS}\equiv\sum\limits_{r\in
+1/2+\dbZ^+}\btil_{-r}\cdot\btil_r\,\,.
+\eqno{(7.G.2)}
+$$
+and the assignment of $(-1)^F$ on the $\NS$ ground
+state is $-1$.
+Thus, we may represent $(-1)^F$ by
+$$
+(-1)^F\equiv(-1)^{F_{\NS}-1}\qquad\qquad
+(-1)^{\Ftil}\equiv(-1)^{\Ftil_{\NS}-1}\,\,.
+\eqno{(7.G.3)}
+$$
+The {\it $\GSO$ projection} in the Fock space of the
+$\NS$ sector is then given by
+$$
+\eqalignno{
+\scrF_{\NS,\GSO} &\equiv\left\{\left.\vert
+\psi\right>_L\in\scrF^{\NS},(-1)^F\left.\vert\psi\right>_L
+=\left.\vert\psi\right>_L\right\}&(7.G.4)\cr
+\noalign{\hbox{and similarly}}
+\scrFtil_{\NS,\GSO}
+&\equiv\left\{\left.\vert\psi\right>_R\in\scrFtil^{\NS},
+(-1)^{\Ftil}\left.\vert\psi\right>_R=
+\left.\vert\psi\right>_R\right\}\,\,.&(7.G.5)\cr}
+$$
+Alternatively, $\scrF_{\NS,\GSO}$ consists of states
+obtained from the ground state in the $\NS$ sector by
+applying only an {\it even} number of $b$ operators.
+(Similarly for $\scrFtil_{\NS,\GSO}$).
+It is straightforward to see that the $\GSO$
+projection is compatible with the physical state
+conditions, since
+$$
+\left[(-1)^F,L_m\right]=0\qquad\qquad
+\left\{(-1)^F,G_r\right\}=0\,\,.
+\eqno{(7.G.6)}
+$$
+Thus, we define $\scrF_{\NS,\GSO}^{\phys}$ and
+$\scrFtil_{\NS,\GSO}^{\phys}$ by imposing physical
+state conditions on $\scrF_{\NS,\GSO}$ and 
+$\scrFtil_{\NS,\GSO}$.
+
+The tachyon ground state (as well as any state
+obtained by applying an even number of $b$-operators
+to it) is projected out by $\GSO$, and the lowest mass
+state in $\scrF_{\GSO,\NS}^{\phys}$ is massless.
+It consists of a vector of $\SO(1,9)$:
+$$
+b_{-1/2}^\mu\left.\vert0,k;\NS\right>
+$$ 
+with $8$ physical, positive norm components.
+The first excited states have the form
+$$
+b_{-1/2}^{\mu_1}b_{-1/2}^{\mu_2}b_{-1/2}^{\mu_3}\left.
+\vert0,k;\NS\right>\qquad
+b_{-3/2}^\mu\left.\vert0,k;\NS\right>
+\eqno{(7.G.7)}
+$$
+and have mass $M^2=2$.
+(There are $8.7.6/6=56,+8=64$ such physical states.)
+
+We now proceed to define the $\GSO$ projection in the
+{\it Ramond sector}.
+Supersymmetry in $\dbR^{10}$ will require that we have
+equal numbers of bosonic and fermionic physical states
+at each mass level.
+(We assume here that supersymmetry is manifest, and
+not spontaneously broken.)
+The original Ramond sector of the $\RNS$ string has a
+massless Dirac spinor ground state.
+In $D=10$, such a spinor has $2^{D/2}=2^5=32$
+components, which does not match the $8$ bosonic
+components of the $\NS$ sector.
+To have equality, we ought to reduce the number of
+components of the spinor from $32$ to $8$, of course,
+in a way consistent with $\Spin(1,9)$ invariance!
+
+For groups of the form $\Spin(1,D-1)$, with $D$ even, we
+have the following reducibility criteria for various
+dimensions $D$.
+The Clifford algebra is defined by $\{\Gamma^\mu,
+\Gamma^\nu\}=2\eta^{\mu\nu}$.
+The chirality matrix $\Gammabar$, defined by
+$$
+\Gammabar\equiv\Gamma^0\Gamma^1\ldots\Gamma^{D-1}\qquad
+\qquad\Gammabar^2=(-1)^{D/2-1}
+\eqno{(7.G.8)}
+$$
+commutes with all the generators of $\Spin(1,D-1)$ in
+the Dirac spinor representation --- which we denote
+by $S$.
+Thus, $S$ may be reduced to a sum of {\it Weyl
+spinors} $S=S_+\otimes S_-$, where both $S_{\pm}$ are
+of dimension $2^{D/2-1}$.
+
+For $D=2,4\pmod{8}$, there is an independent
+reducibility criterion on Dirac spinors, which
+decomposes $S$ into a sum of two {\it Majorana
+spinors} $S=S_M+iS'_M$.
+A Majorana spinor is of dimension $2^{D/2}$,
+but is defined to be {\it real in some
+basis}:
+$$
+S_M^*=BS_M\qquad\hbox{with}\qquad
+\Gamma^{\mu*}=B\Gamma^\mu B^{-1}
+\eqno{(7.G.9)}
+$$
+A spinor may be reduced to {\it Majorana-Weyl} spinors
+provided the Weyl and Majorana conditions are
+compatible (i.e. $\Gammabar$ and $B$ commute).
+This is possible only in $D=2\pmod{8}$.
+A Majorana-Weyl spinor is a real spinor
+of dimension $2^{D/2-1}$.
+In $D=10$, we see that the Majorana-Weyl condition
+reduces the dimensionality of the $R$-ground state
+precisely to an $8$ component spinor, just as is
+needed for supersymmetry!
+
+In the {\it Ramond sector}, the $\GSO$ projection is
+defined in terms of the worldsheet fermion number
+operator as well, with the following normalization.
+$$
+\matrix{
+(-1)^F &\equiv\hfill \Gammabar(-1)^{F_R}
+  &\qquad\qquad (-1)^F &=\hfill \Gammabar(-1)^{\Ftil_R}\cr
+\noalign{\medskip}
+F_R &\equiv\hfill \sum\limits_{n=1}^\infty d_{-n}\cdot
+d_n
+&\qquad\qquad \Ftil_R &=\hfill \sum\limits_{n=1}^\infty
+  \dtil_{-n}\cdot\dtil_n\cr}
+\eqno{(7.G.10)}
+$$
+The $\GSO$ projection in the Fock space of the $R$
+sector involves a choice of chirality of the $R$
+ground state in each sector (left movers and right
+movers).
+Let us denote these chiralities by $\chi_L$ and
+$\chi_R$, respectively, with values $\pm$ each.
+We now define
+$$
+\vbox{
+\eqalignno{
+\scrF_{\GSO}^{\R}(\chi_L)
+&\equiv\left\{\left.\vert\psi,R\right>_L\in\scrF^R;
+\qquad (-1)^F\left.\vert\psi,R\right>_L=\chi_L\left.
+  \vert\psi;R\right>_L\right\}\cr
+\noalign{\hbox{and}}
+\scrFtil_{\GSO}^{\R}(\chi_R) &\equiv\left\{
+  \left.\psi;R\right>_R\in\scrFtil^R;\qquad
+(-1)^{\Ftil}\left.\vert\psi;R\right>_R= 
+\chi_R\left.\vert\psi;R\right>_R\right\}\,\,.\cr}
+}
+\null\kern-37pt\raise20pt\hbox{(7.G.11)}
+$$
+This means that, given the chirality of the ground
+state, the chirality of the higher states are
+determined by the $\GSO$ projection.
+
+\bigskip\noindent
+1) {\it Chirality and Massive States in the Ramond
+Sector}
+
+The above $\GSO$ projection in the Ramond sector
+selects the chirality of the massless ground state.
+But it also appears to select the chirality of massive
+states, which would appear to be 
+in contradiction with the fact that
+they are massive.
+The resolution of this apparent contradiction lies in
+the fact that opposite chirality components of a
+massive state arise in different ways.
+Consider the first excited level for left movers; 
+it has states (in the lightcone gauge)
+$$
+x_{-1}^i\left.\vert0,k;\alpha;R\right>_L\qquad\qquad
+d_{-1}^i\left.\vert0,k;\beta;R\right>_L
+\eqno{(7.G.12)}
+$$
+The $\GSO$ condition (for example $\chi=+$) requires that
+$$
+\eqalign{
+\Gammabar x_{-1}^i\left.\vert0,k;\alpha;R\right>_L
+&=+ x_{-1}^i\left.\vert0,k;\alpha;R\right>_L\cr
+\Gammabar d_{-1}^i\left.\vert0,k;\beta;R\right>_L &=-
+d_{-1}^i\left.
+\vert0,k;\beta;R\right>_L\cr}
+\eqno{(7.G.13)}
+$$
+Hence these two states have opposite chiralities and
+together form the $16$
+components of a massive Majorana spinor!
+The same phenomenon persists at higher mass levels,
+and is responsible for correctly filling out the
+chirality components of all massive states.
+
+\bigskip\noindent
+2) {\it Space-time supersymmetry}
+
+Now that we have defined the $\GSO$ projection in all
+sectors of the $\RNS$ string, it remains to
+investigate whether the spectrum thus obtained is
+supersymmetric.
+To carry out this analysis, we would need to construct
+the supersymmetry operators, and this requires
+technology that we shall develop only in \S{X}.
+Instead, we can check here that the $\GSO$ projection
+passes an elementary test necessary to have a
+supersymmetric spectrum.
+It is an elementary consequence of the structure
+relations of supersymmetry that the supercharges commute
+with the $\mass^2$ matrix.
+Thus, the number of bosonic and fermionic states at
+each mass level must be the same.
+We now show that this is indeed the case for the
+$\RNS$ spectrum, after $\GSO$
+projection.
+
+To do so, we count the number of fermionic states (in
+the $\R$ sector) and compare with the number of bosonic
+states (in the $\NS$ sector).
+To count states, it suffices to use the lightcone
+construction, in terms of transverse operators $x^i$,
+$b^i$, $d^i$, with $i=1,\ldots 8$,
+and we calculate the generating function
+in each sector.
+In the Ramond sector, we have
+$$
+\eqalign{
+f_{\R}(q) &=8\Tr q^{2M^2}=\sum\limits_{n=1}^\infty
+d_R(n)q^{2n}\cr
+&=8\prod\limits_{m=1}^\infty(1-q^{2m})^{-8}(1+q^{2m})^8\cr}
+\eqno{(7.G.14)}
+$$
+Here, the factor $(1-q^{2m})^{-8}$ arises from the $x^i$
+oscillators 
+and the factor $(1+q^{2m})^8$ from the $d^i$ modes. 
+The prefactor of $8$ arises from the eight-fold
+degeneracy of the $R$ ground state.
+Similarly, in the Neveu-Schwarz sector, we have
+$$
+f_{\NS}(q)=\prod\limits_{m=1}^\infty
+(1-q^{2m})^{-8}{1\over 2q}
+\biggl\{\,\prod\limits_{n=1}^\infty(1+q^{2n-1})^8
+-\prod\limits_{n=1}^\infty(1-q^{2n-1})^8\biggr\}
+\eqno{(7.G.15)}
+$$
+Using the product formulas for Jacobi
+ $\vartheta$-functions, and
+the equality
+$$
+\vartheta_2(0\vert\tau)^4+\vartheta_4(0\vert\tau)^4=
+\vartheta_3(0\vert\tau)^4\eqno{(7.G.16)}
+$$
+with $q=e^{2\pi i\tau}$, we see that
+$f_{\R}(q)=f_{\NS}(q)$.
+Thus, at each mass level, the number of bosonic and
+fermionic states agrees.
+
+Notice that we have established evidence for the presence
+of a space-time supersymmetry in each sector, 
+left-moving and right-moving independently.
+It is conventional to denote the number of independent
+supersymmetries by the letter $N$.
+In this sense, the open $\GSO$ projected $\RNS$ string
+has $N=1$, while the closed $\GSO$ projected $\RNS$
+string has $N=2$.
+
+\bigskip\noindent
+3) {\it Summation over spin structures}
+
+We are now ready to exhibit the relation between the
+$\GSO$ projection of the states in string transition
+amplitudes to any loop order, and summation over spin
+structures of string worldsheets.
+We concentrate on processes involving only $\NS$-$\NS$
+{\it external states}, which are created by vertex operators
+that are single-valued on the worldsheet.
+(Vertex operators for $R$ states produce quadratic
+branch cuts and will be introduced in \S{IX}.)
+Of course, the internal states will include both the
+$\R$ and the $\NS$ sectors.
+
+We consider $1$-loop amplitudes for closed,  oriented
+strings first, and choose a homology basis of
+$1$-cycles $A$ and $B$.
+We analyze the contribution from a given spin
+structure. 
+$$
+\vbox{\epsfxsize=4.5in\epsfbox{fig2.eps}}
+$$
+The one loop amplitude may be {\it
+factorized} and expressed as a sum over intermediate
+ states, as shown in the diagram above.
+In the functional integral, factorization is carried out by
+integrating over all field values (for $x^\mu$
+and $\psi_\sigma^\mu$) on the curve $A$.
+Integration over all $\RNS$ fields $x^\mu$ and
+$\psi_\sigma^\mu$, with given spin structure, will
+give rise to the following structure.
+
+The spin structure on the $A$-cycle determines the
+boundary condition on $\psi_+^\mu$ (resp.
+$\psi_-^\mu$) as either periodic (Ramond) or
+anti-periodic (Neveu-Schwarz).
+This information determines whether the state
+$\left.\vert\eps\right>$ in the factorization is a
+fermion $(\R)$ or a boson $(\NS)$.
+In the full $1$-loop amplitude, both bosons and
+fermions will contribute; thus, the spin structure on
+the $A$-cycle must be summed over with unit
+coefficients.
+
+What is the physical significance of the spin structure
+along a $B$-cycle?
+Functional integration over worldsheet spinors
+$\psi_+^\mu$ (or $\psi_-^\mu$) with {\it anti-periodic
+boundary conditions} along the $B$-cycle produces a
+sum over states $\left.\vert\eps\right>$ in the
+factorization.
+On the other hand, functional integration over spinors
+$\psi_+^\mu$ (or $\psi_-^\mu$) with {\it periodic boundary
+conditions} along the $B$-cycle produces a sum over
+states $\left.\vert\eps\right>$ with an 
+insertion of the operator $(-1)^F$ in the
+factorization.
+Here, $F$ stands for worldsheet fermion number, just
+as we encountered in the definition of the $\GSO$
+projection.
+This result may be established via the usual
+derivation of the Grassmann functional integral from
+canonical quantization of spinors.
+A summation over spin structures on the $B$-cycles
+with coefficients $(\pm 1)$ produces the insertion of
+the projection operator
+$$
+\half(1+(-1)^F)\eqno{(7.G.17)}
+$$
+in the summation over states $\left.\vert\eps\right>$
+in the factorization, and this oprator precisely
+enforces the $\GSO$ projection.
+It is straightforward to extend the reasoning
+presented above to the case of worldsheets of
+arbitrary genus $h$.
+We shall leave it as an exercise to the reader.
+
+Just as the $\GSO$ projection had to be enforced
+separately on left and right movers, we shall also
+have to separate left and right movers in loop
+amplitudes, using the chiral splitting theorem for the
+$\RNS$ string (which generalizes the results of
+\S{V}), and sum independently over spin structures
+of left and right movers.
+
+Finally, let us remark that we have shown that the
+$\GSO$ projection is enforced by separate summation
+over all spin structures of left and right movers with
+weights $\pm 1$.
+The actual sign choice for each spin structure must be
+consistent with modular invariance of the full
+amplitude.
+There may be different consistent choices, yielding
+different string theories, as we shall see in \S{H}.
+
+\bigskip\noindent
+\Item{\bf H)} {\bf Type II A, B Superstrings and Their
+Spectra}
+
+So far, we have analyzed the $\GSO$ projection in a
+single sector of $\RNS$ string theory: either left- or
+right-movers.
+We now consider closed oriented string theories built
+from $\GSO$ projected $\RNS$ strings.
+We shall temporarily ignore the physical state
+conditions, which may be easily imposed
+independently.
+There are 4 possible combinations, with the following
+Hilbert spaces:
+$$
+\eqalign{
+\scrF_{\GSO}^{\phys}(\chi_L;\chi_R) 
+=\oplusop_{k\in\dbR^{10}} &\scrF_k\otimes
+(\scrF_{\GSO}^{\NS}\oplus \scrF_{\GSO}^{\R}
+(\chi_L))\cr
+&\quad\otimes\scrFtil_k\otimes
+  (\scrFtil_{\GSO}^{\NS}\oplus
+  \scrF_{\GSO}^{\R}(\chi_R))\,\,.\cr}
+\eqno{(7.H.1)}
+$$
+Now, a space-time parity operation reverses the
+chirality of all spinors and in particular, of
+the $R$ ground states: $\chi_L\to -\chi_L$,
+$\chi_R\to-\chi_R$. 
+Thus the string theory with assignment $(\chi_L,\chi_R)$
+defines the same string theory as the one with
+assignment $(-\chi_L,-\chi_R)$.
+So, instead of 4 combiantions, we are left with only 2
+physically inequivalent string theories:
+
+\smallskip\noindent
+{\bf Type \IIA :}\enspace $\chi_L=-\chi_R$
+$$
+\scrF_{\IIA}^{\phys}=\scrF_{\GSO}^{\phys}(+,-)\qquad
+(\sim \scrF_{\GSO}^{\phys}(-,+))\,\,.
+\eqno{(7.H.2)}
+$$
+
+\noindent
+{\bf Type \IIB :}\enspace $\chi_L=\chi_R$
+$$
+\scrF_{\IIB}^{\phys}=\scrF_{\GSO}^{\phys}(+,+)\qquad
+(\sim \scrF_{\SO}^{\phys}(-,-))\,\,.
+\eqno{(7.H.3)}
+$$
+The Type $\IIA$ theory is parity invariant upon exchange
+of left and right movers, while Type $\IIB$ is parity
+violating.
+One also says that {\it Type $\IIB$ is chiral}, since it
+singles out one of the chiralities, while {\it Type $\IIA$
+is non-chiral}.
+
+To gain insight into these theories, we derive their
+physical spectra, with the help of the lightcone gauge
+formulation, in terms of the modes $x_{n}^i$, $b_{r}^i$,
+$d_n^i$ with $i=1,\ldots,D-2=8$.
+(See Problem Set \#9.)
+We restrict attention first to massless states.
+We begin by noticing that the $\GSO$ projection
+eliminates the tachyon, but leaves the massless states
+unchanged in the $\NS$ sector.
+In the Ramond sector, the $\GSO$ projection selects
+the chirality of the ground state, which is the only
+state needed for massless string states.
+We shall choose the chiralities to be $+$ in the left
+moving sector and $-$ for Type $\IIA$ and $+$ for Type
+$\IIB$ in the right moving sectors, respectively.
+A list of massless states in each sector, together with
+their standard identifications in terms of fields
+familiar from quantum
+field theory, is given in the table below.
+In parentheses, we indicate the number of physical
+degrees of freedom present in each state.
+
+\def\spacedown{\noalign{\smallskip}}
+\def\Spacedown{\noalign{\vskip1pt}}
+$$
+\vbox{\offinterlineskip
+\hrule
+\halign{\vrule# &\quad\hfil #\hfil
+&\quad\vrule#\quad &\hfil #\hfil
+&\quad\vrule#\quad &\hfil #\hfil &\quad\vrule#\cr
+height6pt &\omit &&\omit &&\omit &\cr
+&$L-R$ &&Type $\IIA$ &&Type $\IIB$ &\cr
+height6pt &\omit &&\omit &&\omit &\cr
+\noalign{\hrule height 1.5 pt depth0pt}
+height6pt &\omit &&\omit &&\omit &\cr
+&$\NS$-$\NS$ &&$b_{-1/2}^i\btil_{-1/2}^j\left.
+  \vert0,k;\NS\right>_L\otimes
+\left.\vert0,k;\NS\right>_R$\hfill && &\cr
+height6pt &\omit &&\omit &&\omit &\cr
+&\hbox{(bosons)} 
+  &&$\matrix{\ssbullet (35) &G_{\mu\nu}
+  &\hbox{(graviton)}\hfill\cr
+\spacedown
+  \ssbullet (28) &B_{\mu \nu} &\cr
+\spacedown
+  \ssbullet (\,\,\, 1)&\Phi &\hbox{(dilaton)}\hfill\cr}$\hfill
+&&\hbox{idem}&\cr
+height6pt &\omit &&\omit &&\omit &\cr
+\noalign{\hrule}
+height6pt &\omit &&\omit &&\omit &\cr
+&$\R$-$\NS$ &&$\left.\vert0,k;\alpha;R\right>_L\otimes
+     \btil_{-1/2}^i\left.\vert0,k;\NS\right>_R$\hfill && &\cr
+height6pt &\omit &&\omit &&\omit &\cr
+&\hbox{(fermions)} 
+ &&$\matrix{\ssbullet (56) &\chi_\mu^\alpha
+  &\hbox{(gravitinos) chirality $+$}\hfill\cr
+\spacedown
+  \ssbullet (\,\,\, 8) &\lambda_\alpha 
+  &\hbox{(dilatinos) chirality $-$}\hfill\cr
+\Spacedown \cr}$\hfill
+&&\raise8pt\hbox{$\matrix{\hbox{idem} 
+  &\hbox{chirality $+$}\cr
+  &\hbox{chirality $-$}\cr}$}\hfill &\cr
+% &&\raise13pt\hbox{idem\quad chirality $+$}&\cr
+%& && &&\null\raise15pt\hbox{chirality $-$}&\cr
+height6pt &\omit &&\omit &&\omit &\cr
+\noalign{\hrule}
+height6pt &\omit &&\omit &&\omit &\cr
+&$\NS$-$\R$ &&
+  $b_{-1/2}^i\left.\vert0,k;\NS\right>_L
+  \otimes\left.\vert0,k;\alpha;R\right>_R$\hfill && &\cr
+height6pt &\omit &&\omit &&\omit &\cr
+&\hbox{(fermions)} 
+  &&$\matrix{\ssbullet (56) &\chi_\mu^\alpha
+  &\hbox{(gravitinos) chirality $-$}\hfill\cr
+\spacedown
+  \ssbullet (\,\,\, 8) &\lambda_\alpha 
+  &\hbox{(dilatinos) chirality $+$}\hfill\cr
+\Spacedown\cr}$\hfill
+  &&\raise8pt\hbox{$\matrix{\hbox{idem} 
+         & \hbox{chirality $+$}\cr
+         &\hbox{chirality $-$}\cr}$}\hfill &\cr
+height6pt &\omit &&\omit &&\omit &\cr
+\noalign{\hrule}
+height6pt &\omit &&\omit &&\omit &\cr
+&$\R$-$\R$ &&$\left.\vert 0,k;\alpha;R\right>_L\otimes
+  \left.\vert 0,k;\beta;R\right>_R$\hfill 
+  &&$\left\vert0,k;\alpha;R\right>_L\otimes
+    \left.\vert0,k;\beta;R\right>_R$\hfill &\cr
+height6pt &\omit &&\omit &&\omit &\cr
+&\hbox{(bosons)} 
+  &&$\matrix{\ssbullet (\,\,\, 8) &A_\mu^{(1)}\cr
+\spacedown
+     \ssbullet (56) &A_{\mu \nu\rho}^{(3)}\cr}$\hfill
+  &&$\matrix{\ssbullet (\,\,\,1) &A^{(0)} &\cr
+\spacedown
+    \ssbullet (28) &A_{\mu \nu}^{(2)} &\cr
+\spacedown
+    \ssbullet (35) &A_{\mu \nu\rho\sigma}^{(4)}
+    &\kern-4pt\hbox{{\it self-dual $F$}}\cr}$\hfill &\cr
+height6pt &\omit &&\omit &&\omit &\cr}
+\hrule}
+$$
+
+The first entry that requires clarification is the
+$\R$-$\NS$ (and $\NS$-$\R$) sector: the dilatino and
+gravitino have opposite chiralities.
+To see how this happens, consider the tensor roduct of
+a spinor of definite chirality (say $+$ as in
+$\R$-$\NS$) and a vector, which yields a field
+$\chibar_\mu^\alpha$ of chirality $+$ with $64$
+physical components.
+It decomposes into irreducible spinors by
+$$
+\chibar_\mu^\alpha=\chi_\mu^\alpha+(\Gamma_\mu)^{\alpha\beta}
+\lam_\beta
+$$
+where $\chi_\mu^\alpha$ is the gravitino field,
+obeying $(\Gamma^\mu)_{\beta\alpha}\chi_\mu^\alpha=0$,
+of chirality $+$, and $\lam$ is the dilatino of
+chirality $-$, since $\{\Gammabar,\Gamma_\mu\}=0$.
+
+The next entry that requires clarification is the
+$\R$-$\R$ sector.
+To see why the tensors that are indicated are the ones
+that arise, we study the tensor product decomposition
+properties of two spinors.
+This may be done either on $\SO(1,9)$ spinors, or on
+the reduced $\SO(8)$ spinors.
+Notice that a Majorana-Weyl spinor of the Poincar\'e
+group of $\SO(1,9)$ is
+{\it irreducible} under its $\SO(8)$ stabilizer 
+subgroup, where it is simply a Weyl spinor.
+
+If $S_1$ and $S_2$ are two  Majorana-Weyl
+spinors of {\it the same chirality}, then they reduce
+to $\SO(8)$ Weyl spinors of the same chirality.
+Their product decomposes into anti-symmetric tensors
+of {\it even} rank
+$$
+S_1\otimes S_2=A^{(0)}\oplus A^{(2)}\oplus
+A_+^{(4)}
+\eqno{(7.H.5)}
+$$
+(For Weyl spinors, the components $A^{(6)}$, $A^{(8)}$
+are dependent on $A^{(0)}$ and $A^{(2)}$,
+respectively.)
+$A_+^{(4)}$ stands for the part with self-dual field
+strength, $F=dA^{(4)}$ with ${}^*F=F$.
+
+If $S_1$ and $S_2$ are two Majorana-Weyl
+spinors of {\it opposite chirality}, they reduce to
+$\SO(8)$ Weyl spinors of opposite chirality.
+Their product decomposes into anti-symmetric tensors
+of {\it odd} rank
+$$
+S_1\otimes S_2=A^{(1)}\oplus A^{(3)}\,\,.
+\eqno{(7.H.6)}
+$$
+(For Weyl spinors, the componens $A^{(5)}$ and $A^{(7)}$
+are dependent on $A^{(3)}$ and $A^{(1)}$.)
+
+The counting of the number of physical states for each
+of the fields $A_\mu^{(1)}$, $A_{\mu \nu}^{(2)}$,
+$A_{\mu \nu\kap}^{(3)}$ and $A_{\mu \nu\kap\rho}^{(4)}$
+indeed confirms that they are all to be viewed as 
+{\it gauge fields}, in fact, as differential forms
+$A^{(p)}$, invariant under
+$$
+A^{(p)}\to A^{(p)}+dC^{(p-1)}
+\eqno{(7.H.7)}
+$$
+where $C^{(p-1)}$ is a form of degree $p-1$.
+Thus, they are all Abelian gauge fields.
+
+\bigskip\noindent
+{\it $D$-branes}
+
+It can be shown that the fundamental strings are
+neutral under these gauge fields, and do not carry
+their quantum numbers.
+A gauge field of the type $A^{(p)}$ couples naturally,
+however, to an extended  object of space-time
+dimension $p$ called a $D(p-1)$ brane.
+By analogy with electromagnetism, one says that the
+$D(p-1)$ brane carries the electric charge of
+$A^{(p)}$.
+By Poincar\'e duality of their field strength
+$F^{(p)}=dA^{(p)}$, the field $*F^{(p)}\equiv
+F^{(10-p)}$ may also naturally couple to
+extended objects of space-time dimensions $8-p$
+again called a $D(8-p)$-brane.
+$$
+\matrix{
+A^{(1)} &\sim &D0 &\hbox{branes} &\cr
+\noalign{\medskip}
+A^{(2)} &\sim &D1 &\hbox{branes} &\hbox{(strings)}\cr
+\noalign{\medskip}
+A^{(3)} &\sim &D2 &\hbox{branes} &\hbox{(membranes)}\cr
+\noalign{\medskip}
+A^{(4)} &\sim &D3 &\hbox{branes} &\cr}
+\eqno{(7.H.8)}
+$$
+Polchinski showed that $D$-branes indeed carry the
+electric charges of these gauge fields.
+
+\bigskip\noindent
+{\it The massive spectra of Type \IIA and Type \IIB
+coincide}.
+
+We conclude this section on Type \IIA, B superstrings
+with a discussion of their massive spectra.
+The full spectra are obtained by tensor product of
+left- and right-moving sectors as usual.
+The spectrum of each sector (say left movers) is
+identical to the spectrum of an $\scrN=1$ chiral open
+superstring.
+While its massless spinor states are chiral, its
+massive states cannot be chiral.
+Instead, we have already exhibited the chiral pairing
+of states of opposite chirality previously.
+For example, at the first excited level in the $R$
+sector, we have
+$$
+x_{-1}^i\left.\vert 0,k;\alpha;R\right>\qquad\qquad\qquad
+d_{-1}^i\left.\vert0,k;\beta;R\right>
+\eqno{(7.H.9)}
+$$
+which are of opposite chirality and combine into a
+representation of massive Majorana fermions.
+Thus, the massive spectrum is insensitive to the choice
+of chirality for the massless ground state.
+As a result {\it the massive spectra of {\rm Type
+$\IIA$} and {\rm Type $\IIB$} superstrings coincide}.
+In other words, Type $\IIA$ and Type $\IIB$ superstrings
+differ only in their massless spectrum.
+
+In fact, one can show that upon compactifying Type
+$\IIA$ on a circle of radius $R_A$ and Type $\IIB$ on
+a circle of radius $R_B$, one obtains identical
+theories, including the massless sector, when $R_A
+R_B=\alpha'$.
+This identity may be seen as a result from a
+transformation between the two theories, called
+$T$-duality, which we investigate in Problem Set \#10.
+
+\bigskip\noindent
+\Item{\bf I)} {\bf Type I Superstring}
+
+The type I superstring is constructed from open and
+closed strings, including orientable as well as
+unorientable worldsheets, and with Chan-Paton
+Yang-Mills charges on the open string end points.
+
+We begin by reviewing the results from \S{II} on
+Chan-Paton charges: the end points of open strings
+carry a multiplet of charges, transforming under
+representations $\Lam$ and $\Lambar$ of a compact
+gauge group $G$.
+These charges may be obtained by quantization of
+Grassmann variables $\lam^i$ that move at the end
+points of the open strings.
+$$
+\vbox{\epsfxsize=1.00in\epsfbox{fig3.eps}}
+$$
+For the open string excitation states to be precisely
+those of Yang-Mills gauge states, it is necessary that
+$\Lam\otimes\Lambar$ be equal to the adjoint
+representation of $G$, possibly after imposing certain
+reality and/or symmetrization rules.
+In fact, there are only 3 series of solutions, given by
+classical groups, and the followng rules:
+$$
+\matrix{
+U(N)\hfill &\qquad \Lambar=\Lam^* 
+  &\qquad \hbox{orientable strings}\hfill\cr
+\noalign{\bigskip}
+\SO(N)\hfill &\qquad \Lambar=\Lam 
+  &\qquad \hbox{unorientable strings}\hfill\cr
+\noalign{\bigskip}
+\Sp(N)\hfill &\qquad \Lambar=\Lam 
+  &\qquad \hbox{unorientable strings}\hfill\cr}
+$$
+(We shall examine the interplay between Chan-Paton
+charges and orientability shortly.)
+
+Next, we need to clarify the construction of string
+theories with unorientable strings.
+One defines the {\it worldsheet parity operator
+$\Omega$} (sometimes also called the twist operator)
+by its action on worldsheet coordinates:
+$$
+\left\{
+\eqalign{
+\Omega z &=-\zbar\cr
+\Omega \zbar  &=-z\cr
+\Omega^2 &=1\cr}
+\right.
+\eqno{(7.I.1)}
+$$
+The action of $\Omega$ is exhibited in the figure
+below for an open string represented as a half
+annulus, with boundary $B$.
+$$
+\vbox{\epsfxsize=2.50in\epsfbox{fig4.eps}}
+$$
+\medskip
+
+We begin by considering the bosonic string.
+Worldsheet parity is a symmetry of the bosonic string
+action, when $x^\mu$ transforms as
+$$
+\Omega x^\mu(z,\zbar)=x^\mu(-\zbar,-z)\,\,.
+\eqno{(7.I.2)}
+$$
+For {\it open strings}, we have the mode expansion
+$$
+x^\mu(z,\zbar)=q^\mu-i p^\mu\,\ln \vert z\vert^2+i
+\sum\limits_{n\not=0}^\infty{1\over n}\,
+x_n^\mu(z^{-n}+\zbar^{-n})\eqno{(7.I.3)}
+$$
+so that
+$$
+\Omega q^\mu=q^\mu;\quad
+\Omega p^\mu=p^\mu;\quad
+\Omega x_m^\mu=(-)^m x_m^\mu\,\,.
+\eqno{(7.I.4)}
+$$
+Thus, to define the worldsheet parity of each state in
+$\scrF_{\Open}$, it suffices to have the $\Omega$
+assignment of the (tachyonic) ground state.
+Now, $\Omega$ is a symmetry of the worldsheet action
+and thus preserved in string interactions.
+Since there is a non-zero $3$ tachyon vertex, we must have
+$\Omega^3=1$, so that $\Omega=1$ on the tachyon:
+$$
+\Omega\left.\vert
+0,k\right>=+\left.\vert0,k\right>\,\,.
+\eqno{(7.I.5)}
+$$
+As a result, the $\Omega$-assignment of Yang-Mills
+states is negative:
+$$
+\Omega\,\,x_{-1}^\mu\left\vert0,k\right>=
+-x_{-1}^\mu\left.\vert0,k\right>\,\,
+\eqno{(7.I.6)}
+$$
+For {\it closed strings}, we have the mode expansion
+$$
+x^\mu(z,\zbar)=q^\mu-i p^\mu\,\ln\vert z\vert^2+i
+  \sum\limits_{m\not=0}{1\over m}
+  (x_m^\mu z^{-m}+\xtil_m^\mu\,\zbar^{-m})
+\eqno{(7.I.7)}
+$$
+and
+$$
+\Omega q^\mu=q^\mu;\,\,
+\Omega p^\mu=p^\mu\qquad\qquad
+\left\{
+\eqalign{
+&\Omega x_m^\mu=(-)^m \xtil_m^\mu\cr
+&\Omega \xtil_m^\mu=(-)^m x_m^\mu\cr}\right.\,\,.
+\eqno{(7.I.8)}
+$$
+The tachyon, dilaton and graviton now have $\Omega=1$,
+but the antisymmetric tensor state $x_{-1}^{[\mu}$
+$\xtil_{-1}^{\nu]}\left.\vert0;k\right>$ has $\Omega=-1$,
+because $\Omega$ interchanges the indices $\mu$ and
+$\nu$.
+
+In addition to acting on the string coordinate
+$x^\mu$, $\Omega$ will also act on the Chan-Paton
+charges, since the end points of the open string are
+exchanged.
+We consider here $\SO(N)$ or $\Sp(N)$ Chan-Paton
+charges, where the representations $\Lam$ are real or
+pseudo-real.
+We introduce a basis of open string states with
+Chan-Paton charges
+$$
+\left.\vert\eps,k;ij\right>
+\eqno{(7.I.9)}
+$$
+where $k$ denotes the momentum, the indices
+$i,j=1,\ldots,\dim\,\Lam=\dim\,\Lambar=N$ label the
+Chan-Paton charges, and $\eps$ label the remaining
+quantum numbers, such as polarizations.
+A general state may be described by a matrix of
+Chan-Paton charges $\lam_{ij}$, and we shall
+specialize here to the ground state:
+$$
+\lam_{ij}\left.\vert 0,k;ij\right>\,\,.
+\eqno{(7.I.10)}
+$$
+Now apply $\Omega$ to this state, and use the fact
+that charges $ij$ are interchanged,
+$$
+\Omega\,\lam_{ij}\left.\vert0,k; ij\right>=
+\lam'_{ij}\left.\vert0,k;ij\right>\,\,.
+\eqno{(7.I.11)}
+$$
+Clearly, $\lam'$ must be linear in $\lam^T$, so we
+should have
+$$
+\lam'=M\lam^T M'\,\,.
+\eqno{(7.I.12)}
+$$
+Now, parity is a symmetry of the worldsheet action,
+and thus of the transition
+amplitudes, so we must have an additional reqirement
+on the Chan-Paton charges:
+$$
+\tr\lam_1\ldots\lam_p=\tr\,\lam_1^T\ldots
+\lam_p^T\,\,.
+\eqno{(7.I.13)}
+$$
+Hence $M'=M^{-1}$.
+In addition, from $\Omega^2=1$, we have
+$$
+\lam=M(M\lam^T M^{-1})^T=M(M^{-1})^T\lam
+(M(M^{-1})^T)^{-1}\,\,.
+\eqno{(7.I.14)}
+$$
+Assuming that the set of matrices $\lam$ is complete,
+we have by Schur's lemma that $M^T=\pm M$.
+Up to changes of bases, we then have $2$ possibilities
+$$
+\matrix{
+1) &M^T=M=I_N:\hfill &\Omega\lam_{ij}\left.\vert
+  0,k;ij\right>=\lam_{ij}^T\left.\vert0,k;ij\right>\hfill\cr
+\noalign{\medskip}
+ & &\Omega\lam_{ij}x_{-1}^\mu\left.\vert0,k;ij\right>
+  =-\lam_{ij}^Tx_{-1}^\mu\left.\vert0,k;ij\right>\hfill\cr}
+\eqno{(7.I.15)}
+$$
+\medskip
+$$
+\null\kern20pt
+\matrix{
+\noalign{\hbox{$2)\quad M^T=-M=J=
+  \diag(\sigma_2\ldots\sigma_2):$}\medskip}
+ & &\qquad\qquad\qquad\Omega\lam_{ij}\left.\vert0,k;ij\right>=
+  (J\lam^T J)_{ij}\left.\vert0,k;ij\right>\hfill\cr
+\noalign{\medskip}
+& &\qquad\qquad\qquad
+  \Omega\lam_{ij}x_{-1}^\mu\left.\vert0,k;ij\right>=-(J\lam^T
+J)_{ij}x_{-1}^\mu \left.\vert0,k;ij\right>\,\,.\hfill\cr}
+\eqno{(7.I.16)}
+$$
+
+Now, we are in a position to identify the r\^{o}le of
+{\it unorientable} strings.
+$\Omega$ is a (global) symmetry of the worldsheet
+action and of string interactions.
+This symmetry may be {\it gauged}, which means that
+the Hilbert space of states is projected to states
+that are invariant under  $\Omega$.
+The relevant projection operator is
+$$
+\half(1+\Omega)\,\,.
+\eqno{(7.I.17)}
+$$
+In the closed (unoriented) string, this projection
+eliminates the anti-symmetric tensor; in the open
+string, with Chan-Paton charges, as described above,
+it will project out the tachyon in 1) and 2) provided
+we require $\lam^T=-\lam$ in 1), i.e. $\SO(N)$ gauge
+group, and $\lam^T=-J\lam J$ in 2), i.e. $\Sp(N)$
+gauge group.
+We see that we then retain the Yang-Mills vector
+states in the spectrum.
+
+Non-orientable worldsheets now arise in the following
+way.
+An open string worldsheet, to tree level, with initial
+state $I$ and final state $F$ and possibly some vertex
+operators inserted, will give rise to a one loop
+diagram by summing over all possible intermediate
+states.
+For oriented open strings, we have
+$$
+\vbox{\epsfxsize=4.00in\epsfbox{oriented-open.eps}}
+$$
+But when the open string spectrum is projected onto
+$\Omega=1$ states only, then the projection operator
+${1\over 2}(1+\Omega)$ must be inserted in the trace.
+Then, the contributions arise from the annulus and the
+M\"obius string:
+$$
+\vbox{\epsfxsize=5.00in\epsfbox{mobius.eps}}
+$$
+
+In the $\GSO$ projected
+RNS superstring, the worldsheet parity operator
+exchanges left and right moving $\psi_\sigma$'s and
+thus interchanges left and right moving sectors of the
+$\GSO$ projected RNS spectrum.
+The unoriented $(\Omega=1)$ projection of the closed
+string is achieved by imposing symmetry between left
+and right moving sectors.
+This can be achieved starting from the Type $\IIB$
+superstring, and retaining only states invariant under
+interchange of left and right movers.
+There remains in the {\it Type I closed string sector}
+
+$$
+\matrix{
+\NS-\NS\hfill  &{\rm bosons}\hfill &(35) &G_{\mu \nu};
+  &(1) &\Phi\hfill\cr
+\R-\R\hfill &{\rm bosons}\hfill &(28) &A_{\mu \nu}^{(2)} &&\cr
+\noalign{\bigskip}
+\NS-\R\hfill &{\rm fermions} && &\cr
+\R-\NS\hfill &{\rm fermions}\hfill &(56)
+&\chi_\mu^\alpha,\hfill
+&(8) &\lam_\alpha\hfill\,\,.\cr}
+\eqno{(7.I.18)}
+$$
+In the {\it open superstring sector}, we have an $N=1$
+super-Yang-Mills multiplet in $D=10$, with gauge group
+$\SO(32)$.
+(The restriction to $\SO(32)$ arises only at $1$-loop
+level, and will not be justified further here.)
+$$
+\matrix{
+\NS:\hfill &\qquad 8\times 496 &\qquad A_\mu\cr
+\noalign{\medskip}
+\R:\hfill &\qquad 8\times 496 &\qquad \psi^\sigma\cr}
+\eqno{(7.I.19)}
+$$
+
+
+
+
+\bye
+
+
+

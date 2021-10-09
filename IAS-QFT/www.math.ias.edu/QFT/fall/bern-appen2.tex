@@ -1,0 +1,279 @@
+%From: Pierre Deligne <deligne@math.ias.edu>
+%Date: Fri, 25 Oct 1996 16:20:41 -0400
+
+\input amstex
+\documentstyle{amsppt}
+\magnification=1200
+\loadbold
+\loadeusm
+
+\font\boldtitlefont=cmb10 scaled\magstep2
+
+\NoRunningHeads
+\pagewidth{6.5 true in}
+\pageheight{8.9 true in}
+
+\catcode`\@=11
+\def\logo@{}
+\catcode`\@=13
+
+\def\eps{{\varepsilon}}
+
+\def\dbR{{\Bbb R}}
+
+\def\undertext#1{$\underline{\vphantom{y}\hbox{#1}}$}
+\def\nspace{\lineskip=1pt\baselineskip=12pt%
+     \lineskiplimit=0pt}
+\def\dspace{\lineskip=2pt\baselineskip=18pt%
+     \lineskiplimit=0pt}
+
+\def\upvee{{\sssize \vee}}
+\def\plus{{\sssize +}}
+\def\w{{\mathchoice{\,{\scriptstyle\wedge}\,}
+  {{\scriptstyle\wedge}}
+  {{\scriptscriptstyle\wedge}}{{\scriptscriptstyle\wedge}}}}
+\def\Le{{\mathchoice{\,{\scriptstyle\le}\,}
+{\,{\scriptstyle\le}\,}
+{\,{\scriptscriptstyle\le}\,}{\,{\scriptscriptstyle\le}\,}}}
+\def\Ge{{\mathchoice{\,{\scriptstyle\ge}\,}
+{\,{\scriptstyle\ge}\,}
+{\,{\scriptscriptstyle\ge}\,}{\,{\scriptscriptstyle\ge}\,}}}
+\def\mapright#1{\smash{\mathop{\,\longrightarrow\,}%
+     \limits^{#1}}}
+\def\rmapdown#1{\Big\downarrow\kern-1.0pt\vcenter{
+     \hbox{$\scriptstyle#1$}}}
+\def\bfs{\bold{s}}
+\def\arrowsim{\smash{\mathop{\,\longrightarrow\,}%
+   \limits^{\lower1.5pt\hbox{$\scriptstyle\sim$}}}}
+\def\leftarrowsim{\smash{\mathop{\,\longleftarrow\,}%
+   \limits^{\lower1.5pt\hbox{$\scriptstyle\sim$}}}}
+
+\def\Sym{\text{\rm Sym}} 
+\def\Hom{\text{\rm Hom}} 
+\def\Tor{\text{\rm Tor}} \def\Gr{\text{\rm gr}}
+\def\Ext{\text{\rm Ext}} \def\ev{\text{\rm ev}}
+\def\I{\text{\bf I}} \def\Ber{\text{\rm Ber}}
+\def\II{\text{\bf II}} \def\ber{\text{\rm ber}}
+
+
+%Script letters:
+\def\scr#1{{\fam\eusmfam\relax#1}}
+\def\scrT{{\scr T}} 
+
+
+\topmatter
+\title\nofrills
+{\boldtitlefont Appendix: Even rules}
+\endtitle
+\author
+P. Deligne
+\endauthor
+\endtopmatter
+
+\NoBlackBoxes
+\parindent=20pt
+\frenchspacing
+\document
+\bigskip
+\dspace
+Let $A$ be a commutative super ring and $M$, $N$ be
+$A$-modules.
+A morphism $f\colon\,M\to N$ is a parity respecting map
+$f$ such that $f(am)=af(m)$.
+
+The ``even rules'' point of view is that
+
+\medskip\noindent
+(a)\enspace
+one should think to $M$ in terms of the functor which to
+any extension of scalars $A\to A'$ attach the even part
+$(M')^{\plus}$ of $M':= A'\otimes_A M$;
+
+\smallskip\noindent
+(b)\enspace
+it amounts to the same to give a morphism of modules
+$f\colon\,M\to N$ or to give for each commutative super
+$A$-algebra $A'$ a $(A'){^{\plus}}$-linear morphism
+$F[A']$ from $(M')^{\plus}$ to $(N')^{\plus}$,
+functorial in $A'$.
+
+More precisely, the map $f\mapsto F$:
+$$
+F[A']=f'\vert M'{^{\plus}}\,\,,
+$$
+with $f'$ deduced from $f$ by extension of scalars, is
+bijective.
+
+\medskip\noindent
+{\bf Proof.}\enspace
+To a functorial $F[A']\colon\, (M')^{\plus}\to
+(N')^{\plus}$ one attaches a morphism $f\colon\, M\to N$
+as follows.
+On $M^{\plus}$, $f:=F[A]$.
+Take now $A'=A[\theta]$ with $\theta$ odd.
+An element n of $N'{^{\plus}}$ can be written uniquely in
+the form $n_0+\theta n_1$ with $n_0\in N^{\plus}$ and
+$n_1\in N^-$.
+Define $\varphi_0$ and $\varphi_1$ on $M^-$ by
+$$
+F[A'](\theta m)=\varphi_0(m)+\theta_1(m),
+$$
+and define $f$ on $M^-$ to be $\varphi_1$.
+
+Apply functoriality to $A'\to A\colon\, \theta\mapsto 0$.
+The corresponding map from $(M')^{\plus}$ to $M^{\plus}$
+maps $\theta m$ ($m\in M^-$) to zero, and it follows
+that $\varphi_0=0$: \ for $A'=A[\theta]$, we have
+$$
+F(A')(m_0+\theta m_1)=f(m_0)+\theta f(m_1)
+$$
+for $m_0$ in $M^{\plus}$ and $m_1$ in $M^-$.
+
+We now check that $f$ is $A$-linear.
+The $A^{\plus}$-linearity is clear.
+If $a$ is in$A^-$ and $m$ in $M^{\plus}$,
+$$
+\theta f(am)=F(A')(\theta am)=\theta a F(A')(m)=
+\theta af(m)\,\,.
+$$
+For $m$ in $M^-$, applying functoriality to $A'\to
+A\colon\, \theta\to a$, we get $f(am)=af(m)$ as well.
+
+If $F$ is obtained from a morphism $f$, one has for
+$A'=A[\theta]$
+$$
+f'(m_0+\theta m_1)=f(m_0)+\theta f(m_1)
+$$
+and it follows that this construction gives back $f$.
+
+Conversely, the $f$ deduced from $F$ gives back $F$ by
+extensions of scalars: \ for $a'\in A'$ and $m\in M$
+even,
+$$
+F(a'm)=a'F(m)=a'f(m)
+$$
+by $A\to A'$ functoriality.
+For $a'$ and $m$ odd, functoriality for $A[\theta]\to
+A'\colon\,\theta\mapsto a'$ gives
+$$
+F(a'm)=a'f(m)
+$$
+as well.
+
+A similar, more complicated argument, gives the
+
+\proclaim{Theorem}
+Let $M_i$ be a finite family of $A$-modules.
+The data of a morphism
+$$
+f\colon\,\otimes M_i\to N
+$$
+amounts to the data of a 
+$A'{^{\plus}}$-multilinear map, functorial in
+$A'$, of the $(M'_i)^{\plus}$ to $(N')^{\plus}$.
+\endproclaim
+
+The proof is left to the reader.
+
+\proclaim{Corollary}
+Let $B$ be an $A$-module.
+To give on $B$ a structure of $A$ algebra amounts to
+give on $(B')^{\plus}$ a structure of $(A')^{\plus}$
+algebra, functorially in $A'$.
+The algebra $B$ will be associative (resp. commutative,
+resp. Lie, $\ldots\,$) if and only if the algebras
+$(B')^{\plus}$ are.
+\endproclaim
+
+Note that the $(B')^{\plus}$ are purely even objects: at
+the cost of having to think functorially, which one
+wants to do anyway, this removes signs from the
+definitions.
+
+\example{Example}
+Let $X$ be a supermanifold and $L$ be an (even) function
+on $X$.
+The locus where $L$ is stationary is the subspace $S$ of
+$X$ (a sub-supermanifold in good cases) defined by the
+vanishing of the section $dL$ of the cotangent bundle of
+$X$.
+
+When thinking functorially, one thinks to $X$ as
+determined by the functor which to any supermanifold $B$
+attaches the set $B$-points of $X$,
+where a $B$-point is a morphism $x\colon\,B\to X$.
+Intuitively: \ a family of points of $X$ parametrized by
+$B$.
+In this language, describing $S$ means describing which
+$B$-points $x\colon\, B\to X$ map to $S$, i.e. factors
+through $S\hookrightarrow X$.
+Such $B$-points will be called stationary.
+
+By definition, a $B$-point $x$ is stationary if for
+any even or odd section $s$ on $B$ of $x^*T_X$ (the
+``fiber of $T_X$ at $x$''), $\left<dL,s\right>=0$ on
+$B$.
+If $s$ is odd, let $B'=B\times\dbR^{0,1}$: \ 
+we add an odd parameter $\theta$.
+Then, $\theta s$ is even and $\left<dL,s\right>=0$ on
+$B$ if and only if $\left<dL,\theta s\right>=0$ on $B'$.
+We see that a 
+$B$-point $x$ is stationary if and only if after any
+change of basis $B'\to B$, the  $B'$-point $B'\to B\to
+X$, still noted $x$, is such that for any
+{\it even} section $s$ of $x^*T_M$,
+$\left<dL,s\right>=0$ on $B'$.
+
+This can be rephrased as follows: \ 
+after any change of basis $B'\to B$, one wants that for
+any family of points $x(t)$ ($-\eps<t<\eps$): \
+$B'\times]-\eps,\eps[\to X$, one has
+$$
+\tfrac{d}{dt}\,L(x)=0\quad\text{at}\quad t=0
+$$
+or, more cumbersomely written: \ the pull back of $L$ to
+$B'\times]-\eps,\eps[$ is such that
+$\frac{\partial L}{\partial t}=0$ at $t=0$.
+
+This formulation is convenient when $X$ is ``infinite
+dimensional'', and when what makes good sense is not the
+space $X$ and the function $L$, but the notion of map
+$x\colon\,B\to X$ and of the pull back by $x$ of $L$.
+\endexample
+
+\bigskip\noindent
+{\bf Minority report: \ Odd rules.}
+
+The notion of super Lie algebra can be expressed nicely
+as follows:
+
+\noindent
+Data: \ after any extension of scalars $A\to A'$, a
+quadratic map $x^2$ from $L^-$ to $L^{\plus}$,
+functorial in $A'$.
+
+Applying the theorem to the associated bilinear form,
+from $(\Pi L)^{\plus}\otimes(\Pi L)^{\plus}$ to
+$L^{\plus}$, we see that $x\mapsto x^2$ defines a
+bracket $[x,y]\colon\, L\otimes L\to L$ such that for
+$x$ and $y$ in $L^-$, $[x,y]=(x+y)^2-x^2-y^2$.
+In particular, for $x$ in $L^-$, $[x,x]=2x^2$.
+
+\noindent
+Axiom: \ 
+after any extension of scalars $A\to A'$, for any $x$ in
+$L^-$, one has
+$$
+[x,x^2]=0\,\,.
+$$
+
+Provided $6$ is invertible in $A$, this definition is
+equivalent to the one in term of the Jacobi identity
+(which is a polarized version of the axiom).
+
+\enddocument
+
+
+
+
+

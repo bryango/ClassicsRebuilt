@@ -1,0 +1,284 @@
+%From: Pierre Deligne <deligne@IAS.EDU>
+%Date: Tue, 26 Nov 1996 14:39:20 -0500
+%Subject: Problem Set 2, No. 5
+
+\documentclass[12pt,leqno]{article}
+%\usepackage{amsthm,amsbsy,amsfonts,amssymb,amsmath,amscd}
+\usepackage{amsthm}
+\usepackage{amstex}
+\usepackage{latexsym}
+\usepackage{fontenc}
+\usepackage[mathscr]{euscript}
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{8.5in}
+\setlength{\topmargin}{0pt}
+\setlength{\oddsidemargin}{0pt}
+\setlength{\evensidemargin}{0pt}
+\setlength{\headheight}{0pt}
+\setlength{\headsep}{0pt}
+
+%\hoffset=-1.75 true cm
+%\font\fiverm=cmr5
+
+%\input{pictex.tex}
+
+\DeclareMathAlphabet{\scrb}{U}{eus}{b}{n}%for bold script letters
+
+
+\newcommand{\dbA}{{\mathbb{A}}} %Blackboard Bold
+\newcommand{\dbB}{{\mathbb{B}}}
+\newcommand{\dbC}{{\mathbb{C}}}
+\newcommand{\dbD}{{\mathbb{D}}}
+\newcommand{\dbQ}{{\mathbb{Q}}}  
+\newcommand{\dbR}{{\mathbb{R}}}
+\newcommand{\dbZ}{{\mathbb{Z}}}
+
+\newcommand{\grA}{{\mathfrak{A}}}  %Gothic or German
+\newcommand{\grB}{{\mathfrak{B}}}
+\newcommand{\grC}{{\mathfrak{C}}} 
+\newcommand{\grD}{{\mathfrak{D}}}
+\newcommand{\grG}{{\mathfrak{G}}} 
+
+\newcommand{\bfA}{{\mathbf A}}   %Bold
+\newcommand{\bfB}{{\mathbf B}}
+\newcommand{\bfC}{{\mathbf C}} 
+\newcommand{\bfD}{{\mathbf D}}
+
+\newcommand{\ScrA}{{\mathscr{A}}} %Script 
+\newcommand{\ScrB}{{\mathscr{B}}}
+\newcommand{\ScrC}{{\mathscr{C}}} 
+\newcommand{\ScrL}{{\mathscr{L}}} 
+\newcommand{\ScrS}{{\mathscr{S}}}
+
+
+%\newcommand{\bfscrA}{{\scrb{A}}} %for bold script letters
+%\newcommand{\bfscrB}{{\scrb{B}}}
+%\newcommand{\bfscrC}{{\scrb{C}}} 
+%\newcommand{\bfscrD}{{\scrb{D}}}
+
+
+%\renewcommand{\baselinestretch}{1.5}
+
+
+\theoremstyle{plain}
+{\theorembodyfont{}\newtheorem{thm}{Theorem}}
+\newtheorem{prop}{Proposition}
+\newtheorem{lem}{Lemma}
+\newtheorem{cor}{Corollary}
+\theoremstyle{remark}
+{\theorembodyfont{\rmfamily} \newtheorem*{Rem}{\bf Remark}}
+%\renewcommand{\theRem}{}
+
+
+\newcommand{\Le}{{{\mathchoice{\,{\scriptstyle\le}\,}
+  {\,{\scriptstyle\le}\,}
+  {\,{\scriptscriptstyle\le}\,}{\,{\scriptscriptstyle\le}\,}}}}
+\newcommand{\Ge}{{{\mathchoice{\,{\scriptstyle\ge}\,}
+  {\,{\scriptstyle\ge}\,}
+  {\,{\scriptscriptstyle\ge}\,}{\,{\scriptscriptstyle\ge}\,}}}}
+\newcommand{\Ln}{\text{\rm ln}}
+
+
+
+\font\boldtitlefont=cmb10 scaled\magstep1
+
+\newcommand{\dspace}{\lineskip=2pt
+     \baselineskip=18pt\lineskiplimit=0pt}
+\newcommand{\wedgeop}{\mathop{\wedge}\limits}
+\newcommand{\w}{{\mathchoice{\,{\scriptstyle\wedge}\,}
+  {{\scriptstyle\wedge}}
+  {{\scriptscriptstyle\wedge}}{{\scriptscriptstyle\wedge}}}}
+\newcommand{\vrulesub}[1]{\hbox{\vrule height7pt depth5pt\,}_{#1}}
+\newcommand{\mapright}[1]{\smash{\mathop{\,\longrightarrow\,}%
+     \limits^{#1}}}
+\newcommand{\plus}{{\sssize +}}
+\newcommand{\upvee}{{\sssize\vee}}
+
+\newcommand{\eps}{{\varepsilon}}
+\newcommand{\lam}{{\lambda}}
+\newcommand{\Lam}{{\Lambda}}
+\newcommand{\mynabla}{{\nabla\!}}
+
+\newcommand{\xtil}{\widetilde{x}}
+
+\newcommand{\Adot}{\Dot{A}}
+\newcommand{\Bdot}{\Dot{B}}
+\newcommand{\Xdot}{\Dot{X}}
+\newcommand{\xdot}{\Dot{x}}
+\newcommand{\psidot}{\Dot{\psi}}
+
+
+\newcommand{\GL}{\text{\rm GL}} 
+\newcommand{\Spec}{\text{\rm Spec}}
+\newcommand{\Hom}{\text{\rm Hom}}
+\newcommand{\aff}{\text{\rm aff}} 
+\newcommand{\red}{\text{\rm red}}
+\newcommand{\Map}{\text{\rm Map}} 
+\newcommand{\Lie}{\text{\rm Lie}}
+\newcommand{\Diff}{\text{\rm Diff}} 
+\newcommand{\Vol}{\text{\rm Vol}}
+\newcommand{\Tr}{\text{\rm Tr}}
+
+\title{Witten's Problems, Set Five --- N$^{\text{o}}$. 2}
+\author{(solution written by D. Freed)}
+\date{}
+
+\overfullrule=5pt
+\begin{document}
+
+\maketitle
+
+\hbox to \hsize{\hrulefill}
+
+\bigskip
+\dspace
+\noindent
+(a) \ 
+We should compute $\Tr\,e^{-TH}$ for
+$$
+\frac{1}{2m}\left(-\frac{\partial^2}{\partial x^2}+
+m^2\omega^2 x^2\right)\,\,.
+$$
+First, we can compute directly in the Hamiltonian picture.
+Introduce
+\begin{align*}
+A &=\frac{1}{\sqrt{2m}}\left(\frac{\partial}{\partial x}
+  +m\omega x\right)\\
+A^* &=\frac{1}{\sqrt{2m}}\left(-\frac{\partial}{\partial x}
++ m\omega x\right)
+\end{align*}
+Then $H=A^*A+\frac\omega2$ and $[A,A^*]=\omega$.
+So the spectrum of $H$ is
+$$
+\Spec\,H=\left\{\frac\omega2+n\omega
+\right\}_{n\in\dbZ^{^{\Ge 0}}}
+$$
+and
+\begin{equation}
+\begin{aligned}
+\Tr\,e^{-TH} &=e^{-\omega T/2}\sum\limits_{n=0}^\infty
+  e^{-n\omega T}\\
+&= e^{-\omega T/2}\frac{1}{1-e^{-\omega T}}\\
+&= \frac{1}{2\sinh^{\omega T/2}}
+\label{one}
+\end{aligned}
+\end{equation}
+To compute the heat kernel trace as a path integral we use
+the Feynman-Kac formula
+\begin{equation}
+\Tr\,e^{-TH}=\int e^{-L(X)}dX,
+\label{two}
+\end{equation}
+where $X\colon\, S^1(T)\to\dbR$ is a function on the circle
+$S^1(T)=\dbR/T\dbZ$, and
+$$
+L(X)=\frac m2\int_0^T\left\{\Xdot(t)^2+
+  \omega^2 X(t)^2\right\}dt
+$$
+Since $X$ is periodic we can integrate by parts to obtain
+\begin{align}
+L(X) &=(QX,X)/2\label{three}\\
+Q &=m\left(-\frac{\partial^2}{\partial t^2}+\omega^2\right)
+\label{four}
+\end{align}
+where the inner product in (\ref{three}) is the $L^2$
+inner product on $S^1(T)$.
+So the path integral (\ref{two}) is formally
+\begin{equation}
+\Tr\,e^{-TH}=\frac{1}{\sqrt{\det\,Q}}\label{five}
+\end{equation}
+Now $Q$ has eigenfunctions $\{e^{2\pi int/T}\}_{n\in\dbZ}$
+with corresponding eigenvalues
+$\left\{m\left(\frac{4\pi^2n^2}{T^2}
++\omega^2\right)\right\}_{n\in\dbZ}$.
+Therefore, the determinant is the divergent product
+\begin{align*}
+\det\,Q
+&=\prod\limits_{n\in\dbZ}m
+\left(\frac{4\pi^2n^2}{T^2}+\omega^2\right)\\
+&=\prod\limits_{n\in\dbZ^+}\left(\frac{4\pi^2m}{T^2}\right)^2
+\prod\limits_{n=1}^\infty\left(1+\left(\frac{\omega T}
+{2\pi n}\right)^2\right)\cdot m\omega^2\\
+&=\prod\limits_{n\in\dbZ^+}\left(\frac{4\pi^2m}{T^2}
+  n^2\right)^2\cdot\frac{\sinh^2\left(\frac{\omega T}{2}\right)}
+{\left(\frac{\omega T}{2}\right)^2}\cdot m\omega^2\,\,.
+\end{align*}
+We evaluate the infinite constants using the Riemann
+$\zeta$-function:
+\begin{align*}
+\prod\limits_{n\in\dbZ^+}\left(\frac{4\pi^2m}{T^2}\,n^2\right)^2
+&=\left(\frac{4\pi^2m}{T^2}\right)^{2\zeta(0)}e^{-4\zeta'(0)}\\
+&=\frac{T^2}{4\pi^2m}\,4\pi^2\,\,,
+\end{align*}
+since $\zeta(0)=-1/2$ and $\zeta'(0)=-\frac12\,\ln\,2\pi$.
+Altogether we have
+$$
+\det\,Q=\left(2\sinh\,\frac{\omega T}{2}\right)^2\,\,,
+$$
+and plugging in (\ref{five}) we obtain agreement with
+(\ref{one}).
+
+\bigskip\noindent
+(b) \ 
+We first evaluate the path integral.
+We must diagonalize (\ref{four}) with antiperiodic boundary
+conditions.
+So the eigenfunctions are $\{e^{2\pi int/T}\}_{n\in\dbZ+1/2}$
+with corresponding eigenvalues
+$\left\{m\left(\frac{4\pi^2n^2}{T^2}
++\omega^2\right)\right\}_{n\in\dbZ+1/2}$.
+So
+\begin{equation}
+\begin{aligned}
+\det\,Q
+&=\prod\limits_{n\in\dbZ+1/2}m\left(\frac{4\pi^2n^2}{T^2}
+  +\omega^2\right)\\
+&=\prod\limits_{n\in\dbZ+1/2}\left(\frac{4\pi^2m}{T^2}
+  \,n^2\right)\prod\limits_{n\in\dbZ+1/2}\left(1+
+  \left(\frac{\omega T}{2\pi n}\right)^2\right)^2\\
+&=4\cosh^2\,\frac{\omega T}{2}\,\,,
+\label{six}
+\end{aligned}
+\end{equation}
+from which the path integral is
+\begin{equation}
+\frac{1}{\sqrt{\det\,Q}}=\frac{1}{2\cosh\,\frac{\omega T}{2}}.
+\label{seven}
+\end{equation}
+In (\ref{six}) we use the fact that the $\zeta$-normalized
+number of integers is zero to compute
+$$
+\prod\limits_{n\in\dbZ+1/2}\left(\frac{4\pi^2m}{T^2}\,n^2\right)
+=\prod\limits_{n\in\dbZ+1/2}n^2=\prod\limits_{\text{$n$
+odd}}n^2=\frac{\prod\limits_{n\not=0}n^2}
+{\prod\limits
+\Sb
+\text{$n$ even}\\
+n\not=0
+\endSb
+n^2}=\frac{\prod\limits_{n\not=0}n^2}
+{\prod\limits_{n\not=0}4n^2}=4\,\,,
+$$
+since the $\zeta$-normalized number of nonzero integers is
+$-1$.
+
+On the Hilbert space the operator $J$ is the action on
+functions induced by $x\to-x$.
+Notice that $J$ anticommutes with $A^*$, so that its
+action on the n$^{\text{th}}$ eigenfunction
+$\frac{(A^*)^n}{n!}\,\Omega$ is multiplication by $(-1)^n$.
+Hence
+\begin{align*}
+\Tr\,Je^{-TH} &=e^{-\omega T/2}\sum\limits_{n=0}^\infty
+  (-1)^n e^{-n\omega T}\\
+&=e^{-\omega T/2}\frac{1}{1+e^{-\omega T}}\\
+&=\frac{1}{2\cosh\omega T/2}
+\end{align*}
+This agrees with (\ref{seven}).
+
+
+
+\end{document}
+
+
+

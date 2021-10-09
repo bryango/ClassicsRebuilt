@@ -1,0 +1,93 @@
+%Date: Fri, 08 Nov 1996 16:55:17 EST
+%From: Edward Witten <witten@sns.ias.edu>
+
+
+\input harvmac
+
+{\it ``Problem Set Six''}
+
+(1) In free scalar field theory in four dimensions,
+with mass $m$, 
+calculate the operator product expansion
+$\phi^2(x)\phi^2(x')|_{x\to x'}$ up to and including
+all operators of dimension four or less.  (This means,
+relative to what we did in class, working out contributions
+of some operators with derivatives.  This should not be a long
+exercise.)
+
+(2)  In this exercise we will compute the one-loop renormalization
+of $U(1)$ gauge theory with fermions in four dimensions.  It is
+of considerable theoretical importance, and also is part of the
+computation of the ``Lamb shift'' which was one of the historic
+tests of QED around 1950.
+
+The Lagrangian is
+
+\eqn\abo{L={1\over 4e^2}\int d^4x F_{ij}F^{ij} 
++\int d^4x (\psi, (D+im)\psi).}
+Here the gauge field is $A=A_i dx^i$ -- a connection on 
+a line bundle ${\cal L}$ --  the curvature is
+$F=\half F_{ij}dx^i\wedge dx^j$, and $\psi$ is a charged
+spinor field (section of $(S_+\oplus S_-)\otimes {\cal L}$).
+
+As explained in Fadde\'ev's lectures, to quantize the theory
+one must ``pick a gauge.'' One can pick a gauge in which the
+kinetic energy for $B=A/e$ is just
+\eqn\nabo{L'={1\over 2}\int d^4x \sum_{i.j}(\partial_i B_j)^2.}
+This means that the free propagator of $B$ is
+\eqn\dubo{\langle B_i(x)B_j(0)\rangle=\delta_{ij}\int {d^4k\over (2\pi)^4}
+{1\over k^2}.}
+
+The inverse of the free propagator is therefore, in momentum
+space, $ D_{ij}^0=\delta_{ij}k^2$.
+The inverse of the exact propagator of $B$ is $D_{ij}=D_{ij}^0+
+\Sigma_{ij}$, where $\Sigma_{ij}$, the ``self-energy,'' is
+to be computed from loops.
+
+A very fundamental property of $\Sigma_{ij}$ is that in momentum space
+$k^i\Sigma_{ij}(k)=0$.  (An explanation of why it is so will
+be given later, maybe in the homework session.) This implies that
+\eqn\hobbo{\Sigma_{ij}(k)=(k^2\delta_{ij}-k_ik_j)F(k^2), }
+with a scalar function $F$.  
+
+The problem here is to compute $F$ in the one-loop approximation.
+(More exactly, you will compute $\Sigma_{ij}$, find it has the
+form \hobbo, and compute $F$, after some renormalization.)
+The importance is twofold. (1) The sign of $F$ -- which can be predicted
+without computation, but in this exercise we will just compute
+it -- is the basic quantity that determines the different
+behavior of abelian and nonabelian quantum gauge theories in
+four dimensions (this is a slight simplification as the definition
+of the analog of $F$ is a bit more elaborate in the nonabelian case).
+(2) The renormalized $F$ is observable and, as I mentioned above,
+its calculation is part of the  computation of the Lamb shift.
+
+To compute $F$ in one-loop approximation, just write down
+the one-fermion-loop diagram.
+The fermion propagator is in momentum space $1/(\Gamma\cdot k+im)$
+where $\Gamma\cdot k$ is Clifford multiplication by $k$. In the
+one loop diagram for $\Sigma_{ij}$, there are two vertices on
+the fermion loop; at these vertices one multiplies by $e\Gamma_i$
+or $e\Gamma_j$ respectively (the $e$ comes from using $B=A/e$).
+The loop gives a supertrace over the spin representation of
+$SO(4)$; don't forget that it is four-dimensional as both
+$S_+$ and $S_-$ are included here!  
+(To avoid confusion, in this context supertrace just means $-1$ times
+the ordinary trace, since the objects propagating in the loop
+are all fermions.  No distinction is made between $S_+$ and $S_-$.
+We explained in a previous homework session where the $-1$ comes from.) 
+You will have to rationalize
+the fermion propagator, writing $1/(\Gamma\cdot k+im)=
+(\Gamma\cdot k-im)/(k^2+m^2)$, introduce Feynman propagators
+to combine the denominators, perform the $k$ integral, and
+at that point you will know that you are on the right track when
+you demonstrate that $\Sigma$ is of the form claimed in \hobbo.
+Before you demonstrate \hobbo\ it will appear that you are
+dealing with a possibly quadratically divergent integral,
+but once you've confirmed \hobbo\ it should be clear that there
+is only a logarithmic divergence which you'll renormalize in the
+by now familiar fashion (just subtracting the value of the integral
+at any given value of $k$, such as $k=0$).  
+
+\end
+

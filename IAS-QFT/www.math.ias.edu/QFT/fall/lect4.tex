@@ -1,0 +1,1016 @@
+
+ 
+
+%% This is an AMS-TeX file.
+%% The command to compile it is: amstex <file>
+%%
+\input amstex
+\documentstyle{amsppt}
+\loadeusm
+\magnification=1200
+\pagewidth{6.5 true in}
+\pageheight{8.9 true in}
+
+\catcode`\@=11
+\def\logo@{}
+\catcode`\@=13
+
+\NoRunningHeads
+
+\font\boldtitlefont=cmb10 scaled\magstep1
+\font\bigboldtitlefont=cmb10 scaled\magstep2
+
+\def\spinact{s}
+\def\spinel{\tau}
+
+\def\dspace{\lineskip=2pt\baselineskip=18pt\lineskiplimit=0pt}
+\def\SO{\text{\rm SO}} 
+ \def\udot{\Dot{u}}
+\def\vdot{\Dot{v}}
+\def\fdot{\Dot{f}}
+\def\fdotbar{\Bar{\fdot}}
+
+\def\const{\text{\rm const}}
+\def\im{\text{\rm Im}}
+
+\def\plus{{\sssize +}}
+\def\otimesop{\operatornamewithlimits{\otimes}\limits}
+\def\Le{{\mathchoice{\,{\scriptstyle\le}\,}
+  {\,{\scriptstyle\le}\,}
+  {\,{\scriptscriptstyle\le}\,}{\,{\scriptscriptstyle\le}\,}}}
+\def\Ge{{\mathchoice{\,{\scriptstyle\ge}\,}
+  {\,{\scriptstyle\ge}\,}
+  {\,{\scriptscriptstyle\ge}\,}{\,{\scriptscriptstyle\ge}\,}}}
+\def\plusmin{{\mathchoice{\,{\scriptstyle\pm}\,}
+  {\,{\scriptstyle\pm}\,}
+  {\,{\scriptscriptstyle\pm}\,}{\,{\scriptscriptstyle\pm}\,}}}
+\def\vrulesub#1{\hbox{\,\vrule height7pt depth5pt\,}_{#1}}
+
+\def\fbar{\Bar{f}}
+\def\gbar{\Bar{g}}
+\def\ftil{\tilde{f}}
+\def\htil{\tilde{h}}
+\def\htilbar{\Bar{\tilde{h}}}
+\def\psitil{\tilde{\psi}}
+\def\etatil{\tilde{\eta}}
+
+\def\plus{{\sssize +}}  
+\def\oplusop{\operatornamewithlimits{\oplus}\limits}
+\def\otimesop{\operatornamewithlimits{\otimes}\limits}
+\def\Piop{\operatornamewithlimits{\Pi}\limits}
+\def\w{{\mathchoice{\,{\scriptstyle\wedge}\,}
+  {{\scriptstyle\wedge}}
+  {{\scriptscriptstyle\wedge}}{{\scriptscriptstyle\wedge}}}}
+\def\Le{{\mathchoice{\,{\scriptstyle\le}\,}
+  {\,{\scriptstyle\le}\,}
+  {\,{\scriptscriptstyle\le}\,}{\,{\scriptscriptstyle\le}\,}}}
+\def\Ge{{\mathchoice{\,{\scriptstyle\ge}\,}
+  {\,{\scriptstyle\ge}\,}
+  {\,{\scriptscriptstyle\ge}\,}{\,{\scriptscriptstyle\ge}\,}}}
+\def\vrulesub#1{\hbox{\,\vrule height7pt depth5pt\,}_{#1}}
+\def\rightsubsetarrow#1{\subset\kern-6.50pt\lower2.85pt
+     \hbox to #1pt{\rightarrowfill}}
+\def\mapright#1{\smash{\mathop{\,\longrightarrow\,}\limits^{#1}}}
+\def\arrowsim{\smash{\mathop{\to}\limits^{\lower1.5pt
+  \hbox{$\scriptstyle\sim$}}}}
+
+\def\eps{{\varepsilon}}
+\def\kap{{\kappa}}
+
+\def\pvec{\vec{p}}
+
+\def\Ebar{\overline{E}}
+\def\fbar{\overline{f}}
+\def\gbar{\overline{g}}
+\def\Sbar{\overline{S}}
+\def\Vbar{\overline{V}}
+\def\scrRbar{\overline{\scrR}}
+\def\scrSbar{\overline{\scrS}}
+\def\grSbar{\overline{\grS}}
+
+\def\ftil{\widetilde{\varphi}}
+\def\xtil{\widetilde{\chi}}
+\def\Stil{\widetilde{S}}
+\def\scrStil{\widetilde{\scrS}}
+\def\scrTtil{\widetilde{\scrT}}
+\def\rhotil{\tilde{\rho}}
+
+%\def\Stab{\text{\rm Stab}} \def\det{\text{\rm det}}
+\def\space{\text{\rm space}} \def\const{\text{\rm const}}
+\def\Vbarspace{\overline{V}_{\space}}
+\def\Vspace{V_{\space}} \def\Spec{\text{\rm Spec}}
+\def\SO{\text{\rm SO}}  \def\tr{{\text{\rm tr}}} 
+ \def\pr{{\text{\rm pr}}} 
+\def\Spin{\text{\rm Spin}}
+\def\Res{\text{\rm Res}}
+\def\Aut{\text{\rm Aut}}
+\def\Out{\text{\rm Aut}}
+\def\End{\text{\rm End}}
+\def\supp{\text{\rm supp}}
+\def\QFT{\text{\rm QFT}} 
+%\def\SU{\text{\rm SU}} \def\Lie{\text{\rm Lie}}
+%\def\SL{\text{\rm SL}} \def\Sym{\text{\rm Sym}}
+
+\def\dbC{{\Bbb C}} 
+\def\dbR{{\Bbb R}}
+\def\dbZ{{\Bbb Z}} 
+
+\def\gr#1{{\fam\eufmfam\relax#1}}
+
+%Euler Fraktur letters (German)
+\def\grA{{\gr A}}	\def\gra{{\gr a}}
+\def\grB{{\gr B}}	\def\grb{{\gr b}}
+\def\grC{{\gr C}}	\def\grc{{\gr c}}
+\def\grD{{\gr D}}	\def\grd{{\gr d}}
+\def\grE{{\gr E}}	\def\gre{{\gr e}}
+\def\grF{{\gr F}}	\def\grf{{\gr f}}
+\def\grG{{\gr G}}	\def\grg{{\gr g}}
+\def\grH{{\gr H}}	\def\grh{{\gr h}}
+\def\grI{{\gr I}}	\def\gri{{\gr i}}
+\def\grJ{{\gr J}}	\def\grj{{\gr j}}
+\def\grK{{\gr K}}	\def\grk{{\gr k}}
+\def\grL{{\gr L}}	\def\grl{{\gr l}}
+\def\grM{{\gr M}}	\def\grm{{\gr m}}
+\def\grN{{\gr N}}	\def\grn{{\gr n}}
+\def\grO{{\gr O}}	\def\gro{{\gr o}}
+\def\grP{{\gr P}}	\def\grp{{\gr p}}
+\def\grQ{{\gr Q}}	\def\grq{{\gr q}}
+\def\grR{{\gr R}}	\def\grr{{\gr r}}
+\def\grS{{\gr S}}	\def\grs{{\gr s}}
+\def\grT{{\gr T}}	\def\grt{{\gr t}}
+\def\grU{{\gr U}}	\def\gru{{\gr u}}
+\def\grV{{\gr V}}	\def\grv{{\gr v}}
+\def\grW{{\gr W}}	\def\grw{{\gr w}}
+\def\grX{{\gr X}}	\def\grx{{\gr x}}
+\def\grY{{\gr Y}}	\def\gry{{\gr y}}
+\def\grZ{{\gr Z}}	\def\grz{{\gr z}}
+
+
+\def\scr#1{{\fam\eusmfam\relax#1}}
+
+\def\scrA{{\scr A}}   \def\scrB{{\scr B}}
+\def\scrC{{\scr C}}   \def\scrD{{\scr D}}
+\def\scrE{{\scr E}}   \def\scrF{{\scr F}}
+\def\scrG{{\scr G}}   \def\scrH{{\scr H}}
+\def\scrI{{\scr I}}   \def\scrJ{{\scr J}}
+\def\scrK{{\scr K}}   \def\scrL{{\scr L}}
+\def\scrM{{\scr M}}   \def\scrN{{\scr N}}
+\def\scrO{{\scr O}}   \def\scrP{{\scr P}}
+\def\scrQ{{\scr Q}}   \def\scrR{{\scr R}}
+\def\scrS{{\scr S}}   \def\scrT{{\scr T}}
+\def\scrU{{\scr U}}   \def\scrV{{\scr V}}
+\def\scrW{{\scr W}}   \def\scrX{{\scr X}}
+\def\scrY{{\scr Y}}   \def\scrZ{{\scr Z}}
+
+\def\gr#1{{\fam\eufmfam\relax#1}}
+
+%Euler Fraktur letters (German)
+\def\grg{{\frak g}}
+\def\grp{{\frak p}}
+
+
+\NoBlackBoxes
+\document
+
+\centerline{\boldtitlefont Lecture 4.}
+
+\medskip
+
+\centerline{\boldtitlefont Scattering theory.}
+
+\medskip
+
+\centerline{David Kazhdan}
+
+
+\dspace
+%\bigskip\bigskip
+
+\smallskip
+\subhead 4.1
+Introduction
+\endsubhead
+
+This important branch of functional analysis is not so
+popular as it should be; one of the reasons is that the
+phenomena studied in scattering theory has no
+finite-dimensional analog.
+
+The situation is roughly as follows.
+
+Let $A_0$ be a self-adjoint operator in a Hilbert space $H$
+(the function space).
+Let $\lambda$ be a point in the {\it continuous} spectrum of
+$A_0$ and let $f_\lambda^0$ be the
+corresponding ``eigenfunction'' (quotation marks are put to
+remind that $f_\lambda^0$ lies not in the Hilbert space $H$,
+but rather in an appropriate larger function space, i.e.
+$f_\lambda$ is a linear functional on a dense subspace in
+$H$.)
+
+We consider a ``small'' perturbation $A=A_0+B$ of our
+self-adjoint operator $A_0$, where $B$ is a self-adjoint operator such that
+$(\sqrt{1+A_0^2})^{-1} B$ is compact,
+ and we look for a $\lambda$-eigenfunction $f_\lambda$ of the
+operator $A$.
+
+\remark{Remark} This problem makes sense only if $\lambda$ lies in
+the continuous spectrum of $A_0$; in particular it never
+makes sense in finite dimensions.
+Indeed, the spectrum of an operator moves as we perturb
+the operator; so an isolated point of the spectrum in general does not
+lie in the spectrum of  perturbed operator.
+\endremark
+
+We look for an eigenfunction of the form $f_\lambda=f_\lambda^0+g$.
+We have:
+$$
+\align
+Af_\lambda &=\lambda f_\lambda \Leftrightarrow
+(A-\lambda)g=Bf_\lambda^0\quad\text{so formally}\\
+g &=(A-\lambda)^{-1}B(f_\lambda^0)\,\,.
+\endalign
+$$
+Of course the last equality makes no sense since
+$(A-\lambda)$ is not invertible. Nevertheless in
+ some cases one can show existence of the limits $g_\pm =
+\lim\limits _{\varepsilon \to \pm 0} (A-\lambda\pm i\varepsilon
+)^{-1}B(f_\lambda^0)$. Then we put $f_\pm^\lambda = f_\lambda ^0 +g_\pm$.
+
+\medskip
+
+Let us consider a concrete example of the above situation.
+
+In this example one can actually show existence of the limits 
+$\lim\limits _{\varepsilon \to \pm 0} (A-\lambda\pm i\varepsilon
+)^{-1}B(f_\lambda^0)$. 
+ We will present another way to obtain the two eigenfunctions  $f^\lambda_\pm$.
+We leave it as an exercise to the reader to check  that  the two procedures
+lead to the same answer. 
+
+\medskip
+
+We take $H=L^2(E)$, where $E$ is a $d$-dimensional Euclidean
+space.
+Let $A_0=-\Delta+m^2$, and let $B$ be multiplication by a
+function $b\in C_c^\infty(E)$.
+
+
+
+\proclaim{Claim}
+For $f\in C_c^\infty(E)$ we have: 
+$$
+\Vert Be^{itA_0}f\Vert\sim |t|^{-d/2}\qquad\text{for}\qquad
+t\to\pm\infty\,\,
+$$
+\endproclaim
+
+\proclaim{Corollary}
+For any $f\in C_c^\infty(E)$ the $L^2$-limits
+$\lim\limits_{t\to\pm\infty}e^{itA}e^{itA_0}f$ exist  provided $d>2$.
+\endproclaim
+
+\demo{Proof of Corollary}
+Denote $f^t=e^{itA}e^{-itA_0}f$.
+Then we have:
+$$
+\align
+\left\Vert \tfrac{\partial f^t}{\partial t}\vrulesub{t_0}
+\right\Vert &=\Vert iAe^{it_0A}e^{-it_0A_0}f-ie^{it_0A}A_0
+e^{-it_0A_0}f\Vert\\
+&=\Vert e^{it_0A}Be^{-it_0A_0}f\Vert=\Vert
+Be^{-t_0A_0}f\Vert\,\,.
+\endalign
+$$
+So by the previous claim $f_\plus=\int\limits_0^\infty
+\left(\tfrac{\partial f^t}{\partial t}\right)dt$ converges
+if $d>2$.
+The proof for $f_-$ is analogous.
+\enddemo
+
+Obviously: \ $\Vert f_\pm\Vert_{L^2}=\Vert f\Vert_{L^2}$,
+hence there exist well-defined operators $W_\pm\colon\,
+H\to H$, such that $W_\pm(f)=f_\pm$.
+Moreover, we see that:
+$$
+\Vert(AW_\pm-W_\pm A_0)(f)\Vert=\lim\limits_{t\to\pm\infty}
+\Vert e^{itA}Be^{-itA_0}(f)\Vert=0\,\,,
+$$
+hence $AW_\pm=W_\pm A_0$.
+
+If the image of $W_\plus$ is equal to the image of $W_-$, we
+define the {\it $S$-matrix} by: \ $S=W_\plus^*W^-$.
+Thus $S\in\End(H)$, and $S$ commutes with $A_0$.
+
+
+\subhead{4.2} {System of $n$ particles (potential scattering)}\endsubhead
+This is a generalization of the last problem.
+We take $H=L^2(E^n)$, $A=-\sum\limits_{i=1}^n\Delta_i+\sum
+B_{ij}$, where $B_{ij}$ is multiplication by a function
+$b(v_i-v_j)$, for $b\in C_c^\infty(E)$, and $\Delta_i$ is
+the Laplace operator along the $i^{\text{th}}$ copy of $E$.
+
+Let $\pi$ be a partition  of $\{1,\dotsc,n\}$ in a union of
+$k$ disjoint sets $\pi_1,\dotsc,\pi_k$ (``clusters'').
+
+Consider the decomposition $E^{\pi_\ell}\simeq E\times
+\Ebar_{\pi_\ell}$, where
+$\Ebar_{\pi_\ell}=\{(v_{i_1},\dotsc,v_{i_{\vert\pi_\ell\vert}})\in
+E^{\pi_\ell}\vert \sum v_i=0\}$, and the isomorphism is given by
+$(v_{i_1},\dotsc,v_{i_{\vert\pi_\ell\vert}})\to
+(w_\ell=\frac{1}{\vert\pi_\ell\vert}\sum v_i$;
+$(v_{i_1}-w_\ell,v_{i_2}-w_\ell,\dotsc
+v_{i_{\vert\pi_\ell\vert}}-w_\ell))$.
+
+We have obvious decompositions $E=\Piop_{\ell=1}^k
+E^{\pi_\ell}$, and the corresponding decomposition of the
+function space:
+$$
+H=L^2(E^n)=\otimesop_{\ell=1}^k L^2(E^{\pi_\ell})=
+\otimesop_{\ell=1}^k \left(L^2(E)\otimes
+L^2(\Ebar_{\pi_\ell})\right)
+$$
+
+The operator $A_0$ obviously decomposes as: \
+$A_0=\sum\limits_{\ell=1}^k A_\ell$, where $A_\ell$ acts
+along $E^{\pi_\ell}$; and furthermore
+$A_\ell=A'_\ell+A''_\ell$, where $A'_\ell$ is minus the
+Laplace operator acting along $E$, and $A''_\ell$ acts along
+$\Ebar_{\pi_\ell}$.
+Let $H_\ell=\oplus H_\ell^\lambda\subset
+L^2(\Ebar_{\pi_\ell})$ be the sum of  eigenspaces of
+$A''_\ell$ where $\lambda$ runs over the discrete spectrum
+of $A''_\ell$.
+Put $H_0(\pi)=\otimesop_{\ell=1}^k(L^2(E)\otimes
+H_\ell)\subset L^2(E^n)=H$.
+Let $J_\pi\colon\,H_0(\pi)\hookrightarrow H$ denote the
+natural isometric inclusion; thus $J_\pi(H_0(\pi))$ is an
+$A_0$-invariant subspace in $H$.
+We denote $J=\oplus J_\pi\colon\, \oplusop_{\pi}H_0(\pi)\to
+H$.
+
+\proclaim{Theorem 1} 
+\roster
+\runinitem"{\rm a)}"
+There exist strong limits $W_\pm=\lim\limits_{t\to\pm\infty}
+e^{itA}Je^{-itA_0}$.
+
+\item"{\rm b)}"
+$W_\pm$ is an isometric imbedding and we have: \
+$A\circ W_\pm=W_\pm\circ A_0$.
+
+\item"{\rm c)}"
+$W_\pm$ is an isomorphism.
+\endroster
+\endproclaim
+
+We omit the proof.
+Just remark that the proof of a) and b) is routine, while c)
+is a difficult theorem, the full proof of which was obtained
+only recently.
+
+%\medskip
+%\line{\hrulefill}
+
+\smallskip\noindent
+
+
+\subhead{4.3} {Haag-Ruelle theory}\endsubhead
+ We now  apply the method of scattering
+theory to QFT.
+
+
+Claims and methods  of scattering theory  discussed below
+ apply only to Minkowski, not to the Euclidean picture.
+
+
+We will describe the following construction.
+
+Let $(U,\scrH\supset\scrD\owns\Omega_i)$ be a scalar QFT.
+Suppose that:
+
+\roster
+\item"a)"
+$\scrH^V=\dbC\Omega$ (uniqueness of vacuum).
+
+\item"b)"
+There exists a $P$-invariant Hilbert subspace
+$H\subset\scrH$ with a $P$-equivariant isomorphism
+$H\simeq L^2(\scrO_m^\plus)$, $m>0$.
+
+\item"c)" Mass spectrum of
+${\scrH/H\oplus\dbC\Omega}$ does
+not contain $0$ and $m$.
+
+\item"d)"
+The span of $\left<\phi(f)\Omega\right>$, $f\in\scrS$
+is not contained in $H^\perp$.
+\endroster
+
+\noindent
+Let $(U_0,\scrH_0\supset\scrD_0,\phi_0)$ be the free
+field theory of mass $m$.
+Then one can construct two $P$-equivariant isometric
+imbeddings $W_{\plusmin}\colon\,\scrH^0\hookrightarrow\scrH$.
+
+\remark{Remark}
+We cannot hope that $W_\plusmin$ is an isomorphism, because
+$\square\vrulesub{\scrH}$ can have discrete spectrum outside
+of $\{0,\,m^2\}$ while for free theory it does not.
+An ideal theorem would assert that a free theory
+constructed on  discrete part of the spectral decomposition of 
+$\square$ on $\scrH$ maps
+isomorphically to $\scrH$ (compare with  potential scattering
+described in the previous section).
+Unfortunately there is
+no known way to formulate a precise theorem of this sort. 
+\endremark
+
+
+\remark{Remark} The construction can be carried out under weaker
+assumptions. Namely one can omit condition d), and replace condition 
+c) by requirement that the theory has positive mass, and
+ $m^2$ is an  isolated point of the discrete spectrum of $\square$.
+
+However the assumption that $0$ is an isolated point of
+$\Spec(U\vrulesub{V})$ is essential.
+Application of scattering to a massless QFT confronts
+much more serious difficulties than in the massive case.
+\endremark
+
+\remark{Remark}
+The construction does not work for small $d$.
+Consider the case $d=1$.
+Then QFT reduces to quantum mechanics.
+The spectrum of Hamiltonian of the free theory
+$\Spec\,H_0=m\dbZ_{\plus}$ is totally discrete, thus
+scattering theory is not applicable.
+One can prove a slightly weaker statement  in the case $d=2$.
+Our argument will work for $d\Ge 4$.
+\endremark
+
+
+
+We now turn to construction of imbeddings $W_\pm$.
+We try to imitate the construction of 
+the previous section  (potential scattering).
+
+Let $\Lambda\subset V^{\plus}$ be a $G$-invariant
+neighborhood of $\scrO_m^{\plus}$, such that $\Lambda\cap
+\Spec\,U\vrulesub{H^\perp}=\emptyset$.
+For any function $f$ on $V$ such that
+$\supp\,\scrF(f)\subset \Lambda$ and $t\in\dbR$ let
+$f^t\in\scrS(V)$ be the function such that:
+$$
+\scrF(f^t)(p_0,\vec{p})=
+e^{it\left(p_0-\sqrt{m^2-\vec{p}^2}\,\right)}\scrF(f)(p_0,
+\vec{p}\,)\,.
+$$
+Note that $f^t=f$ provided
+$\supp(\scrF(f))\subset\scrO_m^{\plus}$.
+
+In the rest of the lecture we prove the following
+
+\proclaim{Theorem 2}
+\roster
+\runinitem"a)"
+If $d\Ge 4$ then for any $f_1,\dotsc,f_n\in\scrS(V)$ such
+that $\supp(\scrF(f_i))\subset\Lambda$ the limits
+$\lim_{t\to\plusmin\infty}
+\phi(f_1^t)\ldots\phi(f_n^t)\Omega$ exist.
+
+\item"b)"
+There exists a unique isometric imbedding
+$W_{\plusmin}\colon\,\scrH_0\hookrightarrow\scrH$, such that
+for any $f_1,\dotsc,f_n\in\scrS(V)$ with
+$\supp(\scrF(f))\subset\lambda$ we have:
+$$
+W_{\plusmin}(\phi_0(f_1)\ldots\phi_0(f_n)\Omega)=
+\lim\limits_{t\to\plusmin\infty}\phi(f_1^t)\ldots
+\phi(f_n^t)\Omega
+$$
+The imbeddings $W_\pm$ are $P$-equivariant.
+\endroster
+\endproclaim
+
+\remark{Remark}
+For a free field theory the vector
+$\phi_0(f_1^t)\ldots\phi_0(f_n^t)\Omega$ does not
+depend on $t$.
+Indeed, the field operator $\phi_0(f)$ for a free
+field theory depends on
+$\phi(f)\vrulesub{\scrO_m^{\plus}}$ only, and
+$\scrF(f^t)\vrulesub{\scrO_m^{\plus}}$ does not depend
+on $t$.
+\endremark
+
+\remark{Remark}
+Let $L$ be the space of functions satisfying the conditions of Lemma 1.
+Fourier transform identifies $L$ with the space of
+Schwartz functions on $\scrO_m^{\plus}$.
+Let $\chi$ be a Schwartz function of one variable such
+that $\scrF(\chi)$ is supported in a small neighborhood of
+$0$.
+For $f\in L$ let us put $f_\chi(x)=\chi (x_0)\cdot f(x)$
+where $x=(x_0,\vec{x}\,)$.
+Then $f_\chi\in\scrS(V)$, and the Fourier transform of $f_\chi$ is
+concentrated in a neighborhood of $\scrO_m^{\plus}$ being  the
+convolution of the function $\scrF (f)$ concentrated on $\scrO _m^+$
+and a function concentrated in a small neighborhood of 0 on  the time-axis.
+
+
+This way we can fix an initial imbedding $j$ of (a dense subspace of)
+$\scrH_0$ to $\scrH$ such that $j(\phi_0(f_1)\cdots \phi_0(f_k)\Omega)=
+\phi(f_{1\chi})\cdots \phi(f_{k \chi})\Omega$ for any functions
+$f_1,..,f_k\in L$. Then one checks directly that:
+$$\phi(f_{1\chi}^t)\cdots \phi(f_{k \chi}^t)\Omega = U\left(
+(t,\vec{0}\,)\right) j 
+(U_0\left( (-t,\vec{0}\,)\right)\phi_0(f_1)\cdots \phi_0(f_k) \Omega).$$
+ 
+Thus the situation is quite analogous to the potential scattering
+considered in the previous section.  
+\endremark
+
+\demo{Proof of the Theorem}
+We start with two auxiliary estimates needed in the proof. 
+The first is a standard fact from analysis.
+
+
+\proclaim{Lemma 1 {\rm (locality for free fields)}}
+Let $f\in C^\infty(V)$ be a solution of the Klein-Gordon
+equation, i.e. $\supp\,\scrF(f)\subset\scrO_m^{\plus}$.
+Assume that $f(0,\vec{x}\,)$ and $\frac{\partial
+f}{\partial x_0}(x_0,\vec{x})\vrulesub{x_0=0}$ are Schwartz functions
+on $\dbR^{d-1}$.
+Then for some constant $C$ we have:
+
+{\rm a)} $
+\sup\limits_{\vec{x}\in\dbR^{d-1}}\vert
+f(x_0,\vec{x}\,)\vert\Le C\,(1+\vert x_0\vert)^{-(d-1)/2}$
+
+{\rm b)} $\int\limits _{\dbR^{d-1}}  |f(x_0,\vec{x})|d\vec{x}\Le
+C(1+|x_0|)^{(d-1)/2} $
+
+\endproclaim
+
+We omit the proof; it is an exercise in stationary phase method (see
+lecture 1, \S 1.6,  Claim 1b) for a similar argument). 
+
+The second ingredient is the following estimate on truncated Wightman
+functions (see lecture 3, \S 3.5 for the definition).
+
+
+
+\proclaim{Proposition 1}  There exist a differential operator with constant
+coefficients $D$,  
+a $
+C^0$ function of tempered growth $F$, and a polynomial function
+$P$ on $V_n$  such that
+ $\scrW_n^\tr = D(F)$ and the following estimate holds. 
+
+
+ Let $[1..n]=I \cup J$ be a partition of $[1..n]$ into union of 2 disjoint
+subsets; 
+let $a_1,\dotsc,a_n\in\dbR^{d-1}\subset V$ be
+such that  $a_i \not =
+a_j$ for  $i\in I,\,j\in J$. Then for all $t_1,...,t_n \in \dbR \subset
+V$ we have:
+$$
+|F(t_1+ a_1,\dotsc,t_n+ a_n)|
+ <|P(t_1+ a_1,\dotsc,t_n+ a_n)|
+  e^{-m  \min_{i\in I, j\in J}
+({\sssize\sqrt{-(a_i-a_j)^2}}-|t_i-t_j|)}
+.$$
+
+
+
+\endproclaim
+
+\remark{Remark} The particular case $n=2$ of the Proposition 
+is implied by lecture 1, \S 1.6,  Claim 1b). Also
+   part a) of the same Claim guarantees that at least $\scrW_n^\tr
+ (v_1,..,v_i,v_{i+1}+\lambda a, ..,v_n+\lambda a) \to 0$ for any 
+$v_1, \ldots, v_n$ provided $a^2<0$, which obviously follows from
+ the Proposition.
+\endremark
+
+The statement we will actually need is the  following immediate
+
+\proclaim{Corollary}
+Let $i_t $ denote the embedding of $(\dbR^{d-1})^n$ to $V_n$,
+ $\prod \vec{v}_i
+\to \prod(t,\vec{v}_i)$, and let $\pi:(\dbR^{d-1})^n\to (\dbR^{d-1})^{n-1}=
+(\dbR^{d-1})^n/\Delta$ be the projection to quotient modulo diagonal. 
+For a Schwartz function $h$ on $V_n$ the restriction 
+ $i_t^*(h*\scrW_n^{\tr})$ is a smooth function 
+invariant under diagonal translations, hence 
+$i_t^*(h*\scrW_n^{\tr})=\pi^*(F_t^h)$ for some function $F^t_h$ on $
+ (\dbR^{d-1})^{n-1}$. Then 
+$F^t_h\in L^1\left( (\dbR^{d-1})^{n-1}\right)$ for any $t$, and
+ $\left| F_t^h \right|
+ _{L^1}$ 
+ is bounded by a constant independent of $t$. 
+
+\endproclaim
+
+\demo{Proof of the Proposition}
+We start with an auxiliary result.
+Recall from the first lecture that the Fourier transform
+of Wightman functions has the property:
+$\scrF(\scrW_n(p_1,\dotsc,p_n))=0$ if $p_1+\cdots+p_k\notin
+\Vbar_\plus$ for some $k$.
+One can  easily show:
+
+
+\proclaim{Lemma 2}
+Let $V_\plus(m)$ be $\{p\in V_\plus\vert p^2>m\}$.
+Then we have $\scrF(\scrW_n^{\tr}(p_1,\dotsc,p_n))=0$
+provided $p_1+\cdots+p_k\notin\overline{V_\plus(m)}$ for some $k$ where
+$m$ is the mass of the theory.
+Also $\scrF(\scrW_n^{\tr}(p_1,\dotsc,p_n))$ is concentrated
+on the hyperplane $\sum\limits_{i=1}^n p_i=0$.
+\endproclaim
+
+
+\medskip
+
+We are ready to prove  the Proposition.
+
+Let us denote: $\scrW'(v_1,\dotsc,v_n)=\scrW^{\tr}(v_{i_1},\dotsc,
+v_{i_k}; v_{j_1},v_{j_2},\dotsc,v_{j_{n-k}})$\break
+and
+$\scrW''(v_1,\dotsc,v_n)=\scrW^{\tr}(v_{j_1},\dotsc,v_{j_{n-k}};
+v_{i_1},\dotsc,v_{i_k})$
+ where $i_1<i_2<\ldots<i_k$ are the
+elements of $I$, and $j_1<\ldots<j_{n-k}$ are the elements of
+$J$.
+From the Lemma it follows that
+$$
+\alignat2
+&\scrF(\scrW')(p_1,\dotsc,p_n)=0 &\quad &\text{if}\quad
+  p_{i_1}+\cdots+p_{i_k}\notin
+  \overline{V_\plus(m)};\\
+&\scrF(\scrW'')(p_1,\dotsc,p_n)=0 &&\text{if}\quad
+-(p_{i_1}+\cdots+p_{i_k})\notin \overline{V_\plus(m)}
+\endalignat
+$$
+
+Let $\xtil$ be a smooth function of one variable, such that
+$\xtil(x)=1$ for $x>m$, $\xtil(x)=-1$ for $x<-m$, and its
+Fourier transform has asymptotics $\ftil = \scrF(\xtil(t))\sim
+e^{-m\vert t\vert}$ as $t\to\pm\infty$. [It is a standard
+fact from calculus that such a function exists].
+
+Let us put $\chi(p_1,\dotsc,p_n)=\xtil(p_{i_1}^{(0)}\plus\cdots
+\plus p_{i_k}^{(0)})$, where $p_i=(p_i^{(0)},\pvec_i)$ for $p_i^{(0)}\in
+\dbR,\, \pvec_i \in \dbR^{d-1}$ is the usual decomposition.
+Then we see that $\chi\scrF(\scrW')=\scrF(\scrW')$,
+$\chi\scrF(\scrW'')=-\scrF(\scrW'')$.
+Let $\varphi $ be Fourier transform of $\chi$; so $\varphi$
+is concentrated on a 1-dimensional subspace.
+Then we have $\varphi*\scrW'=\scrW'$,
+$\varphi*\scrW''=-\scrW''$, where $*$ stands for
+convolution.
+
+Since $\scrW_n$ is a tempered distribution it can be represented as
+$\scrW_n= D(F)$ where $F$ is a continuous function of polynomial growth
+and $D$ is a differential operator with constant coefficients. 
+We can assume that $D$ is invariant under the action of symmetric group  
+$\Sigma _{n+1}$. Then the functions
+$F'=F(v_{i_1},..,v_{i_k};v_{j_1},..,v_{j_{n-k}} )$ and
+$F''=F(v_{j_1},..,v_{j_{n-k}} ;v_{i_1},..,v_{i_k})$ satisfy: $D(F')=\scrW'$
+and $D(F'')=\scrW''$. Then obviously: $\varphi*F'=F'$ and
+$\varphi*F''=-F''$
+
+
+The space-locality property implies that:
+$F'(v_1,\dotsc,v_n)=F''(v_1,\dotsc,v_n)=F
+(v_1,\dotsc,v_n)$ provided $(v_i-v_j)^2<0$ for $i\in I$,
+$j\in J$.
+
+
+So for $|(a_i-a_j)^2|>(t_i-t_j)^2$ we have:
+$$
+\align
+&F(t_1 + a_1,\dotsc,t_n+a_n) =\tfrac12
+(F'(t_1+ a_1,\dotsc,t_n+ a_n)
++F''(t_1+ a_1,\dotsc,t_n+ a_n))\\
+&=\tfrac12\varphi*(F'-F'')=\tfrac12
+  \int\limits_{-\infty}^\infty (F'-F'')
+  ((t_1+ a_1)^t,(t_2+
+a_2)^t,\dotsc,(t_n+a_n)^t)\ftil(t)dt
+\endalign
+$$
+where we used the notation: $(t_i+ a_i)^t=t_i+
+a_i-t$ if $i\in I$, and $(t_j+ a_i)^t=t_j+
+a_j$ for $j\in J$.
+The expression in the integral vanishes if
+$t<\min (\sqrt{-(a_i-a_j)^2} -|t_i-t_j|)$.
+So since $F$ is of polynomial growth 
+we get the desired upper bound for the integral.
+\enddemo
+
+
+
+\enddemo
+
+
+The crucial step of the proof is the following
+
+
+\proclaim{Lemma 3}
+$$\vert \scrW_n^{\tr}(g  _1^t,\dotsc ,g_n^t)\vert
+\Le C (1+\vert t\vert)^{(1-d)(n-2)/2}$$
+ for some $C$ and all
+$t$, where $g_j^t=f_j^t$ or $g_j^t=\frac{\partial
+f_j^t}{\partial t}$ or complex conjugate for each $j$.
+\endproclaim
+
+\demo{Proof of the Lemma}
+Let us work in Fourier coordinates; let $pr$ be the projection $pr:V_n \to
+(\dbR^{d-1})^n $. 
+
+Of course $ \scrW_n^{\tr}(g  _1^t,\dotsc ,g_n^t)=
+\int  \scrF(\scrW_n^{\tr})(-p) \scrF (g_1^t \times \cdots \times g  _n^t)
+ =  \int pr_*(\scrF(W^\tr_n)(-p)\cdot \scrF (g_1^t \times \cdots \times g
+_n^t))$.
+Let us look more closely at the last integral. 
+
+ For this purpose it is convenient to write $\scrF(f_i)$ (respectively
+$\scrF(\fbar_i)$) in the form
+$ \psitil_i \cdot \etatil_i $ where $\psitil_i$ is a Schwartz
+function with support in $\Lambda$ (respectively in $-\Lambda$),
+ and $\etatil_i$ is the pull-back of a 
+Schwartz function under the  projection on $\dbR^{d-1}$.
+
+Let $\eta _i$ be given by 
+$\scrF(\eta_i)=\delta_{\scrO_m^+}\cdot \etatil_i$
+(respectively  $\scrF(\eta_i)=\delta_{\scrO_m^-}\cdot \etatil_i$).
+
+Using the projection formula we can rewrite:
+ $$pr_*\left(\scrF(\scrW_n)(-p)\cdot \scrF (\prod g_i^t)\right) =
+ pr_*[T_t\left(
+\scrF(\scrW_n)(-p)\cdot \prod \htil_i \right)]\cdot 
+pr_*[T_{-t}\left( \scrF(\prod \eta_i)\right)]$$
+
+Here $T_t(f)(p)=\exp(it\cdot p_0)f(p)$ and $\htil_i=\psitil_i$ 
+if $g_i^t=f_i^t$ or complex conjugate,
+and $\htil_i=\psitil_i\cdot \pm i (p_0 - \sqrt{m^2-\vec{p}^2})$ if $g_i^t =
+\frac{\partial f^t_i}{\partial t}$ or complex conjugate.
+
+Let $h$ denote $\scrF(\prod \htil_i)$.  Then the integral we need to
+estimate equals to
+$$
+\int\limits_{(\dbR^{d-1})^n}\kern-10pt  pr_*\!\!\left[T_t\left(
+\scrF(\scrW_n)(-p)\cdot \scrF \left(\prod \htil_i\right)\right)\right]\cdot
+pr_*\!\!\left[T_{t}\left(
+\overline{\scrF\Bigl(\prod \eta_i}\Bigr)\right)\right] 
+=\kern-10pt\int\limits_{(\dbR^{d-1})^n}\kern-12pt i_t^*(F*h)\cdot
+i_{-t}^* \left(\prod \eta_i\right)
+$$
+
+
+ 
+
+By Corollary to the Proposition $i_t^*(\scrW_n*h)=\pi^*(F_t^h)$, for some
+function $F_t^h \in L^1( (\dbR^{d-1})^{n-1})$, and $\left|
+F^t_h\right|_{L^1} < C$ where $C$ does not depend on $t$.
+
+ Thus we have:
+$$\int\limits _{(\dbR^{d-1})^n} |pr^*i_t^*(\scrW_n*h)\cdot pr_1
+i_{-t}^*(\eta _1)| \Le C
+\cdot  \int\limits _{\dbR^{d-1}} | j_t^*(\eta _1)| \Le C \cdot
+(1+|t|)^{(d-1)/2} $$
+by Lemma 1b), where $j_t$ is the imbedding
+$\dbR^{d-1}\hookrightarrow V$, $\vec{v}\to (t,\vec{v})$), and
+$pr_i:(\dbR^{d-1})^n\to \dbR^{d-1}$ is the
+projection to the i-th component.
+ Hence
+$$
+\split
+\int\limits_{(\dbR^{d-1})^n} i_t^*(\scrW_n*h)\cdot
+&i_{-t}^* \left(\,\prod \eta_i\right) 
+\Le C (1+|t|)^{(d-1)/2}\\
+&\cdot\max\limits
+_{(\dbR^{d-1})^n} \prod \limits _{k=2}^n pr_k^* j_{-t}^*(\eta _j) \Le C
+(1+|t|)^{-(n-2)(d-1)/2} 
+\endsplit
+$$
+where the last inequality follows from Lemma 1a).  Lemma 3 is proved.
+
+
+
+
+
+
+
+
+\enddemo
+
+We are now ready to prove the Theorem.
+Denote $v^t=\phi(f_1^t)\ldots\phi(f_n^t)\Omega$.
+To show that the limit $\lim\limits_{t\to\infty}v^t$
+exists it suffices to check that the integral
+$\int\limits_0^\infty\left\vert\frac{\partial
+v^t}{\partial t}\right\vert\,dt$ converges.
+We have:
+$$
+\split
+\left(\tfrac{\partial v^t}{\partial
+t}\right)^2=\biggl(\sum\limits_{i} &\phi(f_1^t)\ldots
+  \phi(\fdot_i^t)\ldots\phi(f_n)\Omega,\,
+\sum\limits_{j}\phi(f_1^t)\ldots\phi(\fdot_j^t)
+\ldots\phi(f_n)\Omega\biggr)\\
+&=\sum\limits_{i,j}\scrW_{2n}\left(\fbar_n^t,\fbar_{n-1}^t,
+\dotsc,\fdotbar{^{t}_i},\dotsc,\fbar_1^t,f_1^t,\fdot_j^t,
+\dotsc,f_n\right)
+\endsplit
+$$
+
+Let us decompose $\scrW_{2n}$ as sum of products of
+truncated Wightman functions, and consider the
+corresponding decomposition of each summand in the last
+sum.
+
+Each factor containing $\scrW_1^{\tr}$  obviously
+vanishes.
+By the previous lemma each factor containing
+$\scrW_i^{\tr}$ is bounded by $\const\cdot (1+\vert
+t\vert)^{(i-2)(1-d)/2}$; in particular each factor is
+bounded.
+
+Let us look at a factor of the form
+$\scrW_k^{\tr}(g_1^t,...,g_k^t)$ where at least one of
+$g_i^t$ is a time derivative of $f_\ell^t$ (or complex
+conjugate).
+If $k=2$ then such a factor vanishes.
+Indeed, if say $g_1^t=\overline{f_i^t}$ and
+$g_2^t=\fdot_j^t$ then $\scrW_2^{\tr}(g_1^t,g_2^t)=
+\left<\phi(f_i^t)\Omega,\phi(\fdot_j^t)\Omega\right>=0$
+since $\phi(f_j^t)\Omega$ does not depend on $t$.
+(Here we use that
+$\supp\,\scrF(f_j)\cap\supp\,U\vrulesub{V}=\scrO_m^{\plus}$.)
+The other cases are absolutely parallel.
+
+We now see that each non-zero summand contains a factor of the
+form \break
+$\scrW_k^{\tr}(g_1^t,\dotsc,g_k^t)$ with $k\Ge 3$.
+Furthermore, it either contains at least $2$ factors
+$\scrW_k^{\tr}$ with $k\Ge 3$ or at least one factor
+$\scrW_k$ with $k\Ge 4$, because the term has the form
+$\scrW_{k_1}^{\tr}\ldots\scrW_{k_\ell}^{\tr}$ with
+$k_1+\cdots+k_\ell=2n$ being even, and each $k_i\Ge 2$.
+In any case it is bounded by $\const\cdot(1+\vert
+t\vert)^{(1-d)/2\cdot\sum(k_i-2)}\le\const\cdot(1+\vert
+t\vert)^{1-d}$.
+Thus $\vert\vdot^t\vert\Le\const\cdot (1+\vert t\vert)^{(1-d)/2}$
+and $\int\limits_{-\infty}^\infty \vdot^t\,dt$ converges
+absolutely if $d\Ge 4$.
+
+\demo{Proof of {\rm b)}}
+Let us check that if
+$v^t=\phi(f_1^t)\ldots\phi(f_k^t)\Omega$,
+$w^t=\phi(g_1^t)\ldots\phi(g_\ell^t)\Omega$ for
+$f_i$, $g_j$ as above then
+$\lim\limits_{t\to\plusmin\infty}(v^t,w^t)=(\phi_0(f_1)\ldots
+\phi_0(f_k)\Omega,
+\phi_0(g_1)\ldots\phi_0(g_\ell)\Omega)$.
+Let us again decompose
+$(v^t,w^t)=\scrW_{\ell+k}(\fbar_k^t,\fbar_{k-1}^t,\dotsc,
+\fbar_1^t,g_1^t,\dotsc,g_\ell^t)$ into sum of products of
+truncated Wightman functions.
+From the above arguments we see that every term
+containing $\scrW_1^{\tr}$ vanishes, and every term
+containing $\scrW_k^\tr$ for $k\Ge 3$ tends to $0$ as
+$t\to\plusmin\infty$.
+Besides,
+$\scrW_2^{\tr}(\fbar,g)=(\phi(f)\Omega,\phi(g)\Omega)=
+(\phi_0(f)\Omega,\phi_0(g)\Omega)$.
+Thus we have
+$$
+\gather
+\lim\limits_{t\to\plusmin\infty}(\phi(f_1^t)\ldots\phi
+(f_k^t)\Omega,\phi(g_1^t)\ldots\phi(g_\ell^t)
+\Omega)=\lim\limits_{t\to\plusmin\infty}
+(\phi_0(f_1^t)\ldots\phi_0(f_k^t)\Omega,\\
+\phi_0(g_1^t)\ldots\phi_0(g_\ell^t)\Omega)=
+(\phi_0(f_1)\ldots\phi_0(f_k)\Omega,
+\phi_0(g_1)\ldots\phi_0(g_\ell)\Omega)
+\endgather
+$$
+We can now finish the proof.
+For free field theory the space $\scrD$ is generated by
+the vectors $\phi_0(f_1)\ldots\phi_0(f_n)\Omega$ for
+$f_i$ as above, because $\phi_0(f)x$ depends only on
+$\scrF(f)\vrulesub{\scrO_m^{\plus}}$ for $f\in\scrS$,
+$x\in\scrH$.
+
+For $x\in\scrH$ let us choose functions $f_i$ such that
+$x=\sum\phi_0(f_{i_1})\ldots\phi_0(f_{i_s})\Omega$,
+and consider the limit $\lim\limits_{t\to\plusmin\infty}
+\sum\phi(f_{i_1}^t)\ldots\phi(f_{i_s}^t)\Omega$.
+We proved already that for any $y\in \scrH$, and functions $g_j$ such that 
+$y=\sum\phi_0(g_{j_1})\ldots\phi_0(g_{j_r})\Omega$ we have
+$$
+\left(\lim\limits_{t\to\plusmin\infty}
+\sum\phi(f_{i_1}^t)\ldots\phi(f_{i_s}^t)\Omega,\lim\limits_{t\to\plusmin\infty}
+\sum\phi(g_{j_1}^t)\ldots\phi(g_{j_r}^t)\Omega \right)=(x,y).
+$$
+Hence the limits do not depend on the choice of $f_i$, $g_j$, and give
+ correctly defined isometric imbedding. 
+The Theorem is proved.
+\enddemo
+
+\subhead{4.4} {Scattering matrix}\endsubhead
+\proclaim{Proposition 2}
+We have: $\im(W_\plus)=\im(W_-)$.
+\endproclaim
+
+Thus we can define the $S$-matrix $S=W_\plus^*W_-
+\in\End(\scrH_0)$.
+It is interesting that $S$ can be described in terms of the
+Wightman functions of the theory.
+
+
+The precise formulation is as follows. Let $\tilde f$ denote the
+partial Fourier
+transform of $f$ in space variables. Vector $\vec v\in \dbR^{d-1}$ is called
+a velocity of $f$ if  we have $\vec v = \vec p /\sqrt{\vec p ^2+m^2}$ for
+$\vec p$ such that $(p_0, \vec p)\in \supp (\tilde f)$ for some real number
+$p_0$. 
+
+
+\proclaim{Theorem} {\rm (Lehmann-Symanzik-Zimmerman)}
+
+\roster
+\runinitem"a)"
+The residue $\scrF(\scrW_n^T)\vrulesub{(\scrO_m^\plus)^n}$
+is a well-defined distribution on $V_n$ supported on
+$(\scrO_m^\plus)^n$, where $\scrW_n^T$ is the
+time-ordered Wightman function (see lecture 2, \S 2.4 for the definition).
+
+\item"b)"
+Assume $f_i\in\scrS$ and the set of velocities of $f_i$ and $f_j$
+does not intersect for $i\not = j$.
+Then:
+$$
+\split
+\sum\limits_{I\subset(1,\dotsc,n)}(-1)^{\vert I\vert}
+&\left<W_-\left(\prod\limits_{i\in I}\phi_0(f_i)\Omega\right),
+W_\plus\left(\prod\limits_{j\notin
+I}\phi_0(f_j)\Omega\right)\right>=\\
+&=\left<\Res(\scrF
+(\scrW_n^T)),\scrF(f_1)\times\ldots\times
+\scrF(f_n)\right>\,.
+\endsplit
+$$
+\endroster
+\endproclaim
+
+It is an elementary combinatorial problem to deduce an
+expression for matrix coefficients of the $S$-matrix:
+$\left<W_-\prod\phi_0(f_1)\Omega,W_\plus\prod\phi_0
+(f_j)\Omega\right>$ in terms of $\scrF(\scrW^T)$ from the
+last formula.
+
+
+\centerline{\bf References}
+
+\medskip
+\ref
+\by M. Reed, B. Simon
+\book Methods of Modern Mathematical Physics, vol. 4. Analysis of
+operators; \S XI.16 
+\publ Academic Press
+\yr 1978
+\endref
+
+
+\medskip
+\ref
+\by J. Glimm, A. Jaffe
+\book Quantum Physics. (A functional integral point of view); 
+\S\S 13.5--14.2
+\publ Springer-Verlag
+\yr 1987
+\endref
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+\enddocument
+
+
+
+
+

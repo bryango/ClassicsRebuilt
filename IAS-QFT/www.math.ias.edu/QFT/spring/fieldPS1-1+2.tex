@@ -1,0 +1,214 @@
+%From: Marietta Violi <violi@math.ias.edu>
+%Date: Wed, 5 Feb 1997 14:47:02 -0500
+
+\input amstex
+\magnification=1200
+\documentstyle {amsppt}
+\pagewidth{6.5 true in}
+\pageheight{8.9 true in}
+\nologo
+
+\noindent
+{\bf WITTEN'S PROBLEMS} (Spring Term), Set One --
+N$^{\text{o}}$. 1\quad(solution by D. Freed)
+\smallskip
+\hbox to \hsize{\hrulefill}
+\bigskip
+\noindent
+{\bf Problem:}
+\medskip
+(1)  The strong interactions are described to good
+approximation by a theory which has a symmetry group
+$G=SU(2)\times SU(2)$ spontaneously broken down to a
+diagonal subgroup $H\cong SU(2)$. There are no massless
+particles except the Goldstone bosons, which, to the extent
+$G$ is a valid symmetry, are exactly massless.  The theory,
+to good approximation, has a $G$-invariant Lagrangian $L$.
+\medskip
+However, $G$ is not an exact symmetry of nature.  It is
+broken by perturbations that transform in the (2,2)
+representation of $G$ (that is, the tensor product of the
+two dimensional representations of the two $SU(2)$'s.)
+Among the operators of the $G$-invariant theory are two
+``multiplets'' of operators $\Cal O_i$ and $\widetilde{\Cal
+O}_j,i,j=1\ldots4$, each transforming as (2,2).  The
+Langrangian is, more accurately,
+$$
+\tilde L=L+\sum\limits^4_{i=1}\,\,\left(\varepsilon_i\Cal
+O_i+\tilde\varepsilon_i\widetilde O_i\right).\tag1
+$$
+The $\varepsilon_i$ and $\tilde\varepsilon_j$ are, of
+course, all real.  (That there are precisely two possible
+multiplets $\Cal O$ and $\widetilde{\Cal O}$ of
+perturbations is explained by the underlying gauge theory,
+but for the present exercise we simply assume it.)
+\medskip
+For a generic choice of the $\varepsilon_i$ and
+$\tilde\varepsilon_i$ the exact symmetry group of the model
+is only $H'=U(1)$, and this is, in fact, the situation in
+nature.
+\medskip
+Treat the effective theory to first order in $\varepsilon$
+and $\tilde\varepsilon$ (which are, in fact, in nature small
+and comparable to each other).
+\medskip
+(a)  Show that, in first order, you would expect the
+degeneracy of the vacuum to be lifted, and there to appear
+a unique vacuum with mass gap.  In particular, you expect
+the $H'$ symmetry to be unbroken.  (Abstractly, $H'$ can be
+embedded in $H$; the point that is slightly non-trivial is
+that the perturbation picks a vacuum, of the unperturbed
+theory, that is invariant under an $H\cong SU(2)$ that
+actually does contain $H'$.  $H$ could of course have been
+conjugated to a group that does not contain $H'$.)  In
+particular, there is no exact symmetry that is
+spontaneously broken, and no exact Goldstone boson; the
+former Goldstone bosons all get mass.
+\medskip
+(b)  More surprisingly, show that to first order in
+$\varepsilon$ and $\tilde\varepsilon$, the three Goldstone
+bosons -- the one that is invariant under $H'$ and the two
+that transform in a non-trivial representation of $H'$ --
+all get {\it equal} masses.  (This is also observed in
+nature, to high precision, the particles being respectively
+the neutral and charged pions.)
+\medskip
+(c)  The three Goldstone bosons will not have {\it exactly}
+equal masses.  In what order in $\varepsilon$ and
+$\tilde\varepsilon$ will the degeneracy be lifted and how
+would you describe this lifting in the effective
+Lagrangian?
+\bigskip
+\noindent
+{\bf Solution:}
+\medskip
+Since the only massless particles in the unbroken
+$(\varepsilon=\tilde\varepsilon=0)$ theory are the
+Goldstone bosons, in the infrared it flows to a
+$\sigma$-model into the homogeneous space $G/H$.
+Topologically $G/H$ is a 3-sphere.  Now with
+$\varepsilon,\tilde\varepsilon$ nonzero we expect a
+perturbation of the $\sigma$-model Langrangian, and we are
+asked to contemplate first a perturbation
+{\it linear} in $\varepsilon,\tilde\varepsilon$.  The
+most relevant perturbation involves no derivative of the
+field in the $\sigma$-model, so is simply a potential
+function $V$ on $G\slash H$.  Now $G$ double covers $SO_4$,
+and we are given that the operators $\Cal O,\,\,\widetilde{\Cal 
+O}$ in the problem transform as vectors under $SO_4$.  Thus
+if we transform $\varepsilon,\tilde\varepsilon$ as vectors
+then the perturbed theory retains the full $G$ invariance.
+For fixed $\varepsilon,\tilde\varepsilon$ the group $G$ is
+broken to the subgroup which fixes
+$\varepsilon,\tilde\varepsilon$, which for generic vectors
+$\varepsilon,\tilde\varepsilon$ is isomorphic to $SO_2$.
+(This is called ``$H^\prime$'' in the problem.)  
+Now the potential
+$V$ must be $SO_4$-invariant if we transform
+$\varepsilon,\tilde\varepsilon$, and it follows easily that
+it has the form
+$$
+V_{\varepsilon,\tilde\varepsilon}(x)=(\lambda\varepsilon+\tilde
+\lambda\tilde\varepsilon)\cdot x.
+$$
+Here we write $x\in G\slash H\simeq S^3\subset\Bbb R^4$,
+the `$\cdot$' denotes the dot product in $\Bbb R^4$, and
+$\lambda,\tilde\lambda$ are real constants.   For fixed
+$\varepsilon,\tilde\varepsilon$ the potential
+$V_{\varepsilon,\tilde\varepsilon}$ is the restriction to
+$S^3$ of a linear function in $\Bbb R^4$.  Thus it has a
+unique minimum on $S^3$. This is the unique vacuum of the
+perturbed theory (question (a)).  Furthermore, it is clear
+that the Hessian of $V_{\varepsilon,\tilde\varepsilon}$ at
+the minimum is scalar; that is, its eigenvalues -- the
+masses of the pseudo Goldstone bosons -- are all equal
+(question (b)).  Observe that the potential is invariant
+under an $S0_3$ subgroup of $SO_4$ (which fixes the
+vector
+$\lambda\varepsilon+\tilde\lambda\tilde\varepsilon)$, an
+accidental symmetry of the infrared theory.  (We only
+expected $SO_2$ invariance.)  Finally, a perturbation
+quadratic in $\varepsilon,\tilde\varepsilon$ --- for example
+$V_{\varepsilon,\tilde\varepsilon}(x)=(\varepsilon\cdot x)\,(
+\tilde\varepsilon\cdot x)$ --- can break this $SO_3$
+invariance and so destroy the equality of the Goldstone
+boson masses (question (c)).
+\vfill\eject
+
+\noindent
+{\bf Spring Term QFT Problems, Set One -- N$^{\text o}$. 2}
+\medskip
+(a)  In this problem we work classically.  Then the minimum
+occurs when the gauge fields are zero and $\phi=\phi_0$ is
+a constant with $|\phi_0\vert^2=v^2$.
+Locally we can identify the $SU_2\times U_1$ in the problem
+with $U_2$, which then acts on $\phi$ via the two
+dimensional representation. Fixing the gauge fields and
+$\phi$ breaks the gauge symmetry down to the global $U_1$
+gauge transformations which fix $\phi$.  (A nonzero vector
+in $\Bbb C^2$ is fixed by $U_1\subset U_2$.)
+\medskip
+(b), (c)  We expand the action around the minimum up to
+quadratic terms.  Write $A,iB$ for the $SU_2$ and $U_1$
+connections and set
+$$
+A=\pmatrix
+iA_3 & A_1+iA_2\\
+-A_1+iA_2 & -iA_3
+\endpmatrix.
+$$
+Here $A_1,A_2,A_3,B$ are all real.
+Choose $\phi_0=\left(0\atop v\right)$ and write
+$$
+\phi=\left(0\atop v\right)+\left(\phi_1\atop\phi_2\right).
+$$
+Then up to quadratic terms we have
+$$
+\align
+|F_B|^2&\sim|dB|^2,\\
+|F_A|^2&\sim|dA_1|^2+|dA_2|^2+|dA_3|^2,\\
+|D\phi|^2&\sim\biggl\vert\pmatrix d\phi_1+(A_1+iA_2)v\\
+d\phi_2+iBv-iA_3v \endpmatrix\biggr\vert^2,\\
+&\sim|d\phi_1|^2+|d\phi_2|^2+v^2A_1^2+v_2A^2_2+v^2(B-A_3)^2,\\
+\frac{\lambda}{8}\,(|\phi|^2-v^2)&\sim\frac{\lambda}{8}\,|\phi
+_1|^2+\frac{\lambda}{8}\,|\phi_2|^2+2v\,\,\text{Re}\,\phi_2.
+\endalign
+$$
+Now rescale $A\rightarrow e_2A,\,\,\,B\rightarrow e_1B$ so
+that after introducing a gauge fixing term (as in Problem
+Set Six, N$^{\text{o}}$. 2 in the fall), the quadratic
+Langrangian is (putting a coefficient 1/2 in front of
+$|D\phi|^2$):
+$$
+\align
+\qquad L_{\text{quad}}=\int\,\,d^4_x\quad&\left(\frac{1}{2}\,|d\phi_1|^2+
+\frac{\lambda}{8}\,|\phi_1|^2\right)+\left(\frac{1}{2}\,|d\phi_2|^2+2v\,\text{Re}\,\phi
+_2+\frac{\lambda}{8}\,|\phi_2|^2\right)\\
++&\left(\frac{1}{2}(\Delta A_1,A_1)+\frac{1}{2}\,v^2e^2_2A^2_1
+\right)+\left(\frac{1}{2}\,(\Delta
+A_2,A_2)+\frac{1}{2}\,v^2e^2_2A^2_2\right)\\
++&\left(\frac{1}{2}(\Delta A_3,A_3)+\frac{1}{2}(\Delta
+B,B)+\frac{1}{2}\,v^2\,(e_1B-e_2A_3)^2\right).
+\endalign
+$$
+{}From this we see that there are two massive complex scalars
+$(\phi_1,\phi_2)$; two massive vectors $(A_1,A_2)$ with
+mass $ve_2$; a massless vector and a massive vector with
+mass $v\sqrt{e^2_1+e^2_2}$.  To prove the last statement
+observe that in $L_{\text{quad}}$ the gauge fields 
+$A_3,B$ have a mass
+matrix with eigenvalues 0 and $v\sqrt{e^2_1+e^2_2}$.
+\medskip
+The Lie algebra of the unbroken $U_1$ is the subalgebra
+where $A_1=A_2=0$ and $e_2A_3=e_1B$.  Thus $\phi_1$ has
+charge 2, $\phi_2$ is uncharged, $A_3$ and $B$ are
+uncharged, and $A_1,A_2$ have charge 2.
+\medskip
+\noindent
+{\bf Note:}  If we had followed the normalization indicated
+in the problem, we would have replaced $A,B$ by
+$\frac{A}{2},\,\,\frac{B}{2}$, and then the charge of
+$\phi_1,A_1,A_2$ would be 1 rather than 2.  However, we
+wanted to avoid the denominators in the computation.
+
+\bye

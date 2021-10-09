@@ -1,0 +1,194 @@
+%Date: Thu, 05 Dec 1996 16:26:41 -0500
+%From: Edward Witten <witten@IAS.EDU>
+
+%\input iasmacros
+%\twelvepoint
+\input harvmac
+
+{\it Problem Set Seven}
+
+(1) (a) Show that in $\phi^4$ theory the anomalous dimension of $\phi$ vanishes
+in the one loop approximation and that the one-loop beta function is therefore
+given by a one-loop diagram that we have computed before.  The one-loop
+beta function is in particular $\beta(\lambda)=A\lambda^2$ where $\lambda$ is
+the $\phi^4$ coupling, and $A$ is the coefficient of the one-loop divergence.
+
+(b) Convince yourself that the sign of the logarithmic divergence in this
+one-loop diagram (whose significance we by now appreciate) can be determined
+without any computation; it is determined by the fact that in {\it free}
+scalar field theory the two point function $\langle \phi^2(x)\phi^2(0)\rangle$
+is positive.  (This is actually a point that has been made previously.)
+
+
+(2) Consider a four-dimensional
+scalar field theory with $n$ scalar fields $\phi_i$ and
+a Lagrangian
+
+\eqn\hh{\eqalign{L=&\int d^4x\left({1\over 2}\sum_{i,\alpha}\left(
+{\partial\phi_i\over\partial x^\alpha}
+\right)^2\right.\cr
+&+ \left.\sum_{ijkl}\lambda_{ijkl}\phi^i\phi^j\phi^k\phi^l+\dots\right),\cr}}
+where 
+the $\dots$ are possible quadratic and cubic terms in $\phi_j$ that are
+irrelevant for the present purposes.
+
+ The renormalization group operator will read
+\eqn\hobo{D=\mu{\partial\over\partial\mu}+\sum_{ijkl}\beta_{ijkl}
+{\partial\over\partial \lambda_{ijkl}}+\dots}
+(the $\dots$ are anomalous dimension terms) 
+with some functions $\beta_{ijkl}$.
+
+(a) Write down the one-loop approximation to $\beta_{ijkl}$.
+You are not expected to do any real calculation here;   write down
+the $\beta_{ijkl}$ in terms of the $\lambda_{ijkl}$ and the coefficient
+called $A$ is problem 1 above.  
+
+(b) Show that in this approximation the renormalization group flow
+\eqn\unsolved{{d\lambda_{ijkl}\over dt}=\beta_{ijkl}}
+is a gradient flow (with respect to the obvious metric on the space of 
+couplings).
+
+As Gross mentioned, proving that this is true in general (or at least
+that  there are no closed orbits) is a longstanding open problem.
+
+The special case of this problem for two-dimensional sigma models
+is actually quite significant in string theory.  
+
+(More precisely, what
+one wants there is that if $g$ is the metric on a sigma model target space,
+then the renormalization group flow for $g$ should be, after possibly
+redefining $g $ in a local fashion by a substitution such as $g_{ij}\to g_{ij}
++R_{ij}+\dots$, with $R_{ij}$ the Ricci tensor and $\dots$ analogous
+terms of higher degree, of the form
+\eqn\pl{{dg\over dt}={\delta\over\delta g} \Gamma}
+with $\Gamma$ the integral over the target of a polynomial in the Riemann
+tensor and its covariant derivatives.)
+
+At the end of one of Gawedzki's lectures, when I asserted that locally
+there is no obstruction to perturbing a Ricci-flat metric to give a zero
+of $\beta$, I omitted to mention that this is so if and only if 
+it is true in sigma models that the renormalization group flow is a gradient
+flow in the above sense. Otherwise, there is an obstruction coming from
+the Bianchi identity.
+
+
+(3) Consider in 
+four dimensions a Yukawa theory with a spin one-half field 
+$\psi$
+and a scalar $\phi$.  The part of the Lagrangian involving $\psi$ is
+\eqn\kk{L=\int d^4x\left(\bar\psi(i\Gamma\cdot\partial -\phi)\psi\right).}
+Compute the anomalous dimension of the operator $\bar\psi \,\psi$ in
+the one-loop approximation.
+
+(4) The goal here is to explain the claim that the magnetic coupling
+is responsible for the negative beta function of nonabelian gauge theories.
+
+We consider scalar, spinor, and vector fields in some representation $R$
+of a compact gauge group $G$, on a four-manifold $M$.
+
+The Laplacian for a scalar field, a spinor field, or a section of the
+tangent bundle will be called $\nabla_0$, $\nabla_{1/2}$. and $\nabla_1$,
+respectively.  The operator governing small fluctuations of the scalar,
+spinor, or vector field will be called $X_0$, $X_{1/2}$, or $X_1$.
+In each case $X_j=\nabla_j + G_j$ where $G$ is a   term of order zero
+(absent for $j=0$) which Gross called the magnetic moment coupling.
+In the case of spin one, the vector fields are really gauge fields,
+and the operator $X_1$ is accompanied by some operators $X_0$ for
+ghost fields that are obtained upon quantization. (This was explained by
+Fadde'ev.) 
+
+The one-loop beta function comes from the logarithmic divergence in the 
+determinant
+of $X_j$.  As we are interested in terms that depend on the gauge field
+and not the metric of $M$, we may as well take $M$ to be flat.
+In this case, $\nabla_{1/2}$ is just four copies of $\nabla_0$, and $\nabla_1$
+is likewise just four copies of $\nabla_0$ (as the spinor and tangent bundles
+of $M$ are trivial rank four bundles with flat Levi-Civita connection 
+- -- at least, let's agree to consider the full rank four spin bundle).
+
+Here is now to determine the $X_j$ for $j=1/2,1$.
+
+(a) For $j=1/2$, $X_j$ is the square of the Dirac operator $D$.
+(The log of the determinant of $D$ is conveniently studied as one-half
+the log of the determinant of $X_{1/2} =D^2$.)  A standard calculation
+shows that
+
+\eqn\jk{X_{1/2}=D^2=\nabla_{1/2}+\Gamma\cdot F}
+where $F$ is the curvature of the gauge connection and $\Gamma\cdot F$ is
+Clifford multiplication.
+
+If the second ``magnetic moment'' term were absent, the log determinant
+of $X_{1/2}$ would be four times that of $X_0$ but because one want a
+minus sign for the fermion loop, the contribution of the fermions to the
+beta function would be negative.  The $\Gamma\cdot F$ term makes a contribution
+of the opposite sign, which is larger in magnitude, so fermions actually
+make a positive contribution.
+
+(b) Now consider the gauge  fields.
+
+Maxwell's equations read
+
+\eqn\max{d*dA=0.}
+
+You might therefore believe that if we have a non-abelian gauge connection
+$B$ and we write $A=B+a$, with $a$ a small fluctuation, and we write $d_B$
+for the covariant derivative with the connection $B$, the linearization
+of the Yang-Mills equations would be
+\eqn\nax{d_B*d_Ba=0.}
+Not only is that not so, but the equations \nax\ are inconsistent,
+in the sense that they imply the first order constraint 
+$d_Bd_B(*d_Ba)=0$ which is trivial when $B=0$ but generically non-trivial;
+thus the space of solutions is not ``flat'' (if I may risk the expression)
+in a deformation away from $B=0$. That certainly corresponds to a pathology.
+By linearizing the Yang-Mills equations you get not \nax\
+but
+\eqn\axx{(d_B*d_B)a+(*F_B)\wedge a=0.}
+(Verify this!) 
+Equations \axx\ have a ``flat'' behavior (the constraint got by applying
+$d_B$ to the equations is trivial) if $B$ obeys the Yang-Mills equations.
+(Verify this!) More fundamentally, \axx\ has the gauge invariance
+$a\to a+d_B\epsilon$ (for any $\epsilon\in \Omega^0(M,{\rm ad G})$)
+if $B$ obeys the Yang-Mills equations.  (Verify this too!)
+
+In gauge fixing the theory, one would have introduced a gauge fixing
+term as Fadde'ev explained.  This can conveniently be taken to be
+$(d_B^*a)^2$, and if so the   gauge-fixed version of \axx\ is
+\eqn\baxx{\nabla_1a+(*F_B)\wedge a=0.}
+In \baxx\ we see finally the gauge-fixed operator $X_1$ of the vector
+field.  The ``magnetic coupling'' $a\to (*F_B)\wedge a$ is the term
+responsible for asymptotic freedom, in the sense that without this
+term, $X_1$ would be four copies of $X_0$ and would make a positive
+contribution to the beta function.
+
+\end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+------- End of Forwarded Message
+
+
+
+

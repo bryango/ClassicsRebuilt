@@ -1,0 +1,1395 @@
+%% This is a plain TeX file
+%%
+\magnification=1200
+\hsize=6.5 true in
+\vsize=8.7 true in
+\input epsf.tex
+
+\input amssym.def
+\input amssym.tex
+
+\font\dotless=cmr10 %for the roman i or j to be
+                    %used with accents on top.
+                    %(\dotless\char'020=i)
+                    %(\dotless\char'021=j)
+\font\itdotless=cmti10
+\def\itumi{{\"{\itdotless\char'020}}}
+\def\itumj{{\"{\itdotless\char'021}}}
+\def\umi{{\"{\dotless\char'020}}}
+\def\umj{{\"{\dotless\char'021}}}
+\font\smaller=cmr5
+\font\boldtitlefont=cmb10 scaled\magstep2
+\font\smallboldtitle=cmb10 scaled \magstep1
+\font\ninerm=cmr9
+\font\dun=cmdunh10 %scaled\magstep1
+\font\Rfont=cmss10
+
+\footline={\hfil {\tenrm VIII.\folio}\hfil}
+
+\def\eps{{\varepsilon}}
+\def\Eps{{\epsilon}}
+\def\kap{{\kappa}}
+\def\lam{{\lambda}}
+\def\Lam{{\Lambda}}
+\def\mynabla{{\nabla\!}}
+
+\def\underNS{\underline{\NS}}
+\def\underR{\underline{\R}}
+
+\def\Bmu{{B_{\mu\nu}}}
+\def\Gmu{{G_{\mu\nu}}}
+
+\def\xdot{{\dot x}}
+\def\xddot{{\ddot x}}
+
+\def\undertext#1{$\underline{\vphantom{y}\hbox{#1}}$}
+\def\nspace{\lineskip=1pt\baselineskip=12pt%
+     \lineskiplimit=0pt}
+\def\dspace{\lineskip=2pt\baselineskip=18pt%
+     \lineskiplimit=0pt}
+
+\def\half{\raise4.5pt\hbox{{\vtop{\ialign{##\crcr
+  \hfil\rm $1$\hfil\crcr
+   \noalign{\nointerlineskip}--\crcr
+   \noalign{\nointerlineskip\vskip-1pt}$2$\crcr}}}}}
+\def\third{\raise4.5pt\hbox{{\vtop{\ialign{##\crcr
+  \hfil\rm $1$\hfil\crcr
+  \noalign{\nointerlineskip}--\crcr
+  \noalign{\nointerlineskip\vskip-1pt}$3$\crcr}}}}}
+\def\fourth{\raise4.5pt\hbox{{\vtop{\ialign{##\crcr
+  \hfil\rm $1$\hfil\crcr
+  \noalign{\nointerlineskip}--\crcr
+  \noalign{\nointerlineskip\vskip-1pt}$4$\crcr}}}}}
+\def\sixth{\raise4.5pt\hbox{{\vtop{\ialign{##\crcr
+  \hfil\rm $1$\hfil\crcr
+  \noalign{\nointerlineskip}--\crcr
+  \noalign{\nointerlineskip\vskip-1pt}$6$\crcr}}}}}
+\def\eighth{\raise4.5pt\hbox{{\vtop{\ialign{##\crcr
+  \hfil\rm $1$\hfil\crcr
+  \noalign{\nointerlineskip}--\crcr
+  \noalign{\nointerlineskip\vskip-1pt}$8$\crcr}}}}}
+
+\def\oplusop{\mathop{\oplus}\limits}
+\def\w{{\mathchoice{\,{\scriptstyle\wedge}\,}
+  {{\scriptstyle\wedge}}
+  {{\scriptscriptstyle\wedge}}{{\scriptscriptstyle\wedge}}}}
+\def\Le{{\mathchoice{\,{\scriptstyle\le}\,}
+{\,{\scriptstyle\le}\,}
+{\,{\scriptscriptstyle\le}\,}{\,{\scriptscriptstyle\le}\,}}}
+\def\Ge{{\mathchoice{\,{\scriptstyle\ge}\,}
+{\,{\scriptstyle\ge}\,}
+{\,{\scriptscriptstyle\ge}\,}{\,{\scriptscriptstyle\ge}\,}}}
+\def\plus{{\hbox{$\scriptscriptstyle +$}}}
+\def\xdot{\dot{x}}
+\def\Condition#1{\item{#1}}
+\def\Firstcondition#1{\hangindent\parindent{#1}\enspace
+     \ignorespaces}
+\def\Proclaim#1{\medbreak
+  \medskip\noindent{\bf#1\enspace}\it\ignorespaces}
+  %the way to use this is:
+  %"\Proclaim{Theorem 1.1.}" for instance.
+\def\finishproclaim{\par\rm
+     \ifdim\lastskip<\smallskipamount\removelastskip
+     \penalty55\medskip\fi}
+\def\Item#1{\par\smallskip\hang\indent%
+  \llap{\hbox to\parindent {#1\hfill\enspace}}\ignorespaces}
+\def\ItemItem#1{\par\indent\hangindent2\parindent
+     \hbox to \parindent{#1\hfill\enspace}\ignorespaces}
+\def\vrulesub#1{{\,\vrule height7pt depth5pt}_{\,#1}}
+\def\underbrake#1#2{\mathop{#1}\limits_{\raise3pt
+  \hbox{%
+\vrule height 3pt depth 0pt
+  %\kern.1pt
+  \hbox to #2{\hrulefill}
+  \kern-3.4pt
+  \vrule height 3pt depth 0pt}}}
+
+\def\ominus{{$-$\kern-9pt $\bigcirc$}}
+\def\Oplus{{+\kern-9pt $\bigcirc$}}
+\def\ssbullet{{\scriptstyle\bullet\,\,\,}}
+
+%\def\im{{\rm Im}}  
+\def\A{{\rm A}}
+\def\P{{\rm P}}
+\def\EL{{\rm L}}
+\def\Open{{\rm open}}
+\def\osc{{\rm osc}}
+%\def\Pic{{\rm Pic}} 
+\def\Sp{{\rm Sp}}
+\def\R{{\rm R}}  \def\NS{{\rm NS}}
+\def\RNS{{\rm RNS}}
+\def\Diff{{\rm Diff}}  \def\expt{{\rm expt}}
+\def\cm{{\rm cm}}  \def\annulus{{\rm annulus}}
+\def\cylinder{{\rm cylinder}}
+\def\Closed{{\rm closed}}
+\def\Map{{\rm Map}}  
+%\def\spurious{{\rm spurious}}
+\def\Met{{\rm Met}} 
+\def\Spin{{\rm Spin}}
+\def\spin{{\rm spin}} 
+\def\phys{{\rm phys}}
+\def\diag{{\rm diag}}  
+%\def\Vir{{\rm Vir}}
+%\def\Res{{\rm Res}}
+\def\Null{{\rm null}} 
+\def\mass{{\rm mass}}
+\def\SO{{\rm SO}} 
+\def\GSO{{\rm GSO}}
+\def\Tr{{\rm Tr\,}}
+%\def\SU{{\rm SU}} 
+\def\tr{{\rm tr}}
+\def\Weyl{{\rm Weyl}} 
+\def\Lorentz{{\rm Lorentz}}
+\def\Ker{{\rm Ker}}
+\def\Range{{\rm Range}} 
+%\def\SL{{\rm SL}} \def\prim{{\rm primitive}}
+\def\Det{{\rm Det}} 
+%\def\re{{\rm Re}}
+%\def\dist{{\rm dist}} \def\PSL{{\rm PSL}}
+%\def\Vol{{\rm Vol}} \def\ghosts{{\rm ghosts}}
+%\def\Fock{{\rm Fock}} \def\BRST{{\rm BRST}}
+%\def\Weil-Peterson{{\rm Weil-Peterson}}
+\def\IIA{{\rm II~A}}
+\def\IIB{{\rm II~B}}
+
+%\def\fbar{\bar{f}}  \def\mubar{\bar{\mu}}
+%\def\barh{\bar{h}}  \def\gammabar{\bar{\gamma}}
+%\def\kbar{\bar{k}}  
+\def\lambar{\bar{\lambda}}
+\def\mbar{\bar{m}}   \def\Lambar{\bar{\Lambda}}
+%\def\phibar{\bar{\phi}}
+\def\wbar{\bar{w}}  
+%\def\etabar{\bar{\eta}}
+%\def\vbar{\bar{v}}  \def\partialbar{\bar{\partial}}
+%\def\xbar{\bar{x}}  
+%\def\cbar{\bar{c}}
+%\def\bbar{\bar{b}}
+%\def\epsbar{\bar{\epsilon}}
+\def\Gammabar{\bar{\Gamma}}
+\def\rbar{\bar{r}}
+\def\zbar{\bar{z}}  
+%\def\Abar{\bar{A}}
+\def\Gbar{\bar{G}}
+\def\Kbar{\bar{K}}
+%\def\Pbar{\bar{P}}
+\def\Sbar{\bar{S}}
+\def\Tbar{\bar{T}}
+
+%\def\scrFbc{{\scrF^{(bc)}}}
+%\def\scrFbcbar{{\scrF^{(\bbar\cbar)}}}
+
+%\def\ghat{\hat{g}}
+%\def\muhat{\hat{\mu}}
+
+\def\Ftil{\widetilde{F}}
+\def\atil{\tilde{a}}
+\def\btil{\tilde{b}}
+\def\dtil{\tilde{d}}
+\def\xtil{\tilde{x}}
+%\def\htil{\tilde{h}}
+%\def\Ctil{\widetilde{C}}
+%\def\Dtil{\widetilde{D}}
+\def\Ltil{\tilde{L}}
+\def\Ntil{\widetilde{N}}
+\def\Ptil{\widetilde{P}}
+\def\betatil{\tilde{\beta}}
+%\def\Ttil{\widetilde{T}}
+\def\scrFtil{\widetilde{\scrF}}
+%\def\epstil{\tilde{\eps}}
+%\def\psitil{\tilde{\psi}}
+
+\def\dbR{{\Bbb R}}
+%\def\dbZ{{\Bbb Z}}
+
+%These two files (in this order!!) are necessary
+%in order to use AMS Fonts 2.0 with Plain TeX
+
+\input amssym.def
+\input amssym.tex
+
+%Capital roman double letters(Blackboard bold)
+\def\db#1{{\fam\msbfam\relax#1}}
+
+\def\dbA{{\db A}} \def\dbB{{\db B}}
+\def\dbC{{\db C}} \def\dbD{{\db D}}
+\def\dbE{{\db E}} \def\dbF{{\db F}}
+\def\dbG{{\db G}} \def\dbH{{\db H}}
+\def\dbI{{\db I}} \def\dbJ{{\db J}}
+\def\dbK{{\db K}} \def\dbL{{\db L}}
+\def\dbM{{\db M}} \def\dbN{{\db N}}
+\def\dbO{{\db O}} \def\dbP{{\db P}}
+\def\dbQ{{\db Q}} \def\dbR{{\db R}}
+\def\dbS{{\db S}} \def\dbT{{\db T}}
+\def\dbU{{\db U}} \def\dbV{{\db V}}
+\def\dbW{{\db W}} \def\dbX{{\db X}}
+\def\dbY{{\db Y}} \def\dbZ{{\db Z}}
+
+\font\teneusm=eusm10  \font\seveneusm=eusm7 
+\font\fiveeusm=eusm5 
+\newfam\eusmfam 
+\textfont\eusmfam=\teneusm 
+\scriptfont\eusmfam=\seveneusm 
+\scriptscriptfont\eusmfam=\fiveeufm 
+\def\scr#1{{\fam\eusmfam\relax#1}}
+
+
+%Upper-case Script Letters:
+
+\def\scrA{{\scr A}}   \def\scrB{{\scr B}}
+\def\scrC{{\scr C}}   \def\scrD{{\scr D}}
+\def\scrE{{\scr E}}   \def\scrF{{\scr F}}
+\def\scrG{{\scr G}}   \def\scrH{{\scr H}}
+\def\scrI{{\scr I}}   \def\scrJ{{\scr J}}
+\def\scrK{{\scr K}}   \def\scrL{{\scr L}}
+\def\scrM{{\scr M}}   \def\scrN{{\scr N}}
+\def\scrO{{\scr O}}   \def\scrP{{\scr P}}
+\def\scrQ{{\scr Q}}   \def\scrR{{\scr R}}
+\def\scrS{{\scr S}}   \def\scrT{{\scr T}}
+\def\scrU{{\scr U}}   \def\scrV{{\scr V}}
+\def\scrW{{\scr W}}   \def\scrX{{\scr X}}
+\def\scrY{{\scr Y}}   \def\scrZ{{\scr Z}}
+
+\def\gr#1{{\fam\eufmfam\relax#1}}
+
+%Euler Fraktur letters (German)
+\def\grA{{\gr A}}	\def\gra{{\gr a}}
+\def\grB{{\gr B}}	\def\grb{{\gr b}}
+\def\grC{{\gr C}}	\def\grc{{\gr c}}
+\def\grD{{\gr D}}	\def\grd{{\gr d}}
+\def\grE{{\gr E}}	\def\gre{{\gr e}}
+\def\grF{{\gr F}}	\def\grf{{\gr f}}
+\def\grG{{\gr G}}	\def\grg{{\gr g}}
+\def\grH{{\gr H}}	\def\grh{{\gr h}}
+\def\grI{{\gr I}}	\def\gri{{\gr i}}
+\def\grJ{{\gr J}}	\def\grj{{\gr j}}
+\def\grK{{\gr K}}	\def\grk{{\gr k}}
+\def\grL{{\gr L}}	\def\grl{{\gr l}}
+\def\grM{{\gr M}}	\def\grm{{\gr m}}
+\def\grN{{\gr N}}	\def\grn{{\gr n}}
+\def\grO{{\gr O}}	\def\gro{{\gr o}}
+\def\grP{{\gr P}}	\def\grp{{\gr p}}
+\def\grQ{{\gr Q}}	\def\grq{{\gr q}}
+\def\grR{{\gr R}}	\def\grr{{\gr r}}
+\def\grS{{\gr S}}	\def\grs{{\gr s}}
+\def\grT{{\gr T}}	\def\grt{{\gr t}}
+\def\grU{{\gr U}}	\def\gru{{\gr u}}
+\def\grV{{\gr V}}	\def\grv{{\gr v}}
+\def\grW{{\gr W}}	\def\grw{{\gr w}}
+\def\grX{{\gr X}}	\def\grx{{\gr x}}
+\def\grY{{\gr Y}}	\def\gry{{\gr y}}
+\def\grZ{{\gr Z}}	\def\grz{{\gr z}}
+
+\overfullrule=0pt
+
+\parindent=25pt
+\line{\dun --- DRAFT --- \hfill{\rm IASSNS-HEP-97/72}}
+
+\bigskip\bigskip
+\centerline{\boldtitlefont Lecture 13}
+\bigskip
+\centerline{\smallboldtitle VIII. Heterotic Strings}
+
+\medskip
+\centerline{Eric D'Hoker}
+
+\frenchspacing
+
+\dspace
+\bigskip
+So far, the only method we have discussed for
+obtaining massless Yang-Mills states was via the
+Chan-Paton rules in open string theory, where gauge
+charges were appended to the end points of open
+strings.
+
+Heterotic string theories utilize a second method for
+obtaining massless Yang-Mills states.
+Heterotic string theories are constructed from {\it
+closed oriented strings} only. 
+Internal degrees of
+freedom --- required to obtain Yang-Mills states ---
+are provided by degrees of freedom that live in the
+bulk of the worldsheet.
+The heterotic string construction relies
+on the independence of the
+oscillator modes of left and right moving sectors on
+closed oriented string worldsheets (the
+left and right momenta obey certain relations that couple
+left and right degress of freedom). 
+The left moving sector of the heterotic string is
+built out of the (left-moving sector of the) Type II
+superstring, while the right moving sector of the
+heterotic string is built out of the (right-moving
+sector of the) bosonic string.
+
+At first sight, this kind of construction would appear
+inconsistent.
+The Type II superstring part (left movers) exhibits
+$\scrN=1$ worldsheet supersymmetry, and $\scrN=1$
+super-Virasoro invariance and has critical
+space-time dimension $D=10$, while the bosonic string
+part (right-movers) exhibits only Virasoro invariance,
+and has critical space-time dimension $D=26$.
+This mismatch of dimensions is put to excellent
+use in the following way.
+We let the heterotic string live in $D=10$ space-time
+dimensions, and we let the remaining $16$ dimensions
+of right movers emerge as internal degrees of freedom,
+which are to be metamorphosed into Yang-Mills degrees of
+freedom.
+
+This system of $16$ free internal right movers forms a
+conformal field theory of central charge $16$.
+It is a unitary CFT, since the $16$ scalar fields
+emerge out of this construction with positive definite
+internal metric.
+(We shall later establish that the 16 scalars actually
+live on a torus, with constant internal metric.)
+An alternative way of seeing that this CFT must be
+unitary is by the fact that in the right moving sector,
+the Virasoro algebra has already been used up to
+eliminate the negative norm states from the
+$10$-dimensional space-time part of the $x$-fields.
+Consistency of the construction will only be possible
+if the remaining internal part of the $x$-fields 
+is unitary all by itself.
+
+Poincar\'e invariance is required to hold only in the
+$10$-dimensional subspace of the bosonic right movers
+which is naturally complemented 
+by the $10$-dimensional space of the bosonic left movers
+from the superstring.
+The internal degrees of freedom in the right moving
+sector are invariant under this $10$-dimensional
+Poincar\'e symmetry, and are thus not constrained to be
+free fields on $\dbR^{16}$.
+In fact, it is consistent with conformal invariance in
+the right moving sector to consider a system of
+internal degrees of freedom described by a general,
+unitary conformal field theory of central charge $16$.
+
+On worldsheets of general topology, the separation of
+left and right movers, which is used in the very
+definition of the heterotic string, leads to anomalies
+in each sector separately under diffeomorphisms of
+$\Sigma$.
+Actually, the subgroup of diffeomorphisms connected to
+the identity, $\Diff_0(\Sigma)$, is anomaly free as
+long as the combined central charge of matter and
+ghosts vanishes in each sector.
+However, global diffeomorphisms, belonging to the
+modular group $\Sp(2h;\dbZ)$ in general lead to global
+anomalies.
+Unitarity of the heterotic string (on worldsheets of
+genus $h\Ge 1$) will require that such anomalies
+cancel, and this will impose severe restrictions on
+the allowed $c=16$ CFT's that can govern the right
+moving sector of internal degrees of freedom.
+In fact, only gauge groups $E_8\times E_8$ and
+$\Spin(32)/\dbZ_2$ will be allowed, as we shall show.
+
+The benefits of the heterotic string construction
+should be quite evident.
+Due to space-time supersymmetry of the left movers, we
+automatically have a string theory with space-time
+fermions, but without a tachyon!
+In addition, the theory will possess large --- and
+phenomenologically interesting --- gauge symmetries.
+We now begin the construction of the heterotic string.
+
+First, we shall investigate unitary $c=16$ conformal
+field theories involving free fields only.
+Using Bose-Fermi correspondence, free fields may be
+formulated either in terms of $16$ real scalar fields
+$x^I$, $I=1,\ldots,16$, which map $\Sigma$ into a flat
+torus $\dbR^{16}/\Lam$, for some lattice $\Lam$, with
+Euclidean signature metric, or in terms of $32$
+Majorana spinors $\lam^\alpha$, $\alpha=1,\ldots,32$.
+Of course, we shall have to retain only the
+right-moving sector of these degrees of freedom.
+At the level of conformal field theory operators, one
+may simply retain the right moving operators, while at
+the level of transition amplitudes, we shall make use of
+a generalization of the
+chiral splitting theorem, established in \S{VI}.
+
+The actions in local complex coordinates $z$, $\zbar$
+are given by
+$$
+\eqalignno{
+S_I[x^I,g] &\equiv{1\over 4\pi}\int\nolimits_{\sigma}
+d^2 z\partial_z x^I\partial_{\zbar}x^I&(8.1)\cr
+S_I[\lam^\alpha,g] &\equiv{1\over 4\pi}\int\nolimits_{\Sigma}
+d^2z(\lam_+^\alpha\partial_{\zbar}\lam_+^\alpha+
+\lam_-^\alpha\partial_z \lam_-^\alpha)&(8.2)\cr}
+$$
+Here, we represent Majorana spinors by a complex Weyl
+spinor $\lam_+^\alpha$ and its complex conjugate
+$\lam_-^\alpha=(\lam_+^\alpha)^*$.
+Summation over repeated indices $I$ and $\alpha$ is
+assumed throughout.
+
+\bigskip\noindent
+\Item{\bf A)} {\bf Free Fermion Realization of
+Internal Degrees of Freedom}
+
+We start by analyzing the local properties (on
+$\Sigma$) of the conformal field theory described by
+$S_I[\lam,g]$.
+We shall discuss the global issues, such as the
+spin structure of $\lam^\alpha$, shortly.
+We restrict attention to $\lam_-^\alpha$, since
+$\lam_+^\alpha$ may be gotten by complex
+conjugation.
+
+The field equations $\partial_{z}\lam_-^\alpha=0$
+imply that $\lam_-^\alpha(\zbar)$ is anti-holomorphic, 
+and the OPE is given as usual.
+(We assume that all $\lam_-^\alpha$ have the same spin
+structure.)
+$$
+\lam_-^\alpha(\zbar)\lam_-^\beta(\wbar)
+\sim{\delta^{\alpha\beta} \over \zbar-\wbar}
+\eqno{(8.A.1)}
+$$
+The stress tensor is
+$$
+T_{\zbar\zbar}=\half\,\partial_{\zbar}
+\lam_-^\alpha\lam_-^\alpha
+\eqno{(8.A.2)}
+$$
+The action $S_I$ is also invariant under $\SO(32)$
+rotations of the spinor $\lam_-^\alpha$.
+We denote the structure constants of $\SO(32)$ by
+$f^{abc}$ and the representation matrices in the
+fundamental ($32$-dimensional) representation of $\SO(32)$
+by $t^a$, $a,b,c=1,\ldots,\dim\,\SO(32)=496$:
+$$
+[t^a,t^b]=if^{abc}t^c\qquad\qquad
+\tr\,t^at^b=+\,\half\,\delta_{ab}\,\,.
+\eqno{(8.A.3)}
+$$
+The $\SO(32)$ Noether current $J_{\zbar}^a$ is 
+anti-analytic and given by
+$$
+J_{\zbar}^a(\zbar)
+=(t^a)_{\alpha\beta}\lam_-^\alpha\lam_-^\beta(\zbar)
+\eqno{(8.A.4)}
+$$
+and satisfies the following OPE:
+$$
+J_{\zbar}^a(\zbar)J_{\zbar}^b
+(\wbar)\sim{k\delta^{ab}\over (\zbar-\wbar)^2}+
+i{f^{abc}\over \zbar-\wbar}\,J_{\zbar}^c(\wbar)\,\,.
+\eqno{(8.A.5)}
+$$
+Here, we have
+ $k\delta^{ab}\equiv 2\,\tr\,t^at^b$ and thus $k=1$.
+Notice that this OPE is precisely the one encountered
+in Problem Set \#8.
+Here again, the stress tensor of (8.A.2) may be expressed in
+terms of the $\SO(32)$ current by the Sugawara
+construction:
+$$
+T_{\zbar\zbar}={1\over 2\kap}\,: J_{\zbar}^aJ_{\zbar}^a :
+\eqno{(8.A.6)}
+$$
+with $\kap=+{1\over 2} C_2(G)+k$, where $C_2(G)$ is the
+quadratic Casimir of the group $G$.
+The central charge is given by
+$$
+c={2k.\dim\,G\over 2k+C_2(G)}\,\,.\eqno{(8.A.7)}
+$$
+For $G=\SO(32)$, $\dim\,G=496$, $C_2(G)=60$ and we
+have $k=1$.
+(Witten established that Wess-Zumino-Witten models
+with $k=1$ are equivalent to free fermions for
+general $G$.)
+
+We now make use of this free fermion model to
+introduce internal degrees of freedom in the
+right-moving sector of the heterotic string.
+Thus, we retain from $\lam^\alpha$ only
+$\lam_-^\alpha$.
+We begin by investigating free heterotic strings, and
+work on a worldsheet with the topology of an annulus
+(equivalently a cylinder), where two spin structures
+are possible.
+We denote these by $\P$ and $\A$, and define them in
+analogy with $\R$ and $\NS$ spin structures:
+$$
+\matrix{\displaystyle
+ \P:\quad  
+  \lam_-^\alpha &\hbox{ periodic on cylinder}\hfill
+  &\qquad \hbox{(cf. $\R$-sector)}\hfill\cr
+\noalign{\medskip}
+\A:\quad \lam_-^\alpha
+  &\hbox{ anti-periodic on cylinder}\hfill
+   &\qquad  \hbox{(cf. $\NS$-sector)}\hfill\cr}
+\eqno{(8.A.8)}
+$$
+
+A priori, not all $\lam_-^\alpha$ have to carry the
+same spin structures.
+If all $\lam_-^\alpha$ carry the same spin
+structure, then the free fermion theory will be
+invariant under $\SO(32)$.
+More generally, one may consider spinors $\lam_-^\alpha$
+belonging to different groups, where the spin structure
+in each group is independently chosen.
+For example if $\lam_-^\alpha$ fall into 2 groups of
+size $k$ and $32-k$, with $1\Le k\Le 31$,
+respectively, then the remaining symmetry will be
+$\SO(k)\times\SO(32-k)$, with four possible
+combinations of spin structures; $\P\P$, $\A\P$, $\P\A$,
+$\A\A$.
+We shall investigate these possibilities shortly.
+
+The mode expansions of $\lam_-^\alpha(\zbar)$ are
+given in terms of integer $(\P)$ or integer
+$+{1\over 2}\,\,(\A)$ modes:
+$$
+\matrix{\displaystyle
+\P: &\qquad\qquad\qquad \lam_-^\alpha(\zbar)
+=\sum\limits_{n\in\dbZ}\lam_n^\alpha\,\,\zbar^{-n-1/2}\hfill\cr
+\noalign{\medskip}
+\A: &\qquad\qquad\qquad
+  \lam_-^\alpha(\zbar) =\sum\limits_{r\in{1\over 2}\,+\dbZ}
+  \lam_r^\alpha\,\,\zbar^{-r-1/2} &\qquad\qquad\qquad & \hfill\cr}
+\eqno{(8.A.9)}
+$$
+with
+$$
+\matrix{\displaystyle
+\null\,\,\,\P: &\qquad\qquad \{\lam_m^\alpha,\lam_n^\beta\}
+=\delta^{\alpha\beta}\delta_{m+n,0} &m,n\in\dbZ
+&\qquad\qquad&\cr
+\noalign{\medskip}
+\null\,\,\,\A: &\qquad\qquad 
+  \{\lam_r^\alpha,\lam_s^\beta\} =\delta^{\alpha\beta}
+  \delta_{r+s,0} &r,s\in{1\over 2}+\dbZ
+&\qquad\qquad&\hfill\cr}
+\eqno{(8.A.10)}
+$$
+
+As is expected in analogy with the $R$ sector, there
+are zero modes in the $\P$ sector, generated by 
+$\lam_0^\alpha$ and
+obeying the Clifford algebra of $\SO(32)$.
+As a result, the $\P$-ground state is a $\Spin(32)$
+spinor, which we shall denote by 
+$\left.\vert\sigma;\P\right>_R$,
+with $\sigma$ running over the weights of the
+$\Spin(32)$ spinor representation (we shall see later
+that this spinor must be Weyl), and
+$\lam_n^\alpha\left.\vert\sigma;\P\right>_R=0$, for
+all $n\in\dbN$.
+(If several independent groups of $\lam_-^\alpha$'s
+arise, $\SO(32)$ is reduced accordingly.)
+The $\P$ sector produces a Hilbert space
+$$
+\scrF^\P\equiv\left\{\{\lam_{-n}^\alpha\}_{n\in\dbN}
+\left.\vert\sigma;\P\right>_R\right\}\,\,.
+\eqno{(8.A.11)}
+$$
+The $\A$ sector has a unique ground state denoted
+by $\left.\vert0,\A\right>_R$ and obeying
+$\lam_r^\alpha\left.\vert0,A\right>_R=0$ for all
+$r\in-\half\,+\dbN$, and produces a Hilbert space
+$$
+\scrF^\A\equiv\left\{\{\lam_{-r}^\alpha\}_{r\in-{1\over 2}
+  +\dbN}
+\left.\vert0,A\right>_R\right\}\,\,.
+\eqno{(8.A.12)}
+$$
+
+The Virasoro generators are given as usual, and we
+shall only need $L_0$ and $\Ltil_0$ of these.
+We define those generators by normal ordering as
+usual:
+$$
+L_0=\half\,p^2+N;\qquad\qquad
+\Ltil_0=\half\,p^2+\Ntil
+\eqno{(8.A.13)}
+$$
+where the number operators are given by
+$$
+\matrix{\displaystyle
+\R: &\qquad\qquad
+    N\equiv\sum\limits_{n=1}^\infty(x_{-n}^\mu x_{n\mu}
+  +nd_{-n}^\mu d_{n\mu})\hfill \cr
+\noalign{\medskip}
+\NS: &\qquad\qquad
+    N\equiv\sum\limits_{n=1}^\infty x_{-n}^\mu x_{n\mu}
+  +\sum\limits_{r={1\over 2}}^\infty rb_{-r}^\mu b_{r\mu}
+   \hfill\cr}\eqno{(8.A.14)}
+$$ 
+and
+$$
+\matrix{\displaystyle
+\P: &\qquad\qquad
+   \Ntil =\sum\limits_{n=1}^\infty (\xtil_{-n}^\mu
+  \xtil_{n\mu}+n\lam_{-n}^\alpha\lam_n^\alpha)\hfill\cr
+\noalign{\medskip}
+\A: &\qquad\qquad
+   \Ntil =\sum\limits_{n=1}^\infty \xtil_{-n}^\mu
+  \xtil_{n\mu}+\sum\limits_{r=1/2}^\infty r\lam_{-r}^\alpha
+  \lam_r^\alpha\hfill \cr}\eqno{(8.A.15)}
+$$
+It is understood in the above that the summations over
+the $\alpha$-index run over the number of
+$\lam^\alpha$'s that belong either to the $\P$ or $\A$
+sectors.
+We shall denote the eigenvalues in each sector by
+$N_{\R}$, $N_{\NS}$, $N_{\P}$, $N_{\A}$.
+
+\bigskip\noindent
+\Item{\bf B)} {\bf Free Fermion Realization of the 
+$\Spin(32)/Z_2$ Heterotic String}
+
+We now assume that $S_I$ has $\SO(32)$ symmetry, so
+that there are only $2$ sectors: either
+all $\lam_-^\alpha$ are $\P$ or all $\lam_-^\alpha$
+are $\A$.
+The Virasoro conditions are easily worked out
+$$
+(L_0-a)\left.\vert\psi\right>_L=0\qquad\qquad
+(\Ltil_0-\atil)\left.\vert\psi\right>_R=0
+\eqno{(8.B.1)}
+$$
+The constants $a$ and $\atil$ are given
+by:
+$$
+a=\left\{\eqalign{
+0\,\,\, &\qquad \R\cr
+1/2 &\qquad \NS\cr}\right.\qquad\qquad\qquad
+\atil=\left\{\eqalign{\,\,1 &\qquad \A\cr
+-1 &\qquad \P\cr}\right.
+\eqno{(8.B.2)}
+$$
+The values for $a$ were obtained in \S{VII}.
+The values for $\atil$ follow in complete analogy
+with the corresponding values of $a$ in the
+$\R$, $\NS$ sectors, namely $1/24$ for each
+physical bosonic $x$, $-1/24$ for each integer moded
+physical fermionic $\psi$ or $\lam$, and $+1/48$ for
+each half integer moded physical fermionic $\psi$ or
+$\lam$.
+
+We are now in a position to determine the massless spectrum.
+We have the following states
+$$
+\left(\eqalign{&N_\R=0\cr
+&N_{\NS}=1/2\cr}\right)_{\!\!\!\! L}\otimes
+\left(\eqalign{&N_\A=1\cr
+&\hbox{no $\P$ states allowed}\cr}\right)_{\!\!\!\! R}
+\eqno{(8.B.3)}
+$$
+This may be seen from the expression for $M^2$ in each
+sector by combining (8.A.13--15) and (8.B.2)
+$$
+\matrix{M^2 &\!\!\!=2N_\R=2N_{\NS}-1\hfill
+  &\kern2.0true cm\hbox{left-movers}\hfill\cr
+\noalign{\bigskip}
+&\!\!\!=2N_\A-2=2N_\P+2 &\kern2.0true cm
+  \hbox{right-movers}\cr}
+\eqno{(8.B.4)}
+$$
+
+For  reasons that will become fully apparent at string
+loop amplitudes only, a GSO projection must be carried
+out on the $\lam^\alpha$'s, just as it was required in
+the $\R$ and $\NS$ sectors.
+In the functional integral formulations, the GSO
+summation will again correspond to a summation over
+the spin structures of the worldsheet spinor
+$\lam^\alpha$.
+
+In the $\P$ sector, the projection is carried out with
+the help of the $(-1)^F$ operator, defined by
+$$
+\eqalign{
+(-1)^F &\equiv \lambar_0  (-1)^{F_P}\qquad
+F_P\equiv\sum\limits_{n=1}^\infty 
+\lam_{-n}^\alpha\lam_n^\alpha\cr
+\lambar_0 &\equiv
+\lam_0^1\lam_0^2\ldots\lam_0^{32}\cr}
+\eqno{(8.B.5)}
+$$
+which anti-commutes with all $\lam_n^\alpha$.
+We define the $\GSO$ projection on the Fock space of
+$\lam_-^\alpha$ by requiring that only one eigenvalue
+of $(-1)^F$ be retained.
+Which eigenvalue is chosen is immaterial.
+$$
+\scrFtil_{\GSO}^\P\equiv\left\{\left.\vert\psi\right>_\R
+\in\scrFtil^p\quad\hbox{such that}\quad
+(-1)^F\left.\vert\psi\right>_\R=\left.\vert\psi\right>_\R
+\right\}\,\,.
+\eqno{(8.B.6)}
+$$
+In the $\A$ sector, the projection uses
+$$
+(-1)^F\equiv(-1)^{F_A}\qquad
+F_A\equiv\sum\limits_{r=1/2}^\infty
+\lam_{-r}^\alpha \lam_r^\alpha
+\eqno{(8.B.7)}
+$$
+which also anti-commutes with all $\lam_{-r}^\alpha$.
+We define the $\GSO$ projection on the Fock space of
+$\lam_-^\alpha$ by requiring that only the $+$
+eigenvalue of $(-1)^F$ is retained.
+This guarantees that the $A$-ground state is retained
+by the $\GSO$ projection.
+$$
+\scrFtil_{\GSO}^\A\equiv\left\{\left.\vert\psi\right>_\R
+  \in\scrFtil^\A\quad\hbox{such that}\quad
+  (-1)^F\left.\vert\psi\right>_\R=\left.\vert\psi
+  \right>_\R\right\}\,\,.
+\eqno{(8.B.8)}
+$$
+Notice that in the $\NS$ and $\A$ sectors, the $\GSO$
+projection is compatible with the physical state conditions.
+In the $\R$ and $\P$ sectors, the $\GSO$ projection
+simply determines the chirality.
+
+It is now easy to list the massless states.
+In parentheses, we list the number of physical states
+in each sector.
+
+$$
+\kern3.0true cm
+\vbox{\offinterlineskip
+\halign{\null\kern-50pt#\hfill &\qquad\qquad\qquad #\cr 
+\hbox{Bosons} &$\NS$ sector only\qquad
+  $N_{\NS}=1/2,\,\,N_A=1$\hfill\cr
+\noalign{\bigskip\medskip (1)\enspace $b_{-1/2}^\mu
+  \xtil_{-1}^\nu \left.\vert0,k;\NS\right>_{\EL}\otimes
+  \left.\vert0,k\right>_\R
+  \otimes\left.\vert0,\A\right>_\R$\bigskip}
+&$\matrix{- &\hbox{graviton}\hfill &G_{\mu\nu} &(35)\cr
+- &\hbox{anti-symmetric tensor}\hfill &B_{\mu\nu} &(28)\cr
+- &\hbox{dilaton}\hfill &\Phi &(\hfill1)\cr}$ \cr
+\noalign{\bigskip\medskip (2)\enspace $b_{-1/2}^\mu
+  \lam_{-1/2}^\alpha\lam_{-1/2}^\alpha\left.\vert
+  0,k;\NS\right>_{\EL}\otimes\left.\vert0,k\right>_\R
+  \otimes \left.\vert0,\A\right>_\R$\bigskip}
+&$\matrix{- &\SO(32) \hbox{ Yang-Mills field}
+  &&(8\times 496)\cr
+  &\hbox{(adjoint representation)} &&\cr}$\cr
+\noalign{\bigskip}
+\hbox{Fermions} &$\R$ sector only\qquad \qquad
+     $\!\!\!N_\R=0$, $N_\A=1$\hfill\cr
+\noalign{\bigskip\medskip (1)\enspace $\xtil_{-1}^\nu\left.
+  \vert0,\alpha;\R\right>_{\EL}\otimes\left.\vert
+  0,k\right>_\R\otimes\left.\vert0;\A\right>_\R$\bigskip}
+&$\matrix{- &\hbox{gravitino}\hfill 
+  &&\qquad\qquad\chi_\mu^\alpha(56)\cr
+- &\hbox{dilatino}\hfill 
+  &&\qquad\qquad\lam_\alpha(\hfill8)\cr}$\cr
+\noalign{\bigskip (2)\enspace
+$\lam_{-1/2}^\alpha\lam_{-1/2}^\beta
+  \left.\vert0,\alpha;k;\R\right>_{\EL}\otimes\left.
+  \vert0,k\right>_\R\otimes
+\left.\vert0;\A\right>_\R$\hfill\bigskip}
+&$\matrix{- &\SO(32) \hbox{ gaugino}\hfill 
+     &\psi^\alpha(8\times 496)\cr
+&\hbox{(adjoint representation)}\hfill &\cr}$\cr}}
+$$
+
+\medskip
+Next, we examine the first massive level, obtained for
+$M^2=2$:
+$$
+\left(\eqalign{
+&N_\R=1\cr
+&N_{\NS}=3/2\cr}\right)_{\!\!{\EL}}\otimes
+\left(\eqalign{
+&N_\A=2\cr
+&N_\P=0\cr}\right)_{\!\!\R}
+\eqno{(8.B.9)}
+$$
+The $N_\R=1$ multiplet of left-movers has the structure
+$$
+\eqalign{
+&x_{-1}^\mu\left.\vert0,k,\alpha,\R\right>_{\EL}\cr
+&d_{-1}^\mu\left.\vert0,k,\alpha;\R\right>_{\EL}\cr}
+\eqno{(8.B.10)}
+$$
+and spans a massive Majorana fermion multiplet, with
+$2\times 8\times 8=128$ physical states.
+The $N_{\NS}=3/2$ multiplet of left-movers has the
+following states
+$$
+\matrix{
+x_{-1}^\mu b_{-1/2}^\nu\left.\vert0,k,\NS\right>_{\EL}\hfill
+  &(64)\cr
+\noalign{\bigskip}
+b_{-1/2}^\mu b_{-1/2}^\nu
+b_{-1/2}^\rho\left.\vert0,k;\NS\right>_{\EL}\hfill 
+&(56)\cr
+\noalign{\bigskip}
+b_{-3/2}^\mu\left.\vert0,k;\NS\right>_{\EL}\hfill &(8)\cr}
+\eqno{(8.B.11)}
+$$
+and has $128$ physical bosonic states.
+Thus, the number of fermionic and bosonic physical
+states in the left-moving sector are equal, as is
+expected from space-time supersymmetry, as discussed
+also in \S{VII},
+The $N_\A=2$ multiplet of right-movers has the
+following states
+$$
+\matrix{
+\xtil_{-1}^\mu \xtil_{-1}^\nu\left.\vert0,k;\A\right>_\R\hfill
+  &(36)\cr
+\noalign{\bigskip}
+\xtil_{-2}^\mu\left.\vert0,k;\A\right>_\R\hfill &(8)\cr
+\noalign{\bigskip}
+\xtil_{-1}^\mu\lam_{-1/2}^\alpha\lam_{-1/2}^\beta\left.\vert
+  0,k;A\right>_\R\hfill &(8\times 496)\cr
+\noalign{\bigskip}
+\lam_{-1/2}^\alpha \lam_{-1/2}^\beta
+\lam_{-1/2}^\gamma \lam_{-1/2}^\delta\left.\vert
+ 0,k;\A\right>_\R\hfill &(32\times 31\times 30\times 29/24)\cr
+\noalign{\bigskip}
+\lam_{-1/2}^\alpha \lam_{-3/2}^\beta\left.\vert
+  0,k;\A\right>_\R\hfill &(32\times 32)\cr}
+\eqno{(8.B.12)}
+$$
+with a total of 41016 states.
+Finally, the novel sector here is the $\P$ sector,
+whose analogue did not occur at the massless level.
+It produces a single Weyl spinor of $\Spin(32)$ with
+dimension $2^{15}=32768$.
+
+Now, consider the representations allowed in the
+spectrum:
+
+\smallskip
+\itemitem{$\scriptstyle\bullet$}
+only $1$ Weyl spinor of $\Spin(32)$;
+
+\smallskip
+\itemitem{$\scriptstyle\bullet$}
+even numbers of $\lam$'s applied to ground state.
+
+\smallskip\noindent
+Thus, we obtain representations not of $\Spin(32)$,
+but only of $\Spin(32)/Z_2$.
+
+Physically, the spinor representation of
+$\Spin(32)/Z_2$ is a very interesting object: it is a
+massive string state, but it is {\it stable} (in the
+$10$-dimensional theory) since there are no massless
+states that are spinors, and since a spinor cannot
+decay into only vector representations.
+
+\bigskip\noindent
+\Item{\bf C)} {\bf Free Fermion Realization of the
+$E_8\times E_8$ Heterotic String}
+
+In the free fermion construction of the
+$\Spin(32)/Z_2$ theory, we have restricted
+$\lam_-^\alpha$'s to have either all $\P$ or all $\A$
+spin structure in keeping with $\SO(32)$ invariance.
+We now investigate in what way this restriction may be
+relaxed, and we shall find one other consistent string
+theory: the $E_8\times E_8$ model.
+
+We assume that $\lam^\alpha$'s fall into two
+groups of sizes $k$ and $32-k$ respectively and
+$0<k<32$, with all $\lam^\alpha$'s in each group carrying
+the same spin structure, either $\A$ or $\P$.
+The manifest symmetry of the action $S_I$ with these
+spin structure assignments is then only 
+$\SO(k)\times\SO(32-k)$, and the possible spin
+structures are $\A\A$, $\A\P$, $\P\A$, and $\P\P$.
+Here the first and second assignments refer to the
+spin structures of the first group of $\lam_-^\alpha$'s
+transforming under $\SO(k)$, and the second group of
+$\lam_-^\alpha$'s transforming under $\SO(32-k)$,
+respectively.
+(The case of more than two groups of $\lam_-^\alpha$'s
+with independent spin structures may be treated
+analogously, but will ultimately
+not yield any consistent string theories.
+
+The first modification in the setup of \S{B} arises
+from the fact that the $\atil$ constants of the
+Virasoro conditions are now given by
+$$
+\left\{\eqalign{
+&\atil_{\A\A}=1\cr
+\noalign{\bigskip}
+&\atil_{\P\P}=-1\cr}\right.\qquad\qquad
+\left\{\eqalign{
+&\atil_{\A\P}={{\textstyle 8}\over{\textstyle 24}}
++{{\textstyle k}\over{\textstyle 24}}-{{\textstyle
+32-k}\over{\textstyle 24}}=-1+{{\textstyle k}\over
+  {\textstyle 16}}\cr
+\noalign{\bigskip}
+&\atil_{\P\A}={{\textstyle 8}\over{\textstyle 24}}-
+{{\textstyle k}\over{\textstyle 24}}+{{\textstyle 32-k}
+\over{\textstyle 48}} =1-{{\textstyle
+k}\over{\textstyle 16}}\,\,.\cr}
+\right.
+\eqno{(8.C.1)}
+$$
+To investigate which states are allowed, we examine
+the $\mass^2$ conditions, by matching the $M^2$
+eigenvalue in the left- and right-moving sectors
+$$
+\matrix{
+M^2 &\!\!\!=2N_\R=2 N_{\NS}-1\hfill 
+  &\qquad\qquad \hbox{(left movers)}\hfill\cr
+\noalign{\bigskip}
+ &\!\!\!=2\Ntil-2\atil \hfill 
+  &\qquad\qquad \hbox{(right movers)}\hfill\cr}
+\eqno{(8.C.2)}
+$$
+Here, $\Ntil$ denotes the eigenvalue of the number
+operator introduced in (8.A.15).
+Now, in view of the fact that $N_\R$ is integer $\Ge
+0$ and that the $\GSO$ projection in the $\NS$
+sector restricts to $2N_{\NS}-1$ integer, it follows
+that $M^2$ is an even integer $\Ge 0$. 
+By (8.C.2), $\Ntil-\atil$ must be integer as well.
+Now, $\Ntil$ is
+half-integer by construction; so if there are to be
+any states in the $\A\P$ and $\P\A$ sectors, we must
+have
+$\atil_{\A\P}=-\atil_{\P\A}$ half-integer.
+
+If $k\not=0\pmod{8}$, then we find from the above
+reasoning that there are no physical states in the
+$\A\P$ and $\P\A$ states.
+Thus, the only remaining sectors are $\A\A$ and
+$\P\P$.
+But, then all $\lam_-^\alpha$'s always have the same spin
+structure, either $\A$ or $\P$, and the theory really
+has $\SO(32)$ symmetry, and reduces to the case
+studied in \S{B}.
+
+There remain 2 new, inequivalent cases:
+$\SO(16)\times\SO(16)$ and $\SO(8)\times\SO(24)$.
+The latter turns out to be inconsistent at the
+$1$-loop level (as will be demonstrated in \S{IX}), 
+and we shall not investigate it any
+further here.
+
+We now analyze the $\SO(16)\times\SO(16)$ model, and
+concentrate on the representations of
+$\SO(16)\times\SO(16)$, under which the massless gauge
+fields (space-time vectors) transform.
+These states belong to the multiplet with
+$N_{\NS}=1/2$ in the left-moving sector, and to those
+states with $\Ntil=\atil$ and {\it with zero $\xtil$
+oscillator number}, in the right moving sector.
+There are now 4 contributions, from the $\A\A$, $\A\P$,
+$\P\A$ and $\P\P$ sectors.
+Below, we list the allowed states and indicate their
+respective representation of $\SO(16)\times\SO(16)$
+(by listing the dimension of the representations)
+under each set of states.
+$$
+\matrix{
+\A\A\,:\,\, &\lam_{-1/2}^\alpha\lam_{-1/2}^\beta
+\left.\vert0,\A\right>_\R\otimes\left.\vert0,\A\right>_\R\cr
+\noalign{\bigskip}
+&(120,1)\oplus (1,120)\oplus (16,16)\hfill\cr
+\noalign{\bigskip}
+\A\P\,:\,\, &\qquad\qquad\qquad\!\left.\vert0,\A\right>_\R
+ \otimes\left.\vert0,\sigma,\P\right>_\R\cr
+\noalign{\bigskip}
+&(1,128)\oplus(1,128')\hfill\cr
+\noalign{\bigskip}
+\P\A\,:\,\,
+&\qquad\qquad\qquad\,\left.\vert0,\sigma,\P\right>_\R\otimes
+  \left.\vert0,\A\right>_\R\cr
+\noalign{\bigskip}
+&(128,1)\oplus(128',1)\hfill\cr
+\noalign{\bigskip}
+\P\P\,:\,\, &\hbox{no massless states}\hfill\cr}
+\eqno{(8.C.3)}
+$$
+Here, we have decomposed the Dirac spinor of $\SO(16)$
+(actually $\Spin(16)$)
+into its two irreducible Weyl components denoted by $128$ and
+$128'$.
+
+Now, all these states are to
+correspond to massless Yang-Mills
+fields, and they can form a consistent quantum field theory
+only if they correspond to the adjoint representation
+of some compact Lie algebra.
+(A theory of vector fields that does not arise as a
+Yang-Mills theory will not produce sufficient gauge
+invariance to eliminate the negative norm states
+created by the vector field.)
+But, there is no Lie algebra that contains all the
+states listed in (8.C.3).
+From the multiplet structure, it is clear that the Lie
+algebra has rank $16$, with $\SO(16)\times\SO(16)$ as
+a maximal subalgebra.
+If all states were to occur, then the Lie algebra
+should have dimension $1008$, but there is no such Lie
+algebra.
+
+Again, to obtain a consistent theory, we have to
+project \`a la $\GSO$.
+Of course, we can project out the $\A\P$ and $\P\A$
+sectors, to recover the $\Spin(32)/Z_2$ theory.
+But, there is another solution: if we project out the
+$(16,16)$ representation, then we ought to obtain a
+factorized group, as is evident from the representation
+contents.
+Projecting out the $(16,16)$ representation is the
+only possible consistent projection that will not lead back
+to $\Spin(32)/Z_2$.
+This can be seen as follows.
+The representation $(1,120)\oplus(120,1)$ in the
+$\A\A$ sector is the adjoint representtion of
+$\SO(16)\times\SO(16)$, and cannot be projected out if
+the Yang-Mills multiplet has to have at least
+$\SO(16)\times\SO(16)$ symmetry.
+But then, if we were to retain the $(16,16)$
+representation, the $\A\A$ sector by itself would
+produce the gauge group $\SO(32)$.
+Including any of the representations in the $\A\P$ and
+$\P\A$ sectors would upset the Lie aglebra structure.
+Thus, it remains only to project out the $(16,16)$.
+
+Projecting out the $(16,16)$ representation may be
+achieved by using the following construction.
+We have naturally $2$ $\SO(16)\times\SO(16)$-invariant
+fermion number operators.
+$$
+\matrix{
+(-1)^{F_1} &\equiv
+(-1)^{\,\,\sum\limits_{r>0}
+  \lam_{-r}^{\alpha_1}\lam_r^{\alpha_1}}
+  &\qquad \alpha_1=1,\ldots,16\hfill\cr
+\noalign{\bigskip}
+(-1)^{F_2} &\equiv(-1)^{\,\,\sum\limits_{r>0}
+  \lam_{-r}^{\alpha_2}\lam_r^{\alpha_2}}
+  &\qquad\null\hfill \alpha_2=17,\ldots,32\cr}
+\eqno{(8.C.4)}
+$$
+The product $(-1)^{F_1}(-1)^{F_2}$ is just the
+operator $(-1)^F$ of (8.B.7), in the $\A$ sector.
+The states $(16,16)$ are now eliminated by imposing the
+$\GSO$ projection
+$$
+(-1)^{F_1}=1\qquad\hbox{\undertext{and}}\qquad
+(-1)^{F_2}=1\,\,.\eqno{(8.C.5)}
+$$
+This projection preserves all of the $\A\P$ and $\P\A$
+sectors.
+
+Having projected out $(16,16)$, we are now left with
+the following representation content in each factor:
+$$
+120\oplus 128\oplus 128'\eqno{(8.C.6)}
+$$
+This content still does not close into a Lie algebra.
+But if we retain only one of the two $\SO(16)$ Weyl
+spinors, say $128$, then we obtain the $\SO(16)$
+contents of the adjoint representation of the
+exceptional Lie algebra $E_8$.
+Projecting out $(128')$ is easily achieved by the
+following $\GSO$ projection in the $\P$ sector.
+We define
+$$
+\matrix{
+(-1)^{F_1} &\equiv \lam_0^1\lam_0^2\ldots\lam_0^{16}
+  &(-1)^{\,\,\sum\limits_{n>0}\lam_{-n}^{\alpha_1}
+  \lam_n^{\alpha_1}} &\qquad \alpha_1=1,\ldots,16\hfill\cr
+\noalign{\bigskip}
+(-1)^{F_2} &\equiv \lam_0^{17}\ldots\lam_0^{32}
+  &(-1)^{\,\,\sum\limits_{n>0}\lam_{-n}^{\alpha_2}
+  \lam_n^{\alpha_2}} &\hfill\qquad \alpha_2=17,\ldots,32\,\,,\cr}
+\eqno{(8.C.7)}
+$$
+and require in the $\P$ sector
+$$
+(-1)^{F_1}=1\qquad\qquad
+(-1)^{F_2}=1\,\,.
+\eqno{(8.C.8)}
+$$
+The Yang-Mills states that we are left with after this
+projection now correspond to the Lie algebra
+$E_8\times E_8$.
+
+In the functional integral formulation, the above
+$\GSO$ projections correspond to an {\it
+independent} summation over all spin structures,
+separately for the two groups of $16$ spinors
+$\lam^{\alpha_1}$ and $\lam^{\alpha_2}$.
+We shall show in the next chapter that this summation
+leads to modular invariant amplitudes.
+Insistence on modular invariance will ultimately be
+what selects out the two gauge groups $\Spin(32)/Z_2$
+and $E_8\times E_8$, as we shall start to see in the
+next section, and prove in full in \S{IX}.
+
+We leave it as an exercise to the reader to show that
+the $\GSO$ projected states at the massless level are
+those of the $\SO(32)$ heterotic string, but with the
+gauge group $\Spin(32)/Z_2$ replaced by $E_8\times
+E_8$.
+Notice that the adjoint representations of both groups
+have the same dimensions $496$, and that both groups
+have the same rank $16$.
+
+\bigskip\noindent
+\Item{\bf D)} {\bf Bosonic Realizations of the
+$\Spin(32)/Z_2$ and $E_8\times E_8$ Strings}
+
+%\nobreak
+
+For the $\Spin(32)/Z_2$ heterotic string, we exhibited
+all the generators of the associated Kac Moody
+algebra, in the form of fermion bilinear operators
+$$
+J^a(\zbar)
+=t_{\alpha\beta}^a\lam_-^\alpha\lam_-^\beta(\zbar)\,\,.
+\eqno{(8.D.1)}
+$$
+Indeed, all $\lam_-$ have the same spin structure, and
+so the current $J^a(\zbar)$ is a single valued
+$1$-form.
+For the $E_8\times E_8$ construction, however, we can
+only exhibit an $\SO(16)\times\SO(16)$ current algebra
+this way, since products of $\lam_-$'s with opposite spin
+structure will not produce single-valued currents.
+Thus, while the adjoint representation of $\SO(16)$ is
+represented this way, the spinor of $\SO(16)$ cannot be
+represented by currents of the form (8.D.1).
+
+A general construction of vertex operators for
+simply laced algebras (all of whose roots have equal
+length) allows us to represent all current generators.
+This construction was developed by Lepowski and Wilson
+and by Frenkel, Kac and Segal; we shall not reproduce
+it here in detail.
+The key ingredient is that scalar fields compactified
+on a torus may produce enhanced symmetries at special
+radii of the torus.
+For a single scalar, this is familiar from
+Witten's lectures.
+
+The starting point is a bosonized realization of the
+internal degrees of freedom $\lam_-^\alpha$ in terms
+of right-moving scalars $x_R^I(\zbar)$,
+$I=1,\ldots,16$.
+These $x^I$ are assumed to be propagating on a
+$16$-dimensional torus $\dbR^{16}/2\pi\Gamma$,
+specified by a lattice $\Gamma$, with basis vectors
+$e_i^I$, $i=1,\ldots,16$.
+We define the metric of the lattice $\Gamma$ by
+the matrix of inner products of basis vectors
+$e_i{}^{I}$:
+$$
+g_{ij}=\sum\limits_{I=1}^{16} e_i^I e_j^I\,\,.
+\eqno{(8.D.2)}
+$$
+By construction, this lattice has positive definite
+metric.
+
+To describe the $x_R^I(\zbar)$, we begin by describing
+a full $x^I=x_L^I+x_R^I$ field propagating on
+$\dbR^{16}/2\pi\Gamma$.
+The solution for $x^I$ on a worldsheet of a cylinder is:
+$$
+x^I(z,\zbar)=q^I-ix_0^I\ln\,z-i\xtil_0^I\ln\,\zbar
++\hbox{ oscillators}\,\,.
+\eqno{(8.D.3)}
+$$
+Now, $x^I$ is valued in $\dbR^{16}/2\pi\Gamma$, and
+this allows $x^I$ to be multiple valued by shifts in
+$2\pi\Gamma$ as $z\to e^{2\pi i}z$:
+$$
+x^I\left(e^{2\pi i}z,e^{-2\pi i}\zbar\right)=
+x^I(z,\zbar)+2\pi\left(x_0^I-\xtil_0^I\right)
+\eqno{(8.D.4)}
+$$
+with 
+$$
+x_0^I-\xtil_0^I=\sum\limits_{i=1}^{16}n_i
+e_i^I\in\Gamma
+\qquad\qquad n_i\in\dbZ\,\,.
+\eqno{(8.D.5)}
+$$
+To see the effect of this multi-valuedness, it is
+helpful to consider the topology of the cylinder
+instead of the torus.
+Thus we set $z=\exp(\tau+i\sigma)$ with
+$\sigma\in[0,2\pi]$, so that
+$$
+x^I(\tau,\sigma)=q^I-i(x_0^I+\xtil_0^I)\tau+
+(x_0^I-\xtil_0^I)\sigma+\hbox{\rm oscillators}\,\,.
+\eqno{(8.D.6)}
+$$
+Clearly now, as $\sigma\to\sigma+2\pi$, and we wind
+around the string once, the integers $n_i$ indicate
+how many times the string wraps around direction $i$
+of th torus $\dbR^{16}/2\pi\Gamma$.
+Such winding configurations can occur because the
+torus $\dbR^{16}/2\pi\Gamma$ is non-simply connected,
+and these configurations are called {\it winding
+modes}, with winding numbers $n_i$.
+
+Now $x_0^I$ and $\xtil_0^I$ are momenta of the string,
+and ${1\over 2}(x_0^I+\xtil_0^I)$ is the total momentum.
+It must be valued in the lattice dual to $\Gamma$,
+which we denote by $\Gamma^*$, and which is generated
+by the basis of vetors $e_i^{*I}$, dual to the
+$e_i^I$:
+$$
+\sum\limits_{I} e_i^{*I}e_j^I=\delta_{ij}\,\,.
+\eqno{(8.D.7)}
+$$
+Thus, we must have
+$$
+x_0^I+\xtil_0^I=\sum\limits_{i=1}^{16}m_i
+e_i^{*I}\in\Gamma^*\qquad\qquad
+m_i\in\dbZ\,\,.
+\eqno{(8.D.8)}
+$$
+The discreteness of the momenta results from the
+compactness of the torus $\dbR^{16}/2\pi\Gamma$.
+These modes are called {\it Kaluza-Klein modes}, and the
+integers $m_i$ are the Kaluza-Klein momentum mode
+numbers.
+Now, the Virasoro constraints are just as in the
+bosonic string, except for the fact that we have split
+momenta and oscillators into $10$ dimensions of
+space-time and $16$ internal bosons.
+We reflect this splitting in the Virasoro
+$$
+\matrix{\displaystyle
+L_0 &=\,\half\,p^2+\half\,x_0^Ix_0^I+N \hfill
+  &\qquad N=\sum\limits_{n=1}^\infty(x_{-n}\cdot x_n+
+  x_{-n}^Ix_n^I)\hfill\cr
+\noalign{\bigskip}
+\Ltil_0 &=\,\half\,p^2+\half\,\xtil_0^I\xtil_0^I+\Ntil\hfill
+  &\qquad\Ntil=\sum\limits_{n=1}^\infty(\xtil_{-n}
+  \cdot\xtil_n+\xtil_{-n}^I\xtil_n^I)\hfill\cr}
+\eqno{(8.D.9)}
+$$
+The relevant Virasoro constraints are unmodified:
+$L_0=\Ltil_0=1$, so that we have
+$$
+\eqalign{
+&\half\,x_0^Ix_0^I-\half\,\xtil_0^I\xtil_0^I+N-\Ntil=0\cr
+\noalign{\bigskip}
+&M^2=\half\,x_0^Ix_0^I+\half\,\xtil_0^I\xtil_0^I+
+N+\Ntil-2\,\,.\cr}
+\eqno{(8.D.10)}
+$$
+
+Now, we replace left-movers of the bosonic string
+by the left-movers of the $\RNS$, $\GSO$
+projected string.
+Thus, the Virasoro and mass constraints become:
+$$
+\eqalignno{
+L_0=\half\,p^2+N &\quad\cases{
+N_\R=\sum\limits_{n=1}^\infty(x_{-n}\cdot
+x_n+nd_{-n}\cdot d_n) &$(\R)$\cr
+\noalign{\medskip}
+N_{\NS}=\sum\limits_{n=1}^\infty(x_{-n}\cdot
+x_n)+\sum\limits_{r=1/2}^\infty rb_{-r}\cdot b_r
+&$(\NS)$\cr}\cr
+\Ltil_0=\half\,p^2+\half\,\xtil_0^I\xtil_0^I+\Ntil\hfill &\qquad
+\Ntil=\sum\limits_{i=1}^\infty(\xtil_{-n}\cdot
+  \xtil_n+\xtil_{-n}^I\cdot\xtil_n^I) &(8.D.11)\cr}
+$$
+Thus, we have
+$$
+\eqalign{
+M^2 &=2N_\R=2N_{\NS}-1 \cr
+ &=\xtil_0^I\xtil_0^I+2\Ntil-2\cr}
+\eqno{(8.D.12)}
+$$
+Furthermore, $\xtil_0^I$ must now live on $\Gamma$ and
+on $\Gamma^*$, and the length of any allowed
+$\xtil_0^I\xtil_0^I$ must be {\it even}.
+For general lattices $\Gamma$, $\Gamma$ and $\Gamma^*$
+will not have any common points.
+Thus, the above condition puts severe constraints on what
+lattices are allowed for $\Gamma$.
+We assume that $16$ independent directions for
+$\xtil_0^I$ are allowed, which essentially implies
+that $\Gamma$ must be {\it self-dual}.
+(We cannot fully prove at this point that self-duality
+is necessary; the latter condition will be firmly
+established from the requirement of modular invariance
+of the transition amplitudes at loop order $h\Ge 1$,
+as we shall see in \S{IX}.
+For the time being, we assume self-duality.)
+
+There are then only two possible lattices:
+$$
+\matrix{
+E_8\times E_8\hfill &\hbox{root lattice},\hfill 
+  &g_{ij} &\hbox{Cartan matrix}\cr
+\noalign{\bigskip}
+\Spin(32)/Z_2\hfill &\hbox{root lattice},\hfill
+  &g_{ij} &\hbox{Cartan matrix}\cr}
+\eqno{(8.D.13)}
+$$
+The states of the heterotic strings are
+reproduced as follows: for massless states, we have
+$$
+\vbox{
+\eqalignno{
+&\left(
+\matrix{N_\R=0\hfill\cr
+\noalign{\medskip}
+N_{\NS}=1/2\hfill\cr}\right)_L\otimes
+\left\{\left(\matrix{
+\Ntil=1\hfill\cr
+\noalign{\medskip}
+\xtil_0^I\xtil_0^I=0\hfill\cr}\right)_R
+\oplus\left(\matrix{\Ntil=0\hfill\cr
+\noalign{\medskip}
+\xtil_0^I\xtil_0^I=2\hfill\cr}\right)_R\right\}\cr
+\noalign{\bigskip}
+&\left(\matrix{
+\Ntil=1\hfill\cr
+\noalign{\medskip}
+\xtil_0^I\xtil_0^I=0\hfill\cr}\right)
+\matrix{&\quad \xtil_{-1}^\mu\hbox{ states} &\to
+  &N=1\hbox{ supergravity multiplet}\hfill\cr
+ &\quad \xtil_{-1}^I\hbox{ states} &\to
+&16\hbox{ states of super-Yang-Mills multiplet}\hfill\cr}\cr
+\noalign{\bigskip}
+&\left(\matrix{
+\Ntil=0\hfill\cr
+\noalign{\medskip}
+\xtil_0^I\xtil_0^I=2\hfill\cr}\right)
+\matrix{&\quad 480\hbox{ states of }
+  N=1 \hbox{ super-Yang-Mills multiplet}\hfill \cr
+ &\quad \hbox{obtained as 
+  \undertext{winding} states}\hfill\cr}\cr}}
+$$
+The total number of Yang-Mills states is $480+16=496$,
+which coincides with the dimension of $E_8\times E_8$
+and $\Spin(32)/Z_2$.
+
+In Problem Set \#10, toroidal compactifications of the
+heterotic strings, their relation by $T$-duality and
+their moduli spaces are discussed.
+
+
+
+
+\bye
+
+
+
+
+
+

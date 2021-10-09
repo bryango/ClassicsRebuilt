@@ -1,0 +1,1351 @@
+\documentstyle{article}
+
+\input epsf.tex
+
+%These are the macros which are in common with all of the
+% sections in the paper mmr
+% Each section, for now, should begin with \documentstyle[11pt,cd]{article}
+% and then have \input{mmrmacros} followed by \begin{document}
+% The only exception is that the \Label macro is slightly different
+% in each file and should be put in separately.
+%New CD macros
+\newcommand{\cdrl}{\cd\rightleftarrows}
+\newcommand{\cdlr}{\cd\leftrightarrows}
+\newcommand{\cdr}{\cd\rightarrow}
+\newcommand{\cdl}{\cd\leftarrow}
+\newcommand{\cdu}{\cd\uparrow}
+\newcommand{\cdd}{\cd\downarrow}
+\newcommand{\cdud}{\cd\updownarrows}
+\newcommand{\cddu}{\cd\downuparrows}
+% (S) Proofs.
+% (S-1) Head is automatically supplied by \proof.
+
+\def\proof{\vspace{2ex}\noindent{\bf Proof.} }
+\def\tproof#1{\vspace{2ex}\noindent{\bf Proof of Theorem #1.} }
+\def\pproof#1{\vspace{2ex}\noindent{\bf Proof of Proposition #1.} }
+\def\lproof#1{\vspace{2ex}\noindent{\bf Proof of Lemma #1.} }
+\def\cproof#1{\vspace{2ex}\noindent{\bf Proof of Corollary #1.} }
+\def\clproof#1{\vspace{2ex}\noindent{\bf Proof of Claim #1.} }
+% End of Proof Symbol at the end of an equation must precede $$.
+
+\def\endproof{\relax\ifmmode\expandafter\endproofmath\else
+  \unskip\nobreak\hfil\penalty50\hskip.75em\hbox{}\nobreak\hfil\bull
+  {\parfillskip=0pt \finalhyphendemerits=0 \bigbreak}\fi}
+\def\endproofmath$${\eqno\bull$$\bigbreak}
+\def\bull{\vbox{\hrule\hbox{\vrule\kern3pt\vbox{\kern6pt}\kern3pt\vrule}\hrule}
+}
+\addtolength{\textwidth}{1in}                  % Margin-setting commands
+\addtolength{\oddsidemargin}{-.5in}
+\addtolength{\evensidemargin}{.5in}
+\addtolength{\textheight}{.5in}
+\addtolength{\topmargin}{-.3in}
+\addtolength{\marginparwidth}{-.32in}
+\renewcommand{\baselinestretch}{1.6}
+\def\hu#1#2#3{\hbox{$H^{#1}(#2;{\bf #3})$}}          % #1-Cohomology of #2
+\def\hl#1#2#3{\hbox{$H_{#1}(#2;{\bf #3})$}}          % #1-Homology of #2
+\def\md#1{\ifmmode{\cal M}_\delta(#1)\else  % moduli space, delta decay of #1
+{${\cal M}_\delta(#1)$}\fi}
+\def\mb#1{\ifmmode{\cal M}_\delta^0(#1)\else  %moduli space, based, delta
+                                              %decay of #1
+{${\cal M}_\delta^0(#1)$}\fi}
+\def\mdc#1#2{\ifmmode{\cal M}_{\delta,#1}(#2)\else    %moduli space, delta
+                                                      %decay, chern class #1
+                                                      %of #2
+{${\cal M}_{\delta,#1}(#2)$}\fi}
+\def\mbc#1#2{\ifmmode{\cal M}_{\delta,#1}^0(#2)\else   %as before, based
+{${\cal M}_{\delta,#1}^0(#2)$}\fi}
+\def\mm{\ifmmode{\cal M}\else {${\cal M}$}\fi}
+\def\ad{{\rm ad}}
+\def\msigma{\ifmmode{\cal M}^\sigma\else {${\cal M}^\sigma$}\fi}
+\def\cancel#1#2{\ooalign{$\hfil#1\mkern1mu/\hfil$\crcr$#1#2$}}
+\def\dirac{\mathpalette\cancel\partial}
+\newtheorem{thm}{Theorem}
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{D}[theorem]{Definition}
+\newenvironment{defn}{\begin{D} \rm }{\end{D}}
+\newtheorem{addendum}[theorem]{Addendum}
+\newtheorem{R}[theorem]{Remark}
+\newenvironment{remark}{\begin{R}\rm }{\end{R}}
+\newcommand{\note}[1]{\marginpar{\scriptsize #1 }}
+\newenvironment{comments}{\smallskip\noindent{\bf Comments:}\begin{enumerate}}{
+\end{enumerate}\smallskip}
+
+\renewcommand{\thesection}{\Roman{section}}
+\def\eqlabel#1{\addtocounter{theorem}{1}
+\write1{\string\newlabel{#1}{{\thetheorem}{\thepage}}}
+\leqno(\rm\thetheorem)}
+\def\cS{{\cal S}}
+\def\ov{\overline}
+
+
+
+
+
+
+
+
+%Dave's macros
+%\numberwithin{equation}{section}
+\newcommand{\operatorname}[1]{\mathop{\rm #1}\nolimits}
+\newcommand{\Tr}{\operatorname{Tr}}
+
+
+\title{Lecture II-12: $N=2$ SUSY theories in Dimension Two: Part I}
+\author{Edward Witten\thanks{Notes by John Morgan and David R. Morrison}}
+\date{April 10, 1997}
+
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+
+In this lecture and the next two we consider $N=2$ supersymmetric field
+theories in  dimension two. Today, after some general introductory
+remarks about such theories, we consider two-dimensional
+$U(1)$-gauge theories with complex-valued chiral superfields charged
+under the gauge group. These theories depend on two functions --
+a superpotential
+$W$ and a twisted superpotential $\widetilde{W}$.
+The superpotential $W$ is a complex polynomial in the superfields.
+This polynomial must satisfy a certain `weight' conditions, but is otherwise
+free.
+For gauge group $U(1)$,
+the twisted superpotential
+$\widetilde{W}$ of the sort of model we will look at
+is determined by a single
+complex parameter $t=-ir+\frac{\theta}{2\pi}$, or more precisely by ${\rm
+exp}(-2\pi it)$.
+Today we will keep the superpotential is fixed and we
+allow the twisted superpotential to vary.  Thus, for each (generic)
+complex polynomial $W$ satisfying the weight conditions, we get a
+family of theories parameterized by the point ${\rm exp}(2\pi it)$ in
+the cylinder ${\bf C}/{\bf Z}$.
+We are interested in what happens at the ends of the cylinder ${\rm
+Im}(t)\mapsto +\infty$ and ${\rm Im}(t)\mapsto-\infty$.
+In the cases we consider, the limit as  ${\rm Im}(t)\mapsto -\infty$ is
+described in terms of a
+$\sigma$-model on the projective variety $X$
+defined by the polynomial
+$W$ giving the superpotential.  In this region, $-{\rm Im}(t)$ is the Kahler
+class of $X$, and the fact that there is only one parameter in the
+superpotential is related to the fact that $H^{1,1}(X)$ (or at least
+the part of it that is pulled back from a certain ambient weighted
+projective space) is one-dimensional.
+The limit as ${\rm
+Im}(t)\mapsto +\infty$ is described in terms of an orbifold
+version of a Landau-Ginzburg model.
+
+When $c_1(X)=0$, we will find that the beta function vanishes for
+all $t$, and we  get a family of conformally
+invariant theories.   For $c_1(X)\not= 0$, we get instead
+a non-trivial renormalization group flow in $t$.
+The flow  increases ${\rm Im}\, t$  when $c_1(X)>0$ and
+decreases ${\rm Im}\, t$ when $c_1(X)<0$. (Furthermore, in these latter two
+cases there are ``extra'' vacua at the  end of the cylinder to which one
+flows in the infrared.)  This allows
+us to see various
+Landau-Ginzburg models as infra-red limits of $\sigma$-models and
+other $\sigma$-models as infra-red limits of Landau-Ginzburg  models.
+This is interesting because the descriptions of these types of models
+are very different at the classical level.   Most of today's lecture
+will deal with special cases
+(the cases that $c_1(X)=0$, and some of the cases with
+$c_1(X)>0$ with flow to a massive infrared theory) that have been extensively
+studied, but the general picture that  will be presented
+at the end of the lecture is actually new, as far as I know.
+
+
+\section{Generalities on $N=2$ SUSY Theories in Two Dimensions}
+
+\subsection{The  $\beta$-function of $N=2$ SUSY $\sigma$-models}
+
+The first remark concerns $N=2$ supersymmetric $\sigma$-models with target a
+compact K\"ahler manifold $X$, which we assume has a K\"ahler-Einstein
+metric. In Gawedski's lectures we have seen that the one-loop
+$\beta$-function is determined by the sign of the Ricci curvature of
+the metric
+and in fact when the Ricci tensor is positive or negative-definite, the sign
+of the one-loop $\beta$-function is opposite that of the Ricci curvature.
+Thus,
+if $c_1(X)>0$ then the one-loop $\beta$-function is negative.
+Thus, at small coupling the $\beta$-function is negative  so that the
+$\sigma$-model under consideration is a
+`good'  fundamental theory which is
+asymptotically free. Such a theory is well-defined at the quantum level.
+The question arises of what it flows to in the infrared.
+Today we shall see examples of
+such $X$ for which the infra-red
+theory is massive and trivial, and also examples with flow to a non-trivial
+infra-red fixed point.
+In the latter case, the
+limiting superconformal theories that we will get can be
+ described in terms of what are known as
+supersymmetric Landau-Ginzburg theories.
+The Landau-Ginzburg models are sometimes
+explicitly soluble by algebraic methods.
+
+On the other hand, if $c_1(X)<0$, then the one-loop $\beta$-function is
+positive and hence $\beta$ is positive at weak coupling.
+Thus, we have
+no reason to expect
+$\sigma$-models for such $X$ to be `good' fundamental theories. Rather
+in this case the $\sigma$-model is an
+effective theory, free in the infra-red, and one should
+ask whether one can describe a concrete, well-defined ultraviolet
+theory that flows to these sigma models in the infrared.
+We will solve this problem for this class of sigma models
+by taking ${\rm Im}t\,\to\infty$, where we will find
+a Landau-Ginzburg  theory (which is superconformal), which after a relevant
+perturbation (to ${\rm Im}\,t$ large and positive but not $\infty$)
+flows to the sigma model with target space $X$ (plus some extra massive vacua).
+
+
+The case when $c_1(X)=0$, i.e., the case when $X$ is  Calabi-Yau, is
+different. Here, the one loop $\beta$-function vanishes and
+one-loop contributions do not change the K\"ahler metric. It turns out
+that there are higher loop corrections to the $\beta$-function so that
+it is not identically zero and hence the $\sigma$-model on $X$ (with
+its Ricci-flat metric) is not conformal.
+Nevertheless, standard invariant theory arguments show that there is
+no higher loop correction to the K\"ahler class of the metric. Using Yau's
+theorem about existence of K\"ahler metrics on $X$ with prescribed
+Ricci curvature ($\partial\overline\partial$-exact) we can modify (at
+least order-by-order in perturbation theory) the original Ricci-flat
+K\"ahler metric without changing the complex structure or the K\"ahler
+class until the $\sigma$-model for the new K\"ahler structure on $X$
+has vanishing $\beta$-function.  This process will converge if the
+K\"ahler class is sufficiently ample and far from the boundaries of the
+K\"ahler cone; for today's models these conditions simply mean that
+$-{\rm Im}\,t$ should be large enough.  What we will be exploring
+today is really the question of what happens when $-{\rm Im}\,t$ is not large.
+
+Today we shall see examples of $X$ with $c_1(X)=0$ for which there is
+a family  of theories, parametrized by a punctured cylinder that approaches
+the $\sigma$-model on $X$ as ${\rm Im}t\mapsto -\infty$ and approaches  a
+Landau-Ginzburg model as ${\rm Im}t\mapsto +\infty$.  To get such a
+family, the cylinder must be punctured at one point, where the theory
+has a sort of pole.   It is believed
+that the punctured cylinder parametrizes a smooth family of theories,
+which flow in the infrared to  a punctured cylinder of
+superconformal field theories. As one check of this belief, we argue that
+the central charge of the Landau-Ginzburg theory at $+\infty$ and the
+central charge of the $\sigma$-model at $-\infty$ are equal.
+We will present more evidence for the scenario described today
+ in a later lecture.
+
+
+\subsection{Reasons for considering $N=2$ SUSY theories}
+
+One advantage of studying $N=2$ supersymmetric theories is that they are much
+more rigid than theories with less (or no) supersymmetry.
+For example if we are considering two-dimensional $\sigma$-models into
+a compact Riemannian manifold $X$, then without supersymmetry we can
+add terms to the Lagrangian of the form
+$$\int d^2y\,\varphi^*(h)$$
+for a potential function $h\colon X\to {\bf R}$.
+(Here, $\varphi\colon \Sigma\to X$ is the basic field in the
+Lagrangian.) In $N=1$ supersymmetric $\sigma$-models, such a term
+is not possible, but there can still
+be a term
+$$\int d^2y\,d^2\theta\,\Phi^*(h)$$
+where again $h$ is a real-valued function on $X$ (called the superpotential)
+and $\Phi$ is the basic
+superfield in the Lagrangian.
+In both cases this is a relevant perturbation.
+When we require $N=2$ supersymmetry, the Riemannian manifold must be K\"ahler
+and the possible potential term can still exist but must be of the
+form $h={\rm Re}(f)$ for $f$ a holomorphic function.
+Since our Riemannian manifold is assumed to be compact, this means
+that $f$ is constant and hence, after performing the $\theta$ integrals,
+this term vanishes.
+Simple power counting shows that at the classical level
+this is the only possible relevant
+perturbation over a $2|4$-superspace.
+
+\subsection{Revelant and Marginal Perturbations of the conformal
+two-dimensional $\sigma$-model}
+
+Let us study the marginal perturbations of these conformal
+$\sigma$-models.
+Part of the data of the $\sigma$-model is the complex structure on $X$.
+Varying this is a marginal perturbation of the theory.
+Let us examine this perturbation
+in local coordinates. The metric tensor on $X$ is a $(1,1)$-tensor of the
+form $h_{i\overline j}dz^i\otimes d\overline z^j$. A change in the complex
+structure corresponds to a perturbation of the metric by a term of the
+form
+$$\delta h_{\overline i\overline j}+\delta h_{ij}$$
+of type $(2,0)+(0,2)$. Of course, this form must be real  in order
+that the new form be a metric tensor, and $\delta
+h_{\overline i\overline j}$ must be $\overline\partial$-closed in order that
+the
+new almost complex structure is integrable.
+Let us compute the change in the Lagrangian that goes with this
+perturbation of the K\"ahler metric. We write things in local
+coordinates using bosonic coordinates $y^\alpha, \alpha=1,2$ on the Riemann
+surface and fermionic coordinates $\theta^\pm,\overline\theta^\pm$. We
+write superfields as $X=X(y,\theta,\overline\theta)$,
+chiral superfields as $\Phi(y,\theta)$ and anti-chiral superfields as
+$\overline\Phi(y,\overline\theta)$.
+The change in the Lagrangian is given by
+$$\Delta {\cal L}=\left(\int d^2y\,d^2\overline\theta \delta h_{\overline
+i\overline j}\overline D_+\overline X^{\overline i}\overline
+D_-\overline X^{\overline j}\right)+{\rm c.\ c.}.$$
+
+It is a nice exercise to verify that the argument of the $\overline{\theta}$
+integral  in $\Delta {\cal L}$ is
+anti-chiral. (This uses the fact that $\delta h_{\overline i \overline j}$ is
+$\overline\partial $-closed.) This  is one of the two
+possible types of marginal perturbations.
+
+The other type of marginal perturbation is to fix the complex
+structure $X$ and vary the complexified K\"ahler class of the K\"ahler
+metric. One piece of this deformation is an ordinary  variation
+$\delta h^{\rm herm}_{\overline i j}d\overline z^{\overline i}\wedge
+dz^j$ by a
+hermitian  symmetric closed
+two-form. This ordinary metric perturbation is the real part of a
+complex perturbation whose imaginary part is called the ``$B$-field''
+perturbation (which, as we shall see, is analogous to the $\theta$-angle
+which appears in gauge theories).  Thus, we consider a perturbation
+$\delta h=\delta h_{\overline i j}d\overline z^{\overline i}\wedge
+dz^j$  where $\delta h$ is a closed complex two-form.
+This leads to a perturbation of the Lagrangian of the form
+$$\Delta{\cal L}=\left(\int d^2yd\overline\theta^+d \theta^-(\delta
+h_{\overline i
+j}\overline D_+\overline X^{\overline i}D_-X^u\right)+{\rm c.\ c.}.$$
+
+Other than the marginal deformations of the theory described above, there
+can only be deformations of the form
+$$\int d^2y d^4\theta({\rm something}).$$
+For these the $\theta$-integration has weight $2$, and hence all such
+terms are marginal (of dimension two) classically.
+(Notice this count requires four $\theta$'s and
+hence uses the fact that we have $N=2$ SUSY).  But at the quantum level,
+they have anomalous dimensions (proportional to nonzero eigenvalues of the
+Laplacian and so strictly positive) and are irrelevant.
+ These types of deformations can affect the
+K\"ahler metric without changing the complex structure or K\"ahler
+class.
+
+These computations show that
+for the  $\sigma$-model with
+$c_1(X)=0$, the theory has no relevant perturbations and the
+marginal perturbations are obtained by deforming the complex structure
+and complexified K\"ahler metric.
+
+Let us begin with such a $\sigma$-model with a Kahler metric that is smooth and
+has a large radius of curvature close to,
+but not equal to, the metric that actually gives zero beta function.
+The renormalization group flow will bring us to a metric that gives
+conformal invariance, as all other deformations are irrelevant.
+Were there relevant perturbations these would dominate in the infrared limit
+and the limit would be in general impossible to control.
+
+
+
+
+
+\subsection{Central Charge}
+
+Let us review some material on central charges in conformal and
+super-conformal field theories in dimension two. There are two basic
+types of  $N=0$,
+i.e., of ordinary, conformal field theories -- those with central
+charge $c<1$, and those with central charge $c\ge 1$. The
+former are called minimal models, exist only for a discrete set of
+values of $c$, and are explicitly
+algebraically described in terms of representation theory of the Virasoro
+algebra.
+The theories with $c=1$ can also be explicitly described, in terms of
+a free boson.  When $c\leq 1$, the Virasoro algebras of left- and right-
+movers act almost irreducibly in the quantum Hilbert space, which
+is why these theories are known rather explicitly.  For $c>1$, the
+Virasoro action is very far from being irreducible (the number of  highest
+weight vectors grows exponentially as one goes to higher energies), and
+conformal field theory has a completely different flavor.
+
+When we go to the $N=1$ super-conformal algebra in dimension two,
+the central charge again lies either in a
+discrete set or in  a continuous  part. The lowest value of the
+central charge in the continuous part is realized by the free scalar
+super-field. Being the sum of a free scalar boson and a free scalar
+fermion, considered as a representation of the ordinary conformal
+algebra  this field has
+central charge  $c=3/2$. For this reason one usually defines $\widetilde
+c=2c/3$ so that the continuous values for $\widetilde c$ begin at
+$\widetilde c=1$.
+
+The story is similar for the $N=2$ super-conformal algebra in
+dimension two. Here the lowest value in the continuous part is
+realized by the free chiral super-field. Since this field consists of
+a complex  scalar boson and a complex fermion, its $N=0$ central
+charge  is $3$. Hence, we set $\widehat c=c/3$ so that once  again the
+lowest value in the continuous part is $\widehat c=1$.
+The discrete set of $N=2$ theories with $\widehat c<1$
+are the ``$N=2$ minimal models''
+which we will consider in detail later on.  Their central charges take the
+form $\widehat{c}=1-\frac2n$ for $n=3, 4, 5, \dots$, and they
+can be described algebraically and studied in a variety of attractive ways.
+
+A conformal $N=2$ supersymmetric
+$\sigma$-model with target space a $k$-dimensional complex manifold
+$X$ of $c_1(X)=0$
+has central
+charge $\widehat c= k$.   This is proved by using the fact that $\widehat c$ is
+constant in a family of conformal field theories, and expanding the metric
+until $X$ can be approximated, in a local region, to any desired
+accuracy, to ${\bf C}^k$ with a flat metric.  Thus, this sigma model
+has the same $\widehat c$ as a sigma model with target a flat ${\bf C}^k$.
+That is a free theory with $k$ chiral superfields, and so has $\widehat c=k$,
+as claimed.
+
+\section{The $U(1)$ Theories}
+
+Let us turn now to the  study of $U(1)$-gauge theory with complex-valued
+chiral superfields $A_1,\ldots,A_n$. These superfields are charged
+under the $U(1)$ with charges $q_1,\ldots,q_n\in {\bf Z}$.
+Recall from the superhomework that connections we use on $2|4$-space are
+constrained to be flat in all pairs on odd directions except the pair
+$\{\overline\theta^+,\theta^-\}$ (and its complex conjugate).
+The basic invariant of such a connection is
+$$\Sigma=\{\overline{\cal D}_+,{\cal D}_-\}$$
+which is a section of the complexification of the adjoint bundle over
+$2|4$-space.
+The minimal pure gauge theory Lagrangian that we can write down is
+$$\int d^2yd^4\theta\frac{1}{2e^2}\overline\Sigma \Sigma.$$
+Adding in a kinetic term for
+the $n$ chiral superfields, the minimal Lagrangian becomes
+\begin{equation}\label{minlag}
+{\cal L}_0=\int d^2yd^4\theta\left(\frac{1}{2e^2}\overline\Sigma
+\Sigma+\sum_{i=1}^n\overline A_iA_i\right).
+\end{equation}
+Eventually, we will add a superpotential and a twisted superpotential
+term to this Lagrangian.
+
+
+\subsection{$R$-symmetries}
+The above
+$N=2$ supersymmetric gauge theory in two dimensions (or $2|4$ supertheory)
+comes by dimensionally reducing from $N=1$ gauge theory in
+four-dimensions (or $4|4$ supertheory). As such, there is an
+$R$-symmetry for the $N=2$ two-dimensional theory induced by spatial
+rotation in the remaining two dimensions in four-space.
+But, in addition, the $N=1$ supersymmetric version of
+$U(1)$-gauge theory in four-dimensions itself has an $R$-symmetry and
+that symmetry continues to exist even if we add a superpotential.
+This $R$-symmetry from dimension four dimensionally reduces to give a
+second $R$-symmetry for our $2$-dimensional theory.
+
+Independent of their sources, it is easy to see directly in the
+$2|4$-theory what the $U(1)\times U(1)$-group of $R$-symmetries is.
+We have $J_R$, the circle action
+$$\theta^+\mapsto e^{i\alpha}\theta^+$$
+$$\overline\theta^+\mapsto e^{-i\alpha}\overline\theta^+$$
+with $\theta^-$ left fixed, and we have $J_L$, the circle action on
+$\theta^-$ with $\theta^+$ left fixed. The $R$-symmetry that comes
+from the $R$-symmetry of four-dimensional gauge theory is the product
+of these two (i.e., it acts by the standard representation on both
+$\theta^\pm$). Spatial rotation in the omitted two dimensions induces the
+circle action which is the
+product of the first times the inverse of the second of these.
+Potentially there is an anomaly in one of these $R$-symmetries. To
+have a super-conformal theory this anomaly must vanish (or be
+cancelled) since these symmetries are part of the super conformal
+algebra.
+
+Let us make more explicit the earlier remark that the anomaly of the
+$\sigma$-model is
+proportional to the first Chern class $c_1(X)$. The point is that when
+we write the Lagrangian out in coordinates we have an expression of
+the form
+$${\cal L}=\int d^2y\left(g_{i\overline j}\partial X^i\partial
+\overline X^{\overline
+j}+\overline\psi_-^{(0,1)}\dirac_+\overline\psi_-^{(1,0)}+
+\psi_+^{(0,1)}\dirac_-\psi_+^{(1,0)}\right)$$
+(plus a four-fermion term that will not affect the present discussion).
+One of the  basic $R$-symmetries $J_L$ rotates the $\psi_-^{(0,1)}$ and
+$\psi_-^{(1,0)}$  and the other $J_R$ rotates in the same manner
+$\psi_+^{(0,1)}$ and $\psi_+^{(1,0)}$. Thus, under a chiral
+rotation generated by $a_RJ_R+a_LJ_L$,
+ the measure of integration in the path integral ${\cal
+D}\psi_+{\cal D}\psi_-$ changes by an amount proportional to
+$$a_R{\rm index}(\dirac_+)+a_L{\rm index}\dirac_-.$$
+The  operators $\dirac_\pm$ are Dirac operators of positive or negative
+chirality acting on the pullback to the Riemann surface of the holomorphic
+tangent bundle $T^{(1,0)}(X)$.
+By the index theorem both of these operators
+have index given by $c_1(X)$ evaluated on the fundamental class of
+the Riemann surface.
+Thus, we see that the $R$-symmetry induced from the $R$-symmetry in
+four-dimensions is not anomalous, since
+${\rm index}\dirac_+-{\rm index}\dirac_-=0$,
+but that the $R$-symmetry coming
+from the spatial rotation has an anomaly:
+${\rm index}\dirac_++{\rm index}\dirac_-=2{\rm index}\dirac_+$.
+
+We have just given a computation for the anomaly for the
+$\sigma$-model. Let us make an analogous computation in $U(1)$-gauge
+theories with chiral superfields $A_i, 1\le i\le n$.
+The superfield $A_i$ is a section of
+the $q_i$-power of the line bundle associated to the connection on
+$2|4$-space.   It can be expanded in terms of ordinary fields, both
+bosons and fermions.
+The $R$-symmetries act as chiral symmetries on the fermions.  So the
+same type of  anomaly-index computation as above shows that the
+anomaly of $J_R$ is given by
+$$\sum_{i}q_i\int d^2y\frac{F_A}{2\pi}$$
+where $F_A$ is the curvature of the ordinary connection on the Riemann
+surface.
+(The anomaly for $J_L$ is the negative of this number.)
+Thus, in order to get a superconformal field theory we need
+$\sum_iq_i=0$.
+
+
+\section{One Example}
+
+To make things as simple and concrete as possible let us focus on one
+special case of our $U(1)$-gauge theory: $n+1$ chiral superfields
+$$A_1,\ldots, A_n\ \ {\rm of\ weight}\ \ q=1$$
+$$A_{n+1}=P\ \ {\rm of\ weight}\ \ q=-n.$$
+This choice of weights assures us that our $R$-symmetries are
+anomaly-free.
+Now it is time to supplement the minimal Lagrangian ${\cal L}_0$ of
+Equation~\ref{minlag} by a
+superpotential and a twisted superpotential.
+That is to say we consider Lagrangians of the form
+\begin{equation}\label{full}
+{\cal L}={\cal L}_0+\left(\int d^2yd\theta^+d\theta^-
+W(A,P)+{\rm c.\ c.}\right) + \left(\int
+d^2yd\overline\theta^+d\theta^-\widetilde{W}(\Sigma)+{\rm c.\ c.}\right).
+\end{equation}
+Here, $W$ is called the superpotential; it must be   a holomorphic
+function on ${\bf C}^{n+1}$. The function $\widetilde{W}(\Sigma)$ is called
+the twisted chiral
+superpotential term.
+
+Let us examine the consequence of assuming that each
+of these two
+terms in the Lagrangian is invariant under the $R$-symmetries. We
+consider the twisted chiral superpotential term $\widetilde{W}$ first.
+Here, it is important to use the fact that our theory is obtained by
+dimensionally reducing a gauge theory  on $4|4$-space.
+Starting with a connection
+$A=\sum_{\mu=0}^3A_\mu dx^\mu$ on $4|4$-space we form
+$$\sum_{\alpha=0}^1dy^\alpha+\sigma(dx^2+idx^3)+{\rm c.\ c.}.$$
+This shows us how $\Sigma$ transforms under the $R$-symmetries.
+For the extra term in Equation~\ref{full} coming from the twisted
+superpotential to be invariant, it must have the same transformation
+law under the $R$-symmetries as $\Sigma$ does. That is to say
+$\widetilde{W}(\Sigma)$ must be  a linear function of $\Sigma$, i.e.,
+$\widetilde{W}(\Sigma)=t\Sigma$ for some $t\in {\bf C}$.
+Writing
+$$t=\frac{\theta}{2\pi}-ir,$$
+we have
+$$\left(\int d^2yd\overline\theta^+d\theta^-t\Sigma\right) +{c.\
+c.}=\theta\int \frac{F}{2\pi}+r\int D.$$
+Thus, we see that adding such a linear twisted superpotential produces
+a Fayet-Iliopulous term $r\int D$ plus a $\theta$-angle term which is
+$\theta$ times an integral topological quantity. In this case the
+Fayet-Iliopulous term corresponds to adding a constant to the moment
+map for the $U(1)$-action on ${\bf C}^{n+1}$.
+
+Now let us turn to the superpotential $W(A,P)$. For the term
+$$\int d^2yd\theta^+d\theta^-W(A,P)$$
+to be invariant, we need $W(A,P)$ to transform with weight two under
+the $R$-symmetry induced from the $R$-symmetry in four dimensions and
+be invariant under the $R$-symmetry induced by spatial rotation in
+four-space.
+In order to arrange this, we choose the action of the $R$-symmetry
+groups on the line bundles of which the $A_i$  and $P$ are sections as
+follows:
+the line bundles $L_i$ with sections $A_i$  are invariant under the
+$R$-symmetries and the line bundle $L_{n+1}$ with section $P$ is
+invariant under  the $R$-symmetry induced
+by spatial rotation and has weight two under the $R$-symmetry coming
+from the $R$-symmetry of four-space. With this choice of $R$-symmetry
+actions any superpotential of the form
+$$W=P\cdot F(A_i)$$
+for $F$ an arbitrary polynomial of $A_1,\ldots, A_n$, is invariant under
+the $R$-symmetries.
+There is of course, one extra condition, namely that $W$ must be gauge
+invariant. This implies that $F$ must be homogeneous of degree $n$.
+Thus, any $W$ of this form will produce a gauge invariant
+term in the Lagrangian which is invariant under the $R$-symmetries.
+This is the most general interaction with these symmetries.
+
+
+
+
+
+
+
+
+
+
+\subsection{Classical analysis}
+
+Now that we have specified our theory in detail, we
+ want to determine what this theory is, particularly in the limits
+$r\to\pm\infty$.  We begin with a classical
+analysis.  Write each of the superfields appearing in our Lagrangian
+in components
+$$A=a+\theta(\cdots)+\cdots$$
+$$P=p+\theta(\cdots)+\cdots$$
+$$\Sigma=\sigma+\theta(\cdots)+\cdots$$
+The superfield $\Sigma$ includes auxiliary fields $D$ and $F$ which can be
+eliminated by means of their equations of motion.
+
+The bosonic potential is a function $V(a,p,\sigma)$ of the bosonic
+components of these fields.  For the Lagrangian we have described, the
+potential takes the form
+\begin{equation}\label{bospot}
+V(a,p,\sigma)
+=\frac1{2e^2}D^2+|dW|^2+|\sigma|^2\left(\sum|a_i|^2+n^2|p|^2\right).
+\end{equation}
+The last term
+in eq.~(\ref{bospot}) arises as follows: in four dimensions, a
+chiral field $\Phi=\phi+\theta(\cdots)+\cdots$ leads to a term in the
+potential of the form
+$$\sum_{\mu=0}^3\left|\frac{D\phi}{Dx^\mu}\right|^2$$
+which upon reduction to two dimensions becomes
+$${} \sum_{\alpha=0}^1\left|\frac{D\phi}{Dx^\alpha}\right|^2
++n^2|\sigma|^2|\phi|^2$$
+if $\phi$ has charge $n$.
+
+In general, the ``$D$-term'' (the auxiliary field in $\Sigma$), is
+equal by its equations of motion to $\sum q_i|\phi_i|^2-r$.
+This is actually a familiar function mathematically; it is the ``moment
+function'' generating the $U(1)$ gauge action on the flat Kahler manifold
+(a copy of ${\bf C}^s$, with $s$ the number of chiral superfields)
+in which the chiral superfields take their values.
+ In our example, this becomes
+\begin{equation}\label{dterm}
+D=\sum|a_i|^2-n|p|^2-r.
+\end{equation}
+Since $W=P\cdot F(A)$, we also have
+\begin{equation}\label{dW}
+|dW|^2=|F|^2+|p|^2|dF|^2.
+\end{equation}
+We will focus on the case in which $F$ is {\it transverse}, i.e., $F=dF=0$
+only at the origin.
+
+We want to find all classical zero-energy solutions, in other words, to
+solve $V=0$.  Thanks to the form of the potential, this requires that
+(i) $D=0$, (ii) $|dW|^2=0$ and (iii) either $\sigma=0$ or
+$\sum|a_i|^2+n^2|p|^2=0$.
+We will also need to take the gauge equivalence under $U(1)$
+into account.
+
+First, note that thanks to eq.~(\ref{dW}), setting $|dW|^2=0$ when $p\ne0$
+implies
+$F=dF=0$ so by our transversality condition, all $a_i=0$.  Thus, there are
+two cases: $p=0$ or $a_i=0$ for all $i$.  On the other hand, if $r\ne0$,
+then by eq.~(\ref{dterm}) since $D=0$ we cannot have both $p=0$ and $a_i=0$ for
+all $i$.  (In fact the sign of $r$ will determine which one of these
+holds.)  Thus, when $r\ne0$ we have $\sum|a_i|^2+n^2|p|^2\ne0$ and so
+$\sigma$ must be $0$.
+
+Consider now the case $r>0$.  Our equations for classical vacua become
+$p=0$, $\sum|a_i|^2=r$, and $F=0$, and we must divide by the action of the
+gauge group $U(1)$.  This gives the hypersurface $X$ defined by the equation
+$F=0$ in ${\bf
+CP}^{n-1}$, with K\"ahler class $r$. Thus, classically our theory can
+be described as a nonlinear $\sigma$-model whose target space is
+this hypersurface $X$, using a metric whose K\"ahler class has volume
+proportional to $r^{n-2}$.  As we noted above, such a theory
+has central
+charge $\widehat{c}=n-2$.
+
+This classical description will be a good approximation to the quantum
+theory when $r\gg0$, since the nonlinear
+$\sigma$-model is weakly coupled there.
+In fact, since the nonlinear $\sigma$-model is stable (in the sense of
+having no
+relevant perturbations), and marginal perturbations merely vary the
+complexified
+K\"ahler and complex structures,  we should expect our quantum theory to
+coincide with one member of this family of $\sigma$-models.
+
+On the other hand, when $r<0$, the space of classical vacua satisfies
+$a_i=0$ and $n|p|^2=-r$.  We can use a gauge transformation to fix
+$p=\sqrt{-r/n}$, leaving a residual gauge invariance of ${\bf Z}_n$, i.e.,
+the original $U(1)$ gauge group is broken to ${\bf Z}_n$.  This will
+therefore be what is known as
+an ``orbifold'' theory, in which the ${\bf Z}_n$ shows up in a
+global analysis of the theory (in a manner which we shall describe later).
+The local description of the theory (for which we can ignore the orbifolding
+ issue) is this:
+for $r\ll0$, the field $P$ has a large mass and can be integrated out,
+leaving an effective
+theory of $n$ massless chiral superfields $A_1$, \dots, $A_n$
+with an effective interaction
+$$W_{\mbox{\scriptsize eff}}=\mbox{constant}\cdot F(A_1,\dots,A_n),$$
+where $F$ is a homogenous polynomial of degree $n$.
+
+Such a theory of $n$ massless fields with a polynomial interaction,
+ is called a {\it Landau--Ginzburg theory}.  It should apparently
+ flow in the IR to a conformal field theory with $\widehat{c}=n-2$.
+(We expect this since that is what happened for $r\gg0$, and neither the
+conformality nor the central charge of the IR theory should change when we
+vary $r$.)
+
+Let's check this prediction, following work of Greene, Vafa, Warner, and
+Martinec among others.
+Consider a special $F$ of ``Fermat type:''
+$$F(A_1,\dots,A_n)=\sum A_i^n.$$
+The Landau--Ginzburg theory with this interaction will (at least locally)
+factor as a product of $n$ identical theories, each with a simple $A^n$
+interaction.  Our prediction implies that each of these theories must have
+$\widehat{c}=\frac{n-2}n$.  But that is exactly the central charge of a minimal
+model!  So if we can identify the minimal model with this Landau--Ginzburg
+theory, we will have established the result.
+Note that we would have been in difficulties if we had obtained a
+value of $\widehat c$ less than one and not of the form $1-2/k$ for
+some integer $k$!
+Greene, Vafa, Warner  and
+Martinec presented evidence that the Landau--Ginzburg theory with
+superpotential $A^n$ does flow in the infrared to an $N=2$ minimal
+model.  More arguments have been found subsequently. We will see some of the
+evidence for this claim in Lecture II-14.
+
+\subsection{Orbifolding}
+
+As we pointed out above, the original gauge symmetry group of $U(1)$
+of our theory was broken
+to ${\bf Z}_n$ in the effective theory when $r\ll0$.  Thus,
+if we consider the path integral for the low energy effective theory
+on a Riemann surface $\Sigma$, the $U(1)$ gauge group is reduced to ${\bf
+Z}_n$,
+and we need only sum over flat ${\bf Z}_n$ bundles.
+  On any surface  $\Sigma$,  a flat ${\bf Z}_n$ bundle
+can be specified by its
+holonomies $\gamma_1$, \dots, $\gamma_k\in{\bf Z}_n$ around various loops
+in $\Sigma$.  The process of summing over all flat ${\bf Z}_n$ bundles in
+a theory with a ${\bf Z}_n$ symmetry is known as {\it orbifolding}\/ the
+theory.
+
+In a Hamiltonian approach, formulated on a circle $S^1$, we need to
+specify the holonomy $\gamma\in {\bf Z}_n$ around the circle as part of the
+data
+determining a state.  Let ${\cal H}_\gamma$ be the Hilbert space of states
+whose holonomy is $\gamma$.  (Then Riemann surfaces with boundary
+ on which flat ${\bf Z}_n$ bundles have been
+specified will determine operators mapping among these various Hilbert spaces,
+depending on the holonomies on the boundary circles.)
+${\bf Z}_n$ acts on each ${\cal H}_\gamma$, since as the group ${\bf Z}_n$
+is abelian, twisting as one goes around the circle by an element of
+${\bf Z}_n$ is an operation that commutes with ${\bf Z}_n$.
+
+We claim that the Hilbert space for the orbifolded theory is
+$${\cal H}=\bigoplus_\gamma({\cal H}_\gamma)^{{\bf Z}_n}.$$
+To see this, consider a cylinder with holonomy $\gamma$ on the ends:
+
+\centerline{\quad}
+\centerline{\epsfxsize=1.35in\epsfbox{horizcyl.eps}}
+\centerline{\quad}
+
+There is still as we have noted
+an action of ${\bf Z}_n$ on each sector ${\cal H}_\gamma$;
+let $\gamma'\in{\bf Z}_n$ determine an operator $\gamma':{\cal
+H}_\gamma\to{\cal H}_\gamma$.
+The trace of this operator can be evaluated as a partition function
+$Z_{\gamma'\gamma}$
+on a torus
+
+\centerline{\quad}
+\centerline{\epsfxsize=1.25in\epsfbox{cuttorus.eps}}
+\centerline{\quad}
+
+\noindent
+constructed by using $\gamma'$ to twist the identification of bundles on
+the boundary circles of the cylinder, i.e.,
+$$Z_{\gamma'\gamma}=\Tr_{{\cal H}_\gamma}\gamma'q^H .$$
+
+
+
+If we  sum the operators $\gamma'$, the result is $n\pi$ where
+$\pi$ is the projection onto the  ${\bf Z}_n$-invariant subspace:
+$$\frac1n\sum_{\gamma'}Z_{\gamma'\gamma}=\Tr_{{\cal H}_\gamma}\pi
+q^H=\Tr_{({\cal H}_\gamma)^{{\bf Z}_n}}q^H.$$
+Now the partition function for the ${\bf Z}_n$ gauge theory\footnote{
+In performing the path integral in a gauge theory, one is supposed
+to divide by the volume of the gauge group.  When the gauge group
+is a Lie group of positive dimension, the group of gauge transformations
+is infinite-dimensional and making sense of ``dividing by the volume
+of the gauge group'' requires the Faddeev--Popov construction and
+introduction of ghosts.  In the present case, we are considering
+a low energy effective theory with  gauge group ${\bf Z}_n$.  The only
+gauge transformations on $\Sigma$ are constant transformations by elements
+of ${\bf Z}_n$; the volume of the gauge group is therefore $n$, the number
+of elements of ${\bf Z}_n$.   The only
+gauge connections are the flat connections.  So in the formula below,
+the sum over $\gamma$ and $\gamma'$ is the path integral over the ${\bf Z}_n$
+connections, and the factor of $1/n$ results from dividing by the
+volume of the gauge group.} is obtained by summing further
+on $\gamma$:
+$$\frac1n\sum_{\gamma,\gamma'}Z_{\gamma'\gamma}=\Tr_{\oplus ({\cal
+H}_\gamma)^{{\bf Z}_n}}q^H,$$
+from which we conclude that the Hilbert space for our problem is indeed
+${\cal H}=\bigoplus_\gamma ({\cal H}_\gamma)^{{\bf Z}_n}$.
+
+
+\subsection{Interpolation from positive to negative $r$}
+
+Our classical analysis can be summarized as follows: we needed to set
+$D=dW=0$ and divide by $U(1)$.
+The step of setting $D=0$ and dividing by $U(1)$ is the familiar
+mathematical operation of
+{\it symplectic reduction}, in which $D=0$ defines a level set for the
+moment map of the $U(1)$ action
+(with the choice of $r$ specifying the level).  There is another
+mathematical interpretation
+of this process, as a quotient in the sense of Geometric Invariant Theory
+(GIT):  we complexify
+the group $U(1)$ to ${\bf C}^*$, and consider the action of ${\bf C}^*$ on
+${\bf C}^{n+1}$ with
+the same weights as before (the $A_i$'s have weight $1$ and $P$ has weight
+$-n$).  There are
+two possible quotients (topologically): for $r>0$ the quotient can be
+interpreted as the total
+space of the bundle ${\cal O}_{{\bf P}^{n-1}}(-n)$ (in which $p$ serves as
+a fiber coordinate),
+while for $r<0$ the quotient is ${\bf C}^n/{\bf Z}_n$.
+
+In either case we must still impose $dW=0$: in the $r>0$ case,
+$W=PF(A_1,\dots,A_n)$ is a
+nondegenerate function (in a generalized sense introduced by Bott)
+and the the space of
+critical points in
+${\cal O}_{{\bf P}^{n-1}}(-n)$ is the variety in ${\bf P}^{n-1}$
+defined by the equation $F=0$; in the
+$r<0$ case we have a homogenous polynomial $F(A_1,\dots,A_n)$ with a highly
+degenerate critical point
+at the origin of  ${\bf C}^n/{\bf Z}_n$.
+
+The natural parameter in our Lagrangian is $t=-ir+\frac\theta{2\pi}$.
+It is the possibility of going to $\theta\not= 0$
+that will enable us to interpolate from positive $r$ to
+negative $r$ without meeting the singularity that one would find
+in classical geometry.
+
+\centerline{\quad}
+\centerline{\epsfysize=1.35in\epsfbox{vertcyl1.eps}}
+\centerline{\quad}
+
+Classically, there is a singularity at $r=0$ with arbitrary $\theta$, and
+interpolation is not
+possible.  Quantum mechanically, we claim that the singularity will be
+isolated, located at $r=r_0$ (for some $r_0$)
+and $\theta=0$.  (Classically, the singularity is at $r=0$, but
+quantum mechanically, it is shifted away from $r=0$
+by a one-loop correction.)  It is believed that there are
+no other singularities; we will not prove this claim
+rigorously, but only explain
+some of the reasons physicists believe it to be true.  The more
+rigorous part of our analysis will be
+the demonstration that there {\it is}\/ a singularity at this location; the
+less rigorous part will
+be the argument that this is the only singularity.
+
+To make this argument, we again work on a circular space $S^1$ of finite
+radius.  The compactness means that the story is rather similar to
+ordinary quantum mechanics in zero space dimensions, so
+let us first recall what happens in ordinary quantum mechanics of a point
+particle.  We suppose that the particle is moving on a manifold $X$
+with a potential function $V$.  If $X$ is compact, or if $V$ grows
+at the ``ends'' of $X$, then one can vary the parameters upon which
+$X$ and $V$ depend without meeting a singularity in the ground state
+of the quantum mechanics.  However, one will get a singularity if
+one varies in the parameters to a point at which $V$ no longer
+grows at infinity.  For instance, if $X={\bf R}$, and $V={1\over 2}k
+x^2$ (with $x$ a linear function on ${\bf R}$), then the ground state
+wave is a smooth function of $k$ as long as $k>0$, but develops a singularity
+at $k=0$.  The $k=0$ problem has no normalizable ground state wave
+function.
+
+Something like that will happen in our problem on a circle.
+Recall that the form of our potential is
+$$V=|P|^2|F|^2+|dF|^2+\frac{e^2}2\left(\sum|A_i|^2-n|P|^2-r\right)^2
++|\sigma|^2\left(\sum|A_i|^2+n^2|P|^2\right).$$
+For generic $r$, this theory has the property that the potential
+grows at infinity.  This ensures that the theory has a discrete
+spectrum, and a ground state wave function that varies smoothly
+with the parameters.  However, at $r=0$, we see that one can go to infinity
+in $\sigma$, at no cost in energy, as long as $A_i$ and $P$ vanish.
+This suggests that at $r=0$ there might be a continuous spectrum
+and a singularity of the ground state wave function.
+
+
+
+To explore this question in more detail, we need to understand  how
+the theory behaves in the dangerous region, that is, very large $\sigma$
+with other fields small.
+When $A$ and $P$ are very close to zero, and $\sigma$ is large, $A$ and $P$
+have large masses (on the order of $|\sigma|^2$) and they can be
+integrated out, leaving us with a pure gauge theory with
+an effective bosonic potential which at the classical level is merely
+a constant
+\begin{equation}\label{effbospot}
+V_{\mbox{\scriptsize eff}}=\frac{e^2}2r^2.
+\end{equation}
+If this is the correct answer, quantum states decay exponentially
+in the large  $\sigma$ region if their energy is less than $e^2r^2/2$.
+If so, this region could be  dangerous for a supersymmetric ground
+state of zero energy -- and could lead to a singularity in the wave function
+of such a state -- only if $r=0$.
+
+To understand the situation better, we must make the analogous
+argument quantum mechanically.
+For this, we consider the superfield to which $\sigma$ belongs, i.e., we write
+$$\Sigma=\sigma+\theta\lambda+\theta\overline{\theta}(F+iD).$$
+The action for the supersymmetric gauge theory is
+\begin{equation}\label{efflag}
+\frac1{2e^2}\int d^4\theta\,\overline{\Sigma}\Sigma +\left(\int
+d\overline{\theta}^+\,d\theta^-\, t\Sigma
++ \mbox{c.c.}\right).
+\end{equation}
+If we perform the
+$\theta$-integrals in the effective Lagrangian (\ref{efflag}), we get
+$${1\over e^2}\int d^2x\,\left(
+\frac{F^2}{2}+|d\sigma|^2+\overline{\lambda}\dirac
+\lambda\right)
++\int d^2x\left(\frac{e^2r^2}2\right)+i\theta\int_\Sigma\frac{F}{2\pi},$$
+which includes a curvature term (multiplied by a ``$\theta$-angle'') as well
+as the bosonic potential previously discussed.
+
+Luckily, we know the $\theta$-dependence of energy in $U(1)$ gauge theories
+in two dimensions as computed in lecture II-4:
+$$\frac{e^2}2\,\min_{n\in{\bf Z}}\left(n-\frac\theta{2\pi}\right)^2.$$
+So as $\sigma\to\infty$, we have $V(\sigma)\sim\frac{e^2}2|\widetilde{t}|^2$
+where $\widetilde{t}\equiv -ir+\frac\theta{2\pi}\pmod {\bf Z}$.
+In other words, while the classical energy at large $\sigma$ is
+$e^2r^2/2$, quantum mechanically $r^2$ is replaced by $|\widetilde t|^2$.
+Thus, while classically the singularity is at $r=0$ and $\theta$ is
+invisible, quantum mechanically the singularity is at $\widetilde t=0$.
+For any other value of $\widetilde t$, there is a positive energy for
+$\sigma\to 0$, and this region is not dangerous for supersymmetric
+ground states.
+
+Their is actually one more quantum effect of relevance: a one loop
+correction gives a finite renormalization of $r$, and shifts the
+position of the singularity from $\widetilde t=0$ to $\widetilde t=-ir_0$
+for  a certain constant $r_0$.  This correction is important for
+comparing to certain predictions of classical geometry, but not
+important for what we will say today.
+
+\section{Another example: flops}
+
+As a second example, we consider a model with gauge group $G=U(1)$, chiral
+fields
+$A_1$ and $A_2$ of charge 1,  chiral fields $B_1$ and $B_2$ of charge $-1$,
+with
+{\it no}\/ superpotential, and no ``$P$.''  The Lagrangian takes the form
+$$\int d^2x\,d^4\theta\left(\frac1{2e^2}\overline{\Sigma}\Sigma
++\sum(|A_i|^2+|B_i|^2)\right)
++\left(t\int d\overline{\theta}^+\,d\theta^-\,\Sigma + \mbox{c.c.}\right).$$
+The $D$ term is
+$$D=\sum(|A_i|^2-|B_i|^2)-r,$$
+and the bosonic potential also contains a term
+$$|\sigma|^2\sum(|A_i|^2+|B_i|^2).$$
+
+As before, we must set $D=0$ and divide by $U(1)$.
+When $r>0$ this yields the total space of the bundle ${\cal
+O}(-1)\oplus{\cal O}(-1)$
+over ${\bf P}^1_A$, whereas
+when $r<0$ this yields the total space of the bundle ${\cal
+O}(-1)\oplus{\cal O}(-1)$
+over ${\bf P}^1_B$.
+Here ${\bf P}^1_A$ is a copy of ${\bf P}^1$ obtained by requiring
+$A_1, A_2$ to be not both zero, and dividing the pair $(A_1,A_2)$ by
+${\bf C}^*$.  Likewise ${\bf P}^1_B$ is a copy of ${\bf P}^1$ obtained
+by projectivizing $(B_1,B_2)$.
+
+The transformation from the bundle over ${\bf P}^1_A$ to the bundle
+over ${\bf P}^1_B$  is a simple model of a birational transformation
+known as a
+``flop.''  As in the previous example, the singularity only occurs at
+$r=\theta=0$ and
+one can interpolate between these two models.  This contrasts with
+classical geometry, where one passes through a singularity in going
+from one model of the quotient ${\bf C}^4/{\bf C}^*$ to the other.
+
+\centerline{\quad}
+\centerline{\epsfysize=1.35in\epsfbox{vertcyl2.eps}}
+\centerline{\quad}
+
+More generally, consider two Calabi--Yau manifolds $X$ and $X'$ which are
+birationally
+equivalent, in such a way that their ample cones meet.
+
+\centerline{\quad}
+\centerline{\epsfxsize=1in\epsfbox{cones.eps}}
+\centerline{\quad}
+
+\noindent
+For simplicity assume $h^{2,0}=0$, and note that birational transformations
+won't affect
+the value of $h^{p,0}$.
+Classically, to pass from $X$ to $X'$, one goes through a singularity
+on the wall of the Kahler cone.  The singularity is rather similar to
+the singularity just found in our ``flop'' example at $r=0$.
+In quantum field theory, one can
+go around the singularity by taking $\theta\not= 0$; thus
+ one can smoothly continue from $X$ to $X'$ by varying the parameters
+ of the conformal field theory.
+
+ For example, we might construct such a pair of
+Calabi--Yau
+manifolds with $h^{1,1}=2$ by starting with a gauge group $G=U(1)\times
+U(1)$, and
+a superpotential of the form $W=PF(A_i)$.  If one sets things up
+correctly, one of the $U(1)$'s puts us in the world of projective varieties
+$X$ and $X'$, and by varying the moment map for the other $U(1)$,
+we can make a ``flop'' between $X$ and $X'$ that is quite like
+our above discussion with the       four chiral superfields
+    fields $A_i$ and $B_j$.
+
+
+\section{Cases in which $c_1\ne0$}
+
+We now wish to consider linear sigma models in which the $R$-symmetry is
+anomolous, so that we expect a nontrivial renormalization group flow.
+
+\subsection{Negative $\beta$-function}
+
+  We begin with the case of negative $\beta$-function, which for
+nonlinear sigma models corresponds to target spaces $X$ for which
+$c_1(TX)>0$.   We can build examples of these exactly as before, with
+$U(1)$ acting on $n+1$ fields $A_i$, $P$, but this
+time we give $P$ charge $-k$ and take a superpotential $W=P\cdot F$ with
+$F$ homogeneous of degree $k$.   The beta function of the sigma model
+is negative, zero, or positive for $k<n$, $k=n$, or $k>n$.
+For $k\not= n$, even though there is still classically a singularity
+at $r=0$, the quantum theory has no singularity on the $t$-cylinder.
+(This is shown by analyzing the behavior at large $\sigma$, as we do
+presently.)
+For $k\not=n$, there is a nontrivial renormalization group flow on the
+cylinder.
+The flow is holomorphic and singularity-free, so it is a constant flow
+``downward'' or ``upward'' on the cylinder, depending on the sign of $n-k$.
+
+\centerline{\quad}
+\centerline{\epsfysize=1.35in\epsfbox{vertcyl4.eps}}
+\centerline{\quad}
+
+When we repeat the previous analysis, we find that the $R$-symmetry which
+comes from the four-dimensional $R$-symmetry is anomalous, although the
+one which comes from rotations in the missing directions is anomaly-free.
+
+The classical analysis can also be repeated:  for $r\gg0$ we find a space
+of classical vacua desribed by $\{F=0\}$ in ${\bf P}^{n-1}$, and we expect
+the nonlinear sigma model on this hypersurface to be a good approximation
+to our theory.  This hypersurface has positive first Chern class if $k<n$,
+so we
+expect a well-defined quantum field theory from looking at the nonlinear
+sigma model.  On the other hand, since $k<n$, the sigma model
+is infrared-unstable.  The infrared flow will take us away from the
+sigma model in the infrared  and toward the
+ theory we will find
+at the $r\to-\infty$ limit.  Note that the sigma model has an $n-2$
+dimensional target space, so for $k<n$ the effective central charge
+in the ultraviolet limit is $\widehat c=n-2$.
+
+On the other hand, if $r\ll0$ then on the space of classical vacua $P\ne0$
+but $A_i=\sigma=0$.  Giving a nonzero expectation value to $P$ breaks
+$U(1)$ to ${\bf Z}_k$, and (in the $r\to-\infty$ limit) we get a
+Landau-Ginzburg orbifold with an effective interaction
+$$W_{\rm eff}(A_i)=F(A_i).$$
+The central charge of this model is
+$$\widehat{c}=n(1-\frac2k).$$
+This is less than $n-2$ if $k<n$.
+We will argue shortly that, for $k<n$, the Landau-Ginzburg theory
+is the infrared limit of the renormalization group flow from the sigma model;
+and the fact that its central charge is smaller than that of the sigma
+model illustrates a general theorem by Zamolodchikov, which asserts
+that the central charge always diminishes along a renormalization group flow:
+This infrared theory is behaving as if it had fewer degrees of freedom
+$$c_{\rm IR}\le c_{\rm UV}.$$
+The intuition behind this theorem is that the central charge measures
+the total number of degrees of freedom of the theory.  As one flows
+toward the infrared, massive degrees of freedom are ``integrated out,'' and
+no longer contribute to the central charge, which therefore can only
+diminish.
+
+
+As we will see, the Landau-Ginzburg model is only one possibility for
+what the infrared flow can lead to for $k<n$.
+ There are in fact $n-k$ other vacuum states at $r=-\infty$, with a
+mass gap, which can't be seen classically but will require a $1$-loop
+calculation.  Being massive, they have $\widehat c =0$, which is certainly
+less than $n-2$.
+
+\subsection{The ${\bf CP}^{n-1}$ model}
+
+An extreme case of the situation we are considering is the case $k=0$,
+i.e., the case of no $P$ field and no superpotential.  This is a $U(1)$
+gauge theory with $n$ free charged superfields $A_1$, \dots, $A_n$ (all of
+charge $1$).  The $D$-term takes the form
+$$D=\sum|A_i|^2-r,$$
+and we find the supersymmetric ${\bf CP}^{n-1}$ model which we studied
+earlier.  It will be very instructive to re-examine this case in detail
+before going back to the general case.
+
+At first glance, there would appear to be no supersymmetric
+vacua at all in the
+$r\to-\infty$ limit of this ${\bf CP}^{n-1}$ model, since the moment
+map is strictly positive.  However, it cannot
+be so that there are no supersymmetric vacua at all in this limit.
+An obstruction is provided by the supersymmetric index $\Tr\,(-1)^F$.
+This, when computed for large positive $r$, is seen to coincide with the
+Euler characteristic of ${\bf CP}^{n-1}$, which is $n$.  The supersymmetric
+index must be invariant under deformations of $r$, so there must
+be $n$ supersymmetric vacua even if $r$ is large and negative.
+We must find them somewhere!
+
+To see what is happening, we must consider the quantum mechanics
+more carefully.  The classical treatment of the  $r\to -\infty$ limit
+is valid in any compact region of field space, so if there are quantum
+mechanical vacua for arbitrarily negative $r$ that cannot be seen
+classically, they must disappear from the classical field of view by
+going off to infinity in field space for $r\to-\infty$.
+So again we must consider the
+quantum-mechanical behavior at large $\sigma$.  For our ${\rm CP}^{n-1}$
+model, the bosonic potential takes the form
+$$V=\frac{e^2}2\,D^2+|\sigma|^2\sum|A_i|^2.$$
+The theory is weakly coupled for $r\ll0$.
+
+What happens if $|\sigma|\to\infty$?  As earlier, the fields $A_i$ will then
+be massive and can be integrated out to yield an effective theory which is
+an abelian gauge theory with Lagrangian
+$${\cal L}_{\rm eff}=
+\int d^2x\,d^4\theta\,\frac1{2e^2}\,\overline{\Sigma}\Sigma
++\left(\int d^2x\,d\overline{\theta}^+\,d\theta^-\,\widetilde{W}_{\rm
+eff}(\Sigma)
++ c.c. \right).$$
+The effective twisted superpotential depends on the renormalization
+mass scale $\mu$, and we claim that it takes the unusual ($R$-symmetry
+violating) form
+\begin{equation}\label{effsup}
+\widetilde{W}_{\rm eff}(\Sigma)=t\Sigma +
+\frac{in}{2\pi}\left(\Sigma-\Sigma\ln(\Sigma/\mu)\right)
+\end{equation}
+which we shall verify by making a $1$-loop calculation below.  Notice that
+a change
+in the choice of logarithm in eq.~(\ref{effsup}) can be compensated for by
+changing the value of
+$t$ by an integer; such a change has no effect on the physics.
+Of course, we must keep $\Sigma$ away from zero in order to define this
+term, but that is consistent with our assumption that $\sigma$ is large.
+
+
+
+With this new term in the twisted superpotential, the equation for a
+critical point of $\widetilde{W}_{\rm eff}$ is
+$$0=t-\frac{in}{2\pi}\ln(\Sigma/\mu),$$
+or in components,
+$$0=-ir   + \frac\theta{2\pi}-\frac{in}{2\pi}\ln(\sigma/\mu)
+\pmod1.$$
+This has $n$ solutions
+\begin{equation}\label{sigmavacua}
+\sigma =\mu\exp\left(-\frac{2\pi r}n-\frac{i\theta}n+\frac{2\pi
+ik}n\right),
+\end{equation}
+$k=0,\dots,n-1$,
+corresponding to $n$ different vacua in the $r\to-\infty$ limit.  $n$ is
+of course, the expected number, the Euler characteristic of ${\bf CP}^{n-1}$.
+Notice that $|\sigma|$ is indeed large when $r\to-\infty$, so the
+assumptions made in deriving these vacua hold.
+The fact that the $n$ vacua go off to infinity for $r\to-\infty$,
+along with the fact that their existence depends on the one-loop quantum
+correction, explains why one cannot see them classically.
+
+Another very important consequence of the logarithm is that it means
+that for $\sigma\to\infty$, the energy in the quantum theory grows
+like $|\ln\sigma|^2$.  Hence, in particular, low energy states are limited
+to a bounded region of field space, and there is no singularity in the
+vacuum behavior for any value of $t$ on the cylinder.  As we will
+see, the models with $n\not= k$ all have such a logarithm, and hence
+they are all nonsingular throughout the $ t$ cylinder.
+
+\subsection{The $1$-loop calculation}
+
+To understand the origin of the term
+$\frac{in}{2\pi}\left(\Sigma-\Sigma\ln(\Sigma/\mu)\right)$ in the
+effective twisted superpotential, note that its presence is equivalent to
+the effective Lagrangian having a term
+$$\int d^2x\, r_{\rm eff}\, D,$$
+where
+$$r_{\rm eff}=r+\frac n{2\pi}\ln(|\sigma|/\mu).$$
+In this theory, we have $D=\sum\overline{A}_iA_i-r$.  Classically, $A_i=0
+=\overline A_iA_i$
+for large $\sigma$, but quantum mechanically $\overline A_iA_i$ has
+an expectation value at large $\sigma$; this expectation value can
+be interpreted in an effective classical description as a shift
+in $-r$.  So we need to
+calculate the expectation value of $\overline{A}A$ by means of a
+$1$-loop diagram
+
+\centerline{\quad}
+\centerline{\epsfxsize=.4in\epsfbox{oneloop.eps}}
+\centerline{\quad}
+
+\noindent
+which contributes
+$$\int\frac{d^2k}{(2\pi)^2}\,\frac1{k^2+m_A^2}
+=\int\frac{d^2k}{(2\pi)^2}\,\frac1{k^2+|\sigma|^2}$$
+where we got the mass $m_A$ from the term $|\sigma|^2|A|^2$ in the
+potential $V$.  Cutting off the divergent integral, we find
+$$\int^\Lambda\frac{d^2k}{(2\pi)^2}\,\frac1{k^2+|\sigma|^2}
+=-\frac{1}{2\pi}\ln\frac{|\sigma|}{\mu}.$$
+This is the shift in $-r$, and accounts for the claimed formula for
+$r_{eff}$.
+There are, by the way, no higher loop corrections to this formula.
+This can be proved using holomorphy, or by noting that, in this
+superrenormalizable theory, higher loop diagrams would involve
+negative powers of $\sigma$ and would vanish for large $\sigma$.
+
+Let us now repeat this for a general case with chiral superfields $B_i$ of
+charges $q_i$.   (The $B_i$ are to include all of the chiral superfields,
+including the $P$ field of the sigma model discussion, if it is present.)
+The $D$-term is $\sum q_i|B_i|^2$ and for its expectation value at large
+$\sigma$ we get
+the $1$-loop correction
+$$\sum q_i\int^\Lambda\frac{d^2k}{(2\pi)^2}\,\frac1{k^2+q_i^2|\sigma|^2}
+=-\frac{1}{2\pi}\sum q_i \ln |q_i|
+-\frac{1}{2\pi}(\sum q_i)\ln\frac{|\sigma|}{\mu}, $$
+leading to an effective twisted superpotential
+$$\widetilde{W}_{\em eff}(\Sigma)=
+\left(t-\frac i{2\pi}\sum q_i\ln |q_i|\right)\Sigma
++\frac{i\sum q_i}{2\pi}(\Sigma-\Sigma\ln(\Sigma/\mu)).$$
+In the Calabi-Yau case, $\sum_i q_i=0$ and the coefficient of the logarithm
+vanishes.
+Hence $\widetilde{W}_{\em eff}$ is linear in $\Sigma$, as a result
+of which its contribution to the potential energy is independent of $\sigma$.
+As a result of this, it is possible for $\sigma$ to go to infinity at
+no cost in energy if $t$ has the correct value. At this value of
+$t$, one gets a singularity.  The correct value
+is the value at which the coefficient of $\Sigma$ in the twisted chiral
+superpotential vanishes; the condition is not ${\rm Im}\,t=0$, as one
+would expect classically, nor even $t=0$, but rather
+$t-(i/2\pi)\sum_iq_i\ln|q_i| = 0$.
+This is the shift in the position of the singularity that was mentioned
+in our discussion of the Calabi-Yau case.  In order to compare the
+present discussion to, for instance, the counting of rational curves on
+the Calabi-Yau manifold, it is important to know about this shift.
+When $\sum_i q_i\not=0$, the logarithm prevents $\sigma$ from going to
+infinity, and hence prevents a singularity on the $t$ cylinder, as we have
+already asserted.
+
+  On the other hand, if $\sum q_i\ne0$, then there are
+$|\sum q_i|$ extra vacua (as in the ${\bf CP}^n$ model) with $\sigma$-values
+\begin{equation}\label{sigmavacuabis}
+\sigma =\mu\exp\left(-\frac{2\pi r}{\sum q_i}-\frac{i\theta}{\sum
+q_i}-\frac{\sum q_i\ln q_i}{\sum q_i} +\frac{2\pi
+ik}{\sum q_i}\right),
+\end{equation}
+However, the prediction of these vacua
+ is only valid if they occur  at large $\sigma$.
+Hence, these vacua are only trustworthy  for $r\to-\infty$ if
+$\sum_iq_i>0$, or for $r\to +\infty$ if $\sum_iq_i<0$.
+
+\subsection{Hypersurfaces}
+
+Let us now return to the situation of a hypersurface defined by a
+homogeneous polynomial $F$ of degree $k$ in $n$ variables.
+Thus $\sum_iq_i=n-k$.  Hence, vacua at large $\sigma$ are present
+for $r\to-\infty$ if $n>k$, or at $r\to +\infty$ if $n<k$.
+The vacua at large $\sigma$ are the ones that one cannot see classically.
+In addition to those, one has vacua that one can see classically
+-- a sigma model for $r>>0$ and a Landau-Ginzburg orbifold for $r<<0$.
+
+\centerline{\quad}
+\centerline{\epsfysize=1.35in\epsfbox{vertcyl3.eps}}
+\centerline{\quad}
+
+Let us now consider the two cases in detail.  For $k<n$, the sigma
+model has for its target space a Fano variety, a hypersurface in
+${\bf CP}^{n-1}$ of degree $k<n$.   This is a good description in the
+ultraviolet, and gives a well-posed quantum field theory whose
+infrared behavior we would like to determine.
+The infrared flow brings us to $r\ll0$, where we find two types of
+vacua:
+(1) vacua which are conformal field theories of central charge
+$\widehat{c}=n(1-\frac2k)$, and
+(2) $n-k$ new vacua at large $\sigma$.  The corresponding effective twisted
+superpotential for large $\sigma$ is
+$$\widetilde{W}_{\rm eff}=t\Sigma + \frac{i}{2\pi}(n-k)(\Sigma -
+\Sigma\ln\Sigma).$$
+Both of these types of vacua
+ have central charge less than the value $\widehat c=n-2$ of
+the UV theory.
+Thus, in this example, a single quantum field theory in the ultraviolet
+can flow to quite different possibilities in the infrared.
+Renormalization group flow for $N=2$ sigma models in two dimensions
+has many invariants (such as $\Tr\,(-1)^F$, the elliptic genus, and
+some of their cousins).  To reproduce the invariants of the UV sigma
+model with Fano target, one must sum over the infrared vacua of types (1)
+and (2).
+
+\subsection{The case $c_1<0$}
+
+Consider now the opposite case $k>n$.  A hypersurface of degree $k>n$
+in ${\bf CP}^{n-1}$ is an algebraic variety of general type.
+ In this case $\beta>0$, and there is
+not a well-defined quantum field theory of maps from spacetime to this
+hypersurface.  However, the sigma model with this hypersurface as target
+makes sense as an effective infrared theory.  One can ask what well-defined
+ultraviolet theory can flow to this effective theory in the infrared.
+
+For this question, we will now give an answer.
+For $k>n$, the ultraviolet
+stable end of the cylinder is the Landau-Ginzburg end.  The Landau-Ginzburg
+model has central charge $\widehat c= n(1-2/k)$, which
+for $k>n$ is greater than the value $\widehat c = n-2$ of the sigma model.
+Thus the Zamolodchikov theorem permits a renormalization group flow
+from the LG model to the sigma model.  That is precisely what happens,
+since for $n<k$ the renormalization group flow on the cylinder
+is ``upwards,'' away from the LG model and towards the sigma model.
+
+If $k>n$, there are no large $\sigma$ vacua at the LG end of the cylinder.
+Instead, $k-n$ such vacua accompany the sigma model.  Thus,
+a well-defined ultraviolet fixed point, given by the Landau-Ginzburg model,
+can flow in the infrared either to the sigma model of the hypersurface,
+or to a nonclassical massive vacuum at large $\sigma$.  Just as for $k<n$,
+to equate renormalization group invariants such as $\Tr\,(-1)^F$
+between the ultraviolet and infrared theories, one must sum over both
+types of vacua in the infrared limit.
+
+\centerline{\quad}
+\centerline{\epsfysize=1.35in\epsfbox{vertcyl5.eps}}
+\centerline{\quad}
+
+Note that, regardless of the sign of $n-k$, the nonclassical vacua
+always appear in the infrared, not the ultraviolet.  There is a good
+intuitive reason for this.  In the ultraviolet,
+where we are defining our theory, we can select what theory we wish
+to study (from all of the possible UV fixed points), so the UV theory
+has a vacuum of just one type.  Going to the infrared means solving
+the equations, and at this stage things are out of our hands:
+a definite quantum field theory may have more than one solution for
+its infrared behavior.  That is what we have found today.  In fact,
+we have seen that a definite UV field theory (based on a Fano variety
+if $k<n$ or a Landau-Ginzburg model if $k>n$) can flow to quite different
+possibilities in the infrared.
+
+Both of the $k\not = n$ cases that we have studied today
+are of considerable methodological interest.
+For $k<n$, we have seen how the quantum theory with a Fano target
+gives, in general, an answer which is a sort of mixture of the behavior
+of a Calabi-Yau manifold and the behavior of complex projective space.
+For $k>n$, we have found, in a concrete situation, a well-defined UV
+fixed point with flow to the effective theory based on an algebraic
+variety of general type.
+
+\end{document}

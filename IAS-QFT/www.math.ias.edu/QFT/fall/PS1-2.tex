@@ -1,0 +1,895 @@
+%From: Pierre Deligne <deligne@IAS.EDU>
+%Date: Tue, 7 Jan 1997 11:44:24 -0500
+%Subject: revised solution
+
+\input amstex
+\documentstyle{amsppt}
+\magnification=1200
+\pagewidth{6.5 true in}
+\pageheight{8.9 true in}
+\loadeusm
+
+\catcode`\@=11
+\def\logo@{}
+\catcode`\@=13
+
+\NoRunningHeads
+
+\font\boldtitlefont=cmb10 scaled\magstep1
+
+\def\dspace{\lineskip=2pt\baselineskip=18pt\lineskiplimit=0pt}
+\def\wedgeop{\operatornamewithlimits{\wedge}\limits}
+\def\w{{\mathchoice{\,{\scriptstyle\wedge}\,}
+{{\scriptstyle\wedge}}
+  {{\scriptscriptstyle\wedge}}{{\scriptscriptstyle\wedge}}}}
+\def\Le{{\mathchoice{\,{\scriptstyle\le}\,}
+{\,{\scriptstyle\le}\,}
+  {\,{\scriptscriptstyle\le}\,}{\,{\scriptscriptstyle\le}\,}}}
+\def\Ge{{\mathchoice{\,{\scriptstyle\ge}\,}
+  {\,{\scriptstyle\ge}\,}
+  {\,{\scriptscriptstyle\ge}\,}{\,{\scriptscriptstyle\ge}\,}}}
+\def\undertext#1{$\underline{\vphantom{y}\hbox{#1}}$}
+\def\vrulesub#1{\hbox{\vrule height7pt depth5pt\,}_{#1}}
+\def\mapright#1{\smash{\mathop{\,\longrightarrow\,}%
+     \limits^{#1}}}
+\def\mynabla{{\nabla\!}}
+\def\plus{\sssize +}
+
+\def\eps{{\varepsilon}}
+
+\def\xtil{\tilde{x}}
+
+\def\Adot{\Dot{A}}
+\def\Bdot{\Dot{B}}
+\def\Xdot{\Dot{X}}
+\def\xdot{\Dot{x}}
+\def\psidot{\Dot{\psi}}
+
+\def\dbR{{\Bbb R}}
+
+%\def\GL{\text{\rm GL}} 
+\def\Hom{\text{\undertext{\rm Hom}}}
+%\def\aff{\text{\rm aff}} 
+\def\red{\text{\rm red}}
+\def\Lie{\text{\rm Lie}}
+%\def\Map{\text{\rm Map}}
+
+
+\def\scr#1{{\fam\eusmfam\relax#1}}
+
+\def\scrA{{\scr A}}   \def\scrB{{\scr B}}
+\def\scrC{{\scr C}}   \def\scrD{{\scr D}}
+\def\scrE{{\scr E}}   \def\scrF{{\scr F}}
+\def\scrG{{\scr G}}   \def\scrH{{\scr H}}
+\def\scrI{{\scr I}}   \def\scrJ{{\scr J}}
+\def\scrK{{\scr K}}   \def\scrL{{\scr L}}
+\def\scrM{{\scr M}}   \def\scrN{{\scr N}}
+\def\scrO{{\scr O}}   \def\scrP{{\scr P}}
+\def\scrQ{{\scr Q}}   \def\scrR{{\scr R}}
+\def\scrS{{\scr S}}   \def\scrT{{\scr T}}
+\def\scrU{{\scr U}}   \def\scrV{{\scr V}}
+\def\scrW{{\scr W}}   \def\scrX{{\scr X}}
+\def\scrY{{\scr Y}}   \def\scrZ{{\scr Z}}
+
+
+\document
+\line{{\boldtitlefont Witten's Problems}, Set One --- 
+N$^{\text{o}}$. 2 
+\hfill (solution written by P. Deligne \& D. Freed)}
+\smallskip
+\hbox to \hsize{\hrulefill}
+
+\bigskip
+\subhead
+Preface 
+\endsubhead
+
+\dspace
+The space of maps from $R^{1,1}$ to $M$ is some kind of
+infinite dimensional supermanifold $\scrF$.
+We will not try to define it as a topological space
+provided with a sheaf of $\dbR$-algebras.
+We will only define it as a functor: \ for $B$ a
+supermanifold, a map from $B$ to $\scrF$ is by
+definition a morphism $R^{1,1}\times B\to M$.
+It is also called a $B$-point of $\scrF$, and it is
+viewed as a family of points parametrized by $B$.
+In the exercise, the phrase ``let $X$ be a map from
+$R^{1,1}$ to $M$'' is an abuse of language for ``let $X$
+be a map from $\dbR^{1,1}$ to $M$, depending on some
+parameter $b\in B$, for some super space $B$'', i.e.
+``let $B$ be a supermanifold and let $X$ be a map from
+$R^{1,1}\times B$ to $M$''.
+
+This kind of interpretation of what a space of maps is
+does not apply only in the superworld.
+If we were to consider (as in exercise 1) the space of
+maps from $\dbR$ to $M$, one could try to put on it a
+structure of infinite dimensional manifold but, for the
+kind of problem we are considering, this is extra
+baggage.
+What is important is to know, for $B$ a space ``of
+parameters'' (now an ordinary manifold), what is a
+family of maps $\dbR\to M$ parametrized by $B$.
+
+``Working in components'' means reinterpreting the
+functor $B\mapsto B$-points of $\scrF$ as follows.
+
+\noindent
+A morphism $X\colon\,\dbR^{1,1}\times B\to M$ gives us
+
+\medskip
+\roster
+\item"{(a)}"
+a restriction $x\colon\,\dbR\times B\to M$.
+We view here $\dbR$ as the subvariety $\theta=0$ of
+$\dbR^{1,1}$,
+
+\smallskip
+\item"{(b)}"
+an odd section $\psi:=\frac{\partial}{\partial\theta}\,X
+\vrulesub{\dbR\times B}$ of the pullback by $x$ of the
+tangent bundle $T$ of $M$.
+\endroster
+
+\medskip
+The construction $X\mapsto (x,\psi)$ is a bijection.
+Note that $x^*T$ is an ``even vector bundle'', in the
+sense that it is of rank $(*,0)$.
+This does not prevent it from having odd sections,for
+instance the product of the pullback of a section
+of $T$ with an odd function on $B$.
+
+This will usually be expressed with the abuse of
+language consisting in omitting $B$: \ a basis $B$ is
+tacitly assumed to always be there, and one will say
+that to give a morphism $X$ from $\dbR^{1,1}$ to $M$ is
+the same thing as to give its restriction $x$ to $\dbR$
+and its derivative
+$\psi=\frac{\partial}{\partial\theta}X$ on $\dbR$ which
+is an odd section of $x^*T$.
+Taken literally, this statement would be useless: \
+with no $B$ tacitly assumed, the even vector bundle
+$x^*T$ would have no nonzero odd section.
+When a $B$ is present, one should beware that to give
+$x\colon\,\dbR\times B\to M$ is not just giving a
+morphism from $\dbR\times B_{\red}$ to $M$.
+
+The lagrangian density is a map from
+$\scrF:=\underline{\Hom}(\dbR^{1,1},M)$ to the space of
+densities on $\dbR^{1,1}$.
+This is to be interpreted in its functorial meaning.
+A family of densities on $\dbR^{1,1}$, parametrized by
+$B$, is by definition a section on $\dbR^{1,1}\times B$
+of the pullback of the line bundle of densities on
+$\dbR^{1,1}$.
+The lagrangian density attaches, functorially in $B$ to
+any family of maps from $\dbR^{1,1}$ to $M$ parametrized
+by $B$, a family of densities on $\dbR^{1,1}$
+parametrized by $B$.
+
+``Families of densities'' are also called ``relative
+densities''.
+An integration map is defined, which to a relative
+density on $V\times B$ over $B$ with support proper over
+$B$, attaches a function on $B$.
+If $V$ is a supermanifold of dimension $(p,q)$, the line
+bundle of relative densities is of dimension $(1,0)$ or
+$(0,1)$, depending on the parity of $q$, and the
+integration map is even.
+The spaces of critical points of the lagrangian is a
+subspace of the space of all maps from $\dbR^{1,1}$ to
+$M$.
+As such, it is first to be defined as a functor: \
+one has to define what it means for a map
+$X\colon\,B\to\underline{\Hom}(\dbR^{1,1},M)$, i.e.
+$\dbR^{1,1}\times B\to M$, to be a map to the subspace
+$S$ of $\underline{\Hom}(\dbR^{1,1},M)$.
+The following two definitions are equivalent, with the
+second being closer to what is done in computations.
+
+\medskip\noindent
+(i)\enspace
+For any supermanifold $V$, pointed by $o\in V$, and any
+$X_V\colon\,B\times V\to
+\underline{\Hom}(\dbR^{1,1},M)$, such that (a) \ 
+it extends $X$: \ $X$ is $X_V$ restricted to $B\times
+0$, (b) \ 
+outside a compact region of $\dbR^{1,1}$, $X_V$ coincide
+with $X$ ($X_V$ is a family of deformations of $X$, with
+compact support, parametrized by $V$), the following
+holds. 
+Consider $\scrL(X_V)-\scrL(X)$, where
+$\scrL(X)$ is abuse of language for ``pullback of
+$\scrL(X)$ by $\dbR^{1,1}\times B\times
+V\to\dbR^{1,1}\times B$.
+It is a relative density on $\dbR^{1,1}\times B\times V$
+with support proper over $B\times V$.
+Integrate it, to get a function $\Delta\int\scrL$ on
+$B\times V$.
+One requires that the derivative of this function in the
+$V$-direction be zero on $B\times\{0\}\subset B\times V$.
+
+\smallskip\noindent
+(ii)\enspace
+In the second definition, one requires that after any
+change of basis $B'\to B$, (i) holds for $V=(\dbR,0)$.
+
+\medskip
+This defines the space of stationary points as a
+functor.
+In the exercise at hand, and assuming $M$ to be
+complete, this functor is representable: \ the space of
+stationary points ``is'' an ordinary supermanifold of
+dimension $(2\dim\,M, \dim\,M)$, as we will see.
+
+\bigskip
+\subhead
+Solution
+\endsubhead
+(a)\enspace
+The coordinates $(t,\theta)$ on $\dbR^{1,1}$ define a
+density $[t,\theta]$, also written $dt\,d\theta^{-1}$.
+The lagrangian density considered is
+$$
+\scrL=-\tfrac12 \,dt\,d\theta^{-1}(\Xdot,DX).
+\tag2.1
+$$
+The minus sign is to make (2.5) below reasonable.
+
+\smallskip\noindent
+(b)\enspace
+If we choose local coordinates $\xtil^i$ on $M$, a map
+$X\colon\,\dbR^{1,1}\to M$ can be written
+$$
+X=(x^i(t)+\theta\psi^i(t)),
+$$
+meaning $X^*\xtil^i=x^i(t)+\theta\psi^i(t)$
+with $x^i(t)$ (resp. $\psi^i(t)$) an even (resp. odd)
+function on $\dbR$, pulled back to $\dbR^{1,1}$ by
+$(t,\theta)\mapsto t$.
+Independently of the local coordinates, $x$ is a map
+from $\dbR$ to $M$ and $\psi$ is an odd section of
+$x^*T$, for $T$ the tangent bundle of $M$.
+The meaning of this, and in particular of ``odd section
+of $x^*T$'', was explained in the preface.
+The philosophy is that we tacitly work over a basis $B$,
+functorially in $B$.
+The map $x$ is the restriction of $X$ to the subvariety
+$\dbR$ of $\dbR^{1,1}$ defined by $\theta=0$, while
+$\psi$ is the restriction of $\partial_\theta X$ to
+$\dbR$.
+On $\dbR$, the vector fields $\partial_\theta$ and $D$
+are equal, and it will often be more convenient to
+describe $\psi$ as the restriction of $DX$ to $\dbR$.
+We will compute the density $\scrL$ on $\dbR^{1,1}$ in
+term of $(x,\psi)$.
+
+In local coordinates, $\scrL$ is $-dt\,d\theta^{-1}$
+times
+$$
+\tfrac12 X^*(g_{ij})\partial_t(X^*(\xtil^i))
+D(X^*(\xtil^j)).\tag2.2
+$$
+As $\theta^2=0$, $X^*(g_{ij})$ is given by a finite
+Taylor series
+$$
+X^*(g_{ij})=g_{ij}(x(t)+\theta \psi(t))=
+g_{ij}+\theta\psi^k\partial_kg_{ij}
+$$
+with $g_{ij}$, $\partial_kg_{ij}$ and $\psi^k$ evaluated
+at $x(t)$ and $t$.
+Expanding (2.2) gives
+$$
+\align
+\tfrac12(g_{ij}+\theta\psi^k\partial_k g_{ij})
+&(\xdot^i+\theta\psidot^i)(\psi^j-\theta \xdot^j)\tag2.3\\
+&=\tfrac12 g_{ij}\xdot^i\psi^j+\tfrac12\theta
+(g_{ij}\psidot^i\psi^j+\partial_k
+g_{ij}\xdot^i\psi^k\psi^j-g_{ij}\xdot^i\xdot^j).
+\endalign
+$$
+
+As $\psi^k\psi^j=-\psi^j\psi^k$, we have$\partial_k
+g_{ij}\psi^k\psi^j=-\partial_j g_{ik}\psi^k\psi^j$.
+As $g_{ij}=g_{ji}$, we similarly have $\partial_i
+g_{jk}\psi^k\psi^j=0$, and
+$$
+\partial_k g_{ij}\psi^k\psi^j=\tfrac12(\partial_k
+g_{ij}-\partial_jg_{ik}+\partial_i g_{jk})=
+g_{\ell j}\Gamma_{ik}^\ell,
+$$
+where the $\Gamma$ are the Christoffel symbols defining
+the Levi-Civita connection.
+In (2.3), this allows us to rewrite 
+$$
+g_{ij}\psidot^i+\partial_k g_{ij}\xdot^i\psi^k=
+g_{ij}\psidot^i+g_{\ell j}
+\Gamma_{ik}^\ell \xdot^i\psi^k=g_{ij}(\mynabla_t\psi)^i,
+$$
+giving for (2.2)
+$$
+\split
+\tfrac12
+g_{ij}\xdot^i\psi^j+\tfrac12\theta &(g_{ij}(\mynabla_t\psi)^i
+\psi^j-g_{ij}\xdot^i\xdot^j)\\
+&=\tfrac12(\xdot,\psi)+\tfrac12\theta((\mynabla_t\psi,
+\psi)-(\xdot,\xdot)).
+\endsplit
+\tag2.4
+$$
+
+Here is a shortcut from (2.3) to (2.4).
+Write (2.2) in the form $f(t)+\theta g(t)$.
+We have to compute $f(t_0)$ and $g(t_0)$ for each $t_0$.
+We now remember that we always work over a space $B$ of
+parameters.
+The point $t_0$ is in fact a section of $\dbR\times B\to
+B$.
+The local coordinates $\xtil_i$ used can be taken to vary
+with the parameters.
+This makes it possible to choose them so that at
+$x(t_0)$, i.e. along the section $x(t_0)$ of $M\times
+B\to B$, the metric tensor $g_{ij}$ has vanishing first
+derivatives.
+The Christoffel symbols then vanish at $x(t_0)$, and
+(2.4) at $t_0$ results immediately from (2.3).
+
+Here is a coordinate free derivation of (2.4).
+We use that for any function $F$ on $\dbR^{1,1}$, if we
+write $F(t,\theta)=f_1(t)+\theta f_2(t)$, we have
+$$
+\align
+f_1 &=F\text{ restricted to $\dbR$}\\
+f_2 &= DF\text{ restricted to $\dbR$}\,\,.
+\endalign
+$$
+We have $\psi=DX$ restricted to $\dbR$, so that for
+$F=(\Xdot,DX)$, $f_1$ is $(\xdot,\psi)$, while $f_2$ is
+the restriction to $\dbR$ of
+$$
+D(\Xdot,DX)=(\mynabla_D\Xdot,DX)+(\Xdot,\mynabla_D DX).
+$$
+The Levi-Civita connection is torsion free, and $D$ and
+$\partial_t$ commute, while
+$D^2=\frac12[D,D]=-\partial_t$.
+It follows that
+$$
+\align
+\mynabla_D\Xdot &=\mynabla_t DX\\
+\mynabla_D DX &=\tfrac12(\mynabla_D DX+\mynabla_D DX)
+  =-\partial_t X
+\endalign
+$$
+and $D(\Xdot,DX)$, restricted to $\dbR$, is
+$$
+(\mynabla_t\psi,\psi)+(\Xdot,-\Xdot).
+$$
+This agrees with (2.4).
+
+Let $\scrL'$ be the density on $\dbR$ deduced from
+$\scrL$ by integrating along the fibres of the
+projection from $\dbR^{1,1}$ to $\dbR$ given by
+$(t,\theta)\mapsto t$.
+{}From (2.4), we get
+$$
+\scrL'=\tfrac12(\xdot,\xdot)dt-\tfrac12
+(\mynabla_t\psi,\psi)dt\tag2.5
+$$
+
+The space of critical points is the same for $\scrL$ and
+$\scrL'$: it is the space of $X=(x,\psi)$ such that, for
+any deformation with compact support $X(u)$ of $X$, one
+has $\int\partial_u\scrL=0$ (resp.
+$\int\partial_u\scrL'=0$) at $u=0$, and the density
+$\partial_u\scrL'$ on $\dbR$ is deduced by
+$\theta$-integration from the density $\partial_u\scrL$
+on $\dbR^{1,1}$.
+
+\smallskip\noindent
+(c)\enspace
+The computation of the Euler-Lagrange equations is
+parallel to the computations in problem 1.
+If $X$ depends on an additional parameter $u$, and if
+$\delta$ stands for $\partial_u$ or $\mynabla_u$, one
+has
+$$
+\align
+\delta(\Xdot,DX) &=(\delta\Xdot,DX)+(\Xdot,
+  \delta DX)=(\mynabla_t\delta
+X,DX)+(\Xdot,\mynabla_D\delta X)\\
+&=\partial_t(\delta X,DX)-(\delta X,\mynabla_t DX)+
+  D(\Xdot,\delta X)-(\mynabla_D\Xdot,\delta X).
+\endalign
+$$
+As $\mynabla_t DX=\mynabla_D\Xdot$, this gives
+$$
+\delta\scrL=-dt\,d\theta^{-1}\left[
+-(\delta X,\mynabla_t DX)+\tfrac12(\partial_t(\delta
+X,DX)+D(\Xdot,\delta X))\right].\tag2.6
+$$
+
+The vector fields $\partial_t$ and $D$ are
+divergence free: the corresponding Lie derivative
+kills $dt\,d\theta^{-1}$.
+It follows that $dt\,d\theta^{-1}$ multiplied by the
+second term in [\quad] of (2.6) is an exact
+differential (see (d) below) and the Euler-Lagrange
+equation is
+$$
+\mynabla_t DX=0.
+\tag2.7
+$$
+
+In the computation leading to (2.6), we took the
+additional parameter $u$, and hence $\delta X$, to
+be even.
+Why this suffices is explained in Deligne's appendix
+``Even rules'' to Bernstein's lecture.
+Basically, an odd $\delta X$ can be replaced by
+$\eps\delta X$, for $\eps$ a new odd parameter.
+
+To express (2.7) in term of the components $(x,\psi)$ of $X$,
+one restricts $\mynabla_t DX$ and $\mynabla_D\mynabla_t DX$ to
+$\dbR\subset\dbR^{1,1}$ ($\theta=0$).
+As $\dbR\subset\dbR^{1,1}$ is stable by $\partial_t$, the first
+gives
+$$
+\mynabla_t\psi=0.\tag2.8
+$$
+For the second, permuting $\mynabla_D$ and $\mynabla_t$
+introduces a curvature term, while $\mynabla_D DX=-\partial_t
+X$: \ one obtains
+$$
+R(\psi,\xdot)\psi-\mynabla_t\xdot=0\tag2.9
+$$
+
+Another method to obtain the Euler-Lagrange equations (2.8)
+(2.9) is to start from the lagrangian $\scrL'$ (2.5).
+
+Writing again $\delta$  for $\partial_u$ or
+$\mynabla_u$, we have
+$$
+\delta\scrL'=(\delta\xdot,\xdot)dt-\tfrac12
+((\delta\mynabla_t\psi,\psi)+(\mynabla_t\psi,\delta\psi))
+dt
+$$
+Permuting $\delta$ and $\mynabla_t$ introduces a
+curvature term:
+$$
+\delta\mynabla_t\psi=R(\delta
+X,\xdot)\psi+\mynabla_t\delta\psi.
+$$
+Integrating by part:
+$$
+\align
+&(\mynabla_t\delta\psi,\psi)=\partial_t(\delta\psi,\psi)
+  -(\delta\psi,\mynabla_t\psi)\\
+&(\delta\xdot,\xdot)=(\mynabla_t\delta x,\xdot)=
+  \partial_t(\delta x,\xdot)-(\delta x,\mynabla_t\xdot)
+\endalign
+$$
+and observing that
+$(\delta\psi,\mynabla_t\psi)=-(\mynabla_t\psi,\delta\psi)$,
+we obtain
+$$
+\delta\scrL'=-\left[(\mynabla_t\psi,\delta\psi)+
+  \tfrac12 (R(\delta x,\xdot)\psi,\psi)+(\delta x,
+\mynabla_t\xdot)\right]dt+d\left((\delta x,\xdot)
+-\tfrac12(\delta\psi,\psi)\right)
+$$
+
+The Bianchi identity tells that if in $(R(\delta
+x,\xdot)\psi,\psi)$ we cyclically permute $\delta x$,
+$\psi$ and $\psi$, taking parities into account, the
+sum is zero:
+$$
+\align
+&(R(\delta x,\xdot)\psi,\psi)-(R(\psi,\xdot)\delta
+x,\psi)+(R(\psi,\xdot)\psi,\delta x),\quad\text{hence}\\
+&(R(\delta
+x,\xdot)\psi,\psi)=-2(R(\psi,\xdot)\psi,\delta x).
+\endalign
+$$
+We obtain
+$$
+\align
+\delta\scrL'= &-[(\mynabla_t\psi,\delta\psi)+
+(\mynabla_t\xdot-R(\psi,\xdot)\psi,\delta x)]dt\tag2.10\\
+&+d\left( (\delta x,\xdot)-\tfrac12(\delta\psi,\psi)
+\right),
+\endalign
+$$
+giving again (2.8) and (2.9) as Euler-Lagrange
+equations.
+
+The space $Y$ of critical points of $\scrL$ or $\scrL'$
+is hence the space of solutions $(x,\psi)$ of (2.8),
+(2.9).
+The reduced space $Y_{\red}$ is obtained by imposing
+$\psi=0$: \ It is the space found in problem 1, the
+space of solutions $x(t)$ of $\mynabla_t\xdot=0$.
+
+The normal bundle of $Y_{\red}$ in $Y$ is found by
+linearizing (2.8), (2.9) around $\psi=0$: \ it is the
+odd vector bundle whose (even) sections are the odd
+sections $\psi$ of $x^*T$ obeying $\mynabla_t=0$.
+
+The Cauchy data for (2.8) (2.9) are the data at some
+$t_0$ of $x(t_0)$, $\xdot(t_0)$ and $\psi(t_0)$.
+In term of $X$: \ $X$, $\Xdot$ and $DX$ at $(t_0,0)$.
+If $M$ is complete, $Y$ maps isomorphically to the space
+of Cauchy data.
+This gives a description of $Y$ as the vector bundle
+$T\times \Pi T$ over $M$ (viewed as a space).
+In particular, we get a description of $Y$ as an odd
+vector bundle over $Y_{\red}$.
+Warning: \ this structure, and even the corresponding
+map $Y\to Y_{\red}$, depend on the choice of $t_0$.
+
+\smallskip\noindent
+(d)\enspace
+The $2$-form $\omega$ on the space $Y$ of critical
+points can be computed using $\scrL$ or $\scrL'$.
+We first use $\scrL'$.
+The general recipe is to fix $t_0$, to extract from
+(2.10) the $1$-form
+$$
+\alpha_{t_0}=(\delta x,\xdot)-\tfrac12(\delta\psi,\psi)
+\quad\text{(at $t_0$)}\tag2.11
+$$
+on $Y$ and to take $\omega=d\alpha_{t_0}$.
+
+Let us identify $Y$ with the space of Cauchy data at
+$t_0=0$: \ a point of $Y$ becomes a triple
+$(x,\xdot,\psi)$ with $x$ a point of $M$, $\xdot$ an
+(even) tangent vector at $x$ and $\psi$ an (odd) tangent
+vector at $M$.
+If we identify the tangent bundle with the cotangent
+bundle using the riemannian metric, $Y$ becomes the pull
+back to $T^*M$ of the odd tangent bundle of $M$.
+The term $(\delta x,\xdot)$ in (2.11) becomes the pull
+back to $Y$ of the canonical $1$-form $pdq$ on $T^*M$,
+and contributes to $\omega$ the pull back of the
+symplectic form $dp\,dq$ of $T^*M$.
+
+The second term in (2.11) makes sense whenever on a
+manifold $X$ (here $T^*M$) one considers an odd vector
+bundle $\Pi T$, for $T$ an orthogonal vector bundle
+with connection (here the pull back of the tangent
+bundle of $M$).
+It is the $1$-form whose pull back by any section $\psi$
+(an odd section of $T$) is $-\frac12(\nabla\psi,\psi)$.
+Its exterior derivative is the $2$-form $\omega_T$ whose
+pull back by any $\psi$ is given in local coordinates by
+$$
+\align
+\psi^*(\omega_T)_{i,j} &=-\tfrac12\partial_i(\mynabla_j
+\psi,\psi)+\tfrac12\partial_j(\mynabla_i\psi,\psi)\\
+&=-\tfrac12(\mynabla_i\mynabla_j\psi,\psi)-
+\tfrac12(\mynabla_j\psi,\mynabla_i\psi)\\
+&\quad\,\,+\tfrac12(\mynabla_j\mynabla_i\psi,\psi)
++\tfrac12(\mynabla_i
+\psi,\mynabla_j\psi)\\
+&=-\tfrac12(R_{ij}\psi,\psi)+(\mynabla_i\psi,\mynabla_j\psi)
+\endalign
+$$
+for $R$ the curvature $2$-form (with values in
+endomorphisms of $T$), i.e.
+$$
+\psi^*\omega_T=\tfrac12(\nabla\psi,\nabla\psi)-\tfrac12
+(R\psi,\psi)
+$$
+where the first term combines inner product (in $T$)
+and exterior product of differential forms.
+Final result:
+$$
+\omega=\omega_{T^*M}+\tfrac12(\nabla\psi,\psi)-
+\tfrac12(R\psi,\psi).\tag2.12
+$$
+
+To compute in terms of $\scrL$, one should start with
+the second term in (2.6) being
+$$
+d\left[\tfrac12 i_t(-dt\,d\theta^{-1}(\delta X,DX))
+  +\tfrac12 i_D(dt\,d\theta^{-1}(\Xdot,\delta
+X))\right].
+$$
+In [\quad], we have a $1$-form $A$ on the space of $X$,
+with values in integral codimension $1$-forms  on
+$\dbR^{1,1}$.
+The general recipe is to fix a space-like hypersurface
+$\Gamma$, for instance $t=t_0$, to integrate $A$ on
+$\Gamma$ to get a $1$-form $\alpha_\Gamma$ on $Y$, and
+to take $\omega=d\alpha_\Gamma$.
+
+The restriction of $i_X(\,\ldots\,)$ to $\Gamma$ depends
+only on the component of $X$ normal to $\Gamma$.
+If $\Gamma$ is $t=t_0$, we have
+$$
+i_t(dt\,d\theta^{-1})\vrulesub{\Gamma}=d\theta^{-1}\quad
+\text{and}\quad i_D(dt\,d\theta^{-1})\vrulesub{\Gamma}=-\theta
+i_t(dt\,d\theta^{-1})\vrulesub{\Gamma}, 
+$$
+giving
+$$
+A\vrulesub{\Gamma}=-\tfrac12 d\theta^{-1}(\delta X,DX)
+-\tfrac12\theta d\theta^{-1}(\Xdot,\delta X).
+$$
+
+The integral of $d\theta^{-1}f$ on $\Gamma$ is
+simply $\partial_\theta f$, or $Df$, evaluated at
+$(t_0,0)$:
+$$
+\align
+\int\nolimits_{\Gamma}A &=-\tfrac 12 D(\delta X,DX)
+  +\tfrac12(\Xdot,\delta X)\quad\text{at $(t_0,0)$}\\
+&=-\tfrac12(\mynabla_D\delta X,DX)-\tfrac12
+(\delta X,\mynabla_D DX)+\tfrac12 (\Xdot,\delta X)\quad
+  \text{at $(t_0,0)$}
+\endalign
+$$
+We have $\mynabla_D\delta X=\delta\psi$ and $\mynabla_D
+DX=-\xdot$, at $(t_0,0)$, so that (not surprisingly)
+$$
+\alpha_\Gamma\quad\text{is given by (2.11)}.\tag2.13
+$$
+
+\smallskip\noindent
+(e)\enspace
+The space $\dbR^{1,1}$ is a group for the group law
+$$
+(t,\theta)*(t',\theta')=(t+t'+\theta\theta',
+\theta+\theta').
+$$
+Let us compute the bracket in the Lie algebra
+$\Lie(\dbR^{1,1})$, identified with the tangent space to
+$\dbR^{1,1}$ at $(0,0)$.
+To $\partial_\theta$ at $(0,0)$ correspond over the odd
+dual numbers $\dbR[\eps]$ the ``infinitesimal''
+element $(0,\eps)$, whose left translate by $(t,\theta)$
+is $(t+\theta\eps,\theta+\eps)=(t-\eps\theta,\theta+\eps)$,
+corresponding to the left invariant vector field
+$\partial_\theta-\theta\partial_t=D$.
+Similarly, $\partial_t$ at $(0,0)$ is the value at
+$(0,0)$ of the left invariant vector field $\partial_t$.
+On $\dbR^{1,1}$, $D^2=-\partial_t$.
+It follows that 
+$$
+\text{in $\Lie(\dbR^{1,1})$},\,\,
+\partial_\theta^2=-\partial_t.
+\tag2.14
+$$
+
+On $\dbR^{1,1}$, the vector fields $D$, $\partial_t$ and
+the density $dt\,d\theta^{-1}$ are invariant by the
+group of left translations.
+Being built from them, so is $X\mapsto \scrL(X)$.
+
+For a while, let us consider more generally maps
+$X\colon\, V\to M$ and a lagrangian density $\scrL(X)$
+on $V$, with $X\mapsto\scrL(X)$ invariant by a group $G$
+acting on $V$.
+We also suppose given a $G$-stable cohomology class of
+``space like'' hypersurfaces $\Gamma$, and assume that
+the corresponding $2$-form $\omega$ on the space $Y$ of
+extremals is non degenerate.
+To each $\Gamma$ corresponds a $1$-form $\alpha_\Gamma$
+on $Y$, with $\omega=d\alpha_\Gamma$ and
+$$
+\alpha_\Delta-\alpha_\Gamma=d\int\nolimits_\Gamma^\Delta
+\scrL.
+\tag2.15
+$$
+
+By transport of structures, the group $G$ acts on $\Hom(V,M)$,
+respects $Y$ and $\omega$, and
+$g_*(\alpha_\Gamma)=\alpha_{g\Gamma}$.
+For $\tau\in\Lie(G)$, we will write $[\tau]$ for the
+vector field
+$$
+\partial_\tau X(gv)\qquad\text{at}\qquad X(v)
+$$
+on $\Hom(V,M)$.
+The derivation is taken in $g$, at $g=e$.
+The action of $G$ on $\Hom(V,M)$ is $g\colon\,X\mapsto
+X(g^{-1}v)$; it induces $\tau\mapsto -[\tau]$ from
+$\Lie(G)$ to vector fields on $\Hom(V,M)$.
+For a function on $\Hom(V,M)$, one has
+$$
+\align
+&\partial_\tau(gF)=\partial_\tau(F(g^{-1}X))=[\tau]F\,\,,
+\qquad\text{and}\tag2.16\\
+&\tau\longmapsto[\tau]\quad\text{is compatible with
+brackets}.\tag2.17
+\endalign
+$$
+
+For $\tau\in\Lie(G)$, we now compute a generating
+function $T(\tau)$ for the symplectic vector field
+$[\tau]$ on $E$: \  $-dT(\tau)=i_{[\tau]}\omega$.
+One has $\omega=d\alpha_\Gamma$, hence
+$$
+i_{[\tau]}\omega=\scrL_{[\tau]}\alpha_\Gamma-
+di_{[\tau]}\alpha_\Gamma.
+$$
+The Lie derivative is
+$$
+\scrL_{[\tau]}\alpha_\Gamma=\partial_\tau g\alpha_\Gamma
+=\partial_\tau\alpha_{g\Gamma}
+$$
+with $\partial_\tau$ being a derivative in $g$ at $g=e$.
+By (2.15), this equals
+$\partial_\tau d\int\nolimits_\Gamma^{g\Gamma}\scrL$, and
+we take
+$$
+T(\tau)=i_{[\tau]}\alpha_\Gamma-\partial_\tau
+\int\nolimits_\Gamma^{g\Gamma}\scrL.
+\tag2.18
+$$
+It is independent of the choice of $\Gamma$:
+$$
+\split
+\biggl(i_{[\tau]}\alpha_\Delta-\partial_\tau
+  &\int\nolimits_\Delta^{g\Delta}\scrL\biggr)-
+\biggl(i_{[\tau]}\alpha_\Gamma-\partial_\tau
+\int\nolimits_\Gamma^{g\Gamma}\scrL\biggr)\\
+&=i_{[\tau]}d\int\nolimits_\Gamma^\Delta\scrL-\partial_\tau
+  \int\nolimits_{g\Gamma}^{g\Delta}\scrL=[\tau]
+\int\nolimits_\Gamma^\Delta\scrL-\partial_\tau
+\int\nolimits_{g\Gamma}^{g\Delta}\scrL,
+\endsplit
+$$
+and
+$$
+[\tau]\int\nolimits_\Gamma^\Delta\scrL(X)=\partial_\tau
+\int\nolimits_\Gamma^\Delta\scrL(X(gv))=\partial_\tau
+\int\nolimits_{g\Gamma}^{g\Delta}\scrL(X).
+$$
+
+It follows from (2.17) that, up to a constant,
+$$
+T([\tau_1,\tau_2])=\{T(\tau_1),T(\tau_2)\}=[\tau_1]
+T(\tau_2).\tag2.19
+$$
+In fact, (2.19) holds exactly: \ as $T$ is independent
+of $\Gamma$, we have by transport of structures
+$$
+gT(\tau_2)=T(ad\,g(\tau_2)).\tag2.20
+$$
+By (2.16) and the linearity of $T(\tau)$ in $\tau$,
+(2.19) follows from (2.20) by applying the derivative
+$\partial_\tau$ in $g$.
+
+We now take $V=\dbR^{1,1}$, with the supergroup
+$G=\dbR^{1,1}$ acting by left translations.
+The infinitesimal left translation (right invariant
+vector field) $\partial_\tau(gv)$ in $\dbR^{1,1}$ is
+$$
+\alignat3
+&D^{\plus}=\partial_\theta+\theta\partial_t
+  &\qquad &\text{for} &\quad &\tau=(\partial_\theta
+  \text{ at }(0,0)),\\
+&\partial _t &&\text{for} &&\tau=(\partial_t\text{ at }
+  (0,0))
+\endalignat
+$$
+and the vector field $[\tau]$ on $\Hom(\dbR^{1,1},V)$ is,
+respectively, $D^{\plus}X$ at $X$ and $\partial_t X$ at
+$X$.
+The generating functions are given by (2.18): \ 
+respectively
+$$
+\align
+Q &=i_{[\partial_\theta]}\alpha_\Gamma-\partial_\eta
+\int\nolimits_\Gamma^{(0,\eta)\Gamma}\scrL
+  \qquad\text{and}\tag2.21\\
+H &=i_{[\partial_t]}\alpha_\Gamma-\partial_t
+\int\nolimits_\Gamma^{(t,0)\gamma}\scrL,
+\endalign
+$$
+with the derivation evaluated at $\eta$ (resp. $t)=0$.
+Take for $\Gamma$ the hypersurface $t=0$.
+Its transform by $(0,\eta)$ is the hypersurface
+$t-\eta\theta=0$.
+Let $Y$ be the function on $\dbR$ equal to $1$ for $x<0$
+and to $0$ for $x>0$.
+We have
+$$
+Y(t-\eta\theta)=Y(t)+\eta\theta\delta(t)
+$$
+and it follows that at $\eta=0$,
+$$
+\align
+\partial_\eta\int\nolimits_\Gamma^{(0,\eta)\Gamma}\scrL
+  &=\partial_\eta\int (Y(t-\eta\theta)-Y(t))\scrL\\
+&=\int \theta\delta(t)\scrL.
+\endalign
+$$
+Similarly,
+$$
+\partial_t\int\nolimits_\Gamma^{(t,0)\Gamma}\scrL=
+\int \delta(t)\scrL.
+$$
+If $\scrL=dt\,d\theta^{-1}L$, as $\theta
+d\theta^{-1}=-d\theta^{-1}\theta$, we get
+$$
+\align
+&\partial_\eta\int\nolimits_\Gamma^{(0,\eta)\Gamma}
+  \scrL=-L(0,0)\tag2.22\\
+&\partial_t\int\nolimits_\Gamma^{(t,0)\Gamma}\scrL=
+  (\partial_\theta L)(0,0)=DL(0,0).
+\endalign
+$$
+
+We now apply this to our $\scrL$ (2.1).
+Let us identify the space of extremals $Y$ to the space
+of Cauchy data $(x,\xdot,\psi)$ at $(0,0)$.
+The $1$-form $\alpha=\alpha_\Gamma$ is given by (2.11):
+\ for a variation of $(x,\xdot,\psi)$, it is $(\delta
+x,\xdot)-\frac12(\delta\psi,\psi)$, with $\delta\psi$ a
+covariant derivative.
+The vector field $[\tau]$ is given by
+$$
+\align
+&\partial_\tau(in\,g)\text{ [Cauchy data for
+$X(g(t,\theta)]$}\\
+&=\mynabla_t[X(t,\theta),\delta_t X(t,\theta),
+DX(t,\theta)]\quad\text{at $(0,0)$}
+\endalign
+$$
+for $X$ the extremal with the given Cauchy data.
+This gives
+$$
+\spreadmatrixlines{2\jot}
+\matrix\format\l &\qquad\c &\quad\c &\quad\c\\
+&\delta x &\delta \xdot &\delta\psi\\
+[\partial_\theta] &\psi
+&\mynabla_D\Xdot\vrulesub{(0,0)}=0 &\mynabla_D
+DX\vrulesub{(0,0)}=-\xdot\\
+[\partial_t] &\xdot &\mynabla_t\Xdot\vrulesub{(0,0)}
+  &\mynabla_t DX\vrulesub{(0,0)}=0
+\endmatrix
+$$
+and $i_{[\tau]}\alpha$ is
+
+\medskip\noindent
+for $[\partial_\theta]$: \
+$(\psi,\xdot)-\frac12(-\xdot,\psi)$
+
+\noindent
+for $[\partial_t]$: \ $(\xdot,\xdot)$.
+
+{}From (2.21) and (2.22), we get
+$$
+\align
+Q &=(\psi,\xdot)-\tfrac12(-\xdot,\psi)-\tfrac12
+  (\xdot,\psi)=(\psi,\xdot)\\
+H &=(\xdot,\xdot)-D\left(-\tfrac12(\Xdot,DX)\right)
+\vrulesub{(0,0)}=\tfrac12(\xdot,\xdot)
+\endalign
+$$
+as $\mynabla_D\Xdot=\mynabla_t DX=0$ and $\mynabla_D
+DX=-\xdot$.
+
+By (2.14), (2.17) and (2.19), one has
+$$
+\{Q,Q\}=[D^{\plus}]Q=-H.
+$$
+
+Verification: \
+$[D^{\plus}](\psi,\xdot)=(-\xdot,\xdot)$.
+
+
+
+\enddocument
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,703 @@
+
+%% This is an AMS-TeX file.
+%% The command to compile it is: amstex <file>
+%%
+\input amstex
+\documentstyle{amsppt}
+\loadeusm
+\magnification=1200
+\pagewidth{6.5 true in}
+\pageheight{8.9 true in}
+
+\catcode`\@=11
+\def\logo@{}
+\catcode`\@=13
+
+\NoRunningHeads
+
+\font\boldtitlefont=cmb10 scaled\magstep1
+\font\bigboldtitlefont=cmb10 scaled\magstep2
+
+\def\spinact{s}
+\def\spinel{\tau}
+
+\def\dspace{\lineskip=2pt\baselineskip=18pt\lineskiplimit=0pt}
+\def\plus{{\sssize +}}  \def\pr{{\text{\rm pr}}}
+ \def\const{\text{\rm const}}
+\def\oplusop{\operatornamewithlimits{\oplus}\limits}
+\def\Piop{\operatornamewithlimits{\Pi}\limits}
+\def\w{{\mathchoice{\,{\scriptstyle\wedge}\,}
+  {{\scriptstyle\wedge}}
+  {{\scriptscriptstyle\wedge}}{{\scriptscriptstyle\wedge}}}}
+\def\Le{{\mathchoice{\,{\scriptstyle\le}\,}
+  {\,{\scriptstyle\le}\,}
+  {\,{\scriptscriptstyle\le}\,}{\,{\scriptscriptstyle\le}\,}}}
+\def\Ge{{\mathchoice{\,{\scriptstyle\ge}\,}
+  {\,{\scriptstyle\ge}\,}
+  {\,{\scriptscriptstyle\ge}\,}{\,{\scriptscriptstyle\ge}\,}}}
+\def\vrulesub#1{\hbox{\,\vrule height7pt depth5pt\,}_{#1}}
+\def\rightsubsetarrow#1{\subset\kern-6.50pt\lower2.85pt
+     \hbox to #1pt{\rightarrowfill}}
+\def\mapright#1{\smash{\mathop{\,\longrightarrow\,}\limits^{#1}}}
+\def\arrowsim{\smash{\mathop{\to}\limits^{\lower1.5pt
+  \hbox{$\scriptstyle\sim$}}}}
+
+%\def\Mbar{\overline{M}}
+%\def\Qbar{\overline{Q}}
+\def\Ebar{\overline{E}}
+\def\fbar{\overline{f}}
+\def\gbar{\overline{g}}
+\def\Sbar{\overline{S}}
+\def\Vbar{\overline{V}}
+\def\scrRbar{\overline{\scrR}}
+\def\scrSbar{\overline{\scrS}}
+
+\def\Stil{\widetilde{S}}
+\def\scrStil{\widetilde{\scrS}}
+\def\scrTtil{\widetilde{\scrT}}
+\def\rhotil{\tilde{\rho}}
+
+%\def\Stab{\text{\rm Stab}}
+\def\Vbarspace{\overline {V}_{space}}
+\def\Vspace{ V_{space}}
+\def\SO{\text{\rm SO}} 
+\def\Spin{\text{\rm Spin}}
+\def\Res{\text{\rm Res}}
+\def\Aut{\text{\rm Aut}}
+\def\Out{\text{\rm Aut}}
+\def\End{\text{\rm End}}
+\def\supp{\text{\rm supp}}
+\def\spin{\text{\rm spin}}
+\def\QFT{\text{\rm QFT}}
+%\def\SU{\text{\rm SU}} \def\Lie{\text{\rm Lie}}
+%\def\SL{\text{\rm SL}} \def\Sym{\text{\rm Sym}}
+
+\def\dbC{{\Bbb C}} 
+\def\dbR{{\Bbb R}}
+\def\dbZ{{\Bbb Z}} 
+
+\def\gr#1{{\fam\eufmfam\relax#1}}
+
+%Euler Fraktur letters (German)
+\def\grA{{\gr A}}	\def\gra{{\gr a}}
+\def\grB{{\gr B}}	\def\grb{{\gr b}}
+\def\grC{{\gr C}}	\def\grc{{\gr c}}
+\def\grD{{\gr D}}	\def\grd{{\gr d}}
+\def\grE{{\gr E}}	\def\gre{{\gr e}}
+\def\grF{{\gr F}}	\def\grf{{\gr f}}
+\def\grG{{\gr G}}	\def\grg{{\gr g}}
+\def\grH{{\gr H}}	\def\grh{{\gr h}}
+\def\grI{{\gr I}}	\def\gri{{\gr i}}
+\def\grJ{{\gr J}}	\def\grj{{\gr j}}
+\def\grK{{\gr K}}	\def\grk{{\gr k}}
+\def\grL{{\gr L}}	\def\grl{{\gr l}}
+\def\grM{{\gr M}}	\def\grm{{\gr m}}
+\def\grN{{\gr N}}	\def\grn{{\gr n}}
+\def\grO{{\gr O}}	\def\gro{{\gr o}}
+\def\grP{{\gr P}}	\def\grp{{\gr p}}
+\def\grQ{{\gr Q}}	\def\grq{{\gr q}}
+\def\grR{{\gr R}}	\def\grr{{\gr r}}
+\def\grS{{\gr S}}	\def\grs{{\gr s}}
+\def\grT{{\gr T}}	\def\grt{{\gr t}}
+\def\grU{{\gr U}}	\def\gru{{\gr u}}
+\def\grV{{\gr V}}	\def\grv{{\gr v}}
+\def\grW{{\gr W}}	\def\grw{{\gr w}}
+\def\grX{{\gr X}}	\def\grx{{\gr x}}
+\def\grY{{\gr Y}}	\def\gry{{\gr y}}
+\def\grZ{{\gr Z}}	\def\grz{{\gr z}}
+
+
+\def\scr#1{{\fam\eusmfam\relax#1}}
+
+\def\scrA{{\scr A}}   \def\scrB{{\scr B}}
+\def\scrC{{\scr C}}   \def\scrD{{\scr D}}
+\def\scrE{{\scr E}}   \def\scrF{{\scr F}}
+\def\scrG{{\scr G}}   \def\scrH{{\scr H}}
+\def\scrI{{\scr I}}   \def\scrJ{{\scr J}}
+\def\scrK{{\scr K}}   \def\scrL{{\scr L}}
+\def\scrM{{\scr M}}   \def\scrN{{\scr N}}
+\def\scrO{{\scr O}}   \def\scrP{{\scr P}}
+\def\scrQ{{\scr Q}}   \def\scrR{{\scr R}}
+\def\scrS{{\scr S}}   \def\scrT{{\scr T}}
+\def\scrU{{\scr U}}   \def\scrV{{\scr V}}
+\def\scrW{{\scr W}}   \def\scrX{{\scr X}}
+\def\scrY{{\scr Y}}   \def\scrZ{{\scr Z}}
+
+\def\gr#1{{\fam\eufmfam\relax#1}}
+
+
+%Euler Fraktur letters (German)
+\def\grg{{\frak g}}
+\def\grp{{\frak p}}
+
+
+%\NoBlackBoxes
+\document
+
+\centerline{\bigboldtitlefont Lecture 1.}
+
+\centerline{\boldtitlefont Wightman axioms.}
+
+\bigskip
+\centerline{David Kazhdan}
+
+\subhead Introduction\endsubhead
+In this series of lectures we will present  Wightman axioms and show how 
+this set of axioms can be used to derive deep and unexpected results on  
+behavior of  quantum field theories. These axioms constitute a consistent 
+mathematical theory which can serve for a mathematician as a gateway to the 
+strange world of quantum field theories. In spite of the failure to 
+describe the structure of gauge theories    Wightman axioms are very useful 
+for developing of an intuition on quantum field theories.  
+
+
+\subhead{1.0} {Setup and notations}\endsubhead
+Let $V$ be a pseudo-Riemannian manifold of signature
+$(1,d-1)$.
+In these lectures we will only consider the case
+$V=\dbR^{1,d-1}$ with constant quadratic form.
+We denote by $(\quad,\quad)\colon\,V\times V\to\dbR$ the
+corresponding quadratic form and will write $v^2$ instead
+of $(v,v)$ for $v\in V$.
+We will sometimes use decomposition
+$V=\dbR\times\dbR^{d-1}$, where $\dbR$ (time) and $\dbR^{d-1}$ (space) are
+ orthogonal subspaces 
+equipped with constant positive (respectively negative) definite
+metrics.
+This decomposition is fixed throughout the lectures.
+We denote: $V_{space}$ $=\{v\in V\vert v^2<0\}$;
+and $\Vbarspace$ is the closure of $V_{space}$.
+The complement $V-\Vbarspace$ consists of $2$ connected components, $V_+$
+and $V_-$ (where
+$V_{\pm}\subset\dbR^{\pm}\times\dbR^{d-1})$.
+
+For $m\in \dbR$ we put $\scrO_m^\pm=\{v\in\Vbar_\pm\vert
+v^2=m^2,\,v\not=0\}$.
+Let $dv$ be the standard measure on $V$ and let $\mu_m=\Res 
+\vrulesub{\scrO_m^+}\,\frac{dv}{v^2-m^2}$ be the
+invariant volume form on $\scrO_m^+$.
+
+Let $G=\Spin(V)$ be the double (universal for $d>3$)
+cover of connected component of the group $\SO(1,d-1)$.
+The semidirect product $P=G\ltimes V$  is called the Poincare group.
+It acts on $V$ by isometries.
+We denote by $\spinel\in G$ the nontrivial element of the
+kernel of the map $G\to\SO(1,d-1)$.
+
+We will use the quadratic form to identify $V^*$ with $V$,
+but we will distinguish between vectors and covectors by
+reserving the letters $v$, $w$, etc. for vectors, and $p$,
+$q$, etc. for covectors.
+
+Note that the cone $V_+$ is self-dual (i.e. $\{p\in V\vert
+(p,v)>0\,\,\forall\,v\in V_+\}=V_+$).
+For a function $f$ on $V$ we will denote by $\scrF(f)$ its
+Fourier transform; so we have:
+$$
+\scrF(f)(p)=\frac{1}{(2\pi)^{d/2}}\int\limits_{V}
+e^{-i(p,v)}f(v)dv.
+$$
+
+Let $U\colon\,V\to\Out(\scrH)$ be a unitary representation
+of the vector group $V$ in a Hilbert space $\scrH$.
+
+\definition{Definition}
+Representation $U$ is called {\it positive} if support of the
+corresponding spectral measure lies in $\Vbar_+$.
+\enddefinition
+
+\medskip
+If $U\colon\,P\to\Aut(\scrH)$ is a unitary representation,
+then we say that $U$ is positive if $U\vrulesub{V}$ is
+positive.
+
+For a $G$-module $H$ we will write
+$H=H^{even}\oplus H^{odd}$, where $H^{even}$ (respectively
+$H^{odd}$) is the space of invariants (respectively antiinvariants)
+ of $\spinel$. We will endow $H$ with
+the structure of superspace given by this decomposition.
+
+Let $R=R^{even}\oplus R^{odd}$ be a finite dimensional real
+representation of $G$.
+Since $P$ acts transitively on $V$ and stabilizer of $0$ is
+$G$, we can associate to $R$ a $P$-equivariant vector bundle
+$\scrR$ on $V$.
+
+Let $\scrS^R=\scrS_{even}^R\oplus\scrS _{odd}^R$ be the space of
+Schwartz sections of this bundle.
+(Note that our bundle is trivialized equivariantly with respect to
+translations,  and
+$\scrS^R$ is identified with the space of smooth rapidly
+decreasing $R$-valued functions on $V$.)
+We will often abbreviate $\scrS=\scrS^R$.
+
+Finally we need some preparations on signs. 
+
+We say that a complex superspace $H = H^{even} \oplus H ^{odd}$
+is a superHermitian space if it is endowed with an even $\dbR$-bilinear pairing
+$(\quad,\quad):H\times H \to \dbC$ such that 
+$(\lambda x,y)=(x, \overline {\lambda}y)=\lambda (x,y)$ and
+$(x,y)=(-1)^{|x|\cdot |y|} \overline {(y,x)}$.
+ Note that since $(\quad,\quad)$ is even we have
+ $(x,y)=0$ for   $x\in H ^{even},\, y\in H^{odd}$. 
+
+$H$ is called superHilbert space if ($H^{even}, (\quad,\quad)$)
+and ($H^{odd} , -i(\quad,\quad)$) are Hilbert spaces. 
+For $T\in \End(H)$ the (super)adjoint operator $T^*$ is defined by:
+$(Tx,y)=(-1)^{|x|\cdot |T|}$ 
+$ (x,T^*y)$. An operator is superHermitian
+symmetric if $T^*=T$. We will often omit the word super.
+
+Now we are ready to formulate:
+
+\subhead{1.1} {Wightman axioms} \endsubhead
+
+\noindent
+{\bf Data:}\enspace
+
+\roster
+\runinitem"1)"
+A finite dimensional real representation
+$\rho\colon\,G\to\Aut\,R$.
+
+\smallskip
+\item"2)"
+A positive unitary representation $U\colon\,P\to\
+\Aut(\scrH)$ in a (super)Hilbert space $\scrH$.
+
+\smallskip
+\item"3)"
+A dense $P$-invariant subspace $\scrD\subset\scrH$, and a
+$P$-invariant vector $\Omega\in \scrD$,
+$\Vert\Omega\Vert=1$.
+
+\smallskip
+\item"4)"
+A linear map $\phi\colon\,\scrS ^R\to\End(\scrD)$, called 
+{\it the field map} such that:
+\endroster
+
+\bigskip
+\roster
+\item"$\alpha)$"
+$\phi$ is $P$-equivariant where $P$ acts on $\End(\scrD)$ by
+conjugation.
+
+\smallskip
+\item"$\beta)$"
+$\phi(f)$ is superHermitian-symmetric.
+
+\smallskip
+\item"$\gamma)$"
+For any $\psi_1,\psi_2\in\scrD$ the map
+$f\to\left<\psi_1,\phi(f)\psi_2\right>$ from $\scrS$ to $\dbC$
+is continuous 
+($\scrS=\scrS ^R$ is equipped with the Schwartz topology).
+
+\smallskip
+\item"$\delta)$"
+The space $\scrD$ is generated by vectors
+$\phi(f_1)\phi(f_2),\dotsc,\phi(f_n)\Omega$, for 
+$f_1,\dotsc,f_n\in\scrS$.
+
+\smallskip
+\item"$\varepsilon)$" {\rm (space-locality)}
+If $f_1,f_2\in\scrS$ are such that for any
+$v_1\in\supp(f_1)$, $v_2\in\supp(f_2)$ we have
+$(v_1-v_2)\in V_{space}$ (such $f_1$, $f_2$ are called {\it
+space-like separated}), then $[\phi(f_1),\phi(f_2)]=0$
+where $[\quad,\quad]$ stands for supercommutator.
+\endroster
+
+\remark{Remark}
+It is often assumed that the space of $V$-invariants in
+$\scrH$ is $1$-dimensional (uniqueness of vacuum).
+\endremark
+
+Such set of data satisfying the above properties 
+is called QFT in Wightman axioms (or simply Wightman QFT).
+
+
+\subhead{1.2} {Wightman's functions} \endsubhead
+Let us denote: $V_n=V\times V\times\dots\times V$ ($n$
+times);
+$\scrR_n=\scrR^{\boxtimes n}$ (this is a bundle on $V_n$).
+The space of Schwartz sections of $\scrR_n$ will 
+be denoted by $\scrS_n$.
+
+For $n\geq 1$ the Schwartz theorem and the property $(\gamma)$ imply the
+existence of unique  tempered $\dbC$-valued
+distribution $\scrW_n\in\scrS'_n$
+such that
+$$
+\scrW_n(f_1\times f_2\times\dots\times f_n)=\left<\Omega,
+\phi(f_1)\phi(f_2)\dots \phi(f_n)\Omega\right>
+$$
+for $f_1,\dotsc,f_n\in\scrS$. 
+
+These $\scrW_n$ are called {\it Wightman functions}, or correlation
+ functions of the theory. (We will use the
+word ``function'' for a section of an appropriate vector
+bundle when it causes no confusion). 
+
+
+
+\subhead{1.3} {Reconstruction of QFT from Wightman functions} \endsubhead
+We are going to show that a QFT is uniquely determined by its
+Wightman functions.
+So we assume that a representation $\rho$ of $G$ and 
+a collection  of distributions $\scrW_n\in\scrS_n$
+are  given, and that $\scrW_n$ are Wightman functions of some 
+Wightman QFT $(\rho;\,\scrH, \scrD, \Omega ; \, \phi)$.
+We want to reconstruct  $\scrH, \scrD, \Omega$ and $\phi$.
+
+
+Let us put $\scrStil=\oplusop_{n}\scrS_n$, $\scrW=\Piop_{n}
+\scrW_n\in\scrStil'$  (where we use the standard notation 
+ $L'$ for the topological dual of  a topological vector space $L$).
+The space $\scrStil$ carries an algebra structure: $f_1\cdot
+f_2=f_1\boxtimes f_2$.
+For $f\in\scrS_n$ we define $f^*\in\scrS_n$ by:
+$f^*(v_1,\dotsc,v_n)=\pm f(v_n,\dotsc,v_1)$ 
+(the sign is determined by the super-rule as usually).
+Consider a bilinear form $\{\quad,\quad\}$ on $\scrStil$ given
+by:
+$$
+\{f_1,f_2\}=\scrW(f_1^*\cdot f_2).
+$$
+
+
+\definition{Claim}
+$\{f_1,f_2\}=\left<\phi(f_1)\Omega,\phi(f_2)\Omega\right>$.
+\enddefinition
+
+\demo{Proof}
+Clear.
+\enddemo
+
+We  can recover $\scrH$ as the Hilbert space completion of
+$(\scrStil\otimes\dbC,\{\quad,\quad\}')$,
+where $\{\quad,\quad\}'$ is the unique Hermitian scalar
+product on $\scrStil\otimes\dbC$, such that
+$\{\quad,\quad\}'\vrulesub{\scrStil}=\{\quad,\quad\}$.
+Then we can take $\scrD$ to be the image of the obvious map
+$\scrStil\otimes\dbC\to\scrH$ and define $\Omega$ as the
+image of $1\in\scrStil$ under this map.
+Since $P$ acts on $\scrStil$ preserving $\{\quad,\quad\}$ this
+action defines an action of $P$ on $\scrH$.
+Finally, we get an algebra map
+$\phi\colon\,\scrStil\to\End(\scrD)$.
+
+\medskip
+
+Before we formulate the next Claim let us fix some notations.
+Let $\Delta \colon V\to V_n$ be the diagonal embedding,
+and $\Vbar_n=V_n/\Delta$ be the quotient space.
+Since $\scrR_n$ is $P$-equivariant it defines a bundle
+$\scrRbar_n$ on $\Vbar_n$.
+Let $\scrSbar_n$ be the space of Schwartz sections of
+$\scrRbar_n$.
+For $f\in \scrS_n$ let $\fbar\in\scrSbar_n$ be its averaging
+over $\Delta(V)$, and let $pr^*$ be the dual map on distributions.
+
+We identify $\Vbar_n\arrowsim V_{n-1}$  by:
+$$
+(v_1,v_2,\dotsc,v_n)\to (v_2-v_1,\dotsc,v_n-v_{n-1}).
+$$
+
+\proclaim{Claim}
+$\scrW_n$ satisfy the following properties:
+
+\smallskip
+\roster
+\item"1)"
+ $\scrW_n$ is $P$-invariant for all $n$.
+
+\noindent
+In particular, $\scrW_n$ is $\Delta(V)$-invariant;
+hence $\scrW_n=pr^*(W_n)$ for unique $W_n\in \scrSbar_n'$.
+
+
+\smallskip
+\item"2)"
+$\supp\,\scrF(W_n)\subset(\Vbar_+)^{n-1}$.
+
+\smallskip
+\item"3)"
+$\scrW_n(f^*)=\overline{\scrW_n(f)}$.
+
+\smallskip
+\item"4)" 
+$\scrW(v_1,\dotsc,v_i ,v_{i+1},\dotsc,v_n)=
+\pm\scrW(v_1,\dotsc,
+v_{i+1},v_i,\dotsc,v_n)$ if $v_i-v_{i+1}\!\!\in\! V_{space}$.
+(Here the sign comes from the $\dbZ/2$ grading on the space
+of test function $\scrS_n=\scrS_n^+\oplus \scrS_n^-$.)
+
+\smallskip
+\item"5)"
+$\scrW(f^*\cdot f)\Ge 0$.
+\endroster
+\endproclaim
+
+\demo{Proof} 1) and 3)--4) are clear. Let us prove 2). 
+
+
+We have to check that $W_n(f)=0$ if for some $i$
+$\supp(\scrF(f))$ lies in
+the domain $\{(v_1,..,v_n)$ $\in V_n\vert v_i\in V-\Vbar_+\}$.
+For such $f$ we can find $g\in\scrS_{n+1}$ with $\gbar=f$
+satisfying: $\supp\,\scrF(g)\subset\{(v_1,\dotsc,v_{n+1})
+\in V_{n+1}\vert v_1+\cdots+v_{i+1}\in V-\Vbar_+\}$.
+So we have to show that for such $g$: $\scrW_n
+(g)=0$.
+We can assume $g=g_1\otimes g_2$ for $g_1\in \scrS_{i+1},g_2\in
+\scrS_{n-i}$, and $\supp\,\scrF(g_1)\subset
+\{(v_1,\dotsc,v_{i+1})\in V_{i+1}\vert v_1+\cdots+v_{i+1}
+\subset V-\Vbar_+\}$.
+We have $\scrW_n(g)=\langle 
+\phi(g_1)^*\Omega,\phi(g_2)\Omega \rangle$.
+But the spectral support of $\phi(g_1^*)\Omega$ is contained
+in the set $\{v_1+\cdots + v_{i+1}\vert (v_1,\dotsc,v_{i+1})\in
+\supp\,\scrF(g_1)\}$.
+On the other hand, it is contained in $\Vbar_+$ by the
+positivity condition.
+Hence, it is empty, and $\phi(g_1^*)\Omega=0\Rightarrow
+\scrW_n(g)=0$.
+\enddemo
+
+\remark{Remark} By a standard  theorem  from analysis property 2) is
+equivalent to the following: 
+
+$2')$ $W_n$ is a boundary value of an analytic function on $V_{n-1}+i (V_+)
+^{n-1}$.
+\endremark
+
+It is not hard to see the following
+
+\proclaim{Theorem}
+The above constructions provide a bijection between the
+following sets of data:
+
+\smallskip
+\roster
+\item"{\rm a)}"
+$\rho$; $\scrH\supset \scrD\owns \Omega$; $\phi$ satisfying
+Wightman's axioms;
+
+\smallskip
+\item"{\rm b)}"
+representation $\rho$ of $G$ and a collection of
+distributions $\{\scrW_n\}$ satisfying properties 1) -- 5)
+above.
+\endroster
+\endproclaim
+
+\remark{Remark}
+Sometimes one considers theories satisfying weaker axioms.
+Namely, let $\scrS_n^0\subset \scrS_n$ be the subspace of sections
+which vanish on diagonals together with all partial
+derivatives.
+A QFT satisfying weak Wightman's Axioms is (a
+representation $\rho$ together with) a collection of
+$\scrW_n\in(\scrS_n^0)'$ satisfying 1), $2')$, 3), 4) above.
+
+Note that an essential property 5) can not be formulated
+if $\scrW_n$  are defined on $\scrS _n^0$ only  because
+$f^*\cdot f$ does not lie in $\scrS ^0$.
+\endremark
+
+\subhead{1.4} {Spin-statistics Theorem}\endsubhead
+This is a statement that our convention on the parity of the basic
+superspace $R$ is the only right one. More precisely, we have:
+\proclaim{Theorem} Consider the Wightman axioms with the
+sign in 
+the axiom of space-locality changed. Any theory satisfying this modified
+set of axioms is trivial. (The field map $\phi=0$.) 
+\endproclaim
+
+\demo{Proof}
+Let us take a 2-dimensional subspace $U\subset V$ of signature (1,1). Let
+$\sigma'$ be the element of $\SO (d-1,1)$ which acts by $-1$ on $U$ and by
+1 on the orthogonal complement; let $\sigma$ be an element in the
+complexification of $\Spin(d-1,1)$ which projects to $\sigma'$.
+ Then $\sigma ^2=\spinel$ is the spin element.
+Also note that the eigenspaces of $\sigma$ in the space of
+$R\otimes \dbC$ are defined over $\dbR$. If $\spinel$ acts trivially in $R$
+then this is obvious because $\sigma$ is real;
+ otherwise $\spinel$ acts by $-1$ and we use the identity $\bar \sigma=
+\spinel \sigma$ to see that the $\pm i$ eigenspace of $\spinel$ is invariant
+under the conjugation. 
+
+In the next lecture (\S {2.2}) we will show that $W_n$ extends to an
+analytic  $G_\dbC$-equivariant function on a certain open domain 
+in the complexification $\Vbar_n\otimes \dbC$. In particular  $W_2$  is
+analytic in the domain $\scrTtil := \{v\,|\, v^2\not \in \dbR^{\geq
+0}\}$. This 
+analytic function is also denoted $W_2$.
+
+
+
+Let now $r\in R$ be a $\sigma$ eigenvector; let $v$ be a point in 
+$U\otimes \dbC\cap
+\scrTtil $. We claim that $\left<
+r\otimes r, W_2(v)\right>=0$. Indeed we have  $\left<
+r\otimes r, W_2(v)\right>= \left<
+\sigma(r)\otimes \sigma(r), W_2(-v)\right>=\spin(R)\cdot  \left<
+r\otimes r, W_2(-v)\right>$ where $\spin (R)$ is the $\spinel$ eigenvalue on
+$R$; here the first equality follows from $\sigma$-equivariance, and the
+second is obvious from $\sigma^2=\spinel$.
+
+ On the other hand  by our assumption $  \left<
+r_1\otimes r_2, W_2(v)\right>= -\spin (R)\cdot \left<
+r_2\otimes r_1, W_2(-v)\right>$ for $v\in V^{space}$. Since
+$V^{space}\subset \scrTtil$, we get
+ $\left<
+r\otimes r, W_2(v)\right>=0$ for $v\in V^{space}$, and hence for all $v\in
+\scrTtil$. 
+
+For any real valued Schwartz function $f$ on $V$ we have $\left<
+\phi(f\cdot r)\Omega, 
+\phi(f\cdot r)\Omega \right>=\int  \left<f\cdot r\times f\cdot r,
+\scrW_2\right> = \int  \left<\scrF(f)\cdot r\times \scrF(f)\cdot r, 
+\scrF(\scrW_2)\right>=\int \scrF(f)\cdot\overline{\scrF(f)}
+ \left< r \otimes r,\scrF(W_2)\right>$. This shows that the distribution
+$\left< r\otimes r, \scrF(W_2)\right>$ is nonnegative. 
+
+Now let us take $v\in  V^+$. Then we get   
+$$
+0=\left<
+r\otimes r, W_2(i v)\right>=\int \exp(-v,p)\left< r\otimes r,
+\scrF(W_2)\right>.
+$$
+ Since $\exp(-v,p)$ is positive this implies that 
+$\left< r\otimes r,\scrF(W_2)\right>=0$, hence $(\phi (f\cdot
+r)\Omega)^2=0$, so the theory is trivial.
+\enddemo
+
+We finish by some elementary   
+properties of Wightman functions, and their relation to properties of the
+field map.
+
+\subhead{1.5} {Mass spectrum of a theory}\endsubhead
+Let us denote
+$\Delta_\plus(p,m^2)=\scrF(\delta_{\scrO_m^\plus})(p)$.
+
+\proclaim{Claim}
+For any scalar field theory
+$\phi\colon\,\scrS(V)\to\End(\scrD)$ there exists a positive
+measure $d\rho$ on $[0,\infty)$ such that:
+$$
+W_2(p)=\int\Delta_\plus (p,m)d\rho(m)\,\,.
+$$
+\endproclaim
+
+\demo{Proof} We have to show that $\scrF (W_2)=\int d\rho(m) \delta
+_{\scrO_m ^+}$ for a positive measure $d\rho$.
+ Since $\scrO_m^+$ is an orbit of the group $G$
+it is obvious that any $G$-invariant distribution supported in $\sqcup
+\scrO_m^+ = \overline {V_+}$ can be written down in such form for some
+distribution $\rho$. In order to see that $\rho$ is positive we have to show 
+that $\scrF(W_2)$ is positive.
+
+For any $f\in \scrS$ we have $\scrW_2(f\boxtimes f)=\left<\phi(f)\Omega,
+\phi(f) \Omega \right> \Ge 0$. Hence for  $g=\scrF(f)$ we have
+$ \scrF(\scrW_2 )\left( g\boxtimes g\right)\Ge0$.
+
+ We know that 
+$ \scrF(\scrW_2 )$ is concentrated on the anti-diagonal and 
+ $$ \scrF(\scrW_2 )(p,-p)=\scrF(W_2)(p)$$ Now note that $f\in \scrS$
+iff $g=\scrF(f)\in \scrS^\dbC$ and $g(-p)=\overline {g(p)}$.
+Thus for any such $g$ 
+$$\scrF(W_2 )(g\cdot \overline g )= \scrF(\scrW_2 )(g\boxtimes g)
+\Ge 0$$
+which means that $\scrF(W_2) $ is positive.
+
+\enddemo
+
+\definition{Definition}
+The {\it mass spectrum} of a $\QFT$ is support of the measure
+$d\rho$.
+The {\it mass} of the theory is the infinum of its mass spectrum
+with 0 removed.
+\enddefinition
+
+\subhead{1.6} {Asymptotics of Wightman functions}\endsubhead
+The next statement is a baby example of relation between analytical
+behavior of Wightman functions and  properties of the field map. 
+Estimates of this kind will be used essentially 
+in the lecture on scattering theory (see lecture 4, 
+\S 4.3, Proposition 1 and Claim 1).
+
+
+\proclaim{Claim} 
+
+a) Uniqueness of vacuum in a $\QFT$ is equivalent to the
+equality:
+$$\lim\limits_{\lambda\to\infty}\scrW_n(v_1,\dotsc,v_i,v_{i+1}
++\lambda
+a,\dotsc,v_n+\lambda a)=\scrW_i(v_1,\dotsc,v_i)
+\scrW_{n-i}(v_{i+1},\dotsc,v_n)$$ being true for all $i$,
+$n$ and $a$ such that $a^2<0$.
+
+b) \ Assume that mass of the theory is $m_0>0$.
+Then $W_2(v)\sim e^{-m_0\sqrt{-v^2}}$ as $v^2\to-\infty$.
+\endproclaim
+
+\demo{Proof}
+ a)  For any $f_1,\dotsc, f_n \in \scrS$ we have
+$$\scrW_n\left(f_1,\dotsc,f_i,T_{\lambda a} (f_{i+1})
+,\dotsc,T_{\lambda a}(f_n)\right) = \langle \phi (f_i)
+\dotsc \phi (f_1) \Omega ,
+\phi (T_{\lambda a}(f_{i+1}))
+% \phi (T_{\lambda a}(f_{i+2})) 
+\dotsc  \phi (T_{\lambda a}(f_n))\Omega \rangle$$
+$$= \left< \phi (f_i)
+\dotsc \phi (f_1) \Omega \, ,\, U(T_{\lambda a}) (\phi (f_{i+1})
+ \dotsc  \phi (f_n)\Omega) \right>$$
+where $T_{\lambda a}$ stands for translation by $\lambda a$.
+From the positivity condition it follows that the weak  limit
+ $ \lim\limits_{\lambda\to\infty} U(T_{\lambda a})$ exists as a bilinear
+form (i.e. all matrix coefficients converge),
+and equals to the projection on $\scrH ^V$.
+
+Hence $$\lim\limits_{\lambda\to\infty} \left< \phi (f_i)
+\dotsc \phi (f_1) \Omega , U(T_{\lambda a}) \left( \phi (f_{i+1})
+ \dotsc  \phi (f_n)\Omega \right) \right> = \left<   \pr (\phi (f_i)
+\dotsc \phi (f_1) \Omega) ,
+ \pr (\phi (f_{i+1})
+\dotsc \phi (f_ n) \Omega) \right>$$
+where $\pr$ is the  projection on $\scrH ^V$. The statement follows.
+
+ b) We have
+$$W_2( v)= \int\limits _V \scrF(W_2)(p) e^{i( v,p)} dp =
+ \int\limits_{0}^\infty d\rho(m) \int\limits
+ _{\scrO _m^+} e^{(i
+v,p)} d\mu_m (p)$$ where $\mu_m$ is the invariant measure on
+$\scrO _m^+$. For $v\in \dbR^{d-1}-\{0\}$ it can be rewritten as:
+$$ \const
++\int\limits_{m_0}^\infty d\rho(m) \int\limits _{\dbR^{d-1}} e^{i( v,q)} dq
+/ \sqrt {m^2-q^2}$$
+(Remember that $q^2=(q,q)$ is negative for $q\in \dbR^{d-1}-\{0\}$).
+
+The integrand is
+ analytic in the region $Re(m_0^2-q^2)>0$; it also 
+  decreases as $(\vec{p})^2\to -\infty $ for fixed $p_0$, where  $p=(
+ \vec{p},p_0)$ is decomposition into space and time components. Hence 
+we can shift the
+contour of integration from $\dbR^{d-1}$ to $\Gamma\subset \dbC^{d-1}$ where 
+$\Gamma$ is $\dbR^{d-1}+im_0 v/\sqrt{-v^2}$ squeezed slightly towards
+$\dbR^{d-1}$ in a small neighborhood
+of the singular point $im_0 v/\sqrt{-v^2}$ to avoid the singularity.
+Then the estimate becomes obvious. 
+
+
+
+\enddemo
+
+We will  usually assume that uniqueness of vacuum holds for the theory
+under consideration.  
+
+\enddocument
+
+

@@ -1,0 +1,355 @@
+\input amstex
+\magnification=1200
+\documentstyle {amsppt}
+\pagewidth{6.5 true in}
+\pageheight{8.9 true in}
+\nologo
+\input pictex
+
+\noindent
+{\bf Fall Term Exam, N$^{\text{0}}$. 3}\qquad\qquad\qquad
+\qquad\qquad\qquad\qquad\qquad(solution by D. Freed)
+\smallskip
+\hbox to \hsize{\hrulefill}
+\bigskip
+\noindent
+{\bf Problem:}
+\medskip
+Determine the asymptotic behavior of perturbation theory in
+soft or cutoff scalar field theories, as follows.
+(Fermions and gauge fields introduce different behavior,
+not to mention other types of theories such as sigma
+models.)
+\roster
+\item"{(a)}"  Consider the integral
+$$
+Z(g)=\int\nolimits^\infty_\infty
+d\phi\,\exp\left(-\frac{1}{2}\,\phi^2-g\phi^4\slash4!\right).
+\tag1
+$$
+\endroster
+\noindent
+Expand in an asymptotic series in $g$
+$$
+Z(g)=\sum\limits_ka_kg^k\tag2
+$$
+and determine the large $k$ behavior of $a_k$.  Hint:
+write an integral representation for $a_k$ and find a
+method of computing the integral for large $k$, for
+instance, Where is the maximum of the integrand?
+\roster
+\item"{(b)}"  Interpret the answer to (a) as a statement
+about the number of graphs of a particular kind, weighted
+according to their automorphism groups.
+\smallskip
+\item"{(c)}"  Now consider the path integral
+$$
+Z(g)=\int D\phi\,e^{-L}\tag3
+$$
+in a scalar field theory in $n$ dimensions, with
+$$
+L=\int
+d^nx\,\left(\frac{1}{2}|d\phi|^2+\frac{1}{2}m^2\phi^2+\frac{g}
+{4!}\phi^4\right).\tag4
+$$
+\endroster
+\noindent
+Write down, again, an integral representation for the
+coefficients $a_k$ in the asymptotic expansion of $Z(g)$
+and determine the large $k$ behavior, at least at a
+physical level of rigor, by finding the maximum of the
+integrand.
+\medskip
+You should get a non-linear differential equation, and you
+should be able to prove that it has a spherically
+symmetric solution; it is believed that this solution does
+determine the large $k$ behavior of the $a_k$ in a cutoff
+$\phi^4$ theory or in dimensions below four.  In four
+dimensions, the much more complicated renormalization,
+which you've presumably ignored in the computation above,
+changes things ($L$ must be redefined by incorporation of
+counterterms and the expansion in powers of $g$ is not made
+as simply as you've presumably done above).
+\vfill\eject
+
+\noindent
+{\bf Solution:}
+\medskip
+(a)  We write
+$$
+Z(g)=\int\limits^{\,\,\,\,\,\,\,\,\,\,\infty}_{-\infty}d\phi
+\,\,e^{-\phi^2\slash_2-g\phi^4\slash_{4!}}\sim\sum\limits^
+\infty_{k=0}a_kg^k
+$$
+so that by Taylor's formula
+$$
+a_k=\frac{(-1)^k}{k!(4!)^k}\quad\int\limits^{\,\,\,\,\,\,\,
+\,\,\,\infty}_{-\infty}d\phi\,\,e^{-\phi^2\slash_2}\,\phi^{4k}.
+\tag1
+$$
+We can evaluate the integral in (1) exactly:  set
+$$
+\align
+F(J)&=\int\limits^{\,\,\,\,\,\,\,\,\,\,\infty}_{-\infty}d\phi\,\,e^{-\phi
+^2\slash_2+J\phi}\\
+&=\int\limits^{\,\,\,\,\,\,\,\,\,\,\infty}_{-\infty}d\phi\,\,e^{-(\phi+J)^
+2\slash_2}\,\,e^{J^2\slash_2}\\
+&=\sqrt{2\pi}\,\,e^{J^2\slash_2}.
+\endalign
+$$
+The integral in (1) is the derivative
+$$
+F^{(4k)}(J=0)
+=\sqrt{2\pi}\,\,\,\frac{(4k)!}{(2k)!2^{2k}},\tag2
+$$
+so from (1) we have
+$$
+a_k=\frac{(-1)^k(4k)!\,\,\sqrt{2\pi}}{k!(24)^k(2k)!\,2^{2k}}.
+\tag3
+$$
+Now we apply Sterling's formula
+$$
+n!\sim\sqrt{2\pi}\,\,\left(\frac{n}{e}\right)^n\,\sqrt n
+$$
+to deduce
+$$
+a_k\sim(-1)^k\,\,\left(\frac{2k}{3e}\right)^k\,\,\sqrt{\frac{2}
+{k}}.\tag4
+$$
+\medskip
+Alternatively, write the integral in (1) as
+$$
+\int\limits^{\,\,\,\,\,\,\,\,\,\,\infty}_{-\infty}d\phi\,\,\phi
+^{4k}\,\,e^{-\phi^2\slash_2}=\int\limits^{\,\,\,\,\,\,\,\,\,\,
+\infty}_{-\infty}d\phi\,\,e^{-\phi^2\slash_2+2k\,\ell
+n\phi^2}\tag5
+$$
+and find the maximum of the exponent at
+$\phi=\pm\sqrt{2k}$. At these points the second diverative of
+the exponents is $-2$, so the integral to a Gaussian
+approximation at either of these maxima is
+$$
+\align
+\int\limits^{\,\,\,\,\,\,\,\,\,\,\infty}_{-\infty}d\phi\,\,e^{
+-\phi^2\slash_2+2k\,\ell
+n\phi^2}&\sim(4k)^{2k}\,\,e^{-2k}\,\,\int\limits^{\,\,\,\,\,\,\,
+\,\,\,\infty}_{-\infty}d\tilde\phi\,\,e^{-2\tilde\phi^2\slash
+_2}\\
+&=(4k)^{2k}\,\,e^{-2k}\,\,\sqrt\pi.
+\endalign
+$$
+Since there are two such maxima we find from (1) that
+$$
+a_k\sim\frac{(-1)^k\,2(4k)^{2k}\,\,e^{-2k}\,\sqrt\pi}{k!(24)^
+k}.
+$$
+Using Sterling's formula we obtain agreement with (4).
+\medskip
+(b)  According to the Feynman calculus
+$|a_k|\slash_{\raise 2pt\hbox{$\scriptstyle {\sqrt{2\pi}}$}}$ 
+counts the number of
+equivalence classes of graphs with the $k$ 4-valent
+vertices, each graph $\Gamma$ counted with a factor of
+$^1\slash_{\raise 2pt\hbox{$\scriptstyle {\sharp\text{Aut}
+\Gamma}$}}$.  
+We can check this directly by
+counting.  Start with $k$ 4-valent vertices, with the
+vertices numbered $1,2,...,k$ and the edges of each vertex
+labeled 1,2,3,4.  Then each edge has a number $ab$
+attached, where $a$ is the vertex number and $b$ the label
+of the edge at that vertex.  Now there is an obvious
+ordering of all edges (11, 12, 13, 14, 21, 22, 23, 24,
+etc.).  We must attach the edges.  For the first edge there
+are $(4k-1)$ choices, for the next available edge $(4k-3)$
+choices, etc.  So the total number of labeled graphs is
+$$
+1\cdot3\cdot5\cdots\cdots(4k-1)=\frac{(4k)!}{(2k)!\,2^{2k}},
+$$
+and since there are $k!$ automorphisms of the vertex
+numberings and $(4!)^k$ automorphisms of the edge labelings, our
+counting is consistent with (1).
+\medskip
+(c)   Now for the path integral we have, analogously to
+(1), 
+$$
+a_k=\frac{(-1)^k}{k!(4!)^k}\,\,\int
+D\phi\,\,e^{-\frac{1}{2}\int d^nx(|d\phi|^2+m^2\phi^2)}\,\,
+\left(\int\,d^nx\,\phi^4\right)^k.\tag6
+$$
+\medskip
+As in (5) we rewrite the integrand in (6) as
+$$
+\exp\biggl\{-\frac{1}{2}\,\int d^nx\,(|d\phi|^2+m^2\phi^2)+
+k\,\,\ell n\,\,\int\,d^nx\,\,\phi^4\biggr\}.
+$$
+To find the maximum of the exponent we differentiate
+at
+$\phi$ in the direction $\dot\phi$ and set the result to
+zero:
+$$
+0=\int\,d^nx\,(-\Delta\phi-m^2\phi,\,\,\,\dot\phi)+\frac{4k\,
+\int d^nx\,\phi^3\dot\phi}{\int d^nx\,\phi^4}
+$$
+which implies
+$$
+(\Delta+m^2)\phi=\frac{4k\,\phi^3}{\int d^nx\,\phi^4}.\tag7
+$$
+(Our Laplacian $\Delta$ is nonnegative.)
+\medskip
+We search for a spherically symmetric solution
+$\phi=\phi(r)$ for $r$ the radial variable, so
+$$
+\Delta\phi=-\frac{1}{r^{n-1}}\,\,\,\frac{d}{dr}\,\,\,\left(r
+^{n-1}\,\,\frac{d\phi}{dr}\right).
+$$
+Thus (7) becomes
+$$
+-\frac{d^2\phi}{dr^2}-\frac{n-1}{r}\,\,\,
+\frac{d\phi}{dr}+m^2\phi
+=\frac{k\phi^3}{\pi^2\,\int\nolimits^\infty_0\phi^4(r)r^3dr}.
+$$
+By rescaling $\phi$ it suffices to solve the equation
+$$
+-\frac{d^2\phi}{dr^2}-\frac{n-1}{r}\,\,\,\frac{d\phi}{dr}+m^2
+\phi=k\phi^3;\tag8
+$$
+namely, we replace the solution $\phi$ to (8) by
+$$
+\bigg[\pi^2\,\int\nolimits^\infty_0\phi^4(r)r^3dr\bigg]
+^{-2}\phi.
+$$
+Since we want $\int\nolimits^\infty_0\phi^4(r)\,r^3dr$ to
+be finite, we require
+$$
+\mathop{\lim}\limits_{r\rightarrow\infty}\phi(r)=0.\tag9
+$$
+Also, to make the first derivative term meaningful at
+$r=0$, we require
+$$
+\mathop{\lim}\limits_{r\rightarrow0}\phi'(r)=0.\tag10
+$$
+We now argue that a solution to (8) satisfying (9) and (10)
+exists.
+\medskip
+For $n=1$ equation (8) is Newton's equation
+$$
+\frac{d^2\phi}{dr^2}=-V'(\phi)\tag11
+$$
+for the potential
+$$
+V(r)=\frac{k}{4}\,\phi^4-\frac{m^2}{2}\,\phi^2.
+$$
+%\input frr.tex
+%%% beginning of file frr.tex
+%\input pictex 
+%\font\thinlinefont=cmr5
+%
+%\begingroup\makeatletter\ifx\SetFigFont\undefined
+% extract first six characters in \fmtname
+%\def\x#1#2#3#4#5#6#7\relax{\def\x{#1#2#3#4#5#6}}%
+%\expandafter\x\fmtname xxxxxx\relax \def\y{splain}%
+%\ifx\x\y   % LaTeX or SliTeX?
+%\gdef\SetFigFont#1#2#3{%
+%  \ifnum #1<17\tiny\else \ifnum #1<20\small\else
+%  \ifnum #1<24\normalsize\else \ifnum #1<29\large\else
+%  \ifnum #1<34\Large\else \ifnum #1<41\LARGE\else
+%     \huge\fi\fi\fi\fi\fi\fi
+%  \csname #3\endcsname}%
+%\else
+%\gdef\SetFigFont#1#2#3{\begingroup
+%  \count@#1\relax \ifnum 25<\count@\count@25\fi
+%  \def\x{\endgroup\@setsize\SetFigFont{#2pt}}%
+%  \expandafter\x
+%    \csname \romannumeral\the\count@ pt\expandafter\endcsname
+%    \csname @\romannumeral\the\count@ pt\endcsname
+%  \csname #3\endcsname}%
+%\fi
+%\fi\endgroup
+$$
+\hbox{\beginpicture
+\setcoordinatesystem units < 1.000cm, 1.000cm>
+%\unitlength= 1.000cm
+\linethickness=1pt
+%\setplotsymbol ({\makebox(0,0)[l]{\tencirc\symbol{'160}}})
+%\setshadesymbol ({\thinlinefont .})
+\setlinear
+%
+% Fig POLYLINE object
+%
+\linethickness= 0.500pt
+%\setplotsymbol ({\thinlinefont .})
+\putrule from  4.413 23.527 to  4.413 19.082
+%
+% Fig POLYLINE object
+%
+\linethickness= 0.500pt
+%\setplotsymbol ({\thinlinefont .})
+\putrule from  1.715 20.987 to  6.953 20.987
+%
+% Fig TEXT object
+%
+\put{$V(\phi)$} [lB] at  4.255 23.527
+%
+% Fig TEXT object
+%
+\put{$0$} [lB] at  4.255 21.622
+%
+% Fig TEXT object
+%
+\put{$\phi$} [lB] at  7.588 20.987
+%
+% Fig TEXT object
+%
+\put{$-\phi_0$} [lB] at  2.032 21.304
+%
+% Fig TEXT object
+%
+\put{$\phi_0$} [lB] at  6.318 21.304
+%
+% Fig TEXT object
+%
+\put{$-\phi_1$} [lB] at  3.302 21.304
+%
+% Fig TEXT object
+%
+\put{$\phi_1$} [lB] at  5.207 21.304
+%
+% Fig TEXT object
+%
+\put{$1$} [lB] at  2.826 20.828
+%
+% Fig TEXT object
+%
+\put{$1$} [lB] at  5.842 20.828
+\linethickness=0pt
+\putrectangle corners at  1.715 24.035 and  7.588 19.082
+\endpicture}
+$$
+%%% end of file frr.tex
+
+There is a solution $\phi(r)$ to (11) with the desired
+boundary conditions where $\phi(0)=\phi_0$ is the positive
+zero of $V$.  Picture a ball released in this potential at
+$\phi=\phi_0$.  It rolls down and back up to $\phi=0$,
+where it is at rest.  For $n>1$, we have
+$$
+\frac{d^2\phi}{dr^2}=-V'(\phi)-\frac{n-1}{r}\,\,\frac{d\phi}
+{dr}.
+$$
+In terms of our mechanical model, the ball feels an
+additional acceleration when moving to the left and an
+additional deceleration when moving to the right.  The
+effect dies off with time $(r)$ and is proportional to the
+speed.  Also, the effect is bounded for small time if we
+have zero initial velocity (as prescribed by (9)).  So now
+if we release the ball at $\phi=\phi_0$, it overshoots
+$\phi=0$.  Of course, if we release the ball at
+$\phi=\phi_1$, the minimum of the potential, it stays at
+rest.  By continuity there is some value $\bar\phi$ between
+$\phi$, and $\phi_0$ where the ball released at
+$\phi=\bar\phi$ will roll exactly up to $\phi=0$ as
+desired.
+\bye
+
+
+

@@ -1,0 +1,765 @@
+%Date: Sat, 18 Jan 1997 12:39:35 -0500 (EST)
+%From: Pavel Etingof <etingof@abel.math.harvard.edu>
+
+\input amstex
+\documentstyle{amsppt}
+\magnification 1200
+\NoRunningHeads
+\NoBlackBoxes
+\document
+
+\def\eps{\epsilon}
+\def\tW{\tilde W}
+\def\Aut{\text{Aut}}
+\def\tr{{\text{tr}}}
+\def\ell{{\text{ell}}}
+\def\Ad{\text{Ad}}
+\def\u{\bold u}
+\def\m{\frak m}
+\def\O{\Cal O}
+\def\tA{\tilde A}
+\def\qdet{\text{qdet}}
+\def\k{\kappa}
+\def\RR{\Bbb R}
+\def\be{\bold e}
+\def\bR{\overline{R}}
+\def\tR{\tilde{\Cal R}}
+\def\hY{\hat Y}
+\def\tDY{\widetilde{DY}(\g)}
+\def\R{\Bbb R}
+\def\h1{\hat{\bold 1}}
+\def\hV{\hat V}
+\def\deg{\text{deg}}
+\def\hz{\hat \z}
+\def\hV{\hat V}
+\def\Uz{U_h(\g_\z)}
+\def\Uzi{U_h(\g_{\z,\infty})}
+\def\Uhz{U_h(\g_{\hz_i})}
+\def\Uhzi{U_h(\g_{\hz_i,\infty})}
+\def\tUz{U_h(\tg_\z)}
+\def\tUzi{U_h(\tg_{\z,\infty})}
+\def\tUhz{U_h(\tg_{\hz_i})}
+\def\tUhzi{U_h(\tg_{\hz_i,\infty})}
+\def\hUz{U_h(\hg_\z)}
+\def\hUzi{U_h(\hg_{\z,\infty})}
+\def\Uoz{U_h(\g^0_\z)}
+\def\Uozi{U_h(\g^0_{\z,\infty})}
+\def\Uohz{U_h(\g^0_{\hz_i})}
+\def\Uohzi{U_h(\g^0_{\hz_i,\infty})}
+\def\tUoz{U_h(\tg^0_\z)}
+\def\tUozi{U_h(\tg^0_{\z,\infty})}
+\def\tUohz{U_h(\tg^0_{\hz_i})}
+\def\tUohzi{U_h(\tg^0_{\hz_i,\infty})}
+\def\hUoz{U_h(\hg^0_\z)}
+\def\hUozi{U_h(\hg^0_{\z,\infty})}
+\def\hg{\hat\g}
+\def\tg{\tilde\g}
+\def\Ind{\text{Ind}}
+\def\pF{F^{\prime}}
+\def\hR{\hat R}
+\def\tF{\tilde F}
+\def\tg{\tilde \g}
+\def\tG{\tilde G}
+\def\hF{\hat F}
+\def\bg{\overline{\g}}
+\def\bG{\overline{G}}
+\def\Spec{\text{Spec}}
+\def\tlo{\hat\otimes}
+\def\hgr{\hat Gr}
+\def\tio{\tilde\otimes}
+\def\ho{\hat\otimes}
+\def\ad{\text{ad}}
+\def\Hom{\text{Hom}}
+\def\hh{\hat\h}
+\def\a{\frak a}
+\def\t{\hat t}
+\def\Ua{U_q(\tilde\g)}
+\def\U2{{\Ua}_2}
+\def\g{\frak g}
+\def\n{\frak n}
+\def\hh{\frak h}
+\def\sltwo{\frak s\frak l _2 }
+\def\Z{\Bbb Z}
+\def\C{\Bbb C}
+\def\d{\partial}
+\def\i{\text{i}}
+\def\ghat{\hat\frak g}
+\def\gtwisted{\hat{\frak g}_{\gamma}}
+\def\gtilde{\tilde{\frak g}_{\gamma}}
+\def\Tr{\text{\rm Tr}}
+\def\l{\lambda}
+\def\I{I_{\l,\nu,-g}(V)}
+\def\z{\bold z}
+\def\Id{\text{Id}}
+\def\<{\langle}
+\def\>{\rangle}
+\def\o{\otimes}
+\def\e{\varepsilon}
+\def\RE{\text{Re}}
+\def\Ug{U_q({\frak g})}
+\def\Id{\text{Id}}
+\def\End{\text{End}}
+\def\gg{\tilde\g}
+\def\b{\frak b}
+\def\S{\Cal S}
+\def\L{\Lambda}
+
+\topmatter
+\title Lecture 2: Renormalization groups (continued)
+\endtitle
+\author {\rm {\bf David Gross} }\endauthor
+\endtopmatter
+
+\centerline{Notes by P.Etingof and D.Kazhdan}
+\vskip .1in
+
+{\bf 2.1. Finite renormalization.}
+
+As we saw in the 
+previous lecture and in lectures of Witten and Gawedzki,
+renormalizable quantum field theories 
+ always come in families (which may even be 
+infinitely-parametric in 2 dimensions), and we need to specify 
+certain quantities in order to pinpoint a specific theory among such a family.
+The only ways to do this are
+to measure these quantities or to set their values artificially. 
+But when we know them, we can (in principle) compute all 
+other quantities in the theory as functions of them. 
+
+The procedure of picking a theory by setting its parameters to the
+results of measurements (or artificially) 
+is called finite renormalization, as opposed
+to ``infinite'' renormalization which we discussed above. While infinite
+renormalization deals with removing divergences (infinities), finite
+renormalization adjusts the finite part of the 
+coefficients in the Lagrangian (as functions of the cutoff $\Lambda$),
+which infinite renormalization leaves ambiguous. 
+
+Thus, a prescription of finite renormalization
+is a way to define a system of coordinates (or a parametrization)
+of the space of renormalizable theories of a given type. 
+
+It is clear that the number of quantities to be specified (i.e.
+the dimension of the space of renormalizable theories) equals to the number
+of coefficients of the Lagrangian of nonnegative dimension. 
+However, these coefficients themselves are, in general, 
+not suitable as coordinates on the space of theories, 
+as they depend on the cutoff $\Lambda$ and are infinite at $\Lambda\to\infty$.
+Therefore, people use other systems of
+coordinates. 
+
+For example, for the space $Y$ of renormalizable theories 
+of a scalar field, we could use the following 
+parametrizations:
+
+1. $T\to ({\Cal G}_2(0),\frac{\d {\Cal G}_2}{\d p^2}(0), 
+{\Cal G}_4(0,0,0))$, where ${\Cal G}_i$ are connected
+correlation functions. 
+
+2. $T\to ({\Cal G}_2(\mu^2),\frac{\d {\Cal G}_2}{\d p^2}(\mu^2), 
+{\Cal G}_4(p_1,p_2,p_3))$, where 
+$\mu\in M$ is some scale, and 
+$p_1,p_2,p_3,p_4=-p_1-p_2-p_3$ are vertices 
+of a regular tetrahedron such that $p_i^2=\mu^2$. 
+
+Notice that the the first recipe defines one fixed parametrization 
+of the space of theories, while the second one is in fact a family 
+of such parametrizations, depending on a scale $\mu\in M$. 
+In the future, such families of parametrizations will be more important to
+us than fixed parametrizations. 
+
+{\bf Remark.} The coordinates in both of the above parametrizations 
+are not measurable quantities, since 
+momenta of all particles which can be generated in a lab 
+satisfy the condition $p^2=-m^2$, where $m$ is the mass 
+of the particle (people say that ``$p$ is on the mass shell''). 
+In the case of $\phi^4$ theory, 
+it is possible to make up a system of coordinates 
+purely out of measurable quantities.   
+(Of course, here we make the (invalid) assumption 
+that the $\phi^4$ theory describes a real physical process.)
+Let us explain how to do this. 
+
+Suppose that we have an elementary particle $\phi$
+which obeys a renormalizable $\phi^4$-theory. 
+We have seen that renormalizable $\phi^4$-theories live in a 
+3-parametric family $Y$. For $T\in Y$, let $\sigma_T$ 
+be the residue of the 2-point function 
+of $T$ (in momentum space) at its pole.
+The dimensionless quantity $\sigma_T$ is called the scale of $\phi$
+in $T$. 
+
+Measurable quantities are masses of particles and scattering 
+amplitudes, which are scale-of-$\phi$-independent objects. 
+So let us be interested only in scale-of-$\phi$-independent 
+characteristics of a given theory. 
+In this case we can restrict our attention to the 2-parameter subfamily 
+of theories $Y_1\subset Y$ in which 
+the scale of $\phi$ equals 1. 
+This causes no loss of generality, since any theory $T\in Y$ 
+can be normalized to a theory $T_1\in Y_1$ by a transformation
+$\phi\to \alpha \phi$, in such a way that all scale-of-$\phi$-independent 
+quantities are unchanged. 
+
+Now our space of theories is 2-dimensional,
+ so we need to measure 2 things in order 
+to specify a concrete theory. 
+One of the possible prescriptions is the following.
+The two measured things are
+
+(i) The mass $m$ of the field $\phi$. Mathematically, 
+it is determined from the condition that $-m^2$ is the pole 
+of the 2-point function of the theory, regarded as a function
+of the square of momentum $k^2$ (in the Euclidean picture). 
+
+(ii) The effective coupling $g$ -- the scattering amplitude 
+for two particles at the 
+some point $(p_1,p_2,p_3,p_4)$ ``on shell'', i.e. 
+with $p_i^2=-m^2$ and $\sum p_i=0$. 
+One of the possible choices is to take 
+$p_i$ to be vertices of a regular tetrahedron
+lying on some 3-dimensional subspace of 
+the dual spacetime $V^*$ (it is clear that all 
+such configurations can be obtained from each other by rotation).
+The effective coupling measures how strong the interaction is. 
+
+However, as we will see in the future,
+one often needs to consider parametrizations of the space of theories 
+in which parameters are not necessarily measurable
+or have any physical meaning. An example of such 
+physically meaningless, but very useful parametrization  
+is the dimensional regularization prescription, which is described in
+the next section. 
+
+{\bf 2.2.
+The dimensional regularization prescription of finite renormalization.}
+
+Now let us describe a prescription of finite 
+renormalization which uses dimensional regularization. 
+
+Recall from Lecture 1 that given a renormalizable $\phi^4$-Lagrangian,
+we can compute its correlation functions using dimensional regularization
+and minimal subtraction. At first sight it seems that the answer is completely
+canonical and does not depend on anything. 
+However, after careful consideration 
+it becomes obvious that the answer depends on the choice 
+of unit of length. This happens because the dimensions
+of couplings in the Lagrangian, in general, 
+depend on the dimension $D$ of the spacetime, so that they should be regarded 
+not as functions but rather as sections of some line bundle
+over the space of values of $D$. In order to work with functions,
+we should trivialize this bundle. 
+
+The correct way of computing correlation functions with dimensional 
+regularization is, in general, the following. We should 
+choose a scale of momentum $\mu$, and for any  
+coupling (or mass) $\kappa$ in the Lagrangian find the dimensionless 
+quantity $\kappa_d$ such that 
+$\kappa=\kappa_d\mu^{\text{dim}(\kappa,d)}$, where
+$\dim(\kappa,D)$ is the dimension of $\kappa$ 
+when dimension of spacetime is $D$ (this is some 
+function of the form $aD+b$), and $d$ is the physical dimension 
+of the spacetime. Now we should
+replace all masses and couplings 
+$\kappa^i$ in the Lagrangian with the expressions 
+$\kappa^i(D)=\kappa^i_d\mu^{\text{dim}(\kappa,D)}$, and  
+perform dimensional regularization -- minimal subtraction 
+with this new Lagrangian, as 
+described in Section 1.6 of Lecture 1. 
+
+{\bf Remark.} One should remember that the 
+Feynman integrals used to define correlation functions 
+will have d-dependent dimensions, so they have to be multiplied 
+by appropriate powers of $\mu$ to make their dimensions constant, before 
+the subtraction procedure is applied. 
+
+It is clear that the answer 
+(correlation functions) heavily depend on the choice of $\mu$. 
+The reason is that some couplings $\k$ will nontrivially depend 
+on $D$ (for fixed $\k_d$), and their first derivatives by $D$ 
+(which contain $\ln \mu$) will influence the regular part of the 
+correlation functions at $D=d$. 
+
+For example, in the case of $\phi^4$-theory, 
+we have a Lagrangian of the form 
+$$
+\Cal L=\int d^4x(\frac{a}{2}(\nabla\phi)^2+\frac{m^2}{2}\phi^2+
+\frac{g}{4!}\phi^4),\tag 2.1
+$$
+and $m(D)=m_d\mu, a(D)=a_d,g(D)=g_d\mu^{4-D}$. 
+
+Now, the dimensional regularization prescription
+of finite renormalization is:  
+for any $\mu\in M$, $T\to (m,a,g)$, where $(m,a,g)$  
+are the parameters 
+of the $\phi^4$-Lagrangian of the form 2.1
+which gives the correlation functions of $T$ if 
+renormalized with the help of dimensional regularization, using 
+the scale $\mu$. 
+
+The parameters $m,a,g$ have the meaning of 
+``the effective mass at scale $\mu$'', ``the inverse of the effective  
+scale of $\phi$ at $\mu$'', and ``the effective coupling 
+at $\mu$'' (we will later explain why). 
+
+{\bf 2.3. Scale-dependence of 
+finite renormalization prescriptions.}
+
+In physics we are interested in the behavior of a system
+at different scales, and how it changes when going from scale to scale. 
+Therefore, we are interested in scale-dependent parametrizations
+of the space of theories, such that at each scale $\mu$ 
+the corresponding parametrization represents in some way the behaviour
+of the system at $\mu$. 
+Among the prescriptions 1,2 
+given in Section 2.1, only 2 satisfies this property,
+while 1 is scale-independent. 
+
+The dimensional regularization
+prescription also satisfies this property.
+That is, given a theory $T\in Y$, 
+the parameters of the Lagrangian $\Cal L_\mu(T)$ which 
+reproduces the correlation functions of $T$ if renormalized 
+by dimensional regularization using $\mu$
+represent the behavior of the theory 
+at scale $\mu$. This is not immediately obvious, since the dimesional 
+regularization procedure is formal and has no physical meaning.
+
+The reason is that for large $\mu$ the mass
+can be neglected, and thus the function $\Gamma_4$
+is a function of $p_i/\mu$,
+which does not explicitly depend on $\mu$. 
+Therefore, the coupling $g(\mu)$, which is formally obtained from 
+the dimensional regularization procedure, characterizes the magnitude
+of $\Gamma_4$ at $p_i\sim\mu$. 
+
+Let us illustrate this
+by considering an example. 
+
+Given a $\phi^4$-Lagrangian $\Cal L$ of the form (2.1),  
+its 1-particle irreducible 4-point function, computed by dimensional 
+regularization using the scale $\mu$, in the 1-loop approximation
+equals  
+$$
+\Gamma_4(p_i,\mu,m,a,g)=-g+\frac{g^2}{a^2}
+[f((p_1+p_2)^2)+f((p_1+p_3)^2)+f((p_1+p_4)^2)],\tag 2.2
+$$
+where $f(k^2)$ is the amplitude of the corresponding 
+1-loop diagram. This amplitude was computed in Gawedzki lecture 3
+(page 12; the formula for $\hat I_{4,ren}(k)$), and the answer is
+$$
+f(k^2)=-\frac{A}{6}\int_0^1\ln(\alpha(1-\alpha)\frac{k^2}{\mu^2}+\frac{m^2}
+{a\mu^2})d\alpha+const,\tag 2.3
+$$
+where $A$ is some positive numerical constant.
+
+For large $\mu$ the term $m^2/a\mu^2$ can be neglected, and we get
+$$
+f(k^2)\sim -\frac{A}{6}\int_0^1\ln(\alpha(1-\alpha)\frac{k^2}{\mu^2})d\alpha+const=
+-\frac{A}{6}\ln(k^2/\mu^2)+const,\tag 2.4
+$$
+In particular, if $p_1,p_2,p_3,p_4$ are vertices 
+of a regular terrahedron such that $p_i^2=\mu^2$
+(a point representing the scale $\mu$), then for large $\mu$ in
+the 1-loop approximation we get
+$$
+\Gamma_4=-g+\frac{g^2}{a^2}C,
+$$
+where $C$ is some numerical constant independent of $\mu$. 
+In particular, the scale-of-$\phi$-independent quantity
+$\frac{\Gamma_4}{a^2}$ has the form
+$$
+\frac{\Gamma_4}{a^2}=-g_*+g_*^2C, g_*=g/a^2
+$$
+If $g_*$ is small, $\Gamma_4/a^2\sim -g_*$. So the ``effective coupling 
+constant'' $g_*$ does indeed characterize the intensity 
+of interaction at the scale $\mu$. 
+
+{\bf 2.4. The renormalization group flow 
+corresponding to a scale-dependent renormalization prescription.}
+
+Given a scale-dependent finite
+renormalization prescription, we can define the
+renormalization group flow in the space of parameters,
+which is given by transition functions from the coordinates
+at one scale to coordinates at another scale. This is done as follows. 
+
+Let $Y$ denote the space of renormalizable theories of a single 
+scalar field $\phi$.
+For any scale $\mu\in M$ we have an injective map
+$\pi_\mu: Y\to \tilde P$, where $\tilde P$ is a fixed ($\mu$-independent) 
+space of parameters. 
+We will assume that the image $P_\mu=\text{Im}\pi_\mu$ is independent
+of $\mu$. Denote this image by $P$. 
+
+Now we can fix a theory $T$ and look at the dynamics
+of $\pi_\mu(T)$ as $\mu$ changes.
+To do this, for any $\mu_1,\mu_2\in M$ define 
+a transformation $R_{\mu_1\mu_2}: P\to P$ by 
+$R_{\mu_1\mu_2}=\pi_{\mu_2}\circ \pi_{\mu_1}^{-1}$. 
+This allows us to define a flow on $P\times M$:
+$t(z,\mu)=(R_{\mu,t\mu}z,t\mu)$. The flowlines of this flow 
+ are of the form
+$(\pi_\mu(T),\mu)$, where $T\in Y$ is a fixed theory.
+This flow is called the renormalization group flow
+associated to the corresponding family 
+$\pi_\mu$ of renormalization prescriptions.
+
+It is convenient to represent the renormalization group flow as a 
+vector field. Let $\pi_\mu(T)=(m_\mu(T),a_\mu(T),g_\mu(T))$, where 
+$m=m_\mu,a=a_\mu,g=g_\mu$ are the effective mass, inverse scale, and coupling 
+at $\mu$ for some renormalization prescription. Then the vector 
+field of renormalization group looks like
+$$
+W=\mu\frac{\d}{\d\mu}+\tilde\gamma m\frac{\d}{\d m}+\tilde\beta
+\frac{\d }{\d g}
++\tilde\delta a\frac{\d}{\d a},\tag 2.5
+$$
+where $\tilde\beta,\tilde\gamma,\tilde\delta$ are functions on $P\times M$. 
+
+It is clear that the renormalization group commutes with the group $G_1$ of
+rescalings of $\phi$: $a\to ta, m\to t^{1/2}m,g\to t^2 g,\mu\to\mu$, 
+as well as with 
+the group $G_2$ of changing the units of measurement:
+$a\to a,m\to tm,g\to g,\mu\to t\mu$. 
+The invariants of these actions are $g_*=g/a^2$ and $m_*=m/\mu\sqrt{a}$. 
+This shows that $\tilde\gamma=\hat\gamma(g_*,m_*)$, 
+$\tilde\beta=\hat\beta(g_*,\mu_*)a^2$, and
+$\tilde\delta=\delta(g_*,m_*)a$. 
+
+It is convenient to rewrite $W$ in the coordinates $\mu,g_*,m_*,a$.
+The result is 
+$$
+W=\mu\frac{\d}{\d\mu}+(\gamma-1) 
+m_*\frac{\d}{\d m_*}+\beta
+\frac{\d }{\d g_*}
++\delta a\frac{\d}{\d a},\tag 2.6
+$$
+where $\gamma:=\hat\gamma-\delta/2$, and
+$\beta=\hat\beta-2g_*\delta$.
+
+Using this formula, we can write down a differential equation 
+for correlation functions.  
+Let $\Gamma_j(p_i,\mu,m_*,a,g_*)$ be the $j$-point function
+of the theory with parameters $m_*,a,g_*$ computed at scale $\mu$. 
+Since the ``engineering'' (i.e. classical) dimension of $\Gamma_j$
+is $4-j$, we have
+$$
+\biggl(\mu\frac{\d}{\d\mu}+s\frac{\d}{\d s}+j-4\biggr)
+\Gamma_j(sp_i,\mu,m_*,a,g_*)=0.\tag 2.7
+$$
+Subtracting from (2.7) the equation $W\Gamma_j=0$, we get
+$$
+\biggl(s\frac{\d}{\d s}-(\gamma-1) 
+m_*\frac{\d}{\d m_*}-\beta
+\frac{\d }{\d g_*}
+-\delta a\frac{\d}{\d a}+j-4\biggr)
+\Gamma_j(sp_i,\mu,m_*,a,g_*)=0.\tag 2.8
+$$
+This equation allows one to study the dynamics of $\Gamma_j$ 
+under the scaling of external momenta. 
+
+Now consider the renormalization group flow in terms 
+of the coordinates $g_*,m_*,a$. According to formula (2.6),
+integral curves of this flow are given by 
+the formulas $g_*=g_*(\mu),m_*=m_*(\mu), a=a(\mu)$, 
+where
+$$
+g_*'=\beta(g_*,m_*), m_*'=(\gamma(g_*,m_*)-1)m_*, a'=\delta(g_*,m_*)a.\tag 2.9
+$$
+and prime denotes the derivative with respect to $\ln \mu$. 
+{}From these formulas it is clear that $a$ expresses trivially 
+through $g_*,\mu_*$:
+$$
+a(\mu)=a_0e^{\int_{\mu_0}^\mu\delta(g_*(s),m_*(s))d\ln s}.\tag 2.10
+$$
+However, equations for $g_*$ and $m_*$ cannot be easily solved,
+even if $\beta$ and $\gamma$ are known, 
+unless $\beta$ and $\gamma$ have some special form.
+
+However, suppose that
+the vector field $W$ has a third one-parameter symmetry
+group: $\mu\to\mu,a\to a,m_*\to tm_*,g_*\to g_*$
+(mass rescaling). In this case we will call our renormalization 
+prescription mass independent.
+Then $\beta,\gamma$, $\delta$ are independent on $m_*$, 
+and equations
+(2.9) are easily solved. Namely, $g_*(\mu)$ is 
+represented implicitly by
+$$
+\frac{\mu}{\mu_0}=e^{\int_{g_*(\mu_0)}^{g_*(\mu)}\frac{dg}{\beta(g)}},\tag 2.11
+$$  
+and $m_*$ is expressed via $g_*$ by
+$$
+m_*(\mu)=\frac{\mu_0}{\mu}
+m_*(\mu_0)e^{\int_{\mu_0}^\mu \gamma(g_*(s))d\ln s}.\tag 2.12
+$$
+
+Unfortunately, most renormalization prescriptions are mass-dependent. 
+This is the case, for example, for prescription 2 from Section 2.1.
+However, this prescription is ``asymptotically mass-independent'', 
+i.e. almost mass independent at high momenta. 
+Indeed, the correlation functions, which
+are used as parameters in this prescription, 
+do not significantly depend on $m$ at high momenta. Therefore, although
+$\beta$ and $\gamma$ depend on $m_*$, there exist limits 
+$\beta(g_*):=\lim_{m_*\to 0}\beta(g_*,m_*)$, 
+$\gamma(g_*):=\lim_{m_*\to 0}\gamma(g_*,m_*)$, 
+so that formulas (2.11), (2.12) become valid 
+for very large $\mu_0,\mu$, and, in particular, are applicable
+for studying the asymptotics of solutions at $\mu\to\infty$. 
+
+This ``asymptotic mass independence'' is characteristic of all 
+prescriptions $\pi_\mu$ which are based on correlation functions at
+$\mu$. But all of them are mass dependent at finite $\mu$. 
+
+Nevertheless, mass independent renormalization prescriptions exist. 
+The most convenient of them is the dimensional regularization prescription. 
+
+Let us explain why the dimensional regularization prescription 
+is mass-independent. We will work in the spacetime dimension $D$
+(a generic complex number), with $\eps=4-D$. 
+For a renormalizable Lagrangian $\Cal L$ of the form (2.1) 
+with parameters $m,a,g$,  let 
+$\Gamma_i^\eps(p_j,m,a,g)$
+be the correlation functions of $\Cal L$ in dimension $D$,
+computed by plain integration in $D$ dimensions as described in Lecture 1, and
+$(\Gamma_i^{\eps,sub}(p_j,\mu,m,a,g)$ be the correlation functions 
+in dimension $D$, computed using scale $\mu$, with pole parts subtracted.
+ The functions $\Gamma_i^\eps$ are singular at $\eps=0$, 
+while $\Gamma_i^{\eps,sub}$ are regular at $\eps=0$, and the
+functions $\Gamma_i:=\lim_{\eps\to 0}\Gamma_i^{\eps,sub}$  
+are the true correlation functions of the theory, computed at scale $\mu$
+as in Section 2.2. 
+ 
+Let $m^b,a^b,g^b$ be the bare parameters, 
+defined by the condition
+$$
+\Gamma_i^\eps(p_j,m^b,a^b,g^b)=\Gamma_i^{\eps,sub}(p_j,\mu,m,a,g)
+$$
+(b stands for ``bare''). These bare parameters are functions of
+renormalized parameters, $\eps$, and $\mu$, of the form
+$$
+m^b=m^b(m,a,g,\eps,\mu),
+a^b=a^b(m,a,g,\eps,\mu),
+g^b=g^b(m,a,g,\eps,\mu).
+$$
+{}From dimensional analysis (using the groups $G_1$ and $G_2$)
+it follows that the functions
+$m^b$, $a^b$, $g^b$ are defined by the equations
+$$
+a^b=aZ_a(m_*,g_*,\eps), m^b(a^b)^{-1/2}=
+\mu m_*Z_m(m_*,g_*,\eps), g^b(a^b)^{-2}=\mu^\eps
+g_*Z_g(m_*,g_*,\eps), 
+$$
+where 
+$$
+Z_i(m_*,g_*,\eps)=1+\sum_{k\ge 1}Z_i^k(g_*,m_*)\eps^{-k}.
+$$
+(no positive powers of $\eps$, as we used minimal subtraction).
+ 
+The key point now is that $Z_i$ do not actually depend on $m_*$.
+Indeed, the functions $Z_i$ are sums of counterterms introduced
+in the process of renormalization. These counterterms at each step
+of the process
+are just sums of pole parts (in $\eps$)
+of amplitudes of all diagrams with a given number
+of loops. These pole parts are determined purely by the 
+asymptotic expansion of the amplitudes at $|p_i|\to \infty$.
+{}From this one can deduce that these pole parts are independent on $m$. 
+Thus, $Z_i=Z_i(g_*,\eps)$. 
+
+Let $W_\eps$ be the vector field of the form
+$$
+W_\eps=\mu\frac{\d}{\d\mu}+(\gamma_\eps-1) 
+m_*\frac{\d}{\d m_*}+\beta_\eps
+\frac{\d }{\d g_*}
++\delta_\eps a\frac{\d}{\d a},
+$$
+which preserves functions $\Gamma_i^{\eps,sub}(p_j,\mu,m,a,g)$.
+It is clear that such $W_\eps$ exists and is unique, and 
+$\lim_{\e\to 0}W_\e=W$. On the other hand, using the definition of 
+$\Gamma_i^{\eps,sub}$, we get that $W_\e$ is defined by the condition 
+$W_\eps m_*^b=0,W_\eps a^b=0$, $W_\eps g_*^b=0$. Writing these equations in 
+components, we get
+$$
+\beta_\eps Z_m'+\gamma_\eps Z_m=0,\
+\beta_\eps Z_a'+\delta_\eps Z_a=0,\ \eps g_*+\beta_\eps\frac{(g_*Z_g)'}
+{g_*Z_g}=0
+$$
+(prime denotes the derivative by $g_*$). From these equations we find:
+$$
+\beta_\eps=-\frac{\e g_*^2Z_g}{(g_*Z_g)'},\ \gamma_\eps=-\beta_\eps 
+\frac{Z_m'}{Z_m}, \delta_\eps=-\beta_\eps\frac{Z_a'}{Z_a}.
+$$
+Using the facts that $Z_i$ has a Laurent expansion in inverse powers of 
+$\eps$, and the fact that $\beta,\gamma,\delta$ are by definition analytic at 
+$\e=0$, we get the following formulas:
+$$
+\beta_\eps(g_*)=-g_*\eps+g_*^2(Z_g^1)',  \
+\gamma_\eps(g_*)=g_*(Z_m^1)', \delta_\eps(g_*)=g_*(Z_a^1)'
+$$
+In the limit $\e\to 0$, these formulas give
+$$
+\beta(g_*)=g_*^2(Z_g^1)',  \
+\gamma(g_*)=g_*(Z_m^1)', \delta(g_*)=g_*(Z_a^1)'
+$$
+The last formula shows that $\beta,\gamma,\delta$ depend only on $g_*$, and
+gives a simple and useful rule of evaluating them. 
+
+In particular we see that although counterterms in dimensional regularization 
+can have poles of arbitrary order, the contribution to the renormalization 
+group vector field comes only from residues of these poles. Thus, in principle 
+the renormalization group vector field should be more elementary 
+than the complete system of counterterms. This is one of the reasons 
+why it is useful to write down the renormalization group equation.
+
+We have seen 
+that the asymptotic properties of our field theory at $\mu\to\infty$ 
+depend  on the properties of the function $\beta(g_*)$, since this function
+determines the dynamics of the coupling $g_*(\mu)$. 
+This function is called the beta-function. Later we will see 
+that the sign of this function near $g_*=0$ is especially important. 
+
+{\bf 2.5. Computation of the
+renormalization group flow in the 1-loop approximation.}
+
+In this section we will compute the
+vector field $W$  in the 1-loop approximation. 
+Let $m_*=m_*(\mu)$, $g_*=g_*(\mu)$, $a=a(\mu)$ be an integral curve 
+of the flow. We will express the derivatives  
+$m_*',g_*',a'$ from the equations $\mu\frac{\d}{\d\mu}
+\Gamma_2(p^2,m_*,a,g_*,\mu)=0$,
+$\mu\frac{\d}{\d\mu}
+\Gamma_4(p_i,m_*,a,g_*,\mu)=0$.
+
+First of all, the 1-loop correction to the 2-point function
+can be absorbed in mass renormalization:
+$m(\mu)=m_0(1+b\frac{g}{a^2}
+\ln(\mu/\mu_0))+O(g^2)$, where $b$ is a numerical 
+constant. Thus, $a'=0, m_*'=-m_*(1+bg_*)$.
+
+In order to compute $g_*'$, we differentiate equation (2.2) with respect 
+to $\ln\mu$. This yields, modulo $g_*^3$, the following expression:
+$$
+g_*'=Ag_*^2.\tag 2.13
+$$
+
+Thus, we get in the one-loop approximation: $\beta(g_*)=Ag_*^2, A>0;
+\gamma(g_*)=bg_*; \delta(g_*)=0$. 
+
+{\bf Remark.} A more careful calculation gives: $A=\frac{3}{16\pi^2},
+b=\frac{1}{32\pi^2}$.
+
+Now consider the renormalization group equation (2.13).
+The general solution of this equation is
+$$
+g_*=\frac{g_*^0}{1-Ag_*^0\ln(\mu/\mu_0)}.\tag 2.14
+$$  
+Thus, we have found an approximation to the function $g_*(\mu)$ based
+on the 1-loop approximation to the $\beta$-function. 
+
+Now we face the following fundamental questions.
+In what respect is expression (2.14), obtained from the 1-loop 
+approximation to the beta-function, any better than the expression 
+$$
+g_*=g_*^0+A(g_*^0)^2\ln(\mu/\mu_0),\tag 2.15
+$$
+obtained directly from (2.2)? (Nothe that (2.15) coincides with (2.14) modulo 
+$(g_*^0)^3$!) In what sense does (2.14) better represent 
+``reality''than (2.15)? In other words, why did we care to introduce
+renormalization group, beta-function, and so on, instead 
+of just getting (2.15) directly?
+
+The answer is the following. Assume that $\phi^4$ theory exists in 
+the non-perturbative setting (it is not believed to be the case, but
+never mind; you can think instead of another field theory).
+Then formula (2.15) has a chance to be valid only when $g_*^0\ln(\mu/\mu_0)$
+is small, since the series for $g_*$ will contain terms of
+the form $(g_*^0)^{k+1}\ln(\mu/\mu_0)^k$. On the other hand, 
+formula (2.13) is valid for small $g_*$, since it is 
+the beginning of the Taylor expansion of $\beta$. So in the region where
+$g_*$ is small but $g_*^0\ln(\mu/\mu_0)$ is not 
+(for example, $Ag_*^0\ln(\mu/\mu_0)=1/2,g_*^0<<1$), formula
+(2.14) is reliable but (2.15) is not. 
+
+{\bf 2.6. Asymptotic freedom.}
+
+So far we have always worked with quantum field theories in 
+the perturbative setting, primarily because this was the only setting 
+in which we could define and study them. However, physics lives over 
+$\R$ rather than $\R[[\tau]]$, so we should investigate when we can use
+perturbative results to judge about the actual process. One 
+necessary condition is clear: all couplings should be small,
+so that expansions in formal series with respect to them have a chance 
+to make sense. 
+
+In particular, we can ask whether we can trust the rules of perturbative
+renormalization, which were discussed in the previous lecture and 
+in Witten's lectures. As you remember, these rules tell how to handle 
+divergences arising at high momenta (ultraviolet divergences).  
+Thus, in order to trust the theory of perturbative renormalization 
+we should be sure that interactions are small at high momenta. 
+
+A (Euclidean) quantum field theory (in the non-perturbative sense; 
+for example, in the sense of Wightman axioms) is called 
+asymptotically free if its interactions 
+are small at high momenta. That is, 
+a theory is asymptotically free if its correlation functions 
+in momentum space are asymptotically 
+(at high momenta) close to those of a free theory. 
+Thus, in order to use perturbative renormalization legitimately,
+we should be sure that our theory is asymptotically free. 
+
+Of course, in the perturbative  setting we cannot 
+even show that a quantum field theory exists, much less that 
+it is asymptotically free. It is therefore a pleasant surprise that
+if we assume that a theory with a given perturbation expansion 
+exists, its asymptotic freedom can be checked perturbatively, 
+usually already in the 1-loop approximation.
+Later we will discuss it in more detail, but now we will just 
+demonstrate it for $\phi^4$-theory. 
+
+We will only consider renormalizable theories, i.e. points of the space $Y$. 
+It is clear that such a theory $T\in Y$ is free
+(i.e. quadratic) if the effective coupling $g_*$ 
+vanishes.
+Thus, the condition for asymptotic freedom is that 
+the coupling $g_*$ vanishes asymptotically, at high momenta. 
+That means, $\lim_{\mu\to\infty}g_*(\mu)=0$.
+
+It is clear that we cannot see whether $g_*(\mu)$ approaches zero 
+or not by looking 
+at $g_*(\mu)$ in the perturbation expansion. 
+This is clear from the example of the function
+$f(\mu)=\frac{1}{1+\tau\ln(\mu/\mu_0)}$, which vanishes at infinity for any 
+finite $\tau$, but diverges at infinity if reduced modulo $\tau^N$ for 
+each $N$. What we can see, however, is whether, as $\mu$ increases, 
+the value of $g_*(\mu)$ increases or decreases.
+
+Let us do this for $\phi^4$ theory. In this case, the physically meaningful 
+region of values of $g_*$ is $g_*>0$. So we should find out whether 
+$g_*'$ is positive or negative when $g_*$ is in this region. 
+
+Now it is very easy for us to answer this question. Namely, 
+if $g_*$ is small, we can trust formula (2.13): $g_*'=Ag_*^2$. 
+This means that $g_*$ increases, i.e. gets away from zero. 
+Of course, we cannot claim on the basis of (2.13) that $g_*$ increases
+all the time (remember that (2.13) is only valid for small $g_*$), but what 
+we can definitely guarantee on the basis of (2.13)
+is that $\lim_{\mu\to\infty}g_*(\mu)\ne 0$. Thus 
+{\bf the $\phi^4$ theory is not asymptotically free},
+and its perturbation expansion is not valid at high momenta. 
+This is a non-perturbative result which we obtained 
+using only perturbation theory. 
+
+Thus, renormalization group gives us a subtle way of partial 
+summation of the perturbation series, 
+allowing us to extend the region of validity 
+of perturbation theory, and thus pushing us closer toward
+the world of non-perturbative field theories. 
+ 
+\end 
+ 
+
+

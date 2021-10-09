@@ -1,0 +1,33 @@
+Date: Mon, 17 Mar 1997 13:35:41 -0500
+From: Edward Witten <witten@sns.ias.edu>
+
+
+The reading for this week consists of portions of two papers
+
+``On Quantum Gauge Theories In Two Dimenisons,'' Comm. Math. Phys. 141 (1991) 
+253
+
+``Two Dimensional Gauge Theories Revisited'' J. Geom. Phys. 9 (1992)
+303-368.
+
+Paula Bozzay will have (by late Monday or early Tuesday) copies of the
+relevant portions of those papers.
+
+I actually have arranged to copy half of the first paper and all of the
+second one, because it was too hard to make a precise selection corresponding
+to what I will cover.  However, as background for Thursday's lecture,
+you can concentrate on just a couple of bits:
+
+  From the first paper (On Quantum Gauge Theories In Two Dimensions) the
+  relevant part is the direct computation of the partition function in
+  section 2. 
+
+  From the second paper (Two Dimensional Gauge Theories Revisited) the
+  relevant part is the purely topological discussion of the localization
+  theorem at the beginning of the paper, and the application to gauge
+  theories in sections 4 and 5.  In between is a discussion of a particular
+  way to adapt the topological localization to gauge theory, which you
+  won't need as background for the lecture. 
+
+
+

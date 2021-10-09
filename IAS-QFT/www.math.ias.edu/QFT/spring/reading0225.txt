@@ -1,0 +1,30 @@
+Date: Tue, 25 Feb 1997 08:58:43 -0500
+From: Edward Witten <witten@sns.ias.edu>
+
+
+
+Reading for Witten's lecture this week:
+
+T. Buscher, ``Path Integral Derivation Of Quantum Duality In
+Nonlinear Sigma Models,'' Phys. Lett. B201 (1988) 466.
+
+
+E. Witten, ``On S-Duality In Abelian Gauge Theories,'' Selecta
+Math. 1 (1995) 383, section 2 ONLY.
+
+
+A. M. Polyakov, in {\it Gauge Fields And Strings}, pp. 62-72.
+Please note that Polyakov's treatment is based on a lattice approach;
+he only mentions the equivalent continuum version in the last 1-2 pages.
+The lecture will be phrased in continuum language.
+
+
+Reading for next week's lecture:
+
+The chapter on ``Lumps'' in Coleman's book {\it Secret Symmetry}.
+
+
+All selections will be available from P. Bozzay or V. Nowak in C building.
+
+
+

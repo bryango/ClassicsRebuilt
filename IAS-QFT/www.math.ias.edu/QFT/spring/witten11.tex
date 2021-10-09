@@ -1,0 +1,701 @@
+%Date: Fri, 3 Apr 1998 15:34:24 -0500 (EST)
+%From: Pavel Etingof <etingof@math.harvard.edu>
+
+\input amstex
+\documentstyle{amsppt}
+\magnification 1200
+\NoRunningHeads
+\NoBlackBoxes
+\document
+
+\def\opsi{\overrightarrow{\psi}}
+\def\h{\frak h}
+\def\tW{\tilde W}
+\def\Aut{\text{Aut}}
+\def\tr{{\text{tr}}}
+\def\ell{{\text{ell}}}
+\def\Ad{\text{Ad}}
+\def\u{\bold u}
+\def\m{\frak m}
+\def\O{\Cal O}
+\def\tA{\tilde A}
+\def\qdet{\text{qdet}}
+\def\k{\kappa}
+\def\RR{\Bbb R}
+\def\be{\bold e}
+\def\bR{\overline{R}}
+\def\tR{\tilde{\Cal R}}
+\def\hY{\hat Y}
+\def\tDY{\widetilde{DY}(\g)}
+\def\R{\Bbb R}
+\def\h1{\hat{\bold 1}}
+\def\hV{\hat V}
+\def\deg{\text{deg}}
+\def\hz{\hat \z}
+\def\hV{\hat V}
+\def\Uz{U_h(\g_\z)}
+\def\Uzi{U_h(\g_{\z,\infty})}
+\def\Uhz{U_h(\g_{\hz_i})}
+\def\Uhzi{U_h(\g_{\hz_i,\infty})}
+\def\tUz{U_h(\tg_\z)}
+\def\tUzi{U_h(\tg_{\z,\infty})}
+\def\tUhz{U_h(\tg_{\hz_i})}
+\def\tUhzi{U_h(\tg_{\hz_i,\infty})}
+\def\hUz{U_h(\hg_\z)}
+\def\hUzi{U_h(\hg_{\z,\infty})}
+\def\Uoz{U_h(\g^0_\z)}
+\def\Uozi{U_h(\g^0_{\z,\infty})}
+\def\Uohz{U_h(\g^0_{\hz_i})}
+\def\Uohzi{U_h(\g^0_{\hz_i,\infty})}
+\def\tUoz{U_h(\tg^0_\z)}
+\def\tUozi{U_h(\tg^0_{\z,\infty})}
+\def\tUohz{U_h(\tg^0_{\hz_i})}
+\def\tUohzi{U_h(\tg^0_{\hz_i,\infty})}
+\def\hUoz{U_h(\hg^0_\z)}
+\def\hUozi{U_h(\hg^0_{\z,\infty})}
+\def\hg{\hat\g}
+\def\tg{\tilde\g}
+\def\Ind{\text{Ind}}
+\def\pF{F^{\prime}}
+\def\hR{\hat R}
+\def\tF{\tilde F}
+\def\tg{\tilde \g}
+\def\tG{\tilde G}
+\def\hF{\hat F}
+\def\bg{\overline{\g}}
+\def\bG{\overline{G}}
+\def\Spec{\text{Spec}}
+\def\tlo{\hat\otimes}
+\def\hgr{\hat Gr}
+\def\tio{\tilde\otimes}
+\def\ho{\hat\otimes}
+\def\ad{\text{ad}}
+\def\Hom{\text{Hom}}
+\def\hh{\hat\h}
+\def\a{\frak a}
+\def\t{\hat t}
+\def\Ua{U_q(\tilde\g)}
+\def\U2{{\Ua}_2}
+\def\g{\frak g}
+\def\n{\frak n}
+\def\hh{\frak h}
+\def\sltwo{\frak s\frak l _2 }
+\def\Z{\Bbb Z}
+\def\C{\Bbb C}
+\def\d{\partial}
+\def\i{\text{i}}
+\def\ghat{\hat\frak g}
+\def\gtwisted{\hat{\frak g}_{\gamma}}
+\def\gtilde{\tilde{\frak g}_{\gamma}}
+\def\Tr{\text{\rm Tr}}
+\def\l{\lambda}
+\def\I{I_{\l,\nu,-g}(V)}
+\def\z{\bold z}
+\def\Id{\text{Id}}
+\def\<{\langle}
+\def\>{\rangle}
+\def\o{\otimes}
+\def\e{\varepsilon}
+\def\RE{\text{Re}}
+\def\Ug{U_q({\frak g})}
+\def\Id{\text{Id}}
+\def\End{\text{End}}
+\def\gg{\tilde\g}
+\def\b{\frak b}
+\def\S{\Cal S}
+\def\L{\Lambda}
+\def\tl{\tilde\lambda}
+
+\topmatter
+\title Lecture II-11: Supersymmetric field theories
+\endtitle
+\author {\rm {\bf Edward Witten} }\endauthor
+\endtopmatter
+
+\centerline{Notes by Pavel Etingof and David Kazhdan}
+
+\vskip .1in
+
+{\bf 11.1. General remarks on supersymmetry}
+
+Starting from today we study field theories with supersymmetry, i.e.
+theories whose symmetry group has a nontrivial extension to a supergroup.
+As usual, by even and odd (infinitesimal) symmetries we mean even,
+respectively odd, elements of the Lie superalgebra of this
+supergroup.
+
+It often happens that a solution to the classical
+field equations has nontrivial odd symmetries.
+Examples:
+
+gradient flowlines in Morse theory
+
+holomorphic curves
+
+instantons
+
+monopoles
+
+Seiberg-Witten solutions
+
+hyperKahler structures
+
+Calabi-Yau metrics
+
+Metrics of $G_2$ and $Spin_7$ holonomy
+
+In the next sections we will consider some of these examples.
+
+{\bf 11.2. Supersymmetric solitons (BPS states).}
+
+First consider a case in which the
+gradient flowlines of Morse theory will appear. Let
+$h:\R^n\to \R$ be a Morse function
+(i.e. its critical points are nondegenerate
+and $|\nabla h|$ grows at infinity). A Morse function
+always has finitely many critical points.
+
+Consider (in Minkowski signature)
+the theory of maps $\Phi: \R^{2|2}\to \R^n$ with the Lagrangian
+$$
+\Cal L=\int d^2xd^2\theta(\frac{1}{2}D_+\Phi D_-\Phi-h(\Phi)),\tag 11.1
+$$
+where $D_\pm=\frac{\d}{\d\theta_\pm}-\theta_\pm\d_\pm$,
+$\d_\pm=\frac{\d}{\d x_\pm}$,
+$x_\pm =\frac{1}{2}(t\pm x)$. This model has an obvious supersymmetry under
+$Q_\pm=\frac{\d}{\d\theta_\pm}+\theta_\pm\d_\pm$.
+These supersymmetry operators satisfy the obvious commutation relations
+$Q_\pm^2=\d_\pm$, $\{Q_+,Q_-\}=0$.
+
+We have $(Q_+\pm Q_-)^2=2\frac{\d}{\d t}$. So if we look for classical
+solutions with time translational symmetry (i.e. for solitons),
+we may in particular look for those of them which are invariant
+under one of the supersymmetry, say $Q_+\pm Q_-$.
+
+We have
+$$
+Q_+\pm Q_-=(\frac{\d}{\d\theta_+}\pm \frac{\d}{\d\theta_-})
++ (\theta_+\pm \theta_-)\frac{\d}{\d t}
++ (\theta_+\mp \theta_-)\frac{\d}{\d x}.\tag 11.2
+$$
+Thus, the supersymmetry condition for time-independent solutions is
+$$
+[(\frac{\d}{\d\theta_+}\pm \frac{\d}{\d\theta_-})
++ (\theta_+\mp \theta_-)\frac{d}{d x}]\Phi=0.\tag 11.3
+$$
+Let us look for even solutions. It is easy to show that
+such solutions are of the form
+$\Phi=\phi+\theta_+\theta_-\nabla h(\phi)$. For them, the supersymmetry
+condition is
+$$
+\frac{d\phi}{d x}\mp \nabla h(\phi)=0,\tag 11.4
+$$
+which is the condition for the gradient flowline.
+Thus, supersymmetric solitons are the flowlines of the gradient flow.
+
+Notice that these 1-st order equations imply the 2-nd order equations of
+motion. Indeed, it is easy to show that the equations of motion are
+$$
+\d_+\d_-\phi+\nabla(\nabla h)^2(\phi)=0,\tag 11.5
+$$
+or for time-independent solutions
+$$
+\frac{d^2\phi}{d x^2}=\nabla(\nabla h)^2(\phi),\tag 11.6
+$$
+which can be obtained by differentiation of (11.4) with respect to $x$.
+
+Another way to see this: the Lagrangian for time-independent
+fields (i.e the Hamiltonian) is
+$$
+H(\phi)=\int dx(\frac{1}{2}(\frac{d\phi}{d x})^2+\frac{1}{2}(\nabla
+h(\phi))^2)
+.\tag 11.7
+$$
+Rewriting $H$, we get
+$$
+H(\phi)=\frac{1}{2}\int dx(\frac{d \phi}{d x}\mp \nabla(\phi))^2\pm
+\int_{-\infty}^{\infty} dh(s).\tag 11.8
+$$
+Since the last term is locally constant on the space of fields of finite
+energy, a supersymmetric solution provides the global minimum for the
+energy in each connected component of the space of fields.
+The value of energy at this minimum is $S=|\int dh|$.
+
+\proclaim{Definition} Supersymmetric solitons,
+that is classical
+solutions invariant under some supersymmetries, are called
+classical BPS states.
+\endproclaim
+
+{\bf 11.3. The role of BPS states in quantum theory.}
+
+We have mentioned above and used the fact that the vector fields
+$Q_+,Q_-$ commute. Since the space of solutions of the classical
+field equations is a symplectic supermanifold, these vector fields
+must be (at least locally) generated by some Hamiltonian functions
+ $\tilde Q_+,\tilde Q_-$ (defined up to adding a locally constant function).
+But these functions need not Poisson commute: their Poisson bracket
+has to be a locally constant function, not necessarily equal to zero.
+
+In our case, the functions $\tilde Q_+,\tilde Q_-$ are easy to write down:
+if $\Phi=\phi+\theta_+\psi_++\theta_-\psi_-+\theta_+\theta_-F$,
+then
+$$
+\tilde Q_+=\int dx(\psi_+\d_+\phi+\psi_-\nabla h(\phi)),
+\tilde Q_-=\int dx(\psi_-\d_-\phi-\psi_+\nabla h(\phi)).\tag 11.9
+$$
+The computation of the Poisson bracket gives $\{\tilde Q_+,\tilde Q_-\}=
+-2S$, $S=\int dh=h(\phi(\infty))-h(\phi(-\infty))$.
+
+ From this picture it is clear what will happen with operators
+$Q_+,Q_-$ in quantum theory. We will have $Q_+^2=P_+,Q_-^2=P_-$
+(where $P_+,P_-$ are the corresponding momentum operators),
+and
+$(Q_+\pm Q_-)^2=2(H\mp \hat S)$, where $H=(P_++P_-)/2$ is the Hamiltonian,
+and $\hat S$ commutes with local operators.
+
+In quantum theory, to every connected component $X_a$ of the space $X$
+of fields of finite energy there corresponds a summand $\Cal H_a$ of
+the Hilbert space. We expect that,
+if there is no breaking of supersymmetry, to every supersymmetric soliton
+$\Phi\in X_a$ there corresponds a state $\Psi$ in $\Cal H_a$ which is also
+supersymmetric: $(Q_+\pm Q_-)\Psi=0$. Then
+$(H\mp S_a)\Psi=0$, where $S_a=\hat S|_{\Cal H_a}$ is a scalar.
+Therefore, since
+$H\ge 0$, we have $H\Psi=|S_a|\Psi$. In particular, for every connected
+component of $X$
+there is only one supersymmetry (out of the two), for which there
+can be supersymmetric states in this component.
+
+In general, on $\Cal H_a$ we have $H\ge |S_a|$.
+
+Now we want to determine whether there is a supersymmetric quantum
+state, that is a quantum state annihilated by $Q_+\pm Q_-$, corresponding
+to the supersymmetric classical state.
+In the lowest order of perturbation theory one
+finds no bosonic zero mode except the translations and no fermionic
+zero mode.  Hence, in that approximation the lowest energy state of given
+momentum is
+unique and nondegenerate.  Also, the theory in the vacuum sector
+has a mass gap (classically and therefore for weak enough coupling)
+so the unique ground state that is found in the leading approximation
+is isolated from any continuum.  Hence the quantum theory for weak
+enough coupling has an isolated and unique ground state in this sector
+of the Hilbert space, and it follows from the supersymmetry
+algebra that this state must be annihilated by $Q_+\pm Q_-$.
+This massive state is called a quantum BPS state.
+
+However, if (in a family of theories)
+two critical points of $h$ collide and become a degenerate critical point,
+the mass of BPS paths between them goes to zero, so we can
+expect that the corresponding sector of Hilbert space loses its mass gap,
+and massless particles appear. At such a point,
+supersymmetric states can appear or disappear in the quantum theory. We will
+make this more explicit later in the context of $N=2$ supersymmetry.
+
+{\bf 11.4. N=2 supersymmety in 2 dimensions.}
+
+Consider the space $\R^{2|4}$ with coordinates
+$x_+,x_-,\theta_+,\theta_-,\bar\theta_+,\bar\theta_-$.
+This space admits an action of the N=2 supersymmetry algebra,
+with supersymmetry generators
+$$
+\gather
+Q_+=\frac{\d}{\d \theta_+}+\bar\theta_+\frac{\d}{\d x_+},
+\bar Q_+=\frac{\d}{\d\bar\theta_+}+\theta_+\frac{\d}{\d x_+}, \\
+Q_-=\frac{\d}{\d \theta_-}+\bar\theta_-\frac{\d}{\d x_-},
+\bar Q_-=\frac{\d}{\d\bar\theta_-}+\theta_-\frac{\d}{\d x_-}, \tag 11.10
+\endgather
+$$
+Let us also introduce vector fields
+$$
+\gather
+D_+=\frac{\d}{\d \theta_+}-\bar\theta_+\frac{\d}{\d x_+},
+\bar D_+=\frac{\d}{\d\bar\theta_+}-\theta_+\frac{\d}{\d x_+}, \\
+D_-=\frac{\d}{\d \theta_-}-\bar\theta_-\frac{\d}{\d x_-},
+\bar D_-=\frac{\d}{\d\bar\theta_-}-\theta_-\frac{\d}{\d x_-}, \tag 11.11
+\endgather
+$$
+which commute with the supersymmetry generators. Therefore, any Lagrangian
+which
+is written in terms of the $D$'s is supersymmetric.
+
+Recall that a chiral function (or superfield) on $\R^{2|4}$ is a function
+satisfying the equations $\bar D_+\Phi=\bar D_-\Phi=0$.
+A general solution to these equations has the form
+$$
+\gather
+\Phi=\phi-\theta_+\bar\theta_+\d_+\phi-
+-\theta_-\bar\theta_-\d_-\phi+\theta_+\bar\theta_+\theta_-\bar\theta_-
+\d_+\d_-\phi+\theta_+\theta_-F+\\
+\theta_+\psi_++\theta_-\psi_-
+-\theta_+\bar\theta_+\theta_-\d_+\psi_--
+\theta_-\bar\theta_-\theta_+\d_-\psi_+.\tag 11.12\endgather
+$$
+You can read more about chiral functions in the superhomework.
+
+Consider the theory of
+chiral maps $\Phi$ of $\R^{2|4}$ into $\C^n$, with the
+Lagrangian
+$$
+\frac{1}{2}\int d^2x d^4\theta \Phi\bar\Phi+
+\int d^2xd\theta_+d\theta_- W(\Phi)+
+\int d^2xd\bar\theta_+d\bar\theta_-\bar W(\Phi),\tag 11.13
+$$
+where $W$ is a holomorphic function on $\C^n$, called the superpotential.
+This Lagrangian is N=2 supersymmetric. In components
+(for $x_+=z,x_-=\bar z$), it looks like
+$$
+\gather
+\frac{1}{2}\int d^2x(|d\phi|^2-|F|^2+
+W'(\phi)F+\bar W'(\phi)\bar F+\text{terms with fermions}).\tag 11.14
+\endgather
+$$
+Setting all fermions to zero and the ``dummy'' field $ F$ to the
+stationary point $ F=\bar W'(\phi)$, we get the bosonic energy functional
+$$
+\gather
+H=\frac{1}{2}\int d^2x(|d\phi|^2
++|W'(\phi)|^2).\tag 11.15
+\endgather
+$$
+It is easy to see that this functional coincides with (11.7),
+for the function $h=\text{Re}(e^{-i\alpha}W)$, where $\alpha$ is any real
+number.
+Thus, at the classical level
+we are doing a special case of the previous problem.
+However, now we have more supersymmetry and therefore a more interesting
+theory.
+
+{\bf 11.5. N=2 BPS states}
+
+In the theory we are considering, there is an important symmetry called
+the R-symmetry. It acts according to $\theta_+\to e^{i\beta}\theta_+,
+\theta_-\to e^{-i\beta}\theta_-$. If we require that $\Phi$ is unchanged under
+this symmetry (i.e. Bose fields are unchanged and
+$\psi_+\to e^{-i\beta}\psi_+,\psi_-\to e^{i\beta}\psi_-$), then Lagrangian
+(11.13) is obviously invariant under the symmetry.
+
+The commutation relations for the supersymmetry Hamiltonians are
+$$
+\gather
+\{Q_\pm,\bar Q_\pm\}=2P_\pm, \\
+\{Q_+,\bar Q_-\}=\{\bar Q_+,Q_-\}=0 \text{ (by R-symmetry) },\\
+\{Q_+,Q_-\}=T,\ \{\bar Q_+,\bar Q_-\}=\bar T,\tag 11.16
+\endgather
+$$
+where $T$ is analogous to $S$ in Section 11.2 -- it is a locally constant
+function on the space of classical solutions (which is, unlike $S$, not
+necessarily real), and for brevity we drop twiddles over $Q$'s.
+Also, the squares of all the $Q$'s are zero.
+
+In fact, the function $T$ is easy to compute, like
+the function $S$ in the previous problem. Namely,
+$$
+T=W(\phi(\infty))-W(\phi(-\infty)).\tag 11.17
+$$
+
+Now we will look at supersymmetric states. Choose a real number
+$\alpha$ and look for states which are invariant under
+two supersymmetries $Q_1(\alpha)==Q_++e^{i\alpha}\bar Q_-$,
+$Q_2(\alpha)=\bar Q_+-e^{-i\alpha}Q_-$.
+
+We have
+$$
+\{Q_1,Q_2\}=2i(H-\text{Re}(e^{-i\alpha}T)),\tag 11.18
+$$
+which implies that supersymmetric classical states have to be
+time-independent.
+
+The equation $Q_1\Phi=0$ for an even function $\Phi$ gives
+(in the time-independent case):
+$$
+\frac{\d \phi}{\d x}=e^{-i\alpha}\overline{W'(\phi)},\tag 11.19
+$$
+and the second equation gives the same result.
+This implies, in particular, that
+$$
+\bar T=\bar W(\phi(\infty))-\bar W(\phi(-\infty))=
+\int\bar W'(\phi)\frac{d\phi}{d x}dx=
+e^{-i\alpha}\int_{\-\infty}^{\infty} |W'(\phi)|^2dx,\tag 11.20
+$$
+which implies that $\alpha=\text{arg}T$.
+Thus, from equation (11.28) we get that for a supersymmetric solution
+of the classical equations we have
+$$
+H=Re(e^{-i\alpha}T)=|T|.\tag 11.21
+$$
+For other states in the connected component of this solution
+we have $H\ge |T|$.
+
+Now, what are the supersymmetric solutions (of finite energy) geometrically?
+It is clear from equation (11.19) that they are separatrices
+between critical points of $W$ for the gradient flow of
+$h=\text{Re}(e^{-i\alpha}W)$.
+
+Now let us turn to quantum theory. From classical considerations
+we saw that in our theory $H\ge |T|$, and in a nondegenerate
+case $H=|T|$ only for BPS states. Therefore, we should hope
+that in quantum theory the same situation takes place, apriori with
+a corrected value of $T$.
+
+Consider the generic situation when all
+zero-modes of the Hamiltonian near a classical BPS state
+arise from the superPoincare group.
+This is the case if for any 3 critical points
+$a,b,c$ of the potential we have
+$|T_{ac}|<|T_{ab}|+|T_{bc}|$, where $T_{ab}$ is the value of $T$
+on the component of the space of solutions which go from $a$ to $b$.
+In other words, this is the case when the gradient flowline between $a,b$
+never passes through $c$.
+
+In this case, in quantum theory,
+for small values of the coupling, we expect
+that the point $|T|$ in the spectrum of $H$ occurs discretely.
+ From our classical computations,
+we expect that the eigenspace corresponding to this eigenvalue
+is finite-dimensional, and is an irreducible representation
+of the odd part of the superPoincare algebra, in which $Q_1,Q_2$ act by zero.
+This representation is nothing but the space of sections
+of the equivariant vector bundle on the upper part of the hyperboloid,
+where the fiber is the standard 2-dimensional irreducible representation
+of the 4-dimensional Clifford algebra generated by the two remaining
+supersymmetries.
+
+Notice that all other superPoincare representations occuring
+in this theory have to be not 2-dimensional but rather 4-dimensional
+over the ring of functions on the hyperboloid, since for levels of energy
+above $T$ the Clifford algebra satisfied by the supersymmetry operators
+corresponds to a nondegenerate quadratic form, and the only irreducible
+represenation of this algebra is 4-dimensional.
+
+{\bf 11.6. N=1 Supersymmetry in 4 dimensions.}
+
+Now consider supersymmetry in 4 dimensions. We start with $N=1$ supersymmetry.
+In this case the odd part of the supersymmetry algebra is
+similar to the $N=2$ case in two dimensions. It is
+generated by $Q_\pm$, $\bar Q_\pm$, with relations
+$$
+\gather
+\{Q_\alpha,\bar Q_\beta\}=2P_{\alpha\beta},\\
+\{Q_\alpha,Q_\beta\}=0,\\
+\{\bar Q_\alpha,\bar Q_\beta\}=0.
+\tag 11.22
+\endgather
+$$
+where $\alpha,\beta\in \{+,-\}$, and $P_{\alpha\beta}$ is a basis
+of the space of complex linear functions on the spacetime
+(These relations exhibit the isomorphism of Poincare representations
+$S_+\o S_-\to V_\C$, where $S_\pm$ are the spinor representations.)
+A central extension like in (11.16) cannot arise here because
+it is prohibited by the Poincare symmetry (this central extension
+would have to be in the representation
+$S^2\C^2$ of $SU(2)$ (where $\C^2$ is the standard representation),
+which is the spin 1 representation and contains no invariants).
+
+
+The determinant of the quadratic form corresponding to the Clifford algebra
+(11.22) is $(P^2)^2$. The rank of this form if $P^2=0$ is 2.
+Therefore, massless representations of the superPoincare correspond
+to 2-dimensional representations of the Clifford algebra,
+and massive representations correspond to
+4-dimensional representations of the Clifford algebra.
+
+More precisely,
+consider a representation $W$ of the superPoincare and the subspace
+$W_p$ on which $P=p$, where $p\in\R^{1,3}$. Let $G_p$ be the stabilizer
+of $p$ in the group of rotations,
+$H_p$ the maximal torus in $G_p$ (always isomorphic to $U(1)$).
+With respect to $H_p$, $W$ has a decomposition in a direct sum
+of representations of integer and half-integer spins.
+These spins are called helicities of $W$, and each helicity has a
+multiplicity.
+
+It is easy to see that
+the supersymmetry operators $Q_\alpha,\bar Q_\alpha$ raise
+helicity by $1/2$ (since they live in the spinor representation
+of the Poincare). Thus, the massless representations
+have helicities $j,j+1/2$ with multiplicity 1, and
+the massive representations have helicities $j,j+1/2,j+1$
+with multiplicities $1,2,1$.
+
+Now let us consider massless particle multiplets which are allowed by
+$N=1$ supersymmetry. There are two such basic multiplets.
+
+1. Vector multiplet: a gauge field $A$ and a chiral spinor $\l$ in the adjoint
+representation. This is the N=1 analogue of the gauge field.
+In particular, in the $U(1)$ case the theory is free. In the infrared,
+it generates a massless vector and a massless spinor, so the helicities are
+$-1,1$ (for vector) and $-1/2,1/2$ (for spinor). In particular,
+the massless representation of the SuperPoincare arising
+in this theory is reducible, and splits into two:
+the one with helicities $-1,-1/2$ and the one with helicities
+$1/2,1$. However, over $\R$ this splitting does not exist and our
+representation is irreducible.
+A more physical version of this statement is to say that the
+helicity $-1,-1/2$ states are related to helicity $1/2,1$ states by CPT
+conjugation, so that one pair must be present if the other is.
+Thus, this field configuration is the minimal
+supersymmetric one which contains a gauge boson.
+
+2. Chiral multiplet: A massless complex
+scalar $\phi$ and a massless chiral spinor $\chi$. In this case the story
+is analogous. The obtained massless representation
+has a spinor and a scalar, so it has helicities
+$0,0$ (for scalar) and $-1/2,1/2$ (for spinor). Thus this
+representation is again a sum of two, with
+helicities $-1/2,0$ and $0,1/2$. This decomposition is only
+valid over $\C$ and not over $\R$; over $\R$, the representation
+is irreducible, so this combination is the smallest supersymmetric one
+containing a scalar.
+
+The massive versions of these multiplets are as follows.
+
+1. Massive vector multiplet (or hypermultiplet).
+The minimal real supersymmetric representation containing a massive vector
+has helicities $-1,-1/2,0,1/2,1$ with multiplicities
+$1,2,2,2,1$. This involves a massive vector, two massive spinors
+(chiral and antichiral), and a real massive scalar.
+The corresponding 8-dimensional representation of the Clifford algebra
+is (over $\C$) a sum of two 4-dimensional representations.
+
+2. Massive chiral multiplet. Same as massless chiral multiplet (we could
+consider the same fields with masses, such that the mass of bosons
+equals the mass of fermions).
+
+{\bf 11.7. N=2 Supersymmetry in 4 dimensions.}
+
+In the N=2 case, we have two copies of operators $Q$:
+$Q^{(1)}$ and $Q^{(2)}$,
+and they commute in the same way as before if the indices
+are equal, and give zero commutator if they are not equal
+(as vector fields).
+However, now there is a possibility for a central extension: it is
+no longer prohibited by the Poincare symmetry.
+
+Consider first the case when the central term is zero.
+In this case the quadratic form of the Clifford algebra
+is nondegenerate (in 8 dimensions) in the massive case, and
+has rank 4 in the massless case. Thus, an irreducible massive representation
+should be 16-dimensional, and an irreducible massless representation should be
+4-dimensional. The helicities for representations
+are obained like in $N=1$ case. In particular,
+in a massive representation the helicities are in groups of the form
+(j,j+1/2,j+1,j+3/2,j+2) with multiplicities (1,4,6,4,1), and
+in a massless representation they are in groups (j,j+1/2,j+1) with
+multiplicities (1,2,1).
+
+Now let us consider the simplest $N=2$ supersymmetric theory.
+It is obtained by combining fields from a (classically)
+massless vector multiplet
+and a massless chiral multiplet in adjoint representation.
+Thus the fields are: from vector multiplet -- $(A,\l)$,
+from chiral multiplet -- $(\phi,\chi)$.
+The Lagrangian is the minimal $N=2$ supersymmetric Lagrangian on these fields.
+Such a Lagrangian exists and is uniquely determined by the minimality
+condition. In the $U(1)$ case the theory is free, but
+in the nonabelian case there are nontrivial interactions.
+
+What does this theory do in the infrared? In the $U(1)$ case, the answer
+is simple: we should add together the representations for the vector and
+chiral multiplets. We get helicities (-1,-1/2,0,1/2,1)
+with multiplicities (1,2,2,2,1). This is the sum of two complex conjugate
+massless representations of the N=2 Clifford algebra: the one with
+helicities (0,1/2,1) and multiplicities (1,2,1) and the one with
+helicities (-1,-1/2,0) and multiplicities (1,2,1).
+
+But now let us consider the nonabelian case (say the gauge group $G$
+is simple). Then the bosonic fields are the gauge field $A$
+and a scalar $\phi$ in the complexified adjoint representation
+$\g_\C$. The bosonic part of the Lagrangian is
+$$
+L_{bosonic}=
+\int (\frac{1}{4e^2}F^2+|d_A\phi|^2+|[\phi,\bar\phi]|^2).\tag 11.23
+$$
+Thus the bosonic part of the space of classical vacua is the set of
+solutions of the equations $[\phi,\bar\phi]=0$ modulo the action of $G$.
+This space can be identified with ${\frak t}_\C/W$, where
+${\frak t}$ is the maximal commutative subalgebra in $\g$
+and $W$ the Weyl group. In the case $G=SU(2)$, this quotient is identified
+with $\C$ by introducing the global coordinate $u=Tr(\phi^2)$
+(the u-plane).
+
+Recall from Lecture 2 that in this situation we have gauge symmetry breaking
+from $G$ to the centralizer $H$ of $\phi$. In particular, for $SU(2)$
+near $u\ne 0$ the gauge symmetry is broken classically from $SU(2)$ to
+$U(1)$ (Higgs mechanism). The components of the gauge field which are charged
+nontrivially with respect to the surviving $U(1)$ will become massive.
+By N=2 supersymmetry, the same will happen for the corresponding
+components of $\l,\phi,\psi$. Thus, in the charge $2$ and $-2$ sectors
+of the Hilbert space the lowest energy states will be in a massive
+representation with helicities as before:
+(-1,-1/2,0,1/2,1)
+with multiplicities (1,2,2,2,1). However, we know that there is no
+such representation without central extension. Thus,
+without central extension we get a contradiction, and hence
+the central extension
+must appear.
+
+The central extension will show up in the commutation relations
+between $Q_\alpha^{(1)}$ and $Q_\beta^{(2)}$:
+$$
+\{Q_\alpha^{(1)},Q_\beta^{(2)}\}=\e_{\alpha\beta}Y,\tag 11.24
+$$
+where $Y$ is an operator which commutes with all local operators
+(central charge). Before the central charge, the algebra
+had a $U(2)$ R-symmetry (action on indices 1 and 2), but
+the central charge breaks this symmetry down to $SU(2)$
+(the chiral $U(1)$ symmetry is anomalous in our theory,
+because of the index problems, and it is broken to $\Z/2\Z$).
+
+It is easy to see that in this case the massive particles
+considered above must have mass exactly $|Y|$ (this is where
+the quadratic form of the Clifford algebra becomes degenerate).
+
+It turns out that classically there are BPS states
+which correspond to these massive particles. Namely
+if we are at the vacuum $u\in\C$,
+we have
+$$
+\phi\sim \frac{1}{\sqrt{2}}\left(\matrix a&0\\ 0&-a\endmatrix\right).\tag 11.25
+$$
+where $a=\pm u^{1/2}$. Let $a=\rho e^{i\alpha}$. We should look for
+BPS states (i.e. states which are time-independent
+and invariant under half of the supersymmetry)
+which satisfy the condition (11.25) at infinity. If $Y=|Y|e^{i\beta}$
+then the equation of being invariant under half of the supersymmetry
+is
+$$
+F=e^{-i\beta}*d_A\phi,\tag 11.26
+$$
+where $*$ is in $\R^3$.
+(the BPS monopole equations). Since $F$ is real, we must have
+$\alpha=\beta$ modulo $\pi$.
+
+It can be shown that such BPS states exist in sectors with charges
+2 and $-2$ (charges are the eigenvalues of the infinitesimal operator
+corresponding to the unbroken $U(1)$-gauge symmetry).
+When these solutions are quantized,
+we will get the same result as in 2 dimensions.
+Namely, in quantum theory,
+we will get a representation of the superPoincare
+with helicities coming in groups (j,j+1/2,j+1) with multiplicities
+(1,2,1). Adding two copies of such groups with $j=-1$ and $0$, we will get
+the massive hypermultiplet (=massive vector multiplet); this multiplet has
+the right helicities, which we found by considering the Higgs mechanism.
+Thus, in presence of central charge we get no contradiction.
+
+{\bf Remark.}
+Computing the commutators of the $Q$-s using currents,
+one can show that classically
+$$
+Y=\int_{\Sigma}(\phi *F+\frac{1}{e^2}\phi F),\tag 11.27
+$$
+where $\Sigma$ is a distant sphere in the space cycle.
+So it is a combination of the electric and magnetic charge
+for the effective $U(1)$ theory.
+
+
+\end
+
+

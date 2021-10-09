@@ -1,0 +1,2493 @@
+%% This is a plain TeX file
+%%
+\magnification=1200
+\hsize=6.5 true in
+\vsize=8.7 true in
+\input epsf.tex
+
+\input amssym.def
+\input amssym.tex
+%\input eight.tex
+% beginning of file eight.tex
+
+\font\eightrm=cmr8
+\font\sevenrm=cmr7
+\font\sixrm=cmr6
+\font\fiverm=cmr5
+\font\eighti=cmmi8
+\font\sixi=cmmi6
+\font\fivei=cmmi5
+\font\eightsy=cmsy8
+\font\sixsy=cmsy6
+\font\fivesy=cmsy5
+\font\tenex=cmex10
+\font\eightit=cmti8
+\font\eightsl=cmsl8
+\font\eighttt=cmtt8
+\font\eightbf=cmbx8
+\font\sixbf=cmbx6
+\font\fivebf=cmbx5
+% Cindy's attempt:
+\font\eightmsb=msbm8
+\font\sixmsb=msbm6
+
+\def\eightpoint{\def\rm{\fam0\eightrm}% switch to 8-point type
+  \textfont0=\eightrm \scriptfont0=\sixrm \scriptscriptfont0=\fiverm
+  \textfont1=\eighti \scriptfont1=\sixi \scriptscriptfont1=\fivei
+  \textfont2=\eightsy \scriptfont2=\sixsy \scriptscriptfont2=\fivesy
+  \textfont3=\tenex \scriptfont3=\tenex \scriptscriptfont3=\tenex
+  \textfont\itfam=\eightit  \def\it{\fam\itfam\eightit}%
+  \textfont\slfam=\eightsl  \def\sl{\fam\slfam\eightsl}%
+  \textfont\ttfam=\eighttt  \def\tt{\fam\ttfam\eighttt}%
+  \textfont\bffam=\eightbf  \scriptfont\bffam=\sixbf
+   \scriptscriptfont\bffam=\fivebf  \def\bf{\fam\bffam\eightbf}%
+% Cindy's attempt:%
+%\textfont\msbfam=\eightmsb%
+%\scriptfont\msbfam=\sixmsb%
+%  \textfont4=\eightmsb%         %=\msbfam =\eightmsb%
+%  \scriptfont4=\sixmsb%         %=\msbfam=\sixmsb%
+%  \textfont\msbfam=\eightmsb%
+%  \scriptfont\msbfam=\sixmsb%
+%  \def\msb{\fam\msbfam\eightmsb}%
+% end of Cindy's attempt%
+  \normalbaselineskip=9pt
+  \setbox\strutbox=\hbox{\vrule height7pt depth2pt width0pt}%
+  \let\sc=\sixrm  \normalbaselines\rm}
+
+% end of file eight.tex
+
+\font\dotless=cmr10 %for the roman i or j to be
+                    %used with accents on top.
+                    %(\dotless\char'020=i)
+                    %(\dotless\char'021=j)
+\font\itdotless=cmti10
+\def\itumi{{\"{\itdotless\char'020}}}
+\def\itumj{{\"{\itdotless\char'021}}}
+\def\umi{{\"{\dotless\char'020}}}
+\def\umj{{\"{\dotless\char'021}}}
+\font\smaller=cmr5
+\font\boldtitlefont=cmb10 scaled\magstep2
+\font\smallboldtitle=cmb10 scaled \magstep1
+\font\ninerm=cmr9
+\font\dun=cmdunh10 %scaled\magstep1
+\font\Rfont=cmss10
+
+\footline={\hfil {\tenrm IX.\folio}\hfil}
+
+\def\eps{{\varepsilon}}
+\def\Eps{{\epsilon}}
+\def\kap{{\kappa}}
+\def\lam{{\lambda}}
+\def\Lam{{\Lambda}}
+\def\mynabla{{\nabla\!}}
+
+\def\underNS{\underline{\NS}}
+\def\underR{\underline{\R}}
+
+\def\Bmu{{B_{\mu\nu}}}
+\def\Gmu{{G_{\mu\nu}}}
+
+\def\xdot{{\dot x}}
+\def\xddot{{\ddot x}}
+
+\def\undertext#1{$\underline{\vphantom{y}\hbox{#1}}$}
+\def\nspace{\lineskip=1pt\baselineskip=12pt%
+     \lineskiplimit=0pt}
+\def\dspace{\lineskip=2pt\baselineskip=18pt%
+     \lineskiplimit=0pt}
+
+\def\Half{\raise4.5pt\hbox{{\vtop{\ialign{##\crcr
+\hfil\rm ${\scriptstyle 1}$\hfil\crcr
+  \noalign{\nointerlineskip\vskip1.5pt}%
+   \hbox to 4pt{\hrulefill}\crcr
+\noalign{\nointerlineskip\vskip1.5pt}%
+   ${\scriptstyle 2}$\crcr}}}}}
+%\def\Half{{{\scriptstyle 1}\over{\scriptstyle 2}}}
+
+\def\half{\raise4.5pt\hbox{{\vtop{\ialign{##\crcr
+  \hfil\rm $1$\hfil\crcr
+   \noalign{\nointerlineskip}--\crcr
+   \noalign{\nointerlineskip\vskip-1pt}$2$\crcr}}}}}
+\def\third{\raise4.5pt\hbox{{\vtop{\ialign{##\crcr
+  \hfil\rm $1$\hfil\crcr
+  \noalign{\nointerlineskip}--\crcr
+  \noalign{\nointerlineskip\vskip-1pt}$3$\crcr}}}}}
+\def\fourth{\raise4.5pt\hbox{{\vtop{\ialign{##\crcr
+  \hfil\rm $1$\hfil\crcr
+  \noalign{\nointerlineskip}--\crcr
+  \noalign{\nointerlineskip\vskip-1pt}$4$\crcr}}}}}
+\def\sixth{\raise4.5pt\hbox{{\vtop{\ialign{##\crcr
+  \hfil\rm $1$\hfil\crcr
+  \noalign{\nointerlineskip}--\crcr
+  \noalign{\nointerlineskip\vskip-1pt}$6$\crcr}}}}}
+\def\eighth{\raise4.5pt\hbox{{\vtop{\ialign{##\crcr
+  \hfil\rm $1$\hfil\crcr
+  \noalign{\nointerlineskip}--\crcr
+  \noalign{\nointerlineskip\vskip-1pt}$8$\crcr}}}}}
+
+\def\oplusop{\mathop{\oplus}\limits}
+\def\w{{\mathchoice{\,{\scriptstyle\wedge}\,}
+  {{\scriptstyle\wedge}}
+  {{\scriptscriptstyle\wedge}}{{\scriptscriptstyle\wedge}}}}
+\def\Le{{\mathchoice{\,{\scriptstyle\le}\,}
+{\,{\scriptstyle\le}\,}
+{\,{\scriptscriptstyle\le}\,}{\,{\scriptscriptstyle\le}\,}}}
+\def\Ge{{\mathchoice{\,{\scriptstyle\ge}\,}
+{\,{\scriptstyle\ge}\,}
+{\,{\scriptscriptstyle\ge}\,}{\,{\scriptscriptstyle\ge}\,}}}
+\def\plus{{\hbox{$\scriptscriptstyle +$}}}
+\def\xdot{\dot{x}}
+\def\Condition#1{\item{#1}}
+\def\Firstcondition#1{\hangindent\parindent{#1}\enspace
+     \ignorespaces}
+\def\Proclaim#1{\medbreak
+  \medskip\noindent{\bf#1\enspace}\it\ignorespaces}
+  %the way to use this is:
+  %"\Proclaim{Theorem 1.1.}" for instance.
+\def\finishproclaim{\par\rm
+     \ifdim\lastskip<\smallskipamount\removelastskip
+     \penalty55\medskip\fi}
+\def\Item#1{\par\smallskip\hang\indent%
+  \llap{\hbox to\parindent {#1\hfill\enspace}}\ignorespaces}
+\def\ItemItem#1{\par\indent\hangindent2\parindent
+     \hbox to \parindent{#1\hfill\enspace}\ignorespaces}
+\def\vrulesub#1{{\,\vrule height7pt depth5pt}_{\,#1}}
+\def\underbrake#1#2{\mathop{#1}\limits_{\raise3pt
+  \hbox{%
+\vrule height 3pt depth 0pt
+  %\kern.1pt
+  \hbox to #2{\hrulefill}
+  \kern-3.4pt
+  \vrule height 3pt depth 0pt}}}
+\def\notD{{\slash\kern-7pt D}}
+
+\def\ominus{{$-$\kern-9pt $\bigcirc$}}
+\def\Oplus{{+\kern-9pt $\bigcirc$}}
+\def\ssbullet{{\scriptstyle\bullet\,\,\,}}
+
+\def\im{{\rm Im}}  
+\def\A{{\rm A}}
+\def\P{{\rm P}}
+\def\EL{{\rm L}}
+\def\Open{{\rm open}}
+\def\osc{{\rm osc}}
+%\def\Pic{{\rm Pic}} 
+\def\Sp{{\rm Sp}}
+\def\R{{\rm R}}  \def\NS{{\rm NS}}
+\def\RNS{{\rm RNS}}
+\def\Diff{{\rm Diff}}  \def\expt{{\rm expt}}
+\def\cylinder{{\rm cylinder}}
+\def\Closed{{\rm closed}}
+\def\Map{{\rm Map}}  
+%\def\spurious{{\rm spurious}}
+\def\Met{{\rm Met}} 
+\def\Spin{{\rm Spin}}
+\def\spin{{\rm spin}} 
+\def\phys{{\rm phys}}
+\def\diag{{\rm diag}}  
+%\def\Vir{{\rm Vir}}
+%\def\Res{{\rm Res}}
+\def\Null{{\rm null}} 
+\def\mass{{\rm mass}}
+\def\SO{{\rm SO}} 
+\def\GSO{{\rm GSO}}
+\def\Tr{{\rm Tr\,}}
+%\def\SU{{\rm SU}} 
+\def\tr{{\rm tr}}
+\def\Weyl{{\rm Weyl}} 
+\def\Lorentz{{\rm Lorentz}}
+\def\Ker{{\rm Ker}}
+\def\Range{{\rm Range}} 
+%\def\SL{{\rm SL}} \def\prim{{\rm primitive}}
+\def\Det{{\rm Det}} 
+\def\re{{\rm Re}}
+%\def\dist{{\rm dist}} \def\PSL{{\rm PSL}}
+\def\Vol{{\rm Vol}} 
+%\def\ghosts{{\rm ghosts}}
+%\def\Fock{{\rm Fock}} 
+\def\BRST{{\rm BRST}}
+%\def\Weil-Peterson{{\rm Weil-Peterson}}
+\def\IIA{{\rm II~A}}
+\def\IIB{{\rm II~B}}
+
+\def\1bar{\bar{1}}
+\def\2bar{\bar{2}}
+\def\3bar{\bar{3}}
+\def\4bar{\bar{4}}
+%\def\fbar{\bar{f}}  
+\def\mubar{\bar{\mu}}
+\def\nubar{{\bar{\nu}}}
+\def\taubar{{\bar{\tau}}}
+%\def\barh{\bar{h}}  
+\def\gammabar{\bar{\gamma}}
+\def\betabar{\bar{\beta}}
+%\def\kbar{\bar{k}}   
+\def\psibar{\bar{\psi}}
+\def\lambar{\bar{\lambda}} \def\xibar{{\bar{\xi}}}
+\def\mbar{\bar{m}}   \def\Lambar{\bar{\Lambda}}
+\def\thetabar{{\bar{\theta}}}
+\def\zetabar{{\bar{\zeta}}}
+%\def\phibar{\bar{\phi}}
+%\def\wbar{\bar{w}}  \def\etabar{\bar{\eta}}
+%\def\vbar{\bar{v}}  \def\partialbar{\bar{\partial}}
+%\def\xbar{\bar{x}}  
+\def\cbar{\bar{c}}
+\def\bbar{\bar{b}}
+%\def\epsbar{\bar{\epsilon}}
+\def\Gambar{\bar{\Gamma}}
+\def\rbar{\bar{r}}
+\def\zbar{\bar{z}}  
+%\def\Abar{\bar{A}}
+\def\Bbar{{\bar{B}}}  \def\Cbar{{\bar{C}}}
+\def\Fbar{{\bar{F}}}
+\def\Gbar{\bar{G}}
+\def\Kbar{\bar{K}}
+\def\Mbar{\bar{M}}
+%\def\Pbar{\bar{P}}
+\def\Sbar{\bar{S}}
+\def\Tbar{\bar{T}}
+\def\scrFbar{\bar{\scrF}}
+\def\scrCbar{\bar{\scrC}}
+
+%\def\scrFbc{{\scrF^{(bc)}}}
+%\def\scrFbcbar{{\scrF^{(\bbar\cbar)}}}
+
+\def\chat{\hat{c}}
+%\def\ghat{\hat{g}}
+%\def\muhat{\hat{\mu}}
+\def\Rhat{{\widehat{R}}}
+\def\scrDhat{{\widehat{\scrD}}}
+
+\def\Atil{\tilde{A}}
+\def\Btil{\widetilde{B}}
+\def\atil{\tilde{a}}
+\def\btil{\tilde{b}}
+\def\dtil{\tilde{d}}
+\def\xtil{\tilde{x}}
+%\def\htil{\tilde{h}}
+%\def\Ctil{\widetilde{C}}
+%\def\Dtil{\widetilde{D}}
+\def\Ltil{\tilde{L}}
+\def\Ntil{\widetilde{N}}
+\def\Ptil{\widetilde{P}}
+\def\Wtil{\widetilde{W}}
+\def\betatil{\tilde{\beta}}
+%\def\Ttil{\widetilde{T}}
+\def\scrFtil{\widetilde{\scrF}}
+%\def\epstil{\tilde{\eps}}
+%\def\psitil{\tilde{\psi}}
+
+\def\dbR{{\Bbb R}}
+%\def\dbZ{{\Bbb Z}}
+
+%These two files (in this order!!) are necessary
+%in order to use AMS Fonts 2.0 with Plain TeX
+
+\input amssym.def
+\input amssym.tex
+
+%Capital roman double letters(Blackboard bold)
+\def\db#1{{\fam\msbfam\relax#1}}
+
+\def\dbA{{\db A}} \def\dbB{{\db B}}
+\def\dbC{{\db C}} \def\dbD{{\db D}}
+\def\dbE{{\db E}} \def\dbF{{\db F}}
+\def\dbG{{\db G}} \def\dbH{{\db H}}
+\def\dbI{{\db I}} \def\dbJ{{\db J}}
+\def\dbK{{\db K}} \def\dbL{{\db L}}
+\def\dbM{{\db M}} \def\dbN{{\db N}}
+\def\dbO{{\db O}} \def\dbP{{\db P}}
+\def\dbQ{{\db Q}} \def\dbR{{\db R}}
+\def\dbS{{\db S}} \def\dbT{{\db T}}
+\def\dbU{{\db U}} \def\dbV{{\db V}}
+\def\dbW{{\db W}} \def\dbX{{\db X}}
+\def\dbY{{\db Y}} \def\dbZ{{\db Z}}
+
+\font\teneusm=eusm10  \font\seveneusm=eusm7 
+\font\fiveeusm=eusm5 
+\newfam\eusmfam 
+\textfont\eusmfam=\teneusm 
+\scriptfont\eusmfam=\seveneusm 
+\scriptscriptfont\eusmfam=\fiveeufm 
+\def\scr#1{{\fam\eusmfam\relax#1}}
+
+
+%Upper-case Script Letters:
+
+\def\scrA{{\scr A}}   \def\scrB{{\scr B}}
+\def\scrC{{\scr C}}   \def\scrD{{\scr D}}
+\def\scrE{{\scr E}}   \def\scrF{{\scr F}}
+\def\scrG{{\scr G}}   \def\scrH{{\scr H}}
+\def\scrI{{\scr I}}   \def\scrJ{{\scr J}}
+\def\scrK{{\scr K}}   \def\scrL{{\scr L}}
+\def\scrM{{\scr M}}   \def\scrN{{\scr N}}
+\def\scrO{{\scr O}}   \def\scrP{{\scr P}}
+\def\scrQ{{\scr Q}}   \def\scrR{{\scr R}}
+\def\scrS{{\scr S}}   \def\scrT{{\scr T}}
+\def\scrU{{\scr U}}   \def\scrV{{\scr V}}
+\def\scrW{{\scr W}}   \def\scrX{{\scr X}}
+\def\scrY{{\scr Y}}   \def\scrZ{{\scr Z}}
+
+\def\gr#1{{\fam\eufmfam\relax#1}}
+
+%Euler Fraktur letters (German)
+\def\grA{{\gr A}}	\def\gra{{\gr a}}
+\def\grB{{\gr B}}	\def\grb{{\gr b}}
+\def\grC{{\gr C}}	\def\grc{{\gr c}}
+\def\grD{{\gr D}}	\def\grd{{\gr d}}
+\def\grE{{\gr E}}	\def\gre{{\gr e}}
+\def\grF{{\gr F}}	\def\grf{{\gr f}}
+\def\grG{{\gr G}}	\def\grg{{\gr g}}
+\def\grH{{\gr H}}	\def\grh{{\gr h}}
+\def\grI{{\gr I}}	\def\gri{{\gr i}}
+\def\grJ{{\gr J}}	\def\grj{{\gr j}}
+\def\grK{{\gr K}}	\def\grk{{\gr k}}
+\def\grL{{\gr L}}	\def\grl{{\gr l}}
+\def\grM{{\gr M}}	\def\grm{{\gr m}}
+\def\grN{{\gr N}}	\def\grn{{\gr n}}
+\def\grO{{\gr O}}	\def\gro{{\gr o}}
+\def\grP{{\gr P}}	\def\grp{{\gr p}}
+\def\grQ{{\gr Q}}	\def\grq{{\gr q}}
+\def\grR{{\gr R}}	\def\grr{{\gr r}}
+\def\grS{{\gr S}}	\def\grs{{\gr s}}
+\def\grT{{\gr T}}	\def\grt{{\gr t}}
+\def\grU{{\gr U}}	\def\gru{{\gr u}}
+\def\grV{{\gr V}}	\def\grv{{\gr v}}
+\def\grW{{\gr W}}	\def\grw{{\gr w}}
+\def\grX{{\gr X}}	\def\grx{{\gr x}}
+\def\grY{{\gr Y}}	\def\gry{{\gr y}}
+\def\grZ{{\gr Z}}	\def\grz{{\gr z}}
+
+%\overfullrule=0pt
+
+\parindent=25pt
+\line{\dun --- DRAFT --- \hfill{\rm IASSNS-HEP-97/72}}
+
+\bigskip\bigskip
+\centerline{\boldtitlefont Lecture 14}
+\bigskip
+\centerline{\smallboldtitle IX. Superstring 
+Perturbation Theory}
+
+\medskip
+\centerline{Eric D'Hoker}
+
+\frenchspacing
+
+%$$
+%\vbox{\epsfxsize=2.5in\epsfbox{fig1.eps}}
+%$$
+\dspace
+\bigskip
+We shall now develop a systematic treatment of
+superstring perturbation theory in the $\RNS$
+formulation.
+Local $N=1$ supersymmetry (SUSY) on the worldsheet plays a
+fundamental r\^{o}le, but this symmetry is not manifest
+in the component formalism, set up in \S{VII}.
+The $N=1$ superfield formalism, formulated in the
+language of $N=1$
+supergeometry, treats diffeomorphisms and local
+supersymmetry transformations on an equal footing, and
+renders both manifest.
+Their combined action makes up the group of
+super-diffeomorphisms of the worldsheet super-manifold, 
+and local supersymmetry invariants can be
+constructed from super-diffeomorphism tensors.
+We first present the different ingredients needed and
+then apply these methods to the $\RNS$ superstrings.
+A general reference for this subject is E. D'Hhoker and
+D. H. Phong, ``The Geometry of String Perturbation
+Theory'', Rev. Mod. Phys. 60 (1988), p. 917.
+
+\bigskip\noindent
+\Item{\bf A)} {\bf $N=1$ supergeometry {\rm (also
+called $N=1$, $D=2$ supergravity)}}
+
+We consider a supermanifold $\Sigma$ of dimension
+$(2\vert2)$, and use local coordinates
+$\xi^M=(\xi^m,\theta^\mu)$, $m=1,2$, $\mu=1,2$
+with the grading
+$$
+\xi^M\xi^N=(-)^{MN}\xi^N\xi^M
+\eqno{(9.A.1)}
+$$
+where $(-)^{MN}$ equals $1$ unless $M=\mu$, $N=\nu$, in
+which case it equals $-1$.
+We introduce a local orthonormal {\it frame}
+$$
+E^A\equiv d\xi^M E_M{}^A\qquad\qquad
+A=(a,\alpha)\quad a=z,\zbar;\,\,\alpha=+,-\,\,,
+\eqno{(9.A.2)}
+$$
+where 
+it is understood that $a$ has the same grading as $m$, 
+while $\alpha$ has the same grading as $\mu$.
+We denote the inverse frame by $E_A{}^M$, and we have
+$E_A{}^M\,E_M{}^B=\delta_A{}^B$ and $E_M{}^A\,E_A{}^N=
+\delta_M{}^N$.
+
+Next, we consider frame rotations by a group of $U(1)$
+gauge transformations, under which the fields $E^z$,
+$E^{\zbar}$, $E^+$, $E^-$ have weights $-1$, $+1$,
+$-\Half$, $+\Half$, respectively.
+A general superfield $V$ has $U(1)$ weight $-n$ if it
+transforms as $(E^z)^{\otimes n}$.
+We introduce a $U(1)$ gauge field or {\it connection}
+$$
+\Omega=d\xi^M\Omega_M
+\eqno{(9.A.3)}
+$$
+with associated covariant derivatives
+$$
+\scrD_A^{(n)}V\equiv
+E_A{}^M(\partial_M+in\Omega_M)V\,\,.
+\eqno{(9.A.4)}
+$$
+Here $\partial_M\equiv\partial/\partial\xi^M$ and
+$i=\sqrt{-1\,\,}$.
+Torsion $T_{AB}{}^C$ and curvature $R_{AB}$ superfield
+tensors are defined by the graded commutators
+$$
+[\scrD_A,\scrD_B]V=T_{AB}{}^C\scrD_C V+in\,R_{AB}V\,\,.
+\eqno{(9.A.5)}
+$$
+
+The data of $N=1$ supergeometry is the frame $E{}^A$ and
+the $U(1)$ connection $\Omega$, together with the following
+{\it constraints} on the torsion and curvature, arising
+in $[\scrD_\alpha,\scrD_\beta]$:
+$$
+T_{\alpha\beta}^\gamma=0;\quad
+T_{\alpha\beta}^c=2\gamma_{\alpha\beta}^c;\quad
+R_{++}=R_{--}=0
+\eqno{(9.A.6)}
+$$
+Here, $\gamma^c$ are the $2$-dimensional Dirac
+matrices, satisfying
+$\{\gamma^a,\gamma^b\}=-\eta^{ab}$, with a convenient
+representation given by 
+$\gamma_{++}^z=\gamma_{--}^{\zbar}=1$,
+all other components $=0$.
+The constraints of (9.A.6) are equivalent to the following
+set of constraints
+$$
+\eqalign{
+&\scrD_+^2=\scrD_z,\quad
+\scrD_-^2=\scrD_{\zbar}\cr
+&\{\scrD_+,\scrD_-\}V=in\,R_{+-}V\,\,,\cr}
+\eqno{(9.A.7)}
+$$
+where $V$ is any superfield of weight $n$.
+The structure relations of the remaining covariant
+derivatives are defined by using the (graded) Jacobi
+identities.
+The only free quantity in this supergeometry is the {\it
+curvature superfield} $R_{+-}=R_{-+}\equiv R$.
+
+The symmetry transformations on the data $E^A$ and
+$\Omega$ that preserve the constraints (9.A.6) or
+equivalently (9.A.7) are
+
+\vfill\eject
+
+\parindent=75pt
+\Item{1) $s\Diff(\Sigma)$:} super-diffeomorphisms
+$\xi^M\to\xi'{^{M}}(\xi^N)$
+
+\Item{} contains $\Diff(\Sigma)$, local $N=1$
+susy, and further {\it algebraic} transformatons.
+
+\Item{2) a) $s\Weyl(\Sigma)$:} generated by a
+superfield $\Sigma$, contains $\Weyl(\Sigma)$ and further
+algebraic transformations.
+
+\Item{\quad b) $sU(1)$:} generated by a superfield
+$L$, contains $U(1)$ gauge transformations and further
+algebraic transformations.
+
+\parindent=25pt
+\smallskip
+It is convenient to combine transformations
+a) and b) into complexified Weyl
+transformations, given in terms of a complex superfield
+$\Lam$, defined by
+$$
+\Lam\equiv\Sigma-iL,\quad \Lam^*\equiv\Sigma+iL\,\,.
+\eqno{(9.A.8)}
+$$
+The superderivatives transform  under $s\Weyl\times sU(1)$ as
+$$
+\eqalign{
+\scrD_+^{(n)} &=e^{n\Lam-\Half\Lam^*}\scrDhat_+^{(n)}
+  e^{-n\Lam}\cr
+\scrD_-^{(n)} &=e^{-n\Lam^*-\Half\Lam}
+  \scrDhat_-^{(n)}e^{n\Lam^*}\cr}
+\eqno{(9.A.9)}
+$$
+and the curvature transforms as 
+$$
+R_{+-}=e^{-\Sigma}\left(\Rhat_{+-}-2i\scrDhat_+\scrDhat_-
+\Sigma\right)\,\,.
+\eqno{(9.A.10)}
+$$
+From (9.A.9), the transformation rules for $E_{\pm}$ and 
+$\Omega_{\pm}$ may be deduced, and from these combined
+with the torsion constraints (9.A.6), the transformation
+laws of $E_z$, $E_{\zbar}$, $\Omega_z$ and
+$\Omega_{\zbar}$ follow.
+
+
+$N=1$ supergeometry admits an almost complex structure
+$$
+J_M{}^N=E_M{}^a \Eps_a{}^b E_b{}^N+E_M{}^\alpha
+\gammabar_\alpha{}^\beta E_\beta{}^N
+\eqno{(9.A.11)}
+$$
+where $\Eps^2=\gammabar^2=-1$.
+In fact, $J$ is a {\it complex structure} provided 
+the constraints given in (9.A.6) are satisfied.
+(This may be viewed as one of the motivations for
+choosing those constraints.)
+We shall denote local complex coordinates by
+$(\xi,\xibar,\theta,\thetabar)$ with $\xi=1/\sqrt{2\,\,}\,
+(\xi^1+i\xi^2)$,
+$\theta=1/\sqrt{2\,\,}\,(\theta^1+i\theta^2)$, and $\xibar$
+and $\thetabar$ their complex conjugates.
+
+By a combined $s\Diff$, $s\Weyl$ and $sU(1)$
+transformation, any $N=1$ supergeometry may be mapped
+on a locally flat (Euclidean) supergeometry, characterized
+by the superderivatives
+$$
+\eqalign{
+\scrD_+
+&={\partial\over\partial\theta}
++\theta{\partial\over\partial\xi}\cr
+\noalign{\medskip}
+\scrD_- &={\partial\over\partial\thetabar}+
+  \thetabar{\partial\over\partial\xibar}\cr}
+\qquad\qquad
+\eqalign{
+\scrD_z &=\scrD_+^2={\partial\over\partial\xi}\cr
+\noalign{\medskip}
+\scrD_{\zbar} &=\scrD_-^2
+={\partial\over\partial\xibar}\,\,.\cr}
+\eqno{(9.A.12)}
+$$
+The residual symmetry group of $s\Diff\times
+sU(1)\times s\Weyl$ that leaves this supergeometry
+invariant is the group of {\it superconformal}
+transformations, which consists of superanalytic
+diffeomorphisms, $\xi\to\xi'(\xi,\theta)$,
+$\xibar\to\xibar'(\xibar,\thetabar)$,
+$\theta\to\theta'(\xi,\theta)$;
+$\thetabar\to\thetabar'(\xibar,\thetabar)$, combined
+with $s\Weyl$ and $sU(1)$ transformations.
+
+{\it Wess-Zumino gauge} is obtained by fixing a gauge
+for the action of the {\it algebraic} parts of
+$s\Diff(\Sigma)$, $sU(1)$ and $s\Weyl$.
+The remaining independent fields are $e_m{}^a$,
+$\chi_m{}^\alpha$ and an auxiliary field $A$, and we
+have
+$$
+\eqalign{
+E_m{}^a &=e_m{}^a+\theta\gamma^a\chi_m-{\Half}
+\theta\thetabar e_m{}^a A\cr
+E_m{}^\alpha &=-{\Half}\chi_m{}^\alpha-
+{\scriptstyle i\over\scriptstyle 2}
+\theta^\beta(\gamma^a)_\beta{}^\alpha e_m{}^a
+A+\cdots\cr
+E_\mu{}^a &=(\gamma^a)_\mu{}^\beta\theta_\beta\cr
+E_\mu{}^\alpha &=\delta_\mu{}^\alpha\Bigl(1+{i\over 4}
+\theta\thetabar A\Bigr)\cr}
+\eqno{(9.A.13)}
+$$
+This presentation of the supergeometry is so-called {\it in
+components}.
+
+Integration over $\Sigma$ is performed with the help of
+a super-measure $d\mu_E$, defined as follows:
+$$
+d\mu_E\equiv s\det\,E_M{}^A d\xi\,d\xibar\,d\theta\, 
+d\thetabar
+\eqno{(9.A.14)}
+$$
+where the superdeterminant (also sometimes referred to
+as the Berezinian) is defined by
+$$
+s\det\,E_M{}^A\equiv\det(E_m{}^a-E_M{}^\alpha
+(E_\mu{}^\alpha)^{-1}E_\mu{}^a)\cdot
+(\det\,E_\mu{}^\alpha)^{-1}
+\eqno{(9.A.15)}
+$$
+Of course, $d\mu_E$ is $s\Diff$ invariant.
+Inner products on superfields $\Psi_1$ and $\Phi_2$ of
+weight $n$ are defined by
+$$
+\left<\Phi_1,\Phi_2\right>=\int\nolimits_{\Sigma}
+d\mu_E\,\Phi_1^*\Phi_2\,\,.
+\eqno{(9.A.16)}
+$$
+
+\bigskip\noindent
+\Item{\bf B)} {\bf Functional Integral Representation
+of Transition Amplitudes}
+
+The $\RNS$ worldsheet action, introduced in \S{VII} in
+components, admits a simple expression in superfield
+form.
+We introduce a string coordinate superfield of $sU(1)$
+weight $0$; $X=\Sigma\to\dbR^{10}$
+$$
+X^\mu=x^\mu+\theta^\mu\psi_+{}^\mu+\thetabar\psi_-^\mu+\theta
+\thetabar\,F^\mu\qquad \mu=0,1,\ldots,9\,\,.
+\eqno{(9.B.1)}
+$$
+The action
+$$
+S_X={1\over 4\pi}\int\nolimits_{\Sigma}d\mu_E
+\scrD_-X\cdot\scrD_+X
+\eqno{(9.B.2)}
+$$
+reduces to the $\RNS$ action,{\baselineskip=9pt\footnote{$^*$}%
+{\eightpoint In locally flat coordinates,
+this action equals in components
+$$
+S_X={1\over 4\pi}\int\nolimits_\Sigma d^2 z(\partial_z
+x\cdot\partial_{\zbar}x-\psi_+\cdot\partial_{\zbar}
+\psi_+-\psi_-\cdot\partial_z\psi_- -F^2)
+\eqno{(9.B.3)}
+$$
+so that the sign of the $\psi$-kinetic term is opposite
+to the convention we used previously.
+Notice that this reverses the sign of the $\psi$ stress
+tensor.
+Apologies!
+(Conventions are to be uniformized in the final write-up.)
+
+}}
+except for the fact that
+it has an entire term of the form $F^2$.
+This term is non-dynamical and the $F$ field may be
+integrated out without any consequences.
+
+The next action we need is that of the super $(B,C)$
+system:
+let $B$ and $C$ be superfields of $sU(1)$ weight $n$
+and $\Half-n$, respectively.
+The $(B,C)$ action is then
+$$
+S_{BC}={1\over 2\pi}\int\nolimits_{\Sigma}
+d\mu_E(B\scrD_-^{(n)}C+\Bbar\scrD_+^{(-n)}\Cbar)\,\,.
+\eqno{(9.B.4)}
+$$
+To make contact with the $(b,c)$ action, we decompose the
+superfields $B$, $C$ in components
+$$
+\eqalign{B &=\beta+\theta b+\thetabar
+b'+\theta\thetabar\beta'\cr
+C &=c+\theta\gamma+\thetabar\gamma'+
+  \theta\thetabar c'\cr}
+\eqno{(9.B.5)}
+$$
+The fields $b'$, $\beta'$, $\gamma'$ and $c'$ are
+auxiliary, just as $F$ was an auxiliary field
+in $S_X$, and we shall drop
+their contribution to $S_{BC}$.
+The $U(1)$ weight assignments in Wess-Zumino gauge are
+now obtained by using the fact that $\theta$ (resp.
+$\thetabar$) have weight $-\Half$ (resp. $\Half$).
+Hence, the weights are, for $n=-1$:
+$$
+\def\bigstruta{\vrule height 15pt depth 3pt width 0pt}
+\def\bigstrutb{\vrule height 20pt depth 4pt width 0pt}
+\vbox{\offinterlineskip
+\halign{\hfil#\hfil\bigstruta &\hfil#\hfil \qquad
+  \vrule\quad &\hfil #\hfil \bigstrutb
+ &\hfil \quad #\hfil  &\hfil \quad #\hfil  
+  &\hfil \quad #\hfil \cr
+&field\hfill &$\beta$ &$b$ &$\gamma$ &$c$\cr
+\noalign{\hrule}
+&$U(1)$ weight\hfill &$3/2$ &$2$ &$-1/2$ &$-1$\cr}}
+\eqno{(9.B.6)}
+$$
+We recognize the $(b,c)$ system of anti-commuting ghost
+fields, and we now also find a $(\beta,\gamma)$ system
+of commuting ghost fields (called superghost) which has
+precisely the correct weight assignments to be the
+ghost system for local supersymmetry.
+The $(\beta\gamma)$ fields are worldsheet spinors, and
+their spin structure must be the same as that of
+$\psi_+{}^\mu$, in order for $(\beta\gamma)$ to be $N=1$
+local supersymmetry ghosts.
+The $BC$ action may be worked out in components and
+becomes in $WZ$ gauge:
+$$
+S_{BC}={1\over 2\pi}\int\nolimits_{\Sigma} d^2 z
+[b\nabla_{(-1)}
+^zc+\beta\nabla_{(-1/2)}^z\gamma-\chi_{\zbar}{}^+
+S_+^{\zbar}+c.c.]
+\eqno{(9.B.7)}
+$$
+where the $BC$ supercurrent is
+$$
+S_{z+}\equiv +{\Half}\,b\gamma-
+{\scriptstyle 3\over\scriptstyle  2}\,\beta
+\nabla_z c-\nabla_z\beta c
+\eqno{(9.B.8)}
+$$
+This current is the  $N=1$ superpartner of the stress
+tensor and it is conserved; in fact it is analytic.
+
+The combined $X$, $(B,C)$ system for $D=10$ components of
+$X$ is superconformal invariant, and so the
+super-conformal field theory associated with this
+system depends upon $N=1$ supergeometry only through
+its {\it supermoduli}.
+Recall that supermoduli space is defined by
+$$
+s\scrM_h\equiv {\{E_M{}^A,\Omega_M\hbox{ satisfying
+constraints of (9.A.6)}\}\over
+s\Diff\times s\Weyl\times sU(1)}
+\eqno{(9.B.9)}
+$$
+and is a space of dimension
+$$
+\dim\,s\scrM_h=\cases{
+(0\vert 0) &\null\kern-2.83 true cm $h=0$\cr
+\noalign{\medskip}
+\left\{\matrix{
+(1\vert 0) &\qquad\qquad h=1 &\hbox{even spin structure}\hfill\cr
+(1\vert 1) &\qquad\qquad h=1 &\hbox{odd spin structure}\hfill\cr}
+\right. &\cr
+\noalign{\medskip}
+(3h-3\vert 2h-2) &\null\kern-2.83 true cm$n\Ge 2$ \cr}
+\eqno{(9.B.10)}
+$$
+The holomorphic cotangent space to $s\scrM_h$ is
+spanned by super-holomorphic $3/2$ differentials
+$\Phi_K$, which satisfy
+$$
+\scrD_-^{(3/2}\Phi_K=0\qquad\qquad
+{{\Phi_K\hbox{ odd graded}}\atop
+{K=1,\ldots,\dim\,s\scrM_h}}
+\eqno{(9.B.11)}
+$$
+Super-Beltrami differentials are defined as the
+duals to $\Phi_K$, and may be parametrized by the super-moduli
+variations of $E_M{}^A$:
+$$
+\mu_K\equiv E_-{}^M {\partial E_M{}^z\over
+\partial m_K}\qquad K=1,\ldots,\dim\,s\scrM_h\,\,.
+\eqno{(9.B.12)}
+$$
+It is instructive to work out the $\mu_K$ in
+Wess-Zumino gauge:
+$$
+\mu_K=\thetabar\left(e_{\zbar}{}^n
+{\partial e_n{}^z\over\partial m_K}-\theta
+{\partial\chi_{\zbar}{}^+\over \partial
+m_K}\right)\,\,.
+\eqno{(9.B.13)}
+$$
+The first term on the r.h.s. is recognized as the
+ordinary Beltrami differential, for $m_K$ an even
+modulus, while the second term corresponds to a novel
+odd Beltrami differential for $m_K$ an odd modulus.
+
+We are now ready to state a preliminary
+{\it Definition} of transition amplitudes for $\RNS$
+superstring amplitudes.
+This preliminary definition is the natural generalization
+of the ``summation over surfaces'' definition adopted for
+bosonic string amplitudes in \S{I}.
+It is preliminary in the sense that it treats left and
+right chirality worldsheet spinors with the same spin
+structure.
+In the final definition of transition amplitudes, these
+spin structures will have to be summed over independently
+for left and right movers, and this will be presented in
+\S{IX.F}, after the Chiral Splitting Theorem has been
+established.
+The preliminary definition will be useful, however, in
+order to introduce superghosts, and it is needed in order
+to set up the Chiral Splitting Theorem.
+Transition amplitudes are defined by
+$$
+A_h=\int DE_M{}^A D\Omega_M\delta\hbox{ (constraints) }
+\int DX^\mu V_1\ldots V_N e^{-S_X}
+\eqno{(9.B.14)}
+$$
+for certain vertex operators $V_i$, to be specified
+shortly.
+
+In the critical dimension, $D=10$, and for
+super-conformally invariant vertex operators $V_i$, we
+have the following {\it Theorem}
+$$
+\eqalign{
+A_h=\int\nolimits_{s\scrM_h}\prod\limits_{K}
+dm_K\int &DX^u\int D(B\Bbar)\int D(C\Cbar)V_1\ldots
+V_N e^{-S_X-S_{BC}}\cr
+&\cdot\prod\limits_{K}\delta(\left<\mu_\kap,B\right>)
+\delta(\left<\mubar_\kap,\Bbar\right>)\cr}
+\eqno{(9.B.15)}
+$$
+The proof of this result is much more involved than in
+the case or bosonic strings, because the inner products
+$\left<\Phi_1,\Phi_2\right>$ are no longer positive on
+superfields, and extra care must be used in dealing
+with the $\scrD_+$ and $\scrD_-$ operators.
+We shall not prove it here; we refer the reader to Rev.
+Mod. Phys. {\bf 60} (1988) p. 917.
+
+\vfill\eject
+
+%\bigskip\noindent
+\Item{\bf C)} {\bf Superconformal Field Theory {\rm
+(some basics)}}
+
+A conformal field theory with an additional $N=1$ local
+supersymmetry invariance is automatically invariant
+under superconformal transformations, and is an
+ $N=1$ {\it superconformal field theory}.
+Each conformal field has a superpartner (which is also
+a conformal field), and together both fields fit into a
+superconformal field; $X^\mu$, $B$, $C$ are examples of
+such fields.
+Conserved currents are other examples of conformal
+fields that generalize to supercurrents. 
+Conservation of a supercurrent $J$ is given by
+$$
+\scrD_- J=0
+\eqno{(9.C.1)}
+$$
+In local super-complex coordinates, this means that
+$$
+J=J(z,\theta)=J_{1/2}(z)+\theta J_1(z)
+\eqno{(9.C.2)}
+$$
+with $J_{1/2}$ and $J_1$ holomorphic in $z$.
+The associated charge is defined by
+$$
+Q_J=\oint dz\,d\theta\,J=\oint dz\,J_1(z)
+\eqno{(9.C.3)}
+$$
+
+Important examples of supercurrents include the stress
+tensor, which is built up out of the ordinary stress
+tensor $T_{zz}$ and the (worldsheet) supercurrent $S_{z+}$:
+$$
+T(z,\theta)\equiv S_{z+} (z)+\theta T_{zz}(z)\,\,.
+\eqno{(9.C.4)}
+$$
+For the $X$-system, $T$ is given by
+$$
+\eqalign{
+T^{(X)} &=-{\Half}\scrD_+X\cdot\scrD_+^2X\cr
+&=-{\Half}\,\psi_+\cdot\partial_z x+\theta
+\left(-{\Half}\,\partial_z x\cdot\partial_z x-{\Half}\,
+\partial_z \psi_+\cdot\psi_+\right)\cr}
+\eqno{(9.C.5)}
+$$
+We recognize indeed the super-current and the $x\psi$
+stress tensor.
+For the $(B,C)$ system, $T$ is given by
+$$
+\eqalign{
+T^{(BC)} &=-C\scrD_+^2 B+{1\over2}\scrD_+
+C\scrD_+B-{3\over2}\scrD_+^2C B\cr
+&=-c\partial_z\beta+{1\over2}\gamma b-{3\over2}\partial_z
+c\beta+\theta(T^{(bc)}+T^{(\beta\gamma)})\cr}
+\eqno{(9.C.6)}
+$$
+
+The OPE of $T$ with superfields of weight $(h,0)$ is
+determined by Ward identities, and we have the asymptotic
+expansions
+$$
+\eqalign{
+T(z,\theta)\Phi(w,\zeta)\sim n
+{\theta-\zeta\over (z-w-\theta\zeta)^2}\Phi(w,\zeta)
+ &+{\Half}{1\over
+z-w-\theta\zeta}\scrD_+\Phi(w,\zeta)\cr
+&+{\theta-\zeta\over
+z-w-\theta\zeta}\scrD_+^2\Phi(w,\zeta)\cr}
+\eqno{(9.C.7)}
+$$
+For example $\scrD_+ X$, $B$ and $C$ have weights
+$n=1/2,3/2,-1$ respectively.
+The super-Virasoro algebra is similarly expressed.
+Denote $s\equiv z-w-\theta\zeta$
+$$
+T(z,\theta)T(w,\zeta)\sim{{1\over4}\chat\over s^3}
++{\scriptstyle 3\over\scriptstyle 2}
+{\theta-\zeta\over s^2}T(w,\zeta)+
+{\Half}\,{1\over s}\scrD_+T(w,\zeta)+{\theta-\zeta\over s}
+\scrD_+^2T(w,\zeta)
+\eqno{(9.C.8)}
+$$
+where $\chat={2\over 3}c$ represents the central
+charge.
+
+%\vfill\eject
+
+\bigskip\noindent
+\Item{\bf D)} {\bf {\rm BRST} Quantization}
+
+The combined action $S_X+S_{BC}$ is BRST invariant.
+For completeness, we record the BRST transformations on
+the fields
+$$
+\eqalign{
+\delta X^\mu &=\lam C\scrD_+^2 X^\mu-{\Half}\,\lam\,\scrD_+
+C\scrD_+ X^\mu+\hbox{ complex conjugate}\cr
+\delta C &=\lam C\scrD_+^2 C-{1\over 4}\lam\scrD_+
+  C\scrD_+ C\cr
+\delta B &=-\lam T\cr}
+\eqno{(9.D.1)}
+$$
+where $\lam$ is a constant Grassmann-valued parameter
+and $T$ is the stress tensor superfield, defined in C).
+The associated BRST supercurrent is
+$$
+J_{\BRST}=C(T^{(X)}+{\Half}T^{(BC)})-{3\over
+4}\scrD_+(C\scrD_+ CB)
+\eqno{(9.D.2)}
+$$
+The BRST charge
+$$
+Q_{\BRST}=\oint dz\,d\theta\,J_{\BRST}
+\eqno{(9.D.3)}
+$$
+is conserved and nilpotent precisely in $D=10$, in
+analogy with the bosonic string.
+Vertex operators for physical states commute with $Q_{\BRST}$,
+while vertex operators of spurious states are
+$Q_{\BRST}$-commutators of some operator.
+We shall not carry out BRST quantization any further
+here.
+
+\bigskip\noindent
+\Item{\bf E)} {\bf Vertex operators for physical states}
+
+We distinguish two kinds of vertex operators: those for
+the $\NS$ sector, creating space-time bosons, and those
+for the $\R$ sector, creating space-time fermions (also
+sometimes called the fermion vertex operator).
+For closed strings, this produces four different kinds
+of vertex operators: $\NS$-$\NS$ and $\R$-$\R$ creating
+bosons, and $\NS$-$\R$ and $\R$-$\NS$ creating
+fermions.
+The $\R$-vertex cannot be constructed directly 
+out of the fields
+$X^\mu$, since it must produce a branch cut starting at
+its insertion points.
+
+\bigskip\noindent
+\Item{\bf (1)} {\bf The $\NS$ vertex operator}
+
+For simplicity, we specialize to the closed $\RNS$
+string, and consider $\NS$-$\NS$ vertex operators
+first; the
+left-moving part may be constructed using the chiral
+splitting theorem for the $\RNS$ string, to be derived
+in the next section, \S{F}.  We begin by constructing $\RNS$
+vertex operators for $\NS$-$\NS$ states 
+without ghost dependence.
+
+Vertex operators in the $\NS$-$\NS$ sector are given in
+a fashion completely analogous to the bosonic string
+$$
+V(\eps,k)=\int\nolimits_{\Sigma}d\mu_E
+P_n(\eps,\scrD_+X,\scrD_-X,\scrD_+^2X,\ldots\,)
+e^{ik\cdot X}
+\eqno{(9.E.1)}
+$$
+Here, $P_n$ is a polynomial involving a sum over terms,
+each of which has a total number  $n$ of $\scrD_+$
+derivatives.
+By $sU(1)$ invariance of $V$, $P_n$ must then also have
+a total number $n$ of $\scrD_-$ derivatives.
+(On non-flat $N=1$ supergeometries, the curvature
+superfield $R_{+-}$ may also enter, just as the Gaussian
+curvature $R_g$ entered for the bosonic string in the
+dilaton vertex.
+$R_{+-}$ effectively counts for one $\scrD_+$ and for one
+$\scrD_-$.)
+By construction, $V(\eps,k)$ is invariant under
+$s\Diff$ transformations.
+It remains to guarantee that $V(\eps,k)$ is $s\Weyl$
+invariant.
+
+Under constant $s\Weyl$ transformations, $\scrD_+$ and
+$\scrD_-$ have weight $1/2$, $d\mu_E$ has weight $-1$
+and the exponential has weight $k^2$.
+Given that $\#\scrD_+\,=n_\scrD=\,\#\scrD_-$, we have
+$$
+M^2=-k^2=n_\scrD-1
+\eqno{(9.E.2)}
+$$
+The $\GSO$ projection forces $n$ to be odd only, since
+the number of $\NS$ fields applied to the ground state
+in each sector (left and right moving) must be odd.
+Thus, we have $n_\scrD=2n+1$, with $n=0,1,2,\ldots$
+and the masses of $\NS$-$\NS$ states are given by
+$$
+M^2=2n\qquad\qquad n=0,1,2,\ldots
+\eqno{(9.E.3)}
+$$
+Non-constant $s\Weyl$ transformations will require in
+addition that certain conditions be fulfilled on the
+polarization tensors $\eps$, such as transversality.
+
+The massless string $\NS$-$\NS$ vertex operator is
+$$
+V(\eps,k)=\eps_{\mu\nu}(k)\int\nolimits_{\Sigma}
+d\mu_E\scrD_+X^\mu\scrD_-X^\nu e^{ik\cdot X}
+\eqno{(9.E.4)}
+$$
+$s\Weyl$ invariance requires
+$\eps_{\mu\nu}(k)k^\mu=\eps_{\mu\nu}(k)k^\nu=0$, and we
+recover the vertex operator for dilaton, graviton and
+$B_{\mu\nu}$ fields.
+It is useful to work out this vertex operator in
+components, dropping the auxiliary field $F$, and other
+terms that vanish by the field equations, such as
+$\partial_{\zbar}\psi_+$.
+(The full justification for dropping terms that vanish
+by the field equations may be given with the help of
+the Chiral Splitting Theorem in the next section,
+\S{F}.)
+Restricting to left-movers only, we use the fact that
+$$
+X^\mu=X_L{}^\mu+X_R{}^\mu
+\eqno{(9.E.5)}
+$$
+and obtain the left-moving $\NS$ part of the vertex
+operator (9.E.?) as follows:
+
+$$
+\int d\theta\,\scrD_+X_L^\mu e^{ik\cdot X_L}
+=(\partial_z x_L^\mu-i\psi_+^\mu\psi_+^\nu k_\nu)
+e^{ik\cdot x_L}
+\eqno{(9.E.6)}
+$$
+This vertex contains the bosonic vertex
+operator, as well as an operator that allows for an
+application of an even number of $\NS$ fermions only.
+
+%\beginsection{(2) The $\R$-vertex operator}
+\bigskip\noindent
+\Item{\bf (2)} {\bf The $\R$ vertex operator}
+
+Ramond states transform under spinor representations of
+the (double cover of the) Lorentz group, $\Spin(1,9)$.
+This group has two inequivalent Majorana-Weyl spinors
+$S_\alpha$ and $S'{^\alpha}$, each of dimension $16$ so
+that we let $\alpha=1,\ldots,16$.
+To describe the representations $S_\alpha$ and
+$S'{^{\alpha}}$, we introduce the
+Clifford algebra of $\Spin(1,9)$
+$$
+\{\Gamma^\mu,\Gamma^\nu\}=2\eta^{\mu\nu}I_{(32)}
+\eqno{(9.E.7)}
+$$
+where $I_{(32)}$ is the identity matrix of dimension
+$32$.
+The chirality matrix $\Gambar$ is defined by
+$$
+\Gambar\equiv\Gamma^0\Gamma^1\cdots\Gamma^9
+$$
+and satisfies
+$$
+\Gambar^2=I_{(32)}\quad\hbox{and}\quad
+\{\Gamma^\mu,\Gambar\}=0
+\eqno{(9.E.8)}
+$$
+Weyl spinors of left (resp. right) chirality are
+eigenvectors of $\Gambar$ with eigenvalues $+1$ (resp.
+$-1$).
+The charge conjugation matrix $C$ is defined by the
+relation
+$$
+(\Gamma^\mu)^T=-C\Gamma^\mu C^{-1}
+\eqno{(9.E.9)}
+$$
+and anti-commutes with $\Gambar$:
+$$
+\{\Gambar,C\}=0\,\,.
+\eqno{(9.E.10)}
+$$
+The charge conjugate $\psi^c$ of $\psi$ is defined by
+$$
+\psi^c\equiv C\psibar^T\qquad\qquad
+\psibar=\psi^\dagger\Gamma^0
+\eqno{(9.E.11)}
+$$
+A Majorana spinor is a spinor whose charge conjugate is
+equal to itself, $\psi^c=\psi$.
+It is consistent (and convenient) to choose
+$C=\Gamma^0$, so that a Majorana spinor is {\it real}:
+$\psi^c=\psi^*=\psi$.
+We shall choose a basis in which
+$$
+\Gambar=\pmatrix{
+I_{(16)} &0\cr
+&\cr
+0 &-I_{(16)}\cr}\,\,,\qquad
+C=\Gamma^0=\pmatrix{
+0 &I_{(16)}\cr
+&\cr
+-I_{(16)} &0\cr}
+\eqno{(9.E.12)}
+$$
+A 32 component Majorana spinor $\psi$ now decomposes
+into two 16 component Majorana-Weyl spinors $S_\alpha$
+and $S'{^\alpha}$.
+It will be convenient to work with
+$\Gamma$-matrices in this basis: 
+$$
+\psi=
+\pmatrix{
+S_\alpha\cr
+\cr
+S'{^\alpha}\cr}
+\qquad\qquad\qquad
+\Gamma^\mu=
+\pmatrix{
+0 &(\gamma^\mu)_{\alpha\beta}\cr
+\cr
+(\gamma^\mu)^{\alpha\beta} &0\cr}
+\eqno{(9.E.13)}
+$$
+with $\alpha,\beta=1,\ldots,16$. 
+It then follows from (9.E.9), (9.E.12) that
+$\gamma_{\alpha\beta}^\mu=\gamma_{\beta\alpha}^\mu$
+and $\gamma^{\mu\alpha\beta}=\gamma^{\mu\beta\alpha}$.
+The generator of $\Spin(1,9)$ transformations in this
+representation is ${\Half}\,\Gamma^{\mu\nu}$, with
+$$
+\eqalign{
+\Gamma^{\mu\nu} &\equiv{\Half}\,[\Gamma^\mu,
+  \Gamma^\nu]=\pmatrix{\gamma^{\mu\nu} &0\cr
+0 &\gamma^{\mu\nu}\cr}\cr
+\gamma^{\mu\nu} &\equiv {1\over
+2}\,[\gamma^\mu,\gamma^\nu]\,\,.\cr}
+\eqno{(9.E.14)}
+$$
+Clearly, $\Gamma^{\mu\nu}$ commutes with $\Gambar$, and
+${\Half}\,\gamma^{\mu\nu}$ are the representation
+generators of $\Spin(1,9)$ in one of the Weyl
+representations.
+
+The $\SO(1,9)$ transformation properties in the Ramond
+sector are governed by the $\SO(1,9)$ currents (we omit
+the contribution from the $x$-field)
+$$
+j^{\mu\nu}(z)=\psi_+^\mu\,\psi_+^\nu(z)
+\eqno{(9.E.15)}
+$$
+Clearly, the field $\psi_+^\mu$ itself transforms under
+the vector representation of $\SO(1,9)$:
+$$
+j^{\mu\nu}(z)\psi_+^\rho(w)\sim{1\over z-w}
+(\eta^{\mu\rho}\psi_+^\nu(w)-\eta^{\nu\rho}
+\psi_+^\mu(w))\,\,.
+\eqno{(9.E.16)}
+$$
+We seek to construct fields $S_\alpha(z)$ and
+$S'{^\alpha}(z)$ such that transform as spinors under
+$\Spin(1,9)$ with representation matrices
+$\gamma^{\mu\nu}$:
+$$
+\eqalignno{
+j^{\mu\nu}(z) S_\alpha(w) &\sim{1\over z-w}
+\left(-{\Half}\right)
+(\gamma^{\mu\nu})_\alpha{}^\beta S_\beta(w) &(9.E.17a)\cr
+\noalign{\vskip10pt}
+j^{\mu\nu}(z) S'{^\alpha}(w) &\sim{1\over z-w}
+\left(-{\Half}\right)(\gamma^{\mu\nu})^\alpha{}_\beta
+S'{^\beta}(w)\,\,. &(9.E.17b)\cr}
+$$
+From these OPE's, and from the fact that $j^{\mu\nu}$
+is bilinear in $\psi_+^\mu$, we may infer the OPE of
+$\psi_+$ with $S$:
+$$
+\eqalignno{
+\psi_+^\mu(z) S_\alpha(w) &\sim{1\over (z-w)^{{1\over
+2}}}\,
+{1\over\sqrt{2\,\,}}\,(\gamma^\mu)_{\alpha\beta}
+S'{^\alpha}(w)&(9.E.18a)\cr
+\noalign{\vskip10pt}
+\psi_+^\mu(z) S'{^\alpha}(w) &\sim{1\over(z-w)^{{1\over
+2}}}\,{1\over\sqrt{2\,\,}}\,
+(\gamma^\mu)^{\alpha\beta}S_\beta(w)\,\,.&(9.E.18b)\cr}
+$$
+The relative normalization between $S$ and $S'$ is
+arbitrary, and has been fixed above on symmetry
+grounds.
+The conformal weights of $S_\alpha(z)$ and
+$S'{^\alpha}(z)$ are computed from their OPE with the
+stress tensor $T^{(\psi)}=-{\half}\,
+\partial_z\psi_+\cdot\psi_+$:
+$$
+\eqalign{
+T^{(\psi)}(z)S_\alpha(w) &\sim\left(-{\Half}\right)
+\left(-{\Half}\right){1\over\sqrt{2\,\,}}\,{1\over
+  (z-w)^{3/2}}\gamma_{\alpha\beta}^\mu\,\psi_+^\mu(z)
+S'{^\beta}(w)\cr
+\noalign{\vskip10pt}
+&\sim{1\over 16}(\gamma^\mu\gamma_\mu)_\alpha^\beta
+S_\beta(w){1\over (z-w)^2}\,\,.\cr}
+\eqno{(9.E.19)}
+$$
+Since $\gamma^\mu\,\gamma_\mu=10\,I_{(16)}$, we find
+that the conformal weight of $S_\alpha$ (and similarly
+of $S'{^{\alpha}}$) is $5/8$. 
+
+To obtain the spin fields $S_\alpha$ and $S'{^\alpha}$,
+we make use first of the action of the currents $j^{\mu\nu}$
+in the Cartan subalgebra of $\Spin(1,9)$ only.
+These components mutually
+commute and may be bosonized in terms
+of $5$ independent free scalar Bose fields:
+$$
+j^{2a,2a+1}(z)=-i\partial_z\phi^a(z)\qquad
+a=0,1,2,3,4\,\,.
+\eqno{(9.E.20)}
+$$
+The $R$-fields $\psi_+{}^\mu$ are exponentials of
+$\phi^a$ with $\pm 1$ weights:
+$$
+{1\over\sqrt{2\,\,}}\,(\psi_+^{2a}\pm
+i\psi_+^{2a+1})=e^{\pm i\phi^a}\,\,.
+\eqno{(9.E.21)}
+$$
+The spin fields are exponentials of $\phi^a$ with
+$\pm\,{\Half}$ weights:
+$$
+S_\alpha(z)=e^{i\alpha\cdot\phi}\,\,.
+\eqno{(9.E.22)}
+$$
+where we identify the space-time indices with the
+spinor representation weights, given by
+$\alpha=(\pm\,{\Half},\, \pm\,{\Half},\, \pm\,{\Half}, 
+\pm\,{\Half},\, \pm\,{\Half})$.
+The spinors $S_\alpha$ are obtained for $\alpha$ with
+an even number of $-$ signs, while $S'{^\alpha}$ is
+obtained with an odd number of $-$ signs.
+The conformal dimension of this field is easily
+verified to be ${\Half}\,\alpha^2=5/8$, with the help
+of the standard formula for the conformal weight of an
+exponential of a $c=1$ conformal field.
+
+One may complete the analysis by showing that the
+currents $j^{\mu\nu}$ corresponding to roots may also be
+constructed in terms of exponentials (multiplied by
+certain cocycle factors) and that $j^{\mu\nu}$ indeed
+satisfies the correct OPE with $S_\alpha$ and
+$S'{^\alpha}$.
+
+With the above normalization, one also obtains the
+OPE's of $S$ with $S$ and with $S'$:
+$$
+\eqalign{
+S'{^{\alpha}}(z)S_\beta(w) &\sim {\delta_\beta{}^\alpha\over
+(z-w)^{5/4}}+{1\over (z-w)^{1/4}}\,{\half}\,
+\gamma^{\mu\nu}j_{\mu\nu}(w)\cr
+S_\alpha(z)S_\beta(w) &\sim
+{1\over(z-w)^{3/4}}\,\gamma_{\alpha\beta}^\mu\,\psi_\mu\cr}
+\eqno{(9.E.23)}
+$$
+(Notice that the construction of spinor fields that we
+have just given for $\Spin(1,9)$ may be carried over in
+a straightforward way to $\Spin(2n)$.
+In particular, this type of construction is needed to
+obtain the spinor of $\SO(16)$ necessary to build
+the full current algebra of $E_8\times E_8$ in the
+heterotic string.
+There, the spin fields have precisely conformal
+dimension $(1,0)$, since the weight vectors all have length
+$\alpha^2=2$.)
+
+It remains to construct the Ramond vertex operator.
+The spin field by itself cannot produce a vertex
+operator for massless fermions, since its conformal
+weight is $5/8\not=1$.
+The resolution of this issue is found in a contribution
+to the $R$ vertex operator from the $(\beta,\gamma)$ and
+possibly $(b,c)$ ghost system.
+The relevant conformal primary field is obtained as
+follows.
+(We consider only the left-moving part of the vertex
+operator.)
+$$
+W_-(z,u,k)=u^\alpha(k)\scrO(z)S_\alpha(z)e^{ik\cdot
+x_L(z)}
+\eqno{(9.E.24)}
+$$
+Here, $u^\alpha$ is a spinor analogue of the
+polarization tensors $\eps$ that entered the construction of
+$\NS$ states and vertex operators.
+The operator $\scrO(z)$ depends on the $\beta$ and
+$\gamma$ ghosts, and is a primary field of weight
+$3/8$, so that $W_-$ is of weight $1$ for massless
+states (with $k^2=0$).
+$\scrO(z)$ is constructed in such a way that $W_-$ is
+$\BRST$ invariant; it is an analogue of the spin field,
+but now for the superghost system.
+
+The $(\beta,\gamma)$ ghost system may be represented in
+terms of two free boson fields $\phi$ and $\chi$, such
+that
+$$
+\gamma=e^{\phi-\chi}\qquad\qquad\beta=e^{-\phi+\chi}\partial_z
+\chi
+\eqno{(9.E.25)}
+$$
+with
+$$
+\matrix{
+\phi(z)\,\phi(w)\hfill 
+&\sim\hfill &-\ln(z-w)\hfill &c_\phi=13\hfill\cr
+\noalign{\bigskip}
+\chi(z)\chi(w)\hfill &\sim\hfill 
+&\null\quad\! \ln(z-w)\hfill &c_\chi=-2\hfill\cr}
+\eqno{(9.E.26)}
+$$
+The ghost number current is $j_z=-\partial_z\phi$.
+The operator $\scrO(z)$ is again an exponential with
+weight ${\Half}\,$:
+$$
+\scrO(z)=e^{-{\Half}\phi(z)}\,\,.
+\eqno{(9.E.27)}
+$$
+Because the central charge of the $\phi$ system is
+$13$, the dimension of $\scrO(z)$ is $3/8$, instead of
+$1/8$, as would be the case for a field $\phi$ of
+central charge $1$.
+
+The above construction of $W_-$ implies, though, that
+$W_-$ has ghost number $-1/2$!
+But overall ghost number is given in terms of the index
+theorem, and this would suggest that the number of
+Ramond vertex operators that can be inserted on any
+Riemann surface is determined in terms of the topology
+of the surface, which is clearly absurd.
+
+The resolution of this problem lies in the subtleties
+of the quantization of the $(\beta,\gamma)$ system, which
+we shall not discuss here.
+The final result is that the quantization of the
+$(\beta,\gamma)$ system yields vertex operators in
+different possible pictures, labeled by their ghost
+number.
+One shows, for example, that there is an equivalenT
+vertex operator for $W_-$, which had ghost number $-1/2$.
+This operator is $W_+$ with ghost number $+\Half$ and is
+given by
+$$
+W_+(z,u,k)=e^{\phi/2}u^\alpha(\gamma_\mu)_{\alpha\beta}
+S'{^\beta}(z)(\partial_z x^\mu-i\psi_+^\mu k\cdot\psi_+)
+e^{ik\cdot x}
+\eqno{(9.E.28)}
+$$
+Vertex operators for $\R$ states  may now be inserted
+on any worldsheets in any arbitrary (even) numbers.
+
+\bigskip\noindent
+\Item{\bf F)} {\bf The Chiral Splitting Theorem}
+
+In critical $\RNS$ string theory, we have powerful
+results on the superholomorphicity properties of
+correlation functions for (factorized) vertex
+operators, at fixed internal momenta.
+This result is contained in the {\it Chiral Splitting
+Theorem} for the $\RNS$ string.
+
+We begin by defining {\it factorized vertex operators}.
+A vertex operator
+$$
+V_i=\int d^2z_i\,d^2\theta_i\,W_i(z_i,\theta_i,\zbar_i,\thetabar_i)
+$$
+is factorized provided $W_i$ is the product of holomorphic
+and anti-holomorphic factors
+$$
+W_i(z_i,\theta_i,\zbar_i,\thetabar_i)=W_i(z_i,\theta_i)\Wtil_i
+(\zbar_i,\thetabar_i)
+$$
+Any vertex operator may be written as a linear
+combination of factorized vertex operators.
+For example, for $\NS$-$\NS$ massless states, we have
+$$
+W_i(z_i,\theta_i;\zbar_i,\thetabar_i)
+=\left(\xi_{i\mu}\scrD_+ X^\mu e^{ik\cdot X_L}\right)
+\left(\xibar_{i\mubar}\scrD_- X^{\mubar}e^{ik\cdot
+X_R}\right)
+\eqno{(9.F.1)}
+$$
+
+Next, let $A_I$ and $B_I$, $I=1,\ldots,h$ be any
+canonical basis of homology $1$-cycles with canonical
+intersection form.
+We define $h$ independent 
+internal loop momenta $p_I\in\dbR^{10}$,
+associated with each $A_I$-cycle, by
+$$
+p_I=\oint_{A_I}dz\,d\theta\,\scrD_+ X
+\eqno{(9.F.2)}
+$$
+Let the spin structures for left and right chirality
+spinors be equal, and equal to $\nu$.
+
+The correlation function of the unintegrated vertex
+operators $W_i$ at fixed internal loop momenta $p_I$ and fixed
+supermoduli are defined by%
+{\baselineskip=9pt\footnote{$^*$}{\eightpoint It is understood
+that for genus $h=0$ (resp. $h=1$) three (resp. $1$) of
+the vertex operators should not be integrated over, and
+should be multiplied by a factor of
+$\delta(\!(C,\psi)\!)$, where $\psi$ is a
+superconformal Killing vector.
+
+}}
+$$
+\eqalign{
+&\left<W_1\ldots W_N\right>_E(p_I)\cr
+&\null\qquad \equiv\int DX\int DBDC\,\,W_1\ldots
+W_N\prod\limits_{I=1}^h\delta\left(p_I^\mu-\int\nolimits_{A_I}
+dz\,d\theta\,\,\scrD_+X^\mu\right)\cr
+&\null\qquad\qquad\qquad \prod\limits_{K=1}^{\dim\,s\scrM_h}
+\vert\left<\mu_K,B\right>\vert^2 e^{-S_X-S_{BC}}\cr}
+\eqno{(9.F.3)}
+$$
+(I) The first part of the {\it Chiral Splitting Theorem} states
+that the $\RNS$ amplitudes factorize at fixed internal
+loop momenta:
+$$
+\left<W_1\ldots W_N\right>_E(p_I)=\delta(k)
+\scrC_\nu^F\scrCbar_\nu^F
+\eqno{(9.F.4)}
+$$
+Here, $\scrC_\nu{}^F=\scrC_\nu{}^{\Fbar}
+(z_i,\theta_i;\zeta_i,;m_i;
+p_I,k_i)$ is a complex analytic function of
+supermoduli $m_K$, $K=1,\ldots,\dim\,s\scrM_h$, of
+the insertion points $(z_i,\theta_i)$, and of the
+left-moving factors $\zeta_{i\mu}$ of the polarization
+tensors. 
+$\scrCbar_\nu^F$ is the complex conjugate of
+$\scrC_\nu{}^F$, with the same spin structure
+$$
+\scrCbar_\nu^F(\zbar_i,\,\thetabar_i;\zetabar_{i};\,
+\mbar_K;\,p_I,\,k_i)=
+\scrC_\nu{}^F(z_i,\,\theta_i;\zeta_i;\,m_K\;\,p_I,\,k_i)^*
+\eqno{(9.F.5)}
+$$
+The functions $C_\nu^F$ may be evaluated explicitly
+using Green functions and determinants, using the prime
+form and the Szeg\"o kernel introduced in \S{V}.
+
+\medskip\noindent
+(II)\enspace
+The second part of the Chiral Splitting Theorem
+prescribes the transition amplitudes for Type II and
+heterotic strings.
+We shall denote the analogous complex functions 
+$\scrC^B=\scrC^B(z_i;m_k;p_I,k_i)$
+for the bosonic string, compactified on the $16$-$\dim$
+lattices of $E_8\times E_8$ or $\Spin(32)/Z_2$.
+
+\medskip\noindent
+\undertext{Type II A, B}:
+$$
+A_h=\delta(k)\sum\limits_{\nu,\nubar}Q_{\nu\nubar}
+\int\nolimits_{\dbR^{10h}}d^{10}p_I\int\nolimits_{s\scrM_h}
+dm_K\,d\mbar_K \prod\limits_{i=1}^N
+\int\nolimits_{\Sigma}d^2z_i\,
+d^2\theta_i\,C_\nu^F\Cbar_{\nubar}^F
+\eqno{(9.F.6)}
+$$
+
+\medskip\noindent
+\undertext{Heterotic $E_8\times E_8$, $\Spin(32)/Z_2$}
+$$
+A_h=\delta(k)\sum\limits_{\nu}Q_\nu\int\nolimits_{\dbR^{10\,h}}
+d^{10}p_I\int\nolimits_{s\scrM_h}dm_K
+\int\nolimits_{\scrM_h}d\mbar_k\prod\limits_{i=1}^N
+\int\nolimits_{\Sigma}
+dz_i\,d\theta_i\int\nolimits_{\Sigma}d\zbar_i\,C_\nu^F
+\Cbar^B
+\eqno{(9.F.7)}
+$$
+Here $Q_{\nu\nubar}$ and $Q_\nu$ are spin structure
+dependent weight factors which realize the $\GSO$
+projection.
+If carried out in the supermoduli picture, $\nu$ and
+$\nubar$ should run only over even or odd.
+But, if the integrals are understood in components,
+then one should sum over all individual spin structures
+in each class as well.
+In general $Q_{\nu\nubar}=\pm1$, and $Q_\nu=\pm1$.
+
+\bigskip\noindent
+\Item{\bf G)} {\bf Tree-Level Amplitudes for $\NS$-$\NS$
+states}
+
+To tree level, the worldsheet has the topology of the
+sphere, or stereographically projected plane, and there
+are neither moduli, nor odd moduli.
+Thus, we let $g=2\vert dz\vert^2$ and $\chi=0$.
+We concentrate on the scattering of massless $\NS$-$\NS$
+states, which can be represented by the vertex operator
+$$
+V(\eps,k)=\eps_{\mu\nu}(k)\int\nolimits_{\Sigma}d^2 
+z\,d^2\theta\,\,
+\scrD_+X^\mu\scrD_- X^\nu e^{ik\cdot x}\,\,.
+\eqno{(9.G.1)}
+$$
+By factorizing $\eps_{\mu\nu}(k)=\zeta_\mu(k)\zetabar_\nu(k)$,
+we may start from a more convenient vertex operator
+$$
+V(\zeta,\zetabar;k)=\int\nolimits_{\Sigma} d^2 z\,d^2\theta\,
+e^{ik\cdot X+\xi\cdot\scrD_+X+\xibar\cdot\scrD_- X}
+\eqno{(9.G.2)}
+$$
+and restrict to its contributions linear in $\zeta$ and linear
+in $\zetabar$. 
+It is understood that $\zeta$ and
+$\zetabar$ are Grassmann parameters.
+The $X$-propagator is easily calculated:
+$$
+\left<X^\mu(z,\theta)X^\nu(z',\theta')\right>=-\ln\,\vert
+z-z'-\theta\theta'\vert^2\,\eta^{\mu\nu}
+\eqno{(9.G.3)}
+$$
+The determinants of $x$, $\psi$, $b$, $c$ and $\beta$,
+$\gamma$ fields all combine into an overall constant,
+which we denote by $\grz$.
+
+The chiral splitting theorem is easily used here:
+there are no internal loop momenta, so that the
+correlation function of the unintegrated vertex
+operators 
+$$
+W(z_i,\theta_i;\zbar_i,\thetabar_i)
+=W_L(z_i,\theta_i)W_R(\zbar_i,\thetabar_i)
+\eqno{(9.G.4)}
+$$
+will yield a product of a function $C^F$, complex
+analytic in $z_i$, $\theta_i$ times its complex
+conjugate.
+Here, the chiral vertex operators are
+$$
+W_L(z_i,\theta_i)=e^{ik_i\cdot X_L(z_i,\theta_i)+
+\zeta_i\cdot\scrD_+ X_L(z_i,\theta_i)}
+\eqno{(9.G.5)}
+$$
+and analogously for $W_R$, where the chiral fields
+$X_L$ are contracted with the effective propagator
+$$
+\left<
+X_L^\mu(z,\theta)X_L^\nu(z',\theta')\right>=-\ln(z-z'-
+\theta\theta')\eta^{\mu\nu}\,\,.
+\eqno{(9.G.6)}
+$$
+One readily finds
+$$
+\eqalign{
+&\left<W_L(z_1,\theta_1)\cdots W_L(z_N,\theta_N)\right>=
+\scrC^F(z_i,\theta_i)\cr
+&\null\qquad
+\scrC^F=\exp\sum\limits_{i\not=j}^N\left\{
+ik_i\cdot\zeta_j\,{\theta_{ij}\over z_{ij}}+{\Half}
+\,\zeta_i\cdot\zeta_j\,{1\over z_{ij}}+{\half}\,
+k_i\cdot k_j\ln\,z_{ij}\right\}\cr}
+\eqno{(9.G.7)}
+$$
+where we have used the standard notation
+$$
+\left\{
+\eqalign{
+\theta_{ij} &=\theta_i-\theta_j\,\,;\cr
+z_{ij} &=z_i-z_j-\theta_i\theta_j\,\,.\cr}
+\right.
+\eqno{(9.G.8)}
+$$
+
+At tree level, we have invariance under superconformal
+automorphisms in $O\Sp(1,2)$; the integration measure
+must be properly treated to account for this
+invariance.
+This group of transformations is defiend as follows;
+consider the matrices
+$$
+K=\pmatrix{\null\kern8pt 0 &+1 &0\cr
+-1 &\kern8pt0 &0\cr
+\null\kern8pt0 &\kern8pt0 &1\cr}
+\qquad\qquad 
+T=\pmatrix{a &b &\alpha\cr
+c &d &\beta\cr
+\gamma &\delta &A\cr}\eqno{(9.G.9)}
+$$
+$$
+z\to {az+b+\alpha\theta\over cz+d+\beta\theta}\qquad\qquad\qquad
+\theta\to {\gamma z+\delta+A\theta\over cz+d+\beta\theta}
+\eqno{(9.G.10)}
+$$
+where Latin entries are commuting and Greek entries are
+anticommuting.
+To obtain a {\it superconformal} transformation $T$, the
+line element $dz=dz+\theta\,d\theta$ must be transformed
+into itself up to a conformal scaling.
+Equivalently the form
+$$
+z_{12}=z_1-z_2-\theta_1\theta_2={v_1w_2-v_2w_1-\psi_1\psi_2
+\over w_1w_2}\eqno{(9.G.11)}
+$$
+should transform into itself up to a conformal scaling.
+This is uniquely achieved when the orthosymplectic form is
+left invariant under $T$:
+$$
+T^T KT=D\eqno{(9.G.12)}
+$$
+The weight under which the difference transforms is easily
+derived, and we have
+$$
+T\colon\, z_{12}\to \zbar_{12}={z_{12}\over
+(cz_1+d+\beta\theta_1)(cz_2+d+\beta\theta_2)}\eqno{(9.G.13)}
+$$
+Similarly the line element transforms as
+$$
+dz\to d\zbar={dz\over (cz+d+\beta\theta)^2}\eqno{(9.G.14)}
+$$
+and the volume element as
+$$
+dz\w d\theta\to{dz\w d\theta\over (cz+d+\beta\theta)}\,\,.
+\eqno{(9.G.15)}
+$$
+Elements in $O\Sp(1,2)$ are in unique correspondence with
+a triplet of points in the superplane $(z_1,\theta_1)$,
+$(z_2,\theta_2)$, $(z_3,\theta_3)$ obeying one single
+(Grassmann valued) constraint.
+The counting works out because $O\Sp(1,2)$ has $3$ commuting
+and $2$ anticommuting parameters.
+The constraint is an $O\Sp(1,2)$ invariant Grassmann
+valued function dependent on three points, given by
+$$
+\Delta={z_{12}\theta_3+z_{31}\theta_2+z_{23}\theta_1
++\theta_1\theta_2\theta_3\over(z_{12}z_{23}z_{31})^{1/2}}
+\eqno{(9.G.16)}
+$$
+The natural value for $\Delta$ is of course $0$, which
+implies that one $\theta$ is dependent.
+With this value for $\Delta$, it is easy to see that there
+is a unique correspondence between triplets of points
+satisfying $\Delta=0$, and elements of $O\Sp(1,2)$, so
+that the latter may be accordingly parametrized.
+The invariant volume element induced on $O\Sp(1,2)$ is
+then
+$$
+d\mu={dz_1dz_2dz_3d\theta_1 d\theta_2 d\theta_3\over
+(z_{12}z_{23}z_{31})^{1/2}}\,\Delta\eqno{(9.G.17)}
+$$
+As for the bosonic string, the volume of the
+superconformal transformation group must be extracted from
+the amplitudes.
+As a result of $O\Sp(1,2)$ invariance, the $0$, $1$,
+$2$ point functions vanish.
+
+We now work out the three point amplitude.
+In evaluating $\scrC^F$, one retains terms proportional to
+$\zeta_1\zeta_2\zeta_3$; however, the term with three
+$\theta$'s vanishes because
+$\theta_{12}\theta_{23}\theta_{31}=0$.
+Defining the tensors
+$$
+K_{\mu_1\mu_2\mu_3}=
+\eta_{\mu_1\mu_2}k_{1\mu_3}+\eta_{\mu_2\mu_3}
+k_{2\mu_1}+\eta_{\mu_3\mu_1}k_{3\mu_2}\eqno{(9.G.18)}
+$$
+we find for the three point function
+$$
+\left<V(\eps_1,k_1)V(\eps_2k_2)V(\eps_3k_3)\right>=
+4(2\pi)^{10}\delta(k)
+\eps_1^{\mu_1\mubar_1}\eps_2^{\mu_2\mubar_2}
+\eps_3^{\mu_3\mubar_3}K_{\mu_1\mu_2\mu_3}
+K_{\mubar_1\mubar_2\mubar_3}\eqno{(9.G.19)}
+$$
+As a result of transversality of the polarization
+tensors, the $3$ point function for massless external
+particles also vanishes.
+
+To compute the four point amplitude, we shall fix
+superconformal invariance as follows: $z=z_1$, $z_2=0$,
+$z_3=1$, $z_4=\infty$,
+$\theta_1,\theta_2,\theta_3=\theta_4=0$, and then have
+$$
+\eqalign{
+\exp\scrG_4^\zeta &=\left\{\zeta_1\cdot\zeta_2\zeta_3\cdot
+\zeta_4{1\over z_{12}z_{34}}+\zeta_1\cdot\zeta_3\zeta_2
+\cdot\zeta_4{1\over
+z_{13}z_{24}}+\zeta_1\cdot\zeta_4\zeta_2\cdot\zeta_3
+{1\over z_{14}z_{23}}\right\}\cr
+\noalign{\medskip}
+&+\left\{\zeta_1\cdot\zeta_2\left(k_1\cdot\zeta_3k_2\cdot
+\zeta_4{\theta_2\theta_1\over z_{12}z_{13}z_{24}}+k_1
+\cdot\zeta_4k_2\cdot\zeta_3{\theta_2\theta_1\over
+z_{12}z_{14}z_{23}}\right)+\hbox{perm.}\right\}\cr}
+\eqno{(9.G.20)}
+$$
+In principle, one should now multiply this whole
+expression by the one involving the $\zetabar$'s, perform
+the integrals over $z$ and $\theta$ and regroup terms,
+clearly a feudal task.
+The calculation is enormously simplified by the
+factorization properties of the Veneziano-integrals.
+Recall that we have the ordinary integrals
+$$
+\int{d^2z\over\pi}z^A\zbar^{\Atil}(1-z)^B(1-\zbar)^{\Btil}=
+{\Gamma(-1-\Atil-\Btil\over \Gamma(-\Atil)\Gamma(-\Btil)}\quad
+{\Gamma(1+A)\Gamma(1+B)\over \Gamma(A+B+2)}
+\eqno{(9.G.21)}
+$$
+provided $A-\Atil$ and $B-\Btil$ are integers, which is
+always the case in string theory.
+Using the reciprocity formula for $\Gamma$-functions and
+the fact that $A-\Atil$ and $B-\Btil$ are integers, this
+expression is actually symmetric under
+$(A,B)\leftrightarrow (\Atil,\Btil)$, as one might expect
+from complex conjugation.
+More importantly, the answer factorizes into a product of
+factors each only dependent either on the parameters for
+the $z$ or $\zbar$ coordinates.
+This product property implies that one must only consider
+say the $z$ coordinates to find the full amplitude, which
+by the same token will also completely factorize as a
+function of $\zeta$'s and $\zetabar$'s.
+An analogous formula is derived for the super-integrals we
+need:
+$$
+\eqalign{
+\int{d^2z_1\over\pi}d^2\theta_2[\theta_1\theta_2]^a
+&[\thetabar_1\thetabar_2]^{\atil} z_{12}^A\,\zbar_{12}^{\Atil}
+(1-z_1)^B(1-\zbar_1)^{\Btil}\cr
+&=(-2i)^{1-a}(+2i)^{1-\atil}
+{\Gamma(-\atil-\Atil-\Btil)\over
+\Gamma(-\Atil)\Gamma(-\Btil)}{\Gamma(1+A)\Gamma(1+B)\over
+\Gamma(A+B+1+a)}\cr}
+\eqno{(9.G.22)}
+$$
+Here $a$ and $\atil$ are either $0$ or $1$, and the
+integrals are symmetric under $(aAB)\leftrightarrow
+(\atil\Atil\Btil)$.
+With the help of (9.G.22), it is now straightforward to
+evaluate the four point function
+$$
+\eqalign{
+\bigl<V(\eps_1,k_1)
+  &V(\eps_2,k_2)V(\eps_3,k_3)V(\eps_4,k_4)\bigr>\cr
+&=(2\pi)^{10}\delta(k)g^4\int d^2z_1d^2\theta_2\vert
+z_{12}\vert^{-s}\vert z_1-1\vert^{-u}
+e^{\scrG_4^\zeta+\scrG_4^{\zetabar}}\cr
+&=\pi(2\pi)^{10}\delta(k)g^4{\Gamma(-s/2)\Gamma(-t/2)
+  \Gamma(-u/2)\over
+\Gamma\left(1+{s\over 2}\right)\Gamma\left(1+{t\over 2}\right)
+\gamma\left(+{u\over 2}\right)}\eps^{1\1bar}\eps^{2\2bar}
+\eps^{3\3bar}\eps^{4\4bar}K_{1234}
+K_{\1bar\2bar\3bar\4bar}\cr}
+\eqno{(9.G.23)}
+$$
+Using the abbreviation $i$ for $\mu_i$ to save some
+writing, we have
+$$
+\eqalign{
+K_{1234}
+&=(st\eta_{13}\eta_{24}
+-su\eta_{14}\eta_{23}-tu\eta_{12}\eta_{34})\cr
+&-s(k_1^4k_3^2\eta_{24}+k_2^3k_4^1\eta_{13}-k_1^3k_4^2
+  \eta_{23}-k_2^4k_3^1\eta_{14})\cr
+&+t(k_2^1k_4^3\eta_{13}+k_3^4k_1^2\eta_{24}-
+  k_2^4k_1^3\eta_{34}-k_3^1k_4^2\eta_{12})\cr
+&-u(k_1^2k_4^3\eta_{23}+k_3^4k_2^1\eta_{14}-k_1^4k_2^3\eta_{34}
+  -k_3^2k_4^1\eta_{12})\cr}
+\eqno{(9.G.24)}
+$$
+
+\bigskip\noindent
+\Item{\bf H)} {\bf One loop Amplitudes for $\NS$-$\NS$
+states in Type II A, B}
+
+We begin by using part (I) of the Chiral Splitting
+Theorem, and we compute the Chiral Amplitudes
+$\scrC_\nu^F$.
+The spin structure for left and right movers is the
+same here.
+
+For {\it even spin structures} $\nu$, there are no odd
+moduli, and there are no Dirac zero modes.
+The metric on the torus is taken to be $g=2\vert
+dz\vert^2$, and the torus is represented as usual by a
+parallelogram with sides $0$, $1$, $\tau$, $1+\tau$,
+with $\tau\in H$ in the upper half complex plane $H$.
+The $S_X$ and $S_{BC}$ actions are free actions in
+components:
+$$
+\eqalign{
+S_X+S_{BC}={1\over 4\pi}\int\nolimits_{\Sigma}
+d^2 z &\Bigl(\partial_z x\cdot\partial_{\zbar}x-
+\psi_+\cdot\partial_{\zbar}\psi_+-\psi_-\cdot
+\partial_z\psi_-\cr
+&+2b\partial_{\zbar}c+2\bbar\partial_z\cbar+
+2\beta\partial_{\zbar}\gamma+2\betabar\partial_z
+\gammabar\Bigr)\,\,.\cr}
+\eqno{(9.H.1)}
+$$
+The ghost and anti-ghost insertions are reduced to
+$$
+b\bbar\,c\cbar\,\,.
+\eqno{(9.H.2)}
+$$
+No anti-superghost insertions occur for even spin
+structures, since there are no zero modes there.
+In the $\NS$-$\NS$ sector, vertex operators do not
+involve ghosts, so we may integrate out $b$, $c$,
+$\bbar$, $\cbar$, $\beta$, $\gamma$, $\betabar$ and
+$\gammabar$.
+We shall also retain the determinants of $x$ and
+$\psi_{\pm}$ integrations.
+Thus
+$$
+\delta(k)\scrC_\nu\scrC_\nu=M_\nu\Mbar_\nu\,\scrF_\nu
+\scrFbar_\nu
+\eqno{(9.H.3)}
+$$
+where $M_\nu\,\Mbar_\nu$ arises from determinants and
+$\scrF_\nu\,\scrFbar_\nu$ arises from correlation
+functions of vertex operators.
+We find
+$$
+\eqalign{
+M_\nu\Mbar_\nu = &\left({\det'\Delta_0\over
+  (\im\,\tau)^2}\right)^{-5}
+\pmatrix{
+\det\,\notD_+\cr
+\phantom{XXX}\cr}_\nu^5
+\pmatrix{
+\det\,\notD_-\cr
+\phantom{XXX}\cr}_\nu^5\cr
+&\left({\det'\Delta_{-1}\over (\im\,\tau)^2}\right)^{+1}
+  (\det\,\Delta_{-1/2}^-)_\nu^{-1}\cr}
+\eqno{(9.H.4)}
+$$
+As usual, on the torus, these determinants are related
+to one another, and we find
+$$
+\eqalign{
+{\det'\Delta_0\over(\im\,\tau)^2} &={\det'\Delta_{-1}
+\over(\im\,\tau)^2}=\vert\eta(\tau)\vert^4\cr
+(\det\,\notD_+\,\notD_-)_\nu
+&=(\det\,\Delta_{1/2}^-)_\nu=
+\left\vert{\vartheta[\nu](0\vert\tau)\over
+\eta(\tau)}\right\vert^2\cr}
+\eqno{(9.H.5)}
+$$
+Putting all together:
+$$
+M_\nu={\vartheta[\nu](0\vert\tau)^4\over
+\eta(\tau)^{12}}\qquad\qquad\qquad
+\Mbar_\nu={\overline{\vartheta[\nu](0\vert\tau)^4}\over
+\overline{\eta(\tau)}^{12}}
+\eqno{(9.H.6)}
+$$
+up to an overall phase which is independent of $\tau$,
+but which may depend upon $\nu$.
+Clearly such a phase can be absorbed into the spin
+structure weights $Q_{\nu\nubar}$.
+The vertex contributions $\scrF_\nu$ are easily
+evaluated:
+$$
+\eqalign{
+\scrF_\nu(z_i, \theta_i,\zeta,k,p)
+&=\exp\{i\pi p^2\tau+2\pi
+p\cdot\sum\limits_{i}(-\zeta_i\theta_i+ik_iz_i)\cr
+&\qquad\qquad -{\Half}\sum\limits_{i\not=j}(k_i\cdot
+  k_jG_\nu(z_i,\theta_i;z_j,\theta_j)+\zeta_i\cdot\zeta_j
+  \scrD_+^i\scrD_+^jG_\nu\cr
+&\qquad\qquad\qquad
+  +2ik_i\cdot\zeta_j\scrD_+^jG_\nu)\}\,\,.\cr}
+\eqno{(9.H.7)}
+$$
+Here, the correlation function $G_\nu$ is given by
+$$
+\eqalign{
+G_\nu(z_i,\theta_i;z_j,\theta_j)
+&=\left<X_L(z_i,\theta_i)X_L(z_j,\theta_j)\right>\cr
+&=-\ln\,E(z_i,z_j)+\theta_i\theta_j S_\nu(z_i,z_j)\cr}
+\eqno{(9.H.8)}
+$$
+where $E(z,w)$ is the prime form, defined in \S{V}, and
+$S_\nu$ is the Szeg\"o kernel.
+For the torus, these functions are particularly simple:
+$$
+\eqalign{
+E(z,w) &={\vartheta_1(z-w\vert\tau)\over
+  \vartheta'_1(0\vert\tau)}\,\,;\cr
+S_\nu(z-w) &={\vartheta[\nu](z-w\vert\tau)
+  \vartheta'_1(0\vert\tau)\over
+\vartheta[\nu](0\vert\tau)\vartheta_1(z-w\vert\tau)}\,\,.\cr}
+\eqno{(9.H.9)}
+$$
+
+For {\it odd spin structures}, $\nu$, there is now one
+complex odd modulus $\chi$ and there are $10$ Dirac
+zero modes, one for each space-time direction.
+The action $S_X+S_{BC}$ is the one given on in (9.H.1)
+but there is now also an insertion of the worldsheet
+supercurrent involving
+$$
+\chi S_{z+}\,\,\, S_{z+}=\left(\psi_+\cdot \partial_z
+x-\Half\,b\gamma+{3\over 2}\,\beta\partial_z c+
+\partial_z\beta\,c\right)+c.c\,\,.
+\eqno{(9.H.10)}
+$$
+Integrating out $\chi$ will bring down an insertion of
+$\psi_+\cdot
+\partial_z x$ and of $\psi_-\cdot\partial_{\zbar}x$.
+Combining this with the ghost and anti-ghost
+insertions, we have
+$$
+b\bbar\,c\cbar\,\delta(\beta)\delta(\betabar)\delta(\gamma)
+\delta(\gammabar)\int S_{z+}\int S_{\zbar-}\,\,.
+\eqno{(9.H.11)}
+$$
+
+Now, we specialize to correlation functions of massless
+$\NS$-$\NS$ states.
+As shown in (9.E.5), these operators involve at most
+$2$ factors of $\psi_+$.
+To obtain a non-zero contribution from odd spin
+structures, we need to have at least $5$ external
+vertex operators.
+For example, the anomaly diagrams with $6$ external
+vertex operators receives contributions solely from odd
+spin structure.
+We shall concentrate on amplitudes with $4$ or fewer
+external vertex operators, and odd spin structures will
+never contribute to those.
+Notice that this means that for these amplitudes, there
+is no difference between Type II A, B.
+For completeness, we record that for $\nu$ odd, we have
+$M_\nu=M_{\nubar}=1$.
+
+It remains to work out the amplitudes with $0$, $1$,
+$2$, $3$, $4$ external vertex operators.
+We begin with determining the factors $Q_{\nu\nubar}$
+of spin structure weights.
+Following Mumford, we label $\vartheta$-functions as
+follows:
+$$
+\eqalign{
+\vartheta_{00}(z,\tau) &=\vartheta_3(z,\tau)
+  =\vartheta(z,\tau)\cr
+\vartheta_{01}(z,\tau) &=\vartheta_4(z,\tau)
+  =\vartheta\left(z+\Half,\tau\right)\cr
+\vartheta_{10}(z,\tau) &=\vartheta_2(z,\tau)
+  =e^{i\pi\tau/4+\pi iz}\vartheta\left(z+{\tau\over 2},
+  \tau\right)\cr
+\vartheta_{11}(z,\tau) &=\vartheta_1(z,\tau)
+  =e^{i\pi\tau/4+\pi iz}
+  \vartheta\left(z+\Half+{\tau\over 2},\tau\right)\cr
+\vartheta(z,\tau) &\equiv\sum\limits_{n=-\infty}^\infty
+   e^{i\pi n^2\tau+2\pi inz}\cr}
+\eqno{(9.H.12)}
+$$
+Modular transformations of $\vartheta_2$,
+$\vartheta_3$, $\vartheta_4$ obey
+$$
+\eqalign{
+\vartheta_{ab}(0,\tau+1) &=e^{{i\pi\over 4}\,a}
+  \vartheta_{a(b+a)}(0,\tau)\cr
+\vartheta_{ab}\left(0,-{1\over\tau}\right) &=(-)^{ab}
+  \sqrt{-i\,\tau\,\,}\vartheta_{ba}(0,\tau)\cr}
+\eqno{(9.H.13)}
+$$
+The Dedekind $\eta$-function satisfies
+$$
+\eqalign{
+\eta(\tau+1)^{12} &=-\eta(\tau)^{12}\cr
+\eta\left(-{1\over\tau}\right)^{12} &=\tau^6
+  \eta(\tau)^{12}\cr}
+\eqno{(9.H.14)}
+$$
+Thus
+$$
+\eqalign{
+M_{ab}(\tau+1) &=-e^{i\pi a}M_{a(b+a+1)}(\tau)\cr
+M_{ab}\left(-{1\over\tau}\right) &=-{1\over \tau^4}
+  M_{ba}(\tau)\,\,.\cr}
+\eqno{(9.H.15)}
+$$
+We must now require modular invariance of the
+amplitude:
+$$
+\eqalignno{
+&\sum\limits_{(a,b)}Q_{(ab)\nubar}M_{(ab)}
+(\tau+1)=
+\sum\limits_{(a,b)} Q_{(a,b)\nubar}M_{(ab)}
+(\tau) &(9.H.16)\cr
+&\sum\limits_{(a,b)}Q_{(ab)\nubar}M_{(ab)}(-1/\tau)=-
+{1\over\tau^4}\sum\limits_{(a,b)}
+Q_{(a,b)\nubar}M_{ab}(\tau)\,\,.\cr}
+$$
+(The factor of $-1/\tau^4$ is compensated for by the
+$p$-integral.)
+Clearly from $\tau\to -1/\tau$, we get
+$$
+Q_{(01)\nubar}=Q_{(10)\nubar}
+\eqno{(9.H.17)}
+$$
+while from $\tau\to\tau+1$, we get
+$$
+Q_{(01)\nubar}=-Q_{(00)\nubar}
+\eqno{(9.H.18)}
+$$
+Setting 
+$$
+Q_{(01)\nubar}=Q_{(10)\nubar}=-Q_{(00)\nubar}
+\eqno{(9.H.19)}
+$$
+we fix the overall phase of the amplitude, which is
+unobservable anyway.
+One proceeds similarly for $\nubar$.
+
+It is now straightforward to compute the {\it $0$-point
+function}.
+(Recall that in the bosonic string this object
+produced the first divergence we had encountered.)
+Since there are no vertex operator insertions, we simply
+have
+$$
+\eqalignno{
+&A_1(0-pt)=\Vol(M)\int_{\scrM_1}\,
+{d^2\tau\over \tau_2^4}\,\sum\limits_{\nu\nubar}
+Q_{\nu\nubar}M_\nu M_{\nubar}&(9.H.20)\cr
+\noalign{\hbox{It suffices to examine the combination}}
+&\sum\limits_{\nu}Q_{\nu\nubar}M_\nu=
+  Q_{(01)\nubar}M_{(01)}+Q_{(10)\nubar}
+M_{(10)}+Q_{(00)\nubar}M_{(00)}& (9.H.21)\cr}
+$$
+Notice that since $M_{(11)}=0$ the corresponding
+contribution has been omitted in (9.H.21).
+Now, using the expressions for $M_\nu$, and the equality for
+$Q$'s, we find
+$$
+\sum\limits_{\nu}Q_{\nu\nubar}
+={Q_{(01)\nubar}\over\eta(\tau)^{12}}\left[
+\vartheta_4(0\vert\tau)^4+\vartheta_2(0\vert\tau)^4-
+\vartheta_3(0\vert\tau)^4\right]=0
+\eqno{(9.H.22)}
+$$
+by a famous Jacobi $\vartheta$-function identity.
+This identity arose once before in
+matching bosonic and fermionic multiplicities at all
+mass levels.
+In fact, this cancellation is the result of space-time
+supersymmetry.
+The $0$-point function, and thus the $1$-point
+functions vanish.
+Recall from the discussion of the bosonic string that
+the vanishing of the $1$-point function means that
+Minkowski flat space-time is a one-loop solution to the
+superstring equations!
+
+Notice that our argument for cancellation was effected
+only in the left-moving sector; thus, the same argument
+holds true in heterotic string theory as well.
+
+The above summation identity on $\vartheta$-functions is
+only one of a series, usually called the
+Riemann identities on theta functions.
+It is most useful here to express two more of these
+identities in
+terms of the Dirac propagator (i.e. the Szeg\"o
+kernel):
+$$
+\eqalign{
+&\sum\limits_{\nu}Q_{\nu\nubar}M_\nu
+S_\nu(z_1-z_2)S_\nu(z_2-z_1)=0\cr
+&\sum\limits_{\nu}Q_{\nu\nubar}M_\nu
+S_\nu(z_1-z_2)S_\nu(z_2-z_3)S_\nu
+  (z_3-z_1)=0\cr}
+\eqno{(9.H.23)}
+$$
+Without giving details here, one similarly shows with the help 
+of these identities that 
+the two- and three-point functions vanish.
+In physics terms, this means that to one loop order,
+there is neither mass renormalization (massless
+particles remain massless) nor coupling constant
+renormalization.
+These results again arise from space-time
+supersymmetry, and are usually referred to as 
+{\it non-renormalization theorems}. 
+
+\bigskip\noindent
+\Item{\bf I)} {\bf One-loop amplitudes in the heterotic
+string}
+
+Let us consider the free fermion representation of the
+heterotic strings, starting from $32$ Majorana-Weyl
+fermions $\lam^{\alpha}$, represented by $32$
+Euclidean Weyl spinors $\lam_-^\alpha(\zbar)$.
+For simplicity, consider amplitudes with external
+states that are neutral under the gauge group.
+Then the one loop contribution of the internal degree of
+freedom will result entirely from the determinantal
+factors arising from integrating out $\lam_-^\alpha$.
+These depend upon the spin structures, just as the ones
+for space-time degrees of freedom $\psi_-^\mu$.
+
+For the gauge group $\Spin(32)/Z_2$, all
+$\lam_-^\alpha$ have the same spin structure, and the
+determinant for given spin structure contributes a
+factor
+$$
+\Mbar_\nubar^4={\overline{\vartheta[\nubar](0\vert\tau)}^{16}
+\over \overline{\eta(\tau)}^{48}}
+\eqno{(9.I.1)}
+$$
+The only modular invariant we can form is with all
+coefficients $Q_{\nubar}$ equal for all $3$ even spin
+structures.
+
+For the gauge group $E_8\times E_8$, $\lam_-^\alpha$
+are divided into two classes of $16$.
+For each class, the determinant is
+$$
+\Mbar_\nubar^2={\overline{\vartheta[\nu](0\vert\tau)}^8\over
+\overline{\eta(\tau)}^{24}}\,\,.
+\eqno{(9.I.2)}
+$$
+The only modular invariant is
+$$
+\sum\limits_{\nubar}\Mbar_\nu^2
+={\overline{\vartheta_2(0\vert\tau)}^8+
+\overline{\vartheta_3(0\vert\tau)}^8+
+\overline{\vartheta_4(0\vert\tau)}^8\over
+\overline{\eta(\tau)}^{24}}\,\,.
+\eqno{(9.I.3)}
+$$
+One can show, using relations on the number of
+representations of an integer as a sum of squares, that
+this function equals the $\vartheta$-function for the
+$E_8$ lattice: $\vartheta_{E_8}(0\vert\tau)$.
+Furthermore, the partition functions for $\Spin(32)/Z_2$
+and $E_8\times E_8$ are the same in view of
+$$
+\sum\limits_{\nubar}\Mbar_\nubar^4=\biggl(\sum\limits_{\nubar}
+\Mbar_\nubar^2\biggr)^2\,\,.
+\eqno{(9.I.4)}
+$$
+
+We see that no other modular invariant combinations are
+allowed.
+You may think that $\sum\limits_{\nu}Q_\nu M_\nu=0$ is
+allowed, but this would mean that some states enter
+with negative weight, and this is impossible since
+there are no fermions here!
+This argument shows now that $E_8\times E_8$ and
+$\Spin(32)Z_2$ are indeed the only possibilities, as we
+had promised.
+
+\bigskip\noindent
+\Item{\bf J)} {\bf The $\NS$-$\NS$ $4$ point function}
+
+It remains to discuss the $4$-point functions, again
+for massless $\NS$-$\NS$ states.
+Clearly, the $4$-point function cannot vanish, lest the
+theory be non-interacting.
+It is evaluated by making use of a Riemann identity on
+$\vartheta$-functions with $4$ Szeg\"o kernels:
+$$
+\sum\limits_{\nu}Q_{\nu\nubar}M_\nu
+S_\nu(z_1-z_{\sigma(1)})S_\nu(z_2-z_{\sigma(2)})
+S_\nu(z_3-z_{\sigma(3)})S_\nu(z_1-z_{\sigma(4)})
+=16\pi^4 Q_{(00)\nubar}
+\eqno{(9.J.1)}
+$$
+where $\sigma(i)$ is a permutation of $i$, 
+{\it without fixed points}.
+
+The final result for the $4$-point function can be
+conveniently expressed as follows:
+$$
+\eqalignno{
+&A_1(k_i,\eps_i)=\delta(k)\eps^{1\1bar}\eps^{2\2bar}
+\eps^{3\3bar}\eps^{4\4bar}K^{1234}K^{\1bar\2bar\3bar\4bar}
+A_1(s,t)&(9.J.2)\cr
+\noalign{\hbox{where the single Lorentz-invariant
+function $A_1(s,t)$ is given by}}
+&A_1(s,t)=\half \int_{\scrM_1}{d^2\tau\over \tau_2^2}
+\int_{\Sigma}{d^2 z_1\over \tau_2}\int_{\Sigma}
+{d^2 z_2\over\tau_2}\int_{\Sigma}
+{d^2 z_3\over\tau_2}e^{_{s\over
+2}(G_{12}+G_{34}-G_{13}-G_{24})}\cr
+&\null\kern8.40 true cm e^{+{t\over 2}
+(G_{23}+G_{14}-G_{13}-G_{24})}&(9.J.3)\cr}
+$$
+where $G_{ij}$ stands for the $1$-loop propagator of
+the $x$-field:
+$$
+G_{ij}=G(z_i-z_j)\vert\tau)
+\equiv -\ln\,\left\vert{\vartheta_1(z_i-z_j\vert\tau)\over
+\theta'_1(0\vert\tau)}\right\vert^2+{2\pi
+\over \tau_2}\,\im\,(z_i-z_j)^2
+\eqno{(9.J.4)}
+$$
+and $K$ is the kinematical factor that also arose in
+the tree-level amplitudes $A_0(k_i,\Eps_i)$ for
+$\NS$-$\NS$ transition amplitudes.
+Recall that $K$ is polynomial in moments.
+By translation invariance on the torus, the point $z_4$
+may be chosen at will, say at $z_4=0$.
+
+It remains to study the function $A_1(s,t)$!
+We begin by examining the convergence structure of the
+above functional representation as a function of $s$
+and $t$.
+
+\medskip
+\Item{(1)}
+For fixed $\tau$, and $z_i\to z_j$, $i\not=j$, we have
+$$
+G(z_i-z_j\vert\tau)\to -\ln\,\vert z_i-z_j\vert^2\to
++\infty
+\eqno{(9.J.5)}
+$$
+\Item{(2)} 
+while for $z_i$'s well separated, but
+$\im\,\tau\to\infty$, we have
+$$
+G(z_i-z_j\vert\tau)\to-\tau_2\qquad\qquad
+\to-\infty\,\,.
+\eqno{(9.J.6)}
+$$
+
+\noindent
+The latter limit imposes the strictest convergence
+condition:
+$$
+\re(s),\,\,
+\re(t),\,\,
+\re(u)\Ge 0
+\eqno{(9.J.7)}
+$$
+But, since we also have
+$s+t+u=0$ for on-shell massless external states, the
+convergence condition (9.J.7) requires 
+$\re(s)=\re(t)=\re(u)=0$.
+It is easily seen that this condition is sufficient for
+convergence, since the integral is bounded by the value
+at $s=t=0$.
+This means that the integral is absolutely convergent
+for at least some values of the external momenta, in
+contrast with the case of the bosonic string, where the
+integral representation is never convergent for any
+momenta.
+Yet, the integral representation is defined only for
+unphysical momentum configurations where $s$, $t$, $u$
+are purely imaginary.
+
+A second shortcoming of the integral representation is
+that formally, when $s$, $t$, $u$ are close to the
+physical region corresponding to real values of $s$ and
+$t$, $A_1(s,t)$ would be real.
+This would be inconsistent in an interacting theory,
+where the $1$-loop $4$-point  function cannot be real,
+since its imaginary part is related by unitarity to the
+square of the tree level amplitude, which cannot vanish
+in any intracting theory.
+
+Our task is thus to properly define the amplitude
+throughout $(s,t)\in\dbC\times\dbC$, including around
+the physical region where $(s,t)\in\dbR\times\dbR$.
+Naturally, one seeks an analytic continuation of the
+amplitude in both $s$ and $t$.
+(Recall that even at tree level, the integral
+representation $A_0(s,t)$ was absolutely convergent
+only in a small region, and the full amplitude had to
+be analytically continued in $s$ and $t$ as well.)
+
+To appreciate the physical meaning of such an analytic
+continuation, we compare with the situation in quantum
+field theory.
+There, the physical principle of causality is
+equivalent to the requirement of locality of observable
+fields, and this property, combined with Lorentz
+invariance, implies analytic dependence of the Green
+functions on the external momenta.
+Often, this analytic behavior is conveniently
+summarized in the form of a spectral representation.
+For example, the $2$-point function (off-shell)
+may be expressed as
+
+$$
+\lower10pt\hbox{\vbox{\epsfxsize=1.5in\epsfbox{fig1.eps}}}
+\qquad H(s)=\int_0^\infty dM^2\,{\rho(M^2)\over
+  s-M^2+i\eps}\quad\eps>0\,\
+\eqno{(9.J.8)}
+$$
+
+\noindent
+where the real and positive function $\rho(M^2)$ is the
+density of states at mass $M$, also called the spectral
+density.
+Provided the integral over $M^2$ converges, it follows
+that $H(s)$ is analytic throughout $\dbC$, except
+possibly on the positive real axis, where it may have
+poles and branch cuts.
+
+In string theory, we do not have available at present a
+formulation of the amplitudes in terms of local field
+observables (i.e. commuting at space-like separations).
+It is thus not known \`a priori whether analyticity of
+the amplitudes can be derived solely from Lorentz
+invariance and causality.
+(Probably, in a good second quantized formulation, one
+should be able to derive this.)
+Thus, analyticity of string amplitudes must be
+established, and the questions that must be answered
+are
+
+\medskip
+\item{(1)} does an analytic continuation exist?
+\item{(2)} is the analytic continuation unique?
+\item{(3)} is the analytic continuation physically
+acceptable?
+
+\medskip\noindent
+The present problem of analytic continuation of
+$A_1(s,t)$ is a difficult matter of pure
+analysis. 
+Yet, all three questions above have been answered in
+the affirmative, so that one has a full analytically
+continued amplitude $A_1(s,t)$ available, defined
+throughout $(s,t)\in\dbC\times\dbC$, with cuts and
+poles on $\dbR\times\dbR$, but nowhere else.
+
+What we have achieved here is the construction of a
+{\it finite} and {\it unitary} 
+amplitude, at least to one loop order, that
+defines $\NS$-$\NS$ string scattering!
+We shall not reproduce the details of the analytic
+continuatin procedure here.
+We shall limit ourselves to describing the physical
+singularities that appear in $A_1(s,t)$ upon analytic
+continuation.
+To do so it is most convenient to represent the
+different singularities that appear as a function of
+$s$ and $t$ in terms of QFT Feynman diagrams.
+The Feynman diagrams indicate the region in moduli
+space (including the positions of vertex operators
+$z_i$) that produce the singularities.
+The singularities essentially arise from combinations
+of the singular limits of $G_{ij}$ in (9.J.5) and
+(9.J.6), and fall into five categories, schematically
+indicated by five different types of Feynman diagrams
+below.
+Whenever two external $z_i$ and $z_j$ approach one
+another the Feynman diagram representation will show
+that their external lines merge
+$$
+\vbox{\epsfxsize=2.5in\epsfbox{merge.eps}}
+$$
+This singularity may be treated at the operator level
+by considering the operator product expansion (OPE) of
+the two external vertex operators.
+The internal  line then represents all the operators
+that arise in the OPE.
+This type of singularity produces a pole in the total
+momentum traversing the internal line, i.e. in
+$-(k_i+k_j)^2$, and the pole turns out to be at the
+value of the $\mass^2$ of the physical string states,
+i.e. $2n=M^2$, $n\in\dbZ^+$.
+The five different categories represented by diagrams
+(a), (b), (c), (d) and (e) arise, respectively, from
+$4$, $3$, $2$, $1$ and $0$ external lines coming close
+together.
+Within each category, there are additional
+singularities (represented by a dotted line aross the
+loop) that arise from the asymptotic behavior in
+$\tau$, given by (9.J.6).
+$$
+\halign{#\hfill &#\hfill &#\hfill\cr
+(a)&\qquad\qquad
+    \lower20pt\hbox{\epsfxsize=2.00in\epsfbox{fig-a.eps}}&\cr
+\noalign{\bigskip}
+(b)&\qquad\qquad
+    \lower20pt\hbox{\epsfxsize=2.00in\epsfbox{fig-b.eps}}&\cr
+\noalign{\bigskip}
+(c)&\qquad\qquad
+    \lower30pt\hbox{\epsfxsize=2.00in\epsfbox{fig2.eps}} 
+    &\item{$\bullet$}double poles in $s$ at $s=2n$\cr
+\noalign{\vskip-25pt}
+    &&\item{$\bullet$}branch cuts in $s$, starting at\cr
+    && \item{}\qquad $s=2n$, \quad $n\in\dbZ^+$.\cr
+%\noalign{\vfill\eject}
+(d)&\qquad\qquad
+    \lower30pt\hbox{\epsfxsize=1.5in\epsfbox{fig3.eps}}
+  &\item{$\bullet$}single poles in $s$ at $s=2n$\cr
+\noalign{\vskip-25pt}
+  &&\item{$\bullet$}branch cuts in $s$, starting at\cr
+  &&\item{}\qquad $s=2n$,\quad $n\in\dbZ^+$.\cr
+\noalign{\medskip}
+(e)&\qquad\qquad
+    \lower40pt\hbox{\epsfxsize=1.50in\epsfbox{fig4.eps}} 
+  &\item{$\bullet$}no poles\cr
+\noalign{\vskip-35pt}
+  &&\item{$\bullet$}branch cuts in $s$, starting at \cr
+\noalign{\vskip-5pt}
+ &&\item{}\qquad $s=2n$, \quad $n\in\dbZ^+$\cr
+\noalign{\vskip-5pt}
+ &&\item{}with spectral density $\rho(2n,t)$\cr
+\noalign{\vskip-5pt}
+ &&\item{$\bullet$}$\rho(2n,t)$ has branch cuts in $t$,\cr
+\noalign{\vskip-5pt}
+ &&\item{}starting at $t=2m$, $m\in\dbN^0$.\cr}
+$$
+It is understood that within each category, we also
+include permutation of the diagrams shown, for example
+by adding diagrams on which the external legs have been
+permuted.
+
+Now, for superstrings, diagrams in categories (a) and
+(b) vanish identically.
+This follows from the fact that the on-shell $1$- and
+$2$-point functions for massless states vanish
+identically.
+The singularities of the remaining diagrams
+are precisely the ones that one
+would expect on physical grounds, and their structure
+confirms the consistency of the string theory up to this order.
+A complete proof is in E. D'Hoker and D. H. Phong, ``The
+Box Graph in Superstring Theory'', Nucl. Phys. B440
+(1995), 24.
+
+
+
+
+
+
+
+
+
+
+
+\bye
+
+
+

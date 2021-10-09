@@ -1,0 +1,531 @@
+%From: Dennis Gaitsgory <gaitsgde@math.ias.edu>
+%Date: Thu, 3 Oct 1996 16:05:12 -0400
+
+
+\input amstex
+\documentstyle{amsppt}
+\magnification=1200
+\pagewidth{6.5 true in}
+\pageheight{8.9 true in}
+\loadeufm
+\loadeusm
+
+\catcode`\@=11
+\def\logo@{}
+\catcode`\@=13
+
+\NoRunningHeads
+
+\font\boldtitlefont=cmb10 scaled\magstep2
+
+\def\dspace{\lineskip=2pt\baselineskip=18pt\lineskiplimit=0pt}
+
+\def\oplusop{\operatornamewithlimits{\oplus}\limits}
+\def\w{{\mathchoice{\,{\scriptstyle\wedge}\,}
+  {{\scriptstyle\wedge}}
+  {{\scriptscriptstyle\wedge}}{{\scriptscriptstyle\wedge}}}}
+\def\Le{{\mathchoice{\,{\scriptstyle\le}\,}
+  {\,{\scriptstyle\le}\,}
+  {\,{\scriptscriptstyle\le}\,}{\,{\scriptscriptstyle\le}\,}}}
+\def\Ge{{\mathchoice{\,{\scriptstyle\ge}\,}
+  {\,{\scriptstyle\ge}\,}
+  {\,{\scriptscriptstyle\ge}\,}{\,{\scriptscriptstyle\ge}\,}}}
+\def\vrulesub#1{\hbox{\,\vrule height7pt depth5pt\,}_{#1}}
+\def\rightsubsetarrow#1{\subset\kern-6.50pt\lower2.85pt
+     \hbox to #1pt{\rightarrowfill}}
+\def\mapright#1{\smash{\mathop{\,\longrightarrow\,}\limits^{#1}}}
+
+\def\Lbar{\overline{L}}
+\def\Mbar{\overline{M}}
+\def\Qbar{\overline{Q}}
+
+\def\Ttil{\widetilde{T}}
+
+\def\Stab{\text{\rm Stab}}
+\def\SO{\text{\rm SO}} \def\Spin{\text{\rm Spin}}
+\def\SU{\text{\rm SU}} \def\Lie{\text{\rm Lie}}
+\def\SL{\text{\rm SL}} \def\Sym{\text{\rm Sym}}
+
+\def\dbC{{\Bbb C}} 
+\def\dbR{{\Bbb R}}
+\def\dbZ{{\Bbb Z}} 
+\def\sbh{\subheading}
+
+\def\scr#1{{\fam\eusmfam\relax#1}}
+
+\def\scrA{{\scr A}}   \def\scrB{{\scr B}}
+\def\scrC{{\scr C}}   \def\scrD{{\scr D}}
+\def\scrE{{\scr E}}   \def\scrF{{\scr F}}
+\def\scrG{{\scr G}}   \def\scrH{{\scr H}}
+\def\scrI{{\scr I}}   \def\scrJ{{\scr J}}
+\def\scrK{{\scr K}}   \def\scrL{{\scr L}}
+\def\scrM{{\scr M}}   \def\scrN{{\scr N}}
+\def\scrO{{\scr O}}   \def\scrP{{\scr P}}
+\def\scrQ{{\scr Q}}   \def\scrR{{\scr R}}
+\def\scrS{{\scr S}}   \def\scrT{{\scr T}}
+\def\scrU{{\scr U}}   \def\scrV{{\scr V}}
+\def\scrW{{\scr W}}   \def\scrX{{\scr X}}
+\def\scrY{{\scr Y}}   \def\scrZ{{\scr Z}}
+
+\def\gr#1{{\fam\eufmfam\relax#1}}
+
+%Euler Fraktur letters (German)
+\def\grg{{\frak g}}
+\def\grp{{\frak p}}
+
+
+\topmatter
+\title\nofrills
+{\boldtitlefont Lectures on supersymmetry}
+\endtitle
+\author
+{\rm Joseph Bernstein}\\ \\
+{\rm September 17, 1996}
+\endauthor
+\endtopmatter
+
+
+
+%\NoBlackBoxes
+\document
+\dspace
+
+\bigskip\bigskip
+\head
+{\bf Lecture 1. Why sypersymmetry}
+\endhead
+
+\bigskip
+\subhead
+0
+\endsubhead
+The aim of these lectures is to describe what physicists
+have in mind when they talk about supersymmetry (SUSY).
+
+I should say that I am a mathematician, not a physicist, and
+these lectures are for mathematicians.
+
+First I thought that these will be  more or less
+straightforward course of lectures on supermanifolds.
+But then I (and David Kazhdan) realized that the situation
+is more interesting.
+
+Physicists have constructed many models with supersymmetry;
+for some of them they found nice models formulated in terms
+of supermanifolds (super space in physical terminology).
+But for many interesting models with supersymmetry their
+``supermanifold'' realization is unknown --- and this may be an
+interesting problem for mathematicians.
+
+\sbh{1. What are sypersymmetries}
+
+
+First, what are symmetries?
+
+Physicists have three types of pictures for their theories.
+
+\roster
+\item
+Classical picture -- fields on a space-time $+$ Lagrangian;
+
+\item
+Quantum field theory (QFT)
+
+\item
+Scattering theory (theory of $S$-matrix).
+\endroster
+
+Usually there are many symmetries of the classical picture, but
+many of them give trivial symmetries of the scattering
+theory (of the $S$-matrix).
+  It turns out that if we want to describe the symmetries of
+the $S$-matrix then the answer is very restrictive.
+In my lectures I will mostly deal only with classical picture.
+But in the first lecture I will describe an important result
+from the scattering theory which explains why physicists
+are so interested in supersymmetry.
+\sbh{2. The group $P$ and its representations}
+
+
+\sbh{2.1}
+
+Let $V$ be a $4$-dimensional real vector space $(V\simeq
+\dbR^4)$ with a quadratic form of signature $\left(
+\smallmatrix + &&&\\ &- &&&\\ &&- 
+  &&\\ &&&-\endsmallmatrix\right)$.
+
+Let $G$ denote the universal cover of the group $\SO(V)$:
+we have
+$$
+\matrix
+1 &\to &\dbZ_2 &\to &G &\to &\SO(V) &\to &1\\
+&&&&\wr\wr &&&&\\
+&&&&\Spin(V) &&&&
+\endmatrix
+$$
+As a real group, $G$ is isomoprhic to $\SL(2,\dbC)$.
+We will list now all finite-dimensional irreducible complex
+representations of $G$.
+
+Let $L$ denote a standard $2$-dimensional complex
+representation of $G$ (coming from the isomorphism $G\simeq
+\SL(2,\dbC)$).
+The action of $G$ on $L$ preserves a volume form $\omega$
+and we have $L\simeq L^*$, as $G$-representations ($^{\,*}$
+denotes the linear dual).
+
+\definition{Claim}
+Any irreducible representation of $G$ has a form:
+
+$M_i\otimes\Mbar_j$, where $M_k$ denotes the
+$k+1$-dimensional representation $\Sym^k(L)$ and where
+$^{^{\overline{ \ \ }}}$ is the complex conjugation.\qquad
+$\blacksquare$
+\enddefinition
+
+\example{Example}
+The space $V$ as a real representation of $G$ identifies
+with the space of Hermitian forms on $L$.
+
+We have 
+$$
+\tau\colon\,V_\dbC\simeq M_1\otimes\Mbar_1=L\otimes
+\Lbar
+$$
+\endexample
+
+\subsubhead
+{\bf 2.2}
+\endsubsubhead
+Let $P$ denote the Poincar\'e group, i.e. the semidirect
+product
+$$
+P=G\ltimes V.
+$$
+
+We will be interested in unitary representations of $P$.
+Note that the action of the central element $z \in P$
+$\left(z=\left(\smallmatrix -1 &\,\,\,\,0\\ \,\,\,\,0
+&-1\endsmallmatrix\right)\in \SL(2,\dbC)\simeq G\right)$
+defines a $\dbZ_2$-grading on the space of each such
+representation:
+$$
+H=H_+\oplus H_-
+$$
+
+Let $H$ be an irreducible unitary representation of $P$.
+Then $H\vrulesub{V}$ has a form $\int\limits_{p\in
+V^*}H_pd\mu$, where $d\mu$ is a $G$-invariant measure on
+$V^*$ concentrated on one $G$-orbit $\scrO\subseteq V^*$ (
+in our case each orbit admits a $G$-invariant measure).
+The structure of a $P$-representation on $\int\limits_{p\in
+V^*}H_pd\mu$ is determined by the action of
+$\Stab(p_0)\subseteq G$ ($p_0$ is an arbitrary point of
+$\scrO$) on $H_{p_0}$, which must be an irreducible unitary representaion
+of this group. 
+
+We say that an irreducible $P$-representation $H$ is
+positive if the corresponding $G$-orbit $\scrO\subseteq V^*$
+is one of the following three types:
+
+\roster
+\item"a)"
+$\scrO_m^+$, $m\in\dbR^{+*}\colon\,\{p\in V,\,<p,p>=
+   m^2,\,p_0>0\}$;
+
+\item"b)"
+$\scrO_0^+\colon\,\{p\in V,\,<p,p>=0,\,p_0>0\}$;
+
+\item"c)"
+$\{0\}$.
+\endroster
+
+Here we have used the identification $V\simeq V^*$ and an
+orientation of the time-coordinate $x_0$ in $V\simeq
+\dbR^4$.
+
+We say that a unitary representation $H$ of $P$ is ``good''
+if it satisfies the following three properties:
+
+\roster
+\item"1)"
+It is a sum of finitely many irreducibles $H=\oplusop_{i}H$;
+
+\item"2)"
+Each of the $H_i$'s is positive in the above sense;
+
+\item"3)"
+For each of the $H_i$'s the representations of stabilizers
+$H_{p_i}$ are finite dimensional.
+\endroster
+
+\example{Example}
+Let $H$ be an irreducible $P$-representation satisfying 2)
+and 3).
+
+\roster
+\item"a)"
+If $\scrO=\scrO_m^+$, choose $p=(m,0,0,0)$;
+$\Stab_{p}=\SU(2)$.
+Irreducible unitary representations of $\SU(2)$ are
+enumerated by positive half-integers and the corresponding
+$P$-representations will be denoted as $H_{m,s}$
+$s\in\frac12\,\dbZ^+$.
+
+\item"b)"
+If $\scrO=\scrO_0^+$, choose $p=(1,1,0,0)$;
+$\Stab_{p}=U(1)\ltimes N$, where $N$ is a nilpotent group.
+Irreducible $\Stab_{p}$-representations are 
+enumerated by half-integers and the corresponding
+$P$-representations will be denoted as $H_{0,s}$
+$s\in\frac12\,\dbZ$.
+
+\item"c)"
+If $\scrO=\{0\}$, $\Stab_0=G$ and $H_{p}$ must be trivial.
+Therefore, $H$ is trivial too.
+\endroster
+\endexample
+
+\subhead
+3. Scattering theory and Coleman-Mandula theorem
+\endsubhead
+
+\subsubhead
+{\bf 3.1}
+\endsubsubhead
+The scattering picture consists of the following data:
+
+\roster
+\item"1)"
+$H$ a ``good'' representation of $P$;
+
+\item"2)"
+A unitary operator (called $S$-matrix)
+$S\colon\,\scrH\to\scrH$, where $\scrH\colon =\Sym(H)$ such
+that $S$ commutes with the action of $P$.
+\endroster
+
+Here $\Sym(H)$ is understood in the super-sense, i.e.
+$$\Sym(H)\simeq\Sym(H_{+})\otimes\Lambda(H_{-}).$$
+
+\definition{Definition}
+An even symmetry of the $S$-matrix is an (unbounded)
+operator $B\colon\scrH\to\scrH$ such that
+
+\roster
+\item"a)"
+$B$ is even and preserves the $\dbZ$-grading on $\scrH$;
+
+\item"b)"
+$B$ satisfies the Leibnitz rule;
+
+\item"c)"
+$[B,S]=0$.
+\endroster
+\enddefinition
+
+\example{Example}
+Consider $\grp=\Lie(P)$.
+Then $\grp$ acts n $\scrH$ by symmetry operators.
+\endexample
+
+A theorem of Coleman and Mandula classifies all possible
+symmetries of the $S$-matrix in a ``non-degenerate''
+situation.
+
+\subsubhead
+{\bf 3.2}
+\endsubsubhead
+Assume that the pair $(H,S)$ satisfies the following
+additional conditions:
+
+\roster
+\item"a)"
+$H$ has irreducible summands with strictly positive masses
+only, i.e. only the orbits of the type $\scrO_m^+$ are
+allowed.
+
+\item"b)"
+$S$ is non-degenerate.
+\endroster
+
+The last condition is rather obscure; let us, nevertheless,
+give a definition.
+
+Let $\Sigma=\operatornamewithlimits{\cup}\limits_{i}\scrO_m^+$
+be the support of $H$ in $V^*$ and consider the operator
+$S^2\colon\,\Sym^2H\to\Sym^2H$
+$$
+S^2\colon\,\Sym^2 H\operatornamewithlimits{\hookrightarrow}
+\limits^{i}\scrH\mapright{S}\scrH\mapright{pr}
+\Sym^2 H.
+$$
+$\Sym^2 H$ identifies with the space of $L_2$-sections of a
+vector bundle with fibers $H_p\otimes H_q$ over the manifold
+$\Sym^2\left(\Sigma\right)\smallsetminus\Delta$ ($\Delta$ is the diagonal).
+
+The operator $S^2$ is given by a kernel
+$$
+T_{p',q'}^{p,q}\,\,(p\not=q;\,p'\not=q')\colon\,\,
+H_p\otimes H_q\to H_{p'}\otimes H_{q'}.
+$$
+
+{}From the $V\subseteq P$-invariance of $S$ it is easy to
+deduce that $T_{p',q'}^{p,q}$ is concentrated on the
+submanifold of $(\Sym^2\left(\Sigma\right)\smallsetminus
+\Delta)\times(\Sym^2\left(\Sigma\right)\smallsetminus\Delta)$
+given by $p+q-p'-q'=0$, i.e. 
+$$
+T_{p',q'}^{p,q}=\delta(p+q-p'-q')\Ttil{^{p,q}_{p',q'}}.
+$$
+The non-degeneracy condition says that
+$\Ttil{^{p,q}_{p',q'}}$ is a boundary value of an analytic
+function and that the matrix $\Ttil{^{p,q}_{p',q'}}$ is
+non-degenerate if $p$ is close to $p'$ and $q$ is close to
+$q'$.
+
+\proclaim{Theorem {\rm (Coleman-Mandula)}}
+Let the pair $(H,S)$ satisfy (a) and (b) as above.
+Then
+
+\roster
+\item"{\rm a)}"
+Any symmetry $B$ of $S$ has a form $B=B_1+B_2$, where
+$B_1\in\grp$, $[B_2,\grp]=0$.
+
+\item"{\rm b)}"
+The Lie-algebra of symmetries of $S$ has a form
+$\scrS=\grp\oplus I$, where $I$ is a finite-dimensional,
+reductive Lie algebra.\qquad $\blacksquare$
+\endroster
+\endproclaim
+
+\subsubhead
+{\bf 3.3}
+\endsubsubhead
+
+Let us now describe the extension of the Coleman-Mandula
+result to the case of non-necessarily even symmetries.
+
+\definition{Definition}
+An odd symmetry of $S$ is an operator
+$B\colon\,\scrH\to\scrH$ such that
+
+\roster
+\item"{\rm a)}"
+$B$ is odd and preserves the $\dbZ$-grading on $\scrH$.
+
+\item"{\rm b)}"
+$B$ satisfies the super-Leibnitz rule:
+
+\item""
+$B(X\otimes Y)=BX\otimes Y+(-1)^{p(X)}X\otimes BY$.
+
+\item"{\rm c)}"
+$[B,S]=0$.
+\endroster
+\enddefinition
+
+Consider the Lie super-algebra $\scrS=\scrS_{\bar{0}}\oplus
+\scrS_{\bar{1}}$ of symmetries of $S$.
+We have the following result:
+
+\proclaim{Theorem {\rm (Haag, Lopuszansky, Sohnius)}}
+Let $(H,S)$ satisfy a) and b) of $3.2$.
+Then $\scrS$ has the following structure:
+
+\roster
+\item"$1)$"
+$\scrS_{\bar{0}}=\grp\oplus I$ (as in Coleman-Mandula
+theorem).
+
+\item"$2)$"
+$\scrS_{\bar{1}}$ is finite dimensional,
+$[\scrS_{\bar{1}},V]=0$ and as a representation of $G$ it
+has a form $\oplusop_{i}(L\oplus\Lbar)$.
+
+\item"$3)$"
+If $Q\in L_i$, $Q'\in L_j$, we have
+$$
+[Q,\Qbar{'}]=\delta_{ij}\cdot \tau(Q,\Qbar)\in V_\dbC
+\qquad\text{($\tau$ of $2.1$)}
+$$
+Here  $Q\to\Qbar$ denotes the operation of passing to the 
+adjoint operator acting on $H$.
+\item"$4)$"
+$[Q,Q']=\delta_{ij}\cdot\iota$, where $\iota$ belongs to $I$ and is
+central.
+\qquad $\blacksquare$
+\endroster
+\endproclaim
+
+
+\enddocument
+
+
+
+\bigskip\bigskip
+%\newpage
+
+\Refs\nofrills{References}
+
+\ref\no 1
+\by Cohen A. M. and de Man R., (1996)
+\paper Computational evidence for Deligne's conjecture
+regarding exceptional Lie groups
+\jour C. R. Acad. Sci. Paris
+\vol 322, \rom{s\'erie I}
+\pages 427--432
+\endref
+
+\smallskip
+\ref\no 2
+\by Deligne P., (1996)
+\paper La s\'erie exceptionnelle de groupes de Lie
+\jour C. R. Acad. Sci. Paris
+\vol 322, \rom{s\'erie I}
+\pages 321--326
+\endref
+
+\smallskip
+\ref\no 3
+\by Duflo M., (1977)
+\paper Op\'erateurs diff\'erentiels bi-invariants sur un
+groupe de Lie
+\jour Ann. Sci. E.N.S., $4^{\text{e}}$ s\'erie, t.10
+\pages 265--288
+\endref
+
+\smallskip
+\ref\no 4
+\by van Leeuwen M. A. A.,  Cohen A. M. and
+  Lisser B. (1992)
+\paper LiE, a package for Lie group computations
+\inbook CAN
+\publaddr Amsterdam
+\endref
+
+\smallskip
+\ref\no 5
+\by Vogel P., (August 1995)
+\paper Algebraic structures on modules of diagrams
+\paperinfo preprint
+\endref
+
+\endRefs
+
+
+
+
+
+
+
+\enddocument
+
+
+
+
+
+
+
+

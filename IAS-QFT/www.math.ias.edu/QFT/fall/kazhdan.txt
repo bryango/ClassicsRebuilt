@@ -1,0 +1,50 @@
+
+		     INSTITUTE FOR ADVANCED STUDY
+			School of Mathematics
+			Princeton, NJ  08540
+
+
+
+
+                    	   TENTATIVE AGENDA
+
+
+
+
+		      QUANTUM FIELD THEORY SEMINAR
+
+
+SPEAKER:     David Kazhdan, IAS/Harvard University
+
+
+TIME:        10:30 A.M. to 12:30 P.M.
+
+
+LOCATION:    M-101, Math Building Seminar Room
+
+
+DATE:	     TUESDAYS, STARTING WITH SEPTEMBER 24, 1996 
+
+
+
+Lecture 1. The Wightman's axioms for the scalar boson theory and the example
+of the Free Quantum Field Theory. The analytic properties of the Wightman's 
+functions.
+
+
+
+Lecture 2. The Haag-Ruelle scattering theory and the relation between the
+Wightman's functions and the S-matrix.
+
+
+
+Lecture 3. The Eucledian field theory and the diagrammatic technique for the
+computation of the perturbation expansion of the Feynman integrals.
+
+
+
+
+
+
+
+.

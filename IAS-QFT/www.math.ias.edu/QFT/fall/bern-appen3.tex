@@ -1,0 +1,243 @@
+%From: Pierre Deligne <deligne@IAS.EDU>
+%Date: Fri, 3 Jan 1997 11:16:44 -0500
+
+\input amstex
+\documentstyle{amsppt}
+\magnification=1200
+\loadbold
+\loadeusm
+
+\font\boldtitlefont=cmb10 scaled\magstep2
+
+\NoRunningHeads
+\pagewidth{6.5 true in}
+\pageheight{8.9 true in}
+
+\catcode`\@=11
+\def\logo@{}
+\catcode`\@=13
+
+\def\eps{{\varepsilon}}
+
+\def\dbR{{\Bbb R}}
+
+\def\undertext#1{$\underline{\vphantom{y}\hbox{#1}}$}
+\def\nspace{\lineskip=1pt\baselineskip=12pt%
+     \lineskiplimit=0pt}
+\def\dspace{\lineskip=2pt\baselineskip=18pt%
+     \lineskiplimit=0pt}
+
+\def\w{{\mathchoice{\,{\scriptstyle\wedge}\,}
+  {{\scriptstyle\wedge}}
+  {{\scriptscriptstyle\wedge}}{{\scriptscriptstyle\wedge}}}}
+\def\Le{{\mathchoice{\,{\scriptstyle\le}\,}
+{\,{\scriptstyle\le}\,}
+{\,{\scriptscriptstyle\le}\,}{\,{\scriptscriptstyle\le}\,}}}
+\def\Ge{{\mathchoice{\,{\scriptstyle\ge}\,}
+{\,{\scriptstyle\ge}\,}
+{\,{\scriptscriptstyle\ge}\,}{\,{\scriptscriptstyle\ge}\,}}}
+
+\def\red{\text{\rm red}}
+
+\def\bfs{\bold{s}}
+
+%Script letters:
+\def\scr#1{{\fam\eusmfam\relax#1}}
+\def\scrE{{\scr E}} 
+\def\scrL{{\scr L}} 
+\def\scrM{{\scr M}} 
+
+\def\scrLbar{\overline{\scrL}}
+
+
+\topmatter
+\title\nofrills
+{\boldtitlefont Appendix: the 2-form on a space of extremals}
+\endtitle
+\author
+P. Deligne
+\endauthor
+\endtopmatter
+
+\NoBlackBoxes
+\parindent=20pt
+\frenchspacing
+\document
+\bigskip
+\dspace
+In his lectures, Bernstein considered lagrangian
+densities $\scrL(\phi)$ on $V$, for $\phi$ in the space
+$\scrM$ of maps $V\to M$, or more generally for $\phi$ a
+section of a fiber bundle $M_V$ over $V$.
+The case of maps to $M$ correspond to $M_V=M\times V$.
+He considered the case where the density $\scrL(\phi)$
+at $v\in V$ depends only on $\phi$ and $d\phi$ at $v$,
+and explained how to construct a closed $2$-form
+$\omega$ on the space $\scrE$ of extremals.
+The construction depended on a cohomology class of
+hypersurfaces $\Gamma$ with an oriented normal bundle:
+$\Gamma$ has a ``past'' side and a ``future'' side.
+In practice, $\Gamma$ is a ``space-like'' hypersurface.
+The construction uses integration on $\Gamma$, hence
+requires some control at the infinity of $\Gamma$, and a
+similar control on homologies among $\Gamma$'s.
+We will ignore this by pretending that $\Gamma$ is
+compact and that cohomology is taken with compact
+support.
+
+In this appendix, our aim is to explain a small
+modification of the construction which works as well
+when $\scrL(\phi)$ depends on higher derivatives of
+$\phi$.
+One can also take $\phi$ to be for instance a bundle
+with connection, rather than a map to some $M$.
+If $V$ is a supermanifold, the new construction makes
+clear that the $2$-form obtained is the same whether one
+works in term of superfields $\phi\colon\,V\to M$ and of
+superdensities $\scrL(\phi)$ on $V$, or in term of
+``components'' of $\phi$ and of the Lagrangian density
+$\scrLbar(\phi)$ on $V_{\red}$ deduced from
+$\scrL(\phi)$ by ``integrating out'' the odd variables,
+for some projection $V\to V_{\red}$.
+
+What we don't get are $2$-forms $\omega_\Gamma$,
+depending on $\Gamma$, on the space $\scrM$ of all
+$\phi$, and inducing $\omega$ on the space $\scrE$ of
+extremals.
+
+The basic construction is local around a space-like
+hypersurface $\Gamma$ and, to explain it, we will assume
+that $V=\Gamma\times\dbR$, the projection to $\dbR$
+being called ``time''.
+
+For a $2$-parameter family $\phi[a_1,a_2]$ of extremals,
+we now define the value at $(a_1,a_2)=(0,0)$ of the pull
+back of $\omega$ by $(a_1,a_2)\mapsto\phi[a_1,a_2]$.
+We choose a family $\phi_1[a_,a_2]$ of maps to $M$,
+deforming $\phi[a_1,0]$, agreeing with $\phi[a_1,a_2]$
+in the future, and agreeing with $\phi[a_1,0]$ in the
+past:
+$$
+\alignat2
+\phi_1[a_1,0] &=\phi[a_1,0], &\qquad &\\
+\phi_1[a_1,a_2] &=\phi[a_1,a_2] &&\text{in the (far) future},\\
+\phi_1[a_1,a_2] &=\phi[a_1,0] &&\text{in the (far)
+past}.
+\endalignat
+$$
+
+We similarly choose $\phi_2$, having the same properties
+with the roles $a_1$ and $a_2$ permuted.
+
+\noindent
+Definition:
+$$
+\omega(\partial_1,\partial_2)=\int_V
+(\partial_1\partial_2\scrL(\phi_1)-\partial_2\partial_1
+\scrL(\phi_2))\quad\text{at}\quad (a_1,a_2)= (0,0).
+$$
+The integrand vanishes in the future, where
+$\phi_1=\phi_2$, as well as in the past, where both
+terms vanish.
+This makes the integral defined.
+
+Using $\Gamma$, with equation $t=0$, we now express
+$\omega$ as an exterior derivative $d\alpha_\Gamma$ and
+show independence of the choices of $\phi_1$ and
+$\phi_2$.
+Let $Y$ be the function on $\dbR$ which is $1$ for $x<0$
+and $0$ for $x>0$: \ $\frac{d}{dx}\,Y=-\delta(x)$.
+We will have to integrate on $V$ up to $t=0$ some smooth
+density $\mu$ vanishing in the past.
+In the supervariety case, this means integrating
+$Y(t)\mu$ (integration on a supervariety with boundary
+$\Gamma$).
+This depends on $\Gamma$, not just on $\Gamma_{\red}$.
+
+The $1$-form $\alpha_\Gamma$ is defined only at
+extremals, but makes sense on tangent vectors to the
+space $\scrM$ of all $\phi$.
+Fix an extremal $\phi[0]$ and consider a family
+$\phi[a]$ deforming it.
+We now define $\alpha_\Gamma$ at the corresponding
+tangent vector.
+Let $\phi_1$ be a deformation of $\phi[0]$ agreeing with
+$\phi[a]$ for $t>-\eps$, and with $\phi[0]$ in the past.
+
+\noindent
+Definition:
+$$
+\alpha_\Gamma(\partial_a)=\int
+Y(t)\partial_a\scrL(\phi_1[a])\quad\text{at}\quad
+a=0
+$$
+The integrand vanishes in the future, because $Y(t)$
+does, and in the past, where $\phi_1[a]$ is constant.
+This makes the integral defined.
+Because $\phi[0]$ is an extremal, it does not depend on
+the choice of $\phi_1$: \ the density
+$\partial_a\scrL(\phi_1[a])$ is the variation of the
+density $\scrL$ for a variation $\delta_1\phi$ of
+$\phi[0]$, and if we consider another deformation
+$\phi_2$, $\delta_1\phi-\delta_2\phi$ has support in a
+time interval $[-A,-\eps]$.
+It is the tangent vector for a deformation $\phi_3$ with
+a support in $t<0$ and
+$$
+\split
+\int Y(t) &[\partial_a\scrL(\phi_1[a])-\partial_a\scrL(\phi_2
+  [a])]\quad\text{(at $a=0$)}\\
+&=\int Y(t)\partial_a\scrL(\phi_3[a])\quad
+\text{(at $a=0$)}=\int\partial_a\scrL(\phi_3[a])
+\quad\text{(at $a=0$)}=0
+\endsplit
+$$
+
+To see that $\omega=d\alpha_\Gamma$, one uses the
+formula that for commuting vector fields $X$ and $Y$,
+one has
+$$
+(d\alpha)(X,Y)=X.\alpha(Y)-Y.\alpha(X)\,\,.
+$$
+For the pull back of $\alpha_\Gamma$ by
+$(a_1,a_2)\mapsto\phi[a_1,a_2]$, this gives, provided
+that $\phi_1[a_1,a_2]=\phi[a_1 a_2]=\phi[a_1 a_2]$ for
+$t>-\eps$:
+$$
+\align
+d\alpha_\Gamma(\partial_1,\partial_2) &=\partial_1\int
+  Y(t)\partial_2\scrL(\phi_1)-\partial_2\int Y(t)
+  \partial_1\scrL(\phi_2)\\
+&=\int Y(t)(\partial_1\partial_2\scrL(\phi_q)-
+  \partial_2\partial_1\scrL(\phi_2))\\
+&=\int \partial_1\partial_2\scrL(\phi_1)-\partial_2\partial_1
+  \scrL(\phi_2)
+\endalign
+$$
+at $(a_1,a_2)=(0,0)$: \ the definition of $\omega$.
+
+In the case treated by Bernstein, integration by parts
+shows that the form $\alpha_\Gamma$ is the restriction
+to $\scrE$ of the one he considers, on $\scrM$.
+
+The modification we presented does not require the
+tangent space of $\scrM$ at $\phi$ to be the space of
+sections of a vector bundle on $V$.
+Basically, it requires only that it be the space of
+sections of a soft sheave of $\dbR$-vector spaces on
+$V$.
+One has to be able to deform $\phi$ in a prescribed way
+in different regions of $V$.
+For $V$ a supermanifold, this does not preclude imposing
+suitable constraints on $\phi$.
+
+
+
+
+
+\enddocument
+
+
+
+
+

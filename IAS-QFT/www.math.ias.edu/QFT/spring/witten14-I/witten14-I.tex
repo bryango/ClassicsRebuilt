@@ -1,0 +1,631 @@
+\documentstyle{article}
+
+\input epsf.tex
+
+
+%These are the macros which are in common with all of the
+% sections in the paper mmr
+% Each section, for now, should begin with \documentstyle[11pt,cd]{article}
+% and then have \input{mmrmacros} followed by \begin{document}
+% The only exception is that the \Label macro is slightly different
+% in each file and should be put in separately.
+%New CD macros
+\newcommand{\cdrl}{\cd\rightleftarrows}
+\newcommand{\cdlr}{\cd\leftrightarrows}
+\newcommand{\cdr}{\cd\rightarrow}
+\newcommand{\cdl}{\cd\leftarrow}
+\newcommand{\cdu}{\cd\uparrow}
+\newcommand{\cdd}{\cd\downarrow}
+\newcommand{\cdud}{\cd\updownarrows}
+\newcommand{\cddu}{\cd\downuparrows}
+% (S) Proofs.
+% (S-1) Head is automatically supplied by \proof.
+
+\def\proof{\vspace{2ex}\noindent{\bf Proof.} }
+\def\tproof#1{\vspace{2ex}\noindent{\bf Proof of Theorem #1.} }
+\def\pproof#1{\vspace{2ex}\noindent{\bf Proof of Proposition #1.} }
+\def\lproof#1{\vspace{2ex}\noindent{\bf Proof of Lemma #1.} }
+\def\cproof#1{\vspace{2ex}\noindent{\bf Proof of Corollary #1.} }
+\def\clproof#1{\vspace{2ex}\noindent{\bf Proof of Claim #1.} }
+% End of Proof Symbol at the end of an equation must precede $$.
+
+\def\endproof{\relax\ifmmode\expandafter\endproofmath\else
+  \unskip\nobreak\hfil\penalty50\hskip.75em\hbox{}\nobreak\hfil\bull
+  {\parfillskip=0pt \finalhyphendemerits=0 \bigbreak}\fi}
+\def\endproofmath$${\eqno\bull$$\bigbreak}
+\def\bull{\vbox{\hrule\hbox{\vrule\kern3pt\vbox{\kern6pt}\kern3pt\vrule}\hrule}
+}
+\addtolength{\textwidth}{1in}                  % Margin-setting commands
+\addtolength{\oddsidemargin}{-.5in}
+\addtolength{\evensidemargin}{.5in}
+\addtolength{\textheight}{.5in}
+\addtolength{\topmargin}{-.3in}
+\addtolength{\marginparwidth}{-.32in}
+\renewcommand{\baselinestretch}{1.6}
+\def\hu#1#2#3{\hbox{$H^{#1}(#2;{\bf #3})$}}          % #1-Cohomology of #2
+\def\hl#1#2#3{\hbox{$H_{#1}(#2;{\bf #3})$}}          % #1-Homology of #2
+\def\md#1{\ifmmode{\cal M}_\delta(#1)\else  % moduli space, delta decay of #1
+{${\cal M}_\delta(#1)$}\fi}
+\def\mb#1{\ifmmode{\cal M}_\delta^0(#1)\else  %moduli space, based, delta
+                                              %decay of #1
+{${\cal M}_\delta^0(#1)$}\fi}
+\def\mdc#1#2{\ifmmode{\cal M}_{\delta,#1}(#2)\else    %moduli space, delta
+                                                      %decay, chern class #1
+                                                      %of #2
+{${\cal M}_{\delta,#1}(#2)$}\fi}
+\def\mbc#1#2{\ifmmode{\cal M}_{\delta,#1}^0(#2)\else   %as before, based
+{${\cal M}_{\delta,#1}^0(#2)$}\fi}
+\def\mm{\ifmmode{\cal M}\else {${\cal M}$}\fi}
+\def\ad{{\rm ad}}
+\def\msigma{\ifmmode{\cal M}^\sigma\else {${\cal M}^\sigma$}\fi}
+\def\cancel#1#2{\ooalign{$\hfil#1\mkern1mu/\hfil$\crcr$#1#2$}}
+\def\dirac{\mathpalette\cancel\partial}
+\newtheorem{thm}{Theorem}
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{D}[theorem]{Definition}
+\newenvironment{defn}{\begin{D} \rm }{\end{D}}
+\newtheorem{addendum}[theorem]{Addendum}
+\newtheorem{R}[theorem]{Remark}
+\newenvironment{remark}{\begin{R}\rm }{\end{R}}
+\newcommand{\note}[1]{\marginpar{\scriptsize #1 }}
+\newenvironment{comments}{\smallskip\noindent{\bf Comments:}\begin{enumerate}}{
+\end{enumerate}\smallskip}
+
+\renewcommand{\thesection}{\Roman{section}}
+\def\eqlabel#1{\addtocounter{theorem}{1}
+\write1{\string\newlabel{#1}{{\thetheorem}{\thepage}}}
+\leqno(\rm\thetheorem)}
+\def\cS{{\cal S}}
+\def\ov{\overline}
+
+
+
+
+
+
+
+
+
+
+
+
+\title{Lecture II-14, part I: The Landau--Ginzburg Description of $N=2$
+Minimal Models}
+\author{Edward Witten\thanks{Notes by David R. Morrison}}
+\date{May 1, 1997}
+
+\begin{document}
+\maketitle
+
+%Dave's macros
+% automatic loading of rsfs fonts, if present
+\batchmode
+  \newfont{\footscrfont}{rsfs10}
+  \newfont{\footbbbfont}{msbm10}
+\errorstopmode
+
+\newif\ifscrf\scrftrue
+\ifx\footscrfont\nullfont
+  \scrffalse
+\fi
+
+\ifscrf
+  \newfont{\scrfont}{rsfs10 scaled\magstep1}  % rsfs12 does not exist
+  \newfont{\smallscrfont}{rsfs7}
+  \newfont{\tinyscrfont}{rsfs7}
+% \newfont{\footscrfont}{rsfs10}
+  \newfont{\smallfootscrfont}{rsfs7}
+  \newfont{\tinyfootscrfont}{rsfs7}
+\fi
+\makeatletter
+
+\newif\iffn\fnfalse
+
+\@ifundefined{reset@font}{\let\reset@font\empty}{} %needed for ancient LaTeX
+\long\def\@footnotetext#1{\insert\footins{\reset@font\footnotesize
+    \interlinepenalty\interfootnotelinepenalty
+    \splittopskip\footnotesep
+    \splitmaxdepth \dp\strutbox \floatingpenalty \@MM
+    \hsize\columnwidth \@parboxrestore
+   \edef\@currentlabel{\csname p@footnote\endcsname\@thefnmark}\@makefntext
+    {\rule{\z@}{\footnotesep}\ignorespaces
+      \fntrue#1\fnfalse\strut}}}
+\makeatother
+
+\ifscrf
+  \newcommand{\Scr}[1]{\iffn
+    \mathchoice{\mbox{\footscrfont #1}}{\mbox{\footscrfont #1}}
+    {\mbox{\smallfootscrfont #1}}{\mbox{\tinyfootscrfont #1}}\else
+    \mathchoice{\mbox{\scrfont #1}}{\mbox{\scrfont #1}}
+    {\mbox{\smallscrfont #1}}{\mbox{\tinyscrfont #1}}\fi}
+\else
+  \def\Scr{\cal}
+\fi
+%line bundle (lb) and Lagrangian (lg) -- should have distinct fonts
+\newcommand{\lb}{{\Scr L}}
+\renewcommand{\lg}{{\cal L}}
+%\numberwithin{equation}{section}
+\newcommand{\operatorname}[1]{\mathop{\rm #1}\nolimits}
+\newcommand{\Tr}{\operatorname{Tr}}
+\newcommand{\ndex}{\operatorname{index}}
+
+\section{Landau--Ginzburg models}
+
+The topic for the first part of today's lecture
+is a more detailed discussion of the known evidence for the
+predicted equivalence between IR limits of certain Landau--Ginzburg models, and
+the algebraically constructible conformal field theories known as ``minimal
+models.''
+
+Consider first the simplest Landau--Ginzburg model: a two-dimensional $N{=}2$
+theory of a
+single chiral superfield $\Phi$ with Lagrangian
+$$\lg=\int d^2x\,d^4\theta\,\overline{\Phi}\Phi+\left(\int
+d^2x\,d\theta^+\,d\theta^-\,\Phi^k
++ \mbox{c.c.}\right) .$$
+Our claim in lecture II-12 was that this model flows in the IR to a conformal
+field
+theory with $\widehat{c}=1-\frac2k$.  If true, then the theory it flows to
+must be an
+algebraically solvable theory, due to the known classification of
+representations of
+the $N{=}2$ superconformal algebra with $\widehat{c}<1$.  More precisely,
+fixing $\widehat{c}=1-\frac2k$,
+there turn out to be a finite number of
+ irreducible representations ${\cal H}_\alpha$ of the algebra of
+central charge $\widehat{c}$ (up to isomorphism); a conformal field theory
+must be built as
+a modular-invariant combination
+$$\bigoplus ({\cal H}_\alpha\otimes\overline{\cal H}_\beta)^{e_{\alpha\beta}}$$
+of these representations.  The simplest modular-invariant combination, and the
+one which will
+occur here, is the unweighted diagonal sum over all of the representations:
+$$\bigoplus_\alpha\,{\cal H}_\alpha\otimes\overline{\cal H}_\alpha.$$
+
+More general Landau--Ginzburg models involve several chiral superfields
+$\Phi_1$, \dots,
+$\Phi_n$ and a quasi-homogeneous polynomial $W(\Phi_1,\dots,\Phi_n)$ which
+serves as the
+superpotential of the theory.  We should assume that the polynomial is
+transverse in the
+sense that $W=dW=0$ holds only at the origin; the quasi-homogeneity condition
+can be expressed
+as the existence of positive rational numbers $\alpha_j$ such that
+$$W=\sum \alpha_j\Phi_j\frac{\partial W}{\partial \Phi_j}.$$
+The Lagrangian can be written
+$$\lg=\int d^2x\,d^4\theta\,\overline{\Phi}_j\Phi_j+\left(\int
+d^2x\,d\theta^+\,d\theta^-\,W(\Phi_j)
++ \mbox{c.c.}\right) .$$
+
+
+Intuitively, the quasi-homogenity is important because it allows the
+possibility of extending
+one of the $R$-symmetries, namely
+$$\theta^+\to e^{-i\varepsilon}\theta^+,\qquad \theta^-\to\theta^-,$$
+to act on the chiral fields as $\Phi_j\to e^{i\varepsilon\alpha_j}\Phi_j$ so
+that the superpotential
+transforms as $W\to e^{i\varepsilon}W$ and hence the Lagrangian is invariant.
+If we {\it assume}\/
+that these microscopic $R$-symmetries {\it become}\/ the $R$-symmetries of a
+limiting conformal
+field theory in the IR, then we can calculate the central charge $\widehat{c}$
+ of that limiting
+theory via operator product expansions.
+
+This works as follows.  Recall that the coefficient $k$ which we encountered
+in lecture II-13 as
+measuring the anomaly which arises if one attempts to gauge the $R$-symmetry
+$J_L$ appears in
+the operator product expansion as
+$$J_L(x)\,J_L(x')=\frac{k}{(x^--x'^-)^2}+\cdots .$$
+The interpretation of $k$ as the obstruction to gauging makes it clear that it
+is a topological
+invariant which can be reliably measured or computed at any scale.
+ In particular, it can be calculated in the UV, where the superpotential
+doesn't matter.  On the other hand, if $J_L$ is the same $R$-symmetry which
+appears in
+the limiting $N=2$
+superconformal field theory, then the  operator product expansion of the
+superconformal algebra
+asserts that
+$$J_L(x)\,J_L(x')=\frac{\widehat{c}}{(x^--x'^-)^2}+\cdots ,$$
+where $\widehat{c}$ is the central charge in the $N=2$ algebra.
+Thus, $k=\widehat{c}$ and we can measure the IR
+central charge by computing in the UV.
+
+
+
+To compute $k$ in the ultraviolet, one treats the fields as free fields.
+The obstruction to gauging comes from the fact that the $R$-symmetries are
+chiral symmetries for the fermions in the free supermultiplets.
+One gets $k=\sum_j(1-2\alpha_j)$.
+Assuming the flow to an $N=2$ theory in the infrared, with the same
+$R$-symmetry appearing
+in the $N=2$ algebra, we have $k=\widehat c$ and hence $\widehat
+c=\sum_j(1-2\alpha_j)$.
+Notice
+that in the case of a single field with $W(\Phi)=\Phi^k$, we must have
+$\alpha=1/k$ and so we
+get the desired result $\widehat{c}=1-2/k$ for the minimal model.
+
+We now want to consider  a more sophisticated argument in favor of this
+equivalence, one
+which reveals more of the structure of the (limiting) conformal field theory.
+Recall the
+structure of the $N{=}2$ algebra:
+$$\{Q_\pm,\overline{Q}_\pm\}=P_\pm$$
+$$\{Q_\pm,Q_\mp\}=0.$$
+We have $\overline{Q}_+^2=0$ so we can consider the cohomology of
+$\overline{Q}_+$, i.e., consider
+local operators ${\cal O}={\cal O}(x)$ such that $\{\overline{Q}_+,{\cal
+O}\}=0$.  Then
+$$\partial_+{\cal O}=\left[\left\{Q_+,\overline{Q}_+\right\},{\cal O}\right]
+=\left[\overline{Q}_+,\left\{Q_+,{\cal O}\right\}\right],$$
+i.e., in Euclidean language (identifying $(x^+,x^-)$ with $(z,\overline{z})$)
+we would say that
+the class of
+${\cal O}(x)$ in $\overline{Q}_+$-cohomology varies holomorphically.
+
+Taking two such operators, using holomorphic language, we write
+$${\cal O}(z){\cal O}'(z')=\sum f_k(z-z'){\cal O}_k(z')+\{\overline{Q}_+,\cdots
+\},$$
+with the $f_k$'s being holomorphic functions.  From this formula, we can see
+that the
+$\overline{Q}_+$-cohomology has the general struture of a conformal field
+theory in which
+the operators are ``purely left-moving,'' that is, they vary holomorphically.
+
+An important remark is that the $\overline{Q}_+$-cohomology is invariant under
+Weyl rescaling,
+and hence it depends only on the complex structure of the Riemann surface (not
+the metric).
+To see this invariance, we must show that $T_{z\overline{z}}$ is
+$\overline{Q}_+$-exact.
+A natural way to prove this is to modify  the usual definition of scale
+invariance, employing the
+quasi-homogeneity of our polynomial, so that the superpotential term is
+preserved under
+the modified scaling.  Then the kinetic term in the action fails to be
+scale-invariant,
+but the change in the kinetic term is of the form $\int d^4\theta(\cdots)$ and
+hence is
+$\overline{Q}_+$-exact.
+
+We have formulated this discussion in terms of $\overline{Q}_+$-cohomology in
+order to include
+very general $N{=}2$ theories.  However, whenever there is a superspace
+realization of the theory
+(as is true of the Landau--Ginzburg theories we are studying), it is more
+convenient to
+study the $\overline{D}_+$-cohomology rather than the
+$\overline{Q}_+$-cohomology, where
+$$\overline{D}_+=e^{-\theta^+ \overline{\theta}^+\partial_+}\,\overline{Q}_+\,
+e^{\theta^+\overline{\theta}^+\partial_+}.$$
+
+In our Landau--Ginzburg theory, the equations of motion are
+$$2\overline{D}_+\overline{D}_-\Phi^j=\frac{\partial W}{\partial\Phi^j}.$$
+Consider the operator
+$${\cal T}=\sum_j\left(\left(\frac{1-\alpha_j}2\right)D_-\Phi^j\,\,\overline{D}
+_- \,\overline{\Phi}_j
+-i\alpha\overline{\Phi}_j\partial_-\Phi_j\right);$$
+then $\overline{D}_+{\cal T}=0$ so that this defines a
+$\overline{D}_+$-cohomology class.
+\footnote{We should worry about anomalies here, but in fact there is no
+quantum anomaly in the statement
+that $\overline D_+{\cal T}=0$, though there are such anomalies in somewhat
+similar statements
+in two-dimensional models with $(0,2)$ supersymmetry.  See E. Silverstein and
+E. Witten,
+``Global $U(1)$ $R$ Symmetry And Conformal Invariance Of $(0,2)$ Models,''
+Phys. Lett.
+{\bf B328} (1994) 307.}
+
+In the free theory, with $W=0$, ${\cal T}$ is an operator of dimension
+$(1,0)$.  If we have
+a superconformal theory, we will be able to write
+$${\cal T}=J+\theta^-G+\overline{\theta}^-\overline{G}+\theta^-\overline{\theta
+^-}T.$$
+If we do arrive at an $N{=}2$ conformal field theory in the limit, then we
+should expect
+an OPE of the form
+$${\cal T}(x)\,{\cal T}(y)=\frac{\widehat c}{(x-y)^2}
++\frac{\cal T}{(x-y)}+ \mbox{holomorphic in ${\cal O}$'s}.$$
+We can check this structure in the free field theory:  the first term comes
+from a diagram of
+the form
+
+\centerline{\quad}
+\centerline{\epsfxsize=.6in\epsfbox{fey1.eps}}
+\centerline{\quad}
+
+
+\noindent
+with two propagators exchanged between the two operators
+and the second term comes from a diagram of the form
+
+\centerline{\quad}
+\centerline{\epsfxsize=1in\epsfbox{fey2.eps}}
+\centerline{\quad}
+
+\noindent
+with exchange of only one propagator.
+
+Note that, in computing these terms in the operator product expansion, we can
+set $W=0$,
+since the superpotential term is too soft (superrenormalizable) to contribute
+to these
+singularities.  Once this is done, the different superfields are decoupled, so
+the computation of $\widehat c$ is a sum over different superfields.  So
+ there is an immediate conclusion that $\widehat{c}$ is {\it additive}\/ in the
+$\alpha_j$'s, that is, $\widehat{c}=\sum f(\alpha_j)$ for some function $f$.
+
+In summary,
+even in our microscopic Lagrangian, we can see an operator ${\cal T}$, which
+at the level
+of $\overline D_+$ cohomology obeys at $N=2$ superconformal algebra.
+So presumably this theory
+flows in the IR to a conformal field theory whose $\overline{D}_+$-cohomology
+contains the superconformal algebra.
+
+If we have only one chiral superfield,
+so $\widehat c<1$, the $N=2$ algebra acts almost irreducibly in the quantum
+Hilbert space.
+Hence one should expect that
+${\cal T}$ will generate the $\overline{Q}_+$-cohomology.
+For $\widehat c>1$, the $N=2$ algebra acts in a way that is far from
+irreducible,
+and one
+should expect to require additional generators.
+
+
+\section{The elliptic genus}
+
+Our refined evidence for the equivalence of these theories will come from a
+computation of
+the {\it elliptic genus}.  We work on a Riemann surface
+of genus $1$ with period lattice spanned by $1$ and $\tau$.
+
+\setlength{\unitlength}{.4 true in}
+
+\begin{center}
+\begin{picture}(1,2.2)(0,-.3)
+\put(0,0){\line(1,0){1.5}}
+\put(0,0){\line(3,5){1}}
+\put(0,-.3){\mbox{$0$}}
+\put(1.5,-.3){\mbox{$1$}}
+\put(.7,1.6){\mbox{$\tau$}}
+\end{picture}
+\end{center}
+
+
+\noindent
+We let $q=e^{2\pi i\tau}$, and compute $\Tr
+q^{(H-P)/2}\overline{q}^{(H+P)/2}(-1)^{F_R}
+.$
+
+The insertion of $(-1)^{F_R}$ means that the right-moving fermions $\psi_+$,
+$\overline{\psi}_+$
+should be given the {\it odd}\/ spin structure (the one periodic in both
+directions) while the
+left-moving fermions $\psi_-$, $\overline{\psi}_-$ should be be given the {\it
+even}\/ spin
+structure (anti-periodic in one direction):
+
+\setlength{\unitlength}{.4 true in}
+
+\begin{center}
+\begin{picture}(1,2.2)(0,-.3)
+\put(0,0){\line(1,0){1.5}}
+\put(0,0){\line(3,5){1}}
+\put(.75,-.3){\mbox{$+$}}
+\put(.15,.85){\mbox{$-$}}
+\end{picture}
+\end{center}
+
+
+For $N{=}1$ supersymmetry, that was the right thing to compute---it turns out
+to be an index
+$$\Tr q^{(H-P)/2}\overline{q}^{(H+P)/2}(-1)^{F_R}=\ndex(Q_++\overline{Q}_+),$$
+ where $(Q_++\overline{Q}_+)^2=2P_+=H+P$.
+
+The story is more interesting in the case of $N{=}2$ supersymmetry, since
+there is the possibility
+of inserting $e^{i\gamma J_L}$, which commutes with both $Q_+$ and
+$\overline{Q}_+$.\footnote{We use
+the same symbol $J_L$ for the left $R$-current and the conserved charge
+derived from it.}  We
+introduce the function
+$$F(q,\gamma)=\Tr q^{(H-P)/2}\overline{q}^{(H+P)/2}e^{i\gamma J_L}(-1)^{F_R}.$$
+The insertion of $e^{i\gamma J_L}$ means: when calculating the trace, glue the
+data on the
+torus using
+$e^{i\gamma J_L}$.
+
+The first observation is that the quantity $F(q,\gamma)$ is independent of any
+continuously variable
+parameters of the theory that preserve the $N=2$ structure.
+This is so  as it is a linear combination of terms each of which is an index
+of an operator.
+For the same reason (or because the trace of the stress tensor of the theory
+is $\overline Q_+$-exact)
+$F(q,\gamma)$ is independent of the area of the torus, and only depends on the
+complex structure.
+
+We want to calculate $F(q,\gamma)$ in two contexts: (i) an algebraic
+calculation for the known
+algebraically constructed models in the IR, and (ii) directly for the
+Landau--Ginzburg models
+in the UV.  The comparison of these two will then provide additional evidence
+that the Landau--Ginzburg
+theory indeed flows to the ``minimal model'' in the IR.
+
+\subsection{Algebraic calculation in the IR}
+
+The Hilbert space of a ``minimal model'' takes the form
+${\cal H}=\bigoplus_\alpha\,{\cal H}_\alpha \otimes \overline{\cal H}_\alpha$,
+with the left-movers in ${\cal H}_\alpha$ and the right-movers in
+$\overline{\cal H}_\alpha$.
+Thus, the elliptic genus can be written
+$$F(q,\gamma)=\sum_\alpha\left(\Tr_{{\cal H}_\alpha} q^{(H-P)/2}e^{i\gamma
+J_L}\right)
+\left(\Tr_{\overline{\cal H}_\alpha}\overline{q}^{(H+P)/2}(-1)^{F_R}\right).$$
+
+The right-moving contribution $\Tr_{\overline{\cal
+H}_\alpha}\overline{q}^{(H+P)/2}(-1)^{F_R}$
+evaluates to $1$ if
+$\overline{\cal H}_\alpha$ has highest weight with $H+P=0$ and $0$ otherwise.
+This has the
+effect of selecting a distinguished subset from among the irreducible
+representations.  Let us introduce a restricted sum
+$\sum'$ to denote the sum over that subset.  Then our elliptic genus can be
+written
+$$F(q,\gamma)=\sum^{\,}_\alpha\vphantom{\sum}'\, \Tr_{{\cal
+H}_\alpha}q^{(H-P)/2}e^{i\gamma J_L}.$$
+(Note that the eigenvalues of the charge $J_L$ are not integers in general.
+Rather, the object
+$\exp(2\pi i J_L)$ commutes with the $N=2$ algebra and is a constant in each
+representation;
+the constant depends on the $R$-charges of the chiral primary fields, which
+are rational numbers.
+So $F(q,\gamma)$ is periodic in $\gamma$, but the period is not $2\pi$.)
+
+\subsection{Direct calculation in the UV}
+
+For the Landau--Ginzburg theory itself, we can try to directly calculate in
+the UV.
+We use the fact that $F(q,\gamma)$ is independent of the area of the torus.
+We take
+the area to be very small.  Roughly, in the UV
+the interaction is negligible and we should be able to set $W=0$.
+The only reason for this to fail has to do with the behavior for large fields.
+The bosonic part of the action is
+$$\int|d\phi|^2+\int\left|\frac{dW}{d\phi}\right|^2.$$
+In the presence of the $W$ term, the unique minimum of the action is $\phi=0$.
+If we would set $W$ to zero, the action would be minimized for any constant
+$\phi$.
+One would have to integrate over the space of constant $\phi$'s even in a
+leading approximation
+to the path integral, and then when $\phi$ becomes sufficiently large, the $W$
+term, if
+its coefficient is not strictly zero, is important.
+
+The conclusion is, then, that as long as $\phi$ is a {\it function} on the
+torus, the $W$
+term cannot quite be ignored.  If, however, $\phi$ were not a function but a
+section of a nontrivial
+flat bundle, then even at $W=0$, the $|d\phi|^2$ part of the action would have
+a unique and
+nondegenerate minimum.  In that situation, it would be straightforward, in the
+limit
+of small area on the torus, to set $W$ to zero.
+
+In the path integral evaluation of $F(q,\gamma)$ for generic $\gamma$, we get
+just such a situation
+in which $\phi$ is a section of a nontrivial flat bundle.
+The reason is that  $J_L$ acts on $\phi$
+by $\delta\phi=\alpha\phi$.  So in evaluating the elliptic genus
+we are making the identification
+$$\phi(P+\tau)=e^{i\gamma\alpha}\phi(P)$$
+(where we regard the torus as the quotient of the complex plane by the lattice
+generated
+by $1$ and $\tau$, and $P$ is any point on the complex plane).
+$\phi$ is a  section of the flat bundle on the torus specified by this gluing.
+If $\gamma$ is generic, the zero-section is isolated and moreover
+nondegenerate minimum
+of the action even if we set $W=0$.  The nondegeneracy makes computations
+straightforward.
+The calculation of $F(q,\gamma)$ can then be carried out in detail, setting
+$W=0$ and
+expressing $F$ as a ratio of determinants.
+Explaining how this goes would take us too far afield,
+but the result\footnote{E. Witten, ``On the Landau--Ginzburg Description of
+$N{=}2$ Minimal
+Models,'' Int. J. Mod. Phys. A {\bf 9} (1994) 4783--4800; {\tt
+hep-th/9304026}.} is
+$$
+F(q,\gamma)=e^{-i\gamma k\alpha/2}\cdot
+\frac{1-e^{i\gamma(k+1)\alpha}}{1-e^{i\gamma\alpha}}
+\cdot \prod_{n=1}^\infty \frac{(1-q^ne^{i\gamma(k+1)\alpha})(1-q^ne^{-i\gamma(k
++1)\alpha})}
+{(1-q^ne^{i\gamma\alpha})(1-q^ne^{-i\gamma\alpha})} .
+$$
+When compared with the algebraic calculation in the IR, one can extract
+formulas for
+certain characters of the  $N{=}2$ algebra.  These formulas can be verified
+independently,
+giving strong support to the claim that the Landau-Ginzburg theory flows to
+the $N=2$ minimal
+model in the infrared.
+
+\subsection{Connection to Calabi--Yau models}
+
+Consider now the $U(1)$ gauge theory with chiral superfields $\Phi_j$ of
+charge $\alpha_j$
+and $P$ of charge $-1$, such that $\sum \alpha_j=1$.  (We are no longer
+assuming that all
+of the $\alpha_j$'s are equal, and we are using a different normalization for
+the generator
+of $U(1)$ than in lecture II-12.)  Denote the gauge supermultiplet by
+$$\Sigma=\sigma+\cdots ,$$
+let $W(\Phi_1,\dots,\Phi_n)$ be a transverse, quasi-homogeneous polynomial as
+above
+(i.e., satisfying $W=\sum\alpha_j\Phi_j\frac{\partial W}{\partial\Phi_j}$,
+with $W=dW=0$ only at the origin),
+and consider the Lagrangian
+$$\lg=\int d^2x\,d^4\theta\,\left(\frac{\overline{\Sigma}\Sigma}{4e^2}+
+\overline{\Phi}^j\Phi^j\right)
++\left(\int d^2x\,d^2\theta\, PW(\Phi)+ \mbox{c.c.}\right)
++\left(\int d^2x\,d\theta^+\,d\theta^-\,t\Sigma + \mbox{c.c.}\right) $$
+such that $t=\frac\theta{2\pi}-ir$.
+
+The polynomial $PW(\Phi)$ is gauge invariant, and we can repeat our earlier
+story:  for $r\gg0$ we classically
+get a Calabi--Yau hypersurface $\{W=0\}$ in weighted projective space ${\bf
+WCP}^{n-1}_{(\alpha_1,\dots,\alpha_n)}$
+(which may inherit some singularities
+from those of the weighted projective space); for $r\ll0$ we get a
+Landau--Ginzburg orbifold whose
+superpotential is $W$.  The quantum theory is singular only when $r=r_0$,
+$\theta=0$.  ($r_0$ is
+a constant computed as in lecture II-12.)
+The computation of the central charge in Landau--Ginzburg theory gives
+$$\widehat{c}=\sum_j(1-2\alpha_j);$$
+the computation for the $\sigma$-model gives $\widehat{c}=\dim_{\bf C}X$, and
+these agree since
+$\sum\alpha_j=1$.
+
+\centerline{\quad}
+\centerline{\epsfysize=1.35in\epsfbox{vertcyl1.eps}}
+\centerline{\quad}
+
+
+The elliptic genus should be independent of $t$ since it is a topological
+invariant; this leads to a
+formula which relates the elliptic genus of this type of Calabi--Yau manifold
+to the explicit
+elliptic genus which can be computed via characters of minimal models on the
+Landau--Ginzburg side.
+
+Although the elliptic genus is independent of $t$, one of the other quantities
+we have discussed for
+$N{=}2$ theories---the $\overline{Q}_t$-cohomology---varies holomorphically
+with $t$.  The
+{\it instantons}\/ in this problem---which are holomorphic curves in the
+$\sigma$-model---will
+contribute to the path integral in the form
+$e^{-i\theta\int\frac{F}{2\pi}}\cdot
+ e^{-r\int d^2x\,D}$
+where $D=\sum\alpha_j|\Phi_j|^2-r$, i.e., $e^{-2\pi it\int_\Sigma
+\Phi^*(c_1({\cal L}))}$.
+(I have used the fact that the instanton equation of the $N=2$ model -- the
+condition
+for the field to be invariant under some supersymmetry -- gives $\int d^2x
+D=\int F/2\pi$.)
+We will explore the instanton sums in the second half of the lecture.
+
+\end{document}

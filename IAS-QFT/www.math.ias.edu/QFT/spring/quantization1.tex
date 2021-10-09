@@ -1,0 +1,522 @@
+%From: Roman Bezrukavnikov <roma@math.ias.edu>
+%Date: Fri, 4 Apr 1997 15:36:55 -0500
+%Subject: Kazhdan's lecture 1 of the 2nd term
+
+
+
+%% This is an AMS-TeX file.
+%% The command to compile it is: amstex <file>
+%%
+\input amstex
+\documentstyle{amsppt}
+\loadeusm
+\magnification=1200
+\pagewidth{6.5 true in}
+\pageheight{8.9 true in}
+
+\catcode`\@=11
+\def\logo@{}
+\catcode`\@=13
+
+\NoRunningHeads
+
+\font\boldtitlefont=cmb10 scaled\magstep1
+\font\bigboldtitlefont=cmb10 scaled\magstep2
+
+\def\dspace{\lineskip=2pt\baselineskip=18pt\lineskiplimit=0pt}
+
+%\def\plus{{\sssize +}}
+%\def\oplusop{\operatornamewithlimits{\oplus}\limits}
+\def\otimesop{\operatornamewithlimits{\otimes}\limits}
+%\def\Piop{\operatornamewithlimits{\Pi}\limits}
+%\def\w{{\mathchoice{\,{\scriptstyle\wedge}\,}
+%  {{\scriptstyle\wedge}}
+%  {{\scriptscriptstyle\wedge}}{{\scriptscriptstyle\wedge}}}}
+\def\Le{{\mathchoice{\,{\scriptstyle\le}\,}
+  {\,{\scriptstyle\le}\,}
+  {\,{\scriptscriptstyle\le}\,}{\,{\scriptscriptstyle\le}\,}}}
+\def\Ge{{\mathchoice{\,{\scriptstyle\ge}\,}
+  {\,{\scriptstyle\ge}\,}
+  {\,{\scriptscriptstyle\ge}\,}{\,{\scriptscriptstyle\ge}\,}}}
+%\def\vrulesub#1{\hbox{\,\vrule height7pt depth5pt\,}_{#1}}
+%\def\rightsubsetarrow#1{\subset\kern-6.50pt\lower2.85pt
+%     \hbox to #1pt{\rightarrowfill}}
+%\def\mapright#1{\smash{\mathop{\,\longrightarrow\,}\limits^{#1}}}
+%\def\arrowsim{\smash{\mathop{\to}\limits^{\lower1.5pt
+%  \hbox{$\scriptstyle\sim$}}}}
+\def\[[{[\![}
+\def\]]{]\!]}
+
+\def\eps{{\varepsilon}}
+\def\kap{{\varkappa}}
+
+\def\ch{{\check{\;}}}
+
+\def\Atil{\tilde A}   \def\Btil{\tilde B}
+\def\Avect{\vec{A}}
+\def\Adot{\Dot{A}}
+\def\Edot{\Dot{E}}
+\def\gammatil{\tilde \gamma}
+
+\def\supp{\text{\rm supp}}
+\def\Maps{\text{\rm Maps}}
+\def\Sol{\text{\rm Sol}}
+\def\End{\text{\rm End}}
+\def\Lie{\text{\rm Lie}}
+\def\rank{\text{\rm rank}}
+
+\def\dbC{{\Bbb C}} 
+\def\dbR{{\Bbb R}}
+%\def\dbZ{{\Bbb Z}} 
+
+\def\gr#1{{\fam\eufmfam\relax#1}}
+
+%Euler Fraktur letters (German)
+\def\grA{{\gr A}}	\def\gra{{\gr a}}
+\def\grB{{\gr B}}	\def\grb{{\gr b}}
+\def\grC{{\gr C}}	\def\grc{{\gr c}}
+\def\grD{{\gr D}}	\def\grd{{\gr d}}
+\def\grE{{\gr E}}	\def\gre{{\gr e}}
+\def\grF{{\gr F}}	\def\grf{{\gr f}}
+\def\grG{{\gr G}}	\def\grg{{\gr g}}
+\def\grH{{\gr H}}	\def\grh{{\gr h}}
+\def\grI{{\gr I}}	\def\gri{{\gr i}}
+\def\grJ{{\gr J}}	\def\grj{{\gr j}}
+\def\grK{{\gr K}}	\def\grk{{\gr k}}
+\def\grL{{\gr L}}	\def\grl{{\gr l}}
+\def\grM{{\gr M}}	\def\grm{{\gr m}}
+\def\grN{{\gr N}}	\def\grn{{\gr n}}
+\def\grO{{\gr O}}	\def\gro{{\gr o}}
+\def\grP{{\gr P}}	\def\grp{{\gr p}}
+\def\grQ{{\gr Q}}	\def\grq{{\gr q}}
+\def\grR{{\gr R}}	\def\grr{{\gr r}}
+\def\grS{{\gr S}}	\def\grs{{\gr s}}
+\def\grT{{\gr T}}	\def\grt{{\gr t}}
+\def\grU{{\gr U}}	\def\gru{{\gr u}}
+\def\grV{{\gr V}}	\def\grv{{\gr v}}
+\def\grW{{\gr W}}	\def\grw{{\gr w}}
+\def\grX{{\gr X}}	\def\grx{{\gr x}}
+\def\grY{{\gr Y}}	\def\gry{{\gr y}}
+\def\grZ{{\gr Z}}	\def\grz{{\gr z}}
+
+\def\g{\grg}
+\def\scr#1{{\fam\eusmfam\relax#1}}
+
+\def\scrA{{\scr A}}   \def\scrB{{\scr B}}
+\def\scrC{{\scr C}}   \def\scrD{{\scr D}}
+\def\scrE{{\scr E}}   \def\scrF{{\scr F}}
+\def\scrG{{\scr G}}   \def\scrH{{\scr H}}
+\def\scrI{{\scr I}}   \def\scrJ{{\scr J}}
+\def\scrK{{\scr K}}   \def\scrL{{\scr L}}
+\def\scrM{{\scr M}}   \def\scrN{{\scr N}}
+\def\scrO{{\scr O}}   \def\scrP{{\scr P}}
+\def\scrQ{{\scr Q}}   \def\scrR{{\scr R}}
+\def\scrS{{\scr S}}   \def\scrT{{\scr T}}
+\def\scrU{{\scr U}}   \def\scrV{{\scr V}}
+\def\scrW{{\scr W}}   \def\scrX{{\scr X}}
+\def\scrY{{\scr Y}}   \def\scrZ{{\scr Z}}
+\def\hatP{{\widehat{P}}}
+\def\hatQ{{\widehat{Q}}}
+\def\Qhat{{\widehat{Q}}}
+\def\ten{\otimes}
+\def\hatd{{\hat{d}}}
+
+\def\scrTbar{{\overline{\scr T}}}
+\def\scrGbar{{\overline{\scr G}}}
+\def\Vbar{{\overline{V}}}
+
+\def\iso{\widetilde{\to}}
+
+%???????????
+\def\sf{\bf}
+\def\ksi{\xi}
+
+\NoBlackBoxes
+\document
+
+
+\centerline{\boldtitlefont Lectures on quantization of gauge theories.}
+
+\medskip
+\centerline{\bigboldtitlefont Lecture 1.}
+
+\bigskip
+\centerline{David Kazhdan}
+
+In gauge theory the space of field is the space of connections (with
+additional data) considered modulo gauge transformation. Geometry of this
+space is extremely nontrivial. The idea of BRST approach to construction of
+quantum gauge theory is rougly as follows.
+One first  quantizes a larger but simpler linear space (this linear space
+contains the  space of all connections),
+and then takes invariants of the gauge group in the resulting Hilbert space.
+In functional integral approach to quantization one also replaces 
+the integral over the space of connections  modulo gauge transformation
+by a certain integral over this huge linear space.
+ Both procedures are not quite
+straightforward: the first one leads to the notion of semiinfinite
+cohomology; the second one involves equivariant cohomology of the 
+gauge group. 
+
+\medskip 
+   
+We start with a simple example which does not belong to the gauge theory
+but is in certain aspects analogous to some gauge invariant problems.
+
+{\bf 1.Theory of free vector boson.} A field is a map $A:V\to V$.
+We can and will consider $A$ as a 1-form on $V$. The Lagrangian is then 
+given by
+the formula: $$\scrL(A)=\frac12 dA \wedge *dA - \frac{m^2}{2} A\wedge *A$$
+The second term is not invariant under the gauge transformations $A\to
+A+df$
+thus it is not a gauge theory if $m\not = 0$.
+
+Let us write $A$ in components, $A= \sum\limits _{i=0}^{d-1}
+ A_i dx_i$. 
+ The classical equations of motion are:
+$$\square A_i + \frac{\partial}{\partial x_i} *d*A=m^2 A_i$$
+
+As usual it is convenient to describe the space of solutions in Fourier
+coordinates. Let $\tilde A$ be the Fourier transform of $A$. Then the
+equations of motion read as:
+$$(p^2+m^2)\Atil(p)=(\Atil(p),p)p$$
+
+For $m\not = 0$ this is equivalent to saying that $\supp(\Atil)\subset \scrO_m
+=\{p\,|\,p^2+m^2=0\}$ and $(\Atil(p),p)=0$.
+ If $m=0$ then the space of solutions is
+invariant under the gauge tranformations $\Atil \to \Atil +f(p)p$, and the
+space of solutions is generated by $\Atil$ such that $\supp \Atil \subset 
+\scrO_0$, $(\Atil(p),p)=0$  under the gauge transformations.
+Thus solutions modulo gauge are identified with the space of sections
+of a bundle on $\scrO _0$ whose fiber is $p^\perp/\dbR p$ (see the 
+lecture 3 from the fall semester). 
+
+The closed 2-form on the space of solutions is given by 
+$$\langle A,B \rangle = \int \limits _{\scrO_m^+} (\Atil(p)\Btil(-p)-
+\Atil(-p)\Btil(p))d\mu$$ where $\mu$ is the invariant measure on $\scrO
+_m^+$. This form is non-degenerate if $m\not = 0$; it is pull-back of a
+non-degenerate 2-form on the space of solutions modulo gauge
+transformations if $m=0$. 
+
+
+We next  recall the decomposition $V= \dbR\times\dbR^{d-1}$, and
+view $\Maps(V,V)$ as the space of paths on the manifold
+$\Maps(\dbR^{d-1},V)$. 
+
+The value of $\scrL(A)$ at a point $x\in \{t\}\times \dbR^{d-1}$ depends
+only on $A_{space}=A|_{\{t\}\times \dbR^{d-1}}$ and $\Adot_{space}=
+\Adot|_{\{t\}\times \dbR^{d-1}}$
+(where $\Adot=\frac{\partial A}{\partial x_0}$). 
+
+Let $\scrL_{space}$ be a functional on the tangent  bundle
+$T(\Maps(\dbR^{d-1},V))$ with values in functions on  $\dbR ^{d-1}$
+such that $\scrL(A)|_{\{t\}\times \dbR^{d-1}}=
+\scrL_{space}(A _{space},\Adot_{space})$.
+
+
+We put $L=\int \limits _{\dbR^{d-1}}\scrL_{space}$.
+
+Then $L$ is quadratic-linear
+ in fibers of the tangent bundle,
+but the corresponding quadratic form is degenerate: the Lagrangian does not
+depend on $\Adot_0$.
+
+\medskip
+
+To exploit the analogy with classical mechanics further let us 
+briefly recall the corresponding   classical formalism.
+
+\medskip
+
+
+{\sf 1.1. Digression in classical mechanics.}
+ Assume that $M$ is a manifold, and $\scrT$ is a quotient of the tangent
+bundle to $M$; let $p:TM\to \scrT$ stand for the projection.
+Let $L$ be a function on $\scrT$ which is assumed to be nondegenerate
+quadratic-linear in fibers.    We consider  the Euler-Lagrange 
+equation with Lagrangian $p^*(L)$.
+
+As usual Lagrangian defines a map $P:TM\to T^*M$. The only difference with
+the standard case is that $P$ is no longer an isomorphism; its image is the
+subbundle $\scrT{\check{\;}} =Ker(p)^\perp\subset T^*M$.
+
+One can define the Hamiltonian function $H$ on  $\scrT{\check{\;}}$
+as the Legendre transform of the function $L$ on $\scrT$.
+
+For a path $\gamma :\dbR \to M$ let $T\gamma :\dbR \to TM$ be its canonical
+lifting to the tangent bundle.
+
+ A map $\gammatil :\dbR \to \scrT\ch$ will be called a classical trajectory
+if $\gammatil = P\circ T\gamma $ where $\gamma$ is a solution of the
+Euler-Lagrange equations. 
+
+Note that the symplectic form restricted to
+$\scrT\ch$ is degenerate; its kernel is an integrable distribution
+of dimension $\dim(M)-\rank(\scrT)$ which we denote by  $\scrK$.
+ Let us define the submanifold  $X=\{x\in
+\scrT\ch\, :\, d_x H|_{\scrK _x}=0\}$. 
+
+We have a correctly defined section of
+$T( \scrT\ch)/\scrK|_X$ which we denote by $\ksi_H$. (It is characterized
+by the standard formula $\omega (\ksi _H,v)=\left<dH,v \right>$
+for all $v\in T( \scrT\ch)$.)
+
+Now it is not hard to see that a path  $ \gammatil: \dbR \to  \scrT\ch$
+is a classical trajectory iff $\gammatil (t)\in X$ for all $t$ and
+$\partial \gammatil / \partial t= \ksi_H \; \mod \, \scrK$.
+
+Assume for simplicity that $X$ is smooth and $\dim (TX_x\cap \scrK_x)$
+is constant. One can check  that $\ksi_H$ lies actually in the
+subbundle $TX/(TX\cap \scrK) \subset T( \scrT\ch)/\scrK|_X$.
+
+ To avoid irrelevant  notational complications 
+let us  suppose also that the foliation is split, i.e.
+ we have a decomposition $X=Y\times Z$ such that 
+$\{y\}\times Z$ for $y\in Y$ is a leaf of the foliation. The section
+ $\ksi _H$ defines  a vector
+field on $Y$, and a general classical trajectory has the form $\gammatil = 
+\gammatil _1 \times \gammatil _2$ where $\gammatil _1$ is a trajectory of
+the vector field (defined by ) $\ksi _H$  and $\gammatil _2:\dbR \to Z$ is
+arbitrary.
+
+Thus the space of solutions of the Euler-Lagrange equation is identified
+with $Y\times \Maps (\dbR, Z)$.
+
+\medskip
+
+{\sf 1.2.} Let us return to our situation.
+So  $M=\Maps(\dbR^{d-1},V)$; the cotangent bundle $T^*(M)$
+is identified with $M\times \Gamma(\Omega^1(V)|_{\dbR^{d-1}})$.
+
+The kernel of $p$ is generated by $\Adot_0 \in T(\Maps(\dbR^{d-1},V))$;
+thus $\scrT\ch \cong M\times \Omega^1 (\dbR^{d-1})$.
+
+ The Hamiltonian $h$ is a functional on $T^*(M)$ with values in functions on
+$\dbR^{d-1}$. It  is defined by
+ $$h(A_{space},E)= E_k\Adot_k -\scrL_{space}(A_{space},\Adot_{space})$$
+where $E_k=\frac{\partial \scrL}{\partial \Adot_k}=
+\Adot_k-\frac{\partial A_0}{\partial x_k}$.
+
+Then we put $H =\int\limits _{\dbR^{d-1}}h$.
+
+We have 
+$$h(A_{space},E)= \frac12(E_k \cdot (\Adot_k+\frac{\partial A_0}{\partial x_k})
+-(d\Avect )^2 - m^2 (A)^2)= \frac12 ((E)^2-(d\Avect )^2-m^2
+(\Avect)^2-A_0^2) +E\wedge *d A_0$$   
+
+
+where $E=\sum\limits_{k=1}^{d-1}E_kdx_k$ and  $\Avect
+=\sum\limits_{k=1}^{d-1}A_kdx_k$ are viewed as 1-forms on $\dbR^{d-1}$.
+
+
+
+The
+distribution $\scrK$ is generated by $A_0\in TM \subset T( M\times \Omega^1
+(\dbR^{d-1}))$. Thus $X$ is given by the equation $\frac{\partial H}
+{\partial A_0}=0$, i.e. $\frac{\delta h}
+{\delta A_0}=0$ where $\delta$ is the variational derivative.
+Integrating by parts the last summand in the formula for $h$ we  get:
+
+$$-\frac{\delta h}{\delta A_0}=d*E+m^2A_0$$
+
+So $X$ is a 
+subvariety in $\Maps(\dbR^{d-1},V)\times \Omega^1(\dbR^{d-1})$ defined by
+the equation
+ $$ d*E +m^2A_0=0$$
+
+If $m\not=0$ then $X$ is symplectic; the space of classical solutions
+is identified with $X$. Since $A_0$ is determined from the equation
+we see that  $X \cong T^*(\Omega^1(\dbR^{d-1}))$ in this case.
+ 
+
+If $m=0$ then $X$ is no longer symplectic; we get a constraint on 
+$(\Avect , E)$ but $A_0$  can be arbitrary. In terms of 1.1
+we have $X=Y\times Z$
+where   $Y\subset  T^*(\Omega^1(\dbR^{d-1}))$ is defined by $ d*E=0$,
+and $Z=\Omega^0(\dbR^{d-1})$. The space of classical solutions is 
+$Y\times \Maps (\dbR, Z)$.
+
+
+We finish the discussion of the free vector QFT with the following remark.
+
+Suppose we want to add a ``small'' term to the above Lagrangian and study  
+the resulting theory perturbatively. The corresponding propagator in
+momentum space is an $\End(V)$ valued function on $V$ given by 
+$G(p)=(D_0(p)+(p^2+m^2) Id)^{-1}$ where $D_0(p)v=-(p,v)p$. We see that 
+$G(p)$ does not tend to 0 when $p\to \infty$ (for example $G(p)p=m^{-2}p$).
+ Thus the methods of
+perturbation theory do not work: all Feynman integrals diverge, and we have
+no way to renormalize them. This is an indication of a well-known fact
+that a non-free non-gauge vector QFT does not exist.
+
+
+ 
+This also illustrates one of the difficulties in quantizing gauge theory.
+Let us consider  a $U(1)$-gauge theory
+as an example. Thus fields are pairs 
+$(A,\phi)$ where $A$ is a connection on the (trivial) $U(1)$-bundle,
+ and $\phi$ is a
+section of the corresponding complex line bundle. The Lagrangian is:
+$$\scrL(A,\phi)=F_A\wedge *F_A+D_A\phi \wedge *D_A \phi +W(\phi)$$
+where $W(\phi)=(|\phi|^2-a^2)^2$. For $L=\int \scrL$ to make sense we need
+the condition $|\phi|^2 \to a^2$ for $v \to \infty$. 
+
+
+ Let us choose a gauge (i.e. a
+trivialization of the $U(1)$-bundle) in such a way that $\phi$ is real and 
+$\phi \to a$ on infinity. We can write $\phi=a+\sigma$ where $\sigma$ is a
+real-valued rapidly decreasing function on $V$. We have:
+$$\scrL(A,\sigma)=dA\wedge *dA+a^2A\wedge *A +d\sigma\wedge *d\sigma +4a^2
+\sigma\cdot *\sigma +\cdots$$
+where $\cdots$ stand for terms of order $\geq 3$ in $A$ and $\sigma$.
+
+Thus the sum of quadratic terms is  Lagrangian for the sum of 2
+noninteracting free massive vector bosons; a naive approach to the quantization
+problem 
+ would be to study gauge theory as a perturbation of that free QFT. As was
+explained this method does not have a chance to work.    
+
+{\bf 2. Pure gauge theory.} Let $G$ be a compact Lie group, 
+$\scrT \to V$ be a principle $G$-bundle on $V$. Let $\g_\scrT$
+be the adjoint vector bundle of $\scrT$. 
+We fix a positive
+invariant scalar product on the Lie algebra of $G$, and will not
+distinguish between the Lie algebra and its dual. 
+ 
+ The Lagrangian of the theory  is $\scrL(A)=\frac12 F_A\wedge *F_A$.
+
+The classical field equation is then $d_A*F_A=0$. 
+
+Let us rewrite the theory in Hamiltonian form.
+ Thus we fix a decomposition $V=\dbR \times
+\Vbar$. Let $\scrT_{space}(t)$ be the restriction of $\scrT$ to 
+$\{t\}\times \Vbar$, and $A_{space}(t)=A|_{\{t\}\times \Vbar}$
+be the connection on  $\scrT_{space}(t)$. Introduce notations:
+$B=B(t)=F_A|_{\{t\}\times \Vbar}=F_{A_{space}}\in \Omega^2(\{t\}\times
+\Vbar, \g_\scrTbar) $ (the magnetic field), and
+$E=i_{\partial_t}(F_A)|_{\{t\}\times \Vbar} \in \Omega ^1(\{t\}\times
+\Vbar, \g_\scrTbar ) $ (the electric field). 
+
+Let $\kap$ be the projection $\kap:V\to \Vbar$. Let us fix an isomorphism
+$\scrT\cong \kap ^*(\scrTbar)$ for a $G$-bundle $\scrTbar$ on $\Vbar$.
+ Then $\scrT|_{\dbR\times \{x\}}$ is trivialized for all $x\in \Vbar$.
+So we can write any connection on $\scrT$ as $A=A_{space}(t)+A_0dx_0$ where
+$A_0 \in \Omega^0(\g _\scrT)$;
+thus a connection on $\scrT$ is the same as a path in $M$, where $M$ is
+the space of pairs:  a connection on $\scrTbar$, 
+and a section of the adjoint bundle of $\scrTbar$.
+
+We have: $$E(t)=d_{A_{space}(t)}A_0 +\Adot_{space}(t)$$
+$$\scrL(A)=\frac12 (F_A)^2=\frac12 ((B)^2+(E)^2)$$
+
+Exactly as above we see that Lagrangian is nondegenerate in $\Adot_{space}$,
+but does not depend on $\Adot_0$. Thus we can define the Hamiltonian
+functional $h$ on $M \times \Omega^1(\Vbar, \g_\scrT )$ by:
+$$\scrL (A)=E\wedge *\Adot_{space} -h(A_{space},E)$$
+(Notice that $E=\frac{\partial \scrL}{\partial \Adot_{space}}$).
+We have:
+$$ h(A_{space},E)=\frac12 (E^2-B^2)-E\wedge*d_{A_{space}}A_0
+$$
+
+
+In terms of 1.1 we have: $X$ is the subspace 
+in  $M \times \Omega^1(\Vbar, \g_\scrT )$ given by
+$$ \frac{\delta h}{\delta A_0}=0$$
+where $\delta$ is the variational derivative. In the formula for $h$ we can
+integrate by parts to get:
+ $$\frac{\delta h}{\delta A_0}=d_{A_{space}}(*E)$$
+So we see that $Y\subset T^*(Conn)$ where $Conn$ stands for the space of
+connections on $\scrTbar$, and $Y$  is defined by 
+$$d_{A_{space}}(*E)=0$$
+we also have  $Z=\Omega^1(\g_\scrTbar)$. So the space of classical solutions is
+$Y\times \Maps (\dbR, Z)$. 
+
+Now we notice that any connection is gauge-eqiuvalent to a one with
+$A_0=0$, i.e. a one which is constant on every line $\dbR\times\{x\}$
+in the above trivialization. 
+(Such a  connection  is called a connection with temporal
+gauge).
+
+
+
+ A connection with a temporal gauge is the same as a map 
+from $\dbR$ to $Conn$.
+
+Let us  restrict  our Lagrangian to the space
+of connections with temporal
+gauge, which is identified with $\Maps (\dbR,  Conn)$.
+ Then we obtain a functional on the tangent bundle $T(Conn)$ which is readily
+seen to be  quadratic nondegenerate in  fibers. Hence the space $Y$ of 
+critical points of Lagrangian on the space of
+temporaly gauged connections is the (co)tangent bundle
+ to $Conn$, which is identified with the space of pairs $(A_{space},E)$ where
+$A_{space}$ is a connection on $\scrTbar$ and $E\in \Omega ^1(\scrTbar)$.
+
+ Obviously the space $X$ of temporaly gauged
+connections which are classical solutions of the original problem
+(i.e. critical points of $\scrL$ as a function on the space of all
+connections) is a subspace of $Y$ (we have to impose the condition that
+variation in $A_0$ vanishes).  Moreover we have shown that
+ $X$ is a subspace of $Y$ defined by the equation $d_A*E=0$.
+
+
+\remark{Remark} A naive analogy with the finite dimensional case
+may be misleading, as is illustrated by the following example.
+
+ Let $U$ be a finite dimensional manifold with an action of a Lie group
+$G$; let $Z\subset U$ be a submanifold such that $G\cdot Z=U$. Assume that
+$L$ is a $G$-invariant function on $U$. Then a point $y\in Z$ is a critical
+point of $L|_Z$ iff it is a critical point of $L$ as a function on $U$. 
+
+However if we take $U$ to be the space of  connections,
+take $Z$ to be the space of connections with temporal gauge, and
+$L=\int\limits_V \scrL$ to be the action then this statement is no longer
+true, as we saw few lines above. 
+
+This has the following reason. 
+
+A classical field (a connection in our case) 
+is a solution of the classical equations of motion iff  it is a
+stationary point of the action with respect to  variations  with
+{\it compact support}.  
+
+Suppose that $A$ is a connection with temporal gauge which is stationary
+with respect to such variations in the class of connections with temporal
+gauge. Consider a compactly supported variation in $A_0$-direction. We can
+apply to it an infinitesimal gauge transformation so that the resulting
+variation will stay in the class of connections with temporal gauge.
+However we can not guarantee that this new variation has compact support,
+so the action can actually vary infinitesimaly. 
+
+\endremark
+
+
+\proclaim{Proposition} Let $Y=\{(A_{space}, E)\}\cong T^*(Conn)$
+and $X\subset Y$ be as above.  Then the map $m:Y\to
+\Omega^{d-1}(\g_\scrTbar)$ given by $(A_{space},E)\to d_{A_{space}}*E$
+is the moment map  for the action of the gauge group $\scrGbar= Aut (\scrTbar)$
+on $Y$. Thus $X$ is the 0-set of the moment map, and the space of extremals
+of $\scrL$ modulo gauge transformations is  symplectic reduction of $Y$
+with respect to the action of the gauge group.
+
+\endproclaim
+
+\demo{Proof} It remains only to check that $m$ is the moment map. 
+
+Let us take $x\in \Omega^0(\g _\scrTbar)=\Lie (\scrGbar)$ and a constant
+vector field $w=(A',E')$ on $Y$ for $A',E' \in  \Omega^1(\g _\scrTbar)$.
+Let $j$ denote the action of  $\Lie (\scrGbar)$ on $Y$.
+Then we have to check the equality:
+$$d \left< x, d_A*E \right>(w)= \omega (j(x),w)$$
+where first  $d$ in the left-hand side is  external derivative of a function
+ on $Y$, and $\omega$ is the standard symplectic form on $Y$. 
+
+Now $j$  is given by $j(x)|_{(A,E)} = (d_A x, [x,E])$. 
+So the equality reads as:
+$$ \left< x, d_A *E' +[A', *E]\right>=\left<d_A x,* E'\right> +\left< [x,E],
+* A' \right>$$
+which is true by integration by parts. 
+
+\end
+
+

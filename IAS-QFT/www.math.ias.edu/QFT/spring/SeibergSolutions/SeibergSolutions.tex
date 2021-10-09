@@ -1,0 +1,2213 @@
+\documentclass[lecture]{qft-l}
+\usepackage[dvips]{epsfig}
+\usepackage{amssymb}
+ 
+\catcode`\@=11
+\renewcommand{\over}{\@@over}
+\renewcommand{\atop}{\@@atop}
+\renewcommand{\above}{\@@above}
+\renewcommand{\overwithdelims}{\@@overwithdelims}
+\renewcommand{\atopwithdelims}{\@@atopwithdelims}
+\renewcommand{\abovewithdelims}{\@@abovewithdelims}
+\catcode`\@=13
+
+%%%%    Greek Letters
+	\newcommand{\al}{\alpha}
+	\newcommand{\del}{\delta}
+	\newcommand{\eps}{\epsilon}
+	\newcommand{\lam}{\lambda}
+	\newcommand{\tht}{\theta}
+	\newcommand{\om}{\omega}
+	\newcommand{\Lam}{\varLambda}
+	\newcommand{\PHI}{\varPhi}
+
+%%%%    Fonts
+        \font\tt=cmtt10
+	\newcommand{\bm}[1]{{\mbox{\boldmath ${#1}$}}}
+	\font\bbb=msbm7 %at 11 pt
+	\font\BBB=msbm10 %at 11 pt
+	\newcommand{\ZZ}{{\mbox{\BBB{Z}}}}
+	\newcommand{\zz}{{\mbox{\bbb{Z}}}}
+	\newcommand{\re}{{\mbox{\bbb{R}}}}
+	\newcommand{\RE}{{\mbox{\BBB{R}}}}
+	\newcommand{\co}{{\mbox{\bbb{C}}}}
+	\newcommand{\CO}{{\mbox{\BBB{C}}}}
+	\newcommand{\HA}{{\mbox{\BBB{H}}}}
+	\font\frak=eufm10 at 11 pt
+        \newcommand{\g}{\mbox{\frak{g}}}
+        \newcommand{\gu}{\mbox{\frak{u}}}
+        \newcommand{\gsp}{\mbox{\frak{sp}}}
+        \newcommand{\gsu}{\mbox{\frak{su}}}
+        \newcommand{\gso}{\mbox{\frak{so}}}
+\newcommand{\medwedge}{\mbox{\fontsize{12pt}{0pt}\selectfont $\wedge$}}
+	\newcommand{\Hom}{{\rm Hom}}
+
+%%%%    Format
+%	\newcounter{sect}\setcounter{sect}{0}
+%	\newcounter{subsect}
+%	\newcommand{\sect}[1]{\vspace{4ex}
+%		\addtocounter{sect}{1}\setcounter{subsect}{0}
+%		\begin{flushleft}
+%		{{\large\bf \arabic{sect}. {#1}}}
+%		\end{flushleft}
+%		\setcounter{thm}{0}
+%		\setcounter{equation}{0}
+%		\def\theequation{\arabic{sect}.\arabic{equation}}}
+%	\newcommand{\subsect}[1]{\vspace{.5ex}\addtocounter{subsect}{1}
+%		\begin{flushleft}
+%		{{\bf \arabic{sect}.\arabic{subsect} {#1}}}
+%		\end{flushleft}}
+%	\newtheorem{thm}{Theorem}[sect]
+%	\newtheorem{prop}[thm]{Proposition}
+%	\newtheorem{lemma}[thm]{Lemma}
+%	\newtheorem{cor}[thm]{Corollary}
+%	\newtheorem{defn}[thm]{Definition}
+%	\newtheorem{rmk}[thm]{Remark}
+%	\newtheorem{ex}[thm]{Example}
+%\newcommand{\proof}[1]{\noindent{\em Proof.}$\quad${#1}$\hfill\Box$
+				%\vspace{2ex}}
+	\newcommand{\be}{\begin{equation}}
+	\newcommand{\ee}{\end{equation}}
+	\newcommand{\bea}{\begin{eqnarray}}
+	\newcommand{\eea}{\end{eqnarray}}
+	\newcommand{\nno}{\nonumber \\}
+	\newcommand{\sep}[1]{\!\!\!\! &{#1}& \!\!\!\! }
+	\newcommand{\eq}{\sep{=}}
+	\newcommand{\vc}{\sep{ }}
+
+%%%%	Math Symbols
+	\newcommand{\bra}{\langle}
+	\newcommand{\ket}{\rangle}
+	\newcommand{\m}{\backslash}
+	\newcommand{\inv}[1]{\frac{1}{#1}}
+	\newcommand{\hf}{{\textstyle \inv{2}}}
+	\newcommand{\e}[1]{e^{{#1}}}
+	\newcommand{\ii}{i}
+	\newcommand{\dr}{d}
+	\newcommand{\pdr}{\partial}
+	\newcommand{\sss}{^{\mathrm{ss}}}
+	\newcommand{\Det}{\mathrm{Det}}
+	\newcommand{\set}[2]{\{{#1}\,|\,{#2}\}}
+	\newcommand{\rank}{\mathrm{\,rank\,}}
+	\newcommand{\im}{\mathrm{im}}
+	\newcommand{\Pf}{\mathrm{Pf\,}}
+	\newcommand{\tr}{\mathrm{tr}}
+	\newcommand{\tree}{_\mathrm{tree}}
+	\newcommand{\one}{{\mathbf 1}}
+	\newcommand{\cc}{\mathrm{c.c.}}
+
+%%%%	Others
+        \newcommand{\AAA}{{\mathcal A}}
+        \newcommand{\FF}{{\mathcal F}}
+        \newcommand{\GG}{{\mathcal G}}
+        \newcommand{\LL}{{\mathcal L}}
+        \newcommand{\MM}{{\mathcal M}}
+        \newcommand{\MC}{\MM_{{\rm c}}}
+        \newcommand{\MQ}{\MM_{{\rm q}}}
+        \newcommand{\MS}{\MM_{{\rm smooth}}}
+        \newcommand{\UU}{{\mathcal U}}
+        \newcommand{\OO}{{\mathcal O}}
+	\newcommand{\hLam}{\,\hat{\!\Lam}{}}
+	\newcommand{\tLam}{\,\tilde{\!\Lam}{}}
+	\newcommand{\htLam}{\,\hat{\tilde{\!\Lam}}{}}
+	\newcommand{\hC}{\hat{C}{}}
+	\newcommand{\hF}{\hat{F}{}}
+	\newcommand{\tC}{\tilde{C}{}}
+	\newcommand{\tF}{\tilde{F}{}}
+	\newcommand{\tM}{\tilde{M}{}}
+	\newcommand{\tQ}{\tilde{Q}{}}
+	\newcommand{\tN}{\tilde{N}_c}
+	\newcommand{\htC}{\hat{\tilde{C}}{}}
+	\newcommand{\htF}{\hat{\tilde{F}}{}}
+	\newcommand{\htM}{\hat{\tilde{M}}{}}
+	\newcommand{\htQ}{\hat{\tilde{Q}}{}}
+	\newcommand{\hM}{\hat{M}{}}
+	\newcommand{\hQ}{\hat{Q}{}}
+	\newcommand{\Mperp}{\bra M^\perp\ket}
+	\newcommand{\tom}{\tilde{\om}_c}
+        \newcommand{\eff}{_\mathrm{eff}}
+	\newcommand{\dirac}{\not\kern-3pt D}
+	\newcommand{\two}[4]{\left\{    \begin{array}{ll}
+					{#1}, & {\mbox{if }} {#2}, \\
+					{#3}, & {\mbox{if }} {#4}
+					\end{array}     \right.}
+		\newcommand{\four}[4]{\left(	\begin{array}{cc}
+				{#1}	&	{#2}	\\
+				{#3}	&	{#4}
+				\end{array}   \right)}
+ 
+\LogoOnfalse
+\def\thelectureseries{Dynamics of $N=1$ SUSY Theories}
+\catcode`\@=11
+\def\@author{N. Seiberg}
+
+%%%\def\exname{SOLUTIONS TO EXERCISES:\\GENERAL REMARKS}
+%%%\def\exmark{%\let\@secnumber\@empty
+%%%    \@secmark\markright{}}%
+
+%%%\def\theexercises{%
+%%%  \addtocounter{lecture}1\relax
+%%%  \refstepcounter{chapter}%
+%%%\chapter*{}
+%%%  {\Large\bfseries
+%%%   \raggedleft
+%%%   \@xp\uppercase\@xp{\exname} \\
+%%%   \endgraf}%
+%%%  \@xp\exmark\@xp{\rm\exname}%
+%%%  \relax\vspace{34\p@}\noindent
+%%%  \normalsize\labelsep .5em\relax
+%%%  \leftmargin\labelwidth
+%%%  \advance\leftmargin\labelsep
+%%%	\usecounter{enumi}\sloppy
+%%%  \clubpenalty9999 \widowpenalty\clubpenalty  \sfcode`\.\@m}
+
+  \def\exmark{%\let\@secnumber\@empty
+%    \@secmark\markright\sectionrunhead\sectionname}%
+    \@secmark\markright\exrunhead\chaptername}%
+
+  \def\exrunhead#1#2#3{%
+    \let\@tempa\chaptername
+    \uppercasenonmath{\@tempa}%
+    \def\@tempb{SOLUTIONS TO EXERCISES (BY S. WU): #3\unskip}%
+    \uppercasenonmath{\@tempb}%
+    \textmd{\@tempb}
+    }
+
+\def\@lecture[#1]#2{%
+  \addtocounter{lecture}1\relax
+  \refstepcounter{chapter}%
+\gdef\thelecturename{#1\unskip}\firstlecturefalse
+  {\Large\bfseries
+   \raggedleft
+   \@xp\uppercase\@xp{\thelecturelabel} \\
+   \vspace*{3pt}%
+    #2\unskip
+   \endgraf}%
+  \let\@secnumber=\thelecturenum
+  \@xp\exmark\@xp{#1}%
+%  \vspace{34\p@}\noindent}
+  \vspace{6\p@}\noindent}
+
+\gdef\chaptername{SOLUTIONS TO EXERCISES (BY SIYE WU)}
+\def\thelecturelabel{SOLUTIONS TO EXERCISES (BY SIYE WU)}
+
+\def\Subhead#1{\subsection*{#1}}
+
+\catcode`\@=13
+
+\overfullrule=5pt
+
+\begin{document}
+
+\setcounter{chapter}3
+\setcounter{lecture}3
+\setcounter{page}{39}
+
+\lecture{General Remarks}
+ \Headnn{The classical moduli space}
+
+\catcode`\@=11
+%{\let\@makefnmark\relax  \let\@thefnmark\relax
+%   \footnote{\bf Solutions by Siye Wu\\ }\addtocounter{footnote}{-1}}
+\catcode`\@=13
+
+We recall that the quark superfield $Q$ in an $N=1$ supersymmetric gauge
+theory is valued in a representation $R$ of the gauge group $G$.
+The bosonic potential is $V=|D|^2$, where $D\colon R\to\g^*\cong\g$
+is the moment map of the Hamiltonian $G$-action on $R$.
+Therefore the space $\MC$ of classical ground states (modulo gauge 
+transformations), called the moduli space of classical vacua,
+is the symplectic quotient $D^{-1}(0)/G$.
+
+The space $\MC=D^{-1}(0)/G$ is also the categorical quotient of $R$ by
+$G^\co$.\footnote{G.\ Kempf, L.\ Ness, in: Lecture Notes of Math.\ 732,
+(1979) pp.\ 233-244; G.\ W.\ Schwarz, in: Progress in Math.\ 80, (1989)
+pp.\ 135-151; P.\ Heinzner, F.\ Loose, Geom.\ Funct.\ Anal.\ 4 (1994) 288-297}
+That is to say, $\MC$ is a complex space whose coordinate ring is isomorphic
+to $\CO[R\,]^G$.
+In fact, for any $Q\in R$, the orbit $G^\co\cdot Q$ is closed if and
+only if $G^\co\cdot Q\cap D^{-1}(0)\ne\emptyset$.
+If $Q\in D^{-1}(0)$, then $G^\co\cdot Q\cap D^{-1}(0)=G\cdot Q$.
+Let the semi-stable part of $R$ be
+$R\sss=\set{Q\in R}{G^\co\cdot Q\cap D^{-1}(0)\ne\emptyset}$.
+Let $\pi\colon R\sss\to R\sss/G^\co$ be the quotient map.
+We have\\
+1) the the inclusion $D^{-1}(0)\to R\sss$ induces a homeomorphism
+$D^{-1}(0)/G\to R\sss/G^\co$;\\
+2) for any point $O\in R\sss/G^\co$, $\pi^{-1}(O)$ contains exactly
+one closed $G^\co$-orbit in $R$;\\
+3) for any open set $U\subset R\sss/G^\co$, we have an isomorphism
+$\OO(U)\cong\OO(\pi^{-1}(U))^G$.\\
+This justifies the identification of the structure sheaf $\OO_{D^{-1}(0)/G}$
+with $(\OO_R)^G$.
+(However the invariants in $\CO[R\,]^G$ do not distinguish the
+$G^\co$-orbits in $R$.)
+
+In what follows we will consider the case $R=\Hom(F,C)$.
+Here $C$, called the space of colors, is an irreducible unitary 
+representation of $G$. 
+$F$, the space of flavors, is an Hermitian vector space on which $G$
+acts trivially.
+At the classical level, the global symmetry group is $U(F)\times U(1)_X$,
+where $U(1)_X$ is the rotation on the fermionic coordinates in the $N=1$
+superspace.
+We write $U(F)=SU(F)\times_{Z(SU(F))}U(1)_A$, 
+where $Z(SU(F))$ is the center of $SU(F)$ and
+$U(1)_A$ is the scalar multiplication of $U(1)$ on $F$.
+
+\Headnn{Axial anomaly and the global symmetry}
+
+The classical action depends on the gauge group $G$, the matter representation
+$R$, the coupling constant $g$ and the $\theta$-term.
+In the quantum theory, the coupling constant $g$ depends on the 
+renormalization scale $\mu$: $g(\mu)$ runs according to
+$\mu\frac{\dr g}{\dr\mu}=\beta(g)$.
+Here $\beta(g)$ is the $\beta$-function; at one-loop it is given by
+\begin{equation}
+\beta(g)=-\frac{b_0}{(4\pi)^2}g^3,
+\end{equation}
+where $b_0={\textstyle \frac{3}{2}}c_2(G)-\hf c_2(R)$.
+The quantum theory thus has a parameter of mass dimension $1$:
+the (complex) scale $\Lam$ defined by
+	\begin{equation}\label{running}
+\Lam^{b_0}=\mu^{b_0}\e{-\frac{8\pi^2}{g^2(\mu)}}\e{\ii\theta}
+=\mu^{b_0}\e{2\pi\ii\tau(\mu)},
+	\end{equation}
+where $\tht$ is the theta angle and 
+$\tau(\mu)=\frac{\theta}{2\pi}+\frac{4\pi\ii}{g^2(\mu)}$.
+
+Recall that if $R=\Hom(F,C)$, then the 
+classical theory has a global symmetry
+$U(F)\times U(1)_X$.
+Upon quantization, 
+both $U(1)_A$ and $U(1)_X$ shift the theta angle $\theta$,
+and hence $\Lam^{b_0}$, whereas $SU(F)$ does not.
+Consequently neither of these $U(1)$ groups is a true symmetry of 
+a fixed quantum theory; this is called the axial anomaly.
+Rather, the group $U(1)_A\times U(1)_X$ 
+acts on a family of quantum theories.
+The $U(1)_A$ and $U(1)_X$ charges of $Q$, 
+its fermionic component $\psi_Q$,
+the gluino $\lam$ and the scale $\Lam$ are summarized as follows:
+\begin{equation}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{c|ccc|c}
+& $U(1)_A$ & $\;\times\!\!\!\!\!$ & $U(1)_X$ & $U(1)_R$	\\
+\hline
+$Q$  &$-1$   &&$0$ &$\frac{c_2(R)-c_2(G)}{c_2(R)}$\\
+$\psi_Q$&   $-1$     &&   $-1$	&$-\frac{c_2(G)}{c_2(R)}$\\
+$\lam$		&   $0$	     &	&   $1$	&	$1$\\
+$\Lam^{b_0}$	&   $c_2(R)$  &	&$c_2(R)-c_2(G)$&	$0$
+\end{tabular}
+\end{equation}
+
+\medskip\noindent
+Here and below, representations of $U(1)$ are labeled by their weights.
+
+The anomaly-free subgroup of $U(1)_A\times U(1)_X$ is a product of 
+a $U(1)$ subgroup, denoted by $U(1)_R$, and a finite group containing
+the center of $SU(F)$.
+We normalize the generator of the Lie algebra $\gu(1)_R$ so that it projects
+to that of $\gu(1)_X$.
+The weights of $U(1)_R$, which are also shown in the above table, 
+are related to those of $U(1)_A$ and $U(1)_X$ by
+	\begin{equation}\label{RXA}
+R=X+\frac{c_2(G)-c_2(R)}{c_2(R)}A.
+	\end{equation}
+The true quantum symmetry is $SU(F)\times U(1)_R$ up 
+to a discrete factor.
+
+\Headnn{Global gauge anomalies}
+
+Consider a principal $G$-bundle $P$ over the (Euclidean) space-time.
+Let $\AAA$ be the space of connections and $\GG$, the group of gauge
+transformations.
+Let $\dirac^+_R$ be the Dirac operator acting on Weyl spinors twisted by
+a representation $R$.
+A gauge theory with Weyl fermions has gauge anomalies if the determinant
+line bundle $\Det\dirac^+_R$ over $\AAA/\GG$ is not trivial.
+When the gauge group $G$ is semi-simple, the curvature $\FF$ of 
+$\Det\dirac^+_R$ is proportional to a multi-linear form $d_R$ on 
+the Lie algebra $\g$ defined by
+	\begin{equation}\label{cubic}
+d_R(x,y,z)=\tr_R x\{y,z\}\quad\quad(x,y,z\in\g).
+	\end{equation}
+Local gauge anomalies come from the non-vanishing of $\FF$.
+For $G=Sp(n)$ or $G=SO(n)$, we have $d_R=0$ for any representation $R$ of $G$.
+Consequently the bundle $\Det\dirac^+_R$ is flat and there are no local gauge
+anomalies.
+
+However if there is a non-contractible loop in $\AAA/\GG$, the holonomy
+along it may be non-trivial even if $\FF=0$.
+This is called global gauge anomaly.
+Since the space $\AAA$ is contractible, $\pi_1(\AAA/\GG)\cong\pi_0(\GG)$.
+When the (Euclidean) space-time is $S^4$, we have $\pi_0(\GG)\cong\pi_4(G)$.
+When $G$ is a simple Lie group, $\pi_4(G)\ne1$ only if only if the universal
+covering group is $Sp(n)$ for some $n\ge1$, in which case $\pi_4(G)\cong\ZZ_2$.
+Thus the holonomy of $\Det\dirac^+_R$ for any $R$ is $\pm1$, and consequently,
+the bundle $(\Det\dirac^+_R)^{\otimes 2}$ is always trivial.
+In particular, consider $R=\Hom(F,C)$, where $G$ acts on $F$ trivially.
+When $G=Sp(n)$ and $C\cong\CO^{2n}$ is its defining representation, 
+the bundle $\Det\dirac^+_R=(\Det\dirac^+_C)^{\otimes\dim F}$ is trivial
+if $\dim F$ is even.
+This condition will guarantee the absence of global gauge anomalies.
+That the bundle $\Det\dirac^+_C$ itself is non-trivial is a deeper fact
+related to the Bott periodicity.
+
+For $G=SO(n)$, the curvature $\FF$ of $\Det\dirac^+_R$ vanishes for any
+representation $R$.
+If $n\ge6$, since $\pi_4(G)=1$, the bundle $\Det\dirac^+_R$ is trivial for
+any representation $R$ (including the defining representation).
+If $G$ is simple and the representation $R$ is non-trivial and of real type,
+then up to a finite subgroup of the center, $G$ can be embedded into $SO(d)$,
+where $d=\dim R$.
+The $G$-bundle $P$ induces a principal $SO(d)$-bundle $P_0$.
+Let $\AAA_0$ be the space of connections on $P_0$, and $\GG_0$, the group of
+gauge transformations.
+Then there exist maps $\AAA\to\AAA_0$, $\GG\to\GG_0$ and
+$\AAA/\GG\to\AAA_0/\GG_0$.
+The determinant line bundle $\Det\dirac^+_R$ over $\AAA/\GG$ is
+the pull-back of corresponding bundle over $\AAA_0/\GG_0$.
+If $d\ge6$, the latter is trivial.
+If $2\le d\le5$, the case can be reduced to $d\ge6$ since 
+$\Det\dirac^+_{R\oplus R\oplus R}=(\Det\dirac^+_R)^{\otimes3}
+\cong\Det\dirac^+_R$.
+Therefore  $\Det\dirac^+_R$ is trivial for any real representation
+$R$ of any compact Lie group $G$.
+
+We list a few consequences of this result.
+First, $R$ and $R'$ are both real or quarternionic representations of $G$,
+then the representation $R\otimes R'$ is real.
+So the bundle $\Det\dirac^+_{R\otimes R'}$ is trivial.
+Second, if $G=SO(n)$ for any $n\ge3$, and $C\cong\CO^n$, the defining
+representation, then the bundle $\Det\dirac^+_C$ is trivial.
+Finally, since the adjoint representation is always of real type, 
+the bundle $\Det\dirac^+_\mathrm{adj}$ is trivial.
+Thus the gluino $\lam$ does not contribute to the global gauge anomaly.
+
+
+\lecture{Problems 1--2}
+
+\catcode`\@=11
+%{\let\@makefnmark\relax  \let\@thefnmark\relax
+%   \footnote{\bf Solutions by Siye Wu\\}\addtocounter{footnote}{-1}}
+\catcode`\@=13
+
+\Headnn{Solution to Problem 1}
+
+Let $C\cong\CO^{2N_c}$ be an Hermitian vector space with a compatible
+symplectic form $\om_c$.
+$C$ is the defining representation of the compact group $G=Sp(C)\cong Sp(N_c)$.
+We write the complexification $G^\co=Sp(C,\CO)$.
+The representation on $C$ is quarternionic.
+We have $c_2(C)=1$.
+The dual Coxeter number of $G$ is $h=N_c+1$.
+Therefore $c_2(G)=2(N_c+1)$.
+Let the flavor space $F$ be of dimension $2N_f$.
+(It is even to ensure the absence of the global gauge anomaly.)
+Then $c_2(R)=2N_f$ and $b_0=3(N_c+1)-N_f$.
+
+\Subhead{Classical theory}
+
+The moduli space of classical vacua is $\MC\cong\Hom(F,C)\sss/Sp(C,\CO)$.
+We define gauge invariant quantities
+	\begin{equation}
+M=Q^*\om_c\in\medwedge^2F^*.
+	\end{equation}
+Clearly, $M$ satisfies the constraint
+	\be\label{sp-constraint}
+\wedge^{N_c+1}M=0.
+	\end{equation}
+It is a classical result of Weyl that the ring of invariants 
+$\CO[\Hom(F,C)]^G$ is generated by $M\in\medwedge^2F^*$ with the (only)
+relations (\ref{sp-constraint}).\footnote{H.\ Weyl, {\it Classical groups}, 
+\S VI.1}
+So the moduli space $\MC$ is parametrized by $M$ subject to
+the constraint (\ref{sp-constraint}).
+
+Recall that $C$ has a quarternionic structure.
+We have an orthogonal decomposition of the Lie algebra
+	\begin{equation}
+\gu(C)=\gu(C,\HA)\oplus\ii\{\HA{\mbox{-self-adjoint operators on }}C\}.
+	\end{equation}
+Since $\gu(C,\HA)=\gsp(C)$, the moment map is
+	\begin{equation}
+D(Q)={\mbox{orthogonal projection of }}\ii QQ^\dagger{\mbox{ onto }}\gu(C,\HA).
+	\end{equation}
+So $D(Q)=0$ if and only if $QQ^\dagger$ is $\HA$-self-adjoint on $C$.
+In this case, there is an $\HA$-unitary basis of $C$ such that $QQ^\dagger$
+has the form
+	\begin{equation}
+QQ^\dagger\sim
+\begin{pmatrix}
+a_1^2 &&&\\
+&\ddots&&\\
+&&a_r^2&\\
+&&&
+\end{pmatrix}
+\otimes
+\begin{pmatrix}
+1 &0\\
+0 &1\end{pmatrix},
+\end{equation}
+where $a_1,\dots,a_r>0$, $r=\hf\rank Q$.
+Hence there is a unitary basis in $F$ such that $Q$ is of the form 
+	\begin{equation}\label{sp-normal}
+Q\sim
+\begin{pmatrix}
+a_1 &&&\\
+&\ddots&&\\
+&&a_r&\\
+&&&
+\end{pmatrix}
+\otimes
+\begin{pmatrix}
+1 &0\\
+0 &1\end{pmatrix}.
+\end{equation}
+In the complex language, any $Q\in\Hom(F,C)\sss$ can be put into the standard
+form (\ref{sp-normal}) by a complexified gauge transformation and a global
+symmetry.
+The stabilizer of $Q$ in $Sp(C,\CO)$ is isomorphic to
+$Sp(N_c-r,\CO)$ and that in $Sp(C)$ is $Sp(N_c-r)$.
+At a generic point in $\MC$, the gauge group is broken to $Sp(N_c-N_f)$
+if $N_c>N_f$; it is completely broken if $N_c\le N_f$.
+
+
+\Subhead{Quantum theory}
+
+Let $\Lam$ be the (complex) scale of the quantum theory.
+Since $\Lam^{b_0}$ has $U(1)_A$-charge $c_2(R)=2N_f$, it is appropriate to
+write
+	\begin{equation}\label{sp-Lam}
+\Lam^{3(N_c+1)-N_f}\in\medwedge^{2N_f}F^*.
+	\end{equation}
+The anomaly-free subgroup in $U(1)_A\times U(1)_X$ is $U(1)_R\times\ZZ_{2N_f}$,
+where the $R$-charge can be computed by, following (\ref{RXA}),
+	\begin{equation}
+R=X+\frac{N_c+1-N_f}{N_f}A.
+	\end{equation}
+Since $\ZZ_{2N_f}=Z(SU(F))$, the global symmetry of the quantum theory is 
+$SU(F)\times U(1)_R$.
+The superfields $Q$ and $M$ transform as
+	\begin{equation}
+\renewcommand{\arraystretch}{1.3}
+	\begin{tabular}{c|ccc}
+&   $SU(F)$	&$\times$&	$U(1)_R$		\\
+\hline
+$Q$	&   $F^*$	&	&  $1-\frac{N_c+1}{N_f}$	\\
+$M$	& $\medwedge^2F^*$ &	&  $2(1-\frac{N_c+1}{N_f})$
+\end{tabular}
+\end{equation}
+
+\medskip\noindent
+The vacuum degeneracy in the classical moduli space $\MC$ may be lifted by
+a dynamically generated superpotential $W$ for the light fields $M$.
+$W$ must be invariant under the gauge and global symmetries.
+The fields in $M$ are already gauge invariant; the only combination 
+invariant under $SU(F)$ is the Pfaffian $\Pf M$.
+Also, the superpotential is holomorphic on $\MC$ hence in $M$.
+These restrictions imply that $W$ is of the form
+	\begin{equation}
+W\sim(\Lam^{b_0})^x(\Pf M)^y.
+	\end{equation}
+The exponents $x$, $y$ can be fixed as follows:\\
+1) Since $\Lam^{b_0},\Pf M\in\medwedge^{2N_f}F^*$ and $W$ is 
+a number, we have $x+y=0$.\\
+2) As a superpotential, $W$ has $U(1)_X$ charge $2(N_c+1-N_f)x=2$.\\
+3) $W$ has mass dimension $b_0x+2N_fy=3$.\\
+Notice that 1) and 2) together imply that $W$ has $U(1)_R$-charge $2$.
+The above three equations for two unknowns $x$ and $y$ are consistent
+and we get $x=-y=\inv{N_c+1-N_f}$.
+Hence the superpotential is
+	\begin{equation}\label{sp-W}
+W=A\,\left(\frac{\Lam^{3(N_c+1)-N_f}}{\Pf M}\right)^{\inv{N_c+1-N_f}},
+	\end{equation}
+where $A$ is a constant that depends only on $N_c$, $N_f$ and the
+renormalization scheme.
+Notice that if $N_f\ge N_c+1$, then the superpotential $W$ in (\ref{sp-W})
+does not exist because $\Pf M=0$.
+In this case, the classical vacuum degeneracy is not lifted by quantum effects.
+When $N_f\le N_c$, the decay of $W$ at $M\to\infty$ is consistent with
+asymptotic freedom, which holds when $N_f<3(N_c+1)$.
+
+\Headnn{Solution to Problem 2}
+
+Let $C\cong\CO^{N_c}$ be a complex vector space with a real structure,
+i.e., $C$ is the complexification of $C_\re\cong\RE^{N_c}$.
+Suppose $C_\re$ is equipped with a metric $g_c$ and a compatible volume form
+$v_c$, which provides a trivialization of $\det C_\re^*$.
+(In the symplectic case, $v_c$ is fixed by the symplectic form $\om_c$.)
+$C$ is the defining representation of the compact Lie group 
+$G=SO(C)\cong SO(N_c)$.
+(The complexification is denoted by $G^\co=SO(C,\CO)$.)
+Let the flavor space $F$ have dimension $N_f$.
+For $N_c\ge5$, the dual Coxeter number $h=N_c-2$ and $c_2(C)=2$.
+So $c_2(G)=2(N_c-2)$, $c_2(R)=2N_f$ and $b_0=3(N_c-2)-N_f$.
+For $N_c=4$, $G=(G_+\times G_-)/\ZZ_2$, where $G_\pm\cong SU(2)$.
+For each factor $G_\pm$, we have $c_2(G_\pm)=4$, $c_2(C)=2$, $c_2(R)=2N_f$.
+So $b_0=6-N_f$ for the coupling constant of each $G_\pm$.
+These are formally the continuation of the cases $N_c\ge5$.
+For $N_c=3$, $G\cong SU(2)$ up to a $\ZZ_2$ factor.
+We have $c_2(G)=c_2(C)=4$, $c_2(R)=4N_f$ and $b_0=6-2N_f$.
+
+
+\Subhead{Classical theory}
+
+The moduli space of classical vacua is $\MC\cong\Hom(F,C)\sss/SO(C,\CO)$.
+The gauge invariants are the mesons $M=Q^*g_c\in S^2F^*$ and,
+if $\rank Q=N_c$, the baryons $B=Q^*v_c\in\medwedge^{N_c}F^*$.
+They satisfy the constraints 
+	\begin{equation}\label{so-constraint}
+\rank M\le N_c,\quad\quad B\otimes B=\wedge^{N_c}M.
+	\end{equation}
+Here $\wedge^{N_c}M\in S^2(\medwedge^{N_c}F^*)$ corresponds to the product
+of non-zero eigenvalues of $M$.
+The ring of invariants $\CO[\Hom(F,C)]^G$ is generated by $M\in S^2F^*$ and,
+if $N_f\ge N_c$, $B\in\medwedge^{N_c}F^*$ with the relations
+(\ref{so-constraint}).\footnote{H.\ Weyl, {\it Classical groups}, \S II.9}
+So $M$ and $B$ subject to the constraints in (\ref{so-constraint})
+parametrize the moduli space $\MC$.
+
+Consider the orthogonal decomposition
+	\begin{equation}
+\gu(C)=\gso(C)\oplus\ii\{\RE{\mbox{-self-adjoint operators on }}C_\re\}.
+	\end{equation}
+Note that $\gso(C)$ is the set of skew-self-adjoint operators on $C_\re$.
+The moment map of the $G$-action on $\Hom(F,C)$ is
+	\begin{equation}
+D(Q)={\mbox{orthogonal projection of }}\ii QQ^\dagger{\mbox{ onto }}\gso(C).
+	\end{equation}
+So $D(Q)=0$ if and only if $QQ^\dagger$ is $\RE$-self-adjoint on $C_\re$.
+In this case, there is an orthogonal basis of $C$ (i.e., up to a gauge 
+transformation) such that $QQ^\dagger$ has the form
+	\begin{equation}
+QQ^\dagger\sim
+\begin{pmatrix}
+a_1^2 &&&\\
+&\ddots &&\\
+&&a_r^2&\\
+&&&
+\end{pmatrix},
+	\end{equation}
+where $a_1,\dots,a_r>0$ if $r=\rank Q<N_c$
+and $a_1,\dots,a_{N_c-1}>0$, $a_{N_c}\ne0$ if $r=N_c$.
+In the latter case, $B^{1,\dots,N_c}=a_1\dots a_{N_c}$
+is the only non-zero component of $B$.
+Hence up to gauge and global symmetries $Q$ is of the form
+	\begin{equation}\label{so-normal}
+Q\sim
+\begin{pmatrix}
+a_1 &&&\\
+&\ddots&&\\
+&& a_r&\\
+&&&
+\end{pmatrix}.
+	\end{equation}
+The stabilizer of $Q$ in $SO(C,\CO)$ is isomorphic to
+$SO(N_c-r,\CO)$, and that in $SO(C_\re)$, $SO(N_c-r)$.
+At a generic point in $\MC$, the gauge group is broken to $SO(N_c-N_f)$
+if $N_c\ge N_f+2$; it is totally broken if $N_c<N_f+2$.
+
+
+\Subhead{Quantum theory}
+
+Let $\Lam$ be the (complex) scale of the quantum theory.
+We have 
+	\begin{equation}\label{so-scale}
+\Lam^{3(N_c-2)-N_f}\in(\medwedge^{N_f}F^*)^{\otimes2}
+	\end{equation}
+if $N_c\ge4$.
+(For $N_c=4$, this holds for the scale of each $SU(2)$ theory.) 
+If $N_c=3$, then
+	\begin{equation}\label{so3-scale}
+\Lam^{6-2N_f}\in(\medwedge^{N_f}F^*)^{\otimes4}.
+	\end{equation}
+The anomaly-free subgroup of $U(1)_A\times U(1)_X$ is
+$U(1)_R\times\ZZ_{2N_f}$ if $N_c\ge4$ and
+$U(1)_R\times\ZZ_{4N_f}$ if $N_c=3$.
+Here the $R$-charges are computed by
+	\begin{equation}
+R=X+\frac{N_c-2-N_f}{N_f}A.
+	\end{equation}
+The $\ZZ_{N_f}$ subgroup in $\ZZ_{2N_f}$ or $\ZZ_{4N_f}$ 
+is the center of $SU(F)\cong SU(N_f)$.
+Therefore the global symmetry of the quantum theory is
+$(SU(F)\rtimes\ZZ_2)\times U(1)_R$ if $N_c\ge4$ 
+and $(SU(F)\rtimes\ZZ_4)\times U(1)_R$ if $N_c=3$.
+Here $SU(F)\rtimes\ZZ_n=\set{U\in U(F)}{U^n\in SU(F)}$.
+For all $N_c\ge3$, the superfields $Q$ and $M$ transform as
+\begin{equation}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{c|ccc}
+&   $SU(F)$	&$\times$&	$U(1)_R$		\\
+\hline
+$Q$	&   $F^*$	&	&  $1-\frac{N_c-2}{N_f}$	\\
+$M$	& $S^2F^*$ &	&  $2(1-\frac{N_c-2}{N_f})$
+\end{tabular}
+\end{equation}
+
+\medskip\noindent
+Invariance under the gauge and global symmetries and holomorphicity
+imply that the superpotential, if it exists, is of the form
+	\begin{equation}
+W\sim(\Lam^{b_0})^x(\det M)^y
+	\end{equation}
+for some exponents $x$, $y$.
+When $N_c\ge4$, considerations exactly the same as in the symplectic case 
+yield three equations $x+y=0$, $2=2(N_c-N_f-2)x$ and $b_0x+2N_fy=3$
+for the two unknowns $x$ and $y$.
+Again, they have a solution $x=-y=\inv{N_c-2-N_f}$.
+Hence
+	\begin{equation}\label{so-W}
+W=A\,\left(\frac{\Lam^{3(N_c-2)-N_f}}{\det M}\right)^{\inv{N_c-2-N_f}},
+	\end{equation}
+where $A$ is a constant that depends only on $N_c$, $N_f$ and the
+renormalization scheme.
+Clearly $W$ does not exist if $N_f=N_c-2$.
+If $N_f>N_c$, then $\rank M<N_f$ and $\det M=0$.
+So $W$ does not exist either.
+If $N_c-2<N_f\le N_c$, $W\to\infty$ as $Q\to\infty$;
+this is in contradiction with asymptotic freedom ($b_0>0$ in this range).
+So the superpotential is not generated when $N_f\ge N_c-2$.
+When $N_c=4$, (\ref{so-W}) is the superpotential generated by each of 
+the $SU(2)$ factors.
+We limit the analysis to the case of equal scales for the two $SU(2)$ factors.
+When $N_c=3$, the three equations $2x+y=0$, $2=(4-4N_f)x$ and $b_0x+2N_fy=3$
+are also consistent and have a solution $2x=-y=\inv{1-N_f}$.
+So,
+	\begin{equation}
+W=A\,\left(\frac{\Lam^{3-N_f}}{\det M}\right)^{\inv{1-N_f}}.
+	\end{equation}
+Similarly, $W$ does not exist if $N_f=1$ or $N_f>3$.
+When $N_f=2$, the form of $W$ is not consistent with asymptotic freedom
+($b_0=2>0$ in this case).
+When $N_f=3$, we have $b_0=0$, but the two-loop $\beta$-function is positive.
+The theory is infrared free and does not have a superpotential.
+In summary, no superpotential can be generated when $N_c=3$.
+
+
+\lecture{Problems 3--4}
+
+\catcode`\@=11
+%{\let\@makefnmark\relax  \let\@thefnmark\relax
+%   \footnote{\bf Solutions by Siye Wu}\addtocounter{footnote}{-1}}
+\catcode`\@=13
+
+	\Headnn{Solution to Problem 3}
+
+\Subhead{{\boldmath $N_f=N_c$}: instanton generated superpotential}
+
+Recall that when $N_f\le N_c$, it is possible to have a dynamically
+generated superpotential (\ref{sp-W}).
+This superpotential is generated by instantons when $N_f=N_c$,
+because the following three requirements are independently met:\\
+1) The result of any calculation in instanton perturbation theory is 
+proportional to $\e{2\pi\ii\tau(\mu)}\sim\Lam^{b_0}$.
+The superpotential $W$ in (\ref{sp-W}) has the same power of $\Lam$ 
+when $N_f=N_c$.\\
+2) An instanton vertex absorbs $2(N_c+1)$ of the $\lam$ and $2N_f$ of
+the $\psi_Q$.
+The usual vertex is given by the term $\lam\psi_QQ$.
+When $N_f=N_c$, it is possible to form a diagram with $2$ external
+lines of $\psi_Q$.\\
+3) The $Sp(N_c)$ gauge symmetry is completely broken when the 
+renormalization scale $\mu$ is small compared to $\bra Q\ket$.
+This means the coupling constant stays small for all $\mu$.
+Hence the instanton calculation is trustworthy.\\
+Thus we expect $A\ne0$ when $N_f=N_c$.
+
+We study how the constant $A$ depends on $N_c$ and $N_f$
+using deformations on the moduli space.
+Suppose $Q$ acquires an expectation value $\bra Q\ket\in\Hom(F,C)$
+with $\hf\rank\bra Q\ket=r$.
+Then $C=\hC\oplus\hC^\perp$, $F=\hF\oplus\hF^\perp$,
+where $\hC=(\im\bra Q\ket)^\perp$, $\hF=\ker\bra Q\ket$
+have dimensions $2(N_c-r)$, $2(N_f-r)$, respectively.
+The expectation value $\bra Q\ket$ breaks the gauge group to $Sp(\hC)$.
+Let $\Mperp\in\medwedge^2\hF^{\perp *}$ be the restriction
+of $\bra M\ket$ to $\hF^\perp$; $\Mperp$ is non-degenerate.
+Because of the superpotential (\ref{sp-W}), the excitations of $M$ in
+the $\hF^\perp$ directions become massive.
+In the low energy theory, $M$ is of the form
+	\begin{equation}\label{sp-M}
+M=\four{\hM}{}{}{\Mperp},
+	\end{equation}
+where $\Mperp$ is fixed and $\hM\in\medwedge^2\hF^2$ contains 
+the light modes.
+The space of light flavors is $\hF$.
+
+When the renormalization scale $\mu>>(\Pf(\Mperp/2))^{1/2r}$,
+the coupling constant $g(\mu)$ runs according to
+	\begin{equation}\label{sp-high}
+(\Lam/\mu)^{3(N_c+1)-N_f}=\e{-\frac{8\pi^2}{g^2(\mu)}}.
+	\end{equation}
+When $\mu<<(\Pf(\Mperp/2))^{1/2r}$, the low energy theory has $N_c-r$ colors
+and $N_f-r$ flavors.
+Let $\hLam$ be its scale.
+Then
+	\begin{equation}\label{sp-low}
+(\hLam/\mu)^{3(N_c-r+1)-(N_f-r)}=\e{-\frac{8\pi^2}{g^2(\mu)}}.
+	\end{equation}
+We use the $\overline{{\rm DR}}$ subtraction scheme.
+Matching the coupling constant $g(\mu)$ in (\ref{sp-high}) and (\ref{sp-low})
+at $\mu=(\Pf(\Mperp/2))^{1/2r}$, we get
+	\begin{equation}\label{sp-eflat}
+\Lam^{3(N_c+1)-N_f}=\Pf(\Mperp/2)\,\hLam^{3(N_c-r+1)-(N_f-r)}.
+	\end{equation}
+This relation is valid for any $N_c$, $N_f$ and $r\le N_c,N_f$.
+Using (\ref{sp-eflat}), the superpotential of the low energy
+theory has the same form (\ref{sp-W}) but with a different coefficient 
+$\hat{A}$ related to $A$ by
+	\begin{equation}
+A=2^{\frac{r}{N_c+1-N_f}}\hat{A}.
+	\end{equation}
+
+When $N_f=N_c$, if we choose $r=N_c-1$, then $\hf\dim\hC=\hf\dim\hF=1$.
+Due to the accidental isomorphism $Sp(1)\cong SU(2)$ and their defining 
+representations, the low energy theory is identical to the $SU(2)$
+supersymmetric gauge theory with a single flavor of quark.
+We know from the $SU(2)$ theory that $\hat{A}=1$ 
+under the $\overline{{\rm DR}}$ scheme.
+So $A=2^{N_c-1}$ when $N_f=N_c$.
+
+
+\Subhead{{\boldmath $N_f<N_c$} and the pure gauge theory}
+
+To derive the superpotential for smaller values of $N_f$ but with a fixed
+$N_c$, we need to apply a gauge invariant mass deformation.
+We perturb the theory by adding at the tree level a superpotential
+$W\tree=\bra M,m\ket$, where $m\in\medwedge^2F$.
+Let $r=\hf\rank m$.
+We write $F=\hF\oplus\hF^\perp$ such that $\hf\dim\hF=N_f-r$ and 
+the projection $m^\perp\in\medwedge^2\hF^\perp$ of $m$ is non-degenerate.
+The gauge group of the low energy theory is still $Sp(C)$,
+but the flavor space is $\hF$.
+Let $\hLam$ be the scale.
+When $\mu>>(\Pf m^\perp)^{1/r}$, $g(\mu)$ runs according to (\ref{sp-high}).
+However when $\mu<<(\Pf m^\perp)^{1/r}$, there are $N_f-r$ flavors of 
+light quarks, and we get
+	\begin{equation}\label{sp-low'}
+(\hLam/\mu)^{3(N_c+1)-(N_f-r)}=\e{-\frac{8\pi^2}{g^2(\mu)}}.
+	\end{equation}
+Matching the coupling constant $g(\mu)$ in (\ref{sp-high}) and (\ref{sp-low'})
+at $\mu=(\Pf m^\perp)^{1/r}$, we get
+	\begin{equation}\label{sp-emass}
+\hLam^{3(N_c+1)-(N_f-r)}=\Pf m^\perp\Lam^{3(N_c+1)-N_f}.
+	\end{equation}
+This relation is valid for any $N_c$, $N_f$ and $r\le N_f$.
+
+If $N_f\le N_c$ in the ultraviolet theory, the total superpotential after
+the mass deformation is
+	\begin{equation}\label{sp-Wm}
+W=A\,\left(\frac{\Lam^{3(N_c+1)-N_f}}{\Pf M}\right)^{\inv{N_c+1-N_f}}
++\bra M,m\ket.
+	\end{equation}
+We eliminate the heavy fields in $M$ by minimizing bosonic potential.
+At the extremum of the superpotential (\ref{sp-Wm}), $M$ is of the 
+block-diagonal form (\ref{sp-M}), where
+	\begin{equation}\label{sp-perp}
+\Mperp=\left(\frac{A}{N_c+1-N_f}\right)^{\frac{N_c+1-N_f}{N_c+1-(N_f-r)}}
+\left(\frac{\Pf m^\perp\Lam^{3(N_c+1)-N_f}}{\Pf\hM}\right)
+^{\inv{N_c+1-(N_f-r)}}(m^\perp){}^{-1}.
+	\end{equation}
+Here $(m^\perp){}^{-1}\in\medwedge^2\hF^{\perp *}$ is induced by 
+$m^\perp\in\medwedge^2\hF^\perp$.
+We compute the superpotential of the light mesons $\hM$ by
+substitute in (\ref{sp-Wm}) the solution of $\Mperp$.
+Using $\bra(m^\perp){}^{-1},m^\perp\ket=r$, 
+$\dr\,\Pf M=\Pf M\bra\dr M,M^{-1}\ket$ and (\ref{sp-emass}), 
+we deduce that the superpotential has precisely the same form as (\ref{sp-W}), 
+with the coefficient 
+	\begin{equation}\label{sp-decouple}
+\hat{A}=(N_c+1-(N_f-r))
+\left(\frac{A}{N_c+1-N_f}\right)^{\frac{N_c+1-N_f}{N_c+1-(N_f-r)}}.
+	\end{equation}
+If we have $N_f=N_c$ to begin with, then $A=2^{N_c-1}$ and
+$\hat{A}=(N_c+1-(N_f-r))2^{\frac{N_c-1}{N_c+1-(N_f-r)}}$.
+Equivalently, for a theory with $N_f\le N_c$, the coefficient $A$ 
+in (\ref{sp-W}) is given by
+	\begin{equation}\label{sp-A}
+A=(N_c+1-N_f)2^{\frac{N_c-1}{N_c+1-N_f}}.
+	\end{equation}
+In all cases of $N_f\le N_c$, the superpotential is non-zero.
+When $1\le N_f\le N_c$, the classical vacuum degeneracy is lifted by $W$
+and the quantum theory has no vacuum.
+
+In the pure $Sp(C)\cong Sp(N_c)$ gauge theory, $N_f=0$, and the superpotential
+	\begin{equation}\label{sp-pure}
+W=(N_c+1)2^{\frac{N_c-1}{N_c+1}}\Lam^3
+=(N_c+1)\mu^32^{\frac{N_c-1}{N_c+1}}\e{\frac{2\pi\ii}{N_c+1}\tau}.
+	\end{equation}
+This is $(N_c+1)$-valued, corresponding to the fact
+that there are $N_c+1$ vacua in quantum theory.
+In particular, when $N_c=1$, (\ref{sp-pure}) agrees with the result for
+$SU(2)$ gauge theory.
+Notice also that the superpotential $W$ is a constant:
+although non-zero, it does not contribute to the effective Lagrangian.
+Nevertheless, the result (\ref{sp-pure}) implies gaugino condensation.
+We consider an extended theory in which the parameter $\tau$ becomes 
+a superfield and assume that supersymmetry is unbroken after quantization.
+The partition function
+	\begin{equation}
+Z(\tau)=\int DA\,D\lam\,\e{\ii S(A,\lam,\tau)}
+=\e{\ii\int\dr^4x\dr^2\tht\,W(\tau)}
+	\end{equation}
+is holomorphic in $\tau$ and $W(\tau)$ has the same form as (\ref{sp-pure}).
+Since the Lagrangian density of the pure gauge theory is
+	\begin{equation}
+\LL=\inv{4\pi\ii}\int\dr^2\tht\;\tau\;\tr W_\al W^\al+\cc,
+	\end{equation}
+where $W_\al=\lam_\al+\cdots$ is the superfield strength, we get
+\begin{equation}
+\begin{aligned}
+\bra\lam\lam\ket &=4\pi\frac{\del}{\del F_\tau}\log Z(\tau)
+=4\pi\frac{\pdr}{\pdr F_\tau}\int\dr^2\tht\,W(\tau)\\
+&=4\pi\frac{\pdr}{\pdr\tau}W(\tau)
+=2^{4-\frac{2}{N_c+1}}\pi^2\ii\Lam^3
+=2^{4-\frac{2}{N_c+1}}\pi^2\ii\mu^3\e{\frac{2\pi\ii}{N_c+1}\tau}.
+\end{aligned}
+\end{equation}
+Again, this is $(N_c+1)$-valued.
+
+
+\Subhead{{\boldmath $N_f=N_c+1$}}
+
+In the above mass deformation of theories with $N_f\le N_c$, if $r=N_f$,
+then $\hF^\perp=F$, $m^\perp=m$ and $M^\perp=M$.
+The extremum of the total superpotential (\ref{sp-Wm}) is reached at
+	\begin{equation}\label{sp-exp}
+\bra M\ket=2^{\frac{N_c-1}{N_c+1}}(\Lam^{3(N_c+1)-N_f}\Pf m)^{\inv{N_c+1}}
+\,m^{-1}.
+	\end{equation}
+Just as in the supersymmetric $SU(N_c)$ gauge theories,
+the above result is valid in the range $N_f\ge N_c+1$.
+For $N_f=N_c+1$, the solution (\ref{sp-exp}) satisfies
+	\begin{equation}\label{sp-q}
+\Pf M=2^{N_c-1}\Lam^{2(N_c+1)}.
+	\end{equation}
+This is independent of $m$, and shall remain valid in the absence of
+the mass term.
+We claim that in the low energies the quantum theory is described
+by $M$ subject to the constraint (\ref{sp-q}).
+To check that the theory reduces to $N_f=N_c$ via mass deformation,
+we add a mass term $\bra M,m\ket$ with $\hf\rank m=1$.
+Then $\hf\dim\hF=N_c$.
+Because of the constraint (\ref{sp-q}), we have
+	\begin{equation}
+\bra M,m\ket=\frac{2^{N_c-1}m^\perp\Lam^{2(N_c+1)}}{\Pf\hat{M}}
+=2^{N_c-1}\frac{\hLam^{2N_c+3}}{\Pf\hM},
+	\end{equation}
+where the last equality follows from (\ref{sp-emass}) when $N_f=N_c+1$, $r=1$.
+This is the superpotential (\ref{sp-W}) with the correct coefficient
+(\ref{sp-A}) when $N_f=N_c$.
+
+The quantum moduli space $\MQ$ is smooth.
+There are no additional massless fields other than $M$ subject to the 
+constraint (\ref{sp-q}).
+The absence of massless gluons is known as the confinement of color charges.
+We check the consistency of these postulates using 't Hooft's anomaly 
+matching conditions.
+Each point $M_0\in\medwedge^2F^*$ on $\MQ$ is a symplectic form on $F$.
+Let $Sp(F,\CO)$ be the (complex) symplectic group preserving $M_0$.
+The most symmetric points on $\MQ$ are those compatible with
+the Hermitian structure on $F$.
+There the global symmetry $SU(F)\times U(1)_R$ is broken to
+$Sp(F)\times U(1)_R$, where the (compact) symplectic group
+$Sp(F)=Sp(F,\CO)\cap U(F)$ depends on the choice of $M_0$.
+Notice that when $N_f=N_c+1$, $U(1)_X=U(1)_R$ is anomaly free.
+In the ultraviolet theory, the massless fermions are $\psi_Q$ and $\lam$.
+In the infrared theory, they are the fermionic partners $\psi_M$ of $M$ 
+in $T_{M_0}\MQ$.
+Under the unbroken global symmetry, 
+these light fermions transform according to
+\begin{equation}
+\begin{tabular}{cc|ccc}
+\renewcommand{\arraystretch}{1.3}
+&&$Sp(F)$ &$\times$ &$U(1)_R$\\
+\hline
+ultraviolet & $\psi_Q$	&   $F^*$  &&  $-\frac{N_c+1}{N_f}=-1$\\
+&$\lam$	&   $\one$	&  &	$1$\\
+\hline
+infrared   &$\psi_M$& $\medwedge^2F^*\ominus\one$ 
+& &  $1-2\frac{N_c+1}{N_f}=-1$ 
+\end{tabular}
+\end{equation}
+
+\medskip\noindent
+Here and below, $\one$ denotes the trivial representation.
+The non-zero combinations to 't Hooft's condition are given by
+\begin{equation}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{c|lll}
+& ultraviolet	&& infrared	\\
+\hline
+$\gsp(F)^2\gu(1)_R$ & $2N_cc_2(F)\cdot(-1)$
+&& $c_2(\medwedge^2F\ominus\one)\cdot(-1)$\\
+$\gu(1)_R$ & $4N_cN_f\;(-1)+N_c(2N_c+1)\;1$ && $(N_f(2N_f-1)-1)\;(-1)$ \\
+$\gu(1)_R^3$ &$4N_cN_f\;(-1)^3+N_c(2N_c+1)\;1^3$ && $(N_f(2N_f-1)-1)\;(-1)^3$
+\end{tabular}
+\end{equation}
+
+\medskip\noindent
+To calculate $c_2(\medwedge^2F\ominus\one)$, we note that the 
+root system of $\gsp(N_f)$ is\break
+$\set{\eps_i\pm\eps_j,2\eps_i}{1\le i\ne j\le N_f}$
+and the positive roots are $\eps_i\pm\eps_j$ ($1\le i\le j\le N_f$).
+The highest weights of the representations of $F$ and
+$\medwedge^2F\ominus\one$ 
+are $\lam=\eps_1$ and $\lam_2=\eps_1+\eps_2$, 
+respectively.
+Therefore $c_2(\medwedge^2F\ominus\one)
+=\frac{(\lam_2+2\rho,\lam_2)\,\dim(\wedge^2F\ominus\one)}
+{(\lam_1+2\rho,\lam_1)\,\dim F}c_2(F)=2(N_f-1)c_2(F)$, where
+$\rho=\sum_{i=1}^{N_f}(N_f+1-i)\eps_i$ is half of the sum of positive roots.
+The two columns match when $N_f=N_c+1$.
+
+Finally, we propose a global anomaly matching condition and show that it is
+satisfied in the above situation.
+Consider two theories with the same (anomaly free) global symmetry group $H$
+but with different contents of light fermionic fields, which form 
+representations $R$ and $R'$ of $H$, respectively.
+If the two theories describe the same low energy physics, then if $H$ is
+hypothetically gauged, the determinant line bundles $\Det\dirac^+_R$
+and $\Det\dirac^+_{R'}$ of the Dirac operators twisted by $R$ and $R'$
+shall be isomorphic.
+'t Hooft's anomaly matching condition checks whether the curvatures of the two
+bundles are the same.
+This is a stringent condition for the two theories to describe the same
+low energy physics.
+However the two bundles can still differ by a flat bundle, which can be
+non-trivial if $\pi_4(H)\ne1$.
+If the representation $R^*\oplus R'$ of $H$ is real,
+then the determinant line bundle $\Det\dirac^+_{R^*\oplus R'}\cong
+(\Det\dirac^+_R)^{-1}\otimes\Det\dirac^+_{R'}$ is trivial.
+Therefore the reality of the representation $R^*\oplus R'$ is a sufficient
+condition of global anomaly matching.
+In the above problem, suppose only the $Sp(F)$ factor of the global symmetry
+is gauged.
+In the ultraviolet theory, the representation is an even number ($2N_c$)
+of copies of $F^*$ and the trivial representations.
+In the infrared theory, the representation 
+$\medwedge^2F^*\ominus\one\subset F^*\otimes F^*$
+is real because $F^*$ is quarternionic. 
+So the global anomalies match.
+
+
+\Subhead{{\boldmath $N_f=N_c+2$}}
+
+When $N_f=N_c+2$, we obtain from (\ref{sp-exp}) that $\medwedge^{N_c+1}M\to0$
+as $m\to 0$. 
+So there is no quantum correction to the classical moduli space $\MC$.
+We claim that in the low energy theory, all components of $M$ become dynamical
+and that there is a superpotential
+	\begin{equation}\label{sp-W+2}
+W=-\frac{\Pf M}{2^{N_c-1}\Lam^{2N_c+1}}.
+	\end{equation}
+Indeed, varying $W$ with respect to $M$, we get the constraint 
+(\ref{sp-constraint}).
+If we add a mass term $W\tree=\bra M,m\ket$ with $\hf\rank m=1$, 
+then $\hf\dim\hF=N_c+1$.
+At the extremum of $W+W\tree$, $M$ is of the block-diagonal form
+(\ref{sp-M}).
+{}From varying $M^\perp$, we get
+	\begin{equation}
+\Pf\hM=2^{N_c-1}m^\perp\Lam^{2N_c+1}.
+	\end{equation}
+By (\ref{sp-emass}), this is exactly the constraint (\ref{sp-q}).
+
+The most symmetric point on $\MC$ is $M=0$,
+where the full global symmetry $SU(F)\times U(1)_R$ is unbroken.
+This is also the most singular point.
+The singularity is the result of additional massless fields.
+In fact all the light fields in $M$ are massless at the origin.
+We check this using 't Hooft's anomaly matching condition.
+Under the global symmetry, 
+the light fermions in the ultraviolet and the
+infrared theories transform as
+	\begin{equation}
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabular}{cc|ccc}
+&	&   $SU(F)$	&$\times$&	$U(1)_R$		\\
+	\hline
+ultraviolet & $\psi_Q$	&   $F^*$  &&  $-\frac{N_c+1}{N_f}$	\\
+&$\lam$	&   $\one$	&	&	$1$	\\
+	\hline
+infrared   &$\psi_M$& $\medwedge^2F^*$ & &  $1-2\frac{N_c+1}{N_f}$ 
+	\end{tabular}
+	\end{equation}
+
+\medskip\noindent
+The non-zero combinations to be matched are
+	\begin{equation}\label{sp-tH}
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabular}{c|ll}
+& ultraviolet		& infrared\\
+\hline
+$\gsu(F)^3$ & $2N_c\,(-d_F)$	& $-d_{\wedge^2F}$\\
+$\gsu(F)^2\gu(1)_R$	& $2N_cc_2(F)\cdot(-\frac{N_c+1}{N_f})$
+& $c_2(\medwedge^2F)\cdot(1-2\frac{N_c+1}{N_f})$	\\
+$\gu(1)_R$ & $4N_cN_f\;(-\frac{N_c+1}{N_f})+N_c(2N_c+1)\;1$
+& $N_f(2N_f-1)\;(1-2\frac{N_c+1}{N_f})$	\\
+$\gu(1)_R^3$ & $4N_cN_f\;(-\frac{N_c+1}{N_f})^3+N_c(2N_c+1)\;1^3$
+& $N_f(2N_f-1)\;(1-2\frac{N_c+1}{N_f})^3$
+	\end{tabular}
+	\end{equation}
+
+\medskip\noindent
+We claim that $c_2(\medwedge^2F)=2(N_f-1)c_2(F)$ and 
+$d_{\wedge^2F}=2(N_f-2)d_F$.
+Indeed, 
+let $\eps_1,\dots,\eps_{2N_f}$ be the weights of the fundamental
+representation of $SU(F)$.
+Since $\sum_{i=1}^{2N_f}\eps_i=0$, we have
+$\sum_{i<j}(\eps_i+\eps_j)^2=2(N_f-1)\sum_{i=1}^{2N_f}\eps_i^2$ and
+$\sum_{i<j}(\eps_i+\eps_j)^3=2(N_f-2)\sum_{i=1}^{2N_f}\eps_i^3$.
+Therefore the two columns match when $N_f=N_c+2$.
+
+	\Headnn{Solution to Problem 4}
+
+
+\Subhead{{\boldmath $N_f\le N_c-5$} and pure gauge theory}
+
+When $N_f\le N_c-5$, it is possible to have a dynamically generated
+superpotential of the form (\ref{so-W}).
+Since most of the analysis is parallel to the $Sp(N_c)$ gauge theories,
+we only give an outline here.
+
+
+Suppose $M$ acquires a large expectation value $\bra M\ket$ of rank $r$.
+Let $\hF=\ker\bra M\ket$.
+Then $F=\hF\oplus\hF^\perp$ and the restriction $\Mperp\in S^2\hF^{\perp *}$
+of $\bra M\ket$ to $\hF^\perp$ is non-degenerate.
+The low energy theory has $N_c-r$ colors and $\dim\hF=N_f-r$ flavors.
+So $b_0=3(N_c-r-2)-(N_f-r)$.
+Matching the coupling constant at $\mu=(\det\Mperp)^{1/2r}$, we obtain
+        \begin{equation}\label{so-eflat}
+\Lam^{3(N_c-2)-N_f}=\det\Mperp\hLam^{3(N_c-r-2)-(N_f-r)}.
+        \end{equation}
+In fact, this relation remains valid for all values of $N_c$, $N_f$ as long as
+$N_c-r\ge5$.
+For future needs, we also consider here the cases $N_c-r\le4$.
+For $N_c-r=4$, in the low energy $SO(4)$ theory, both scales $\hLam_\pm$ of
+the $SU(2)_\pm$ factors are given by (\ref{so-eflat}).
+If $N_c-r=3$, we derive the relation in two stages:
+first from $N_c\ge5$ to $N_c=4$, then from $N_c=4$ to $N_c=3$. 
+In the second stage, $N_c=4$, $r=1$.
+The low energy theory has $3$ colors and $N_f-1$ flavors.
+Above the scale $\hLam$, the gauge group is $SU(2)_+\times SU(2)_-$;
+the coupling constants $g_\pm(\mu)$, or $\tau_\pm(\mu)$ run according
+(\ref{running}) with $b_0=6-N_f$.
+Since $SU(2)$ is diagonally embedded, its coupling constant is given by
+$\tau(\mu)=\tau_+(\mu)+\tau_-(\mu)$.
+Therefore the scale is
+$(\hLam_+^{6-N_f}\hLam_-^{6-N_f})^{1/2(6-N_f)}=(\hLam_+\hLam_-)^{1/2}$.
+At low energies, the $SU(2)$ gauge theory has $b_0=6-2(N_f-1)$.
+Matching the coupling constant $g(\mu)$ at $\mu=\hf\Mperp$, we get
+	\begin{equation}\label{so43-eflat}
+4\hLam_+^{6-N_f}\hLam_-^{6-N_f}=\Mperp^2\hLam^{6-2(N_f-1)}.
+	\end{equation}
+Combining (\ref{so-eflat}) and (\ref{so43-eflat}), we get,
+for any $N_c\ge4$, $N_f$ and $r=N_c-3$,
+	\begin{equation}\label{so3-eflat}
+4(\Lam^{3(N_c-2)-N_f})^2=(\det\Mperp)^2\hLam^{6-2(N_f-N_c+3)}.
+	\end{equation}
+
+When $N_f\le N_c-5$ and $N_c-r\ge5$, a comparison of the superpotential
+(\ref{so-W}) above and below $\mu=(\det\Mperp)^{1/2r}$ yields $A=\hat{A}$.
+If $N_f=N_c-5$ and $r=N_f$, the low energy theory is a pure 
+$SO(5)\cong Sp(2)/\ZZ_2$ gauge theory.
+Using (\ref{sp-A}), we get $\hat{A}=3\cdot2^{\inv{3}}$.
+So $A=3\cdot2^{\inv{3}}$ when $N_f=N_c-5$.
+
+Now we add a mass term $W\tree=\hf\bra M,m\ket$ with $\rank m=r$.
+Again $F=\hF\oplus\hF^\perp$.
+Here $\dim\hF=N_c-r$ and the projection $m^\perp\in S^2\hF^\perp$ of $m$
+is non-degenerate.
+The low energy theory has the same number of colors and $N_f-r$ flavors.
+So $b_0=3(N_c-2)-(N_f-r)$.
+Matching the coupling constant at $\mu=(\det m^\perp)^{1/r}$, we obtain
+        \begin{equation}\label{so-emass}
+\hLam^{3(N_c-2)-(N_f-r)}=\det m^\perp\Lam^{3(N_c-2)-N_f}.
+        \end{equation}
+This is valid for $N_c\ge5$ and all $N_f$.
+When $N_c=4$, the scales $\hLam_\pm$ of the $SU(2)_\pm$ factors are related
+to the scales $\Lam_\pm$ of the ultraviolet theory by the same formula.
+When $N_c=3$, (\ref{so-emass}) should be replaced by
+	\begin{equation}\label{so3-emass}
+\hLam^{6-2(N_f-r)}=(\det m^\perp)^2\Lam^{6-2N_f}.
+        \end{equation}
+
+When $N_f\le N_c-5$, the superpotential $W$ before mass deformation is 
+given by (\ref{so-W}).
+Varying the heavy modes in $M$, the extremum of the total superpotential
+$W+W\tree$ is reached when $M$ is of the diagonal form (\ref{sp-M}) with
+	\begin{equation}\label{so-perp}
+\Mperp=\left(\frac{2A}{N_c-2-N_f}\right)^{\frac{N_c-2-N_f}{N_c-2-(N_f-r)}}
+\left(\frac{\det m^\perp\Lam^{3(N_c-2)-N_f}}{\det\hM}\right)
+^{\inv{N_c-2-(N_f-r)}}(m^\perp){}^{-1}.
+	\end{equation}
+In terms of the of the light fields $\hM$, this extremum has the same form 
+as (\ref{so-W}) with
+        \begin{equation}
+\hat{A}=\frac{N_c-2-(N_f-r)}{2}
+\left(\frac{2A}{N_c-2-N_f}\right)^{\frac{N_c-2-N_f}{N_c-2-(N_f-r)}}.
+        \end{equation}
+If we start from $N_f=N_c-5$, then $A=3\cdot 2^{\inv{3}}$ 
+and $\hat{A}=\hf(N_c-2-(N_f-r))2^{\frac{4}{N_c-2-(N_f-r)}}$.
+Equivalently, for a theory with $N_f\le N_c-5$, the coefficient
+$A$ in (\ref{so-W}) is given by
+	\begin{equation}\label{so-A}
+A=\hf(N_c-2-N_f)2^{\frac{4}{N_c-2-N_f}}.
+	\end{equation}
+
+For pure gauge theories, $N_f=0$ and $A=\hf(N_c-2)2^{\frac{4}{N_c-2}}$.
+As in (\ref{so-ll}), for the pure $SO(N_c)$ gauge theory with $N_c\ge5$,
+	\begin{equation}\label{so-ll}
+\bra\lam\lam\ket=2^{2+\frac{4}{N_c-2}}\pi^2\ii\Lam^3
+=2^{2+\frac{4}{N_c-2}}\pi^2\ii\mu^3\e{\frac{2\pi\ii}{N_c-2}\tau};
+	\end{equation}
+this is $(N_c-2)$-valued, corresponding to the $N_c-2$ vacua.
+Finally, the result is consistent with another accidental isomorphism
+$SO(6)\cong SU(4)/\ZZ_2$.
+Indeed, when $N_c=6$, $A=4$;
+this agrees with the coefficient of the pure $SU(4)$ gauge theory.
+
+
+\Subhead{{\boldmath $N_f=N_c-4$}}
+
+A generic flat deformation on the moduli space breaks the gauge group to 
+$SO(4)\cong(SU(2)_+\times SU(2)_-)/\ZZ_2$.
+{}From (\ref{so-eflat}), the scales $\hLam_\pm$ of the two $SU(2)$ gauge
+theories (without matter) are related to the scale $\Lam$ of 
+the ultraviolet theory by
+	\begin{equation}
+\hLam_\pm^6=\frac{\Lam^{2(N_c-1)}}{\det M}.
+	\end{equation}
+In the infrared, the superpotential of the two $SU(2)_\pm$ gauge theories are
+$W_\pm=2\hLam_\pm^3$, respectively.
+But both of them are two-valued, corresponding to the two vacua of
+each $SU(2)$ theory.
+We fix a square root.
+Then the superpotential of the original theory is
+	\begin{equation}\label{so4-W}
+W=2(\eps_++\eps_-)\left(\frac{\Lam^{2(N_c-1)}}{\det M}\right)^{1/2},
+	\end{equation}
+where $\eps_+,\eps_-=\pm1$.
+There are two physically inequivalent branches $\eps_+=\eps_-$ and
+$\eps_+=-\eps_-$.
+
+The superpotential (\ref{so4-W}) is compatible with mass deformation.
+In the branch $\eps_+=\eps_-$, it is the continuation to $N_f=N_c-4$ of
+(\ref{so-W}).
+As before, adding a mass term $\hf\bra M,m\ket$ of $\rank m=r$
+reduces the theory to $N_f=N_c-4-r$ with the same superpotential
+(\ref{so-W}) in the low energies.
+In the other branch $\eps_+=-\eps_-$, the total superpotential is 
+$W\tree=\hf\bra M,m\ket$.
+The theory has no vacuum and hence does not contribute to the low energy
+theory with a smaller $N_f$.
+
+For $\eps_+=\eps_-$, the superpotential (\ref{so4-W}) lifts the classical 
+vacuum degeneracy and the quantum theory has no vacuum.
+In the branch $\eps_+=-\eps_-$, the vacuum degeneracy is not lifted by 
+quantum effects.
+Classically there is a singularity at $M=0$, where the full gauge symmetry
+is restored and all the gluons become massless.
+We claim that in quantum theory, the singularity is smoothed out and the
+color charges are confined.
+That is, there are no massless gluons and
+all the massless fermions are contained in $M$, even at the origin of $\MM$.
+We check this claim by the 't Hooft and the global anomaly matching conditions.
+At $M=0$, the identity component of the unbroken global symmetry is
+$SU(F)\times U(1)_R$.
+The light fermions in high and low energy theories transform according to
+	\begin{equation}
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabular}{cc|ccc}
+&	&   $SU(F)$	&$\times$&	$U(1)_R$\\
+\hline
+ultraviolet & $\psi_Q$	&   $F^*$& & $-\frac{N_c-2}{N_f}$\\
+&$\lam$	&   $\one$	&	&	$1$			\\
+\hline
+infrared   &$\psi_M$& $S^2F^*$	&&$1-2\frac{N_c-2}{N_f}$ 
+	\end{tabular}
+	\end{equation}
+
+\medskip\noindent
+The non-zero combinations to be matched are given by
+	\begin{equation}\label{so4-tH}
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabular}{c|ll}
+& ultraviolet	& infrared	\\
+\hline
+$\gsu(F)^3$	& $-N_cd_F$	& $-d_{S^2F}$			\\
+$\gsu(F)^2\gu(1)_R$	& $N_cc_2(F)\cdot(-\frac{N_c-2}{N_f})$
+& $c_2(S^2F)\cdot(1-2\frac{N_c-2}{N_f})$	\\
+$\gu(1)_R$	& $N_cN_f\;(-\frac{N_c-2}{N_f})+\hf N_c(N_c-1)\;1$
+& $\hf N_f(N_f+1)\;(1-2\frac{N_c-2}{N_f})$ \\
+$\gu(1)_R^3$  & $N_cN_f\;(-\frac{N_c-2}{N_f})^3+\hf N_c(N_c-1)\;1^3$
+	& $\hf N_f(N_f+1)\;(1-2\frac{N_c-2}{N_f})^3$
+	\end{tabular}
+	\end{equation}
+
+\medskip\noindent
+Let $\eps_i$ ($i=1,\dots,N_f$) be the weights in the defining representation
+$F$.
+Using $\sum_{i=1}^{N_f}\eps_i=0$, it is easy to check
+$\sum_{i\le j}(\eps_i+\eps_j)^2=(N_f+2)\sum_{i=1}^{N_f}\eps_i^2$ and
+$\sum_{i\le j}(\eps_i+\eps_j)^3=(N_f+4)\sum_{i=1}^{N_f}\eps_i^3$.
+So $c_2(S^2F)=(N_f+2)c_2(F)$ and $d_{S^2F}=(N_f+4)d_F$.
+It is now straightforward to check that the two columns of (\ref{so4-tH})
+match when $N_f=N_c-4$, fulfilling 't Hooft's criterion.
+For $N_f=2$, $SU(F)\cong Sp(1)$.
+In the ultraviolet theory, the number of copies of $F^*$ is even ($N_c=6$).
+In the infrared, the representation $S^2F^*\subset F^*\otimes F^*$ is real.
+So the global anomalies also match.
+
+
+\Subhead{{\boldmath $N_f=N_c-3$}}
+
+We first find the superpotential by flat deformations on the moduli space.
+A generic expectation value of $Q$ breaks the gauge group to $SO(3)$.
+Let $\hF\subset F$ a subspace of dimension $1$.
+We consider the limit where a large expectation value 
+$\Mperp\in S^2\hF^{\perp*}$ with rank $N_f-1$ breaks the theory to 
+$SO(4)\cong(SU(2)_+\times SU(2)_-)/\ZZ_2$ 
+with one quark $\hQ\in\Hom(\hF,C)$, which further break the gauge group 
+to a diagonal subgroup $SU(2)/\ZZ_2$.\footnote{The decomposition 
+of $SO(4)$ into $SU(2)_+\times SU(2)_-$ is canonical.
+The isotropy group of $\hQ\in\Hom(\hF,C)$ (in $SO(4)$) and its isomorphisms 
+onto $SU(2)_\pm$ depend on $\hQ$.}
+In the first stage of deformation, from (\ref{so-eflat}), 
+the scales $\hLam_\pm$ of the $SU(2)_+\times SU(2)_-$ theory are given by
+	\begin{equation}
+\hLam_\pm^5=\frac{\Lam^{2N_c-3}}{\det\Mperp}.
+	\end{equation}
+The effective $SU(2)_\pm$ theories have instanton generated superpotentials
+	\begin{equation}\label{so3-W1}
+\hat{W}_\pm=2\frac{\hLam_\pm^5}{\det\hM}=2\frac{\Lam^{2N_c-3}}{\det M}.
+	\end{equation}
+In the second stage, we have the low energy pure $SU(2)$ gauge theory whose
+scale $\hLam$ is given by (\ref{so3-eflat}).
+It has a superpotential
+	\begin{equation}\label{so3-W2}
+\hat{W}=2\hLam^3=4\eps\frac{\Lam^{2N_c-3}}{\det M},
+	\end{equation}
+where $\eps=\pm1$ comes from taking the square root of (\ref{so3-eflat})
+and labels the two vacua of the pure $SU(2)$ theory.
+Combining (\ref{so3-W1}) and (\ref{so3-W2}), we find that the superpotential 
+of the $N_f=N_c-3$ theory is
+	\begin{equation}\label{so3-W}
+W=\hat{W}_++\hat{W}_-+\hat{W}=4(1+\eps)\frac{\Lam^{2N_c-3}}{\det M}.
+	\end{equation}
+The first term in (\ref{so3-W}) is due to the instanton effect
+whereas the second term comes from gaugino condensation in the unbroken 
+$SU(2)$ theory.
+As in $SU(N_c)$ and $Sp(N_c)$ gauge theories, the superpotential (\ref{so3-W})
+is proportional to the exponential of the instanton action, and it is possible
+to form a diagram with two external fermion lines using the instanton vertex.
+The novelty here is that the unbroken gauge group $SU(2)$ is non-Abelian.
+However, when the gauge group is broken to the diagonal SU(2), an instanton
+in one $SU(2)_\pm$ cannot be rotated into the unbroken group.
+Therefore the instanton computation is still reliable because
+there is no infrared divergence.
+
+We check that the result (\ref{so3-W}) is consistent with mass deformation.
+The theory has two branches: $\eps=1$ and $\eps=-1$.
+After adding a mass term $W\tree=\hf\bra M,m\ket$ with $\rank m=1$,
+the two branches should correspond to those of $N_f=N_c-4$.
+In fact, when $\eps=1$, the total superpotential (\ref{so3-W}) is the
+continuation of (\ref{so-W}), just as (\ref{so4-W}) when $\eps_+=\eps_-$.
+So the extremum of $W+W\tree$ matches (\ref{so4-W}) in the branch
+$\eps_+=\eps_-$.
+In particular, from (\ref{so-perp}), the extremum is reached when
+	\begin{equation}\label{so3-sol}
+\Mperp=4\left(\frac{\Lam^{2N_c-3}}{m^\perp\det\hM}\right)^{1/2}.
+	\end{equation}
+The ambiguity in the sign of the square root corresponds to the two
+possibilities $\eps_+=\eps_-=\pm1$.
+In the other branch $\eps=-1$, we claim that the theory has additional light
+fields $q\in F\otimes\medwedge^{N_f}F$ coupling to $M$ and that
+the superpotential near $M=0$ behaves as
+	\begin{equation}\label{so4-Wq}
+W\sim\inv{2\mu}M(q,q),
+	\end{equation}
+where $\mu\in(\medwedge^{N_f}F)^{\otimes2}$ 
+is a parameter of mass dimension $1$.
+The $R$-charges of $M$, $q$ are $-\frac{2}{N_f}$, $1+\inv{N_f}$, respectively.
+This is consistent with requirement that $W$ has $R$-charge $2$.
+Upon mass deformation, we write $F=\hF\oplus\hF^\perp$ as before.
+The extremum of $W+W\tree$ is reached at
+$q^\perp=\pm(-m\mu)^{1/2}$, $\hat{q}=0$, $M(q,\cdot)=0$.
+The light fields are in $M=\hM\in S^2\hF$.
+This matches the low energy behavior of $N_f=N_c-4$.
+The signs of $q^\perp$ correspond to the choices of $\eps_+$, $\eps_-$
+in $\eps_+=-\eps_-=\pm1$.
+
+We check the postulate on the existence of $q$ using 't Hooft's and global
+anomaly matching conditions.
+In the low energy theory, the global symmetry $SU(F)\times U(1)_R$
+is unbroken at $M=0$.
+Also at $M=0$, the fields $q$ are massless.
+The $R$-charge of $\psi_q$ is $\inv{N_f}$.
+So their contribution to the left column of (\ref{so4-tH}) is
+	\begin{equation}\label{anomaly-q}
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabular}{c|c}
+& infrared: additional contribution from $q$	\\
+\hline
+$\gsu(F)^3$		&	$d_F$	\\
+$\gsu(F)^2\gu(1)_R$	&	$c_2(F)\cdot\inv{N_f}$	\\
+$\gu(1)_R$		&	$N_f(\inv{N_f})$ \\
+$\gu(1)_R^3$  		&	$N_f(\inv{N_f})^3$
+	\end{tabular}
+	\end{equation}
+
+\medskip\noindent
+It is straightforward to check that for $N_f=N_c-3$, each term in the left
+column of (\ref{so4-tH}) is equal to the sum of the corresponding one in the
+right column and that in (\ref{anomaly-q}).
+When $N_f=2$, the number of copies of $F^*$ in the ultraviolet theory
+is odd ($N_c=5$).
+In the infrared theory, the representation $S^2F^*$ is real, but there is
+an additional quark $q$ in the representation $F$.
+Therefore the global anomalies match.
+
+
+\Subhead{{\boldmath $N_f=N_c-2$}}
+
+Classically, a generic expectation value $\bra M\ket$ breaks the gauge group
+to the Abelian group $SO(2)\cong U(1)$.
+At the singularities, where $\bra M\ket$ is of a lower rank, the unbroken
+gauge group is larger and hence there are more massless gauge bosons.
+At the quantum level, since no superpotential is generated, the vacuum
+degeneracy is not lifted.
+In fact when $N_f=N_c-2$, $U(1)_X=U(1)_R$ is anomaly free and 
+$M$ is neutral, whereas a superpotential should have $R$-charge $2$.
+We expect the classical picture to be valid when $\bra M\ket$ is large.
+There the theory is in the Higgs phase.
+Modification is needed near the singularities due to strong coupling effects.
+In particular, the quantum moduli space may have different singularities.
+
+Over a smooth point $M$ in the moduli space, we have a $U(1)$ gauge theory
+whose scale is set by $M$.
+By $N=1$ supersymmetry, the effective gauge coupling $\tau\eff(M)$ is 
+holomorphic in $M$.
+However, due to the periodicity in the (effective) $\theta$-angle and
+the electric-magnetic duality, $\tau\eff$ needs not be single-valued in $M$;
+it is defined up to fractional linear transformations of $SL(2,\ZZ)$.
+At the singularities, $\tau\eff$ is not defined because there are extra
+massless fields.
+Consequently, there are possible non-trivial $SL(2,\ZZ)$ monodromies around
+the singularities.
+These information can be summarized by a family of elliptic curves over
+the smooth part $\MS$ of the moduli space whose fibre over $M$ has modular
+parameter $\tau\eff(M)$.
+The $j$-invariant of the family is a well-defined holomorphic function on
+$\MS$.
+In our situation, the $j$-invariant is a function of $U=\det M$ because of
+the (anomaly free) $SU(F)$ symmetry.
+We construct a family of elliptic curves over the smooth part of
+$\UU=(\medwedge^{N_f}F^*)^{\otimes2}$;
+the family over $\MS$ is then the pull back by the determinant map.
+
+We consider the range where $M$ is of the form (\ref{sp-M}):
+the large expectation value $\Mperp$ of rank $N_c-3$ breaks the gauge group
+to $SO(3)\cong SU(2)/\ZZ_2$, which is further broken to $U(1)$ by $\hM$.
+The $SO(3)$ theory in the intermediate stage has a single flavor.
+It is the $N=2$ theory which gives rise to Donaldson and Seiberg-Witten
+invariants.
+Using (\ref{so3-eflat}), the scale $\hLam$ is given by
+	\begin{equation}
+\hLam^4=4\left(\frac{\Lam^{2N_c-4}}{\det\Mperp}\right)^2.
+	\end{equation}
+The family of elliptic curve is
+	\begin{equation}\label{SWcurve}
+y^2=(x-\hLam^2)(x+\hLam^2)(x-u),
+	\end{equation}
+where the parameter $u$ is related to our theory by $u=\hM/4$.
+After making a change of variables $x\mapsto x/4\det\Mperp$,
+$y\mapsto y/(4\det\Mperp)^{3/2}$, (\ref{SWcurve}) becomes
+	\begin{equation}
+y^2=(x-8\Lam^{2N_c-4})(x+8\Lam^{2N_c-4})(x-U).
+	\end{equation}
+This is a good approximation for large $U$.
+When $U$ goes around $\infty$, the monodromy is $PT^{-2}$.
+For large $U$, we have
+	\begin{equation}\label{approx-curve}
+\e{2\pi\ii\tau\eff(M)}=\left(\frac{\Lam}{U^{1/2(N_c-2)}}\right)^{4N_c-8}.
+	\end{equation}
+
+The exact family of curves which agrees with (\ref{approx-curve}) for
+large $U$ must be of the form
+	\begin{equation}
+y^2=(x-8\Lam^{2N_c-4})(x+8\Lam^{2N_c-4})(x-U+\al\Lam^{2N_c-4}).
+	\end{equation}
+The curve is singular at $U=(\al\pm8)\Lam^{2N_c-4}$.
+To determine $\al$, we add a mass term $W\tree=\hf\bra M,m\ket$ with 
+$\rank m=1$.
+Then the vacuum degeneracy is lifted except at two singularities, which 
+shall correspond to the two branches $\eps=\pm1$ of the $N_f=N_c-3$ theory.
+The $\eps=1$ branch has a superpotential
+	\begin{equation}\label{so2-Wm}
+\hf M^\perp m^\perp=8\frac{\hLam^{2N_c-3}}{\det\hM}.
+	\end{equation}
+So $U=16\hLam^{2N_c-3}/m^\perp=16\Lam^{2N_c-4}$.
+The $\eps=-1$ branch has $\det\hM=0$, hence $U=0$.
+Therefore we have a unique solution $\al=8$.
+After making another change of variable $x\mapsto x-8\Lam^{2N_c-4}$, we get
+the family of elliptic curves of our theory
+	\begin{equation}
+y^2=x(x-16\Lam^{2N_c-4})(x-U).
+	\end{equation}
+The monodromies when $U$ goes around $16\Lam^{2N_c-4}$ and $0$ are
+$(T^2S)T(T^2S)^{-1}$ and $ST^2S^{-1}$, 
+and the fields that become massless at $U=16\Lam^{2N_c-4}$ and $U=0$
+are dyons and magnectic monopoles, respectively.
+Unlike the $N=2$ gauge theory, the theory here does not have the $\ZZ_2$
+symmetry that relates the two singular components in the modular space.
+We will see that the physics in these branches are inequivalent.
+
+Taking $M$ around the surface $\det M=16\Lam^{2N_c-4}$ in $\MM$,
+$U$ goes around\break
+ $16\Lam^{2N_c-4}$ once, so the monodromy is 
+$(T^2S)T(T^2S)^{-1}$.
+{}From the one-loop $\beta$-function, we conclude that a pair of dyons
+$E^\pm$ of charges $\pm1$ become massless at $U=16\Lam^{2N_c-4}$.
+The effective action when $U$ is near $16\Lam^{2N_c-4}$ is of the form
+	\begin{equation}
+W\sim(U-16\Lam^{2N_c-4})\,E^+\!\cdot E^-,
+	\end{equation}
+where $\cdot$ is the pairing between fields of opposite $U(1)$ charges.
+After adding the mass term $W\tree=\hf\bra M,m\ket$ with $\rank m=1$,
+the $M^\perp$ equation of motion implies that $E^+\cdot E^-=-m^\perp/2\det\hM$.
+The light fields are in $\hM$ and the superpotential (\ref{so2-Wm})
+agrees with the $\eps=1$ branch of $N_f=N_c-3$.
+The $U(1)$ gauge bosons becomes heavy due to the expectation values of
+$E^\pm$.
+But since $E^\pm$ are dyons, this is called oblique confinement.
+
+We check 't Hooft's anomaly condition at a generic point $M_0$ on the moduli 
+space.
+The light fermions in the infrared theory are the mesons $M$, the photino
+$\lam_0$ and, if $\det M=16\Lam^{2N_c-4}$, the dyons $E^\pm$.
+When $M_0$ is non-degenerate and is compatible with the Hermitian form on $F$,
+the global symmetry is broken to $SO(F)\times U(1)_R$.
+The light fermions in the high and low energy theories transform as
+	\begin{equation}
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabular}{cc|ccc}
+&&$SO(F)$ &$\times$ &$U(1)_R$\\
+\hline
+ultraviolet & $\psi_Q$	&   $F^*$  &&  $-\frac{N_c-2}{N_f}=-1$\\
+&$\lam$	&   $\one$	&  &	$1$\\
+\hline
+infrared   &$\psi_M$& $S^2F^*$ 
+& &  $1-2\frac{N_c-2}{N_f}=-1$\\
+&$\lam_0$	& $\one$	&&	$1$\\
+&($E^\pm$) 	& $\one$	&&	$0$
+	\end{tabular}
+	\end{equation}
+
+\medskip\noindent
+With or without $E^\pm$, the non-zero combinations to be matched are
+	\begin{equation}
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabular}{c|lll}
+& ultraviolet	&& infrared	\\
+\hline
+$\gso(F)^2\gu(1)_R$ & $N_cc_2(F)\cdot(-1)$ &&   $c_2(S^2F)\cdot(-1)$\\
+$\gu(1)_R$ & $N_cN_f\;(-1)+\hf N_c(N_c-1)\;1$ && $\hf N_f(N_f+1)\;(-1)+1$ \\
+$\gu(1)_R^3$ &$N_cN_f\;(-1)^3+\hf N_c(N_c-1)\;1^3$ 
+&& $\hf N_f(N_f+1)\;(-1)^3+1^3$
+	\end{tabular}
+	\end{equation}
+
+\medskip\noindent
+It is easy to check that the two columns match when $N_f=N_c-2$.
+The global anomalies also match because all the representations of $SO(F)$
+are of real type here. 
+We compare this and the $Sp(N_c)$ theory with $N_f=N_c+1$.
+There, the meason $M$ is constrained on the surface (\ref{sp-q}) and
+there is no massless photon.
+In the low energies, the fermion $\psi_M$ satisfies a traceless conditon.
+In the present theory, $M$ can be deformed away from the singular branch
+and hence there is no traceless condition on $\psi_M$.
+
+At the other singularity $U=0$, a non-trivial loop around a point $M_0$ with 
+$\rank M_0=r$ is mapped one that goes $N_f-r$ times around $0$.
+So the monodromy is $ST^{2(N_f-r)}S^{-1}$.
+Therefore the number of pairs of monopoles becoming massless at $M_0$
+is $N_f-r$.
+This suggest a superpotential
+	\begin{equation}\label{so2-W0}
+W\sim\inv{2\mu}\bra M,\tQ^+\!\cdot\tQ^-\ket,
+	\end{equation}
+where $\mu$ is of mass dimension $1$ and $\tQ^\pm$ represent magnetic 
+monopoles that become massless at the singularity.
+After adding a mass term $W=\hf\bra M,m\ket$ with $\rank m=1$,
+the fermionic content reduces to the $\eps=-1$ branch of $N_f=N_c-3$.
+Again, the expectation values of $\tQ^\perp$ lift the $U(1)$ gauge boson.
+Consequently we see confinement in the original description.
+The light superfield $q$ in the $N_f=N_c-3$ theory can be constructed by
+	\begin{equation}
+q=\inv{2\sqrt{m^\perp\mu}}
+(\htQ^+\!\cdot(\tQ^-){}^\perp-(\tQ^+){}^\perp\!\cdot\htQ^-).
+	\end{equation}
+
+We check 't Hooft's anomaly matching condition at $M=0$.
+In addition to $M$, the fermionic component $\psi_{\tQ^\pm}$ of $\tQ^\pm$
+and the photino $\lam_0$ transform as
+	\begin{equation}
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabular}{c|ccc}
+&   $SU(F)$	&$\times$&	$U(1)_R$		\\
+		\hline
+$\psi_{\tQ^\pm}$&   $F$		&	&  $0$		\\
+$\lam_0$	& $\one$	&	&  $1$
+	\end{tabular}
+	\end{equation}
+
+\medskip\noindent
+Their contribution to anomaly is
+	\begin{equation}\label{so2-tH}
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabular}{c|c}
+& infrared: additional contribution from $\lam_0$, $\tQ^\pm$\\
+\hline
+$\gsu(F)^3$		&	$2d_F$	\\
+$\gsu(F)^2\gu(1)_R$	&	$0$	\\
+$\gu(1)_R$		&	$1$	\\
+$\gu(1)_R^3$  		&	$1^3$
+	\end{tabular}
+	\end{equation}
+
+\medskip\noindent
+It is easy to check that the left column of (\ref{so4-tH}) is the sum of
+the right column and (\ref{so2-tH}).
+The global anomalies also match.
+
+ 
+\lecture{Problems 5--6}
+
+\catcode`\@=11
+%{\let\@makefnmark\relax  \let\@thefnmark\relax
+%   \footnote{\bf Solutions by Siye Wu}\addtocounter{footnote}{-1}}
+\catcode`\@=13
+
+	\Headnn{Solution to Problem 5}
+
+The supersymmetric gauge theory with gauge group $G=Sp(C)$ and
+quarks $Q\in\Hom(F,C)$ is called the electric theory.
+When $N_f\ge N_c+3$, we define a dual theory, called the magnetic theory,
+with gauge group $\tilde{G}=Sp(\tC)$.
+The color space $\tC$ is an Hermitian vector space of dimension
+$2\tN=2(N_f-N_c-2)$ equipped with a compatible symplectic form $\tom$.
+The flavor space is
+	\begin{equation}
+\tF=F^*\otimes(\medwedge^{2N_f}F)^{\inv{2(\tN+1)}}.
+	\end{equation}
+In addition to the dual quarks $\tQ\in\Hom(\tF,\tC)$, the magnetic theory has
+elementary mesons $M\in\medwedge^2F^*$.
+The fields $\tQ$, $M$, their fermionic components $\psi_{\tQ}$, $\psi_M$
+and the gluino $\tilde{\lam}$ of the magnetic theory transform under
+the group $SU(F)\times U(1)_R$ according to
+	\begin{equation}\label{sp-transD}
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabular}{c|ccc}
+& $SU(F)$	&$\times$   &	$U(1)_R$			\\
+	\hline
+$\tQ$	& $F$	&	&   $\frac{N_c+1}{N_f}$		\\
+$\psi_{\tQ}$	& $F$		&&   $\frac{N_c+1}{N_f}-1$\\
+$M$	  & $\medwedge^2F^*$	&&$2(1-\frac{N_c+1}{N_f})$	\\
+$\psi_M$  & $\medwedge^2F^*$	&&$1-2\frac{N_c+1}{N_f}$	\\
+$\tilde{\lam}$	& $\one$	&&   $1$
+	\end{tabular}
+	\end{equation}
+
+\medskip\noindent
+The global symmetry $SU(F)\times U(1)_R$ is anomaly free in the dual theory;
+this can be checked by a simple calculation
+$(\frac{N_c+1}{N_f}-1)\cdot 2N_fc_2(\tC)+c_2(\tilde{G})=0$.
+The fields $\tQ$ and $M$ couple through a superpotential
+	\begin{equation}\label{sp-WD}
+W=\inv{2\mu}\bra M,\tQ^*\tom\ket,
+	\end{equation}
+where
+	\begin{equation}\label{sp-mu}
+\mu\in(\medwedge^{2N_f}F^*)^{\inv{\tN+1}}
+	\end{equation}
+has mass dimension $1$.
+The superpotential has $R$-charge $2$ and is invariant under $SU(F)$.
+Therefore the dual theory has the same global symmetry $SU(F)\times U(1)_R$.
+
+The $\beta$-functions of the electric and magnetic theories are given by
+$b_0=3(N_c+1)-N_f$ and $\tilde{b}_0=3(\tN+1)-N_f=2N_f-3(N_c+1)$, respectively.
+The scale $\tLam$ of the dual theory should be related to $\Lam$ and $\mu$.
+Because $\Lam$, $\tLam$ and $\mu$ all have mass dimension $1$ and
+because of (\ref{sp-mu}), (\ref{sp-Lam}) and its magnetic counterpart,
+the only possible relation among them is
+	\begin{equation}\label{sp-scaleD}
+\Lam^{3(N_c+1)-N_f}\tLam^{3(\tN+1)-N_f}=C(-1)^{\tN+1}\mu^{N_f},
+	\end{equation}
+where $C$ is a constant to be determined later.
+
+We check that duality is an involution.
+In the double dual theory, the number of colors is $N_f-\tN-2=N_c$, and the
+flavor space is $\tF^*\otimes(\medwedge^{2N_F}\tF)^{\inv{2(N_c+1)}}\cong F$.
+There are new mesons $\tM\in\medwedge^2\tF^*$ and quarks $Q\in\Hom(F,C)$.
+The total superpotential is
+	\begin{equation}\label{sp-WDD}
+W=\inv{2\mu}\bra M,\tM\ket+\inv{2\tilde{\mu}}\bra\tM,Q^*\om_c\ket,
+	\end{equation}
+where $\tilde{\mu}\in(\medwedge^{2N_f}\tF^*)^{\inv{N_c+1}}\cong
+(\medwedge^{2N_f}F^*)^{\inv{\tN+1}}$.
+We propose that $\tilde{\mu}=-\mu$.
+Then the double dual theory has the same scale $\Lam$ as the electric theory,
+and the equation of motion of $\tM$ is $M=Q^*\om_c$.
+Therefore we recover the electric theory.
+
+The electric theory is infrared free when $b_0\le0$, i.e., 
+when $N_f\ge3(N_c+1)$.
+(When $b_0=0$, the two-loop $\beta$-function is positive.)
+It is ultraviolet free when the dual theory is infrared free, i.e.,
+when $\tilde{b}_0\le0$ or $N_f\le\frac{3}{2}(N_c+1)$.
+We claim that for $\frac{3}{2}(N_c+1)<N_f<3(N_c+1)$, the theory flows
+to an interacting superconformal field theory in the infrared.
+The infrared behavior of the $Sp(N_c)$ theories with $N_f\ge N_c+3$ 
+and their duals is summarized in the following table.
+
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{c|c|c}
+&   electric theory	&     magnetic theory	\\
+\hline
+$N_c\ge1$, $N_f\ge3(N_c+1)$ &infrared free &strongly coupled\\
+($\tN+3\le N_f\le\frac{3}{2}(\tN+1)$) &  &\\
+\hline	
+$\frac{3}{2}(N_c+1)<N_f<3(N_c+1)$ &    non-trivial &non-trivial	\\
+($\frac{3}{2}(\tN+1)<N_f<3(\tN+1)$)& 
+infrared fixed point& infrared fixed point\\  
+\hline
+$N_c+3\le N_f\le\frac{3}{2}(N_c+1)$ & strongly coupled 
+  & infrared free\\
+($\tN\ge1$, $N_f\ge3(\tN+1)$) &		&
+\end{tabular}
+\end{center}
+\medskip
+
+That the electric and the magnetic theories describe the same low energy 
+physics will be established through the following highly nontrivial 
+consistency tests.
+
+
+\Subhead{Chiral operators and the unitarity bound}
+
+Though their field contents seem rather different, the electric and 
+the magnetic theories have the same gauge invariant operators.
+We construct the mapping of gauge invariant chiral operators.
+The composite meson $Q^*\om_c$ of the electric theory corresponds to the
+elementary meson $M$ of the magnetic theory, 
+whereas the composite meson $\tM=\tQ^*\tom$ of the magnetic theory vanishes
+by the equation of motion of $M$.
+
+At the non-trivial infrared fixed-points, the dimensions of the chiral fields
+can be calculated by their $R$-charges.
+In fact,
+	\begin{equation}
+D(M)=\frac{3}{2}R(M)=3\left(1-\frac{N_c+1}{N_f}\right).
+	\end{equation}
+The unitarity bound $D(M)\ge1$ is satisfied if $N_f\ge\frac{3}{2}(N_c+1)$.
+
+
+\Subhead{'t Hooft anomaly matching condition}
+
+Under $SU(F)\times U(1)_R$, the fermions $\psi_{\tQ}$, $\psi_M$, 
+$\tilde{\lam}$ transform as (\ref{sp-transD}).
+At $M=0$, all matter fields are massless and the 
+whole global symmetry group is unbroken. 
+The non-zero contributions to the 't Hooft condition are
+	\begin{equation}
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabular}{c|c}
+&magnetic\\
+\hline
+$\gsu(F)^3$ &$2\tN\;d_F\!-\!d_{\wedge^2F}$\\
+$\gsu(F)^2\gu(1)_R$ &$2\tN\;c_2(F)\cdot(\frac{N_c+1}{N_f}\!-\!1)+
+  c_2(\medwedge^2F)\cdot(1\!-\!2\frac{N_c+1}{N_f})$	\\
+$\gu(1)_R$ & $4\tN N_f\;(\frac{N_c+1}{N_f}\!-\!1)
++N_f(2N_f\!-\!1)\;(1\!-\!2\frac{N_c+1}{N_f})+\tN(2\tN+1)\;1$\\
+$\gu(1)_R^3$  &$4\tN N_f\;(\frac{N_c+1}{N_f}\!-\!1)^3
++N_f(2N_f\!-\!1)\; (1\!-\!2\frac{N_c+1}{N_f})^3+\tN(2\tN+1)\;1^3$
+	\end{tabular}
+	\end{equation}
+
+\medskip\noindent
+Using $d_{\wedge^2F}=2(N_f-2)d_F$ and $c_2(\medwedge^2F)=2(N_f-1)$,
+the above matches the left column of (\ref{sp-tH}).
+
+
+\Subhead{Deformation along the flat directions}
+
+The magnetic theory has the same space of ground states as the electric theory.
+In the electric theory, the classical moduli space $\MC$ consists of $M$
+satisfying (\ref{sp-constraint}) as a classical constraint.
+Since the superpotential is absent, the quantum moduli $\MQ$ space is 
+the same as $\MC$; we denote both by $\MM$.
+In the magnetic theory, the equations of motion of $M$ set $\tQ=0$. 
+The same constraint (\ref{sp-constraint}) are enforced by non-perturbative
+quantum effects.
+In fact, if $\hf\rank M>N_c$, then the number of flavors in the low energy 
+magnetic theory is $N_f-\hf\rank M<\tN+2$.
+When $N_f-\hf\rank M\le\tN$, a superpotential of the form (\ref{sp-W}) is
+generated, and consequently there is no vacuum.
+When $N_f-\hf\rank M=\tN+1$, the light components of $\tM=\tQ^*\tom$ are
+constrained by an equation like (\ref{sp-q}) which implies $\tQ\ne0$.
+Therefore the superpotential (\ref{sp-WDD}) does not have an extremum
+on the constraint surface and there is no vacuum in this case either.
+Thus $\hf\rank M\le N_c$ in the low energy magnetic theory.
+
+We show that the procedure of deforming $M$ in $\MM$ commutes with taking
+the dual.
+Suppose in the electric theory, $M$ has an expectation value
+$\bra M\ket$ with $\hf\rank\bra M\ket=r$.
+At low energies, the gauge group is broken to $Sp(N_c-r)$,
+and there are $N_f-r$ light flavors.
+Using the previous notations,
+the mass scale $\hLam$ of the effective theory is given by (\ref{sp-eflat}).
+The original magnetic theory has $\tN$ colors and $N_f$ flavors,
+and the scale $\tLam$ is related to $\Lam$ by (\ref{sp-scaleD}).
+Now the expectation value $\bra M\ket$ gives mass to $r$ components of 
+the dual quark $\tQ$.
+The low energy magnetic theory has $\tN$ colors and $N_f-r$ flavors.
+Its scale $\htLam$ is given by
+	\begin{equation}\label{sp-mflat}
+\htLam^{3(\tN+1)-(N_f-r)}=\Pf(\Mperp/2\mu)\tLam^{3(\tN+1)-N_f}.
+	\end{equation}
+It follows from (\ref{sp-eflat}) and (\ref{sp-mflat}) that
+the relation (\ref{sp-scaleD}) is preserved at low energies.
+Thus the low energy magnetic theory is dual to the low energy electric theory.
+
+
+\Subhead{Mass deformation}
+
+We now check that mass deformation commutes with taking the dual.
+Suppose a mass term $\hf\bra M,m\ket$ with $\hf\rank m=r$
+is added to the electric theory.
+We follow the previous notations.
+The low energy theory has quarks $\hQ\in\Hom(\hF,C)$.
+Its scale $\hLam$ is given by (\ref{sp-emass}).
+When $r\le N_f-N_c-2$, it has a dual description as well.
+In the magnetic theory dual to the original electric theory, let 
+$\htF=\hF\otimes(\medwedge^{2N_f}F)^{\inv{2(\tN+1)}}$.
+The equations of motion of the heavy components of $M$ imply that
+	\begin{equation}
+\tQ^*\tom=\four{\htM}{}{}{-2\mu m^\perp},
+	\end{equation}
+where $\htM\in S^2\htF$ contains the light components.
+This breaks the $Sp(\tN)$ gauge symmetry to $Sp(\tN-r)$.
+Integrating out the heavy components in $M$, $\tQ$, we obtain
+a low energy effective superpotential
+	\begin{equation}\label{sp-Wmass}
+\hat{W}=\inv{2\mu}\bra\hat{M},\hat{\tilde{M}}\ket.
+	\end{equation}
+This is exactly a magnetic theory of $\tN-r$ flavors and $N_f-r$ quarks.
+Its mass scale $\htLam$ is given by the magnetic counterpart of 
+(\ref{sp-eflat}), i.e.,
+	\begin{equation}\label{sp-mmass}
+\tLam^{3(\tN+1)-N_f}=(-\mu)^r\Pf m^\perp\htLam^{3(\tN-r+1)-(N_f-r)}.
+	\end{equation}
+{}From (\ref{sp-emass}) and (\ref{sp-mmass}),
+we see that the relation (\ref{sp-scaleD}) is preserved at low energies.
+So the low energy theory of the magnetic theory after mass deformation is
+dual to that of the electric theory.
+
+If $r=N_f-N_c-2$, then in the low energy electric theory, the number of 
+flavors is $N_f-r=N_c+2$.
+In the low energy magnetic theory, the gauge symmetry is completely 
+broken since $\tN-r=0$.
+Therefore, the instanton contribution should be included in the magnetic
+theory just as in the case $N_f=N_c$ for the electric theory.
+Now the number of zero modes of $\psi_{\tQ}$ is $2N_f>2\tN$;
+these $2(N_c+2)$ extra ones are absorbed by the interaction (\ref{sp-WD}),
+generating a term proportional to the $(N_c+2)$-th power
+of $(M/2\mu)_{\rm light}$ in the effective superpotential.
+So the instanton contribution is
+\begin{align}\label{part2}
+2^{\tN-1}\frac{\tLam^{3(\tN+1)-N_f}\Pf(M/2\mu)_{\mathrm{light}}}
+{\Pf(\tM)_{\mathrm{heavy}}}
+&=\frac{(-1)^r\tLam^{3(\tN+1)-N_f}
+  \Pf\hM}{2^{N_c+3}\mu^{N_f}\Pf m^\perp}\\
+&\null\kern-65pt
+=-\frac{C\;\Pf\hM}{2^{N_c+3}\Pf m^\perp\Lam^{3(N_c+1)-N_f}}
+=-\frac{C\;\Pf\hM}{2^{N_c+3}\hLam^{2N_c+1}},\nonumber
+\end{align}
+where (\ref{sp-scaleD}), (\ref{sp-emass}) have been used.
+This is exactly (\ref{sp-W+2}) if we choose $C=16$.
+
+	\Headnn{Solution to Problem 6}
+
+Recall that the electric theory has a gauge group $G=SO(C)$
+and quarks $Q\in\Hom(F,C)$.
+The cases with $N_c\ge4$ and $N_f\le N_c-2$ have been treated earlier.
+When $N_f\ge N_c-1$, we define a magnetic theory whose gauge group
+is $\tilde{G}=SO(\tC)$.
+Here the space of dual colors $\tC$ is a complex vector space of
+dimension $\tN=N_f-N_c+4$.
+It has a linear metric $\tilde{g}_c$ and a compatible volume form
+$\tilde{v}_c$.
+The space of flavors is
+	\begin{equation}
+\tF=F^*\otimes(\medwedge^{N_f}F)^\inv{\tN-2}.
+	\end{equation}
+The matter fields of the magnetic theory are quarks $\tQ\in\Hom(\tF,\tC)$
+and (elementary) mesons $M\in\medwedge^2F^*$.
+
+We first treat the cases $N_c\ge4$, $N_f\ge N_c$.
+We concentrate on the identity component $SU(F)\times U(1)_R$ of the global
+symmetry.
+The fields $\tQ$, $M$, their fermionic components $\psi_{\tQ}$, $\psi_M$
+and the gluino $\tilde{\lam}$ transform as
+	\begin{equation}\label{so-transD}
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabular}{c|ccc}
+& $SU(F)$	&$\times$   &	$U(1)_R$		\\
+\hline
+$\tQ$	& $F$	&	&   $\frac{N_c-2}{N_f}$		\\
+$\psi_{\tQ}$  & $F$	&	&   $\frac{N_c-2}{N_f}-1$	\\
+$M$	& $S^2F^*$	&	&   $2(1-\frac{N_c-2}{N_f})$	\\
+$\psi_M$& $S^2F^*$	&	&   $1-2\frac{N_c-2}{N_f}$	\\
+$\tilde{\lam}$	& $\one$	&	&   $1$
+	\end{tabular}
+	\end{equation}
+
+\medskip\noindent
+It is easy to check that $SU(F)\times U(1)_R$ is anomaly free 
+in the dual theory.
+The fields $\tQ$ and $M$ couple through a superpotential
+	\begin{equation}\label{so-WD}
+W=\inv{2\mu}\bra M,\tQ^*\tilde{g}_c\ket,
+	\end{equation}
+where
+	\begin{equation}\label{so-mu}
+\mu\in(\medwedge^{N_f}F^*)^{\frac{2}{\tN-2}}
+	\end{equation}
+has mass dimension $1$.
+The superpotential has $R$-charge $2$ and is invariant under $SU(F)$.
+
+When $N_f\ge N_c$, the $\beta$-functions of the electric and magnetic theories
+are given by $b_0=3(N_c-2)-N_f$ and $\tilde{b}_0=3(\tN-2)-N_f=2N_f-3(N_c-2)$,
+respectively.
+The scale $\tLam$ of the magnetic theory is given by
+	\begin{equation}\label{so-scaleD}
+\Lam^{3(N_c-2)-N_f}\tLam^{3(\tN-2)-N_f}=C(-1)^{\tN}\mu^{N_f},
+	\end{equation}
+where $C$ is a constant to be determined.
+It is easy to check that duality is an involution just as the symplectic case.
+The electric theory is infrared free when $N_f\ge3(N_c-2)$.
+It is ultraviolet free when the dual theory is infrared free, i.e., 
+when $N_f\le\frac{3}{2}(N_c-2)$.
+We claim that when $\frac{3}{2}(N_c-2)<N_f<3(N_c-2)$, the theory flows
+to an interacting superconformal field theory in the infrared.
+The infrared behavior of the $SO(N_c)$ theories with $N_f\ge N_c+3$ 
+and their duals is summarized in the following table.
+
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{c|c|c}
+&  electric theory &   magnetic theory	\\
+\hline
+$N_c\ge4$, $N_f\ge3(N_c-2)$ &infrared free &strongly coupled\\
+($\tN\le N_f\le\frac{3}{2}(\tN-2)$) & 	 &	\\
+\hline	
+$\frac{3}{2}(N_c-2)<N_f<3(N_c-2)$ &non-trivial 	&non-trivial\\
+($\frac{3}{2}(\tN-2)<N_f<3(\tN-2)$)& 
+infrared fixed point& infrared fixed point\\  
+\hline
+$N_c+3\le N_f\le\frac{3}{2}(N_c-2)$ & strongly coupled 
+  & infrared free\\
+($\tN\ge4$, $N_f\ge3(\tN-2)$) &		&
+\end{tabular}
+\end{center}
+
+\Subhead{Chiral operators and the unitarity bound}
+
+We construct the mapping of gauge invariant chiral operators.
+Obviously, the composite mesons $Q^*\om_c$ of 
+the electric theory correspond
+to the elementary meson $M$ of the magnetic theory.
+Recall the baryons $B=Q^*v_c\in\medwedge^{N_c}F^*$ 
+in the electric theory.
+Since the (fermionic) superfield strength $W_\al$ is valued in
+the Lie algebra $\gso(C)\cong\medwedge^2C$, we can define additional
+gauge invariant fields
+$b=Q^*v_c(W_\al,W^\al,\cdot\,)\in\medwedge^{N_c-4}F^*$
+and $w_\al=Q^*v_c(W_\al,\cdot\,)\in\medwedge^{N_c-2}F^*$.
+The field $q$ in the $N_f=N_c-3$ theory is proportional to $b$.
+
+In the dual theory, the baryons 
+$\tilde{B}\in\medwedge^{\tN}\tF^*\cong\medwedge^{N_f-N_c+4}F\otimes
+(\medwedge^{N_f}F^*)\otimes(\medwedge^{N_f}F^*)^{\frac{2}{\tN-2}}$
+and 
+$\tilde{b}\in\medwedge^{\tN-4}\tF^*\cong\medwedge^{N_f-N_c}F\otimes
+(\medwedge^{N_f}F^*)\otimes(\medwedge^{N_f}F^*)^{-\frac{2}{\tN-2}}$,
+$\tilde{w}_\al\in\medwedge^{\tN-2}\tF^*
+\cong\medwedge^{N_f-N_c+2}F\otimes
+(\medwedge^{N_f}F^*)$.
+It is easy to check that
+$R(B)=R(\tilde{b})=\frac{N_c(N_f-N_c+2)}{N_f}$,
+$R(b)=R(\tilde{B})=\frac{(N_c-2)(N_f-N_c+4)}{N_f}$ and
+$R(w_\al)=R(\tilde{w}_\al)=1+\frac{(N_c-2)(N_f-N_c+2)}{N_f}$.
+So $B$ and $\tilde{b}$, $b$ and $\tilde{B}$, $w_\al$ and 
+$\tilde{w}_\al$ have the same quantum numbers, respectively.
+The mapping of chiral operators in the electric and magnetic theories
+are given by $B\mapsto\tilde{b}$, $b\mapsto\tilde{B}$ and
+$w_\al\mapsto\tilde{w}_\al$, upon choosing a trivialization of 
+$\medwedge^{N_f}F$.
+
+At non-trivial infrared fixed-points, the dimension of any chiral field is
+given by $\PHI$ is $D(\PHI)=\frac{3}{2}R(\PHI)$.
+Since $R(Q)=1-\frac{N_c-2}{N_f}$ and $R(W_\al)=1$, we have 
+$D(B),D(b),D(w_\al)\ge1$ and $D(M)=3(1-\frac{N_c-2}{N_f})\ge1$ 
+if $N_f\ge\frac{3}{2}(N_c-2)$.
+The unitarity bounds are satisfied.
+
+
+\Subhead{'t Hooft anomaly matching condition}
+
+Under the global symmetry, 
+the light fermions $\psi_{\tQ}$, $\psi_M$,
+$\tilde{\lam}$ transform according to (\ref{so-transD}).
+At $M=0$ in $\MQ$, the whole group is unbroken. 
+The non-zero combinations in the 't Hooft condition are
+	\begin{equation}
+	\renewcommand{\arraystretch}{1.3}
+	\begin{tabular}{c|c}
+&magnetic\\
+\hline
+$\gsu(F)^3$ &$\tN\;d_F-d_{S^2F}$\\
+$\gsu(F)^2\gu(1)_R$ & $\tN\;c_2(F)\cdot(\frac{N_c-2}{N_f}-1)\!+\!
+  c_2(S^2F)\cdot(1-2\frac{N_c-2}{N_f})$	\\
+$\gu(1)_R$ &$\tN N_f\;(\frac{N_c-2}{N_f}-1)
+\!+\!\hf N_f(N_f\!+\!1)\;(1-2\frac{N_c-2}{N_f})\!+\!\hf\tN(\tN-1)\;1$\\
+$\gu(1)_R^3$ & $\tN N_f\;(\frac{N_c-2}{N_f}-1)^3
+  \!+\!\hf N_f(N_f\!+\!1)\;(1-2\frac{N_c-2}{N_f})^3\!+\!\hf\tN(\tN-1)\;1^3$
+	\end{tabular}
+	\end{equation}
+
+\medskip\noindent
+Using $d_{S^2F}=(N_f+4)d_F$ and $c_2(S^2F)=(N_f+2)c_2(F)$,
+the above matches the left column of (\ref{so4-tH}).
+
+
+\Subhead{Deformation along the flat directions}
+
+First, the dual theory has the same moduli space of vacua.
+In the electric theory, the condition $\rank M\le N_c$ is a classical 
+constraint.
+If $\rank M>N_c$ in the magnetic theory, then the number of light flavors is
+$N_f-\rank M<\tN-4$.
+So a superpotential of the form (\ref{so-W}) is generated and consequently
+the quantum theory has no vacuum.
+If $\rank M=N_c$, then according to (\ref{so-constraint}), there are two 
+choices of sign of $B=\pm(\wedge^{N_c}M)^{1/2}$ in the electric theory.
+In the dual theory, the number of light flavors is $N_f-\rank M=\tN-4$.
+So there are two branches.
+One branch has a superpotential (\ref{so4-W}) with $\eps_+=\eps_-$
+and hence does not have a vacuum.
+The other branch has two vacua, labeled by $\eps_+=-\eps_-=\pm1$.
+Therefore the magnetic theory also has two vacua for each $M$ with 
+$\rank M=N_c$.
+
+We check that flat deformations on the moduli space commutes with taking the
+dual.
+If $M$ acquires an expectation value $\bra M\ket$ with $\rank \bra M\ket=r$,
+then the low energy electric theory has $N_c$ colors and $N_f-r$ flavors.
+In the magnetic theory, the expectation value $\bra M\ket$ gives mass to some
+of the dual quarks.
+The low energy magnetic theory has $\tN-r$ colors and $N_f-r$ flavors.
+This is dual to the low energy electric theory.
+Further, using (\ref{so-eflat}) and the magnetic analog of (\ref{so-emass}),
+one can show that the relation (\ref{so-scaleD}) is preserved in the
+low energy theories.
+
+
+\Subhead{Mass deformation}
+
+If we add a mass term $W\tree=\hf\bra M,m\ket$ with $\rank m=r$ in the
+electric theory, then the low energy theory has $N_c$ colors and $N_f-r$
+flavors.
+Its scale $\hLam$ is given by (\ref{so-emass}).
+When $r\le N_f-N_c+1$, this low energy theory has a dual theory.
+The latter has $\tN-r$ colors and $N_f-r$ flavors.
+Its scale $\htLam$ is given by the magnetic analog of (\ref{so-eflat}).
+It is easy to show that the relation (\ref{so-scaleD}) is preserved in
+low energy theories and so is the form of the superpotential (\ref{so-WD})
+after integrating out the heavy fields.
+
+When $r=N_f-N_c+1$, the number of colors in the low energy magnetic theory is
+$\tN-r=3$.
+Just as the electric theory when $N_f=N_c-3$, we consider an intermediate
+stage in which the gauge group is broken to
+$SO(4)\cong(SU(2)_+\times SU(2)_-)/\ZZ_2$.
+When the groups $SU(2)_\pm$ are further broken, there are instanton
+generated superpotentials.
+Now the number of zero modes of $\psi_{\tQ}$ is $2N_f>2(\tN-3)$.
+The extra $2(N_c-1)$ ones are absorbed by the interaction (\ref{so-WD}),
+generating a term proportional to the $(N_c-1)$-th power of 
+$(\mu^{-1}M)_\mathrm{light}$.
+Thus the superpotential contains an extra term
+\begin{align}
+4\frac{\tLam^{3(\tN-2)-N_f}\det(\mu^{-1}M)_{\mathrm{light}}}
+{(\det\tM)_{\mathrm{heavy}}}
+&=\frac{4(-1)^r\tLam^{3(\tN-2)-N_f}\det\hM}{\mu^{N_f}\det m^\perp}\\
+&\null\kern-25pt
+=-\frac{4C\,\det\hM}{\det m^\perp\Lam^{3(N_c-2)-N_f}}
+=-\frac{4C\,\det\hM}{\hLam^{2N_c-5}}.\nonumber
+\end{align}
+Here we have used (\ref{so-scaleD}) and (\ref{so-emass}).
+So the total superpotential in the low energy magnetic theory is
+	\begin{equation}\label{so3m-WD}
+\hat{\tilde{W}}=\inv{2\mu}\bra\hM,\htQ^*\tilde{g}_c\ket
+-\frac{4C\det\hM}{\hLam^{2N_c-5}}.
+	\end{equation}
+
+Finally, we derive the relation between the scales of the low energy theories.
+The scale $\hLam$ of the low energy electric theory is given by 
+(\ref{so-emass}).
+The scale $\htLam$ of the low energy magnetic theory
+is given by the magnetic analog of (\ref{so3-eflat}), i.e.,
+	\begin{equation}\label{so3-mmass}
+4(\tLam^{3(\tN-2)-N_f})^2=\det(-\mu m^\perp)^2\htLam^{6-2(N_f-\tN+3)}.
+	\end{equation}
+Using (\ref{so-emass}) and (\ref{so3-mmass}), the relation (\ref{so-scaleD})
+reduces at low energies to
+	\begin{equation}\label{so3m-scaleD}
+(\hLam^{2N_c-5})^2\htLam^{6-2(N_c-1)}=4C^2\mu^{2N_c-2}.
+	\end{equation}
+
+
+\Subhead{{\boldmath $N_f=N_c-1$}}
+
+We consider the theory with $N_f=N_c-1$ and scale $\Lam$.
+The electric theory is strongly coupled at low energies.
+{}From (\ref{so3m-WD}), the superpotential of the magnetic theory is
+	\begin{equation}\label{so3-WD}
+W=\inv{2\mu}\bra M,\tQ^*\tilde{g}_c\ket-\frac{4C\det M}{\Lam^{2N_c-5}}.
+	\end{equation}
+{}From (\ref{so3m-scaleD}), the scale of the dual theory is given by
+	\begin{equation}\label{so3-scaleD}
+(\Lam^{2N_c-5})^2\tLam^{6-2(N_c-1)}=4C^2\mu^{2N_c-2}.
+	\end{equation}
+In fact, up to a constant, (\ref{so3-scaleD}) is the only possible relation
+consistent with (\ref{so-mu}), (\ref{so-scale}), the magnetic analog of 
+(\ref{so3-scale}), and the fact that $\Lam$, $\tLam$, $\mu$ all have
+mass dimension $1$.
+Under a flat deformation, (\ref{so3-scaleD}) is satisfied by the low
+energy electric and magnetic theories.
+
+We show that adding the mass term $W\tree=\hf\bra M,m\ket$ with $\rank m=1$
+reduces the theory to $N_f=N_c-2$.
+The total superpotential is $W+W\tree$.
+Following previous notations, we have $\tF=\htF\oplus\htF^\perp$
+with $\dim\htF^\perp=1$.
+The dual quarks have the decomposition
+$\tQ=(\htQ,\tQ^\perp)\in\Hom(\htF,\tC)\oplus\Hom(\htF^\perp,\tC)$.
+The $M^\perp$ equations of motion imply
+	\begin{equation}
+(\tQ^\perp){}^*\tilde{g}_c=\frac{8C\mu\det\hM}{\Lam^{2N_c-5}}-\mu m^\perp.
+	\end{equation}
+In particular, $\im(\htQ^\perp)$ is not isotropic in $\tC$.
+We write $\tC=\htC\oplus\htC^\perp$, where $\htC^\perp=\im(\htQ^\perp)$.
+The value of $\tQ^\perp$ breaks the dual gauge group $SO(\tC)$ to
+$SO(\htC)\cong SO(2)$.
+The equations of motion imply that $M$ is block-diagonal and that 
+$\tilde{g}_c(\htQ,\htQ^\perp)=0$, i.e., $\htQ\in\Hom(\htF,\htC)$.
+Let $\htC=\htC^+\oplus\htC^-$, where the weights of $SO(\htC)$ in $\htC^\pm$
+are $\pm1$, respectively.
+We write $\htQ=(\htQ^+,\htQ^-)$, where $\htQ^\pm\in\Hom(\htF,\htC^\pm)$.
+Then the superpotential $W+W\tree$ reduces in the low energies to
+	\begin{equation}
+\hat{W}\sim\inv{2\mu}\bra\hM,\htQ^+\!\cdot\htQ^-\ket,
+	\end{equation}
+where $\cdot$ is the pairing between $\htC^+$ and $\htC^-$.
+This matches (\ref{so2-W0}).
+Due to the instanton effects in symmetry breaking,
+it is only an approximate result near $\hM=0$.
+When $\det\hM$ is large, the quarks $\htQ$ become heavy.
+After integrating out the heavy fields, the effective superpotential is
+	\begin{equation}\label{so3-Wm}
+W=\inv{2\mu}M^\perp
+\left(4u-\frac{8C\mu\det\hM}{\Lam^{2N_c-5}}+\mu m^\perp\right),
+	\end{equation}
+where $u=\tilde{g}_c(\tQ^\perp,\tQ^\perp)/4$.
+The effective theory, which is the $SO(\tC)\cong SO(3)$ gauge theory with
+a single flavor $\tQ^\perp$, has $N=2$ supersymmetry.
+Its scale $\tLam'$ is given by
+	\begin{equation}
+\tLam'{}^4=\det(\mu^{-1}\hM)^2\tLam^{6-2(N_c-1)}
+=\left(\frac{2C\mu\det\hM}{\Lam^{2N_c-5}}\right)^2.
+	\end{equation}
+The superpotential (\ref{so3-Wm}) lifts the vacuum degeneracy of the $u$-plane
+except at the two singularities
+$u=\pm\tLam'{}^2=\pm8C\mu\det\hM/\Lam^{2N_c-5}$.
+There is still no vacuum with the plus sign.
+With the minus sign, there is a vacuum if $\hM$ satisfies
+	\begin{equation}
+\det\hM=\frac{m^\perp\Lam^{2N_c-5}}{16C}=\frac{\hLam^{2N_c-4}}{16C}.
+	\end{equation}
+This matches the non-zero singular branch of the $N_f=N_c-2$ theory
+when $C=2^{-8}$.
+
+\begin{thebibliography}{100}
+
+	\item
+I.\ Affleck, M.\ Dine and N.\ Seiberg, 
+{\em Dynamical supersymmetric breaking in supersymmetric QCD},
+Nucl.\ Phys.\ B241 (1984) 493-534.
+	\item
+N.\ Seiberg, {\em Exact results on the space of vacua of 
+four-dimensional SUSY gauge theories},
+Phys.\ Rev.\ D49 (1994) 6857-6863.
+	\item
+N.\ Seiberg and E.\ Witten, {\em Electric-magnetic duality, monopole
+condensation, and confinement in $N=2$ supersymmetric Yang-Mills theory},
+Nucl.\ Phys.\ B 431 (1994) 484-550.
+	\item
+N.\ Seiberg and E.\ Witten, {\em Monopoles, duality and chiral symmetry 
+breaking in $N=2$ supersymmetric QCD}, Nucl.\ Phys.\ B 431 (1994) 484-550.
+        \item
+K.\ Intriligator and N.\ Seiberg,
+{\em Phases of $N=1$ supersymmetric gauge theories in four dimensions},
+Nucl.\ Phys.\ B 431 (1994) 551-565.
+	\item
+N.\ Seiberg,
+{\em Electric-magnetic duality in supersymmetric non-Abelian gauge theories},
+Nucl.\ Phys.\ B435 (1995) 129-146.
+        \item
+K.\ Intriligator and N.\ Seiberg,
+{\em Duality, monopoles, dyons, confinement and oblique confinement in
+supersymmetric $SO(N_c)$ gauge theories},
+Nucl.\ Phys.\ B 444 (1995) 125-160.
+	\item
+K.\ Intriligator and P.\ Pouliot,
+{\em Exact superpotential, quantum vacua and duality in supersymmetric 
+$SP(N_c)$ gauge theories},
+Phys.\ Lett.\ B 353 (1995) 471-476.
+	\item
+K.\ Intriligator and N.\ Seiberg, 
+{\em Lectures on supersymmetric theories and electric-magnetic duality},
+in: String theory, gauge theory and quantum gravity, Proc. of the Trieste 
+Spring School and Workshop, Eds.\ R.\ Dijkgraaf et al.,
+Nucl.\ Phys.\ B (Proc.\ Suppl.) 45B, C (1996) 1-28.
+	\item
+M.\ E.\ Peskin,
+{\em Duality in supersymmetric Yang-Mills theory}, in:
+Fields, strings and duality, Proceedings of the 1996 TASI (Boulder, CO),
+pp.\ 729-809, Eds.\ C.\ Efthimiou and B.\ Greene, World Sci.\ Publishing,
+River Edge, NJ, 1997.
+	\end{thebibliography}
+
+	\end{document}
+

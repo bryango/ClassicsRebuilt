@@ -1,0 +1,142 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%
+%%%%    STRING THEORY : Problem Set 8, March 20, 1997
+%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\magnification=\magstep1
+\overfullrule=0pt
+\baselineskip=17pt
+\def\det{{\rm det}}
+\def\Det{{\rm Det}}
+\def\tr{{\rm tr}}
+\def\Tr{{\rm Tr}}
+\def\12{{1 \over 2}}
+\def\ker{{\rm Ker}}
+\def\O{{\cal O}}
+\def\G{{\cal G}}
+
+\centerline{{\bf STRING THEORY}}
+\centerline{ Problem Set \# 8}
+\centerline{March 20, 1997}
+
+\bigskip
+\bigskip
+
+Let $G$ be a semi-simple compact Lie group, with Lie algebra $\G$,
+and structure constants $f_{abc}$, $a,b,c = 1,\cdots , \dim G$.
+Let $\Sigma$ be a surface with the topology of the plane, with
+a flat metric. The Wess-Zumino-Witten model is defined in terms 
+of maps $g :~ \Sigma \to G$ and classical action 
+$$
+S[g] = { k \over 16 \pi } \int _\Sigma \tr \theta \wedge * \theta
++ { k \over 24 \pi} \int _B \tr \tilde \theta \wedge \tilde \theta
+\wedge \tilde \theta .
+$$
+Here, $\theta$ denotes the $\G$-valued left-invariant one form 
+$\theta = g^{-1} dg$, $B$ is a 3-dimensional manifold whose boundary
+is $\Sigma$. Also,  we have
+$\tilde \theta = \tilde g ^{-1}  d \tilde g$ where 
+$\tilde g :~ B \to G$ is any differentiable extension of $g$ to 
+$B$ such that $\tilde g |_\Sigma = g$.
+
+\medskip
+
+\noindent
+{\it Classical Part}
+
+\medskip
+
+a) Show that the action $S[g]$ is of the same form as the generalized
+non-linear sigma models studied in the lectures, with action (for 
+definitions, see problem set 7)
+$$
+S_{G,B}[x] = {1 \over 8 \pi l^2} \int _\Sigma d \mu _\delta 
+\bigl [ \delta ^{mn} G_{\mu \nu} + \epsilon ^{mn} B_{\mu \nu} \bigr ]
+\partial _m x^\mu \partial _n x ^\nu 
+$$
+
+b) Show that the following multiplication formula holds
+$$
+S[gh] = S[g] + S[h] + {k \over 16 \pi} \int _\Sigma \tr
+g^{-1} \bar \partial g h^{-1} \partial h
+$$
+and use it to show that $S$ is well-defined, 
+up to shifts by integer multiples
+of $2 \pi k$.
+
+c) Using the formula of b), show that $S[g]$ is invariant under the 
+infinite dimensional current (Kac-Moody) algebra $\hat \G \times \hat \G$ :
+$$
+ g(z,\bar z) \to \Omega (z) g(z,\bar z) \bar \Omega (\bar z) ^{-1}
+$$
+where $\Omega (z)$ and $\bar \Omega (\bar z)$ are holomorphic
+and anti-holomorphic maps from $\Sigma$ into $G$ (actually into
+the complexification of $G$) respectively.
+Derive the $\G$-valued conserved current $J= J^a t^a$ resulting from
+the transformations $\Omega$. ($t^a$ are generators of $\G$,
+satsifying the structure relations $[t_a, t_b] =  f_{abc} t_c$.)
+Derive the transformation law of $J$ under $\Omega$. 
+
+d) Derive the stress tensor $T$, show that it is holomorphic
+ and express $T$ as a quadratic form in terms of $J$.
+ 
+\medskip
+
+\noindent
+{\it Quantum Part}
+
+\medskip
+
+We now quantize the theory defined by $S[g]$, and assume that the 
+quantum current $J$ and stress tensor $T$ continue to be 
+holomorphic.   
+We also assume in part f) that the relation between the quantum current $J$
+ and the quantum stress tensor $T$ is given by the relation derived 
+ in d), except for an unknown multiplicative constant $\kappa$ :
+ $$
+ 2 \kappa T(z) = : J^a(z) J^a(z):
+ $$
+
+
+
+
+e) Show that the Ward identities for Diff($\Sigma$) and $\hat \G$ yield the
+following OPE's on $T$ and $J$
+$$
+\eqalign{
+T(z) T(w) & \sim {c/2 \over (z-w)^4} + {2 \over (z-w)^2} T(w)
+  + {1 \over z-w} \partial _w T(w) \cr
+T(z) J^a(w) & \sim {1 \over (z-w)^2} J^a(w) 
+  + {1 \over z-w} \partial _w J^a(w) \cr
+J^a(z) J^b(w) & \sim {k \delta ^{ab} \over (z-w)^2} 
+  + {f^{abc} \over z-w} J^c(w) \cr
+  }
+$$
+
+f) By considering the current correlation functions 
+$$
+\langle J^{a_1} (z_1) \cdots J^{a_n} (z_n) \rangle
+$$
+and limits thereof when different $z_i$ approach one 
+another, show that the OPE's for $J$ and $T$ are consistent
+only if
+$$
+c= {k \dim G \over k + C_2(G)}
+$$
+where $C_2(G)$ is the quadratic Casimir value of the
+adjoint representation of $\G$, defined by 
+$f^{acd} f^{bcd} = C_2(G) \delta ^{ab}$.
+
+g) Show that, in the large $k$ approximation, the metric
+$G$ and the anti-symmetric tensor field $B$ of the
+Wess-Zumino-Witten model, satisfy
+the equations for conformal invariance and for the
+central charge that were derived (in the
+small $l^2$ limit) in the lectures.
+
+
+\end
+--4db4_4789-29be_2f3f-1684_556f--
+

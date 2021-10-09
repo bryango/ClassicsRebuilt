@@ -1,0 +1,930 @@
+%From: Pierre Deligne <deligne@IAS.EDU>
+%Date: Mon, 13 Jan 1997 10:10:14 -0500
+%Subject: Quantization
+
+\input amstex
+\documentstyle{amsppt}
+\magnification=1200
+\input pictex
+\loadeufm
+
+\font\dotless=cmr10 %for the roman i or j to be
+                    %used with accents on top.
+                    %(\dotless\char'020=i)
+                    %(\dotless\char'021=j)
+\font\itdotless=cmti10
+\def\itumi{{\"{\itdotless\char'020}}}
+\def\itumj{{\"{\itdotless\char'021}}}
+\def\umi{{\"{\dotless\char'020}}}
+\def\umj{{\"{\dotless\char'021}}}
+\font\thinlinefont=cmr5
+\font\smaller=cmr5
+\font\boldtitlefont=cmb10 scaled\magstep2
+
+\NoRunningHeads
+\pagewidth{6.5 true in}
+\pageheight{8.9 true in}
+\loadeusm
+
+\catcode`\@=11
+\def\logo@{}
+\catcode`\@=13
+
+\def\eps{{\varepsilon}}
+
+\def\undertext#1{$\underline{\vphantom{y}\hbox{#1}}$}
+\def\nspace{\lineskip=1pt\baselineskip=12pt%
+     \lineskiplimit=0pt}
+\def\dspace{\lineskip=2pt\baselineskip=18pt%
+     \lineskiplimit=0pt}
+
+%\def\wedgeop{\operatornamewithlimits{\wedge}\limits}
+%\def\oplusop{\operatornamewithlimits{\oplus}\limits}
+%\def\simover#1{\overset\sim\to#1}
+\def\w{{\mathchoice{\,{\scriptstyle\wedge}\,}
+  {{\scriptstyle\wedge}}
+  {{\scriptscriptstyle\wedge}}{{\scriptscriptstyle\wedge}}}}
+\def\Le{{\mathchoice{\,{\scriptstyle\le}\,}
+{\,{\scriptstyle\le}\,}
+{\,{\scriptscriptstyle\le}\,}{\,{\scriptscriptstyle\le}\,}}}
+\def\Ge{{\mathchoice{\,{\scriptstyle\ge}\,}
+{\,{\scriptstyle\ge}\,}
+{\,{\scriptscriptstyle\ge}\,}{\,{\scriptscriptstyle\ge}\,}}}
+%\def\uphat{{\sssize\wedge}}
+\def\uphat{{\hat{\phantom{a}}}}
+%\def\upvee{{\check{\phantom{a}}}} 
+\def\upvee{{\sssize \vee}}
+\def\plus{{\sssize +}}
+%\def\doubleheaddownarrow#1{\hbox{$\Big\downarrow%
+%     \kern-5.96pt\lower2pt\hbox{$\downarrow$}$}%
+%     \rlap{$\vcenter{$\kern-18pt\scriptstyle#1$}$}}
+%\def\rmapdown#1{\Big\downarrow\kern-1.0pt\vcenter{
+%     \hbox{$\scriptstyle#1$}}}
+
+%\def\Gal{\text{\rm Gal}}  \def\sign{\text{\rm sign}}
+%\def\Br{\text{\rm Br}}  \def\im{\text{\rm Im}}
+%\def\sBr{\text{\rm sBr}} 
+\def\Spin{\text{\rm Spin}}
+%\def\sgn{\text{\rm sgn}} \def\pr{\text{\rm pr}}
+\def\Id{\text{\rm Id}} 
+\def\Sp{\text{\rm Sp}}
+%\def\Gr{\text{Gr}} 
+\def\SO{\text{\rm SO}}
+%\def\Sym{\text{\rm Sym}} \def\SL{\text{\rm SL}}
+%\def\End{\text{\rm End}}
+%\def\Hom{\text{\rm Hom}} 
+%\def\Ker{\text{\rm Ker}}
+\def\Tr{\text{\rm Tr}}
+\def\Supp{\text{\rm Supp}}
+\def\cl{\text{c}\ell}
+%\def\Lie{\text{\rm Lie}} 
+
+\def\fbar{\bar{f}}
+\def\kbar{\bar{k}}
+\def\zbar{\bar{z}}
+\def\Abar{\bar{A}}
+\def\Sbar{\bar{S}}
+
+\def\dbC{{\Bbb C}}
+%\def\dbG{{\Bbb G}}
+%\def\dbH{{\Bbb H}}
+\def\dbR{{\Bbb R}}
+\def\dbZ{{\Bbb Z}}
+
+
+\def\scr#1{{\fam\eusmfam\relax#1}}
+
+%\def\scrD{{\scr D}}
+\def\scrH{{\scr H}}
+\def\scrL{{\scr L}}
+%\def\scrS{{\scr S}}   
+%\def\scrU{{\scr U}}   
+
+%\def\gr#1{{\fam\eufmfam\relax#1}}
+
+%Euler Fraktur letters (German)
+%\def\gro{{\gr o}}
+%\def\grs{{\gr s}}
+
+%\def\grso{{\grs\gro}}
+
+
+\topmatter
+\title\nofrills
+{\boldtitlefont Quantization}
+\endtitle
+\author
+P. Deligne
+\endauthor
+\endtopmatter
+
+%\bigskip
+\centerline{School of Mathematics}
+\centerline{Institute for Advanced Study}
+\centerline{Princeton, NJ \ 08540}
+
+\smallskip
+\centerline{e-mail: deligne\@math.ias.edu}
+
+
+\NoBlackBoxes
+\parindent=20pt
+\frenchspacing
+\document
+\dspace
+\bigskip
+The present notes do not pretend to any originality.
+We have tried to present different aspects of what
+quantization can mean, including the case of odd
+variables.
+Complex polarizations are not considered.
+
+\bigskip\bigskip
+\subhead
+1
+\endsubhead
+Let $(M,\omega)$ be a symplectic manifold of dimension
+$2d$.
+We will use vague words ``big'' and ``small''.
+For this, we need some notion of size $\sim 1$ on $M$.
+For instance $M$ could carry a Riemannian metric, with
+curvature of size at most $\sim 1$ and injectivity
+radius of size at least $\sim 1$.
+The symplectic form should be of size $\sim 1$, and $\hslash$
+is a small number.
+The $2$-form which really matters is $\omega/\hslash$.
+
+Our sign convention for the Poisson bracket
+corresponding to $\omega$ is the following:
+the Hamiltonian vector field $X(f)$ defined by a
+function $f$ is given by $X(f)g=\{f,g\}$, and
+$df=-i_{X(f)}\omega$.
+If $M=\dbR^2$ with coordinates $p$, $q$ and if $\omega=dp\w dq$,
+then $\{p,q\}=1$.
+
+A quantization of $M$ consists in a complex Hilbert
+space $\scrH$ and in a rule to attach to functions $f$
+on $M$ operators $f^{\w}$ acting on $\scrH$.
+The rule $f\mapsto f^{\w}$ should be $\dbC$-linear, for
+$f$ real, $f^{\w}$ should be hermitian and, in a sense I
+will not try to make precise, $f\mapsto f^{\w}$ should
+almost be an homomorphism: $1^{\w}$ should be the
+identity and for slowly varying functions $f$ and $g$,
+$$
+(fg)^{\w}\,\sim f^{\w}g^{\w}\qquad
+\bmod{O(\hslash)}.
+\tag1.1
+$$
+If $(1.1)$ did hold exactly, the $f^{\w}$ would commute
+the one with the other.
+The symplectic structure controls the failure of
+commutativity
+$$
+[\,f^{\w},g^{\w}]\sim
+-i\hslash\{f,g\}^{\w}\qquad \bmod{O(\hslash^2)}.
+\tag1.2
+$$
+
+Formula (1.2) can be rewritten
+$$
+(X(f)g)^{\w}\sim i/\hslash[\,f^{\w},g^{\w}]\qquad
+\bmod{O(\hslash)}.
+\leqno{\hbox{$(1.2)'$}}
+$$
+The symplectic vector field $X(f)$, if it is well
+behaved at infinity, exponentiates to an automorphism
+$\exp(X(f))$ of $(M,\omega)$, with Taylor's formula
+reading
+$$
+\exp(X(f))^*g=\exp(\text{derivation $X(f)$})(g).
+$$
+
+Formula $(1.2)'$ should hold in its integrated form
+$$
+(\exp(X(f))^*g)^{\w}\sim\exp(i/\hslash f^{\w})g^{\w}
+\exp(-i/\hslash f^{\w})\qquad
+\bmod{O(\hslash)}.
+\tag1.3
+$$
+
+We don't care about the exact rule $f\mapsto f^{\w}$.
+It matters mainly $\bmod{\,O(\hslash)}$.
+
+In the deformation quantization point of view, $(1.1)$
+is the first term in an expansion ($*$-{\it product})
+$$
+f^{\w}g^{\w}=(fg)^{\w}+c_1(f,g)^{\w}\hslash+c_2(f,g)^{\w}
+\hslash^2+\cdots\,\,,
+\leqno{\hbox{$(1.1)'$}}
+$$
+with $c_i(f,g)$ given by a $\dbC$-bilinear differential
+operator in $f$ and $g$.
+The formula (1.2) becomes $c_1(f,g)-c_1(g,f)=-i\{f,g\}$.
+If one disposes of quantizations $\scrH(\hslash)$,with
+$\hslash$ tending to $0$, $(1,1)'$ can be an asymptotic
+expansion in $\hslash$.
+if one redefines $f\mapsto f^{\w}$ to be
+$f^{\w}+d_1(f)^{\w}\hslash+\cdots$ with $d_i(f)$ a
+linear differential operator in $f$, $(1.1)'$ changes to
+an {\it equivalent} $*$-product.
+
+Assumption $(1.1)$ means that $\scrH$ almost localizes
+on $M$: an element $h$ of $\scrH$ can be decomposed as a
+sum $\sum h_i$ of elements localized in small regions
+$U_i$ of $M$: if $x\in U_i$, $f^{\w}h_i$ is about
+$f(x).h_i$.
+Because of the non commutativity $(1.2)$, localization
+does not make sense for regions smaller than expressed
+by the uncertainty principle $\Delta p \Delta q\sim
+2\pi\hslash$.
+
+If we were only to assume $(1.1)$ and $(1.2)$, a multiple
+$\scrH^n$ of a quantization $\scrH$ of $M$ would again
+be a quantization.
+A ``finite multiplicity'' assumption is that if $f$ is a
+$C^\infty$ function with compact support on $M$, the
+operator $f^{\w}$ is of trace class.
+If this holds, I would expect that for some integer $m$
+(rather: one for each connected component of $M$), one
+has
+$$
+\Tr(f^{\w})\sim m\int f(x)dx
+$$
+where, in Darboux local coordinates, $dx$ is the product
+of the $dp_i\,dq_i/2\pi\hslash$ (Liouville measure).
+We want $m=1$:
+$$
+\Tr(f^{\w})\sim\int f(x)dx\
+\tag1.4
+$$
+\medskip
+\subhead
+2. Example: cotangent bundles
+\endsubhead
+
+The basic example of almost localization, in the sense
+meant above, is when $M$ is a cotangent bundle $T^*V$
+and $\scrH$ the space of half densities on $V$.
+If $f$ is peaked at $x$, say in a gaussian fashion, and
+if $g$ is a real function, with $dg$ slowly varying,
+then $fe^{ig/\hslash}$ is localized around $(x,dg_x)$ in
+$M$.
+If $f$ is slowly varying, then $f.e^{ig/\hslash}$ is
+localized around the section $x\mapsto dg_x$ of $M\to V$,
+above the support of $f$.
+
+The operator $f{\uphat}$ has a natural definition when
+$f$ is affine linear on the fibers of $T^*V$ over $V$.
+If $f$ is the pull back of a function on $V$, $f{\uphat}$
+is multiplication by $f$.
+If $f$ is linear on each cotangent space, hence
+identified with a vector field $F$ on $V$,
+$f{\uphat}=-i\hslash\scrL_F$.
+For those $f$, (1.2) holds exactly.
+To define $f{\uphat}$ for more complicated functions
+requires auxiliary choices. 
+
+On $T^*V$, we have a canonical $1$-form $\alpha$: \ in
+local coordinates $q^i$ on $V$, giving local coordinates
+$(p_i,q^i)$ on $T^*V$, $\alpha$ is $\sum p_idq^i$.
+The trivial unitary line bundle $\scrL$, with the
+connection $-i\alpha/\hslash\colon\,\nabla
+f=df-i\alpha/\hslash f$, is a prequantization line
+bundle: \ its curvature is $-i\omega/\hslash$, for
+$\omega$ the symplectic form $d\alpha$.
+A real function $g$ on $V$ defines the lagrangian section
+$L(g)\colon x\mapsto (dg)_x$ of $T^*V$.
+The pull back to $L(g)$ of $e^{ig/\hslash}$ is an
+horizontal section of $\scrL$.
+
+For any symplectic manifold $M$, let $\Lambda_M$ or
+simply $\Lambda$ be the fiber space over $M$ whose fiber
+$\Lambda_m$ at $m\in M$ is the space of lagrangian ($=$
+maximal isotropic) subspace of the tangent space $T_m$ of
+$M$ at $m$.
+To take into account the Maslov index story, it is best
+to take prequantization line bundles as living on
+$\Lambda$.
+They should verify (a) (b) below.
+
+\medskip\noindent
+(a)\enspace
+The curvature $2$-form $R$ is the pull back from $M$ of
+$-i\omega/\hslash$:
+$$
+\nabla^2=-i\omega/\hslash.
+$$
+In particular, on each fiber $\Lambda_m$ of $\Lambda\to
+M$, $(\scrL,\nabla)$ is flat.
+One has $\pi_1(\Lambda_m)=\dbZ$ and 
+
+\smallskip\noindent
+(b)\enspace
+the monodromy of $(\scrL\nabla)$ on $\Lambda_m$ is
+multiplication by $i$.
+
+\medskip\noindent
+{\it Remarks:} \ (i)\enspace
+In the same way that an hamiltonian vector field $X(f)$
+acts on a prequantization line bundle, with the action
+depending on $f$, and not only on $X(f)$, it also acts on
+$(\scrL,\nabla)$ as above: \ $X(f)$ is symplectic, hence
+lifts to $\Lambda$, the question is local on $\Lambda$,
+and locally on $\Lambda$ $(\scrL,\nabla)$ is the inverse
+image of a prequantization line bundle on $M$.
+If we exponentiate, we see that $\exp(X(f))$ acts by an
+automorphism of $(M,\omega,\scrL,\nabla)$.
+The infinitesimal action on sections of $\scrL$ is given
+by
+$$
+\partial_{X(f)}=\nabla_{X(f)}-if/\hslash\tag2.1
+$$
+
+\medskip\noindent
+(ii)\enspace
+To make sense of (b), we should make precise our sign
+convention identifying $\pi_1(\Lambda_m)$ with $\dbZ$.
+For the symplectic vector space $\dbR^2$, form $dp\w dq$,
+the generator is given by the path
+$$
+\theta\longmapsto \text{ line spanned by }
+(q,p)=(\cos\theta,\sin\theta)\qquad (0\Le\theta\Le\pi).
+$$
+
+\medskip\noindent
+(iii)\enspace
+Let $V$ be a symplectic vector space, and $\Lambda_0$ be
+the space of lagrangian linear subspaces of $V$.
+If $S_1$ and $S_2$ in $\Lambda_0$ intersect
+transversally, one defines as follows a preferred
+homotopy class of path from $S_1$ to $S_2$.
+Identify $S_2$ to $S_1^{\upvee}$ by $s_2\mapsto
+\omega(s_2,s_1)$.
+Choose a basis $e_i$ of $S_1$ and let $e'_1$ be the dual
+basis of $S_2$.
+The path is 
+$$
+\theta\longmapsto\text{ subspace spanned by the }
+\cos\theta e_i+\sin\theta e'_i\qquad (0\Le\theta\Le\pi/2).
+$$
+It depends only on the quadratic form for which the basis
+$(e_i)$ is orthonormal.
+The choice of this quadratic form running over a
+contractible set, the homotopy class of the path does not
+depend on the choice.
+If $V$ is of dimension $2d$, the preferred path from
+$S_1$ to $S_2$, followed by the preferred path from $S_2$
+to $S_1$, is $d$ times the preferred generator of
+$\pi_1(\Lambda_0)$.
+
+\medskip
+We now come back to the case where $M$ is a cotangent
+bundle $T^*V$.
+Let $\Lambda^0\subset\Lambda$ be the subbundle, with
+$\Lambda_m^0\subset\Lambda_m$ consisting of those
+lagrangian subspaces $L$ of $T_m$ intersecting
+transversally the vertical subspace of $T_m^*$ (tangent
+to the fiber of $T^*V\to V$).
+If we pull back the prequantization line bundle on $T^*V$
+to $\Lambda^0$, it extends uniquely to $\scrL_\Lambda$ on
+$\Lambda$ satisfying the conditions (a) (b).
+
+Let $L$ be a lagrangian subvariety of $M$.
+Let $s$ be the section of $\Lambda$ over $L$: \ 
+$x\mapsto$ tangent space of $L$ at $x$.
+The section $s$ is with values in $\Lambda^0$ if and only
+if $L$ is locally of the form $L(g)$.
+As $L$ is lagrangian, $s^*\scrL_\Lambda$ is flat and it
+makes sense ot speak of a slowly varying section
+of $s^*\scrL$ on $L$.
+Generalizing the $f.e^{ig/\hslash}$ considered
+previously, to a slowly varying half density $u$ on $L$,
+with values in $s^*\scrL$, corresponds $[u]$
+in $\scrH$, with
+$$
+\left\Vert [u]\right\Vert^2 \sim\int\nolimits_{S}
+\left<u,u\right>.\tag2.2
+$$
+It is localized near $\Supp(u)\subset S\subset M=T^*V$.
+
+A function $f$ defines an automorphism $\exp(X(f))$of
+$(M,\scrL,\nabla)$ (Remark (ii) above), and an
+automorphism $\exp(-i/\hslash f{\uphat})$ of $\scrH$.
+Those automorphisms should (almost) preserve the
+construction $u\mapsto [u]$: 
+$$
+[\exp(X(f))^*u]\sim\exp(i/\hslash f{\uphat})[u].\tag2.3
+$$
+
+Inner products are given as follows.
+Fix $(S_i,u_i)$ ($i=1,2$) as above, and assume that $S_1$
+and $S_2$ intersect transversally.
+Let $x$ be an intersection point.
+The lagrangian subspaces $s_1(x)$ and $s_2(x)$ of $T_xM$
+intersect transversally, and the preferred class of path
+$\gamma$ from $s_1(x)$ to $s_2(x)$ (Remark (iii) above)
+gives an isomorphism
+$\gamma^*\colon\,\scrL_{s_2(x)}\to\scrL_{s_1(x)}$.
+The symplectic structure puts $s_1(x)$ and $s_2(x)$ in
+duality, identifying the line of half densities of $S_1$
+at $x$ with the dual of the similar line for $S_2$.
+The inner product $\left<u_1(x),\gamma^* u_2(x)\right>$
+is hence just a number.
+The stationary phase gives
+$$
+\left<[u_1],[u_2]\right>\sim
+\sum\limits_{x\in S_1\cap S_2}(2\pi i\hslash)^{d/2}
+\left<u_1(x),\gamma^* u_2(x)\right>
+\tag2.4
+$$
+for $M$ of dimension $2d$.
+
+Our convention for inner products $\left<a,b\right>$ is: \ 
+antilinear in $a$, linear in $b$.
+
+\medskip
+\subhead
+3
+\endsubhead
+The flat case is when $M$ is an affine space, with a
+translation invariant symplectic form.
+In the flat case, one can define a quantization as the
+data of $f\mapsto f{\uphat}$, just for $f$ a linear
+function, with (1.2) holding exactly.
+The purely imaginary linear functions form a Lie algebra,
+for $-i\hslash\{f,g\}$, and we want a unitary
+representation $f\mapsto f{\uphat}$ of this Lie aglebra,
+with $i{\uphat}=i.\Id$.
+It is more convenient to ask for a unitary representation
+of the corresponding Lie group.
+Formula (1.4) becomes a request for irreducibility.
+Weyl's quantization $f\mapsto f{\uphat}$, for a general
+$f$, is given by 
+$$
+\exp(\ell){\uphat}=\exp(\ell{\uphat})\tag3.1
+$$
+for $\ell$ a purely imaginary linear function, a
+general$f{\uphat}$ being deduced from (3.1) by
+considering $f$ as a superposition of $exp(\ell)$, by
+Fourier transform.
+For Weyl's quantization, formula (1.4) holds exactly.
+
+Understood in those terms, quantization in the flat case
+is unique, up to isomorphisms.
+If $M$ is the cotangent bundle to an affine space $V$, 2.
+gives its Schrodinger model as $L^2(V)$: \ if $V_0$ is
+the vector space of translations of $V$, one has
+$M=V_0^{\upvee}\times V$; for $f$ (the pull back of) a
+function on $V$, $f{\uphat}$ is multiplication by $f$.
+For $\ell$ a linear form on $V_0^{\upvee}$, identified
+with a vector $v\in V_0$, $\ell{\uphat}$ is $-i\hslash
+\partial_v$, and $\exp(i\ell){\uphat}$ is
+$\psi(x)\mapsto\psi(x+\hslash v)$.
+
+This unicity assertion depends on the assumption that the
+flat symplectic variety $M$ is of finite dimension.
+
+\remark{Remark}
+In the flat case, the data on $\Lambda_M$ of a
+prequantization line bundle defines a quantization
+$\scrH$, as defined above, up to unique isomorphism.
+This is made plausible by the fact that the group of
+automorphisms of$$
+\align
+&\text{(affine symplectic space
+$M,\scrL_\Lambda,\nabla)$}\\
+\intertext{and of}
+&\text{(affine symplectic space $M,\scrH,f\mapsto
+f{\uphat})$}
+\endalign
+$$
+are the same extension of the affine symplectic group
+$(\Sp\ltimes\text{translations})$ by $U^1$.
+
+The relation between $\scrL_\Lambda$ and the quantization
+$\scrH$ can be fixed as follows.
+Let $\scrH_\infty$ be the $C^\infty$-vectors in $\scrH$, 
+for the action of the Heisenberg group.
+In the Schroedinger model: \ the Schwartz functions on
+$V$.
+Let $\scrH_{-\infty}\supset\scrH$ be the dual of
+$\scrH_\infty$.
+Then, a linear lagrangian subspace $L$ of $M$, given with
+$u$ on $L$ of the form (translation invariant half
+density). (flat section $s^*\scrL_\Lambda$), define
+$[u]$ in $\scrH_{-\infty}$, and the inner product 
+formula (2.4) holds exactly, to give the inner product 
+of continuous superpositions of $[u]$.
+Formula (2.3) holds exactly, for $f$ quadratic and $u$ as
+above.
+In particular, if a linear form $\ell$ vanishes on $L$,
+one has $\ell{\uphat}[u]=0$.
+\endremark
+
+\medskip
+\subhead
+4
+\endsubhead
+We now go over to the superworld.
+A super Hilbert space is a $\mod 2$ graded complex vector
+space $H$, with an even sesquilinear form $(u,v)$,
+antilinear in $u$ and linear in $v$, for which
+$$
+(v,u)=(-1)^{p(u)p(v)}(u,v)^-,
+$$
+with a positivity and a completeness condition.
+As positivity condition, we take
+$$
+\alignedat4
+&(u,u) >0 &\quad &\text{for} &\quad &u\text{ even},
+  &\quad &u\not=0\\
+-i&(u,u)>0 &&\text{for} &&u\text{ odd}, && u\not=0.
+\endalignedat
+\tag4.1
+$$
+This positivity condition is stable by tensor product, if
+$(\,\,,\,\,)$ for $H'\otimes H''$ is defined by
+$$
+(u'\otimes u'',v'\otimes v'')=(-1)^{p(u'')p(v')}
+(u',v')(u'',v''),
+$$
+in accordance with the sign rule.
+The adjoint $T^{\dagger}$ of an operator $T$ is defined
+by
+$$
+(Tu,v)=(-1)^{p(T)p(u)}(u,T^{\dagger}v).
+\tag4.2
+$$
+
+The physicist don't like (4.1), and prefer to work with
+the ordinary $\mod 2$ graded Hilbert space with the inner
+product $\left<\,\,,\,\,\right>$ defined by
+$$
+\alignedat3
+(u,v)= &\left<u,v\right> &\quad &\text{for} 
+  &\quad &u,v\text{ even}\\
+(u,v)=i &\left<u,v\right> &&\text{for} &&u,v\text{ odd}.
+\endaligned
+\tag4.3
+$$
+The adjoint $T^{\dagger}$ is related to the corresponding
+ordinary adjoint $T^*$ by
+$$
+\alignedat2
+T^{\dagger} &=T^* &\quad &\text{for $T$ even}\\
+T^{\dagger} &=iT^* &&\text{for $T$ odd}.
+\endaligned
+\tag4.4
+$$
+
+The definition (4.2) has the unsettling effect that the
+eigenvalues of an odd self adjoint operator are in
+$i^{1/2}.\dbR$.
+However, the eigen spaces being neither even nor odd,
+there is not much wish to consider them.
+
+In a quantization of a supermanifold $M$, to functions
+$f$ on $M$ should correspond operators $f{\uphat}$,
+acting on a super Hilbert space $\scrH$, with
+$f{\uphat}$ of the same parity as $f$.
+If $f$ is real, one should have
+$f{\uphat}=f{\uphat}\!^\dagger$.
+Because of (3.4), if $M$ is a supermanifold, the
+physicists will declare to be ``real'' the real even $f$,
+and the $i^{-1/2}\eta$ for $\eta$ real.
+With this rule, if $\alpha_1$ and $\alpha_2$ are odd and
+``real'', $i\alpha_1\alpha_2$ is ``real'' (as well as
+real, being even).
+Example: \ on $\dbR^{1,1}$, with coordinates $(x,\eta)$,
+if we put $\theta=i^{-1/2}\eta$, the vector field
+$\partial_\theta+i\theta\partial_x$ is a multiple of a
+real vector field:
+$$
+\partial_\theta+i\theta\partial_x=i^{1/2}(\partial_\eta+\eta
+\partial_x).
+$$
+
+\medskip
+\subhead
+5
+\endsubhead
+Let now $M$ be a super affine space, with a translation
+invariant symplectic form.
+In imitation of 3., we define a quantization as the data
+of a super Hilbert space $\scrH$, and of
+$\ell\mapsto\ell{\uphat}$ attaching to a linear
+function on $M$ an operator on $\scrH$, with $\ell$ and
+$\ell{\uphat}$ of the same parity.
+The quantization $\ell\mapsto\ell{\uphat}$ should be
+linear, real: \ $\ell{\uphat}=(\ell{\uphat})^{\dagger}$
+for $\ell$ real, map $1$ to $\Id$, and obey
+$$
+\left[\ell{\uphat},m{\uphat}\right]=-i\hslash\{f,g\}{\uphat}.
+\tag5.1
+$$
+One should also require some irreducibility.
+
+The condition (5.1) requires that for real linear odd
+functions $\ell$, the Poisson bracket $\{\ell,\ell\}$ (a
+constant) be negative:
+$$
+\left\{\ell,\ell\right\}\Le 0.\tag5.2
+$$
+Indeed, $[\ell{\uphat},\ell{\uphat}]=2\ell{\uphat 2}=
+\ell{\uphat}\!^\dagger\ell{\uphat}$ must be
+$-i\hslash\{\ell,\ell\}$.
+The sign in (5.2) is due to the choices of sign in (4.1)
+and (5.1), the latter repeating (1.2).
+
+As in 3., one extends $\ell\mapsto\ell{\uphat}$ to
+polynomial functions by requiring that for a product of
+even or odd linear functions, one has
+$$
+(\ell_1\ldots\ell_n){\uphat}=1/n!\sum\limits_{\sigma}
+\pm\,\ell{\uphat}_{\!\!\!\!\sigma(1)}
+\ldots\ell{\uphat}_{\!\!\!\!\sigma(n)}
+\qquad(\sigma\in S_n)
+$$
+with $\pm$ given by the sign rule.
+In particular, $\pm$ is $+$ if the $\ell_i$ are all even,
+and $\eps(\sigma)$ if they are all odd.
+
+\medskip
+\subhead
+6
+\endsubhead
+Let $W$ be a real vector space with a positive defined
+symmetric bilinear form $B$.
+Let $M$ be the affine space defined by $\Pi W$: \ it is
+of dimension $(0,\dim\,W)$, and linear forms on $W$ are
+odd functions on $M$.
+Define a Poisson bracket by 
+$$
+\{\ell,m\}=-B^{-1}(\ell,m)\tag6.1
+$$
+for $\ell,m\in W^{\upvee}$.
+
+If $e_i$ is an orthonormal basis of $W$, with dual basis
+$e^i$, and if $e^i$ is veiwed as an odd function on $M$,
+the Poisson bracket (6.1) is given by the super
+symplectic form
+$$
+\omega=\tfrac12\sum de^ide^i.
+\tag6.2
+$$
+
+One $W^*$, let $Q$ be the quadratic form $\frac12
+B^{-1}(\ell,\ell)$.
+If $\scrH$ is a $\mod 2$ graded module over the ($\text{mod } 2$
+graded) Clifford algebra $C(W^*,Q)$, with the module
+structure written $\cl(\ell)$ for $\ell\in W^*$, (5.1)
+holds for
+$$
+\ell{\uphat}=(i\hslash)^{1/2}\cl(\ell).\tag6.3
+$$
+
+For $\dim\,W=1$, one can take $\scrH=(\dbC\text{ even})\oplus
+(\dbC\text{ odd})$, with $\cl(e^1)=\left(\smallmatrix
+0 &1/\sqrt{2}\\ 1/\sqrt{2} &0\endsmallmatrix\right)$.
+For the obvious Hilbert space structure of $\scrH$, and
+the corresponding super Hilbert space structure, one has
+then $\cl(e^1)^*=\cl(e^1)$ and for any $\ell$ in $V^*$,
+$$
+\ell{\uphat}=(\ell{\uphat})^\dagger.\tag6.4
+$$
+
+A general $W$ can be written as an orthogonal direct sum
+of lines, and the corresponding tensor product of super
+Hilbert spaces is a Clifford module for which (6.4)
+holds, if $\ell{\uphat}$ is defined by (6.3).
+If $\scrH_1$ is a graded submodule with the induced
+Hilbert space structure, (6.4) continues to hold for
+$\scrH_1$.
+This proves the existence of a super Hilbert space
+$\scrH$ with a Clifford module structure, irreducible as
+a graded module, for which (6.4) holds when
+$\ell{\uphat}$ is defined by (6.3).
+
+We now assume $W$ of even dimension.
+They are the two isomorphy classes of $\scrH$ as above,
+exchanged by the parity change $\scrH\mapsto\scrH\otimes L$, 
+for $L$ a $(0,1)$-dimensional super Hilbert space.
+Let $(e^1,\dotsc,e^n)$ be an orthonormal basis (for
+$B^{-1}$), and $[e^1,\dotsc,e^n]$ be the corresponding
+density on $M$.
+Another orthonormal basis would give the same, or the
+opposite density.
+The choice of the density $[e^1,\dotsc,e^n]$ picks out
+one of the two isomorphy classes of $\scrH$: \ the one
+for which the following analogue of (1.4) holds.
+For any $f$ on $M$, the supertrace $\Tr(f{\uphat})$ is
+given by 
+$$
+\Tr(f{\uphat})=\hslash^{n/2}\int [e^1,\dotsc,e_n]f
+\tag6.5
+$$
+Justification: \ writing $\scrH$ as a tensor product, one
+reduces to the case $n=2$.
+For $n=2$, $\cl(e^1)\cl(e^2)$ has square $-1/4$ and
+eigenvalues $\pm i/2$.
+It follows that
+$(e_1e_2){\uphat}=\frac12(e{\uphat}\!\!\!_1e{\uphat}\!\!\!_2-
+e{\uphat}\!\!\!_2e{\uphat}\!\!\!_1)=e{\uphat}\!\!\!_1
+e{\uphat}\!\!\!_2=i\hslash\cl(e_1)\cl(e_2)$ has
+eigenvalues $\mp \hslash/2$, hence supertrace
+$\pm\hslash$.
+
+\medskip
+\subhead
+7
+\endsubhead
+A super symplectic flat space $M$ as in 5. can be
+decomposed as $M^{\plus}\times M^-$, with $M^{\plus}$
+even and $M^-$ odd, as in 6.
+The tensor product of quantizations of $M^{\plus}$ and
+$M^-$ gives one for $M$.
+If $M^{\plus}$ is the cotangent bundle of an affine space
+$V$, and if $M^-$ is obtained as in 6. from an even
+dimensional quadratic vector space $W$, this tensor
+product can be realized as the space of $L^2$-density on
+$V$ with values in a Clifford module for $W^{\upvee}$, and
+an analogue of 1.4, 6.5 holds.
+
+\medskip
+\subhead
+8
+\endsubhead
+Let $V$ be a manifold and $W$ be an orthogonal vector
+bundle on $V$, with a connection $\nabla$ respecting the
+structural symmetric bilinear form $B$.
+We take $M$ to be the fiber product over $V$ of $T^*V$
+and $\Pi W$.
+Over any basis $B$, a section of $M$ over $V$ is the data
+of an even section $p$ of $T^*V$ and of an odd section
+$\psi$ of $W$.
+A section $e$ of $W^{\upvee}$ defines an odd function
+$\psi\mapsto e(\psi)$ on $M$.
+A local coordinate system $(q^i)$ on $V$ and a local basis
+$(e_\alpha)$ of $W$ give a local coordinate system
+$(q^i,p_i,\psi^\alpha)$ on $M$.
+
+We assume that $W$ is even dimensional, oriented and
+$\Spin$.
+It gives rise to a bundle of super Hilbert spaces
+$\scrH_V$ on $V$, reproducing point by point what we got
+in 6., and the connection $\nabla$ on $W$ gives one on
+$\scrH_V$.
+
+Let $\scrH$ be the super Hilbert space of half densities
+on $V$ with values in $\scrH_V$.
+To any function $f$ on $M$, of degree $\Le 1$ on the
+fibers of $M/V$, when $p_i$ is viewed as of degree $1$
+and $\psi^\alpha$ as of degree $1/2$,
+one attaches an operator $f{\uphat}$ as follows.
+
+\medskip\noindent
+(a)\enspace
+For (the pull back of) a function $f$ on $V$, $f{\uphat}$
+is multiplication by $f$.
+
+\smallskip\noindent
+(b)\enspace
+For the odd function defined by a section $e$ of
+$W^{\upvee}$,
+$$
+e{\uphat}=(i\hslash)^{1/2}\cl(e)
+$$
+as in 6.3.
+This is extended as in 5. to define $f{\uphat}$ for
+any function $f$ on $\Pi W$.
+
+\smallskip\noindent
+(c)\enspace
+If $f$ is a function on $T^*V$, linear on each fiber of
+$T^*V/V$ and identified with a vector field $F$, 
+$$
+f{\uphat}=-i\hslash\nabla_F.
+$$
+
+\medskip
+In (c), if $x$ in $\scrH$ is the product of a section $h$
+of $\scrH_V$ by a half density $v$,
+$\nabla_F(x):=\nabla_F(h).v+h.\scrL_F(v)$.
+
+The super vector space of operators $f{\uphat}$, for $f$
+of degree $\Le 1$ on the fibers of $M/V$, 
+is stable by bracket.
+By (1.2), the bracket of operators corresponds to a
+Poisson bracket, which we now compute.
+
+For functions on $\Pi W$, it is as in 6.: \ functions on
+$V$ commute with functions on $\Pi W$ and for $\ell$, $m$
+odd linear functions, identified with sections of
+$W^{\upvee}$, one has
+$$
+\{\ell,m\}=-B^{-1}(\ell,m).
+$$
+For $f$ a function on $T^*V$, linear on the fibers and
+corresponding to a vector field $F$ on $V$, $\{f,\quad\}$
+is $\nabla_F$ on functions on $\Pi W$.
+
+It remains to compute $[f{\uphat},g{\uphat}]$ as being
+of the form $-i\hslash\{f,g\}{\uphat}$ when $f$ and $g$
+are linear functions on $T^*V$, corresponding to vector
+fields $F$ and $G$.
+We have
+$$
+\align
+[f{\uphat},g{\uphat}] &=[-i\hslash \nabla_F,
+-i\hslash\nabla_G]=(-i\hslash)^2\left(\nabla_{[F,G]}+
+  R(F,G)\right)\\
+&=-i\hslash\left(\{f,g\}{\uphat}\!\!\!_{_{\ssize T^*V}}-i\hslash
+  R(F,G)\right)
+\endalign
+$$
+for $\{\,\,,\,\,\}_{T^*V}$ the Poisson bracket on $T^*V$
+and $F$ the curvature $2$-form of $W$, with values in
+$\SO(W)$ (which acts on $\scrH_V$).
+
+Let $S^\beta \alpha$ be the matrix of $S\in\SO(W)$,
+relatively to a local basis $e_\alpha$ of $W$: \ $S$ is
+$(x^\alpha)\mapsto (S^\alpha{}_\beta x^\beta)$.
+Let $e^\alpha$ be the dual basis, and move the indices
+up and down using $B$.
+The action of $S$ on $\scrH_V$ is then the Clifford
+multiplication by $S_{\alpha\beta}e^\alpha e^\beta$ (sum
+on $\alpha$ and $\beta$) in the Clifford algebra.
+This follows from
+$$
+\multline
+[S_{\alpha\beta}e^\alpha
+e^\beta,e^\gamma]=S_{\alpha\beta}
+(e^\alpha[e^\beta,e^\gamma]-[e^\alpha,e^\gamma]e^\beta)
+  \qquad\text{(superbrackets)}\\
+=\tfrac12 S_{\alpha\beta}(e^\alpha b^{\beta,\gamma}
+-b^{\alpha,\gamma}e^\beta)=-S_{\alpha\beta}b^{\alpha\gamma}
+  e^\beta=-S^\gamma \beta e^\beta=
+   S(e^\gamma)
+\endmultline
+$$
+for the Lie algbra action.
+
+If we apply this to the curvature, and if $\psi^\alpha$
+are the odd functions on $M$ corresponding to the
+$e^\alpha$, this gives $[f{\uphat},g{\uphat}]=-i\hslash
+\{f,g\}{\uphat}$ for
+$$
+\{f,g\}=\{f,g\}_{T^*V}-R(F,G)_{\alpha,\beta}
+\psi^\alpha\psi^\beta
+$$
+
+This Poisson bracket corresponds to the following
+symplectic $2$-form $\Omega$.
+Let $\alpha_{T^*V}$ be the canonical $1$-form $pdq$ on
+$T^*V$, as well as its pull back to $M$.
+Let $\alpha_{\Pi W}$ be the $1$-form on $\Pi W$ whose
+inverse image by a section $\psi$ is
+$\frac12(\psi,\nabla\psi)$.
+If $(e_\alpha)$ is a local basis of $W$, and if the
+connection is given by the endomorphism valued $1$-form
+$\gamma^\alpha{}_\beta$:
+$$
+\nabla(x^\alpha e_\alpha)=(dx^\alpha+\gamma^\alpha{}_\beta 
+x^\beta) e_\alpha,
+$$
+one has
+$$
+\alpha_{\Pi W}=\tfrac12\psi_\alpha(d\psi^\alpha
+  +\gamma^\alpha{}_\beta \psi^\beta).
+$$
+With those notations,
+$$
+\Omega=d\alpha_{T^*V}+d\alpha_{\Pi V}.
+$$
+If $(e_\alpha)$ is an orthonormal basis, one has
+$$
+d\alpha_{\Pi V}=\tfrac12 \sum\limits_{\alpha}(d\psi^\alpha
+  +\gamma^\alpha{}_\beta
+\psi^\beta)^2+\sum\limits_{\alpha,\beta}
+R^\alpha{}_\beta \psi^\alpha \psi^\beta.
+$$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\enddocument
+
+
+

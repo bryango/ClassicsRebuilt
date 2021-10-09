@@ -1,0 +1,699 @@
+%From: Lisa C Jeffrey <jeffrey@math.ias.edu>
+%Date: Tue, 22 Oct 1996 09:45:23 -0400
+
+\documentstyle[12pt]{article}
+\input amssym.def
+\input amssym.tex
+\newcommand{\Tr}{\,{\rm Tr}\,}
+\newcommand{\tr}{{\rm tr}\,}
+
+%L. Jeffrey preamble, 5 April 1996
+
+\newcommand{\nc}{\newcommand}
+
+\nc{\isq}{{i}}
+\newcommand{\colvec}[2]{\left  ( \begin{array}{cc} #1  \\
+     #2  \end{array} \right ) }
+
+%%%%%\newcommand{\Tr}{\,{\rm Tr}\,}
+\newcommand{\End}{\,{\rm End}\,}
+\newcommand{\Hom}{\,{\rm Hom}\,}
+
+\newcommand{\Ker}{ \,{\rm Ker} \,}
+
+\newcommand{\bla}{\phantom{bbbbb}}
+\newcommand{\onebl}{\phantom{a} }
+\newcommand{\eqdef}{\;\: {\stackrel{ {\rm def} }{=} } \;\:}
+\newcommand{\sign}{\: {\rm sign}\: }
+\newcommand{\sgn}{ \:{\rm sgn}\:}
+\newcommand{\half}{ {\frac{1}{2} } }
+\newcommand{\vol}{ \,{\rm vol}\, }
+
+
+% define abbreviations for most common commands
+%
+
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\beqst}{\begin{equation*}}
+\newcommand{\eeqst}{\end{equation*}}
+\newcommand{\barr}{\begin{array}}
+\newcommand{\earr}{\end{array}}
+\newcommand{\beqar}{\begin{eqnarray}}
+\newcommand{\eeqar}{\end{eqnarray}}
+\newtheorem{theorem}{Theorem}[section]
+%\newtheorem{conjecture}{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+%\newtheorem{problem}{Problem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{prop}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remit}[theorem]{Remark}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\newtheorem{example}[theorem]{Example}
+
+\newcommand{\matr}[4]{\left \lbrack \begin{array}{cc} #1 & #2 \\
+     #3 & #4 \end{array} \right \rbrack}
+
+
+
+\newenvironment{rem}{\begin{remit}\rm}{\end{remit}}
+
+
+
+
+% black board bold face
+%note \AA is already defined!
+\newcommand{\aff}{{ \Bbb A }}
+\newcommand{\RR}{{{\bf  R }}}
+\newcommand{\CC}{{{\bf  C }}}
+\nc{\FF}{ {\Bbb F} } 
+\newcommand{\ZZ}{{{\bf   Z }}}
+\newcommand{\PP}{ {\Bbb P } }
+\newcommand{\QQ}{{\Bbb Q }}
+\newcommand{\UU}{{\Bbb U }}
+
+
+
+
+
+
+
+
+%***************************
+
+
+
+
+%
+
+
+%
+
+
+%Replace greek letters by their roman equivalents with \
+%Slightly nonstandard:  theta is \t, tau is \ta, no omicron
+\def\a{\alpha}
+\def\b{\beta}
+\def\g{\gamma}
+\def\d{\delta}
+\def\e{\epsilon}
+\def\z{\zeta}
+\def\h{\eta}
+\def\t{\theta}
+%\def\i{\iota}
+\def\k{\kappa}
+\def\l{\lambda}
+\def\m{\mu}
+\def\n{\nu}
+\def\x{\xi}
+\def\p{\pi}
+\def\r{\rho}
+\def\s{\sigma}
+\def\ta{\tau}
+\def\u{\upsilon}
+\def\ph{\phi}
+\def\c{\chi}
+\def\ps{\psi}
+\def\o{\omega}
+
+\def\G{\Gamma}
+\def\D{\Delta}
+\def\T{\Theta}
+\def\L{\Lambda}
+\def\X{\Xi}
+\def\P{\Pi}
+\def\S{\Sigma}
+\def\U{\Upsilon}
+\def\Ph{\Phi}
+\def\Ps{\Psi}
+\def\O{\Omega}
+
+
+
+
+% calligraphic letters
+\newcommand{\calA}{{\mbox{$\cal A$}}}
+\newcommand{\calB}{{\mbox{$\cal B$}}}
+\newcommand{\calC}{{\mbox{$\cal C$}}}
+\newcommand{\calD}{{\mbox{$\cal D$}}}
+\newcommand{\calE}{{\mbox{$\cal E$}}}
+\newcommand{\calF}{{\mbox{$\cal F$}}}
+\newcommand{\calG}{{\mbox{$\cal G$}}}
+\newcommand{\calH}{{\mbox{$\cal H$}}}
+\newcommand{\calI}{{\mbox{$\cal I$}}}
+\newcommand{\calJ}{{\mbox{$\cal J$}}}
+\newcommand{\calK}{{\mbox{$\cal K$}}}
+\newcommand{\calL}{{\mbox{$\cal L$}}}
+\newcommand{\calM}{{\mbox{$\cal M$}}}
+\newcommand{\calN}{{\mbox{$\cal N$}}}
+\newcommand{\calO}{{\mbox{$\cal O$}}}
+\newcommand{\calP}{{\mbox{$\cal P$}}}
+\newcommand{\calQ}{{\mbox{$\cal Q$}}}
+\newcommand{\calR}{{\mbox{$\cal R$}}}
+\newcommand{\calS}{{\mbox{$\cal S$}}}
+\newcommand{\calT}{{\mbox{$\cal T$}}}
+\newcommand{\calU}{{\mbox{$\cal U$}}}
+\newcommand{\calV}{{\mbox{$\cal V$}}}
+\newcommand{\calW}{{\mbox{$\cal W$}}}
+\newcommand{\calX}{{\mbox{$\cal X$}}}
+\newcommand{\calY}{{\mbox{$\cal Y$}}}
+\newcommand{\calZ}{{\mbox{$\cal Z$}}}
+
+%% To load script letters:
+
+\font\teneusm=eusm10  \font\seveneusm=eusm7 
+\font\fiveeusm=eusm5 
+\newfam\eusmfam 
+\textfont\eusmfam=\teneusm 
+\scriptfont\eusmfam=\seveneusm 
+\scriptscriptfont\eusmfam=\fiveeusm 
+\def\Scr#1{{\fam\eusmfam\relax#1}}
+
+% Script letters
+\newcommand{\ScrA}{{\Scr A}} \newcommand{\ScrB}{{\Scr B}}
+\newcommand{\ScrC}{{\Scr C}} \newcommand{\ScrD}{{\Scr D}}
+\newcommand{\ScrE}{{\Scr E}} \newcommand{\ScrF}{{\Scr F}}
+\newcommand{\ScrG}{{\Scr G}} \newcommand{\ScrH}{{\Scr H}}
+\newcommand{\ScrI}{{\Scr I}} \newcommand{\ScrJ}{{\Scr J}}
+\newcommand{\ScrK}{{\Scr K}} \newcommand{\ScrL}{{\Scr L}}
+\newcommand{\ScrM}{{\Scr M}} \newcommand{\ScrN}{{\Scr N}}
+\newcommand{\ScrO}{{\Scr O}} \newcommand{\ScrP}{{\Scr P}}
+\newcommand{\ScrQ}{{\Scr Q}} \newcommand{\ScrR}{{\Scr R}}
+\newcommand{\ScrS}{{\Scr S}} \newcommand{\ScrT}{{\Scr T}}
+\newcommand{\ScrU}{{\Scr U}} \newcommand{\ScrV}{{\Scr V}}
+\newcommand{\ScrW}{{\Scr W}} \newcommand{\ScrX}{{\Scr X}}
+\newcommand{\ScrY}{{\Scr Y}} \newcommand{\ScrZ}{{\Scr Z}}
+
+%German (Faktur) letters
+
+\newcommand{\grA}{{\frak A}}
+
+
+
+\def\eps{\varepsilon}
+
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.1in}
+\setlength{\evensidemargin}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\topmargin}{-.75in}
+\setlength{\parskip}{0.3\baselineskip}
+
+%\renewcommand{\theequation}{\thesection.\arabic{equation}}
+%\newcommand{\renorm}{{ \setcounter{equation}{0} }}
+
+\newcommand{\Le}{{{\mathchoice{\,{\scriptstyle\le}\,}
+  {\,{\scriptstyle\le}\,}
+  {\,{\scriptscriptstyle\le}\,}{\,{\scriptscriptstyle\le}\,}}}}
+\newcommand{\Ge}{{{\mathchoice{\,{\scriptstyle\ge}\,}
+  {\,{\scriptstyle\ge}\,}
+  {\,{\scriptscriptstyle\ge}\,}{\,{\scriptscriptstyle\ge}\,}}}}
+
+
+%\renewcommand{\baselinestretch}{1.5}
+
+
+%more newcommands
+\nc{\bra}{  < }
+\nc{\ket}{ > }
+%\nc{\isq}{ { \sqrt{-1} } }
+%\nc{\isq}{{ i }}
+%\nc{\hbar}{{ h}}
+\nc{\triang}{ { \bigtriangleup} }
+
+\nc{\astar}{{ a^*}}
+\nc{\hata}{ { \hat{a} }}
+\nc{\hatastar}{{ \hat{\astar} }}
+\nc{\normfac}{{\frac{1}{\sqrt{2 \omega} } }}
+
+\begin{document}
+
+\title{Lecture 2:\\
+ The Harmonic Oscillator and Free Fields}
+\author{Ludwig Faddeev}
+\date{17  October 1996}
+
+\maketitle
+%\renorm
+
+The treatment given here closely follows Sections 2.2 and 2.3 of 
+\cite{FS}.
+
+We revisit the functional integral formalism in 
+holomorphic quantization used to describe the harmonic oscillator. 
+We make use of operators $\hata$ and $\hatastar$ satisfying
+$[\hata, \hatastar] = 1$. States are represented by 
+analytic functions $\phi(\astar)$ of one complex variable $\astar$; operators
+are represented by integral kernels $A(\astar'', a')$ depending on two 
+{\em independent} complex variables $\hatastar''$ and $a'$. 
+The operator whose integral kernel is $A$ may equivalently be represented
+by its {\em normal symbol}
+\beq K (\astar'', a') = e^{ - \astar'' a'} A(\astar'', a'). \eeq
+We compose operators by writing the integral kernel of the 
+composition of the operators with integral kernels $A$ and $B$ as
+\beq 
+AB (\astar'', a') = 
+\int_{\RR^2} A(\astar'', a) e^{ - \astar a} B(\astar, a') 
+\frac{d\astar da}{2 \pi i }. \eeq
+The operator corresponding to the normal symbol is written as 
+\beq {\cal K} = K(\hatastar, \hata) \eeq
+where the ordering of the variables has been changed 
+in such a way that all starred variables appear to the left of all 
+unstarred variables. 
+
+The evolution operator $U_\triang = e^{- \isq H \triang}$ was written 
+$$U_\triang (\astar'', a' ) = 
+\exp (-\astar'' a' - \isq h(\astar'', a') \triang). $$
+
+\nc{\dphi}{\tilde{\phi}} 
+
+We pause to point out that we have been regarding  $\phi(\astar) $
+(which represents a state) 
+as an analytic {\em function} of one complex variable. In geometric 
+quantization it is actually  a {\em section} of a line 
+bundle $L $ over the phase space $\RR^2$. We denote  the section of the 
+line bundle as
+\beq \dphi (\astar, a) = e^{- \half \astar a} \phi (\astar); \eeq
+the object  $\dphi$ (the ``dressed'' analytic function) 
+is a section of a line bundle $L$ over the phase space $\RR^2$.
+The dressed kernel $\tilde{A} (\astar'', a') $ is a section of the 
+pullback of two copies of $L$ over $\RR^2 \times \RR^2$: 
+\beq \tilde{A} (\astar'', a') = 
+e^{ - \half \astar'' a'' } A(\astar'', a') e^{ - \half \astar' a'}. \eeq
+Dressed kernels are composed by integrating over $\RR^2$. 
+One may also recover the ordinary kernel from the dressed kernel by 
+integration:
+\beq A(\astar'', a') = 
+\int e^{ \astar'' a - \half \astar a} \tilde{A} (\astar, a | b^*, b) 
+e^{ - \half b^* b} e^{ b^* a'} \frac{d\astar da}{2 \pi \isq} 
+\frac{d b^* db} {2 \pi \isq}. \eeq
+The time evolution operator becomes
+\beq \label{e:timeev}
+U(\astar'', a') = \int e^{ \astar'' a_N - \half a_N^* a_N} 
+e^{ a_N^* a_{N-1} - a_{N-1}^* a_N + \dots - a_1^* a_1 + a_1^* a_0} \times \eeq
+$$ e^{ - i [h(a_N^*, a_{N-1}) + \dots h(a_1^*, a_0)]\triang } 
+\prod_{k = 0}^N  e^{ - \half a_0^* a_0 + a_0^* a'}\frac{da_k^* da_k}{2 \pi i}
+$$
+$$
+ = \int \exp \Bigl  \{ \astar'' a(t'') - \half \astar (t'') a(t'') 
++ i \int_{t'}^{t''}\left [
+ \frac{\dot{a}^* a - \astar \dot{a} }{2 i } - h(\astar, a) 
+\right  \} dt $$
+\beq \label{explint}
+ - \half \astar(t') a(t') + \astar (t') a' \Bigr  \} 
+\prod_{t' \le t \le t''} \frac{d \astar (t) da(t) } {2 \pi i }. \eeq
+This formula is better than (41) in Lecture I.
+All integrations here are done over a real plane $R^2$,
+in which $a^*(+)$ and $a(+)$ are complex coordinates.
+If one takes the explicit Hamiltonian $h (\astar, a) = \omega \astar a, $
+this integral is Gaussian: we may compute it by ``completing the square'', 
+or equivalently observing that the integrand is an inhomogeneous 
+quadratic and so the integral may be obtained by replacing the value 
+of the integrand by its value at the (complex) critical point of the
+integrand. Explicitly, if $A$ is a matrix with determinant $1$ we have
+\beq \int \exp \{ \half (Az, z) + (b,z) \} dz= e^{ - \half (A^{-1} b, b) }
+. \eeq
+The critical points of the integrand (\ref{explint}) are the 
+solutions of the equation of motion 
+$$\dot{a}^* - i \omega \astar = 0, ~~ \astar (t'') = \astar'' $$
+$$ \dot{a} + i \omega a = 0, ~~ a(t') = a'. $$
+We obtain as in Lecture 1 
+\beq \label{uodef} U_0 (\astar'', a' ; t'' - t') = 
+\exp (\astar'' a' e^{i \omega (t'' - t')} ), \eeq
+which implies 
+$$U_0 (t'') \phi(\astar) = \phi(e^{ - i \omega t'} \astar). $$
+
+
+
+
+
+
+Now let us consider a more complicated example: we perturb the 
+Hamiltonian by adding a term involving an  external force $\eta (t)$ (which
+should be thought of as a real valued function),  which depends on the 
+time $t$. If we introduce 
+$$q = \frac{1}{\sqrt{2 \omega} } (\astar + a), $$
+the new hamiltonian takes the form 
+$$H = \omega \astar a + \eta(t) q(t) $$
+and is explicitly time dependent.
+The equations of motion for $a$ and $\astar$ acquire
+corrections:
+\beq \dot{a}^* - i \omega \astar - i \eta(t) = 0, \eeq
+\beq \dot{a}^* + i \omega \astar + i \eta(t) = 0. \eeq
+The time evolution operator now depends on $t''$ and $t'$ and not only 
+on their difference: we obtain
+$$ U(\astar, a; t'', t') = 
+\exp  \Bigl \{  \astar a e^{ - i \omega (t'' - t') } 
+- i \astar e^{ - i \omega t''} \int_{t'}^{t''} 
+e^{ i \omega s} \frac{\eta(s)}{\sqrt{2\omega} } ds 
+- i a e^{  i \omega t'} \int_{t'}^{t''} 
+e^{- i \omega s} \frac{\eta(s)}{\sqrt{2\omega} } ds  $$
+\beq \label{udef} - \int_{t = t'}^{t''} \frac{\eta(t) }{\sqrt{2\omega} }
+\int_{s = t}^{t''} e^{ - i \omega t } e^{i \omega s }
+\frac{\eta(s) }{\sqrt{2\omega} }   dtds \Bigr \}, \eeq
+(where from now on the primes on the 
+variables $a$ and $\astar$ will be suppressed).
+We note that the expression for $U$ contains both terms linear
+in $\eta$ and terms quadratic in $\eta$. 
+
+Suppose $\eta = 0 $ for $t$ outside some interval 
+$[\tau_1, \tau_2]$ 
+(in other words the external force is turned on at time $\tau_1$ 
+and turned off at time $\tau_2$). We would like to study how the motion
+of the system deviates from its motion  in the absence  of an external force:
+this is described by the normal 
+symbol for the {\em transition operator} $T$, defined as follows.
+\beq 
+T(\astar, a) = \lim_{t'' \to \infty, ~t' \to - \infty}
+U_0 (t'')^{-1} U(t'', t') U_0 (t'). \eeq
+Recalling the expression for $U_0$ given in  (\ref{uodef}), the
+transition operator is obtained from the expression (\ref{udef}) for 
+$U$ by removing the initial term 
+$\astar a e^{ -i \omega (t'' - t')} $ from the argument of the exponential,
+and also removing the factors $e^{-i \omega t''} $ and 
+$e^{i \omega t'}$ from the second and third terms in the argument of the 
+exponential in (13).
+Notice that the integration variable $s$ in (\ref{udef}) is subject to 
+the constraint  $s < t$; this enables us to rewrite the formula for
+the normal symbol of  $T$ 
+in the form 
+\beq \label{tdef}
+T(\astar, a)_{\rm symb} = 
+\exp \left \{ - i \int_{- \infty}^\infty q(t) \eta(t) dt 
++ \frac{i}{2} \int_{- \infty}^\infty \int_{- \infty}^\infty 
+\frac{e^{-i \omega |t-s| } } {2i\omega} \eta(t) \eta(s) dt ds \right \}. \eeq
+To obtain this formula we have symmetrized over $t$ and $s$. 
+
+Here, 
+\beq \label{e:16}
+q(t) = \normfac (\astar e^{i \omega t} + a e^{-i \omega t} ) \eeq
+is a solution of the free equation of motion 
+$$\ddot{q} + \omega^2 q = 0,  $$
+or $$D q = 0 . $$
+The operator $D$ is defined by 
+$$D = \frac{d^2}{dt^2} + \omega^2. $$
+The kernel 
+$$ G(t,s)= G(t-s) = \frac{e^{-i \omega |t-s|} }{2 i \omega} $$
+is 
+the {\em Green's function}  for the operator $D$, or the fundamental 
+solution to the equation 
+\beq  (\frac{d^2}{dt^2} + \omega^2) G(t,s) = \delta (t-s).\eeq
+Since $G$ depends only on the difference $t-s$, we shall from now
+on regard $G$ as a function of one variable $t$.
+We may describe it in terms of its  Fourier transform as
+\beq G(t) =\lim_{\eps \to 0+}  \frac{1}{2 \pi} \int_{- \infty}^\infty 
+\frac{e^{ikt} }{- k^2 + \omega^2 - i \epsilon} dk, \eeq
+which is often denoted as 
+$$ G(t) =  \frac{1}{2 \pi} \int_{- \infty}^\infty 
+\frac{e^{ikt} }{- k^2 + \omega^2 - i 0} dk. $$
+The integral over $k$ should be completed to a contour integral 
+and `$- i 0$' tells us how we have moved the poles in the integrand
+(which were on the real axis). The concrete choice of Green's function
+corresponds to the domain of definition $\calO$ 
+of the operator $D$: $\calO$ consists of functions $f(t)$ which 
+are asymptotic  to  $a e^{i \omega t}$  as
+$t \to - \infty$ and to  $b e^{-i \omega t}$ as
+$t \to \infty$ (where $a$ and $b$ are constants). 
+
+We now pass from quantum mechanics to quantum field theory, replacing
+$\RR$ by Minkowski  space $V$ of dimension $d + 1$
+with signature $(+,-,\dots, -)$ (in other words $d$ space 
+dimensions and one time dimension; sometimes this will 
+be denoted as $V = V' \oplus \RR$, where we have
+denoted $d$-dimensional space by $V'$.) 
+We shall usually index the coordinates of $V$ by $\mu = 0, \dots, d$ while
+the coordinates of space $V'$  are indexed by $j = 1, \dots, d$. 
+Thus a point $x$ in $V$ is denoted $x = (x^0, \vec{x})$; its
+coordinates are $x^\mu = (x^0, x^1, \dots, x^d)$. 
+
+Let us list  the formulas 
+from quantum mechanics which we shall generalize:
+\beq \label{eq:1} h = \half p^2 + \half \omega^2 q^2 ~= \omega \astar a \eeq
+\beq  \label{eq:2} \ddot{q} + \omega^2 q = 0. \eeq
+\beq \label{eq:2a} [\hata, \hatastar] = 1 \eeq
+\beq \label{eq:3} \phi(\astar) = \frac{1}{\sqrt{n!}} (\astar)^n , 
+~ H \phi = n \omega \phi \eeq
+\beq \label{eq:4} q = \frac{\astar + a}{\sqrt{2 \omega} } \eeq
+\beq \label{eq:5} T (\astar, a) = \exp \left \{ 
+- i \int q(t) \eta(t) dt + \frac{i}{2} \int G(t-s) \eta(t) \eta(s) dt ds 
+\right \}. \eeq
+
+
+
+
+The analogue of the coordinate $q(t) $  is a 
+scalar field (denoted by $\varphi$) which depends on $x \in V$.
+The field $\varphi$ satisfies the classical equation of motion, which 
+is the {\em Klein-Gordon equation} 
+\beq \label{kg} \square \varphi + m^2 \varphi = 0 , \eeq
+where we have introduced 
+$$ \square = \partial_\mu \partial^\mu = \partial_0^2 - \bigtriangleup. $$
+To see the analogy with (\ref{eq:2}) we introduce the 
+operator $\Omega^2 = - \bigtriangleup + m^2$, so that 
+(\ref{kg}) becomes
+$$ \ddot{\varphi} + \Omega^2 \varphi = 0 . $$
+
+\nc{\vac}{{ \sl v}}
+\nc{\basvec}[1]{\Phi_{#1} (\astar) } 
+\nc{\basvecn}{\basvec{n} } 
+\nc{\kn}{(\vec{k})_{n}} 
+
+A free field $\varphi$ should be thought of as a collection of 
+oscillators with different frequencies, which are 
+eigenvalues of the operator $\Omega$:
+$\Omega^2$ can be diagonalized by Fourier transforms and we get
+for the eigenfrequencies
+\beq \omega^2 = \vec{k}^2 + m^2, \eeq
+or $$\omega(\vec{k}) = \sqrt{\vec{k}^2 + m^2}. $$
+The space coordinate (or equivalently its Fourier  transform, the 
+momentum coordinate $\vec{k}$) labels the oscillators. 
+Quantization now is evident.
+In the
+holomorphic quantization
+the basis elements, denoted by 
+$\basvecn$, are given by 
+\beq \basvecn = \prod_{j = 1}^n \astar (\vec{k}_1) \dots \astar (\vec{k}_n); \eeq
+at times we shall use the notation $\kn$ to denote
+the $n$-tuple of {\em unordered} points  $(\vec{k}_1, \dots, \vec{k}_n)$ in
+$(V')^*$.
+The Hilbert space corresponding to $n$ particles is the 
+space of {\em symmetric} functions of $n$ momentum variables.
+Proper states are given by 
+\beq \int f(\kn) \astar (\vec{k}_1) \dots \astar(\vec{k}_n) d\vec{k}_1 
+\dots d\vec{k}_n. \eeq
+The Hamiltonian becomes
+\beq H = \int \omega (\vec{k})
+ \hatastar (\vec{k}) \hata(\vec{k}) d\vec{k}. \eeq
+The state $\Phi(\kn) $ is a generalized eigenstate for the Hamiltonian 
+\beq H \Phi(\kn) =  \left (
+\sum_{j = 1}^n \omega (\vec{k}_j)\right )  \phi(\kn). \eeq
+and the  momentum operator $\vec{P}$ :
+\beq \vec{P} \Phi(\kn) = 
+\left ( \sum_{j = 1}^n \vec{k}_j \right )  \Phi(\kn). \eeq
+Thus we obtain a description of the spectrum in terms of particles.
+In a one particle subspace, 
+the components 
+of the momentum 
+operator form a complete set of commuting operators, and the 
+Hamiltonian is a function $\omega (\vec{k})$ of them. 
+
+In field theory one requires multiparticle states in order 
+to obtain  scattering, and one must also allow the possibility
+of creating and annihilating particles. A  Hilbert space accommodating
+all possible numbers of particles and on which the creation and 
+annihilation operators may act is the {\em Fock space}
+$\calH_{\rm Fock} $, which should be thought of as a linear combination
+of all the $n$-particle states, or as the result of tensoring together 
+a collection of Hilbert spaces 
+representing  one particle systems  and symmetrizing over the action
+of the permutation group. 
+
+If we introduce the variable $\pi(\vec{x} )$ which is canonically conjugate
+to the field operator $\varphi(\vec{x})$, the free field Hamiltonian becomes
+(compare with (\ref{eq:1})
+\beq \label{hamfock}
+H_0 = \half \int_{V'} \left ( \pi^2(\vec{x} ) 
++ (\nabla \varphi, \nabla \varphi) + m^2 \varphi^2 (\vec{x} ) 
+\right ) d\vec{x}. \eeq
+The initial data analogous to (\ref{eq:4}) is 
+\beq \label{eq:4bis} 
+\phi(\vec{x}) = \frac{1}{(2 \pi)^{d/2} }
+\int \left ( \astar (\vec{k} ) 
+e^{ - i (\vec{k}, \vec{x} ) }  + 
+ a (\vec{k} ) 
+e^{  i (\vec{k}, \vec{x} ) }  \right ) \frac{ d\vec{k}}{\sqrt{2 \omega} }. \eeq
+We may  perturb the Hamiltonian $H_0$ by adding a term:
+$$H = H_0 + 
+\int\eta(\vec{x}, t) \varphi(\vec{x}, t) d\vec{x}. $$
+The normal symbol of the corresponding
+transition operator is then (by analogy with (\ref{eq:5}))
+\beq \label{transopd} T_\eta(\astar(\vec{k}), a(\vec{k}) )
+= \exp \left \{ - i \int_{V} \eta(x) \varphi(x) dx + 
+\frac{i}{2} \int_{V \times V} 
+G(x - y) \eta(x) \eta(y) dx dy \right \}, \eeq
+where the Green's function satisfies 
+\beq (\square + m^2) G(x,y)  = \delta^{d + 1} (x - y); \eeq
+it is given in terms of its Fourier transform by 
+\beq G(x) = \frac{1}{(2 \pi)^{d+1} } \int_{V^*} 
+\frac{e^{ - i (k,x) } }{k^2 - m^2 + i 0 } dk. \eeq
+
+The field operator $\varphi$ generalizing (\ref{e:16}) is 
+\beq \varphi(\vec{x}, t) = 
+\frac{1}{(2 \pi)^{d/2} } 
+\int \left \{  \astar (\vec{k} ) e^{ - i (\vec{k}, \vec{x} )} e^{i \omega t} 
++ a (\vec{k} ) e^{  i (\vec{k}, \vec{x} )} e^{-i \omega t}  \right \} 
+\frac{ d\vec{k}}{\sqrt{2 \omega} }. \eeq
+
+\nc{\newv}{\calV}
+
+Let us now consider what happens when we perturb the Hamiltonian by 
+adding, not a term corresponding to an external force, but
+a term corresponding to an interaction between particles. 
+We suppose for example that 
+\beq H = H_0 + \lambda \int_{V'} \newv(\varphi(\vec{x} ) )
+d\vec{x}, \eeq 
+where $\newv (\varphi)$ is a polynomial in $\varphi$ in which 
+all terms are higher than quadratic; we could for example take
+\beq \newv(\varphi) = \frac{\varphi^3}{3!}. \eeq
+We shall expand in terms of powers of the {\em coupling constant}
+$\lambda$, which is assumed  small. 
+The term $\newv$ is independent of the time; it should 
+be regarded as analogous to a potential. 
+
+We shall compute the {\em scattering operator} or {\em S-matrix}
+\beq \calS' = 
+\lim_{t'' \to \infty, ~ t' \to - \infty} 
+e^{i H_0 t''} e^{ - i H (t'' - t') } e^{- i H_0 t'}. \eeq
+Repeating the previous  formalism we obtain
+a  functional integral for the time evolution operator where the 
+integrand contains  a factor
+\beq \exp \left \{ 
+- i \lambda \int \calV (\varphi(x) ) dx \right \}. \eeq
+This factor is contained in  the integrand for the time evolution operator 
+$U$ in the path integral which is the 
+generalization to $d+1 $ dimensions of 
+the integral given in (\ref{explint}).
+%(\ref{udef}) and ultimately to the formula (\ref{tdef}) for the time 
+%evolution operator. 
+We now use the identity 
+\beq \exp \left \{ -i \lambda \int \calV(\varphi(x) ) dx \right \} 
+= \exp \left \{ -i \lambda \int \calV (\frac{1}{i} (\frac{\delta}{\delta 
+\eta(x) } ) dx \right \} 
+\exp \left \{ i \int \varphi(x) \eta(x) dx \right \}|_{\eta = 0 } \eeq
+to enable us to use our formula (\ref{transopd}) 
+for the transition operator to extract a formula for the $S$-matrix.
+
+We replace integration of functions involving $\calV(\varphi(x))$ by
+differentiation with respect to $\eta$ of the formula (\ref{tdef}) for the 
+transition operator. The purpose of this device is to replace
+integration (which involves the fields $\varphi$ in a nonlinear manner)
+by differentiation with respect to the parameter $\eta(x)$, which
+pairs linearly with $\varphi(x)$
+The formula (34) for 
+ $T_\eta$ may be thought of as a {\em generating functional}
+for the S-matrix when one perturbs the Hamiltonian by adding
+a potential term involving terms of higher than quadratic order in 
+$\varphi$. 
+
+We obtain
+\beq \label{smat}
+\calS'(\astar, a) = 
+\exp \left \{ - i \lambda \int \calV (\frac{\delta}{\delta \eta(x)}) dx 
+\right \} 
+ \exp \left \{ i\int_V \eta(x) \varphi(x) dx + 
+\frac{i}{2} \int_{V \times V} G(x-y) \eta(x) \eta (y) dx dy 
+\right \} . \eeq
+We are applying $\delta/\delta \eta(x) $ to the exponential of an 
+expression which contains one term linear in $\eta$ and another
+term quadratic in $\eta$. One application 
+of $\delta/\delta \eta(x)$ 
+produces terms of the form $\varphi(x)$ or of the form 
+$\int_V G(x-y) \eta(y) dy. $ 
+Differentiating twice with respect to $\eta$ produces 
+factors of $G(x-y)$. 
+We may represent the combinatorics of the resulting expression for the 
+S-matrix diagrammatically: this is the formalism of {\em 
+Feynman diagrams}.  To obtain the 
+term of order $\lambda^N$ in the formula for the S-matrix one should 
+proceed as follows.
+ We restrict for the moment to the potential $\calV(\varphi) 
+= \varphi^3/3!$  The factor $\calV(\varphi)$ is represented by a 
+vertex with three edges emanating from it ({\em trivalent} vertex) , which
+represent the three derivatives $\delta/\delta \eta(x)$ applied to the 
+expression (\ref{transopd}). Each vertex 
+carries a factor of the coupling constant $\lambda$, and the $j$-th
+vertex is 
+labelled by a coordinate $x_j \in V$. 
+The combination $(\delta/\delta \eta)^2$ yields a 
+term $G(x_j - x_k)$; diagrammatically this is 
+represented by a line connecting the $j$-th and 
+$k$-th vertices. (Here, $j$ need not be distinct from $k$, so 
+the line could start and end at the same vertex.) 
+
+Diagrammatically the term of order $\lambda^N$ in the 
+asymptotic expansion of $\calS'$ is  obtained by the 
+following procedure:
+
+\begin{enumerate}
+\item Draw all diagrams with $N$ trivalent vertices. Label the $j$-th 
+vertex by the coordinate $x_j \in V$. 
+\item A line connecting the $j$-th and $k$-th vertices ({\em internal} line)
+carries a factor $G(x_j - x_k)$ (the {\em propagator}).
+\item A line emanating from the $j$-th vertex but not connected to any
+other vertex carries a factor $\varphi(x_j)$. 
+\item The expression thus obtained must be 
+multiplied by $(-i \lambda)^N/N!(3!)^N $ and integrated over 
+the $x_1, \dots, x_N$. 
+\end{enumerate}
+
+We note that many of the diagrams thus obtained will differ from each other
+only by permutations of the integration variables 
+$x_1, \dots, x_N$ or of the edges leaving any given 
+vertex; these permutations are compensated by the 
+factor $1/(3!)^N N!$ One obtains the same answer by summing only over
+one representative of each equivalence class under such diagrams and 
+omitting the factor $1/(3!)^N N!$, provided one divides
+by the automorphism group of the diagram (the group of relabellings
+of the variables $x_1, \dots, x_N$ and permutations
+of the lines leaving each vertex which leaves the diagram invariant). 
+
+Of course if the potential $\lambda \varphi^3/3!$ were replaced by 
+a different order polynomial in $\varphi$, for example 
+$\lambda \varphi^4/4!$, one
+would obtain an analogous formula involving vertices with 
+a larger number of edges (in this case four)  emanating from them.
+
+We note that one must include contributions from disconnected diagrams, 
+and also from diagrams where an edge starts and ends at the same vertex.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{thebibliography}{99}
+\bibitem{FS} L.D. Faddeev, A.A.  Slavnov, {\em Gauge Fields: An Introduction 
+to Quantum Theory}, Addison-Wesley (Frontiers in Physics vol. 83), (second 
+edition), 1991. 
+\end{thebibliography}
+
+
+\end{document}
+
+

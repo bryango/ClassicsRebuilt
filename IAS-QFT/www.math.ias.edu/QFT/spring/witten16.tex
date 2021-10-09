@@ -1,0 +1,882 @@
+%Date: Mon, 20 Apr 1998 15:58:03 -0400 (EDT)
+%From: Pavel Etingof <etingof@abel.math.harvard.edu>
+
+\input amstex
+\documentstyle{amsppt}
+\magnification 1200
+\NoRunningHeads
+\NoBlackBoxes
+\document
+
+\def\tW{\tilde W}
+\def\Aut{\text{Aut}}
+\def\tr{{\text{tr}}}
+\def\ell{{\text{ell}}}
+\def\Ad{\text{Ad}}
+\def\u{\bold u}
+\def\m{\frak m}
+\def\O{\Cal O}
+\def\tA{\tilde A}
+\def\qdet{\text{qdet}}
+\def\k{\kappa}
+\def\RR{\Bbb R}
+\def\be{\bold e}
+\def\bR{\overline{R}}
+\def\tR{\tilde{\Cal R}}
+\def\hY{\hat Y}
+\def\tDY{\widetilde{DY}(\g)}
+\def\R{\Bbb R}
+\def\h1{\hat{\bold 1}}
+\def\hV{\hat V}
+\def\deg{\text{deg}}
+\def\hz{\hat \z}
+\def\hV{\hat V}
+\def\Uz{U_h(\g_\z)}
+\def\Uzi{U_h(\g_{\z,\infty})}
+\def\Uhz{U_h(\g_{\hz_i})}
+\def\Uhzi{U_h(\g_{\hz_i,\infty})}
+\def\tUz{U_h(\tg_\z)}
+\def\tUzi{U_h(\tg_{\z,\infty})}
+\def\tUhz{U_h(\tg_{\hz_i})}
+\def\tUhzi{U_h(\tg_{\hz_i,\infty})}
+\def\hUz{U_h(\hg_\z)}
+\def\hUzi{U_h(\hg_{\z,\infty})}
+\def\Uoz{U_h(\g^0_\z)}
+\def\Uozi{U_h(\g^0_{\z,\infty})}
+\def\Uohz{U_h(\g^0_{\hz_i})}
+\def\Uohzi{U_h(\g^0_{\hz_i,\infty})}
+\def\tUoz{U_h(\tg^0_\z)}
+\def\tUozi{U_h(\tg^0_{\z,\infty})}
+\def\tUohz{U_h(\tg^0_{\hz_i})}
+\def\tUohzi{U_h(\tg^0_{\hz_i,\infty})}
+\def\hUoz{U_h(\hg^0_\z)}
+\def\hUozi{U_h(\hg^0_{\z,\infty})}
+\def\hg{\hat\g}
+\def\tg{\tilde\g}
+\def\Ind{\text{Ind}}
+\def\pF{F^{\prime}}
+\def\hR{\hat R}
+\def\tF{\tilde F}
+\def\tg{\tilde \g}
+\def\tG{\tilde G}
+\def\hF{\hat F}
+\def\bg{\overline{\g}}
+\def\bG{\overline{G}}
+\def\Spec{\text{Spec}}
+\def\tlo{\hat\otimes}
+\def\hgr{\hat Gr}
+\def\tio{\tilde\otimes}
+\def\ho{\hat\otimes}
+\def\ad{\text{ad}}
+\def\Hom{\text{Hom}}
+\def\hh{\hat\h}
+\def\a{\frak a}
+\def\t{\hat t}
+\def\Ua{U_q(\tilde\g)}
+\def\U2{{\Ua}_2}
+\def\g{\frak g}
+\def\n{\frak n}
+\def\hh{\frak h}
+\def\sltwo{\frak s\frak l _2 }
+\def\Z{\Bbb Z}
+\def\C{\Bbb C}
+\def\d{\partial}
+\def\i{\text{i}}
+\def\ghat{\hat\frak g}
+\def\gtwisted{\hat{\frak g}_{\gamma}}
+\def\gtilde{\tilde{\frak g}_{\gamma}}
+\def\Tr{\text{\rm Tr}}
+\def\l{\lambda}
+\def\I{I_{\l,\nu,-g}(V)}
+\def\z{\bold z}
+\def\Id{\text{Id}}
+\def\<{\langle}
+\def\>{\rangle}
+\def\o{\otimes}
+\def\e{\varepsilon}
+\def\RE{\text{Re}}
+\def\Ug{U_q({\frak g})}
+\def\Id{\text{Id}}
+\def\End{\text{End}}
+\def\gg{\tilde\g}
+\def\b{\frak b}
+\def\S{\Cal S}
+\def\L{\Lambda}
+
+\topmatter
+\title Lecture II-16: BRST quantization of gauge theories
+\endtitle
+\author {\rm {\bf Edward Witten} }\endauthor
+\endtopmatter
+
+\centerline{Notes by Pavel Etingof and David Kazhdan}
+
+\vskip .1in
+
+In this lecture we will discuss quantization of gauge theory by using BRST 
+cohomology. This approach is an improvement of the original Faddeev-Popov 
+approach. An advantage of the BRST approach as opposed to the Faddeev-Popov 
+method is that BRST makes explicit the independence of quantization of the 
+choice of the gauge fixing procedure. 
+
+A similar approach can be used in gravity (see D'Hoker's lectures). 
+
+{\bf 16.1. The general setup.}
+ 
+We start with a general setup, and then consider examples. 
+In the general setup, we have a compact gauge group $G$
+with Lie algebra $\g$, and 
+the group $\hat G$, which is the group of gauge transformations of a 
+principal $G$-bundle $E$ over a spacetime $M$.  
+Formally, we want to compute the path integral 
+$$
+\frac{1}{Vol(\hat G)}\int DAD\phi e^{-L(A,\phi)},\tag 16.1
+$$
+where $L(A,\phi)$ is a gauge invariant Lagrangian
+with a gauge field $A$ and matter fields $\phi$. 
+
+The difficulty with a perturbative treatment 
+of this path integral is that its kinetic term 
+$F_A^2$ for the gauge field is degenerate along orbits of $\hat G$.  
+One way to deal with this difficulty 
+is to replace the integrand in (16.1) by some expression  
+that integrates to $1$ on orbits of $\hat G$ -- then 
+(16.1) would equal to the integral of this expression (at least if 
+everything were finite dimensional).
+For example, this expression could be the delta-function of some gauge, 
+i.e. of some submanifold 
+in the space of connections and matter fields which is a cross-section for the 
+$\hat G$-action (this procedure is called gauge fixing). 
+As we know (see Kazhdan's lectures
+on gauge theory and Faddeev's lectures), 
+this introduces a determinant under the integral 
+(the Faddeev-Popov determinant). The determinant is a nonlocal expression, so 
+in order to work only with local expressions, one should replace 
+this determinant with a Gaussian integral over 
+the space of fields times two copies of the odd space of sections of the 
+coadjoint bundle of $E$. Thus, one has to introduce additional fermionic
+fields $c,\bar c$ with values in $ad(E)$.  
+These fermions are called ghosts, 
+since they do not correspond to any physical particles and violate 
+spin-statistics. After the introduction of ghosts the path integral can be 
+treated as usual, e.g. by perturbation theory techniques. 
+
+{\bf 16.2. The BRST differential.} 
+
+Of course, any gauge fixing procedure by definition destroys gauge 
+invariance. Therefore, in order to obtain a sensible quantization, we must
+make sure that in the final result the gauge symmetry is restored. 
+In particular, we must explain what replaces the gauge symmetry 
+in the ghost setting of the previous section. 
+
+It turns out that what replaces the gauge symmetry is a certain 
+odd derivation of the algebra of local functionals, which 
+we will now construct. 
+
+We will first consider the classical theory. 
+Let us look what fields our theory has after introduction 
+of ghosts. The basic fields are the connection $A$, 
+the matter fields $\phi$, 
+and the ghosts $c,\bar c$, which are sections of the adjoint bundle to $E$.
+We will add an auxiliary scalar bosonic field $h$, whose significance will be 
+seen below. 
+ 
+Let $R$ be the algebra of local functionals. 
+We want to define an odd derivation 
+$\delta:R\to R$ such that $\delta^2=0$
+(the BRST differential). 
+
+Recall that the algebra of local functionals $R$ 
+is the quotient $\tilde R/I$, where $\tilde R$ 
+is the algebra of local expressions in the fields and $I$ is the 
+differential ideal generated by field equations.
+
+We first define a derivation $\delta:\tilde R\to\tilde R$,  
+and then make sure that the field equations are respected. 
+
+Define $\delta$ on generators by 
+$$
+\delta c=\frac{1}{2}[c,c], \delta\phi=\delta_c\phi, \delta A=-d_Ac,
+\delta\bar c=h,\delta h=0,\tag 16.2
+$$
+where $\delta_c\phi$ means the variation of $\phi$ along the infinitesimal 
+gauge transformation $c$. It is easy to check that $\delta^2=0$. 
+
+Recall from Kazhdan's and D'Hoker's lectures
+that the Lagrangian with ghosts for our theory is
+$$
+\tilde L=L(A,\phi)-
+\delta (\bar c(h/2 +\Lambda))=
+L(A,\phi)-
+(h\L+\frac{h^2}{2}-\bar c\delta\L).\tag 16.3
+$$
+where $\L=\L(A,\phi)$ is a non-gauge invariant local expression 
+(the gauge fixing function).
+This Lagrangian is of course equivalent to 
+$$
+\hat L=L(A,\phi)+(\frac{1}{2}\L^2+\bar c\delta\L).
+$$
+by eliminating $h$. 
+
+We want the Lagrangian to be invariant
+under the derivation $\delta$. Since $L(A,\phi)$ is 
+already invariant (because it is gauge invariant), 
+it is enough to check that the expression 
+$h\L+\frac{h^2}{2}-\bar c\delta\L$ is closed under $\delta$, 
+which follows from $\delta^2=0$. 
+
+Since $\delta$ preserves the Lagrangian,
+ it preserves the set of its critical points
+and hence indeed defines a derivation of the algebra of local functionals. 
+
+As an example consider the case when $E$ is the trivial bundle
+(and there is no matter fields). 
+One of the possible gauge fixing conditions is the Feynman gauge condition 
+$d^*A=0$. So we take $\L=d^*A$. Then one has 
+$\delta\L=-d^*d_Ac$, so after elimination of $h$ the Lagrangian 
+for pure gauge theory is
+$$
+L=\frac{1}{4e^2}\int F^2+((d^*A)^2-\bar cd^*d_Ac).\tag 16.4
+$$
+We see that this Lagrangian is nondegenerate, so one can do perturbation 
+theory with it as usual. The derivation $\delta$ on $R$ in this case is 
+defined by 
+$$
+\delta c=\frac{1}{2}[c,c], \delta A=-d_Ac, \delta\bar c=-d^*A.\tag 16.5
+$$
+
+{\bf 16.3. The properties of the BRST derivation.}
+
+Thus, we have constructed a derivation $\delta$. The main
+properties of $\delta$ are:
+
+1. $\delta^2=0$. 
+
+2. $\delta$ is defined on $\tilde R$ 
+apriori, without the use of the Lagrangian $L(A,\phi)$
+and the gauge fixing term $\L$. 
+It preserves the Lagrangian with ghosts $\tilde L$
+and therefore descends to $R$. 
+
+Now let us turn to quantum theory. In this case 
+local functionals are replaced by local operators. It can be shown 
+that there exists a renormalization procedure under which 
+$\delta$ can be defined as above, and properties 1 and 2 hold. 
+This is discussed below. 
+
+However, in order to use the BRST method for quantization, 
+we will need another, purely quantum, property of $\delta$. 
+Namely, denote by $\Cal L_{eff}$ the effective Lagrangian, 
+i.e. the Lagrangian for which the classical theory is equivalent 
+to the quantum theory for $\Cal L$. This Lagrangian 
+is of course nonlocal. 
+The third property of 
+$\delta$ that we need is
+
+3. $\delta$ preserves the effective action
+$\Cal L_{eff}$. That is, $\delta \Cal L_{eff}=0$. 
+
+This property may fail, and if it fails then one says that the theory 
+is anomalous. 
+
+{\bf Remark.} Although $\Cal L_{eff}$ is nonlocal, it can be shown 
+that $\delta\Cal L_{eff}$ is always the integral of a local 
+expression. It can be shown that 
+the obstruction to making $\delta\Cal L_{eff}$ zero 
+by adding an auxiliary term to the Lagrangian (in a way that does not 
+change the physics) is given by a 1-loop calculation. 
+Thus, anomalies arise in the 1-loop order of perturbation 
+theory, and don't have higher order corrections. 
+We will see this at the end of the lecture. 
+
+{\bf 16.4. Operators in gauge theory and BRST cohomology.} 
+
+Assume properties 1-3 hold. Consider the path integral $Z$ given by 
+Lagrangian $\tilde L$:  
+$$
+Z=\int DADcD\bar c Dh D\phi e^{-\tilde L}\tag 16.6
+$$
+(possibly with some gauge-invariant insertions). 
+Properties 1-3 imply that $Z$ is independent 
+on the gauge fixing condition $\L$. Indeed, for any local expression $X$ 
+we have 
+$$
+\int 
+DADcD\bar c DhD\phi e^{-\tilde L}\delta X=\delta \int DADcD\bar c DhD\phi
+e^{-\tilde L}X=0,
+\tag 16.7
+$$
+which implies the independence of $Z$ on $\L$.
+
+{\bf Remark.} In (16.7), we used that $\delta$ preserves the measure 
+of integration $DADcD\bar c DhD\phi$. 
+It is easy to see that this is equivalent to Property 3 (absence of 
+anomalies).
+ 
+The statement that $Z$ is independent of $\L$ holds for 
+operators (insertions) 
+which are annihilated by $\delta$; for example, for any gauge-invariant 
+insertions into $Z$, depending only on $A,\phi$.   
+On the other hand, if $\O=\delta\O'$ then the integral of $\O$ is zero 
+by (16.7). Thus, the space of ``physical'' 
+quantum operators in our theory is the cohomology 
+of $\delta$. This cohomology is called the BRST cohomology. 
+
+The BRST cohomology comes with a natural $\Z$-grading. Namely, 
+we have a grading in the space of local operators, 
+in which gauge and matter fields have degree $0$, $c$ has degree 
+$1$ and $\bar c$ degree $-1$. This degree is called the ghost number. 
+It is easy to see that $\delta$ raises 
+the degree by 1. This allows to introduce a grading in cohomology:
+we denote by $H_\delta^q$ the cohomology in degree $q$. 
+
+The  properties of this cohomology, 
+which usually hold in this situation are: 
+
+1. $H_\delta^q$ vanishes for $q<0$.
+
+2. $H_\delta^0$ is the space of gauge invariant local operators
+depending only on $A$ and $\phi$.
+
+This shows that $\delta$ plays the role of the gauge symmetry 
+which was broken when ghosts were introduced. Thus, we have established 
+a setting for gauge theory which works well in perturbation theory 
+and in which the gauge symmetry does not die but rather 
+appears in the form of $\delta$. 
+
+{\bf 16.5. Renormalization and BRST differential.}
+
+Now let us discuss the renormalizability and renormalization group equation 
+in the BRST approach. We will restrict ourselves to 4 dimensions and pure 
+nonabelian gauge theory. 
+
+Recall that in order for a theory to be renormalizable,
+all interactions have to have nonnegative dimension. To find out whether it is 
+so for the Lagrangian with ghosts, we will compute the dimensions of fields
+(assuming that $\delta$ preserves the scaling dimensions). It is easy to see 
+that the dimensions are as follows: 
+$[c]=0,[\bar c]=2,[A]=1$. This shows that all interactions 
+in the Lagrangian with ghosts are renormalizable. 
+
+{\bf Remark.} In this theory, dimensions of $c$ and $\bar c$ are not uniquely 
+determined; the only thing that is determined canonically is $[\bar cc]$,
+which equals $2$. This does not lead to a contradiction, since all operators 
+of nonzero ghost number have zero expectation value, and so their
+scaling dimension has no intrinsic
+meaning. This is why we needed to make an additional 
+assumption that $\delta$ preserves dimensions to fix precise values 
+of the dimensions. If we had assumed that $\delta$ raises dimension by 
+$k$ we would get a different answer, which would be equally good for our 
+purposes. 
+
+Now let us look for critical couplings which will be renormalized. 
+In the setting without ghosts, the usual thing to do is to 
+write down renormalizable 
+(non-gauge invariant) operators of dimension 4, which correspond to 
+critical couplings: $[A,A]^2, [A,A]dA,(dA)^2$, and then argue 
+that there is only one gauge invariant combination of these operators, 
+so that the only coupling which is to be 
+renormalized is the charge $e$. However, in the setting with ghosts, 
+we also have to include operators of degree 4 
+involving ghosts: $\bar ccA^2,\bar cd^*dc,...$. The gauge invariance condition 
+is now replaced by the condition that $\delta$ is a symmetry, so we need 
+to renormalize only delta-invariant interactions. This cuts down the number 
+of operators to be renormalized, but still leaves us with two 
+renormalizable couplings: the charge $e$ and the gauge fixing parameter $a$, 
+corresponding to the scaling of the gauge fixing term 
+$\frac{\L^2}{2}+\bar c\delta\L$. 
+Thus the renormalization group vector field looks like
+$$
+W=\mu\frac{\d}{\d\mu}+\beta(e)\frac{\d}{\d e}+\tilde\beta(e,a)\frac{\d}{\d a}
+.\tag 16.7
+$$
+Here $\beta$ is the beta-function of the theory, and $\tilde\beta$ 
+is the ghost beta-function. The beta-function of the theory 
+ depends only on $e$ and is physically meaningful; for example, 
+the negativity of its 
+leading term insures asymptotic freedom. However, 
+the ghost beta-function $\tilde\beta$ has no physical meaning: 
+it only matters for renormalization of operators 
+and correlators containing $c$ and $\bar c$, which don't 
+make sense physically. 
+
+{\bf 16.6. The Hamiltonian approach.}
+
+So far we have considered BRST method from the Lagrangian point of view. 
+Now let us consider the connection of the BRST method with the Hamiltonian 
+formalism. 
+
+Since ghosts violate spin-statistics (being scalar fermions), 
+the ``Hilbert space'' of the theory with ghosts cannot be an actual Hilbert 
+space. Namely, it is possible to construct a certain space 
+$\tilde\Cal H$ with a Hermitian 
+form, which is analogous to the Hilbert space in actual physical theories, 
+but the form will not be positive definite. However, on this space 
+we have local quantum operators, 
+obtained by quantization of classical operators
+in the usual way. In particular, we have 
+the global charges -- the Hamiltonian $H$ as well as the BRST charge $Q$, 
+obtained from ghosts as explained in D'Hokers lecture. 
+We also have a grading of $\tilde\Cal H$ by ghost number, obtained 
+naturally from the quantization procedure. 
+
+The operator $Q$ has the property $[Q,\O]=\delta\O$ 
+for any operator $\O$ (not necessarily $\delta$-closed)
+in the theory with ghosts. Also, $Q\Omega=0$, 
+where $\Omega$ is the vacuum, and the ghost number of $Q$ is $1$. 
+
+The operator $Q$ has properties 
+analogous to those of $\delta$: 
+
+1. $Q^2=0$. This can be confirmed by a direct computation. 
+
+2. $Q$ is defined apriori, without the use of $L$ and $\Lambda$
+(by an explicit formula as in D'Hoker's lectures). 
+In particular, if $\tilde\Cal H$ is an irreducible representation 
+of the operator algebra, then $Q$ is completely determined by $\delta$
+and the properties $[Q,\O]=\delta\O$, $Q\Omega=0$. 
+
+3. If there is no anomalies, the element $Q$ commutes 
+with the Hamiltonian and with all gauge invariant local operators 
+which involve no ghosts. 
+
+{\bf Remark.} As in the Lagrangian setting, here the explicit expression 
+for $Q$ is independent on $\L$ only if one uses the operator $h$ 
+corresponding to the auxiliary field in the Lagrangian. This operator 
+can be 
+expressed via other operators in the theory, in a way which depends on $\L$:
+$h=-\L$. If one makes this substitution, the obtained formula 
+for $Q$ will involve $\L$. Thus, property 2 should be understood as follows: 
+there exists a formula for $Q$ in terms of the fields (including $h$!)
+which is independent on $\Cal L$ and $\L$ but depends only on field 
+configuration. 
+
+Let $H_Q^q$ be the cohomology of $Q$ on $\tilde\Cal H$, graded by ghost 
+number.  
+
+The  properties of $Q$ which usually hold are 
+
+1. $H_Q^q$ vanishes if $q<0$.   
+
+2. The Hermitian form is degenerate on 
+the kernel of $Q$ in $\tilde\Cal H^0$ (operators of ghost number zero); 
+the kernel of this form is the image of $Q$. The induced 
+form on $H_Q^0$ is positive definite. 
+   
+The space $H_Q^0$ plays the role of the physical Hilbert space 
+of the theory, so we denote it by $H_{phys}$. 
+
+In the space $H_{phys}$, we have an action of the Hamiltonian $H$ and 
+``physical'' local operators $\O\in H_\delta^0$. These operators no longer 
+involve ghosts and correspond to actual observables of the theory. 
+
+Let us now compare the BRST and the ``traditional'' approaches to 
+quantization of gauge theory. For simplicity, we consider pure gauge theory. 
+Traditionally, a scheme of quantization 
+would be as follows. Suppose that the space part of the spacetime is compact. 
+In this case we have seen that classically the space of solutions 
+to the equations of motion can be realized as $T^*\Cal A$, where 
+$\Cal A$ is the space of connections on a space cycle
+modulo gauge transformations. Therefore we 
+would define the Hilbert space as $L^2(\Cal A)$ (with respect 
+to some measure). We call this Hilbert space 
+the traditional Hilbert space. 
+
+We claim that these approaches give the same result, i.e. $H_{phys}$ 
+is isomorphic to $H_{trad}$ as a representation of the operator algebra. 
+
+First of all, $H_{phys}$ does not depend on the gauge fixing term 
+$\L$, and the Hamiltonian and the quantum operators in $H_{phys}$ don't 
+depend on it either. This follows from the fact that when $\L$ is varied, 
+operators in the pseudo-Hilbert space $\tilde\Cal H$ are changed 
+by adding a $\delta$-exact expression, so their action on $\delta$-closed 
+vectors is changed by a $\delta$-exact expression. 
+
+To identify $H_{phys}$ with $H_{trad}$ we can use a convenient 
+gauge fixing term $\L$. It is enough to do it for one such term, but 
+we will do it for two -- just for fun. 
+
+Set $\L=ud^*A+vA_0$, where $A_0$ is a time component 
+of the connection (this uses the splitting 
+of spacetime into space and time). Then we get a sensible  
+theory unless both $u=0$ and $v=0$. Even $u=0,v\ne 0$ gives a nice theory -- 
+this gauge fixing term is called ``temporal gauge''.
+
+We first consider the case $u=0$. Then the Lagrangian is
+$$
+\hat L=\int (\frac{1}{4e^2}F^2+\frac{1}{2}v^2A_0^2-
+v\bar c\frac{D c}{D t}), 
+$$
+where $D$ denotes covariant derivative. 
+Replacing $\bar c$ with $-v\bar c$, and tending $v$ to infinity
+(using the fact that nothing depends on $v$), 
+we see that the path integral is localized 
+to the hyperplane $A_0=0$, and in the limit we  get a Lagrangian 
+$$
+\hat L=\int (\frac{1}{4e^2}F^2+
+\bar c\frac{d c}{d t}), 
+\tag 16.8
+$$
+ 
+Since $A_0$ is now zero, we get usual quantum mechanics where 
+dynamical variables are a spacial connection, its time derivative, 
+and the ghosts. Thus, 
+$\tilde\Cal H$ has the form $\O(\tilde\Cal A)\o \L\hat \g^*$, 
+where $\tilde\Cal A$ is the space of connections on the space cycle, 
+$\O(\tilde\Cal A)$ is the space of functions on $\tilde\Cal A$, 
+$\tilde\g$ is the Lie algebra of the group of gauge transformations
+on the space cycle, 
+and $\L\tilde\g^*$ is the space of functions of $c\in\Pi\tilde\g$.
+Moreover, the Hamiltonian for 
+the ghosts vanishes since there is no nontrivial evolution 
+on the space of classical solutions (the Euler-Lagrange
+equations for ghosts are simply $\frac{d c}{d t}=\frac{d \bar c}{d t}=0$). 
+Thus the Hamiltonian in our theory is the usual gauge theory Hamiltonian 
+$$
+H=\frac{1}{2e^2}\int d^3x F_A^2+\frac{e^2}{2}\nabla_A^2, A\in \tilde\Cal A\tag 16.9
+$$
+acting on the first component of the tensor product. 
+
+It is easy to see that the space $\tilde\Cal H$ with the grading 
+by ghost number is nothing but the space of the standard complex of the Lie 
+algebra $\tilde\g$ with coefficients in the module $\O(\tilde\Cal A)$. 
+Moreover, from the explicit formula for $Q$ 
+one gets that in this case $Q$ is 
+exactly the differential in the standard complex. Thus, 
+the physical Hilbert space $H_{phys}$ which is by definition 
+the 0-th cohomology of $Q$, is the 0-th the cohomology of $\tilde\g$ 
+with coefficients in $\O(\tilde\Cal A)$. 
+This is just the space of $\tilde\g$-invariants 
+in $\O(\tilde\Cal A)$, i.e. the space of functions on 
+$\tilde\Cal A/G$, which is 
+by definition the traditional Hilbert space $H_{trad}$. 
+
+This shows that BRST cohomology is an infinite dimensional generalization of 
+Lie algebra cohomology.
+
+Now consider another gauge obtained by setting $v=0,u=1$: $\L=d^*A$. 
+Let us try to see the isomorphism between $H_{phys}$ and $H_{trad}$ 
+using this gauge. We have, 
+$$
+\hat L=\frac{1}{4e^2}\int F^2+(\frac{1}{2}(d^*A)^2-\bar cD^*d_Ac).\tag 16.10
+$$
+In this case the equations of motion for ghosts are nontrivial 
+and of second order, so the Hilbert space 
+$\tilde\Cal H$ consists of functions of $A_s,c,\bar c,A_0$, where 
+$A_s$ is a connection on the space cycle. In this case, one finds 
+$$
+Q=Q_{\text{Lie algebra cohomology}}+Q',\tag 16.11
+$$
+where $Q'=\int \pi_{\bar c}\pi_{A_0}$, 
+and $\pi_{\bar c}$, $\pi_{A_0}$ are the momentum operators for 
+$\bar c$, $A_0$. 
+
+It is easy to check directly that the two summands in (16.11) anticommute, 
+and that $(Q')^2=0$. It can also be checked that $Q'$ is acyclic except 
+in 0-th degree, where it has a 1-dimensional cohomology. Thus, by Kunneth 
+formula, we again get $H_{phys}=H_{trad}$. 
+
+{\bf 16.7. Anomalies.}
+
+Now let us recall conditions 1,2,3 which were necessary for the BRST 
+construction, and analyze when they are satisfied. These conditions 
+are
+
+1. Lagrangian: $\delta^2=0$.
+
+   Hamiltonian: $Q^2=0$.   
+
+2. Lagrangian: $\delta$ is independent on $\L$ and $\tilde\Cal L$.
+
+   Hamiltonian: $Q$ is independent of $\L,\tilde\Cal L$.   
+
+3. Lagrangian: $\delta \Cal L_{eff}=0$.
+
+   Hamiltonian: $[Q,H]=0$. 
+
+As we mentioned, properties 1 and 2 can always be attained. 
+
+However, as we also mentioned, Property 3 may fail
+if anomalies are present. So let us consider anomalies more closely. 
+
+Consider a 4-dimensional gauge theory with a chiral spinor $\psi$
+with values in a complex representation $\rho$ of the gauge group $G$ and 
+antichiral spinor $\bar \psi$ with values in the dual representation 
+$\bar\rho$. The basic gauge-invariant Lagrangian for such fields is
+$$
+\Cal L=\frac{1}{4e^2}\int F^2+\int \bar\psi D_A\psi.\tag 16.12
+$$
+In quantum theory we are interested in the path integral $\int e^{-\Cal L}$. 
+Integrating out $\psi$ in this path integral, we get 
+$$
+\int \text{det}(D_A)e^{-L(A)}DA, \tag 16.13
+$$
+where $D_A:\Gamma(S_+)\to \Gamma(S_-)$ is the covariant 
+Dirac operator and $L(A)$ the Lagrangian of the pure gauge theory. 
+
+Integral (16.13) may not have a gauge invariant regularization. What is 
+worse, it may not even have a non-gauge-invariant  
+regularization for which the gauge invariance
+is restored as the cutoff goes to infinity. In this case the gauge theory  
+we are considering does not make sense quantum mechanically, even 
+in perturbation theory, because gauge symmetry cannot be restored. 
+This phenomenon is called an anomaly. 
+
+A geometric reason for an anomaly is that although 
+the operator $D_A$ is gauge invariant, 
+its determinant $\text{det}(D_A)$, in general, fails to be 
+gauge invariant. In other words, this determinant is  
+not a function on the space of gauge classes of connections 
+but rather a section of some line bundle over this 
+space, called the determinant line bundle; this bundle 
+comes with a canonical connection. If this canonical 
+connection does not trivialize 
+the bundle, this ``function'' cannot be sensibly integrated. 
+
+It is useful to distinguish two types of anomalies. 
+
+1. Local anomaly. The canonical connection has a nonzero curvature. 
+In this case for suitable spacetime manifolds this curvature  
+may represent a nontrivial second cohomology class, so that the determinant 
+bundle is not trivial topologically.  
+
+2. Global anomaly. The canonical connection is flat but 
+has a nontrivial monodromy (and possibly the bundle is not trivial).
+
+Thus, both local and global anomalies can produce topological anomalies, 
+but only the first one can be seen in perturbation theory (by computing 
+of the curvature). 
+
+Here we will consider only local anomalies. 
+
+{\bf Remark 1.} To analyze when we can expect local anomalies,
+one may consider the situation from the topological point of view.
+We assume that our spacetime $M$ is compact and orientable (e.g. $S^d$),
+with a specified point $\infty$, and will consider bundles, connections, and 
+gauge transformations which are trivial at infinity.      
+In this case the space of  gauge classes of connections can be regarded as 
+a classifying space $B\hat G$ for the group of gauge transformations $\hat G$. 
+Nontrivial line bundles on $B\hat G$ are classified by 
+$H^2(B\hat G)$. 
+  
+Now, if $M$ is compact and orientable, we have the transgression 
+ map $\tau:H_2(B\hat G)\to H_{d+2}(BG)$ defined 
+as follows: given a two-dimensional homology class, pick 
+a surface $S$ in $B\hat G$ which represents it, and take the 
+corresponding principal $\hat G$-bundle on $S$. Its transition functions 
+can be considered as transition functions of a $G$-bundle on 
+the 6-dimensional manifold $S\times M$, which defines 
+an element $\tau([S])$ of $H_{d+2}(BG)$. Consider the dual map 
+$\tau^*: H^{d+2}(BG)\to H^2(B\hat G)$. It can be shown that the Chern class 
+of our line bundle is $\tau^*(C)$, where $C$ is a fixed 
+$d+2$-dimensional characteristic class which does not depend on $M$, and 
+is computed locally from the curvature. This class is exactly the local 
+anomaly.  
+
+Thus for $d=4$ local anomalies live in 
+$H^6(BG)$, or $(S^3\g)^\g$, where $\g$ is the Lie algebra of $G$. 
+
+For example, in the standard model the gauge group is 
+$SU(3)\times SU(2)\times U(1)$, and thus the space of anomalies
+$(S^3\g)^\g$ is 4-dimensional: it equals to the sum 
+of four subspaces $S_{inv}^3(su(3)),S_{inv}^3(u(1)),
+S_{inv}^2(su(2))\o u(1), S_{inv}^2(su(3))\o u(1)$, which are 1-dimensional
+(here ``inv'' denotes that we are taking invariant symmetric polynomials).    
+
+This discussion illustrates why anomalies don't arise in the case when all 
+fermions are in a real representation of the gauge group. Indeed, 
+in this case, the determinant bundle is real, and thus its 
+Chern class must be zero. 
+ 
+{\bf Remark 2.} Although the local anomaly can be considered from 
+the above topological point of view, one should remember that it has a purely 
+local nature, and has nothing to do with the macrostructure of the spacetime. 
+If there is a local anomaly, the quantum theory will not make sense 
+on any spacetime, even on $\R^d$. The problem is that    
+even if the determinant bundle is topologically 
+trivial, it will not have a flat connection
+defined in a local way: otherwise  
+this flat connection would have been good for any simply connected 
+spacetime, and 
+no topological anomaly would arise. Thus, 
+path integral (16.13) is not sensible even on $\R^d$. 
+
+{\bf Remark 3.} In the standard model, the gauge group is 
+$SU(3)\times SU(2)\times U(1)$. In particular,
+there is a possibility for local anomalies, and they do appear in reality.
+However, one can check that the anomalies 
+coming from the different matter fields of the standard model 
+miraculously cancel, in all four components of the space of anomalies. 
+An explanation of this 
+is that the representation of the gauge group in the standard model 
+extends (after adding some insignificant summands) to a spinor representation 
+of $Spin_{10}$, for which $H^6(BG)$ vanishes. 
+
+Let us show how to analyse anomaly in perturbation theory.
+Our goal is to explain why, after possibly enlarging the space of fields,
+properties 1. and 2. of section 16.3 can always be assumed to hold
+(that is, $\delta^2=0$ and $\delta$ is defined independently of the choice
+of a particular Lagrangian) but one cannot assume that the effective Lagrangian
+is delta-invariant. 
+
+ First, let us just try to make sense of integral
+(16.3) perturbatively.
+When we write down Feynman diagrams, we will find divergences 
+in the 1-loop order which we cannot remove in a gauge invariant fashion. 
+To fix the 1-loop order, we will regularize the path integral 
+by adding another, very heavy matter field $\chi$ such that its determinant 
+bundle is inverse to that for $\psi$. In favorable cases, 
+our original theory should be recovered from this theory in the limit 
+when the mass $m$ of $\chi$ goes to infinity. 
+In other cases, the procedure will exhibit why there is an anomaly.
+
+To satisfy this condition, the matter field $\chi$ can be taken to 
+be a bosonic field $(\chi_+,\chi_-)$
+with values in $(S_+\oplus S_-)\o \rho$. In this case  
+the complex conjugate field $\bar\chi$ is with values in 
+$(S_+\oplus S_-)\otimes \bar\rho$, where $S_+,S_-$ are the spin 
+representations of the Poincare
+(recall that both $S_+$ and $S_-$ are self-dual and self-complex-conjugate
+in Euclidean signature). 
+It is of course needless to say that these fields violate spin-statistics and 
+therefore, like ghosts, don't make physical sense. 
+
+The natural 
+Lagrangian term for the fields $\chi_\pm$  
+would be 
+$$
+L'(A,\chi_\pm)=\int d^4x ((\bar\chi_+, D_A\chi_-)+(\bar\chi_-,D_A\chi_+)+
+m(\bar\chi_+,\chi_+)+m(\bar\chi_-,\chi_-))  \tag 16.14
+$$
+(Here the Dirac operator is skewselfadjoint). 
+
+{\bf Remark.} The $\chi$'s are called
+Pauli-Villars regulator fields. 
+
+If we add
+expression (16.14) to the Lagrangian, we will get the squared absloute 
+value of the determinant rather than the determinant itself, and will not fix 
+the anomaly. Thus, we modify (16.14) in a way that breaks the gauge 
+invariance:  we let $A_0$ be a fixed connection and set 
+$$
+L''(A,\chi_\pm)=\int d^4x ((\bar\chi_+,D_A\chi_-)+(\bar\chi_- ,D_{A_0}\chi_+)+
+m(\bar\chi_+,\chi_+)+m(\bar\chi_-,\chi_-))  \tag 16.15
+$$
+Now consider the theory with the Lagrangian $\Cal L+L''$. 
+Integrating out the $\chi$ fields, we will get a factor 
+$\text{det}(D_AD_{A_0}-m^2)^{-1}$. For $m=0$ this factor
+is gauge invariant up to a multiplicative constant, and cancels 
+the determinant in the numerator, which is caused by anomaly. 
+This shows that in this theory, we don't have a topological anomaly 
+for any finite $m$ (i.e. the appropriate determinant bundle is trivial). 
+However, for $m>0$, the gauge invariance fails. So we have to 
+study the limit $m\to \infty$ (which is supposed to recover our original 
+theory) and see whether the gauge symmetry reappears. 
+
+Differentiating the determinant ratio
+$\text{det}(D_AD_{A_0}-m^2)/\text{det}(D_A)$
+in the direction of a gauge trasformation $t\in \hat \g$, 
+we obtain (using the path integral interpretation)
+that it is equal to $m\<\int [(\bar\chi_+,t\chi_+)+(\bar\chi_-,t\chi_-)]\>$,
+where $\<X\>$ denotes the expectation value of $X$. 
+This expectation value has a decomposition in powers of $1/m$.
+ 
+To see whether the failure of gauge invariance 
+persists for $m\to\infty$, let us consider 
+the two-point function of the curvature operator $F$. 
+It is easy to see that the leading contribution (in $1/m$) to the derivative 
+of this function in the direction of $t$ is from the 1-loop diagram
+with a $\chi$ loop having the t operator inside and two outgoing $F$-edges. 
+This contribution is of the 0-th order in $1/m$, and has the form 
+$\sum d_{abc}t^aF^bF^c$, where $d_{abc}$ is some tensor. So if $d_{abc}\ne 0$, 
+the gauge-noninvariance remains in the limit. 
+
+{\bf Remark.} In case the original fermions were in a real representation,
+$d_{abc}$ is zero and 
+the regularization in (16.14) is completely satisfactory.
+The problem arises when the original representation is complex.
+Then a regularization as in (16.14) doesn't work unless one gives up
+gauge invariance. 
+
+{\bf Remark.} When $d_{abc}\ne 0$, one can choose a regularization scheme 
+to remove all loop contributions to the non-gauge invariance except 1 loop. 
+
+Now let us consider anomalies from the BRST veiwpoint. 
+If a local anomaly is present, 
+we will have $U=\delta \Cal L_{eff}(A)\ne 0$
+(here $\Cal L_{eff}(A)$ is the effective Lagrangian for $A$, with the 
+ghosts integrated out). However, 
+since the anomaly is local
+$U$ must be the integral of a local 
+expression of $A$ and $c$ which is linear in $c$. It is also clear that 
+$\delta U=0$. Furthermore, one can show that $U$ involves only 
+$A$ and its first derivatives (and no matter fields).  
+
+On the other hand, if 
+$U$ is $\delta N$ where $N$ is the integral of 
+some local expression of $A$ then we can arrange 
+$\delta \Cal L_{eff}=0$ by redefining the 
+Lagrangian as $\Cal L\to\Cal L+N$. Thus,   
+anomalies lie in the cohomology of $\delta$ on local functionals 
+of degree $\le 1$ of $A$ and $c$ (linear in $c$) 
+modulo complete derivatives. 
+
+Now let us show that such cocycles are in fact related to 
+invariant symmetric tensors on the Lie algebra $\g$
+(or equivalently, the cohomology of $\g$). 
+
+Let $C$ be a $G$-invariant element in $S^{n+1}\g$. 
+To this element there corresponds 
+a $2n+2$-dimensional 
+characteristic class of $G$-bundles, namely $C(F^{n+1})$, where $F$ 
+is the curvature. The Chern-Simons form $CS_C(A)$ corresponding to $C$ is 
+the local $2n+1$ form such that $\frac{\tilde\delta C(F^{n+1})}
+{\tilde\delta A}=
+CS_C(A)\wedge \tilde\delta A$ modulo differentials of local forms
+(here $\tilde\delta$ denotes the variation to distinguish from the 
+BRST differential $\delta$). 
+
+The main property of the Chern-Simons form is the following. 
+Although this form is not gauge invariant, its Lie derivative along 
+an infinitesimal gauge transformation is a differential of a local form. 
+
+Now let $M^{2n}$ be our spacetime. Let $A$ be a connection on $M^{2n}$. 
+We want to define a functional of the form $U(A)=\int W(A)$, where 
+$W(A)$ is a $2n$-form on $M^{2n}$ which is local in $A$ but not gauge 
+invariant, and such that $\delta W=0$. 
+ 
+Let $X^{2n+1}$ is a smooth manifold with 
+boundary equal to $M^{2n}$. Choose an extension
+of the connection $A$ to $X^{2n+1}$
+in any way (for simplicity 
+we assume that there is no topological obstruction to the choices
+of $X$ and the extension of $A$; this assumption is in fact inessential). Now  
+set $V(A)=\int_{X} CS_C(A)$. This functional depends 
+on the extension of $A$ to $X$. However, by the main property 
+of $CS$, the functional $\delta V(A)=W(A,c)$
+(where $\delta$ is the BRST differential) does not depend on the extension 
+and therefore is a local functional in $A$ and $c$ linear in $c$. 
+One can show that it represents a nontrivial cohomology class in the local 
+$\delta$-cohomology. Thus, we get an injective map
+$S^{n+1}(\g)^\g
+\to H^{1,local}_\delta$. 
+For 4-dimensional theories $n=2$ and the cocycles come from $(S^3\g)^\g=
+H^6(BG)$ as we expected. 
+
+ 
+\end
+
+Recall (Lecture 2) that in a Hamiltonian approach to classical gauge theory, 
+the phase space is obtained as a symplectic quotient of the cotangent bundle. 
+The quantum analogue of taking symplectic quotient is taking invariants 
+in the Hilbert space. If degeneracies are present,  
+
+In the future it will be convenient to eliminate $h$ and use 
+the Lagrangian $\hat L$. After elimination of $h$, we will have 
+$\delta\bar c=h=-\L$. However, 
+in presence of $h$ the operator $\delta$ is independent on the theory and on 
+$\L$ and depends only on the field configuration, which is an important 
+property of $\delta$; this is the reason that $h$ is introduced. 
+
+
+

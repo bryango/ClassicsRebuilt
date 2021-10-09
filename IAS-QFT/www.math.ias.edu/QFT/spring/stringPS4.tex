@@ -1,0 +1,126 @@
+%From: "Eric D'Hoker" <dhoker@IAS.EDU>
+%Date: Wed, 12 Feb 1997 15:23:54 -0500 (EST)
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%
+%%%%    STRING THEORY : Problem Set 4, February 13, 1997
+%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\magnification=\magstep1
+\overfullrule=0pt
+\baselineskip=17pt
+\def\det{{\rm det}}
+\def\Det{{\rm Det}}
+\def\tr{{\rm tr}}
+\def\Tr{{\rm Tr}}
+\def\12{{1 \over 2}}
+\def\ker{{\rm Ker}}
+\def\O{{\cal O}}
+
+\centerline{{\bf STRING THEORY}}
+\centerline{ Problem Set \# 4}
+\centerline{February 13, 1997}
+
+\bigskip
+\bigskip
+
+\noindent
+{\it Problem 1}
+
+In this problem, we propose to prove a certain number of intermediate
+steps in the calculation of the Weyl anomaly of the determinant
+combinations
+$$
+Z_{(n)} ^- (g) = {  \Det ' \Delta _{(n)} ^-
+                  \over \det (\phi _j , \phi _k ) _g
+                        \det (\psi _a , \psi _b ) _g }
+$$
+Here, we use the following expressions for covariant derivatives 
+and Laplacian operators on sections $f$ of $K^n$, ($K$ is the
+canonical bundle of $\Sigma$ and $z$, $\bar z$ are local complex coordinates 
+such that $g = 2 g_{z\bar z} |dz|^2$)
+$$
+\eqalign{
+\nabla _{(n)} ^z f = & (g_{z\bar z})^{-1} \partial _{\bar z} f
+\qquad \qquad 
+ \Delta _{(n)} ^+ f  = -2 \nabla _{(n+1)} ^z \nabla _z ^{(n)} f
+\cr                     
+\nabla ^{(n)} _z f = & (g_{z\bar z})^n \partial _{ z} 
+                          (g_{z\bar z}) ^{-n} f
+\qquad \Delta _{(n)} ^- f  = -2 \nabla ^{(n-1)} _z \nabla ^z _{(n)} f
+\cr }
+$$                    
+Also, $\phi _j \in \ker \nabla _z ^{(n-1)}$, $\psi _a \in \ker 
+\nabla ^z _{(n)}$ and these kernels have dimensions $N_{(n-1)} ^{+}$ and 
+$N_{(n)} ^-$ respectively.  Show that under infinitesimal 
+Weyl transformations of
+the metric $\delta _\sigma g = 2 \delta \sigma g$, we have
+
+\noindent
+a) $N_{(n)}^\pm$ are invariant,
+
+\noindent
+b) and the trace of the heat-kernel changes by
+$$
+\delta _\sigma \Tr e^{- t \Delta _{(n)} ^-}
+= -t {\partial \over \partial t} \Tr \biggl [
+   2n    \delta \sigma e^{-t \Delta _{(n-1)} ^+} 
+- (2n-2) \delta \sigma e^{-t \Delta _{(n)}   ^-}  \biggr ]. 
+$$
+
+\noindent
+c) Establish the following short time ($t$) expansion of the heat-kernels
+$$
+\Tr \delta \sigma e^{- t \Delta _{(n)} ^\pm } =
+{ 1 \over 4 \pi t} \int _\Sigma d \mu _g \delta \sigma
++ { 1 \pm 3n \over 12 \pi} \int _ \Sigma d \mu _g R_g \delta \sigma 
++ \O (t),
+$$
+
+
+\noindent
+d) as well as their long time limits
+$$
+\eqalign{
+\Tr \delta \sigma e^{-t \Delta _{(n)} ^-} 
+  & = - { 1 \over 2n-2} \delta _\sigma \ln \det ( \phi _j, \phi _k) _g
+  + \O ( e^{-\lambda _1 t})
+  \cr
+\Tr \delta \sigma e^{-t \Delta _{(n)} ^+} 
+  & = { 1 \over 2n} \delta _\sigma \ln \det ( \psi _a, \psi _b) _g
+  + \O ( e^{-\lambda _1 t}),
+  \cr }
+$$
+where $\lambda _1 >0$.
+
+e) Check that the result in c) reproduces the Riemann-Roch-Atiyah-Singer
+index theorem for the operators $\nabla _{(n)}^z$ and $\nabla ^{(n+1)}_z$.
+
+\bigskip
+
+\noindent
+{\it Problem 2}
+
+\bigskip
+
+\noindent 
+a) Construct the vertex operators for all
+physical states with mass squared $M^2 =2$, in closed
+(oriented) string theory in flat space-time $M={\bf R}^{26}$,
+by requiring that vertex operators are integrals of primary fields of
+conformal dimension $(1,1)$. 
+
+\noindent
+b) Verify that the vertex operators you find are in one
+to one correspondence with the physical
+states $|\phi\rangle $, obtained by imposing the Virasoro conditions
+$L_n - \delta _{n,0}$ and $\tilde L_n - \delta _{n,0}$ on $|\phi \rangle$,
+(as was carried out in Lecture 3).
+
+
+ 
+\end
+--349e_3ab7-3f9a_13aa-28e8_6527--
+

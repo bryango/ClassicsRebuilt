@@ -1,0 +1,773 @@
+%From: John W Morgan <jmorgan@math.ias.edu>
+%Date: Mon, 19 May 1997 16:52:17 -0400
+%Subject: Lecture II
+
+\documentstyle[11pt]{article}
+
+
+%These are the macros which are in common with all of the
+% sections in the paper mmr
+% Each section, for now, should begin with \documentstyle[11pt,cd]{article}
+% and then have \input{mmrmacros} followed by \begin{document}
+% The only exception is that the \Label macro is slightly different
+% in each file and should be put in separately.
+%New CD macros
+\newcommand{\cdrl}{\cd\rightleftarrows}
+\newcommand{\cdlr}{\cd\leftrightarrows}
+\newcommand{\cdr}{\cd\rightarrow}
+\newcommand{\cdl}{\cd\leftarrow}
+\newcommand{\cdu}{\cd\uparrow}
+\newcommand{\cdd}{\cd\downarrow}
+\newcommand{\cdud}{\cd\updownarrows}
+\newcommand{\cddu}{\cd\downuparrows}
+% (S) Proofs.
+% (S-1) Head is automatically supplied by \proof.
+
+\def\proof{\vspace{2ex}\noindent{\bf Proof.} }
+\def\tproof#1{\vspace{2ex}\noindent{\bf Proof of Theorem #1.} }
+\def\pproof#1{\vspace{2ex}\noindent{\bf Proof of Proposition #1.} }
+\def\lproof#1{\vspace{2ex}\noindent{\bf Proof of Lemma #1.} }
+\def\cproof#1{\vspace{2ex}\noindent{\bf Proof of Corollary #1.} }
+\def\clproof#1{\vspace{2ex}\noindent{\bf Proof of Claim #1.} }
+% End of Proof Symbol at the end of an equation must precede $$.
+
+\def\endproof{\relax\ifmmode\expandafter\endproofmath\else
+  \unskip\nobreak\hfil\penalty50\hskip.75em\hbox{}\nobreak\hfil\bull
+  {\parfillskip=0pt \finalhyphendemerits=0 \bigbreak}\fi}
+\def\endproofmath$${\eqno\bull$$\bigbreak}
+\def\bull{\vbox{\hrule\hbox{\vrule\kern3pt\vbox{\kern6pt}\kern3pt\vrule}\hrule}}
+\addtolength{\textwidth}{1in}                  % Margin-setting commands
+\addtolength{\oddsidemargin}{-.5in}
+\addtolength{\evensidemargin}{.5in}
+\addtolength{\textheight}{.5in}
+\addtolength{\topmargin}{-.3in}
+\addtolength{\marginparwidth}{-.32in}
+\renewcommand{\baselinestretch}{1.6}
+\def\hu#1#2#3{\hbox{$H^{#1}(#2;{\bf #3})$}}          % #1-Cohomology of #2
+\def\hl#1#2#3{\hbox{$H_{#1}(#2;{\bf #3})$}}          % #1-Homology of #2
+\def\md#1{\ifmmode{\cal M}_\delta(#1)\else  % moduli space, delta decay of #1
+{${\cal M}_\delta(#1)$}\fi}
+\def\mb#1{\ifmmode{\cal M}_\delta^0(#1)\else  %moduli space, based, delta
+					      %decay of #1
+{${\cal M}_\delta^0(#1)$}\fi}
+\def\mdc#1#2{\ifmmode{\cal M}_{\delta,#1}(#2)\else    %moduli space, delta
+						      %decay, chern class #1
+						      %of #2
+{${\cal M}_{\delta,#1}(#2)$}\fi}
+\def\mbc#1#2{\ifmmode{\cal M}_{\delta,#1}^0(#2)\else   %as before, based
+{${\cal M}_{\delta,#1}^0(#2)$}\fi}
+\def\mm{\ifmmode{\cal M}\else {${\cal M}$}\fi}
+\def\ad{{\rm ad}}
+\def\msigma{\ifmmode{\cal M}^\sigma\else {${\cal M}^\sigma$}\fi}
+\def\cancel#1#2{\ooalign{$\hfil#1\mkern1mu/\hfil$\crcr$#1#2$}}
+\def\dirac{D\hskip-.67em\slash}
+\newtheorem{thm}{Theorem}
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{D}[theorem]{Definition}
+\newenvironment{defn}{\begin{D} \rm }{\end{D}}
+\newtheorem{addendum}[theorem]{Addendum}
+\newtheorem{R}[theorem]{Remark}
+\newenvironment{remark}{\begin{R}\rm }{\end{R}}
+\newcommand{\note}[1]{\marginpar{\scriptsize #1 }} 
+\newenvironment{comments}{\smallskip\noindent{\bf Comments:}\begin{enumerate}}{\end{enumerate}\smallskip}
+
+\renewcommand{\thesection}{\Roman{section}}
+\def\eqlabel#1{\addtocounter{theorem}{1}
+\write1{\string\newlabel{#1}{{\thetheorem}{\thepage}}}
+\leqno(\rm\thetheorem)}
+\def\cS{{\cal S}}
+\def\ov{\overline}
+
+
+
+
+
+
+
+
+
+
+
+
+\title{Kaluza-Klein compactifications, supersymmetry, and Calabi-Yau
+spaces: II}  
+\author{Andrew Strominger\thanks{Notes by John Morgan}}
+\date{}
+\begin{document}
+\maketitle
+
+\addtocounter{section}{4}
+
+\section{Review of material from the first lecture}
+
+Let  us recall the fields and $N=1$
+local supersymmetries that we 
+developed last time for our ten-dimensional supergravity 
+coupled to super Yang-Mills theory.
+We have bosonic fields: a metric $g_{MN}$  on space-time $X^{10}$
+which is a ten-dimensional manifold, a two-form potential
+$B$, the dilaton $\phi$ which is a scalar field, and 
+a gauge field in the adjoint bundle of a principal $E_8\times E_8$ or
+$SO(32)$ bundle $P$ over space-time.
+The fermion fields are the gravitino $\psi_M$ which is a Majorana-Weyl
+spinor of plus chirality with values in the tangent bundle, the
+dilation $\lambda$, which is a Majorana-Weyl spinor of minus
+chirality, and the gaugino $\chi$ which is a Majorana-Weyl spinor of
+plus chirality with values in the adjoint bundle of $P$. 
+The fields $(g_{MN},B,\phi,\psi_M,\lambda)$ form an $N=1$ supermultiplet,
+called the gravity supermultiplet, and $(A,\chi)$ form the $N=1$
+Yang-Mills supermultiplet, which is a matter supermultiplet.
+Because of anomalies we are not free to have arbitrary numbers of
+these supermultiplets: there must be exactly one ($E_8\times E_8$ or
+$SO(32)$ matter supermultiplet
+to go with the supergravity supermultiplet.
+
+
+
+Recall from last time that the supersymmetric (odd)
+generators $\epsilon$ are Majorana-Weyl spinors on
+ten-dimensional space-time, i.e., sections of $S^+_{\bf R}(X^{10})$.
+Their action on the fields  is given by; 
+
+\begin{eqnarray*}
+\delta_\epsilon\chi & = & F_{MN}\gamma^{MN}\epsilon+({\rm fermions})^2 \\
+\delta_\epsilon\psi_M  &  =  &  \nabla_M\epsilon -\frac{1}{4}
+H_{MAB}\gamma^{AB}\epsilon +({\rm fermions})^2 \\
+\delta_\epsilon\lambda  &  =  &  (\gamma^M\nabla_M\varphi)\epsilon
++\frac{1}{24}H_{MNP}\gamma^{MNP}\epsilon +({\rm fermions})^2 \\
+\delta_\epsilon g_{MN}  &  =  &  \overline\epsilon
+\gamma_N\psi_M+\overline\epsilon\gamma_M \psi_N+({\rm fermions})^2 \\
+\delta_\epsilon A_M  &  =  &  \overline\epsilon \gamma_M\chi +({\rm
+fermions})^2 \\
+\delta_\epsilon B & = &  \cdots \\
+\delta_\epsilon \phi & = & \cdots 
+\end{eqnarray*}
+
+
+
+\section{Partially breaking the Supersymmetry by compactifying down
+to four-dimensions}
+ 
+Now we are ready to study what happens to these $N=1$ local
+supersymmetries as we compactify
+from ten dimensions to four dimensions in the way we discussed last
+time. 
+Let us recall what we hope to achieve.  We wish to find a
+four-dimensional low energy effective theory 
+which has $N=1$ super Poincar\'e symmetry. The odd generators
+of the $N=1$ super Poincar\'e group in dimension four are  constant
+four-dimensional Majorana spinors over four-dimensional Minkowski
+space-time. (Recall, that the spin group from Minkowski space time is
+$SL_2({\bf C})$ which has an obvious real four-dimensional
+representation which is the underlying real representation of the defining
+$2$-dimenisonal complex representation.  A section of this spin bundle
+is a Majorana spinor.) 
+We begin with a supersymmetry group generated by the sections of a
+$16$-dimensional real spin bundle over ten-dimensional space-time, and
+we must somehow break this down so that after compactification the
+remaining supersymmetry generators are the constant Majorana spinors
+over Minkowski four-space. We need to break the symmetries in
+three-quarters of the components as well as for the non-constant
+sections. 
+
+As a basic model of how this works, recall what happens in the
+Kaluza-Klein model, where we compactify along a circle from five
+dimensions to four dimensions. We began with a five-dimensional theory
+with the full five-dimensional diffeomorphism group as symmetries. But
+the only diffeomorphisms which remained after compactifying and taking
+the low energy effective action for small circle radius were the
+diffeomorphisms which did not mix up the massive and massless modes.
+Recall that the five-dimensional vacuum we consider has a metric of
+the form 
+$$\eta_{\mu\nu}dx^\mu dx^\nu+\frac{1}{r^2}d\theta^2.$$ The group of global
+symmetries which remain unbroken (i.e., leave the 
+vacuum invariant) are exactly the
+Poincar\'e group of Minkowski four-space times the group of constant
+$U(1)$ rotations. 
+The infinitessimal generators of the original group of
+symmetries are the vector fields on the five-dimensional
+space-times. The action of a vector field $v$ on a metric  $g$ on
+space-time is given by
+$\delta_vg={\cal L}_v(g)$, the Lie derivative of $g$ in the
+$v$-direction. The condition on a vector field that it preserve a given
+vacuum $g_0$ is that $\delta_vg_0={\cal L}_v(g_0)=0$,  in other words,
+that $v$ be a Killing vector field for $g_0$. 
+
+Now let us return to our ten-dimensional theory. The situation is
+analogous to the Kaluza-Klein model.  The main difference is that this
+time our generators are supersymmetric (odd) generators instead of
+(even) vector fields.  Nevertheless, the condition on a generator
+$\epsilon$ that it be unbroken, i.e., preserve a given vacuum is that
+the first variation of all the fields with respect to $\epsilon$ must
+be trivial.  As we develop the argument we will list the properties
+our solutions have.
+Some come by assumption: others are consequences of these assumptions.
+ The first property comes from the basic set-up of the reduction as
+discussed last time:
+
+\smallskip
+\noindent{\bf Assumption (i): 
+The ten-dimensional space-time manifold of the solution is of the form  
+${\bf R}^4\times K^6$, where $K^6$ is compact, and the metric is of
+the form 
+$$\pmatrix{ \eta_{\mu\nu} & 0 \cr
+		0 & (g_0)_{mn}}$$
+where $g_0$ is a Ricci-flat metric on $K^6$ and $\eta_{mu\nu}dx^\mu
+dx^\nu$ is the standard metric on Minkowski four-space. Furthermore,
+the obvious isometric action of the four-dimensional Poincar\'e group
+on this riemannian manifold is covered by an $N=1$ four-dimensional
+super Poincar\'e symmetry group of the solution.}
+ 
+Since the metric is split as a four-dimensional metric
+times a six-dimensional metric, the same is true of the spin
+bundles. They decompose 
+$$S^+({\bf R}^4\times K^6)=\left(S^+({\bf R}^4)\otimes S^+(K^6)\right)\oplus
+\left(S^-({\bf R}^4)\otimes S^-(K^6)\right).$$
+Since there are no nonzero spinors in $S^\pm({\bf R}^4)$ which are
+invariant under the Poincar\'e group, there are no nonzero spinors on
+the ten-dimensional manifold which are invariant under the Poincar\'e
+group.
+
+\smallskip
+\noindent{\bf Consequence (ii): All the fermionic fields
+$(\psi_M,\lambda,\chi)$ of our solution must be trivial.} 
+
+Now, since all the fermionic fields vanish, it follows that all the
+boson fields are 
+automatically invariant under any odd supersymmetry, simply by parity
+considerations. Thus, to understand which of the $N=1$ local
+supersymmetry generators are unbroken in this vacuum (i.e., leave it
+invariant), we have only three equations to
+study: 
+\begin{eqnarray*}
+\delta_\epsilon\chi & = & F_{MN}\gamma^{MN}\epsilon+({\rm fermions})^2 =0\\
+\delta_\epsilon\psi_M  &  =  &  \nabla_M\epsilon -\frac{1}{4}
+H_{MAB}\gamma^{AB}\epsilon +({\rm fermions})^2=0 \\
+\delta_\epsilon\lambda  &  =  & (\gamma^m \nabla_m\varphi)\epsilon
++\frac{1}{24}H_{MNP}\gamma^{MNP}\epsilon +({\rm ferminos})^2=0. \\
+\end{eqnarray*}
+Furthermore, in these equations we can now drop the terms ${\rm (fermion})^2$
+as well, leaving
+\begin{eqnarray}\label{system1}
+\delta_\epsilon\chi & = & F_{MN}\gamma^{MN}\epsilon =0 \\
+\delta_\epsilon\psi_M  &  =  &  \nabla_M\epsilon -\frac{1}{4}
+H_{MAB}\gamma^{AB}\epsilon  =0\label{system2} \\
+\delta_\epsilon\lambda  &  =  &  \gamma^M\nabla_M(\phi)\cdot\epsilon
++\frac{1}{24}H_{MNP}\gamma^{MNP}\epsilon =0.\label{system3}
+\end{eqnarray}
+
+
+Our goal is, given the metric $g_0$ on $K^6$, to find $A, H,\phi$ so
+that there are exactly four spinor fields $\epsilon$ (Majorana spinors
+on  Minkowski four-space) for which these equations are
+satisfied. 
+One can then ask, if these equations are satisfied then are the
+equations of motion satisfied as well, or is that an extra
+condition? In this case, and in fact almost always, the (first-order)
+supersymmetry equations imply the equations of motion.
+As a simple example of this principle, let us suppose we are dealing
+with a case of four-dimensional supergravity.
+Thus, we have $H=F=0$.  Then the only equation for a Majorana spinor
+$\epsilon$ to be an unbroken supersymmetry  is
+$\nabla_\mu\epsilon=0$, i.e., $\epsilon$ is a supersymmetry if it is a
+covariantly constant spinor over four-dimensional space-time. 
+But the existence of a non-zero convariantly constant spinor field
+implies that the metric on space-time must be Ricci-flat. 
+The can be seen as follows:
+$\nabla_\mu\epsilon=0$ implies that
+$\gamma^\nu[\nabla_\nu,\nabla_\mu]\epsilon=0$ and hence that
+$R_{\mu\nu}\gamma^\mu\epsilon=0$. Since $\epsilon$ is non-zero, this  
+implies  that the Ricci curvature $R_{\mu\nu}=0$, i.e., that
+space-time is Ricci-flat.
+
+\section{Geometric consequence of the unbroken supersymmetry}
+
+Our assumption is that we have a split
+metric on ${\bf R}^4\times K^6$
+$$g=\pmatrix{\eta_{\mu\nu} & 0 \cr 0 & (g_0)_{mn}}$$
+with $g_0$ being a Ricci-flat metric on $K^6$.  We are also
+assuming that we have nontrivial supersymmetry generator by Majorana
+spinor fields $\epsilon$ on space-time, and that there is an unbroken
+$N=1$ supersymmetry of our vacuum.  We shall make further assumptions
+in order to keep the analysis simple.  Here, we are following the
+analysis in [Candelas, Horowitz, Strominger, and Witten, Nucl. Phys. B
+{\bf 258} (1985), p.46]. (To see what happens in the more general case
+without these assumptions
+consult [Witten, Nucl. Phys. B {\bf 268} (1986) p. 95] and [Strominger,
+Nucl. Phys. B {\bf 274} (1986), p. 253].)
+
+\smallskip
+\noindent{\bf Assumption (iii): the scalar field $\phi=\phi_0$ is a constant
+function and the three-form $H$ is zero.}
+Recall from last time that the axion field $H$ and the $B$ field are
+related by
+$$H=\alpha'\left(CS(\nabla_g)-\frac{1}{30}CS(A)\right)+dB,$$
+where $CS$ is the Chern-Simons functional. 
+Thus, this assumption is equivalent to assuming that the field $B$ is
+a closed two-form.
+
+
+Of course, as we have already argued, all the fermion fields must be
+zero. 
+With all these assumptions, Equation~\ref{system1} is automatically
+satisfied and Equations~\ref{system2} and~\ref{system3} simplify to 
+\begin{eqnarray}\label{eqn1}
+\delta_\epsilon\psi_M & = & \nabla_M\epsilon=0 \\ \label{eqn2}
+\delta_\epsilon\chi & = & F_{MN}\gamma^{MN}\epsilon=0
+\end{eqnarray}
+In more invariant language, $\epsilon$ must be covariantly constant
+Majorana Weyl spinor of positive chirality  and
+the effect of Clifford multiplying this spinor by the curvature
+two-form of the connection on the principal bundle is zero.
+
+\subsection{Consequences of the first equation}
+
+The $N=1$ supersymmetry that we are searching for is
+to be  global super Poincar\'e symmetry.  In particular, the four
+(odd) spinor generators of the superalgebra must make the standard
+four-dimensional representation of the four-dimensional Poincar\'e
+group acting in its usual way on the first factor of space-time. 
+Since the spinor bundle $S^+({\bf R}^4\times K^6)$
+decomposes as $S^+({\bf R}^4)\otimes S^+(K^6)\oplus S^-({\bf 
+R}^4)\oplus S^-(K^6)$, the only Weyl-Majorana spinors of plus
+chirality on the ten-dimensional manifold which transform as required
+under the  Poincar\'e group of Minkowski four-space are
+of the form  
+$$\epsilon=\sum_i\eta^i_+(y)\cdot (\epsilon^i_+)^{(4)} + {\rm c.c.}$$
+where $\eta^i_+(y)$ is a $6$-dimensional Weyl spinor  of positive
+chirality on $K$ and
+$(\epsilon^i_+)^{(4)}$ is a constant Weyl spinor of positive chirality on
+Minkowski four-space.
+(Here, ${\rm c.c.}$ means the complex conjugate.  The complex
+conjugate  is a product of
+Weyl spinors of negative chirality.)
+
+Equation~\ref{eqn1} becomes two equations: one in the ${\bf
+R}^4$-direction and one in the $K^6$-direction:
+$$\delta_\epsilon\psi_\mu=\sum_i\eta_+^i\partial_\mu(\epsilon_+^i)^{(4)}
++ {\rm c.c.} =0$$
+$$\delta_\epsilon\psi_m=\sum_i\nabla_m(\eta^i_+)(\epsilon^i_+)^{(4)}+ {\rm
+c.c.}=0.$$ 
+The first of these equations is automatic since $(\epsilon^i_+)^{(4)}$ is
+constant. 
+(We could also use it to prove that $(\epsilon^i_+)^{(4)}$ is constant.)
+As to the second, since the complex conjugate of $\eta^i_+$ is
+a spinor of opposite chirality, and since covariant differentiation
+preserves chirality, it implies that
+$\nabla_m\eta^i_+(y)=0$. 
+This means that $\eta^i_+$ must be a covariantly constant
+non-zero Weyl spinor of plus chirality on $K^6$.
+It is clear that then that this spinor has constant norm, which we can
+renormalize to be $1$.  In particular, $\eta^i_+$ is
+nowhere zero.
+
+In particular, we have seen that there must be at least one nonzero,
+covariantly constant spinor $\eta_+$ on $K$.
+Next,  we study the consequences of this fact  for the geometry of
+$(K^6,g_0)$.
+
+
+
+
+\begin{claim} The fact that $\eta_+$ is a covariantly constant spinor
+field of norm one implies that 
+the endomorphism of the tangent bundle of $K$ given by
+$$J_m{}^n=i(\eta_+)^\dagger\gamma_m{}^n\eta_+$$
+is a real endomorphism whose square is minus the identity.
+Consequently, it defines an almost complex structure on $K$. This
+endomorphism an isometry with respect to $g_0$
+and is parallel under the metric.  This means that it defines an
+integrable almost complex structure (i.e., a complex structure) for
+which the metric $g_0$ is a K\"ahler metric.
+\end{claim}
+
+Here we are using the notation
+$\gamma_m{}^n=\frac{1}{2}\left(\gamma_m\gamma^n-\gamma^n\gamma_m\right)$ and
+$\gamma_n=\gamma^pg_{np}$.
+
+\begin{proof}
+In more invariant language, the element $J$ is determined by the
+spinor field $\eta_+$ is simply the image under the natural maps
+$$S(K)\otimes S^*(K)\cong {\rm Cl}(K)\cong \wedge ^*TK\to \wedge^2TK
+\subset T^*K\otimes TK$$
+of the element $\eta_+\otimes \eta_+^\dagger$.
+It is clear from the defining formula that $J$ is a real tensor since
+$\gamma_n{}^m=-(\gamma_n{}^m)^\dagger$. 
+It follows  from the Fierz identity among Clifford matrices that
+$$J_m{}^nJ_n{}^p=-\delta_m{}^p,$$
+i.e., that $J$ is an endomorphism whose
+square is minus the identity. 
+Since $\eta_+$ and $\gamma_m{}^n$ are covariantly constant, it is clear
+that $J$ is covariantly constant.
+It is now a well-known fact that this implies that $J$ is integrable
+and that the metric is K\"ahler, but let us briefly go through the
+derivation of these facts.
+The obstruction to integrability is the Nejenhuis tensor
+$$N_{mn}{}^p=J_m{}^q(\nabla_qJ_n{}^p-\nabla_nJ_q{}^p)
+-J_n{}^q(\nabla_qJ_m{}^p -\nabla_mJ_q{}^p).$$
+Since $J$ is covariantly constant, it follows that $N=0$ and that $J$
+defines a complex structure on $K$. 
+Next, let us see that $J$ is an orthogonal transformation with respect
+to the metric $g$ or equivalently that $g$ defines a hermitian metric
+on the complex manifold determined by $J$.
+This is simply the equation $J_m{}^qJ_n{}^pg_{pq}=g_{mn}$, which follows
+easily from the definitions, the fact that $|\eta_+|^2=1$, and the
+relations among the $\gamma$-matrices.
+Last, since $J$ is covariantly constant, so is the  two-form
+associated to the hermitian metric determined by $g$.   This means in
+particular, that the two-form is closed, and consequently that the
+metric is K\"ahler. 
+\end{proof}
+
+Note that when it is not assumed that $H= 0$, the almost complex
+structure $J$ is not 
+covariantly constant.  Nevertheless, it can still be shown that the
+Nejenhuis tensor vanishes (see [Strominger, ibid.]), so that $J$
+defines the structure of a complex manifold. Of course, it is not
+K\"ahler. 
+
+The complex structure on $K^6$ which is parallel under the metric
+reduces the holonomy group of parallel translation for the metric from
+$SO(6)$ to $U(3)$. But in fact, the existence of the self-parallel
+spinor $\eta_+$ implies that the holonomy reduces further.
+Decomposing the eight-dimensional Weyl spin bundle $S^+(Y)$ under
+$U(3)$ we  get
+$$8\mapsto 3_1\oplus 1_1\oplus \overline{3}_{-1}\oplus \overline{1}_{-1}$$
+where the first integer indexes the representation of $SU(3)$ and the
+subscript indexes the action of $U(1)$. (Thus, $3_1$ is the standard
+three-dimensional complex representation of $U(3)$ and
+$\overline{3}_{-1}$ is its dual, whereas $1_1$ is the determinant
+representation of $U(3)$.) The existence of a parallel non-zero spinor
+means that there must be a non-zero vector in the representation which
+is invariant under the image of the holonomy representation. 
+Clearly, the only vector in this space invariant under the $U(1)$
+diagonal subgroup is the trivial vector.
+ This means then that the image of holonomy lies in $SU(3)\subset U(3)$.
+There are several possible subgroups with this property, $SU(3), SU(2)$,
+etc, but $SU(3)$ is the only one which has exactly a one-dimensional
+space of invariant spinors of each chirality.  Thus, if we want to
+have exactly $N=1$ supersymmetry and no more, then the holonomy group
+for the metric must be $SU(3)$. In this case there is a
+one-dimensional space of covariantly constant spinor fields, generated
+by say $\eta_+$.
+
+There is another way to think about all of this.  Consider the action
+of $Spin(6)=SU(4)$ on the complex four-dimensional space of Weyl spinors
+$S^+$ of positive chirality. 
+The stabilizer of an point in the unit sphere in $S^+$ is 
+conjugate to $SU(3)\subset SU(4)=Spin(6)$. The image in $SO(6)$ is the
+usual embedding of  $SU(3)\subset SO(6)$.
+If there is a parallel non-zero spinor, then the
+holonomy of the metric must lie in this $SU(3)$. 
+This reduces the structure group of $K^6$ to $SU(3)$ and the reduction
+is parallel under the metric. That is to say we have produced a parallel almost
+complex structure $J$.  The arguments above show that this structure
+is integrable and that the metric is K\"ahler with respect to this
+complex structure.  Since the holonomy is reduced to $SU(3)$, the
+metric is Ricci-flat. 
+
+
+We have shown:
+
+\smallskip
+\noindent{\bf Consequence (iv): The odd generators of the super
+Poincar\'e algebra are covariantly constant spinors $\epsilon$ of the
+form $(\eta_+\epsilon_+^{(4)} + {\rm c.c})$
+where $\eta_+$ is the unique (up to constant multiples)  covariantly
+constant Weyl spinor of plus chirality 
+on $K^6$ and $\epsilon_+^{(4)}$ is a constant Weyl spinor of plus
+chirality on Minkowski four-space.}
+
+In all cases, since  the holonomy is $SU(3)$, the Ricci tensor of
+the metric is trivial, and in particular the first Chern class of the
+metric is trivial. 
+According to Yau's theorem on the existence of Ricci-flat metrics on
+K\"ahler manifolds, $c_1=0$ is sufficient for the existence of such a
+metric  (if the manifold is
+non-simply connected then the condition must be interpreted as saying
+that the canonical bundle of the K\"ahler manifold is trivial as a
+holomorphic line bundle.)
+According to the uniqueness part of Yau's theorem, the moduli of Ricci
+flat K\"ahler metrics is the moduli space of complex structures and
+K\"ahler classes. As we remarked in the last lecture, and as we shall
+explain in more detail below, these moduli are associated with
+massless fields in the low energy effective four-dimensional action.
+
+
+This completes the study of Equations~\ref{system2} and~\ref{system3}
+for the existence of an unbroken supersymmetry of the solution 
+equations under the 
+assumption that $H=0$ and $\phi=\phi_0$ is constant. We have
+found the necessary and sufficient conditions for the existence of
+non-zero supersymmetries satisfying these equations:
+
+\smallskip
+\noindent{\bf Consequence (v): The riemannian manifold $(K,g_0)$ be a
+Calabi-Yau three-fold with holonomy $SU(3)$.} 
+ 
+We have two more things to deal with: we must examine the consequences
+of assuming $dH=0$, and we must show that
+Equation~\ref{system1} is automatically satisfied under the
+assumptions that we are making.
+
+\subsection{The condition $H=0$.}
+
+So far we have not mentioned the gauge field $A$ of the solution.
+This field is constrained by our assumption that $H=0$.
+We have
+$$0=dH = tr (R\wedge R)-\frac{1}{30} Tr(F_A\wedge F_A),$$
+where $tr$ refers to the trace in the standard representation, that is
+to say the trace of the composite endomorphism of the tangent bundle,
+and $Tr$ denotes the trace in the adjoint representation of the gauge
+group. 
+This means that
+$$tr R\wedge R=\frac{1}{30} Tr F_A\wedge F_A,$$
+There are two possible gauge groups $SO(32)$ and
+$E_8\times E_8$. 
+First, let us consider $SO(32)$. 
+The trace in the 
+adjoint representation is equal to  $30$ times the trace in the fundamental
+representation of $SO(32)$.
+Thus, we are looking for an $SO(32)$ connection
+$A$ with $tr F_A\wedge F_A=tr R\wedge R$, where $tr$ on the
+left-hand-side refers to the trace in the defining $SO(32)$ representation. 
+One way to arrange this is to `embed the spin connection in the gauge
+connections'.
+That means that there is a natural embedding $SU(3)\subset
+SO(32)$ with commutant being $SO(26)\times U(1)$.
+Using this embedding, we can view the
+connection on the  
+tangent bundle (which has had its structure group reduced to $SU(3)$)
+as being a principal $SO(32)$ connection.
+Clearly, it satisfies the trace condition above.
+In this way, we can construct the last of the fields $A$ necessary to
+specify a solution.
+
+
+We can perform a similar construction with $E_8\times E_8$, using only
+one of the factors.  There is an embedding $SU(3)\subset E_8$ with
+commutant being $E_6$.
+Once again we can use this to embed the spin connection as a gauge
+connection for the group $E_8\times E_8$, with symmetry group
+$E_6\times E_8$. 
+
+
+
+\smallskip
+\noindent{\bf Assumption (vii): We obtain the gauge field by embedding
+the spin connection.}
+
+With this assumption, $H=0$ is consistent with the defining equation
+for $H$.  
+
+\subsection{The remaining supersymmetry equation}
+
+Now let us examine the remaining equation for the existence of an
+unbroken supersymmetry $\epsilon$:
+$$\delta_\epsilon \chi =F_{MN}\gamma^{MN}\epsilon=0.$$
+The two-form $F$ with values in the adjoint bundle to $P$ is acting on
+the spinor field $\epsilon$ by Clifford multiplication of the two-form
+to produce a section of the spin bundle tensored with the adjoint
+bundle. 
+We claim that with our hypotheses this equation is always satisfied. 
+Since the gauge connection is, by assumption, obtained by embedding
+the spin connection, this equation will follow immediately from the
+analogous equation for the spin connection.
+Thus, the result we need to establish is
+\begin{equation}\label{needed}
+\frac{1}{2}R_{MNA}{}^B\gamma^{MN}\epsilon =0,
+\end{equation}
+where $R_{MNA}{}^Bdx^M\wedge dx^N$ is the riemann curvature tensor.
+The condition that $\epsilon$ is covariantly constant implies that the
+curvature two-form evaluates trivially on $\epsilon$, i.e., that
+$$R_{MNA}{}^B\gamma^A{}_B\epsilon=0.$$
+Using the metric to raise and lower indices, we can rewrite this as
+$$R_{MNAB}\gamma^{AB}\epsilon=0.$$
+Now using the fact that our connection is torsion-free, we can switch
+the roles of $AB$ and $MN$ and rewrite
+$$R_{MNAB}\gamma^{MN}(\epsilon)=0,$$
+which is equivalent to Equation~\ref{needed}.
+
+
+Let us say a few words about what happens in the more general
+situation where do not require $H=0$, following [Strominger, ibid].
+The equation $F_{MN}\gamma^{MN}\epsilon=0$ is related to
+the hermitian Yang-Mills condition for the connection. That is to say
+the connection must be a holomorphic connection and the curvature must
+be a primitive two-form, i.e., $\omega\wedge\omega\wedge F=0$ where
+$\omega$ is the fundamental (K\"ahler) two-form. 
+Then using this, the relationship between $F,R$, and $H$ and
+supersymmetry we can then determine the value of $H$.
+
+
+Let us return to the case of present interest where $H=0$.
+In this case we have  completed the descriptions of all the fields and
+a study of these supersymmetry equations.  We have shown: 
+
+\begin{theorem}
+Let $(K^6,J,g_0)$ is a Ricci-flat compact K\"ahler manifold with
+holonomy $SU(3)$.
+ Then  there is a classical solution to 
+ten-dimensional supergravity coupled with super Yang-Mills with gauge
+group either $E_8\times E_8$ or $SO(32)$. Space-time for this solution
+is ${\bf R}^4\times K^6$, the 
+metric on space-time is ,
+$$\pmatrix{\eta_{\mu\nu} & 0 \cr 0 & (g_0)_{mn}}.$$
+The axion field  $H$ is zero and the dilaton field $\phi$ a constant.
+ The fermion fields (the dilatino, the gravitino, and the gaugino) of
+this solution vanish and 
+the gauge field $A$ is obtained by embedding the spin connection on
+$K^6$ as a gauge connection. If the gauge group is $E_8\times E_8$,
+then the commutant of the connection, (i.e., the automorphism group of
+$P$ which leaves the connection invariant) is $E_6\times E_8$.
+If the gauge group is $SO(32)$, then the
+commutant is $SO(26)\times U(1)$.
+Furthermore, this solution  has $N=1$ four-dimensional super
+Poincar\'e symmetry lifting the natural action of the four-dimensional
+Poincar\'e group space-time. 
+\end{theorem}
+
+
+\section{Massless fields in the low energy effective Lagrangian}
+
+As we remarked when discussing the Kaluza-Klein theory, parameters for
+the internal space of the high-dimensional theory (ten-dimensional in
+this case) yield massless fields in the effective, low energy
+four-dimensional Lagrangian. 
+By Yau's existence and uniqueness theorem for Ricci-flat K\"ahler
+metrics, the moduli space of Calabi-Yau structures on $K$ is the
+moduli space of isomorphism classes of pairs $(J,\omega)$ consisting of a
+ holomorphic structure $J$ on $K$ with $c_1=0$ (or more precisely with
+trivial canonical bundle) and a K\"ahler class
+$\omega$. Let us consider the space of holomorphic structures; a
+similar  discussion can be made for the variation of the  K\"ahler
+class.  The massless fields in the low energy
+effective Lagrangian associated to the
+variations of the Calabi-Yau metric come from expanding the metric
+$g_{MN}$ on ten-space in terms of the decomposition of space-time
+and keeping only the harmonic modes of eigenvalue zero on the internal
+space:
+$$g_{MN}(z)=M^\alpha(x)h_{mn}^\alpha(y)+ \cdots .$$
+The other terms in this expansion are not relevant for the massless
+fields coming from the variations of the Calabi-Yau structure:
+They lead to massless fileds of other types.
+Since we are working at a critical point, there will be no terms
+in the effective low energy action involving only first derivatives of
+$g_{MN}$.  As we take second 
+derivatives we get three types of terms from
+$M^\alpha(x)h_{mn}^\alpha(y)$. We can differentiate $M^\alpha(x)$ twice,
+we can differentiate 
+$h_{mn}^\alpha(y)$ twice, or we can differentiate each of
+$M^\alpha(x)$ and $h_{mn}^\alpha(y)$ once. Terms of the last type cannot
+contribute to the action 
+because we have to pair the two derivatives using the metric of the
+solution.  Since this metric is split, the pairing between the cross
+terms vanishes. Applying two derivatives to $h_{mn}^\alpha(y)$ would
+lead to a term in the Lagrangian which involves $M(x)^2$. Such a term
+would give $M(x)$ a mass.  We know that there are no such terms
+because $h_{mn}^\alpha(y)$ is a harmonic variation of the linearized
+equations of motion.  Thus, the only terms that can
+contribute to the action are where both derivatives are applied to
+$M(x)$. 
+This leads to a term in the low energy effective action of the form
+$$\int_{{\bf R}^4} d^4x\sqrt{-{\rm
+det}(g)}g^{\mu\nu}\partial_\mu M^\alpha(x)\partial_\nu M^\beta(x)
+G_{\alpha\beta}(M(x)) $$
+for some symmetric two-tensor $G=G_{\alpha\beta}dM^\alpha dM^\beta$ on
+moduli space.  
+
+In fact, it is possible to explicitly identity $G$.
+In general, the tangent space to the moduli space of holomorphic
+structures on a complex manifold $K$ is $H^1(TK)$. In the case that
+$K$ is a Calabi-Yau three-fold, we can use the non-vanishing
+holomorphic three-form $\Omega$ on $K$ (normalized to norm $1$) to give
+an identification between $H^1(TK)$ and $H^{2,1}(K)$.
+Let us suppose that we are at a smooth point of the moduli space of
+holomorphic structures and let $M^\alpha, \alpha=1,\ldots,h^{2,1}$
+be local coordinates on the moduli space of holomorphic structures
+centered at the given point.
+A direct computation shows that
+under the identification of the tangent space of moduli space at $M$ with
+$H^{2,1}(M)$ the pairing
+$G(M)$ is the usual pairing of $(2,1)$-forms on $M$, namely
+if $a,b\in H^{2,1}(M)$ then
+$$\langle a,b\rangle=\int_Ma\wedge
+\overline{b} .$$ 
+If our manifold is simply connected, or in fact if $h^{1,0}=0$, then
+this pairing is positive definite. (It is always non-degenerate.)
+But, because it arises from an $N=1$ supersymmetric Lagrangian, we can
+deduce highly non-trivial facts about this pairing.
+It follows from a general $N=1$
+supersymmetric  computation that this metric is in fact a K\"ahler
+metric. 
+Indeed, it is a Hodge metric.  Much more can be obtained using the
+fact that not only can we work with the heterotic string in ten
+dimensions, we can also work with the type II string. Putting these
+together, we are able to extend this Lagrangian to a four-dimensional
+$N=2$ supersymmetric Lagrangian.  This imposes even more stringent
+restrictions, leading to what is referred to as `special
+geometry'. For instance, the K\"ahler potential is locally 
+determined by a certain holomorphic `potential'. In this way
+supergravity makes contact with the theory of filtrations of Hodge
+structures. 
+
+
+\section{Relation to Grand Unification Theory.}
+
+As we remarked in the first lecture, $E_6$ is a possible group for
+GUT's.  In fact, the representation that we need to use of $E_6$ in
+order to do GUT is the $27$-dimensional defining representation.  In
+our context we begin with the adjoint representation of $E_8$ and
+break it down to $SU(3)\times E_6$. Under this subgroup the
+$248$-dimensional adjoint representation of $E_8$ decomposes
+$$(8,1)\oplus (3,27)\oplus (\ov{3},\ov{27})\oplus (1,78).$$
+Here, the first term is the adjoint representation of $SU(3)$ and the
+last is the adjoint representation of $E_6$.  The second and third
+terms are
+tensor products of  three-dimensional representations of $SU(3)$ with
+$27$-dimensional representations of $E_6$.  Thus, among the
+representations that we are dealing with is the $27$-dimensional
+representation of $E_6$, which fits with what GUT's requires.
+
+Now the number of families massless modes in $(3,27)$ is given by an index
+theorem.  Actually, the difference of massless modes of distinct (left
+and right) chiralities is computed by the equation:
+$$n^L_{27}-n^R_{27}={\rm
+index}(i\dirac_3^{(6)})=\frac{1}{48}(2\pi)^3\int tr_3F\wedge
+F\wedge F =\frac{-\chi(K)}{2},$$
+where the Dirac operator and the trace are taken in the vector bundle
+associated to the fundamental
+three-dimensional representation of $SU(3)$.
+The fact that it is the difference rather than the actual number of
+families is not too serious a problem.  It turns out to be relatively
+easy for massless modes of opposite chirality to combine and become
+massive. Thus, one can believe that the absolute value of this index
+is the correct number for the massless families.
+Now experiment shows us that in the universe there are exactly three
+families (quarks and leptons) of these light modes. 
+This means that we should be looking for
+Calabi-Yau's with Euler characteristic $\pm 6$.  A few of these have
+been found.
+
+{}From the physics point of view, it is very exciting that the simplest
+compactifications lead naturally to realistic GUT gauge groups,
+realistic chiral representations of matter, and the structure of family
+replication.  This remains a significant source of optimism for the
+eventual physical relevance of string theory.  But important and
+difficult problems -- for example, supersymmetry breaking -- remain to 
+be solved.
+
+
+\end{document}
+
+
+
+
+
+
+

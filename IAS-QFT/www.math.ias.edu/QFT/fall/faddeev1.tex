@@ -1,0 +1,738 @@
+%From: Lisa C Jeffrey <jeffrey@math.ias.edu>
+%Date: Thu, 17 Oct 1996 08:25:08 -0400
+
+
+
+
+
+
+\documentstyle[12pt]{article}
+
+\input amssym.def
+\input amssym.tex
+
+\newcommand{\Tr}{\,{\rm Tr}\,}
+\newcommand{\tr}{{\rm tr}\,}
+
+%L. Jeffrey preamble, 5 April 1996
+
+\newcommand{\nc}{\newcommand}
+
+\nc{\isq}{{i}}
+\newcommand{\colvec}[2]{\left  ( \begin{array}{cc} #1  \\
+     #2  \end{array} \right ) }
+
+%%%%%\newcommand{\Tr}{\,{\rm Tr}\,}
+\newcommand{\End}{\,{\rm End}\,}
+\newcommand{\Hom}{\,{\rm Hom}\,}
+
+\newcommand{\Ker}{ \,{\rm Ker} \,}
+
+\newcommand{\bla}{\phantom{bbbbb}}
+\newcommand{\onebl}{\phantom{a} }
+\newcommand{\eqdef}{\;\: {\stackrel{ {\rm def} }{=} } \;\:}
+\newcommand{\sign}{\: {\rm sign}\: }
+\newcommand{\sgn}{ \:{\rm sgn}\:}
+\newcommand{\half}{ {\frac{1}{2} } }
+\newcommand{\vol}{ \,{\rm vol}\, }
+
+
+% define abbreviations for most common commands
+%
+
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\beqst}{\begin{equation*}}
+\newcommand{\eeqst}{\end{equation*}}
+\newcommand{\barr}{\begin{array}}
+\newcommand{\earr}{\end{array}}
+\newcommand{\beqar}{\begin{eqnarray}}
+\newcommand{\eeqar}{\end{eqnarray}}
+\newtheorem{theorem}{Theorem}[section]
+%\newtheorem{conjecture}{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+%\newtheorem{problem}{Problem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{prop}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remit}[theorem]{Remark}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\newtheorem{example}[theorem]{Example}
+
+\newcommand{\matr}[4]{\left \lbrack \begin{array}{cc} #1 & #2 \\
+     #3 & #4 \end{array} \right \rbrack}
+
+
+
+\newenvironment{rem}{\begin{remit}\rm}{\end{remit}}
+
+
+
+
+% black board bold face
+%note \AA is already defined!
+\newcommand{\aff}{{ \Bbb A }}
+\newcommand{\RR}{{{\bf  R }}}
+\newcommand{\CC}{{{\bf  C }}}
+\nc{\FF}{ {\Bbb F} } 
+\newcommand{\ZZ}{{{\bf   Z }}}
+\newcommand{\PP}{ {\Bbb P } }
+\newcommand{\QQ}{{\Bbb Q }}
+\newcommand{\UU}{{\Bbb U }}
+
+
+
+
+
+
+
+
+%***************************
+
+
+
+
+%
+
+
+%
+
+
+%Replace greek letters by their roman equivalents with \
+%Slightly nonstandard:  theta is \t, tau is \ta, no omicron
+\def\a{\alpha}
+\def\b{\beta}
+\def\g{\gamma}
+\def\d{\delta}
+\def\e{\epsilon}
+\def\z{\zeta}
+\def\h{\eta}
+\def\t{\theta}
+%\def\i{\iota}
+\def\k{\kappa}
+\def\l{\lambda}
+\def\m{\mu}
+\def\n{\nu}
+\def\x{\xi}
+\def\p{\pi}
+\def\r{\rho}
+\def\s{\sigma}
+\def\ta{\tau}
+\def\u{\upsilon}
+\def\ph{\phi}
+\def\c{\chi}
+\def\ps{\psi}
+\def\o{\omega}
+
+\def\G{\Gamma}
+\def\D{\Delta}
+\def\T{\Theta}
+\def\L{\Lambda}
+\def\X{\Xi}
+\def\P{\Pi}
+\def\S{\Sigma}
+\def\U{\Upsilon}
+\def\Ph{\Phi}
+\def\Ps{\Psi}
+\def\O{\Omega}
+
+
+
+
+% calligraphic letters
+\newcommand{\calA}{{\mbox{$\cal A$}}}
+\newcommand{\calB}{{\mbox{$\cal B$}}}
+\newcommand{\calC}{{\mbox{$\cal C$}}}
+\newcommand{\calD}{{\mbox{$\cal D$}}}
+\newcommand{\calE}{{\mbox{$\cal E$}}}
+\newcommand{\calF}{{\mbox{$\cal F$}}}
+\newcommand{\calG}{{\mbox{$\cal G$}}}
+\newcommand{\calH}{{\mbox{$\cal H$}}}
+\newcommand{\calI}{{\mbox{$\cal I$}}}
+\newcommand{\calJ}{{\mbox{$\cal J$}}}
+\newcommand{\calK}{{\mbox{$\cal K$}}}
+\newcommand{\calL}{{\mbox{$\cal L$}}}
+\newcommand{\calM}{{\mbox{$\cal M$}}}
+\newcommand{\calN}{{\mbox{$\cal N$}}}
+\newcommand{\calO}{{\mbox{$\cal O$}}}
+\newcommand{\calP}{{\mbox{$\cal P$}}}
+\newcommand{\calQ}{{\mbox{$\cal Q$}}}
+\newcommand{\calR}{{\mbox{$\cal R$}}}
+\newcommand{\calS}{{\mbox{$\cal S$}}}
+\newcommand{\calT}{{\mbox{$\cal T$}}}
+\newcommand{\calU}{{\mbox{$\cal U$}}}
+\newcommand{\calV}{{\mbox{$\cal V$}}}
+\newcommand{\calW}{{\mbox{$\cal W$}}}
+\newcommand{\calX}{{\mbox{$\cal X$}}}
+\newcommand{\calY}{{\mbox{$\cal Y$}}}
+\newcommand{\calZ}{{\mbox{$\cal Z$}}}
+
+%% To load script letters:
+
+\font\teneusm=eusm10  \font\seveneusm=eusm7 
+\font\fiveeusm=eusm5 
+\newfam\eusmfam 
+\textfont\eusmfam=\teneusm 
+\scriptfont\eusmfam=\seveneusm 
+\scriptscriptfont\eusmfam=\fiveeusm 
+\def\Scr#1{{\fam\eusmfam\relax#1}}
+
+% Script letters
+\newcommand{\ScrA}{{\Scr A}} \newcommand{\ScrB}{{\Scr B}}
+\newcommand{\ScrC}{{\Scr C}} \newcommand{\ScrD}{{\Scr D}}
+\newcommand{\ScrE}{{\Scr E}} \newcommand{\ScrF}{{\Scr F}}
+\newcommand{\ScrG}{{\Scr G}} \newcommand{\ScrH}{{\Scr H}}
+\newcommand{\ScrI}{{\Scr I}} \newcommand{\ScrJ}{{\Scr J}}
+\newcommand{\ScrK}{{\Scr K}} \newcommand{\ScrL}{{\Scr L}}
+\newcommand{\ScrM}{{\Scr M}} \newcommand{\ScrN}{{\Scr N}}
+\newcommand{\ScrO}{{\Scr O}} \newcommand{\ScrP}{{\Scr P}}
+\newcommand{\ScrQ}{{\Scr Q}} \newcommand{\ScrR}{{\Scr R}}
+\newcommand{\ScrS}{{\Scr S}} \newcommand{\ScrT}{{\Scr T}}
+\newcommand{\ScrU}{{\Scr U}} \newcommand{\ScrV}{{\Scr V}}
+\newcommand{\ScrW}{{\Scr W}} \newcommand{\ScrX}{{\Scr X}}
+\newcommand{\ScrY}{{\Scr Y}} \newcommand{\ScrZ}{{\Scr Z}}
+
+%German (Faktur) letters
+
+\newcommand{\grA}{{\frak A}}
+
+
+
+\def\eps{\varepsilon}
+
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.1in}
+\setlength{\evensidemargin}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\topmargin}{-.75in}
+\setlength{\parskip}{0.3\baselineskip}
+
+%\renewcommand{\theequation}{\thesection.\arabic{equation}}
+%\newcommand{\renorm}{{ \setcounter{equation}{0} }}
+
+\newcommand{\Le}{{{\mathchoice{\,{\scriptstyle\le}\,}
+  {\,{\scriptstyle\le}\,}
+  {\,{\scriptscriptstyle\le}\,}{\,{\scriptscriptstyle\le}\,}}}}
+\newcommand{\Ge}{{{\mathchoice{\,{\scriptstyle\ge}\,}
+  {\,{\scriptstyle\ge}\,}
+  {\,{\scriptscriptstyle\ge}\,}{\,{\scriptscriptstyle\ge}\,}}}}
+
+
+%\renewcommand{\baselinestretch}{1.5}
+
+
+
+\begin{document}
+\title{Lecture 1:\\
+ Reminder of basics of quantum mechanics\\
+and canonical quantization in Hilbert space}
+\author{Ludwig Faddeev}
+\date{8  October 1996}
+
+\maketitle
+%\renorm
+
+After hearing some statements on the nature of quantum
+theory during last week I decided to start my lecture by
+presenting a suitable and reasonably natural framework into
+which $QM$ satisfactorily fits.
+The framework itself is an abstraction of thoughts and
+essays of many people.
+I mention P. Dirac, H. Weyl, J. v. Neumann, I. Segal and G.
+Mackey. 
+I shall be very cryptic.
+
+A description of physical reality is made in terms of two
+sets of objects: observables and states.
+A set of observables $A$, $B,\ldots$ will be denoted by $\grA$
+and states $\omega$, $\mu,\ldots$ by $\Omega$.
+Each state $\omega$ assigns to each observable $A$ its
+probability distribution $\omega_A(\lambda)$ on a real line.
+The pairing (mean value)
+$$
+\left<\omega\vert A\right>=\int\lambda d\omega_A(\lambda)
+$$
+defines a duality between $A$ and $\Omega$.
+It is natural to assume the separability (completeness) of
+states: two observables with equal pairings in all states
+are equal.
+This immediately introduces a real linear structure on $\grA$,
+whereas $\Omega$ is a convex set. The
+next structure is a notion of functional dependence of
+observables.
+The observable $B$ is a function $f(A)$ of the observable $A$ if in
+any state
+$$
+\left<\omega\vert B\right>=\int f(\lambda)
+d\omega_A(\lambda).
+$$
+This definition of a function is rather unwieldy, so a
+technical assymption is added that $A$ lies in an algebra
+with product $AB$ such that the notion of function is
+compatible with this product.
+
+Now comes dynamics: each observable generates a motion of
+$\grA$, that is a one-parameter group of automorphisms of $\grA$
+via the differential equation
+$$
+dA/db=\{B,A\},
+$$
+where $\{\,\,,\,\,\}$ is a bracket, which is necessarily of
+Lie type and is a derivation of the product
+$$
+\{A,BC\}=\{A,B\}C+B\{A,C\}.
+$$
+This essentially finishes the description of the framework.
+
+Both classical and quantum mechanics fit perfectly in it and
+give concrete and nonequivalent realizations.
+
+All features of $CM$ are reconstructed as soon as one
+assumes that $\grA$ is commutative.
+It follows that $\grA$ can be realized as an algebra of
+functions on a symplectic manifold (phase space) $M$:  states
+are normalized measures on the phase space and
+$\{\,\,,\,\,\}$ is a Poisson bracket, defined by the
+symplectic structure on it.
+In particular
+$$
+\omega_A(\lambda)=\int\theta\left(\lambda-f_A(p,q)\right)
+d\mu_\omega,
+$$
+where $\theta(t)$ is a step function, $f_A(p,q)$ is a
+function corresponding to observable $A$ and $\mu_\omega$ is
+a measure corresponding to the state $\omega$.
+Pure (extremal) states are defined by atomistic measures
+concentrated in one point of $M$.
+All observables have exact values (zero dispersions) in all
+pure states.
+
+In the case of $QM$, the set $\grA$ consists of real elements of
+a complex associative algebra with involution, which is
+usually realized as an algebra of linear operators in some
+complex Hilbert space $H$.
+The states are the positive trace class operators with unit
+trace.
+The distribution $\omega_A(\lambda)$ is given by
+$$
+\omega_A(\lambda)=\tr\left(MP_A(\lambda)\right),
+$$
+where $M$ (density matrix) defines the state and
+$P_A(\lambda)$ is a special projector function of operator
+$A$.
+The dynamical bracket is defined in terms of product
+$$
+\{A,B\}=(i/\hslash)(AB-BA),
+$$
+where $i=(-1)^{1/2}$ and the normalizing factor $1/\hslash$
+here employs the famous Planck constant $\hslash$.
+Its introduction in this place is necessitated just from
+dimensional considerations.
+
+The pure states are given by one-dimensional projectors and
+a given observable is exact (dispersionless) only in pure
+states, defined by its eigenvectors.
+This feature, which is reflected in the ``uncertainty''
+inequality
+$$
+\Delta_\omega A\Delta_\omega B\Ge
+(\hslash/2)\vert\left<\omega\vert\{A,B\}\right>\vert,
+$$
+where
+$$
+\Delta_\omega A=(\left<\omega\vert(A-\left<\omega\vert
+A\right>)^2\right>)^{1/2}
+$$
+is the main physical distinction between $QM$ and $CM$.
+By no means does it preclude the measurability of observables
+in $QM$.
+Indeed, the collection of eigenstates is enough to
+characterize any observable.
+On the contrary, the exactness of observables in all pure
+states in $CM$ is a kind of unnecessary luxury.
+
+It is instructive to compare the CM and QM on some common
+playing field. We shall consider the simplest mechanical
+ system with {\em one degree of freedom}: in
+other words the  phase space is $M
+ = \RR^2$, and points in 
+phase space are denoted $(p,q)$. The Hilbert space is 
+$$\calH = L^2 (\RR)  = \{ \psi(q) \in \CC: \int_{q = - \infty}^\infty
+|\psi(q)|^2 dq < \infty \}.  $$
+Quantum mechanically we replace the basic observables
+({\em canonical} coordinates) 
+$p$ and $q$ by operators $P$ and $Q$ acting on $\calH$: these are 
+defined by 
+\beq (P  \psi)(q) = \frac{\hbar}{\isq} \frac{d}{dq} \psi(q), \eeq
+\beq (Q  \psi)(q) = q \psi(q); \eeq
+this is the so called {\em coordinate realization}. 
+An observable $A$ is characterized as an integral operator 
+defined by its {\em kernel}
+\beq 
+(A \psi)(q'') = \int_{- \infty}^\infty 
+A (q'', q') \psi (q') dq'. \eeq
+Alternatively we may define the observable $A$ by means of its {\em symbol},
+which is a function  on the phase space $M$: the symbol $f$ corresponds
+to the integral kernel  $A_f$ by means of the {\em Weyl quantization}
+\beq A_f (q'', q') = 
+\frac{1}{2 \pi \hbar} \int_{- \infty}^\infty 
+f(p, \frac{q'' +  q'}{2} ) e^{i p (q'' - q')/\hbar} dp. \eeq
+There is no unique way to substitute operators for functions 
+because the function $pq$ is equal to the function $qp$ while the 
+operator $PQ$ does not equal the operator $QP$: one must choose a 
+prescription for the 
+ ordering of  the operators. 
+The Weyl quantization corresponds to one choice of ordering, which 
+is to completely symmetrize over the operators $P$ and $Q$. 
+The Weyl quantization is not a homomorphism from the algebra of  functions 
+to the algebra of operators: if one associates the operators $A_f$ and 
+$A_g$ to the functions
+$f$ and $g$ respectively, one may define the kernel of the product 
+$A_f A_g$ by 
+\beq \label{1.8} A_f A_g (q'', q') =  \int_{- \infty}^\infty
+A_f (q'', q) A_g (q, q') dq. \eeq
+This corresponds to a product $f \star_\hbar g $ on the algebra of 
+functions which equals 
+\beq \label{1.9} 
+f \star_\hbar g = f g + \frac{\isq \hbar}{2} \{ f, g \} + O (\hbar^2), \eeq
+%
+%
+%\newpage\mbox{}\clearpage
+%
+so that
+$$
+(i/\hslash)(f*g-g*f)=\{f,g\}+O(\hslash).
+$$
+We see that both $CM$ and $QM$ can be realized in terms of
+the same objects (functions) but the structure constants of
+the main operations (product, Lie bracket) of $QM$ are
+defined as a series in positive powers of $\hslash$, the
+zero order term being the structure constants of $CM$.
+So we can say that $QM$ is a deformation of $CM$ in the
+framework described above.
+The Planck constant is a corresponding deformation
+parameter.
+This is for me the most concise formulation of the
+correspondence principle and explains what is meant by
+quantization.
+
+Now comes the notion of equivalent deformation and that of
+stability.
+Beautiful results, which I learned from A. Lichnerowicz, M.
+Flato and D. Sternheimer, allow one to say that $CM$ is
+unstable and that $QM$ is essentially a unique deformation
+of it into a nonequivalent stable structure.
+The degeneracy of $CM$ (exactness of pure states) is
+intimately connected with its instability.
+So it is only natural that the passage from $CM$ to $QM$ was
+prompted by the experimental activity of physicists.
+The stability of $QM$, on the contrary, shows that an
+analogous modification of it is less feasible.
+In this case one has first to modify also all the general
+framework, as emphasized above.
+
+Now I turn to discussion of dynamics.
+The goal is to make control of the evolution operator
+$$
+U(t)=e^{-iHt/\hslash},
+$$
+which defines the solution of the 
+dynamical equation 
+\beq \frac{dA(t)}{dt} = \{H, A(t) \}_{\hbar}, ~~~A(t)|_{t = 0 } = A \eeq
+in the form 
+\beq A(t) = U^{-1} (t) A U(t). \eeq
+{}From now on we take the normalization $\hbar = 1$. 
+
+
+
+%*************************
+
+
+
+
+
+
+
+
+
+
+
+
+%more newcommands
+\nc{\bra}{  < }
+\nc{\ket}{ > }
+%\nc{\isq}{ { \sqrt{-1} } }
+%\nc{\isq}{{ i }}
+%\nc{\hbar}{{ h}}
+\nc{\triang}{ { \bigtriangleup} }
+
+%\renewcommand{\theequation}{\thesection.\arabic{equation}}
+%\newcommand{\renorm}{{ \setcounter{equation}{0} }}
+
+It is convenient to consider arbitrary initial and final times, so we
+want to 
+construct the kernel of the evolution operator 
+\beq \label{1.09} U = e^{- i H (t'' - t')}  \eeq
+in terms of the symbol corresponding to the Hamiltonian 
+$h (p,q)$. Because Weyl quantization is not a homomorphism taking 
+the product of functions to the product of operators, one cannot 
+substitute the kernel for the Hamiltonian into the Taylor series for the 
+exponential. Nonetheless if $\triang$ is a small interval, one may make the 
+approximation
+\beq \label{1.10} U_\triang = e^{- i H \triang} \cong 1 - i H \triang \eeq
+and then if $ t'' - t' = N \triang $ one may approximate 
+\beq \label{1.11} e^{ - i H (t'' - t')} = (U_\triang)^N. \eeq
+We write the integral kernel for $U_\triang$ as 
+\beq \label{1.12} U_\triang (q'', q') = \frac{1}{2 \pi} \int_{- \infty}^\infty
+dp e^{i p (q'' - q') } \Bigl (1 - i h (p, \frac{q'' + q'}{2}
+ ) \triang \Bigr  )  \eeq
+$$ = \frac{1}{2 \pi} \int_{- \infty}^\infty dp  e^{i p (q'' - q')  - i 
+ h (p, \frac{q'' + q'}{2}) \triang }  + O (\triang^2). $$
+
+To obtain the integral kernel for $e^{ - i H (t'' - t')}$ we 
+compose $N$ copies of $U_\triang$  and integrate over the 
+$N-1$ intermediate variables $q_j$ using (\ref{1.8}):
+\beq \label{1.13} U (q'', q'; t'' - t') = 
+\int \dots \int e^{  i p_N (q_N - q_{N-1} ) + i p_{N-1} 
+(q_{N-1} - q_{N-2} ) + \dots + i p_1 (q_1 - q_0) }   \times \eeq
+$$ e^{ - i h (p_N, \frac{q_N + q_{N-1} }{2} ) 
+- \dots - i h (p_1, \frac{q_1 + q_0}{2}) } \frac{dp_1 dq_1} {2 \pi} 
+\dots \frac{dp_{N-1} dq_{N-1} } {2 \pi} \frac{dp_N}{2 \pi}. $$
+In the limit as $N$ tends to infinity while $q_N - q_{N-1} $ is 
+proportional to $1/N$, we formally obtain an integral 
+over trajectories $(p(t), q(t))$ in phase space:
+\beq \label{1.14} U(q'',q'; t'' - t')  = 
+\int  \exp i \left \{ \int_{t'}^{t''} (p(t) \dot{q} (t) - h (p(t), q(t) )) dt
+\right \}
+ \prod_{t} \frac{ dp(t) dq(t)}{2 \pi} 
+. \eeq
+
+One recognizes
+\beq \label{action} 
+  \int_{t'}^{t''} \left ( p(t) \dot{q} (t) - h (p(t), q(t) \right ) dt \eeq
+as the {\em action functional}, while
+$\prod_{t} \frac{ dp(t) dq(t)}{2 \pi} $ is the Liouville measure on the 
+space of paths. 
+ 
+A {\em real polarization} of a symplectic manifold or phase space of 
+dimension $2n$
+is a surjective map $\pi$ to a manifold of dimension $n$ such that
+the fibres are Lagrangian submanifolds (in other words the fibres 
+are of dimension $n$ and the symplectic form restricts to zero on them). 
+The boundary 
+condition on the trajectories in (\ref{1.14}) 
+is  that $q (t'') = q', q(t') = q'$ 
+while $p(t'') $ and $p(t')$ are unconstrained.  This condition 
+says that when $t $ takes the extremal value $t'$ the endpoint
+of the  path $(p(t), q(t)) $ 
+lies in a prescribed fibre $L' \eqdef \pi^{-1} (q') $
+ of the  real polarization
+\beq \pi: (p,q) \mapsto q \eeq
+of the phase space, while at the other extremal value $t = t''$ 
+the path lies in a different fibre  
+$$L'' = \pi^{-1} (q'') $$  
+of the polarization. 
+%The kernel should be thought of as a half density on the product of the 
+%two Lagrangian submanifolds $L' \times L''$, so that products of two 
+%such kernels can be integrated over $L' \times L''$. 
+
+\noindent{\em Remark:} In our  example, a phase space arising
+from a  physical system with one degree of freedom is $\RR^2$. Other
+interesting examples arise where the phase space is $S^2$. 
+No real polarization exists in those cases.
+Complex polarization leads to finite dimensional
+represetnation of the group $O(3)$, so that this
+phase space corresponds to a spin degree of freedom.
+
+If the Hamiltonian is given by 
+\beq h (p,q) = \frac{1}{2} p^2 + v(q), \eeq
+the change of variables
+\beq p(t)  \mapsto p'(t)  = p(t)  + \dot{q}(t), ~~~ q(t) \mapsto  q(t) \eeq
+transforms the integrand in  (\ref{action}) to a form in which 
+no terms appear which involve both $p(t) $ and $q(t)$ (in other 
+words these variables separate):
+\beq \label{newaction}
+p' \dot{q'} 
+- h (p', q') = -\frac{1}{2} (p')^2 + \frac{1}{2} (\dot{q})^2 - v(q) \eeq
+We may then integrate over $p(t) $ (to obtain 
+a constant which is independent of $q(t)$) and recover the more usual form
+of
+ the action which depends only on $q(t)$:
+\beq U(q'',q'; t'' - t') = {\rm const} \int \exp \{ \isq \int_{t'}^{t''}
+( \half \dot{q}^2 - v(q) ) dt \} \prod_{t} dq(t) \eeq
+
+
+ Here what appears is   the usual Lagrangian,
+which depends on $q$ and $\dot{q}$ but not on $p$. 
+This change of variables thus transforms the formula (\ref{1.14})
+for the kernel of the time evolution operator  $U$ into a path 
+integral over trajectories in {\em configuration} space (the space 
+of possible values of the position) rather than over trajectories
+in {\em phase} space (the space of possible values of position and 
+momentum, whose dimension is twice that of the configuration 
+space). We remark that this method of reducing from paths in phase space 
+to paths in configuration space works only when the action is 
+quadratic in the momentum $p$. However, more general actions 
+quadratic in $p$ can also be treated by this method: for instance,
+one may use a general Riemannian metric on the configuration space
+rather than the flat metric $p^2$, which simply gives rise to a factor 
+of the Riemannian volume element.
+
+\nc{\astar}{{ a^*}}
+\nc{\hata}{ { \hat{a} }}
+\nc{\hatastar}{{ \hat{\astar} }}
+\nc{\normfac}{{\frac{1}{\sqrt{2 \omega} } }}
+
+Let us now consider an example where the form of the potential 
+$v(q)$ is given explicitly: the {\em harmonic oscillator} 
+\beq \label{harmosc} 
+h(p,q) = \half p^2 + \half \omega^2 q^2. \eeq
+We intentionally keep here the frequency parameter $\omega$. This
+will be instructive when we turn to the free fields, which 
+are nothing but a collection of oscillators with different 
+frequencies.
+The classical equation of motion corresponding to this Hamiltonian 
+is the equation for simple harmonic motion
+\beq \label{shm}
+\frac{d^2}{dt^2} q(t)  + \omega^2 q(t) = 0. \eeq
+In the approach to quantization which 
+we have described, one finds that
+the eigenvectors of the Hamiltonian are 
+defined in terms of certain
+orthogonal polynomials in $q$, the Hermite polynomials. 
+
+
+The use of special functions can be avoided if one
+alternatively considers
+the {\em holomorphic} quantization of the harmonic oscillator:
+this will complement the 
+treatment given in K. Gawedski's lectures. 
+We introduce complex coordinates
+$a$ and $\astar$ on the phase space, defined by 
+\beq  a= \normfac (\omega q + \isq p) \eeq
+\beq \astar = \normfac (\omega q - \isq p) \eeq
+so that
+\beq q = \normfac (\astar + a). \eeq
+After quantization, $a$ and $\astar $ become operators $\hata$ and 
+$\hatastar$, which satisfy the commutation   relation
+\beq [\hata, \hatastar ] = 1. \eeq
+
+The Hilbert space $\calH$ now consists of entire functions in 
+$\astar$: it is the closure of the space of polynomials
+in $\astar$ in the norm 
+\beq \label{normastar}
+(f,g) = \int_{\RR^2} 
+ \bar{f}(a) g(\astar) e^{ - \astar a} \frac{d\astar da}
+{2 \pi \isq}. \eeq %****
+One finds for instance that the elements 
+\beq \psi_n = \frac{(\astar)^n}{\sqrt{n!} } \eeq
+in $\calH$ are orthonormal with respect to the norm $( \cdot, \cdot )$. 
+The operators $\hata$ and $\hatastar$ are represented on 
+$\calH$ by 
+\beq \hata f(\astar)  = \frac{d f(\astar) }{d \astar}, \eeq
+\beq \hatastar f (\astar)  = \astar \cdot f (\astar). \eeq
+The Hamiltonian may be written as 
+\beq H = \omega \hatastar \hata, \eeq
+and it has the $\psi_n$ as eigenvectors: we have
+\beq H \psi_n = n \omega \psi_n.  \eeq
+In particular, we have $\psi_0 = 1$, for which $H \psi_0 = 0 $; 
+one thus sees that 
+\beq \psi_n = \frac{(\hatastar)^n} {\sqrt{n!} } \psi_0. \eeq
+The operators on $\calH$ may be represented by integral 
+kernels $A((\astar)'', a')$, which are analytic functions
+of two independent variables $(\astar)''$ and $a'$. 
+The composition  of two operators corresponds to 
+the following operation on their kernels $A$ and $B$:
+\beq (AB)((\astar)'', a') = \int A ((\astar)'', \alpha) B (\alpha, a') 
+e^{- \alpha^* \alpha} \frac{d \alpha^* d \alpha} {2 \pi \isq}. \eeq
+Occasionally we shall drop the primes on $\astar$ and $a$ in cases when 
+this does not lead to confusion.
+
+Another possibility is to use {\em normal symbols}: 
+if we write the operator $A$ as 
+\beq A = \sum_{n,m} K_{mn} (\hatastar)^n \hata^m, \eeq
+then the corresponding normal symbol is 
+\beq K(\astar, a) = \sum_{n,m} K_{mn}(\astar)^n a^m. \eeq
+It is an exercise to see that 
+\beq K(\astar, a) = e^{ - \astar a} A (\astar, a). \eeq
+If we now turn to dynamics,
+the kernel of the evolution operator
+ for a small time interval $\triang $ may be 
+written in terms of the normal symbol of the 
+Hamiltonian $h(\astar, a)$ as
+\beq U_{\triang } = e^{- \astar a - i h(\astar, a) \triang}. \eeq
+To write the time evolution operator for the time interval $t'' - t'$, we 
+compose $N$ copies of $U_{\triang }$ as before: 
+\beq \label{intker} U(\astar, a) = 
+\int \dots \int e^{ a_N^* a_{N-1}
+- a_{N-1}^* a_{N-1} + a_{N-1}^* a_{N-2} - \dots 
+- a_1^* a_1 + a_1^* a_0}  \times \eeq
+$$ e^{- \isq 
+\{  h(a_N^*, a_{N-1} ) + \dots
++ h (a_1^*, a_0) \}  \triang } \prod_{k =1}^{N-1} \frac{da_k^* da_k}
+{2 \pi \isq}. $$
+In this context the analogue 
+of the condition that $q_N$ and $q_0$ are fixed is that
+$a_N$ and $a_0$ are fixed:
+\beq \label{bound}  a_N = \astar, ~~~ a_0 = a. \eeq
+In the limit as $N \to \infty$ we obtain 
+\beq \label{upathint:ho} U = \int \exp \left \{ \astar a|_{t = t''}   + 
+\int_{t'}^{t''} \{ - \astar \dot{a} - \isq h(\astar, a) \} dt \right \} 
+\prod_{t' \le t \le t''}  \frac{ d\astar(t) da(t)}{2 \pi \isq}. \eeq
+For values of $t$ that are not equal to the extremal values
+$t' $ and $t''$, we assume that $\astar(t) =  \overline{a(t)}$, but we 
+do {\em not} assume this on the boundary: thus we impose the condition 
+that $\astar(t'') = \astar \in \CC$ (this is the value 
+that was denoted by  $\astar$ in (\ref{bound})) and similarly  $\astar(t)
+= a \in \CC$ (this is the value that was denoted by $a$ in (\ref{bound})).
+The variables $\astar, a$ are the arguments of the integral 
+kernel in (\ref{intker}):
+they are arbitrary complex numbers, in particular we do {\em not} 
+assume that $\astar = \overline{a}$.
+
+
+
+If one now substitutes $h = \omega \astar a$, the integral is Gaussian;
+using the equations of motion 
+\beq \dot{a} + \isq \omega a = 0, ~~~ \dot{a}^* - \isq \omega \astar = 0\eeq
+with the boundary conditions $a_N = \astar$, $a_0 = a$ 
+(where $\astar$ and $a$ are arbitrary complex numbers which are not 
+required to be complex conjugate) we then see that 
+\beq a(t) = a e^{- i \omega (t - t')}, \eeq
+\beq \astar (t) = \astar e^{i \omega (t - t') }. \eeq
+Note that $a(t)$ and $\astar (t)$ are not complex conjugates of each other.
+Substituting in (\ref{upathint:ho}) we obtain
+\beq U_0(\astar, a, t'' - t') = 
+\exp \left \{ \isq \astar a e^{-\isq \omega (t'' - t') } \right \}. \eeq
+Applying this to an element $\phi$ of $\calH$, we find
+\beq (U_0 \phi)(\astar) = 
+\int \exp \left ( \astar \alpha e^{-\isq \omega (t'' - t') }\right )
+\phi (\alpha^*) e^{ - \alpha^* \alpha} \frac{d \alpha d \alpha^*} 
+{2 \pi \isq} \eeq
+$$ = \phi (e^{-i \omega t} a^* ). $$
+This shows that the evolution operator is obtained by simply 
+substituting the same argument rotated {\em backward} in time. 
+%The computation can be performed by expanding $\phi$ in polynomials, and 
+%by using the identity that 
+%\beq \int e^{(\astar - \alpha^*) a}da  = \delta (\astar^* - \alpha^*). \eeq
+
+
+
+
+
+
+
+
+
+
+
+
+
+%\begin{thebibliography}{99}
+%\end{thebibliography}
+
+
+\end{document}
+
+

@@ -1,0 +1,430 @@
+\input amstex
+\magnification=\magstephalf
+\documentstyle{amsppt}
+%%%%%%%%%%%% changes to amsppt.sty %%%%%%%%%%%%%%%%%%%%%%%
+ \addto\tenpoint{\baselineskip 15pt
+  \abovedisplayskip18pt plus4.5pt minus9pt
+  \belowdisplayskip\abovedisplayskip
+  \abovedisplayshortskip0pt plus4.5pt
+  \belowdisplayshortskip10.5pt plus4.5pt minus6pt}\tenpoint
+\pagewidth{6.5truein} \pageheight{8.9truein}
+\subheadskip\bigskipamount
+\belowheadskip\bigskipamount
+\aboveheadskip=3\bigskipamount
+\catcode`\@=11
+\def\output@{\shipout\vbox{%
+ \ifrunheads@ \makeheadline \pagebody
+       \else \pagebody \fi \makefootline 
+ }%
+ \advancepageno \ifnum\outputpenalty>-\@MM\else\dosupereject\fi}
+\outer\def\subhead#1\endsubhead{\par\penaltyandskip@{-100}\subheadskip
+  \noindent{\subheadfont@\ignorespaces#1\unskip\endgraf}\removelastskip
+  \nobreak\medskip\noindent}
+\outer\def\enddocument{\par% \par will do a runaway check for \endref
+  \add@missing\endRefs
+  \add@missing\endroster \add@missing\endproclaim
+  \add@missing\enddefinition
+  \add@missing\enddemo \add@missing\endremark \add@missing\endexample
+ \ifmonograph@ % do nothing
+ \else
+ \vfill
+ \nobreak
+ \thetranslator@
+ \count@\z@ \loop\ifnum\count@<\addresscount@\advance\count@\@ne
+ \csname address\number\count@\endcsname
+ \csname email\number\count@\endcsname
+ \repeat
+\fi
+ \supereject\end}
+\catcode`\@=\active
+%%%%%%%%%%%%%%% other macros %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\CenteredTagsOnSplits
+\NoBlackBoxes
+\nologo
+\def\today{\ifcase\month\or
+ January\or February\or March\or April\or May\or June\or
+ July\or August\or September\or October\or November\or December\fi
+ \space\number\day, \number\year}
+\define\({\left(}
+\define\){\right)}
+\define\Ahat{{\hat A}}
+\define\Aut{\operatorname{Aut}}
+\define\CC{{\Bbb C}}
+\define\CP{{\Bbb C\Bbb P}}
+\define\Conf{\operatorname{Conf}}
+\define\Diff{\operatorname{Diff}}
+\define\EE{\Bbb E}
+\define\FF{\Bbb F}
+\define\End{\operatorname{End}}
+\define\Free{\operatorname{Free}}
+\define\HH{{\Bbb H}}
+\define\Hom{\operatorname{Hom}}
+\define\Map{\operatorname{Map}}
+\define\Met{\operatorname{Met}}
+\define\QQ{{\Bbb Q}}
+\define\RP{{\Bbb R\Bbb P}}
+\define\RR{{\Bbb R}}
+\define\SS{\Bbb S}
+\define\Spin{\operatorname{Spin}}
+\define\Tor{\operatorname{Tor}}
+\define\Trs{\operatorname{Tr\mstrut _s}}
+\define\Tr{\operatorname{Tr}}
+\define\ZZ{{\Bbb Z}}
+\define\[{\left[}
+\define\]{\right]}
+\define\ch{\operatorname{ch}}
+\define\chiup{\raise.5ex\hbox{$\chi$}}
+\define\cir{S^1}
+\define\coker{\operatorname{coker}}
+\define\dbar{{\bar\partial}}
+\define\endexer{\bigskip\tenpoint}
+%\define\exertag #1#2{\removelastskip\bigskip\medskip\eightpoint\noindent%
+%\hbox{\rm\ignorespaces#2\unskip} #1.\ }  
+\define\exertag #1#2{#2\ #1}
+\define\free{\operatorname{free}}
+\define\index{\operatorname{index}}
+\define\ind{\operatorname{ind}}
+\define\inv{^{-1}}
+\define\mstrut{^{\vphantom{1*\prime y}}}
+\define\protag#1 #2{#2\ #1}
+\define\rank{\operatorname{rank}}
+\define\res#1{\negmedspace\bigm|_{#1}}
+\define\temsquare{\raise3.5pt\hbox{\boxed{ }}}
+\define\theexertag{\theprotag}
+\define\theprotag#1 #2{#2~#1}
+\define\tor{\operatorname{tor}}
+\define\xca#1{\removelastskip\medskip\noindent{\smc%
+#1\unskip.}\enspace\ignorespaces }
+\define\endxca{\medskip}
+\define\zmod#1{\ZZ/#1\ZZ}
+\define\zn{\zmod{n}}
+\define\zt{\zmod2}
+\redefine\Im{\operatorname{Im}}
+\redefine\Re{\operatorname{Re}}
+\let\germ\frak
+%\font\boldtitlefont=cmb10 scaled\magstep2
+\NoRunningHeads
+
+\topmatter 
+\title\nofrills {Actions and Reality} \endtitle
+\author Dan Freed\endauthor 
+\endtopmatter
+ 
+\document
+
+A basic constraint on a Minkowski space action is that it
+be real. An action $\Cal S_m$ is the integral of a
+Lagrangian (density) $L_m$ over Minkowski space $M$:
+$$
+S_m=\int\limits_ML_m.\tag1
+$$
+Choose a time $t$ on $M$.  Then we (Wick) rotate to Euclidean space $E$ by
+introducing imaginary time $\tau =it$.  By convention the Euclidean action is
+$\frac{1}{i}$ times the rotated Minkowski action:
+$$
+\frac{1}{i}\,S_m=S_e=\int\limits_EL_e.\tag2
+$$
+None that $e^{iS_m}=e^{-S_e}$.  Also, $S_e$ is not real in
+general.
+ 
+We describe the continuation to Euclidean space more precisely for a
+$\sigma$-model.  The field is a map $\phi:M\longrightarrow Y$ into some
+Riemannian manifold.  The complexification of the space of maps
+$M\longrightarrow Y$ is the space of {\it holomorphic} maps $M_{\Bbb
+C}\longrightarrow Y_{\Bbb C}$ between the complexified spaces (see Deligne's
+notes {\it Real versus complex}).  The Lagrangian extends to a holomorphic
+function on this space, and the Euclidean action is the restriction of this
+continuation to maps $E\longrightarrow Y$.  (Note that $E_{\Bbb C}=M_{\Bbb
+C}$ so $E\subset M_{\Bbb C}$.)  There is a similar picture for other types of
+fields.
+ 
+We consider four types of terms which typically occur in an
+action:  kinetic terms for bosons, potential terms,
+topological terms, and kinetic terms for fermions.  For
+simplicity we discuss these terms in mechanics (the
+one dimensional case) and then indicate the generalization
+to higher dimensions.
+ 
+Let $t,x^1,\ldots,x^{n-1}$ be coordinate on $M$.  We use the
+metric
+$$
+dt^2-(dx^1)^2-\cdots-(dx^{n-1})^2\tag3
+$$
+on $M$ and the positive definite metric
+$$
+d\tau^2+(dx^1)^2+\cdots+(dx^{n-1})^2\tag4
+$$
+on $E$.
+ 
+\subhead Kinetic Terms for Bosons\endsubhead
+ 
+Consider a particle of mass $m$ moving in some Riemannian
+manifold $Y$.  It is described by a map $x:\Bbb
+R\longrightarrow Y$.  Then the kinetic energy density is
+$$
+L_m=\frac{m}{2}\,\,\bigg\vert\frac{dx}{dt}\bigg\vert^2dt.\tag5
+$$
+The continuation to imaginary time -- after dividing by
+$i$ -- is 
+$$
+L_e=\frac{m}{2}\,\,\bigg\vert\frac{dx}{d\tau}
+\bigg\vert^2d\tau.\tag6
+$$
+ 
+In higher dimensions we might consider a real scalar field
+on Minkowski space, which is described by a real function
+$\phi:M\longrightarrow\Bbb R$.  The kinetic lagrangian is 
+$$
+L_m=\frac{1}{2}\,\,|d\phi|^2_M\,\,dtdx^1\cdots
+dx^{n-1},\tag7
+$$
+where $|\cdot|_M$ is the norm (3) on $M$.  The
+continuation to $E$ is
+$$
+L_e=\frac{1}{2}\,|d\phi|^2_E\,\,d\tau dx^1\cdots
+dx^{n-1},\tag8
+$$
+where $|\cdot|_E$ is the Euclidean norm (4).
+ 
+\subhead Potential Terms\endsubhead
+ 
+For the particle $x:\Bbb R\longrightarrow Y$, the potential
+energy is described by a function $V:Y\longrightarrow\Bbb
+R$.  The corresponding term in the Lagrangian is
+$$
+L_m=-\,V(x(t))\,dt.\tag9
+$$
+The continuation to imaginary time is
+$$
+L_e=V(x(\tau))\,d\tau.\tag10
+$$
+The extension to higher dimensions is the same:  Potential
+terms appear with a $-$ sign in Minkowski actions and
+with a $+$ sign in Euclidean actions.
+ 
+\subhead Topological Terms\endsubhead
+ 
+Let $A$ be a {\it real} 1-form on $Y$ and consider the
+Lagrangian (for $x\:\RR\to Y$)
+$$
+L_m=-x^*A.\tag11
+$$
+The corresponding action is invariant under orientation-preserving
+diffeomorphisms of $\RR$, hence the appellation `topological'.  The
+continuation to imaginary time is innocuous except for the conventional
+division by $i$:
+$$
+L_e=ix^*A.\tag12
+$$
+Hence in the Euclidean (imaginary time) Lagrangian the
+topological term is imaginary.
+ 
+The topological term (11) appears in the description of a charged particle
+moving in an electromagnetic field.  Then $A$ is the ``vector potential''.
+(This explains why we write a $-$ sign in (11): the term is part of the
+potential energy.)  In a more geometric formulation, we consider the
+electromagnetic field to be a connection (on $Y=$ Minkowski space) with gauge
+group $U(1)$.  Relative to a trivialization this is an {\it imaginary} 1-form
+$\alpha$ on $Y$.  Here is a difference between most physicists and
+mathematicians: Physicists write formulas in terms of $A=\pm i\alpha$ whereas
+mathematicians write formulas in terms of $\alpha$.  In either case the
+reality condition is clear.  The role of the trivialization is a more
+interesting story ... for another time.
+ 
+In higher dimensions there is a wide variety of topological
+terms which appear. Typically they are $n$--forms
+$\omega(a)$ constructed from some field(s) $a$.  In
+Minkowski space $\omega(a)$ is real, and the continuation
+to Euclidean space is exactly as in (11) and (12).
+ 
+\subhead Kinetic Terms for Fermions\endsubhead
+ 
+By `fermions' here we understand any anticommuting
+variables, i.e., elements of an odd vector space.  To
+understand reality we begin with a general discussion of
+real structures.
+ 
+Let $A$ be an ungraded algebra over $\Bbb C$.  Then a {\it
+real structure} on $A$ is a real linear map $a\longmapsto
+a^*$ which satisfies
+$$
+\aligned
+(\lambda a)^*&=\overline\lambda
+a^*\qquad\qquad\,\,\,\,\,(\lambda\in\Bbb C,\quad a\in A),\\
+(ab)^*&=b^*a^*\,\,\,\qquad\qquad(a,b\in A),\\
+(a^*)^*&=a\qquad\qquad\qquad(a\in A).
+\endaligned\tag13
+$$
+A familiar example is the quaternion algebra.  The algebra of complex
+$n\times n$ matrices is another example, where $*$ is the conjugate
+transpose.  Notice that simple conjugation of matrix elements does not
+satisfy $(ab)^*=b^*a^*$.  Usually there is only one real structure relevant
+to a given problem.  For example, the ``real'' matrices---those that satisfy
+$a^*=a$---have the nice property that their eigenvalues are real and in
+quantum mechanics they are the operators which correspond to real physical
+quantities.  In general, notice that the real elements form a real vector
+space $A_{\Bbb R}$ which is {\it not} a subalgebra, though it is closed under
+anticommutators.  Similarly, the imaginary elements form a real vector space
+closed under brackets, i.e., a real Lie algebra.  The space of derivations
+Der$(A)$ inherits a real structure from that on $A$ by the rule
+$$
+D^*a=(Da^*)^*.\tag14
+$$
+It satisfies
+$$
+[D_1,D_2]^*=[D_1^*,D_2^*].\tag15
+$$
+ 
+Now suppose $A$ is a super ($\Bbb Z\slash2$--graded) algebra over $\Bbb C$.
+Denote the parity of a homogeneous element~$a$ by~$p(a)$.  Then a real
+structure satisfies (13) modified by the sign rule:
+$$
+\align
+(\lambda a)^*&=\overline\lambda
+a^*\qquad\qquad\qquad\qquad(\lambda\in\Bbb C,\quad a\in A),\\
+(ab)^*&=(-1)^{p(a)p(b)}b^*a^*\,\,\,\quad\quad(a,b\in A),\\
+(a^*)^*&=a\qquad\qquad\qquad\qquad\quad(a\in A).
+\endalign
+$$
+Notice in the commutative case that
+$$
+(ab)^*=a^*b^*\qquad\qquad\qquad(\text{$A$ \it commutative})
+\tag17
+$$
+The super Lie algebra of derivations Der$(A)$ inherits a
+real structure defined as before by (14), and it again
+satisfies (15).
+ 
+Many physicists use a convention which omits the sign in (16).  This leads to
+a complication which is explained in a footnote\footnote{More explicitly,
+this alternative convention postulates
+$$
+(ab)^*=b^*a^*,\tag A
+$$
+and this differs from (16) if both $a$ and $b$ are odd.  As
+a consequence (14) must be modified to
+$$
+D^*a=(a^*\overset\leftarrow\to D)^*,\tag B
+$$
+where $\overset\leftarrow\to D$ denotes $D$ thought of as acting
+on the right, which is accomplished via the formula
+$$
+b\overset\leftarrow\to D=(-1)^{|D|\,|b|}Db.\tag C
+$$
+Taken together, (A) and (C) are an inconsistent use of the sign rule.  One
+strange consequence is that for $D$ odd, $D=D^*$ if and only if $D$ maps real
+even elements to {\it real} odd elements and $D$ maps real odd elements to
+{\it imaginary} even elements.\newline
+\indent This convention seems to be in force in most texts and
+papers on (four dimensional) supersymmetry.  Compare (18)
+and (19) below with the usual definitions in those texts:
+  $$
+ \align D_\alpha&=\frac{\partial}{\partial{\theta
+^\alpha}}-i\overline{\theta}^{\dot\alpha} \,\,\frac
+{\partial}{\partial x^{\alpha\dot\alpha}},\\
+ \overline D_{\dot\alpha}
+&=-\,\frac{\partial}{\partial\overline{\theta
+}^{\dot\alpha}}+i\theta ^\alpha\,\,\frac{\partial}{\partial
+x^{\alpha\dot\alpha}} \endalign $$
+} (so as not to confuse the main text with inconsistent formulas).
+ 
+As an example, let $V$ be a real odd vector space and $A=\text{Sym}(V)$
+algebra of complex functions on $V$.  (Since $V$ is odd the symmetric algebra
+is finite dimensional.)  Let $\phi^1,\ldots,\phi^n$ be a basis of $V^*$.
+Then any product $\phi^{\alpha_1}\cdots\phi^{\alpha_k}$ is real, as is the
+derivation $\partial\slash\partial\phi^\alpha$.
+ 
+As another example, consider the superspace $\Bbb R^{4| 4}$.  We usually use
+a complex basis $\theta^\alpha,\overline{\theta
+}^{\dot\alpha}\,(\alpha=1,2;\,\dot\alpha=1,2)$
+for the odd coordinates.  The conjugate of $\theta^\alpha$ is
+$\overline{\theta}^{\dot\alpha}$.  With our conventions, then,
+the operator
+$$
+D_\alpha=\frac{\partial}{\partial\theta
+^\alpha}\,\,-\,\,\overline{\theta}^{\dot\alpha}\,\,\frac
+{\partial}{\partial x^{\alpha\dot\alpha}}.\tag 18
+$$
+has conjugate
+$$
+\overline
+D_{\dot\alpha}=\frac{\partial}{\partial\overline
+{\theta}^{\dot\alpha}}-\theta
+^\alpha\,\,\frac{\partial}{\partial x^{\alpha\dot\alpha}}.\tag19
+$$
+Here $x^{\alpha\dot\alpha}$ are the complex even coordinates on $\Bbb
+R^{4|4}$ induced from the product of spinors in the usual way.
+ 
+After these preliminaries we return to the particle $x:\Bbb R\longrightarrow
+Y$ and add an odd field $\psi$ which is a section of $x^*\Pi TY$, the
+parity-reversed pullback of the tangent bundle.  The field $\psi$ should be
+thought of as a spinor on $\Bbb R$, but of course the spin bundle on $\Bbb R$
+is trivial.  In any case $\psi$ is real and in real time its kinetic term in
+the Lagrangian is
+$$
+L_m=\frac{m}{2}\,\left(\psi,\,\frac{d\psi}{dt}\right)dt.\tag20
+$$
+Rotating to imaginary time and dividing by $i$, we obtain
+$$
+L_e=-\,i\,\frac{m}{2}\,\left(\psi\,
+\frac{d\psi}{d\tau}\right)d\tau.\tag21
+$$
+ 
+In higher dimensions suppose $\psi$ is a complex spinor
+field on Minkowski space.  We use a Clifford algebra
+$$
+\aligned
+\text{Minkowski:\;\;}(\gamma^0)^2&=1\\
+(\gamma^i)^2&=-1
+\endaligned\tag22
+$$
+where $\gamma^0$ is associated with time and $\gamma^i$
+with space.  Let
+$$
+D\!\!\!\!\!\slash_m=\gamma^0\,\frac{\partial}{\partial
+t}+\gamma^i\,\frac{\partial}{\partial x^i}\tag23
+$$
+be the associated Dirac operator.  Then $D\!\!\!\!\!\slash_m$
+is {\it skew-adjoint}.  Let $\overline\psi$ be the
+conjugate spinor to $\psi$.  Then the Lagrangian
+$$
+L_m=\overline\psi\cdot D\!\!\!\!\!\slash_m\psi\,dt\,dx^1\cdots dx^{n-1}\tag24
+$$
+is real, where we use a bilinear pairing on the spinor fields.  In Euclidean
+space we use a Clifford algebra
+$$
+\text{Euclidean:\;\;}\left(\Gamma^\mu\right)^2=-1\tag25
+$$
+and {\it self--adjoint} Dirac operator
+$$
+D\!\!\!\!\!\slash_e=\Gamma^0\,\frac{\partial}{\partial\tau}
++\Gamma^i\,\frac{\partial}{\partial x^i}.\tag26
+$$
+Then the continuation of (24) to Euclidean space is
+$$
+L_e=\overline\psi\cdot D\!\!\!\!\!\slash_e\,\psi.\tag27
+$$
+One should only take (24) and (27) as general guidelines;
+the particulars of spinors in each dimension should be
+considered.
+ 
+\subhead Summary\endsubhead
+ 
+For reference we collect the various types of terms in the
+real and imaginary time mechanics lagrangians:
+$$
+L_m=\Big\{\frac{m}{2}\,\,\bigg\vert\frac{dx}{dt}\bigg\vert^2+
+\frac{m}{2}\left(\psi,\,\frac{d\psi}{dt}\right)-V(x)\Big\}
+dt-x^*A,\tag28
+$$
+$$
+L_e=\Big\{\frac{m}{2}\,\,\bigg\vert\frac{dx}{d\tau}\bigg\vert
+^2
+-i\,\frac{m}{2}\left(\psi,\,\frac{d\psi}{d\tau}\right)+V(x)
+\Big\}d\tau+i\,x^*A.\tag29
+$$
+
+
+
+
+\enddocument

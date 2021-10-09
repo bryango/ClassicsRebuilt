@@ -1,0 +1,523 @@
+%From: Pierre Deligne <deligne@IAS.EDU>
+%Date: Mon, 6 Jan 1997 14:42:07 -0500
+%Subject: fourth appendix
+
+\input amstex
+\documentstyle{amsppt}
+\magnification=1200
+\loadbold
+\loadeusm
+
+\font\boldtitlefont=cmb10 scaled\magstep2
+
+\NoRunningHeads
+\pagewidth{6.5 true in}
+\pageheight{8.9 true in}
+
+\catcode`\@=11
+\def\logo@{}
+\catcode`\@=13
+
+\def\eps{{\varepsilon}}
+
+\def\dbR{{\Bbb R}}
+
+\def\undertext#1{$\underline{\vphantom{y}\hbox{#1}}$}
+\def\nspace{\lineskip=1pt\baselineskip=12pt%
+     \lineskiplimit=0pt}
+\def\dspace{\lineskip=2pt\baselineskip=18pt%
+     \lineskiplimit=0pt}
+
+%\def\upvee{{\sssize \vee}}
+%\def\plus{{\sssize +}}
+\def\wedgeop{\operatornamewithlimits{\wedge}\limits}
+\def\w{{\mathchoice{\,{\scriptstyle\wedge}\,}
+  {{\scriptstyle\wedge}}
+  {{\scriptscriptstyle\wedge}}{{\scriptscriptstyle\wedge}}}}
+\def\Le{{\mathchoice{\,{\scriptstyle\le}\,}
+{\,{\scriptstyle\le}\,}
+{\,{\scriptscriptstyle\le}\,}{\,{\scriptscriptstyle\le}\,}}}
+\def\Ge{{\mathchoice{\,{\scriptstyle\ge}\,}
+{\,{\scriptstyle\ge}\,}
+{\,{\scriptscriptstyle\ge}\,}{\,{\scriptscriptstyle\ge}\,}}}
+%\def\mapright#1{\smash{\mathop{\,\longrightarrow\,}%
+%     \limits^{#1}}}
+%\def\rmapdown#1{\Big\downarrow\kern-1.0pt\vcenter{
+%     \hbox{$\scriptstyle#1$}}}
+%\def\arrowsim{\smash{\mathop{\,\longrightarrow\,}%
+%   \limits^{\lower1.5pt\hbox{$\scriptstyle\sim$}}}}
+%\def\leftarrowsim{\smash{\mathop{\,\longleftarrow\,}%
+%   \limits^{\lower1.5pt\hbox{$\scriptstyle\sim$}}}}
+
+\def\red{\text{\rm red}}
+%\def\Sym{\text{\rm Sym}} 
+%\def\Hom{\text{\rm Hom}} 
+%\def\Tor{\text{\rm Tor}} \def\Gr{\text{\rm gr}}
+%\def\Ext{\text{\rm Ext}} \def\ev{\text{\rm ev}}
+%\def\I{\text{\bf I}} \def\Ber{\text{\rm Ber}}
+%\def\II{\text{\bf II}} \def\ber{\text{\rm ber}}
+
+\def\bfs{\bold{s}}
+
+%Script letters:
+\def\scr#1{{\fam\eusmfam\relax#1}}
+\def\scrE{{\scr E}} 
+\def\scrL{{\scr L}} 
+\def\scrM{{\scr M}} 
+\def\scrO{{\scr O}} 
+
+\def\scrLbar{\overline{\scrL}}
+
+
+\topmatter
+\title\nofrills
+{\boldtitlefont Appendix:}\\
+\hbox{\boldtitlefont Signs: \ 
+  de Rham and integral forms complexes}
+\endtitle
+\author
+P. Deligne
+\endauthor
+\endtopmatter
+
+\NoBlackBoxes
+\parindent=20pt
+\frenchspacing
+\document
+\bigskip
+\dspace
+\subhead
+1
+\endsubhead
+Some standard conventions for ordinary manifolds don't
+sit well with the principle of treating $p$-forms as
+objects of parity $p$.
+Here are troublesome conventions:
+
+\smallskip\noindent
+(a) \ for a $p$-form $\alpha_1\w\ldots\w\alpha_p$, and
+vector fields $X_1,\dotsc,X_p$, 
+$$
+\alpha_1\w\ldots\w\alpha_p(X_1,\dotsc,X_p)=\det(\alpha_i(X_j)),
+$$
+with typical term $\alpha_i(X_1)\ldots\alpha_p(X_p)$,
+despite the fact that $X_i$ passed over $\alpha_j$ for
+$i<j$.
+
+\smallskip\noindent
+(b) \ for $f$ a function and $X$ a vector field, 
+$$
+Xf=df(X)=i_Xdf=X\bot df.
+$$
+In the middle equality, $df$ and $X$ are permuted
+without sign consequence.
+
+\smallskip\noindent
+(c) \ In $\dbR^n$, the density corresponding to the
+$n$-form $dx_1\w\ldots\w dx_n$, when $\dbR^n$ is
+oriented by $(e_1,\dotsc,e_n)$, is positive.
+
+\smallskip
+The bigraded points of view, by keeping separate the
+``cohomological'' grading, used above, and the parity,
+allows to keep those formuli while treating parity
+consistently.
+
+\subhead
+2
+\endsubhead
+Let $M$ be a supermanifold.
+The vector fields on $M$ are the derivations of the
+structural sheaf $\scrO$:
+$$
+D(fg)=Df.g+(-1)^{p(D)p(f)}fDg
+$$
+The sheaf of $1$-forms is the dual, the duality being
+defined by
+$$
+T\otimes\Omega^1\to\scrO\colon\,
+D\otimes\alpha\longmapsto i_D\alpha.
+$$
+One defines
+$$
+\alpha(D)=(-1)^{p(D)p(\alpha)}i_D\alpha.
+$$
+To the extent possible, it is best to consider only
+vector fields and forms of even parity, considering
+instead of an odd $D$ (resp. $\alpha$) the product $\eps D$
+(resp. $\eps\alpha$) for $\eps$ an auxiliary odd
+constant.
+If we work over a basis $B$, as we should, odd constant
+means odd function on $B$.
+
+The bilinearity of $i_D\alpha$ and of $\alpha(D)$ is as
+dictated by the sign rule: with $(uD)(f)=u(Df)$, we have
+$$
+\alignat2
+i_{fD}\alpha &=fi_D\alpha\,\,, &\qquad   i_Df\alpha
+  &=(-1)^{p(D)p(f)}fi_D\alpha\\
+(f\alpha)(D) &=f(\alpha(D))\,\,, &\qquad  \alpha(fD)
+  &=(-1)^{p(\alpha)p(f)}f\alpha(D).
+\endalignat
+$$
+
+The de Rham complex $\Omega^*$ is $\wedge \Omega^1$,
+with $\Omega^p=\wedgeop^p \Omega^1$ in cohomological
+degree $p$, and with a differential $d$ characterized by
+the following identities
+
+\medskip
+\item{(1)}
+$d$ is an even derivation of cohomological degree one;
+
+\item{(2)}
+from $\scrO$ to $\Omega^1$, $d$ is defined by\hfill\break
+\null\qquad\qquad $i_Ddf=Df$;
+
+\item{(3)}
+$d^2=0$.
+
+\medskip\noindent
+One may prefer to say that $\Omega^*$ is the symmetric
+algebra in the bigraded sense on $\Omega^1$, put in
+cohomological degree $1$.
+The defining formula (2) can be rewritten
+$df(D)=(-1)^{p(f)p(D)}Df$.
+
+\subhead
+3
+\endsubhead
+An even derivation $D$ generate (at least locally) a
+$1$-parameter group of automorphisms $\exp(tD)$, with
+$$
+Df=\partial_t(\exp(tD)^*f)\quad\text{at}\quad
+t=0.\tag3.1
+$$
+
+By transport of structures, this group acts on all kinds
+of tensor fields, and the Lie derivative $\scrL_D$ is
+defined by the right side of (3.1).
+If $D$ is odd, one defines $\scrL_D$ by
+$$
+\eps\scrL_D=\scrL_{\eps D}
+\tag3.2
+$$
+for $\eps$ an odd constant.
+
+One should beware that $f\mapsto\exp(tD)^*f$ is the
+inverse of the action of $\exp(tD)$ on functions by
+transport of structures.
+Because of this,if derivations are viewed as forming the
+Lie algebra of a group of diffeomorphisms, with
+$D\mapsto$ infinitesimal diffeomorphism $\exp(\eps D)$,
+i.e. $D$ generating the one-parameter subgroup
+$\exp(tD)$, the bracket in this Lie algebra is the
+opposite of the bracket of vector fields.
+
+Instead of considering $\exp(tD)$ for $t\in\dbR$, one
+can work $\mod\,t^2$: \ $\exp(tD)$
+is then the family of automorphisms parametrized by
+the scheme with coordinate ring $\dbR[t]/(t^2)$ defined
+by
+$$
+\exp(tD)^*f:= f+tDf\qquad\qquad\text{(for $t^2=0$)}
+\tag3.3
+$$
+and the Lie derivative of any tensor $g$ is given by 
+$$
+\exp(tD)^*g=g+t\scrL_D g\qquad\qquad\text{(for $t^2=0$)}
+\tag3.4
+$$
+For $D$ an odd derivation, the same formuli hold when
+$t$ is taken to be odd.
+
+A vector field $D$ defines a derivation $i_D$ of
+$\Omega^*$, of cohomological degree $-1$ and parity that
+of $D$, characterized as extending the already defined
+$i_D$ on $\Omega^1$.
+Cartan's formula for the Lie derivative acting on
+$\Omega^*$ is
+$$
+\scrL_D=i_D d+di_D.\tag3.5
+$$
+As $d$ is of parity $0$ and $i_D$ and $d$ are of odd
+cohomological degree, the second member is the bracket
+$[i_D,d]$ in the bigraded sense.
+
+\subhead
+4
+\endsubhead
+Let $V$ be a vector space of dimension $(0,1)$, with
+generator $D$.
+The free Lie aglebra generated by $V$, i.e. by $D$, has
+$D,D^2=\frac12[D,D]$ as basis.
+The corresponding Lie group has as points over a base
+$B$ the $\exp(tD^2+\theta D)$, $t$ and $\theta$ being,
+respectively, even and odd functions on $B$, with the
+group law given by the Campbell-Hausdorff formula:
+$$
+(t_1,\theta_1)*(t_2,\theta_2)=(t_1+t_2-\theta_1\theta_2,\theta_1
++\theta_2).
+\tag4.1
+$$
+The minus sign comes from
+$\frac12[\theta_1D,\theta_2D]=-\frac12\theta_1\theta_2
+[DD]=-\theta_1\theta_2 D^2$.
+
+An odd vector field on a supermanifold $M$ generates an
+action of that group.
+More precisely, if $D^2$ is the vector field defined by
+$DDf=D^2f$, i.e. $D^2=\frac12[D,D]$, the automorphisms
+$\exp(tD^2+\theta D)$ (at least locally defined) form a
+group, with
+$$
+\exp(t_1D^2+\theta_1 D)\exp(t_2D^2+\theta_2D)=
+\exp((t_1+t_2+\theta_1\theta_2)D^2+(\theta_1+\theta_2)D).
+\tag4.2
+$$
+The reason for the change of sign from (4.1) is
+explained in 3.
+
+\subhead
+5
+\endsubhead
+A coordinate system $x^1,\dotsc,x^n$ (first $p$ even,
+last $n-p$ odd) defines derivations $\partial_i$, with
+$\partial_i x^j=\delta_i^j$.
+Our conventions so far force the unusual looking
+$$
+df=\sum dx^i\partial_i f.\tag5.1
+$$
+
+\subhead
+6
+\endsubhead
+The bundle of densities is defined by the property that
+its sections are in duality with the space of functions
+with compact support.
+The duality pairing is written $\int \mu f$.
+Accordingly, the $\scrO$-module structure is given by
+$$
+\int a\mu.f=(-1)^{p(a)p(\mu)}\int \mu.af\tag6.1
+$$
+According to the sign rule,
+$$
+\int f\mu:=(-1)^{p(f)p(\mu)}\int\mu f,\tag6.2
+$$
+and one also has $\int f(a\mu)=\int(fa)\mu$.
+
+By ``density'', we mean here $C^\infty$-density: \ if,
+in a local coordinate system $(x_1,
+\dotsc,x_p$,\break
+$\theta_1,\dotsc,\theta_q)$, $f$ is expanded as
+$\sum\theta^I f_I$, we consider only the linear forms
+$f\mapsto \int\mu f$ which are linear combinations of the
+$\int
+f_I(n_1,\dotsc,n_p)\varphi(x_1,\dotsc,x_p)dx_1\ldots
+dx_p$ for $C^\infty$ functions $\varphi$.
+
+A local coordinate system
+$x_1,\dotsc,x_p,\theta_1,\dotsc,\theta_q$ defines a
+density $[x_1,\dotsc,x_p,\theta_1,\dotsc,\theta_q]$ on
+its domain of definition: \ for $f_{[1,q]}$ the (post)
+coefficient of $\theta_1\ldots\theta_q$, as above, the
+integral 
+$$
+\int f_{[1,q]}(x_1,\dotsc,x_p)dx_1\ldots dx_p.
+\tag6.3
+$$
+It is the integral, for the density $dx_1\ldots dx_p$,
+of the restriction to $\theta_1=\ldots=\theta_q=0$ of
+$\partial_{\theta_q}\ldots\partial_{\theta_1}f$.
+It is of parity $(-1)^q$ (and cohomological degree $0$).
+It is a basis of densities, which is hence of dimension
+$(1,0)$ for $q$ even and $(0,1)$ for $q$ odd.
+
+\noindent
+Warning. \ Densities $\mu_1$ on $M_1$ and $\mu_2$ on
+$M_2$ give a density $\mu_1\boxtimes\mu_2$ on $M_1\times
+M_2$ by
+$$
+\int\nolimits_{M_1\times M_2}\mu_1\boxtimes\mu_2
+f_1\boxtimes f_2=(-1)^{p(f_1)p(\mu_2)}\int
+\mu_1 f_1\int\mu_2 f_2.
+$$
+One has, in local coordinates,
+$$
+\split
+[x_1,\dotsc, &x_{p(1)},\theta_1,\dotsc,\theta_{q(1)}]\boxtimes
+[y_1,\dotsc,y_{p(2)},\eta_1,\dotsc,\eta_{q(2)}]=\\
+&(-1)^{q(2)q(1)}[x_1,\dotsc,x_{p(1)},y(1),\dotsc,y_{p(2)},
+\theta_1,\dotsc,\theta_{q(1)},\eta_1,\dotsc,\eta_{q(2)}].
+\endsplit
+$$
+
+The densities given by two coordinate systems are
+related by the Berezinian of a jacobian matrix, and a
+sign: \ $+$ if the orientations given by
+$x_1,\dotsc,x_p$ and $y_1,\dotsc,y_p$ on the reduced
+space agree, $-$ otherwise.
+This is best expressed by telling that the bundle of
+densities is canonically isomorphic to the tensor
+product Ber$\otimes$or of the Berezinian of $\Omega^1$
+(cohomological degree $p$, parity $q$) by the
+orientation line bundle (cohomological degree $-p$).
+
+\subhead
+7
+\endsubhead
+The generalized functions (distributions) on a
+supermanifold can be defined as the dual of densities
+with compact support, or as a suitable completion of the
+space of functions.
+It makes sense to take the pull back $f(g)$ of a
+generalized function $f$ by a submersion $g$.
+
+\subhead
+Example
+\endsubhead
+Let $Y$ be the function on $\dbR$ with value $1$ for
+$x<0$ and $0$ for $x>0$.
+On $\dbR^{1,2}$, with coordinates
+$(t,\theta_1,\theta_2)$, we have
+$$
+Y(t+\theta_1\theta_2)=Y(t)+\left(\tfrac{d}{dt}\,Y\right)(t).
+\theta_1\theta_2=Y(t)-\delta(t).\theta_1\theta_2.
+\tag7.1
+$$
+The integration up to $0$ of a density $\mu$ with support
+bounded below is
+$$
+\int\nolimits_{-\infty}^0\mu:=\int Y(t)\mu.
+$$
+The formula (7.1) shows that it is not invariant by the
+automorphism
+$\alpha\colon\,(t,\theta_1,\theta_2)\mapsto(t-\theta_1\theta_2,
+\theta_1,\theta_2)$ of $\dbR^{1,1}$, despite $\alpha$
+being the identity on the reduced space: \ integration
+on an open set requires the choice of a codimension
+$(1,0)$ boundary submanifold.
+
+\subhead
+8
+\endsubhead
+Integration of a density $\mu$ with compact support is
+defined, hence invariant by diffeomorphisms.
+It follows that for any vector field $v$, one has
+$$
+\int\scrL_v(\mu)=0\tag8.1
+$$
+
+Applying (8.1) to a product $\mu f$, we get
+$$
+\int\scrL_v(\mu).f=-(-1)^{p(v)p(\mu)}\int\mu.
+vf\,\,,\tag8.2
+$$
+from which results that for any $g$
+$$
+\scrL_{vg}(\mu)=\scrL_v(g\mu)\tag8.3
+$$
+(with $vg=(-1)^{p(v)p(g)}gv$).
+The map $v\otimes\mu\mapsto\scrL_v\mu$ hence induces a
+morphism
+$$
+d\colon\,\,\text{(tangent bundle) $\otimes$
+densities $\to$ densities}\tag8.4
+$$
+with
+$$
+\int d\alpha=0\tag8.5
+$$
+if $\alpha$ has compact support.
+
+\subhead
+9
+\endsubhead
+For an ordinary manifold of dimension $n$, one could
+construct $\Omega^*$ not from the bottom up, defining
+$p$-forms as wedge of $1$-forms, but from the top down,
+defining a $p$-form as obtained by contracting a top
+form with $(n-p)$ tangent vectors.
+This corresponds to two descriptions of $\Omega^*$ as a
+Clifford module over the sum of the tangent and
+cotangent bundle: \ the usual description is being
+generated by $\scrO$, which is killed by the $i_X$, the other is
+being generated by $\Omega^n$, which is 
+killed by the $\alpha\w$.
+In the second description, $d$ can be defined (as was
+done in 8.) by its relation (3.4) with the Lie
+derivative.
+Instead of $\Omega^n$, one could use its twist by the
+orientation bundle, i.e. the bundle of densities.
+In the case of super varieties, one can similarly define
+an {\it integral forms} complex $I^n$ ($n\Le 0$)
+starting from the line bundle of densities.
+It differs (more than by a twist) from the de Rham
+complex, but one can arrange the sign conventions so
+that it obeys the same formalism.
+One disposes of contractions $i_v$, exterior products
+$\alpha\w$ for $\alpha$ a $1$-form and exterior
+differential $d$, of cohomological degree $-1,1$ and
+$1$, as usual.
+Iterated contractions are linear and induce an
+isomorphism
+$$
+\wedgeop^{p}T\otimes I^0\to I^{-p}.
+$$
+Exterior products are linear,
+$$
+[i_v,\alpha\w]=i_v(\alpha)
+$$
+and iterated products give a module structure over
+$\Omega^*$.
+One has
+$$
+\align
+&[d,\alpha\w]=(d\alpha)\w\qquad\qquad\text{and}\\
+&[d,i_v]=\scrL_v
+\endalign
+$$
+for $v$ a vector field.
+
+\subhead
+10
+\endsubhead
+The basic property of integral $(-p)$-forms is that they
+can be integrated on $(p,0)$-codimensional cooriented
+subvarieties.
+If the orientation of the normal bundle to $W$ is
+defined by the basis dual to $dt_1,\dotsc,dt_p$ for
+$t_1,\dotsc,t_p$ a system of equations for $W$,
+our convention is that for any function with compact
+support on $V$, one has
+$$
+\int\nolimits_{W}\alpha\vert W.f=\int\nolimits_{V}
+\delta(t_1)dt_1\w\ldots\w\delta(t_n)dt_n\w
+\alpha.f
+\tag10.1
+$$
+
+The rule (10.1) has the virtue that if
+$t\colon\,V\to\dbR$ is submersive above $0$ and $1$, one
+has for a codimension $1$-form with compact support
+$\alpha$
+$$
+\int\nolimits_{0\Le t\le 1}d\alpha=
+\int\nolimits_{t=1}\alpha-\int\nolimits_{t=0}\alpha
+\tag10.2
+$$
+if $\chi$ is the characteristic function of the interval
+$[0,1]$ of $\dbR$, the left side of (10.2) is by
+definition $\int\chi(t)d\alpha$ (cf. 7.) and an
+integration by part using (8.5), shows it equals $\int
+-d(\chi(t))\alpha=\int (\delta(t-1)dt)\alpha-\int
+\delta(t)dt\alpha$, as claimed by (10.2).
+
+
+
+\enddocument
+
+
+
+
+

@@ -1,0 +1,201 @@
+\input amstex
+\magnification=1200
+\documentstyle {amsppt}
+\pagewidth{6.5 true in}
+\pageheight{8.9 true in}
+\nologo
+
+\noindent
+{\bf Fall Term Exam, N$^{\text{0}}$. 5}\qquad\qquad\qquad
+\qquad\qquad\qquad\qquad\qquad(solution by D. Freed)
+\smallskip
+\hbox to \hsize {\hrulefill}
+\bigskip
+\noindent
+{\bf Problem:}
+\medskip
+QCD is an $SU(3)$ gauge theory with fermions (quarks) which
+describes the nuclear forces.  For this problem you only
+need to know a few facts.  For instance, the theory
+contains a ``current'' operator, which is simply a Lorentz
+vector $J^i$ (that is a local operator of spin one) that is
+conserved, $d_jJ^i=0$ (or $d*J=0)$, has zero anomalous
+dimension (we'll learn why later), and has the property
+that its two point function needs an additive $c$-number
+renormalization.
+\medskip
+The renormalization two point function of $J$ is therefore
+the limit as a cutoff $\Lambda$ goes to infinity of
+$$
+\int d^4x\,\,e^{ik\cdot x}\langle
+J^i(x)J^j(0)\rangle-A(\Lambda\slash\mu,g)(k^ik^j-\delta^{ij}
+k\cdot k).\tag1
+$$
+Here $g$ is the (dimensionless) coupling constant,
+$\Lambda$ the cutoff, $\mu$ a mass that must be introduced
+in renormalization, and $A$ is a funciton of the indicated
+arguments which must be ``subtracted'' to make the two
+point function finite.  Also, the theory is asymptotically
+free and for present purposes you can ignore quark bare
+masses and assume that there are no parameters in the
+theory except $g,\mu$, and $\Lambda$ (and of course
+$\Lambda$ is eventually eliminated by taking it to
+infinity).  There is no multiplicative renormalization of
+$J$ in (8) because the anomalous dimension vanishes.
+Because $J$ is conserved, the expression in (8) is of the
+form
+$$
+(k^ik^j-\delta^{ij}k^2)B(k^2,g,\mu)\tag2
+$$
+where $\Lambda$ is omitted as we want to consider the limit
+$\Lambda\rightarrow\infty$.
+\medskip
+I suppose it also helps to know that $J$ is built in terms
+of quarks as $J=\overline q\Gamma^iq$, so that the one
+loop approximation to $\langle JJ\rangle$ is given by a one
+loop diagram with a fermion loop that we computed in
+homework.  (For those who are getting a paper and not
+internet copy of this, the loop is drawn below at the end
+of problem 7.)  But all you really need to know is that in
+the free field theory, that is if $g=0,\,A=a$
+ln$(\Lambda\slash\mu)$, where $a$ is a constant,
+independent of $g$.
+\roster
+\item"{(a)}"  Write down the renormalization group equation
+obeyed by $B$.
+\smallskip
+\item"{(b)}"  Use this equation, together with the fact
+that QCD is asymptotically free, to determine the large
+$k^2$ behavior of $B$.
+\endroster
+\medskip
+This large $k^2$ behavior, after including some additional
+theoretical wrinkles to put it in a form that can be
+compared with experiment, is one of the classic tests of
+QCD.
+\bigskip
+\noindent
+{\bf Solution:}
+\medskip
+First, a reminder about the renormalization group equation.
+A perturbative theory depends on some coupling constants
+$g$ and masses $m$.  (For simplicity we assume there is
+just one of each.)  Renormalization introduces a scale
+$\mu$.  The renormalization group operator is 
+$$
+\Cal
+D=\mu\,\frac{\partial}{\partial\mu}+\beta\,\,\frac{\partial}
+{\partial g}+\gamma_m\,m\,\frac{\partial}{\partial m},
+$$
+where $\beta$ and $\gamma_m$ (the {\it anomalous} dimension
+of mass) are in general functions of $g$ and
+$\frac{m}{\mu}$.  They describe how the parameters of the
+theory flow when $\mu$ is varied.  Their precise form
+depends on the renormalization procedure; for dimensional
+regularization/minimal subtraction, they are independent of
+$\frac{m}{\mu}$.  Now any operator $\Cal O$ in the theory
+has an anomalous dimension $\gamma_{\Cal O}$ (which is also a
+function of $g$ and $\frac{m}{\mu}$).
+Since the operators are renormalized they also depend on
+$\mu$, and the meaning of the anomalous dimension is that
+they satisfy the renormalization gorup equation
+$$
+\Cal D\Cal O=\gamma_{\Cal O}\Cal O.
+$$
+In general the operators mix under renormalization:  the
+renormalization of a given operator $\Cal O_0$ involve
+operators of equal and lower dimension.  Thus $\gamma_{\Cal
+O}$ is a triangular matrix acting on operators of dimension
+$\leq k$ for some fixed $k$.  Of course, the mixing only
+occurs among operators with the same symmetries.  In the
+renormalization group equation $\Cal D\Cal O=\gamma_{\Cal
+O}\Cal O$, then, $\Cal O$ is a vector of operators and
+$\gamma_{\lower 2pt\hbox{$\scriptstyle 0$}}$ a matrix (of functions of $g$ and
+$\frac{m}{\mu}$).  Similar remarks apply to equation (1)
+below, though we write it as if there is no mixing.  Notice
+that this holds for the elementary operators (i.e., the
+fields which appear in the Lagrangian) as well as for
+composite operators.  What defines $\beta,\,\,\gamma_m$,
+and $\gamma_{\Cal O}$ is that correlation functions are
+preserved under the renormalization group flow.  That is,
+for operators $\Cal O_1,\ldots,\Cal O_n$ and {\it
+distinct} points $x_1,\ldots,x_n$, we have
+$$
+\Cal D\langle\Cal O_1(x_1)\cdots\Cal
+O_n(x_n)\rangle=(\gamma_{\Cal O_1}+\cdots+\gamma_{\Cal
+O_n})\,\,\langle\Cal O_1(x_1)\cdots\Cal
+O_n(x_n)\rangle.\tag1
+$$
+The correlation function blows-up as some points $x$, come
+together, and if we consider coinciding points this
+necessitates further renormalization.  Such
+renormalizations will introduce additional terms in (1).
+\medskip
+(a)\quad The function $B$ is defined by
+$$
+\align
+\mathop{\lim}\limits_{\Lambda\rightarrow\infty}\biggl\{\,\,\int
+\limits_{|x|\geq\frac{1}{\Lambda}}d^4x\,\,e^{-ik\cdot
+x}\,\langle
+J^i(x)J^j(0)\rangle&-A\,\left(^\Lambda\slash_\mu,g_{^n\slash
+\mu}\right)\,\,(k^ik^j-\delta^{ij}k^2)\biggr\}\\
+&=B(k^2,g,\mu)\,\,(k^ik^j-\delta^{ij}k^2),\tag2
+\endalign
+$$
+where $g_{\Lambda\slash\mu}$ is the effective coupling
+constant with initial value $g_1$.  Since there are no
+masses the renormalization group operator is
+$$
+\Cal
+D=\mu\frac{\partial}{\partial\mu}+\beta(g)\frac{\partial}
+{\partial g}.
+$$
+We are given $\gamma_{\lower 2pt\hbox{$\scriptstyle J$}}=0$, 
+so differentiating both sides of
+(2) using (1), we obtain
+$$
+\Cal
+DB=-\mathop{\lim}\limits_{\Lambda\rightarrow\infty}\Cal
+DA\tag3  
+$$
+as the renormalization group equation of $B$.  There is no
+operator mixing since $J$ is the lowest dimensional vector
+operator.
+\medskip
+Now asymptotic freedom means
+$\mathop{\lim}\limits_{\Lambda\rightarrow\infty}g_\Lambda=0$
+and so to leading order
+$$
+\mathop{\lim}\limits_{\Lambda\rightarrow\infty}\Cal
+DA=\mathop{\lim}\limits_{\Lambda\rightarrow\infty}\Cal
+DA(^\Lambda\slash_\mu,0)=\mathop{\lim}\limits_{\Lambda
+\rightarrow\infty}\mu\frac{\partial}{\partial\mu}\,\,(a\,\ell
+n^\Lambda\slash_\mu)=-a.
+$$
+Hence (3) becomes
+$$
+\Cal DB=a.
+$$
+\medskip
+(b)\quad  It follows from (2) that the naive engineering
+dimension of $B$ is zero.  Thus simple scaling combined
+with (4) gives
+$$
+\align
+B(e^{2t}k^2_0,\,g_1,\mu)&=B(k^2_0,\,g_1,\,e^{-t}\mu)\\
+&=B(k^2_0,\,g_{e^t},\,\mu)-at.\tag5
+\endalign
+$$
+Now take $k^2_0=1$ and set $k^2=e^{2t}$.  Then taking
+$t\rightarrow\infty$ we learn
+$$
+B(k^2,g_1,\mu)\sim-\frac{a}{2}\,\ell
+n\,^{k^2}\slash_{\mu^2}\qquad\text{as}\qquad
+k\longrightarrow\infty.
+$$
+Observe that this is the answer for the free theory.  In
+other words, in the absence of anomalous dimensions the
+high momentum behavior of a quantity in an asyptotically
+free theory is the same as the high momentum behavior in
+the free theory.
+\bye

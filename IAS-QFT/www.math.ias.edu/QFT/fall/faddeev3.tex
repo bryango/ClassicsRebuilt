@@ -1,0 +1,533 @@
+
+%From: Lisa C Jeffrey <jeffrey@math.ias.edu>
+%Date: Wed, 13 Nov 1996 12:42:34 -0500
+%Subject: Faddeev lect 3: please post on web
+
+
+\documentstyle[12pt]{article}
+\input amssym.def
+\input amssym.tex
+\newcommand{\Tr}{\,{\rm Tr}\,}
+\newcommand{\tr}{{\rm tr}\,}
+
+%L. Jeffrey preamble, 5 April 1996
+
+\newcommand{\nc}{\newcommand}
+
+\nc{\isq}{{i}}
+\newcommand{\colvec}[2]{\left  ( \begin{array}{cc} #1  \\
+     #2  \end{array} \right ) }
+
+%%%%%\newcommand{\Tr}{\,{\rm Tr}\,}
+\newcommand{\End}{\,{\rm End}\,}
+\newcommand{\Hom}{\,{\rm Hom}\,}
+
+\newcommand{\Ker}{ \,{\rm Ker} \,}
+
+\newcommand{\bla}{\phantom{bbbbb}}
+\newcommand{\onebl}{\phantom{a} }
+\newcommand{\eqdef}{\;\: {\stackrel{ {\rm def} }{=} } \;\:}
+\newcommand{\sign}{\: {\rm sign}\: }
+\newcommand{\sgn}{ \:{\rm sgn}\:}
+\newcommand{\half}{ {\frac{1}{2} } }
+\newcommand{\vol}{ \,{\rm vol}\, }
+
+
+% define abbreviations for most common commands
+%
+
+\newcommand{\beq}{\begin{equation}}
+\newcommand{\eeq}{\end{equation}}
+\newcommand{\beqst}{\begin{equation*}}
+\newcommand{\eeqst}{\end{equation*}}
+\newcommand{\barr}{\begin{array}}
+\newcommand{\earr}{\end{array}}
+\newcommand{\beqar}{\begin{eqnarray}}
+\newcommand{\eeqar}{\end{eqnarray}}
+\newtheorem{theorem}{Theorem}[section]
+%\newtheorem{conjecture}{Conjecture}
+\newtheorem{corollary}[theorem]{Corollary}
+%\newtheorem{problem}{Problem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{prop}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remit}[theorem]{Remark}
+\newtheorem{conjecture}[theorem]{Conjecture}
+
+\newtheorem{example}[theorem]{Example}
+
+\newcommand{\matr}[4]{\left \lbrack \begin{array}{cc} #1 & #2 \\
+     #3 & #4 \end{array} \right \rbrack}
+
+
+
+\newenvironment{rem}{\begin{remit}\rm}{\end{remit}}
+
+
+
+
+% black board bold face
+%note \AA is already defined!
+\newcommand{\aff}{{ \Bbb A }}
+\newcommand{\RR}{{{\bf  R }}}
+\newcommand{\CC}{{{\bf  C }}}
+\nc{\FF}{ {\Bbb F} } 
+\newcommand{\ZZ}{{{\bf   Z }}}
+\newcommand{\PP}{ {\Bbb P } }
+\newcommand{\QQ}{{\Bbb Q }}
+\newcommand{\UU}{{\Bbb U }}
+
+
+
+
+
+
+
+
+%***************************
+
+
+
+
+%
+
+
+%
+
+
+%Replace greek letters by their roman equivalents with \
+%Slightly nonstandard:  theta is \t, tau is \ta, no omicron
+\def\a{\alpha}
+\def\b{\beta}
+\def\g{\gamma}
+\def\d{\delta}
+\def\e{\epsilon}
+\def\z{\zeta}
+\def\h{\eta}
+\def\t{\theta}
+%\def\i{\iota}
+\def\k{\kappa}
+\def\l{\lambda}
+\def\m{\mu}
+\def\n{\nu}
+\def\x{\xi}
+\def\p{\pi}
+\def\r{\rho}
+\def\s{\sigma}
+\def\ta{\tau}
+\def\u{\upsilon}
+\def\ph{\phi}
+\def\c{\chi}
+\def\ps{\psi}
+\def\o{\omega}
+
+\def\G{\Gamma}
+\def\D{\Delta}
+\def\T{\Theta}
+\def\L{\Lambda}
+\def\X{\Xi}
+\def\P{\Pi}
+\def\S{\Sigma}
+\def\U{\Upsilon}
+\def\Ph{\Phi}
+\def\Ps{\Psi}
+\def\O{\Omega}
+
+
+
+
+% calligraphic letters
+\newcommand{\calA}{{\mbox{$\cal A$}}}
+\newcommand{\calB}{{\mbox{$\cal B$}}}
+\newcommand{\calC}{{\mbox{$\cal C$}}}
+\newcommand{\calD}{{\mbox{$\cal D$}}}
+\newcommand{\calE}{{\mbox{$\cal E$}}}
+\newcommand{\calF}{{\mbox{$\cal F$}}}
+\newcommand{\calG}{{\mbox{$\cal G$}}}
+\newcommand{\calH}{{\mbox{$\cal H$}}}
+\newcommand{\calI}{{\mbox{$\cal I$}}}
+\newcommand{\calJ}{{\mbox{$\cal J$}}}
+\newcommand{\calK}{{\mbox{$\cal K$}}}
+\newcommand{\calL}{{\mbox{$\cal L$}}}
+\newcommand{\calM}{{\mbox{$\cal M$}}}
+\newcommand{\calN}{{\mbox{$\cal N$}}}
+\newcommand{\calO}{{\mbox{$\cal O$}}}
+\newcommand{\calP}{{\mbox{$\cal P$}}}
+\newcommand{\calQ}{{\mbox{$\cal Q$}}}
+\newcommand{\calR}{{\mbox{$\cal R$}}}
+\newcommand{\calS}{{\mbox{$\cal S$}}}
+\newcommand{\calT}{{\mbox{$\cal T$}}}
+\newcommand{\calU}{{\mbox{$\cal U$}}}
+\newcommand{\calV}{{\mbox{$\cal V$}}}
+\newcommand{\calW}{{\mbox{$\cal W$}}}
+\newcommand{\calX}{{\mbox{$\cal X$}}}
+\newcommand{\calY}{{\mbox{$\cal Y$}}}
+\newcommand{\calZ}{{\mbox{$\cal Z$}}}
+
+%% To load script letters:
+
+\font\teneusm=eusm10  \font\seveneusm=eusm7 
+\font\fiveeusm=eusm5 
+\newfam\eusmfam 
+\textfont\eusmfam=\teneusm 
+\scriptfont\eusmfam=\seveneusm 
+\scriptscriptfont\eusmfam=\fiveeusm 
+\def\Scr#1{{\fam\eusmfam\relax#1}}
+
+% Script letters
+\newcommand{\ScrA}{{\Scr A}} \newcommand{\ScrB}{{\Scr B}}
+\newcommand{\ScrC}{{\Scr C}} \newcommand{\ScrD}{{\Scr D}}
+\newcommand{\ScrE}{{\Scr E}} \newcommand{\ScrF}{{\Scr F}}
+\newcommand{\ScrG}{{\Scr G}} \newcommand{\ScrH}{{\Scr H}}
+\newcommand{\ScrI}{{\Scr I}} \newcommand{\ScrJ}{{\Scr J}}
+\newcommand{\ScrK}{{\Scr K}} \newcommand{\ScrL}{{\Scr L}}
+\newcommand{\ScrM}{{\Scr M}} \newcommand{\ScrN}{{\Scr N}}
+\newcommand{\ScrO}{{\Scr O}} \newcommand{\ScrP}{{\Scr P}}
+\newcommand{\ScrQ}{{\Scr Q}} \newcommand{\ScrR}{{\Scr R}}
+\newcommand{\ScrS}{{\Scr S}} \newcommand{\ScrT}{{\Scr T}}
+\newcommand{\ScrU}{{\Scr U}} \newcommand{\ScrV}{{\Scr V}}
+\newcommand{\ScrW}{{\Scr W}} \newcommand{\ScrX}{{\Scr X}}
+\newcommand{\ScrY}{{\Scr Y}} \newcommand{\ScrZ}{{\Scr Z}}
+
+%German (Faktur) letters
+
+\newcommand{\grA}{{\frak A}}
+
+
+
+\def\eps{\varepsilon}
+
+\setlength{\textwidth}{6.5in}
+\setlength{\textheight}{9.1in}
+\setlength{\evensidemargin}{0in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\topmargin}{-.75in}
+\setlength{\parskip}{0.3\baselineskip}
+
+%\renewcommand{\theequation}{\thesection.\arabic{equation}}
+%\newcommand{\renorm}{{ \setcounter{equation}{0} }}
+
+\newcommand{\Le}{{{\mathchoice{\,{\scriptstyle\le}\,}
+  {\,{\scriptstyle\le}\,}
+  {\,{\scriptscriptstyle\le}\,}{\,{\scriptscriptstyle\le}\,}}}}
+\newcommand{\Ge}{{{\mathchoice{\,{\scriptstyle\ge}\,}
+  {\,{\scriptstyle\ge}\,}
+  {\,{\scriptscriptstyle\ge}\,}{\,{\scriptscriptstyle\ge}\,}}}}
+
+
+%\renewcommand{\baselinestretch}{1.5}
+
+
+%more newcommands
+\nc{\bra}{  < }
+\nc{\ket}{ > }
+%\nc{\isq}{ { \sqrt{-1} } }
+%\nc{\isq}{{ i }}
+%\nc{\hbar}{{ h}}
+\nc{\triang}{ { \bigtriangleup} }
+
+\nc{\astar}{{ a^*}}
+\nc{\hata}{ { \hat{a} }}
+\nc{\hatastar}{{ \hat{\astar} }}
+\nc{\normfac}{{\frac{1}{\sqrt{2 \omega} } }}
+
+\begin{document}
+
+\title{Lecture 3:\\
+Comments on Scattering}
+\author{Ludwig Faddeev}
+\date{21  October 1996}
+
+\maketitle
+%\renorm
+\nc{\dphi}{\tilde{\phi}} 
+\nc{\vac}{{ \sl v}}
+\nc{\basvec}[1]{\Phi_{#1} (\astar) } 
+\nc{\basvecn}{\basvec{n} } 
+\nc{\kn}{(\vec{k})_{n}} 
+\nc{\vk}{\vec{k} }
+
+We first describe how to rewrite the 
+expression for the $S$-matrix (equation (43) from Lecture 2)
+
+\beq \label{smat}
+\calS'(\varphi_0) = 
+\exp \left \{ - i \lambda \int \calV (\frac{\delta}{\delta \eta(x)}) dx 
+\right \} 
+ \exp \left \{ i\int_V \eta(x) \varphi(x) dx + 
+\frac{i}{2} \int_{V \times V} G(x-y) \eta(x) \eta (y) dx dy 
+\right \} . \eeq 
+Here, 
+the argument of $\calS'$ is the solution of the free Klein-Gordon equation
+\beq \varphi_0 (x) = 
+\frac{1}{ (2 \pi)^{3/2} } 
+\int  \left ( \astar(\vk)  e^{i k \cdot x} + a (\vk) e^{-i k \cdot x} 
+\right )
+\frac{d \vk}{ \sqrt{2 k_0} }, \eeq
+for $k_0 = \omega(\vk)$. 
+We shall rewrite (\ref{smat})
+as a path integral of the form
+\beq   \label{pathints} \calS'(\varphi_0) = 
+\int_{\varphi} \exp \Bigl \{ i \int L(x) dx \Bigr \} 
+\prod_{x} d \varphi(x) , \eeq
+where we integrate over fields $\varphi$ tending asymptotically 
+to certain asymptotic values $\varphi_{\rm in}$ (resp.
+$\varphi_{\rm out} $)  as $ t  \to - \infty$ 
+(resp. $t \to + \infty$). 
+Starting from the formula (\ref{pathints}) one may derive the 
+Feynman rules for an  expansion of the S-matrix in terms of Feynman 
+diagrams, where we expand
+the Lagrangian $L$ about its  stationary 
+point  $\varphi_{\rm cl}$.
+
+
+Our exposition closely follows Section 2.4 of \cite{FS}, which is 
+appended. 
+
+We now pass to several examples which illustrate the notion 
+of renormalization. First we shall consider an instructive 
+example which shows that the mass renormalization is not necessarily
+associated with infinities. Rather it is connected with 
+the proper definition of the one particle states. As an example
+let us consider a Hamiltonian 
+\beq \label{ham} H = H_0 + \lambda \sum_{n, m \ge 0 } v_{n,m}.\eeq
+Here $H_0$ is the free scalar field Hamiltonian 
+\beq \label{ffh} H_0 = \int \omega (\vk) \astar(\vk) a(\vk) d\vk, \eeq
+$\lambda$ is a coupling constant 
+and $v_{n,m}$ are polynomials in the creation and annihilation 
+operators:
+
+\beq \label{vnmdef} 
+v_{n,m} = \int {\bf \calV} \Bigl ( (\vk)_n, (\vk')_m \Bigr ) \astar (\vk_1) \dots 
+\astar (\vk_n)  a(\vk'_1) \dots a(\vk'_m) \delta (\vk_1 + \dots + \vk_n - 
+\vk'_1 - \dots - \vk'_m) (d\vk)_n (d \vk')_m. \eeq
+The delta function in (\ref{vnmdef}) implies that the Hamiltonian 
+commutes with the momentum operators:
+\beq [H, \vec{P}] = 0, \eeq
+where 
+$$ \vec{P} = \int \vec{k} \astar(\vk) a(\vk) d\vk. $$
+
+
+
+We shall make frequent use of the commutation relations
+\beq \label{commrel} [a(\vk), \astar (\vk')] = \delta(\vk - \vk'), \eeq
+\beq  [a(\vk), a (\vk')] = [\astar(\vk), \astar(\vk')] = 0. \eeq
+We can consider that the $v_{11}$ term is absent in (\ref{ham}); otherwise
+it is to be included into $H_0$ from the beginning. 
+
+Now if terms $v_{n,0}$ are present then the Fock vacuum $\Omega$
+for which 
+$$ a(\vk) \Omega = 0 $$
+is not an eigenvector of $H$. So the physical vacuum is distinct 
+from $\Omega$. Furthermore terms $v_{n,1}$, even in the absence
+of terms $v_{n,0}$, preclude the one particle states
+$$ \phi_1(\vk) = \astar(\vk) \Omega $$
+from being eigenvectors of $H$. On the other hand a Hamiltonian 
+of the form (\ref{ham}) but  summing only over $n$ and $m$ such that
+$n \ge 2$ and $m \ge 2$ has the same vacuum and one particle
+states as $H_0$. One can apply to it the usual formalism of 
+scattering theory.
+
+We shall show (in the framework of formal series expansions) that 
+it is possible to find a unitary transformation $R = e^{i Q}$, 
+where $Q$ is given by an expression 
+$$ Q = Q_1 + Q_1^* + Q_2 + Q_2^*$$
+and 
+$$Q_1 = \sum_n Q_{n,0}, ~~~~ Q_1^* = \sum_{m } \bar{Q}_{0,m} $$
+$$Q_2 = \sum_n Q_{n,1}, ~~~~ Q_2^* = \sum_{m } \bar{Q}_{1,m} $$
+with terms of the type $(n,0)$, $(0,m)$, $(n, 1)$ and 
+$(1, m)$, and corresponding coefficient 
+functions $q(\vk)_n)$, 
+$\bar{q}((\vk')_m), $ 
+$q((\vk)_n, \vk')$,  and $\bar{q}(\vk,(\vk')_m), $ 
+such that after the conjugation 
+$$ \tilde{H} = R H R^{-1} $$
+all unwanted terms can be cancelled. Of course, each $Q$ is a power 
+series in $\lambda $:
+$$ Q = \sum \lambda^j Q^j$$
+Alternatively we can say that in a new representation
+of canonical variables
+$$ b^{\#} = R a^{\#} R^{-1} $$
+the Hamiltonian $H$ has the same vacuum and one particle states
+as a free hamiltonian $\tilde{H_0}$, which however is different from 
+$H_0$. 
+
+
+
+
+We shall define $\tilde{H}^{(j)} $ $ = R H R^{-1} + O (\lambda^{j+1}), $
+solving in such a way that all the $\tilde{H}^{(j)}$ only 
+include terms with $n \ge 2 $ and $m \ge 2$. 
+We see that 
+\beq \label{eiqdef}
+ e^{i Q} H e^{-i Q} = H_0 + \lambda ( i [Q^1, H_0] + \sum_{n,m} v_{n,m})
++ \lambda^2 (- [Q^2, H_0 ] + i [Q^1, \sum_{n,m} v_{n,m} ] ) + \dots \eeq
+We shall decompose  this equation into its
+components at every order in $\lambda$, successively cancelling
+the terms $v_{n,0}, $ $v_{0,m}$, $v_{n,1}$ and $v_{1,m}$. 
+
+To leading order in $\lambda$, we need to solve
+\beq  \label{qone} 
+i [Q^1, H_0] + \sum_{n \ge 0 } \sum_{m \ge 0 }  v_{n,m} = 
+\sum_{n = 2}^\infty \sum_{m = 2}^\infty v^{(1)} _{n,m}, \eeq
+with some $v_{n,m}^{(1)}$ (in other words we arrange to cancel the terms
+$v_{n,m}$ with $n \le 1$ or $m \le 1$). 
+We shall show how to choose $Q^1$  to satisfy (\ref{qone}); then 
+ to second order in $\lambda$ the equation
+ (\ref{eiqdef}) implies 
+\beq \label{qtwo}
+ - [Q^2, H_0] + i [Q^1, \sum_{n \ge 0} \sum_{m \ge 0 } v_{n,m}] = 
+\sum_{n \ge 2 } \sum_{m \ge 2} v^{(2)}_{n,m} \eeq
+for some $v_{n,m}^{(2)}$ with $n \ge 2$ and $m \ge 2$. 
+It will then be necessary to solve (\ref{qtwo}) for $Q^2$, and so on;
+this process enables us successively  to cancel all the terms 
+$v_{n,1}, v_{1,m}, v_{n,0}, v_{0,m}$. 
+
+We now describe how to solve equation (\ref{qone})  for $Q^1$:
+exactly the same  procedure will then suffice to solve (\ref{qtwo}) for 
+$Q^2$, and so on. 
+Since (\ref{qone}) expresses
+$Q^1$ as a linear function of  $\sum_{n,m} v_{n,m}$, it suffices
+to solve the equations
+\beq \label{e2} [Q_1^1, H_0] =i v_{n,0}, \eeq
+\beq \label{e3} [(Q_1^1)^*, H_0] = i v_{0,m}, \eeq
+\beq \label{e4} [Q_2^1, H_0] = iv_{n,1}, \eeq
+\beq \label{e5} [(Q_2^1)^*, H_0] = i v_{1,m} \eeq
+for individual values of $n$ and $m$.
+
+Notice that for any operator $r_{n,m} $ of type 
+$n,m$, 
+$$[r_{n,m}, H_0] = \sum_{n,m} 
+\int d\vk_1 \dots d\vk_n 
+d\vk'_1 \dots d\vk'_m  \delta (\vk_1 + \dots + \vk_n - 
+\vk'_1 - \dots - \vk'_m) \times $$
+$$
+r_{n,m} ((\vk)_n, (\vk')_m) 
+\astar(\vk_1) \dots \astar (\vk_n) a(\vk'_1) \dots a(\vk'_m)
+  (\sum_j  \omega (\vk_j) - \sum_j \omega (\vk'_j)) 
+ , $$
+so that the equations (\ref{e2} - \ref{e5}) are solved simply 
+by dividing the coefficient functions
+$v_{n,0}$, $v_{0,m}$, $v_{n,1}$, $v_{1,m}$ by factors
+$\sum_j  \omega(\vk_j ),$ $  - \sum_j (\omega (\vk'_j)$,
+ $\sum_j  \omega(\vk_j ) -
+ \omega (\vk'_1), $ $\omega (\vk_1) - \sum_j \omega (\vk'_j )$
+respectively. Assuming that the one-particle energy is {\em convex}, 
+in other words that
+$$\omega (\vk_1) + \omega (\vk_2) \ge \omega(\vk_1 + \vk_2) $$
+(which means that a particle cannot decay into two
+or more particles while conserving momentum) we see that the 
+factors above are nonvanishing and there is no difficulty in dividing by 
+them. 
+
+
+
+
+
+
+However this method cannot be generalized to cancel terms 
+$v_{n,m}$ where both $n \ge 2$ and $m \ge 2$, for then the 
+factor appearing in the integral for $[Q_1, H_0]$ 
+involves $\sum_{j = 1}^n \omega(\vk_j) - \sum_{l = 1}^m 
+\omega (\vk'_l)$ which will in general  become
+ zero for some values of $\vk_j$
+and $\vk'_l$, so it is no longer 
+possible to  divide through by this factor in order to solve the 
+equation. 
+
+
+The equations of higher order are solved analogously. As a result we 
+achieve our goal of cancelling the unwanted terms. 
+
+In the course of 
+this procedure a nonvanishing vacuum energy  (constant terms in the 
+expansion) appears, and the one particle energy $\omega (\vk)$ changes. 
+In particular, in the relativistic case this amounts to the 
+renormalization of mass:
+ in the 
+new Hamiltonian $\tilde{H}$, the 
+function $\omega(\vk) = \sqrt{\vk^2 + m^2} $ which 
+multiplies $a (\vk) \astar(\vk)$ in the Hamiltonian 
+$H$  is replaced by 
+$\omega_{ren}(\vk) = \sqrt{\vk^2 + M^2} $ for an appropriate value of $M$. 
+What we have done may thus be described as {\em mass renormalization}.
+
+
+
+Our second example of renormalization is ``charge renormalization''. 
+Its origin can be illustrated by a simple example.
+We begin with a Hamiltonian 
+$$H = - \half \triang + \lambda \delta^3 (x), $$
+where $\delta^3(x)$ is the Dirac delta distribution. After 
+Fourier transforming the equation $H \hat{\psi}(x) = E \hat{\psi}(x)$ (in 
+position space) becomes
+\nc{\vp}{ { \vec{p} }}
+\beq \vp^2  \psi(\vp) +
+ \lambda \int \psi(\vp) d^3 \vp = \vk^2 \psi(\vp) \eeq
+where the eigenvalue of the energy is $E = \vec{k}^2$. 
+One may rewrite this as 
+\beq \psi(\vp) = \delta^3(\vec{p} - \vec{k}) - \frac{\lambda}{\vp^2 - \vk^2
+ - i 0}
+\int \psi(\vec{p}') d\vec{p}'. \eeq
+Putting $t = \int \psi(\vp') d\vp', $ we obtain integrating both sides
+over $\vp$
+\beq t = 1 - \lambda t \int \frac{d \vec{p}}{\vp^2 - \vk^2 - i 0 }. \eeq
+The integral diverges; to regularize it we introduce a cutoff 
+$L $ and integrate only over $|p| \le L$.  We find
+\beq \int_{|p| \le L}  \frac{d\vec{ p} }{|p|^2 - |\vk|^2 - i 0 } = 
+4 \pi \int_{0}^L \frac{|p|^2 d|p| }{|p|^2 - |k|^2 - i 0 }. \eeq
+This leads to 
+\beq t  = 1 - \lambda t 
+\int_{|p| \le L }   \frac{d\vec{ p} }{|p|^2 - k^2 - i 0 }  \eeq
+$$ = 1 - \lambda t \Bigl ( 4 \pi  L + k^2  \int \frac{d|p|}{
+|p|^2 - k^2 - i 0 } \Bigr ). $$ 
+This may be rewritten as 
+$$ \lambda t = \frac{\lambda}{1 + \lambda (4 \pi  L +  f(\vk))}, $$
+where 
+$$f(\vk) = 4 \pi (|\vk|^2) \int_0^\infty \frac{d|\vp|}{|\vp|^2 - |\vk|^2 - i 0}
+= 2\pi^2 i |\vk|. $$
+We may rewrite this equation 
+in terms of a ``renormalized'' parameter $\lambda_{ren}$, by
+writing
+$$ \lambda t 
+= \frac{\lambda_{ren} }{1 + 
+\lambda_{ren} f(\vk)} $$
+where
+$$\lambda_{ren} = \frac{\lambda}{1 + 4 \pi \lambda L } $$ 
+or 
+\beq \label{signren} \frac{1}{\lambda_{ren} } = 
+\frac{1}{\lambda} + 4 \pi L. \eeq
+We shall now choose $\lambda_{ren}$ (depending on $L$ and $\lambda$) 
+in such a way that $\lambda_{ren}$ may remain finite as $L$ tends to 
+infinity. 
+It is clear from (\ref{signren}) that this is only possible if $\lambda$ is 
+{\em negative} (in other words it describes an attracting 
+force, not a repelling one):  then one 
+may allow  $\lambda$ to depend on 
+$L$ in such a way that $\frac{1}{\lambda}$ tends to $- \infty$ as 
+$L$ tends to $\infty$, while the 
+value of the renormalized constant $\lambda_{\rm ren}$ remains finite.
+
+Renormalization is discussed further in E. Witten's lectures (October 24
+and October 31). 
+
+
+
+
+
+
+
+
+
+
+
+
+\begin{thebibliography}{99}
+\bibitem{FS} L.D. Faddeev, A.A.  Slavnov, {\em Gauge Fields: An Introduction 
+to Quantum Theory}, Addison-Wesley (Frontiers in Physics vol. 83), (second 
+edition), 1991. 
+\end{thebibliography}
+
+
+\end{document}
+

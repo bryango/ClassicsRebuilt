@@ -1,0 +1,681 @@
+%Date: Sat, 4 Apr 1998 19:22:31 -0500 (EST)
+%From: Pavel Etingof <etingof@abel.math.harvard.edu>
+
+\input amstex
+\documentstyle{amsppt}
+\magnification 1200
+\NoRunningHeads
+\NoBlackBoxes
+\document
+
+\def\tW{\tilde W}
+\def\Aut{\text{Aut}}
+\def\tr{{\text{tr}}}
+\def\ell{{\text{ell}}}
+\def\Ad{\text{Ad}}
+\def\u{\bold u}
+\def\m{\frak m}
+\def\O{\Cal O}
+\def\tA{\tilde A}
+\def\qdet{\text{qdet}}
+\def\k{\kappa}
+\def\RR{\Bbb R}
+\def\be{\bold e}
+\def\bR{\overline{R}}
+\def\tR{\tilde{\Cal R}}
+\def\hY{\hat Y}
+\def\tDY{\widetilde{DY}(\g)}
+\def\R{\Bbb R}
+\def\h1{\hat{\bold 1}}
+\def\hV{\hat V}
+\def\deg{\text{deg}}
+\def\hz{\hat \z}
+\def\hV{\hat V}
+\def\Uz{U_h(\g_\z)}
+\def\Uzi{U_h(\g_{\z,\infty})}
+\def\Uhz{U_h(\g_{\hz_i})}
+\def\Uhzi{U_h(\g_{\hz_i,\infty})}
+\def\tUz{U_h(\tg_\z)}
+\def\tUzi{U_h(\tg_{\z,\infty})}
+\def\tUhz{U_h(\tg_{\hz_i})}
+\def\tUhzi{U_h(\tg_{\hz_i,\infty})}
+\def\hUz{U_h(\hg_\z)}
+\def\hUzi{U_h(\hg_{\z,\infty})}
+\def\Uoz{U_h(\g^0_\z)}
+\def\Uozi{U_h(\g^0_{\z,\infty})}
+\def\Uohz{U_h(\g^0_{\hz_i})}
+\def\Uohzi{U_h(\g^0_{\hz_i,\infty})}
+\def\tUoz{U_h(\tg^0_\z)}
+\def\tUozi{U_h(\tg^0_{\z,\infty})}
+\def\tUohz{U_h(\tg^0_{\hz_i})}
+\def\tUohzi{U_h(\tg^0_{\hz_i,\infty})}
+\def\hUoz{U_h(\hg^0_\z)}
+\def\hUozi{U_h(\hg^0_{\z,\infty})}
+\def\hg{\hat\g}
+\def\tg{\tilde\g}
+\def\Ind{\text{Ind}}
+\def\pF{F^{\prime}}
+\def\hR{\hat R}
+\def\tF{\tilde F}
+\def\tg{\tilde \g}
+\def\tG{\tilde G}
+\def\hF{\hat F}
+\def\bg{\overline{\g}}
+\def\bG{\overline{G}}
+\def\Spec{\text{Spec}}
+\def\tlo{\hat\otimes}
+\def\hgr{\hat Gr}
+\def\tio{\tilde\otimes}
+\def\ho{\hat\otimes}
+\def\ad{\text{ad}}
+\def\Hom{\text{Hom}}
+\def\hh{\hat\h}
+\def\a{\frak a}
+\def\t{\hat t}
+\def\Ua{U_q(\tilde\g)}
+\def\U2{{\Ua}_2}
+\def\g{\frak g}
+\def\n{\frak n}
+\def\hh{\frak h}
+\def\sltwo{\frak s\frak l _2 }
+\def\Z{\Bbb Z}
+\def\C{\Bbb C}
+\def\d{\partial}
+\def\i{\text{i}}
+\def\ghat{\hat\frak g}
+\def\gtwisted{\hat{\frak g}_{\gamma}}
+\def\gtilde{\tilde{\frak g}_{\gamma}}
+\def\Tr{\text{\rm Tr}}
+\def\l{\lambda}
+\def\I{I_{\l,\nu,-g}(V)}
+\def\z{\bold z}
+\def\Id{\text{Id}}
+\def\<{\langle}
+\def\>{\rangle}
+\def\o{\otimes}
+\def\e{\varepsilon}
+\def\RE{\text{Re}}
+\def\Ug{U_q({\frak g})}
+\def\Id{\text{Id}}
+\def\End{\text{End}}
+\def\gg{\tilde\g}
+\def\b{\frak b}
+\def\S{\Cal S}
+\def\L{\Lambda}
+
+\topmatter
+\title Lecture II-15. Four-dimensional gauge theories 
+\endtitle
+\author {\rm {\bf Edward Witten} }\endauthor
+\endtopmatter
+
+\centerline{Notes by Pavel Etingof and David Kazhdan}
+
+\vskip .1in
+
+In this lecture we will discuss the main known, believed, and 
+conjectured results about 4-dimensional gauge theory, with 
+or without supersymmetry. 
+
+{\bf 15.1. Gauge theory without supersymmetry.}
+
+We start with no supersymmetry ($N=0$). We consider a pure 
+nonabelian gauge theory 
+for a simple Lie group $G$, with Lagrangian
+$$
+L=\frac{1}{4g^2}\int |F|^2.
+$$
+We could add a topological term with the theta angle:
+$\frac{i\vartheta}{16\pi^2}\int F\wedge F$. 
+This is a well defined, asymptotically free theory. 
+The problem we are interested 
+in is how this theory behaves in the infrared. 
+
+It is believed that this theory has a mass gap, and conjectured that it 
+exhibits confinement (the area law for the Wilson loop operator, 
+see Lecture 6). However, 
+to justify the first and especially the second statement is still an
+important open problem. 
+
+{\bf Remark.} As we will see, the benefit of supersymmetry 
+is that in the supersymmetric gauge theory, both statements can be justified. 
+
+Now let us add matter. We consider the group $G=SU(N)$. 
+The matter will be chiral spinors $\psi_i,\psi^*_i$ 
+with values in the vector representation $V$ and the dual representation 
+$V^*$, and the corresponding antichiral spinors $\bar\psi_i$, $\bar\psi_i^*$
+with values in $V^*$ and $V$ (we are in Euclidean signature). 
+Let the number of spinors of each kind be $n_f,n_f^*$ (the number of flavors).
+We must have $n_f=n_f^*$ to avoid local anomalies (see the next lecture). 
+
+The Lagrangian for the theory with spinors (with zero bare masses) is
+$$
+\gather
+L=\frac{1}{4g^2}\int |F|^2+
+\frac{i\vartheta}{16\pi^2}\int F\wedge F+\\
+\sum_i\int (\bar\psi_i,D\psi_i)+
+(\bar\psi_i^*,D\psi_i^*).\tag 15.2
+\endgather
+$$
+
+{\bf Remark.} For $G=SU(3)$ and $n_f=2$ or $3$ this is the theory of strong 
+interactions. In these cases it is necessary to add small bare masses
+to match the physical reality. 
+
+This theory is asymptotically free if $n_f$ is not too large. 
+So one is interested in its infrared behavior. 
+
+It turns out that this theory exhibits symmetry breaking. Namely, 
+the Lagrangian has a global $U(n_f)\times U(n_f)$ symmetry permuting the 
+flavors. However, quantum mechanically, this theory has a chiral 
+anomaly (i.e. $D+A$ on chiral spinors
+may have a nonzero index). 
+Therefore, quantum mechanically the symmetry of the operator 
+algebra is broken to the subgroup 
+$H=\{(A,B)\in U(n_f)\times U(n_f),det(A)=det(B)\}$
+(the rest of the group does not fix the measure of path integration). 
+
+It is believed that 
+the group $H$ is spontaneously broken to the diagonal subgroup $H_{diag}$
+of $U(n_f)\times U(n_f)$. This breaking produces Goldstone bosons by
+Goldstone theorem.    
+If $n_f\le 1$, $H$ is already 
+diagonal, and we don't get any Goldstone bosons. 
+In this case it is believed that the theory has a mass gap. 
+However, for $n_f>1$ the group $H$ is different from the diagonal subgroup, 
+and there is no mass gap because of Goldstone bosons. 
+In this case, if the theory is infrared free and has no other 
+massless particles than Goldstone bosons, the low energy effective theory 
+should be a sigma-model in the space of vacua $H/H_{diag}$.  
+
+{\bf Remark.} The global symmetry breaking from $H$ to the diagonal 
+subgroup is more delicate than the one we considered in Lecture II1:
+in the present case this breaking is not seen classically, since the 
+classical space of vacua is a point. 
+
+The infrared behavior of this theory 
+ is not completely understood, but some aspects are. 
+For example, one can sometimes prove the absence of a mass gap, in the
+following way. 
+
+Let $J^a$, $a=1,...,dim(H)$ be the currents for $H$. Consider the 
+3-point function 
+$\<J^a(x)J^b(y)J^c(z)\>$. Since the currents are conserved classically, 
+we get 
+$$
+d_x\<J^a(x)J^b(y)J^c(z)\>=0.\tag 15.1
+$$  
+if $x,y,z$ are distinct. However, if there is symmetry breaking, 
+the l.h.s. of (15.1) 
+may be a singular distribution supported on the set of non-distinct $x,y,z$. 
+So let us go to the momentum space and compute (15.1) to 1-loop order. 
+Let 
+$$
+F_{\l\mu\nu}^{abc}(k,q,r)\delta(k+q+r)=
+\<\hat J_a^\l(k)\hat J_b^\mu(q)
+\hat J_c^\nu(r)\>
+$$ 
+be the 3-point function of $J$ in momentum space. 
+Then we get (to 1-loop accuracy)
+$$
+k_\l F_{\l\mu\nu}^{abc}=\e_{\mu\nu\alpha\beta}q^\alpha r^\beta d^{abc},\tag 
+15.2
+$$
+where $k+q+r=0$ and $d^{abc}$ are some numbers 
+($\e$ is a symmetrization tensor). 
+
+It can be proved that this formula is exact, with no higher
+order corrections.  This is proved, for instance, by introducing a 
+regularization (such as adding higher derivative terms of a certain kind 
+to the action ) that guarantees that higher than one-loop contributions
+to $\d_x<JJJ>$ are zero.  
+
+It is easy to show that no function
+$F$ that is real-analytic near k=q=r=0 can obey (15.2) with nonzero $d$. Hence
+if $d$ is not zero, $F$ is singular near zero momentum.  This implies that
+the theory has massless particles, so there is no mass gap.
+
+{\bf Remark.} This argument would not work if we considered a two-point 
+function instead of the three-point function. 
+Namely, it can be shown that in 2n dimensions, it is precisely the
+n+1 point function of currents for which there is a formula analogous
+to equation (15.2) -- computable from one-loop but exact.  Whenever one has
+such a formula, one can use it to prove the absence of a mass gap.
+In four dimensions, one uses a three point function; in two dimensions,
+one would use a two point function.
+
+It can be seen from this calculation that 
+the tensor $d^{abc}$ is of the same nature  
+as the tensor $d^{abc}$ in Lecture 16 which corresponds to the  
+local gauge anomaly. In particular, its presence has to do with 
+the fact that our theory has fields with coefficients in 
+the vector representation of the first copy of $U(n_f)$ and no fields 
+in the dual representation (i.e. with the fact that the theory 
+is chiral with respect to the first copy of $U(n_f)$). 
+In fact, if we try to gauge the $H$-symmetry, we will get a 
+local gauge anomaly like in Lecture 16.  
+
+Thus, in some cases we can see by a short distance calculation 
+that we will have massless particles in the infrared. 
+
+In 4 dimensions, there can be three types of massless particles:
+scalars (spin 0), spinors (spin 1/2), and vectors (spin 1). 
+Other particles are inconsistent with the existence of the energy-momentum 
+tensor. The general principle about massless particles is that they are 
+massless for a reason. Namely, it is believed  that in infrared free theories 
+spin 0 particles 
+are always Goldstone bosons coming from a broken global symmetry, 
+spin 1/2 particles are fermions for which mass is prohibited by an unbroken 
+chiral symmetry, and spin 1 are gauge bosons. 
+This allows us to analyse the origin of a nonzero tensor $d^{abc}$. 
+
+Let us look at the possibilities
+in the case when $d^{abc}\ne 0$. 
+
+{\bf Possibility 1.} The theory is not free in the infrared. 
+
+{\bf Possibility 2.} The theory is free in the infrared. 
+Then Green's functions can be calculated using Feynman diagrams of light 
+fields. So there must be diagrams which contribute to the non-analyticity 
+of $F$. There may be two cases. 
+
+Case 1. The field $J(x)$ does not 
+create from the vacuum a state of one massless
+particle (the two-point function of $J$ has no pole at zero momentum). 
+Then the tensor $d^{abc}$ can come only from loop diagrams. 
+Such diagrams are expected to be with 
+massless fermions inside, maybe not in the same representation as the one
+in the classical Lagrangian, but producing a nonzero d tensor
+(massless spin 0 and spin 1 particles 
+are not expected to contribute to the tensor $d$ 
+since, as we mentioned, 
+such a contribution arises from chirality which has to do with spin 
+$1/2$). 
+This possibility was pointed out by t'Hooft in the late seventies, 
+but examples were only found in the last few years. 
+ 
+Case 2. There is no massless fermions, and no loop contributions to the 
+singularity of $F$.  
+Then the tensor $d$ must come from the tree diagram for $J$. 
+In this case, 
+the two point function of $J$ has a pole at zero momentum,
+corresponding to the fact that $J$ creates from the vacuum a state
+consisting of one massless particle. 
+This state is a
+massless boson $\pi$ of spin 0 from the vacuum (see Lecture II1), such that 
+$J=*d\pi$ in the infrared limit. This boson $\pi$ 
+is the Goldstone boson for the broken global $H$-symmetry. 
+
+{\bf Remark.} Even in case 1, the two point function need not be 
+analytic at the origin. 
+If there is no mass gap, then the two point function of $J$ is almost
+always nonanalytic at zero momentum: it has a branch cut beginning
+at zero momentum.
+
+Thus the conclusion is: if the theory has no massless fermions, 
+the $H$-symmetry is spontaneously broken to a group $H'\subset H$ 
+such that $d|_{H'}=0$. 
+
+This is what happens in nature. Namely, the diagonal subgroup of $H$ has $d=0$ 
+since the representation in which the fermions live is real for this group, 
+and thus all chiral fields are balanced by antichiral ones. 
+This is the most obvious subgroup of $H$ with this property. 
+
+{\bf Remark.} Consider Case 2 from the point of view of 
+effective Lagrangians. Consider the microscopic Lagrangian 
+$L'=L+\int c^a\wedge J^a$, where $J^a$ are the currents defined above and 
+$c^a$ are external sources which are 1-forms on the spacetime. 
+For this Lagrangian, 
+consider the effective Lagrangian in terms of the fields $c^a$. 
+It will have the linear term, the quadratic term, etc. The 
+linear term corresponds to one insertion of $J$, so 
+it has the form $c^a\wedge *d\pi^a$, where $\pi$ is the Goldstone boson. 
+The 3-point function $\<d*J^a(x) *J^b(y)*J^c(z)\>$ considered above 
+corresponds to the quadratic term $dc^a\wedge c^b\wedge d\pi^c$
+in the effective Lagrangian. The particles $\pi$ and $c$ can actually be 
+observed in nature. In fact, it was in seeking
+to understand the decay of the $\pi^0$ meson to two photons that
+Adler, Bell, and Jackiw discovered anomalies around 1970. 
+
+In conclusion we will say what behavior in the infrared is expected 
+in the theories we are considering. Recall that the condition for asymptotic 
+freedom is $n_f<11n/3$. If $n_f$ is small compared to $11n/3$, it is believed 
+that the theory is infrared free with the behavior described above. 
+It is also expected that it exhibits confinement for sufficiently 
+small $n_f/n$. However, if $n_f$ is close to $11n/3$, it is expected 
+that the theory has nontrivial IR stable fixed points. 
+This is expected because the two-loop correction to the
+beta function of these theories is positive.  Hence, if the one-loop
+beta function is made small by taking $n_f$ close to  but smaller than
+11n/3, then the
+beta function has an infrared-stable zero close to the origin and within
+reach of perturbation theory.
+
+{\bf 15.2. N=1 supersymmetric pure gauge theory.}
+
+Now consider $N=1$ supersymmetric theories. We start with 
+``pure gauge theory''. In terms of components, this theory has 
+a gauge field $A$ and a chiral spinor $\l$ with values in 
+the adjoint representation. 
+The Lagrangian is
+$$
+L=\frac{1}{4g^2}\int |F|^2+
+\frac{i\vartheta}{16\pi^2}\int F\wedge F+\int\bar\l iD\l.\tag 15.3 
+$$
+The symmetry of this theory 
+classically is the chiral $U(1)$ symmetry $\l\to e^{i\delta}\l$. 
+This chiral symmetry, however, does not exist quantum mechanically since
+the operator $D+A$ on spinors in the adjoint bundle 
+may have a nontrivial index. However, one can show that this index 
+for the sphere $S^4$ is always divisible by $2h$, where $h$ is the dual 
+Coxeter number of the Lie algebra (it equals $2hk$ 
+for the bundle with second Chern class $k$). This shows that the group 
+of symmetries of the measure of integration is $\Z/2h\Z$. 
+This group acts on the quantum operator algebra. 
+
+In the infrared limit, the group $\Z/2h\Z$ could possibly be spontaneously 
+broken to a subgroup. The smallest subgroup it can break down to 
+is $\{-1,1\}$ since $-1$ is the central element of the double cover 
+of the Poincare group. 
+
+The standard expectations about this theory are:
+
+1. Mass gap. 
+
+2. Confinement. 
+
+The first statement implies that fermion masses are generated dynamically.
+This suggests that $\Z/2h\Z$ is broken down to a subgroup that allows bare
+masses for the elementary fermions.  The largest such subgroup is
+$\Z/2\Z$. So one expects that the unbroken group is precisely
+$\Z/2\Z$. The spontaneous breaking from $\Z/2h\Z$ to $\Z/2\Z$ implies
+that the theory has at least $h$ vacuum states.  It is believed that the 
+number is precisely $h$.
+
+It is remarkable that the statement about symmetry breaking 
+can actually be checked. 
+In order to do it, it is enough to show that the one point function 
+$\<\l\l\>$ of the operator $\l\l$ is not zero (by $\l\l$ we mean a scalar 
+obtained by contraction of the Lie algebra dimensions using the Killing form 
+and of the spinor dimensions using the skew form on spinors). 
+
+It is clear that $\<\l\l\>=Ce^{2\pi ik/h}$ in the k-th vacuum, for some 
+constant $C$, 
+since the generator of the group $\Z/2h\Z$ sends the k-th vacuum to 
+$k+1$-th and multiplies $\<\l\l\>$ by $e^{2\pi i/h}$. 
+
+Now let us ask ourselves: how does the function $\<\l\l\>$ depend on the 
+theta-angle? Let $J$ be the current of the $U(1)$ symmetry. Because 
+of the chiral anomaly, $dJ\ne 0$ but equals to a multiple 
+of the Chern-Weil form: 
+$$
+dJ=\frac{h}{8\pi^2}F\wedge F.\tag 15.4
+$$
+This implies that the rotation of $\l$ by $e^{i\alpha}$ is equivalent to 
+adding $2h\alpha$ to the theta-angle: $\vartheta\to\vartheta+2h\alpha$
+(i.e. these two actions of $U(1)$ on the space of theories coincide). 
+Thus we should expect that $\<\l\l\>=Ce^{i\vartheta/h}$, where $C$ is real
+and independent of the theta-angle. Note that this function is 
+multivalued and has $h$ different values, corresponding to $h$ vacua.  
+
+Since $\<\l\l\>$ has $h$ different values, it is convenient 
+to consider its $h$-th power $\<\l\l\>^h=C^he^{i\vartheta}$. This is a 
+single-valued function of $\vartheta$. 
+
+The constant $C$ depends only on the gauge coupling $g$, and is zero 
+in perturbation theory, since the classical chiral symmetry prohibits masses 
+in Feynman diagrams of all orders. Thus, if $C\ne 0$, it is a nonperturbative 
+phenomenon (like in the Gross-Neveu model, see Gross' lecture 4).
+
+Now let us compute $\<\l\l\>^h$. We have 
+$$
+\<\l\l\>^h=\lim_{|x_i-x_j|\to \infty}\<\l\l(x_1)...\l\l(x_n)\>\tag 15.5
+$$
+(cluster decomposition). This statement is true at all the vacua. 
+
+We would like to show that $\<\l\l(x_1)...\l\l(x_n)\>$
+ is independent of $x_1,...,x_n$. 
+To do this, recall the superspace formulation of our model
+(see the superhomework). 
+
+In the superspace formulation, we have the super-spacetime 
+$\R^{4,4}$ with coordinates $x_0,...,x_3$ and 
+$\theta_+,\theta_-,\bar\theta_+,\bar\theta_-$. 
+The Lagrangian of our model is equivalent to the Lagrangian 
+$$
+L'=\int d^4x (d^2\theta \tau W^2+d^2\bar\theta \bar\tau\bar W^2), 
+$$
+where $\tau=\frac{\vartheta}{2\pi}+\frac{4\pi i}{g^2}$, and $W$ is the 
+supercurvature: $W=\l+\Theta F_+...$,
+$\bar W=\bar\l+\Theta F_-+...$. Here $\Theta$ is the canonical 
+linear chiral function on $\R^{4,4}$ with values in $S_+$, 
+$F_+$ is the self-dual part of the curvature.
+The terms $\Theta F_+$ involves the $SU(2)$-map $\C^2\o \C^3\to \C^2$. 
+
+The supercurvature is a spinor-valued chiral superfield. Namely, let $\bar D$ 
+be the spinor valued operator which annihilates chiral functions
+(we have $[\bar D,\bar D]=0$). 
+Then $\bar D W=0$. This implies that $\bar D(WW)=0$ (where $WW$ is a scalar
+obtained by contracting spinors). Since $d=[D,\bar D]$, we get 
+$d(WW)=\bar D D(WW)$. 
+
+Now recall that for any operator $X$ the 1-point function 
+$\<\bar D X\>$ is zero. This implies that 
+$\<d(WW(x_1))WW(x_1)...WW(x_n)\>=0$, which yields the independence 
+of $\<\l\l(x_1)...\l\l(x_n)\>$ of $x_1,...,x_n$ after setting $\Theta=0$. 
+
+This implies that we can compute 
+$\<\l\l\>^h$ at short distances. At short distances, 
+$\<\l\l\>^h$ can be computed using asymptotic freedom. 
+
+Our parameters are $\mu$ (the scale of renomalization), $g$ 
+(the gauge coupling), and $\vartheta$ (the theta angle). 
+Thus $\<\l\l\>=F(\mu,g,\vartheta)$. From dimensional
+arguments, $F(\mu,g,\vartheta)=\mu^{3h}f(g,\vartheta)$, where $f$ is dimensionless
+(fermions have scaling dimension $3/2$ in 4 dimensions). 
+Also, we found that $\<\l\l\>^h$ has the form $Ce^{i\vartheta}$, where 
+$C$ is independent of $\vartheta$. This implies 
+that $f(g,\vartheta)=\rho(g)e^{i\vartheta}$. 
+
+Now comes the main point. The main property of our theory, which follows 
+from supersymmetry, is that if $X$ is an operator such that
+$\bar D X=0$ then $\<X\>$ is a holomorphic function of $\tau$, where 
+$\tau$ is the ``modular'' parameter in the superspace formulation. 
+This follows from the fact that $\frac{\d L'}{\d\bar\tau}=
+\int d^4xd^2\bar\theta \bar W^2=\bar D Y$, 
+where $Y=\bar D\bar W^2$. Therefore, $F$ is holomorphic in $\tau$. 
+This implies that $f(g)=e^{-8\pi^2/g^2}$, i.e. 
+$$
+F(\mu,g,\vartheta)=C_0e^{i\vartheta-\frac{8\pi^2}{g^2}}.\tag 15.6
+$$
+where $C_0$ is a constant. 
+
+The constant $C_0$ is tricky to find. 
+To find $C_0$, one should notice 
+that the only nontrivial 
+contributions to $\<\l\l\>^h$ can be from field configurations with 
+instanton number (=second Chern class) equal to 1.
+The reason that $C_0$ can come only from instanton
+number 1 is that $\<\l\l\>^h$ has charge $2h$ under the R symmetry,
+so the index of the Dirac operator must be 2h. 
+ An attractive further check is that $8\pi^2/g^2$ is the
+instanton action.
+Thus, the constant $C_0$ can be found by doing perturbation theory 
+in the vicinity of a single instanton. In particular, it can be shown 
+that $C_0\ne 0$ (dynamical symmetry breaking). 
+
+{\bf Remark 1.}  Since $\bar W=\bar\l+\Theta F_-+...$, 
+and since instantons are defined by having 
+self-dual curvature and $\l=0$, we have 
+$\bar W=0$ for instantons and hence the Lagrangian is holomorphic in $\tau$ 
+at the instantons (and only at them). This is an indication
+of why the function $F$ should receive its contribution from instantons.
+
+{\bf Remark 2.}  The function $F$ is a
+ physically meaningful quantity (it has to do with fermion masses), so 
+it obeys the renormalization group equation 
+$$
+(\mu\frac{\d}{\d \mu}+\beta(g)\frac{\d}{\d g})F=0,\tag 15.7
+$$
+where $\beta$ is the beta-function. Apriori we know only that 
+$\beta(g)=-3hg^3+O(g^5)$. Formula (15.6) implies that  
+the 1-loop beta function is in fact exact:
+$$
+\beta(g)=-3hg^3.\tag 15.8
+$$
+In other words, the parameter $\tau$ has an additive renormalization:
+$\tau(\mu)=\tau(\mu_0)+48\pi^2h\ln(\mu/\mu_0)$. 
+
+{\bf 15.3. N=1 theories with chiral superfields.}
+
+Now let us consider the same theory with an adjoint-valued chiral 
+superfield $\Phi$. The new Lagrangian is 
+$$
+L''=L'+\int d^4xd^4\theta\bar\Phi\Phi+(\e\int d^4xd^2\theta \Phi^2+c.c).
+\tag 15.9
+$$
+(c.c. is ``complex conjugate''.)
+Here $\e$ is a complex number which is a mass parameter for $\Phi$. 
+If $\e$ is very large, we recover the previous theory as an effective 
+theory after integrating out $\Phi$. If $\e=0$ we get Donaldson theory. 
+
+{\bf Remark.} It can be deduced from supersymmetry that the case $\e\ne 0$ 
+is the same as the case of large $\e$ in terms of the qualitative behavior 
+of the theory in the infrared. This is proved
+by redefining $\Phi$ by $\Phi \to \Phi/\sqrt{\e}$.  This operation removes
+$\e$ from the superpotential.  The $\e$ dependence appears now
+only in the kinetic energy of $\Phi$, which is a term of the form 
+$\int d^4 \theta
+(...)$.   Such terms are believed to be generally irrelevant in the
+infrared behavior of a supersymmetric theory, so one expects the qualitative
+behavior of this theory to be independent of $\e$.
+
+For $G=SU(2)$, this  theory has two vacua
+(as in the theory without the superfield $\Phi$). Also, we will show 
+in later lectures that this theory has a mass gap and confinement. 
+
+Now we will specialize to $G=SU(N)$ and do a superversion of QCD. 
+So the Lagrangian will be the same as before
+(with $\e=0$), except that the chiral 
+superfield $\Phi$ will be in the representation $R=V^{\oplus n_f}
+\oplus V^{*\oplus n_f}$, where $V$ is the vector representation of $SU(N)$. 
+(As before, the multiplicity of $V$ and $V^*$ must be the same to avoid 
+anomalies). Namely, $\Phi=(Q_1,...,Q_k,Q_1^*,...,Q_k^*)$, where $k=n_f$. 
+This theory is asymptotically free iff $k<3N$, since $\beta=-\frac{g^3}{\pi}
+(3N-k)$. 
+
+The dynamical behavior of this theory is very nontrivial.  
+For fuller details see Seiberg's lectures.
+The following picture is believed to hold:
+
+1. $k=0$ -- discussed above. There is a mass gap. 
+
+2. $k=1,...,N-1$ -- discussed below. Low energy 
+theory is a supersymmetric sigma-model with a nonzero superpotential. 
+
+3. $k=N,N+1$ -- The theory is infrared free 
+and has more massless fields than in case 2. 
+
+4. $N+2\le k< 3N/2$ -- The theory is infrared free, is described  
+in the infrared 
+by a gauge theory, but the IR gauge group is not a subgroup of the 
+UV gauge group.
+
+5. $3N/2\le k<3N$ -- the infrared limit is nontrivial and non-free. 
+
+Today we only discuss the case $1\le k\le N-1$. 
+We will try to explain why the superpotential is nonzero. 
+
+Let us compute the classical moduli space of vacua. 
+According to lecture II2, this moduli space should be
+the symplectic quotient: 
+$\bold M=R//G$ (since $R$ is the set of zero energy states).  
+Here the symplectic structure on $R$ is induced by the Hermitian form 
+on $R$. Since $G$ acts holomorphically, we have $R//G=R/G_\C$. 
+So we are down to classical invariant theory.
+
+Recall that for $k<n$ 
+all invariants of $SL(N)$ in $R$ are functions of the inner 
+products $M_{ij}=(Q_i,Q_j^*)$. These invariants are independent, and 
+form a coordinate system on $R/G_\C$. Moreover, let us compute 
+the stabilizer of a point with $det(M)\ne 0$. It is easy to see that 
+this stabilizer is isomorphic to $SL(n-k)$. Thus, we have 
+a Higgs phenomenon: the $SU(N)$ gauge symmetry is spontaneously 
+broken to $SU(N-k)$ (see lecture II2). In particular, for $k=N-1$ it 
+is broken completely. 
+This says that for $k<N-1$ the
+classical theory has massless gauge fields of $SU(N-k)$ as well as massless
+chiral multiplets parametrizing the symplectic quotient.  Quantum
+mechanically the story will be more complicated for several reasons.
+
+Now, since the stabilizer of a point in $\bold M$ is $SU(N-k)$, 
+we should expect that the low energy effective theory is an 
+$N=1$ supersymmetric $SU(N-k)$-gauge theory. As we know, this theory has 
+$N-k$ vacua, so we should expect that the quantum vacuum space will be an 
+$N-k$-fold cover of $\bold M$. Call this cover 
+$\tilde\bold M$. Thus the low energy 
+effective theory involves a sigma-model into $\tilde\bold M$ and 
+possibly a superpotential. It is shown similarly to the above arguments that 
+this superpotential $W$ must be holomorphic on 
+$\tilde\bold M$ and as a function 
+of the complexified gauge coupling $\tau$. The superpotential should of course 
+have the same symmetries as the theory itself. 
+
+Classically our theory has the $U(k)\times U(k)$ global symmetry 
+acting on the superfield, as well as the R-symmetry, which 
+is the $U(1)$ symmetry rotating $\l$. Some of these symmetries are anomalous 
+(chiral anomaly). The anomaly free subgroup which acts on the quantum theory 
+is generated by the group $H=\{(A,B)\in U(k)\times U(k); det(A)=det(B)\}$
+and the group $U(1)=\{(\zeta,\zeta^{-\frac{N-k}{N}},\zeta^{\frac{N-k}{N}})\in
+U(1)\times U(k)\times U(k)\}$. From these symmetries
+(and remembering 
+from the first part of the lecture 
+how the R-symmetry acts on the theta angle), we see that the 
+superpotential must equal 
+$$
+W(M)=c_{N,k}(det M)^{\frac{-1}{N-k}}.\tag 15.10
+$$
+So we do get a function on a cover $\tilde\bold M$ of $\bold M$.  
+
+Now we need to compute $c_{N,k}$; in particular see if it is zero. 
+The key fact for doing this is: If $c_{N,k}\ne 0$ then $c_{N-1,k-1}$ is 
+nonzero, and one can be determined from the other. Indeed, if we take $M$ 
+which has one very large eigenvalue, we will effectively be down to 
+the theory with parameters $N-1,k-1$.
+
+Thus if $k<N-1$, we can descend from $(N,k)$ to $(N-k,0)$ and thus 
+reduce the problem to the case of pure $N=1$ gauge theory.
+In pure gauge theory, 
+the space $\bold M$ is a union of $N-k$ points, 
+and the role of the superpotential $W$ is played by the 
+function $\<\l\l\>$ that we have computed. 
+Thus, $c_{N-k,0}\ne 0$. 
+
+{\bf Remark.} It might seem that the superpotential is defined up to adding 
+a locally constant function. However, it is in fact defined up to adding only a
+ constant function. This is because in the case when the space is compact, 
+there is only one vacuum and so the $h$ points of the moduli space 
+``know'' about each other. 
+
+Now let $k=N-1$. Then the descent procedure will stop at $N=2,k=1$.  
+In the case $N=2,k=1$ one has  
+$W=c_{2,1}(det M)^{-1}$. More precisely, by dimension arguments
+$c_{2,1}=\tilde c_{2,1}\mu^5$, where $\tilde c_{2,1}$ is dimensionless. 
+It is shown like for the pure gauge theory that instantons which 
+contribute to $c_{2,1}$ have instanton number 1. 
+Thus, by holomorphicity of $W$ with respect to 
+$\tau$, we have 
+$$
+W=\tilde c_{2,1}\mu^5e^{i\vartheta-8\pi^2/g^2}/det(M).\tag 15.11
+$$
+  
+The computation of $\tilde c_{2,1}$ is tricky. 
+The reason is that there are instantons of all sizes, which 
+makes it more difficult to do perturbation theory around the instantons.
+
+This was done by Affleck, Dine, and Seiberg.
+They showed $c_{2,1}$ is not zero. Thus $c_{N,N-1}$ is not zero. 
+
+\end
+ 
+

@@ -1,0 +1,803 @@
+%From: Pierre Deligne <deligne@math.ias.edu>
+%Date: Thu, 23 Jan 1997 17:51:56 -0500
+%Subject: set6-2.tex
+
+\input amstex
+\documentstyle{amsppt}
+\magnification=1200
+\pagewidth{6.5 true in}
+\pageheight{8.9 true in}
+\loadeusm
+
+\catcode`\@=11
+\def\logo@{}
+\catcode`\@=13
+
+\NoRunningHeads
+
+\input pictex.tex
+
+\font\boldtitlefont=cmb10 scaled\magstep2
+
+\def\lam{{\lambda}}
+\def\eps{{\varepsilon}}
+
+\def\psibar{\bar{\psi}}
+\def\Lbar{\bar{L}}
+\def\Sbar{\bar{S}}
+
+\def\Ghat{\hat{G}}
+
+\def\halfspace{\lineskip=1pt\baselineskip=15pt
+     \lineskiplimit=0pt}
+\def\vrulesub#1{\hbox{\vrule height7pt depth5pt\,}_{#1}}
+\def\Ge{{\mathchoice{\,{\scriptstyle\ge}\,}
+  {\,{\scriptstyle\ge}\,}
+  {\,{\scriptscriptstyle\ge}\,}{\,{\scriptscriptstyle\ge}\,}}}
+
+\def\eps{{\varepsilon}}
+\def\Lam{{\Lambda}}
+
+
+\def\dbC{{\Bbb C}}
+
+\def\Tr{\text{\rm Tr}} \def\ln{\text{\rm ln}}
+\def\End{\text{\rm End}} \def\Sym{\text{\rm Sym}}
+\def\I{\text{\rm I}} \def\free{\text{\rm free}}
+\def\II{\text{\rm II}}
+\def\III{\text{\rm III}}
+
+
+\def\scr#1{{\fam\eusmfam\relax#1}}
+
+\def\scrL{{\scr L}}
+
+
+\document
+\line{{\boldtitlefont Witten's Problems}, Set Six --- 
+N$^{\text{o}}$. 2 
+\hfill (solution written by D. Freed)}
+\smallskip
+\hbox to \hsize{\hrulefill}
+
+\bigskip\noindent
+{\bf Problem:} 
+
+\smallskip
+(2) In this exercise we will compute the one-loop renormalization
+of $U(1)$ gauge theory with fermions in four dimensions.  It is
+of considerable theoretical importance, and also is part of the
+computation of the ``Lamb shift'' which was one of the historic
+tests of QED around 1950.
+
+The Lagrangian is
+$$
+L={1\over 4e^2}\int d^4x F_{ij}F^{ij} 
++\int d^4x (\psi, (D+im)\psi).
+\tag1
+$$
+Here the gauge field is $A=A_i dx^i$ -- a connection on 
+a line bundle $\scrL$ --  the curvature is
+$F=\frac12 F_{ij}dx^i\wedge dx^j$, and $\psi$ is a charged
+spinor field (section of $(S_+\oplus S_-)\otimes \scrL$).
+
+As explained in Fadde\'ev's lectures, to quantize the theory
+one must ``pick a gauge.'' One can pick a gauge in which the
+kinetic energy for $B=A/e$ is just
+$$
+L'={1\over 2}\int d^4x \sum_{i.j}(\partial_i B_j)^2.
+\tag2
+$$
+This means that the free propagator of $B$ is
+$$
+\langle 
+B_i(x)B_j(0)\rangle=\delta_{ij}\int {d^4k\over (2\pi)^4}
+{1\over k^2}.\tag3
+$$
+
+The inverse of the free propagator is therefore, in momentum
+space, $ D_{ij}^0=\delta_{ij}k^2$.
+The inverse of the exact propagator of 
+$B$ is $D_{ij}=D_{ij}^0+
+\Sigma_{ij}$, where $\Sigma_{ij}$, the ``self-energy,'' is
+to be computed from loops.
+
+A very fundamental property of $\Sigma_{ij}$ 
+is that in momentum space
+$k^i\Sigma_{ij}(k)=0$.  (An explanation of why it is so will
+be given later, maybe in the homework session.) 
+This implies that
+$$
+\Sigma_{ij}(k)=(k^2\delta_{ij}-k_ik_j)F(k^2),
+\tag4
+$$
+with a scalar function $F$.  
+
+The problem here is to compute $F$ in the one-loop approximation.
+(More exactly, you will compute $\Sigma_{ij}$, find it has the
+form (4), and compute $F$, after some renormalization.)
+The importance is twofold. (1) 
+The sign of $F$ -- which can be predicted
+without computation, but in this exercise we will just compute
+it -- is the basic quantity that determines the different
+behavior of abelian and nonabelian quantum gauge theories in
+four dimensions (this is a slight 
+simplification as the definition
+of the analog of $F$ is a bit more 
+elaborate in the nonabelian case).
+(2) The renormalized $F$ is observable and, as I mentioned above,
+its calculation is part of the  computation of the Lamb shift.
+
+To compute $F$ in one-loop approximation, just write down
+the one-fermion-loop diagram.
+The fermion propagator is in momentum 
+space $1/(\Gamma\cdot k+im)$
+where $\Gamma\cdot k$ is Clifford multiplication by $k$. In the
+one loop diagram for $\Sigma_{ij}$, there are two vertices on
+the fermion loop; at these vertices one multiplies by $e\Gamma_i$
+or $e\Gamma_j$ respectively (the $e$ comes from using $B=A/e$).
+The loop gives a supertrace over the spin representation of
+$SO(4)$; don't forget that it is four-dimensional as both
+$S_+$ and $S_-$ are included here!  
+(To avoid confusion, in this context supertrace 
+just means $-1$ times
+the ordinary trace, since the objects propagating in the loop
+are all fermions.  
+No distinction is made between $S_+$ and $S_-$.
+We explained in a previous homework session 
+where the $-1$ comes from.) 
+You will have to rationalize
+the fermion propagator, writing $1/(\Gamma\cdot k+im)=
+(\Gamma\cdot k-im)/(k^2+m^2)$, introduce Feynman propagators
+to combine the denominators, perform the $k$ integral, and
+at that point you will know that you are on the right 
+track when
+you demonstrate that $\Sigma$ is of the form claimed in (4).
+Before you demonstrate (4) it will appear that you are
+dealing with a possibly quadratically divergent integral,
+but once you've confirmed (4) it should be clear that there
+is only a logarithmic divergence which you'll 
+renormalize in the
+by now familiar fashion (just subtracting the 
+value of the integral
+at any given value of $k$, such as $k=0$).  
+
+
+\bigskip\bigskip\noindent
+{\bf Solution:}
+
+\smallskip
+We work in Euclidean space.
+
+\smallskip
+\halfspace
+Write $A=eB$ and add to the lagrangian density a gauge
+fixing term
+$$
+\tfrac{\alpha}{2}\left\vert\sum\limits_{i}\partial_i
+B_i\right\vert^2 d^4 x,
+$$
+where $\alpha$ is a real number to be determined.
+Then the free part of the lagrangian for the field $B$ is
+$$
+\aligned
+\tfrac14\sum\limits_{i\not=j} &\Vert\partial_iB_j-\partial_j
+B_i \Vert^2 +\tfrac{\alpha}{2}\Vert\sum\limits_{i}
+  \partial_i B_i\Vert^2\\
+&=\tfrac12\sum\limits_{i\not=j}\Vert\partial_i B_j\Vert^2
+ -\tfrac12\sum\limits_{i\not=j}\left<\partial_i B_j,
+  \partial_j B_i\right>+\tfrac{\alpha}{2}
+  \sum\limits_{i}\Vert\partial_i B_i\Vert^2\\
+&\qquad\qquad\qquad
+  +\tfrac{\alpha}{2}\sum\limits_{i\not=j}\left<\partial_i
+  B_i,\partial_j B_j\right>.
+\endaligned
+\tag1
+$$
+Here we write $\left<\,\,\cdot\,\,,\,\,\cdot\,\,\right>$
+and $\Vert\,\,\cdot\,\,\Vert$ for the integrated inner
+products.
+Take $\alpha=1$.
+Then the second and fourth terms in (1) cancel using
+integration by parts, and the free lagrangian for $B$ is
+$$
+\tfrac12\sum\limits_{i,j}\Vert\partial_i B_j\Vert^2.
+$$
+So the free propagator for $B$ in momentum space is
+$$
+(D_{ij}^0)^{-1}(k)=\tfrac{\delta_{ij}}{k^2}.\tag2
+$$
+The total lagrangian density (after cancelling the terms
+in (1)) is now
+$$
+\scrL'=\Bigl\{\tfrac12\sum\limits_{i,j}\vert\partial_i
+  B_j\vert^2+(i(\Gamma\cdot\partial+m)\psi,\psi)+
+  e(\Gamma\cdot B\psi,\psi)\Bigr\}d^4 x.
+\tag3
+$$
+Here $\Gamma^\mu$ is Clifford multiplication in the
+$\mu^{\text{th}}$ coordinate direction, and
+$i\Gamma\cdot\partial=i\Gamma^\mu \partial_\mu$ is the
+flat space Dirac operator.
+Our convention is
+$$
+\Gamma^\mu\Gamma^\nu+\Gamma^\mu\Gamma^\nu=
+2\delta^{\mu\nu}.\tag4
+$$
+The $\Gamma^\mu$ are {\it hermitian} operators, so that
+$i\Gamma\cdot\partial$ is hermitian, while $im$ is
+skew-Hermitian.
+Note that $\psi$ is an odd variable so that
+$(i\Gamma\cdot\partial\psi,\psi)$ is purely imaginary,
+while $(im\psi,\psi)$ is real.\footnote"*"{Continued to
+Minkowski space the lagrangian is real.}
+The fermionic propagator in momentum space is
+$$
+\tfrac{1}{\Gamma\cdot k+im}=\tfrac{\Gamma\cdot k-im}
+{k^2+m^2}.\tag5
+$$
+
+We remark that our inner product is linear in the first
+variable and conjugate linear in the second variable.
+Think of $A$ as a connection in a complex line bundle
+$L$, so that the spinor fields are sections of $S\otimes
+L$, where $S$ is the (complexified) spin space.
+We view
+$$
+Q(\psi,\psibar)=(i(\Gamma\cdot\partial+m)\psi,\psibar)\tag6
+$$
+as a bilinear form, where $\psi$ is a section of $S\otimes
+L$ and $\psibar$ a section of $S\otimes\Lbar$.  
+The hermitian inner product on the right hand side of (6)
+is written as linear in both variables.
+(The spin space $S$ is quaternionic in the Euclidean
+signature, so there is an identification $S\cong\Sbar$.
+Note that in Minkowski space the spinors are real.)
+The ordering of the variable is important, since the
+spinor fields are odd (anticommuting).
+The same holds for the propagator $Q^{-1}$, and so
+fermion lines in Feynman diagrams have a definite
+orientation:
+$$
+\vbox{\beginpicture
+\setcoordinatesystem units < .50cm, .50cm>
+\setlinear
+%
+% Fig POLYLINE object
+%
+\linethickness= 0.500pt
+\putrule from 10.128 19.082 to 11.430 19.082
+%
+% arrow head
+%
+\plot 11.176 19.018 11.430 19.082 11.176 19.145 /
+%
+%
+% Fig POLYLINE object
+%
+\linethickness= 0.500pt
+\putrule from 11.430 19.082 to 12.668 19.082
+%
+% Fig TEXT object
+%
+\put{$\ssize q$} [lB] at 11.208 19.590
+%
+% Fig TEXT object
+%
+\put{$\ssize\psi$} [lB] at 12.636 18.447
+%
+% Fig TEXT object
+%
+\put{$\ssize\psibar$} [lB] at 10.097 18.383
+\linethickness=0pt
+\putrectangle corners at 10.097 20.098 and 12.668 18.383
+\endpicture}\qquad
+\raise9pt\hbox{$\tfrac{\Gamma\cdot q-im}{q^2+m^2}$}
+$$
+
+Any loop in a Feynman diagram requires a trace, and by
+general principles in a theory with fermions it should be
+a {\it supertrace}.
+The reasoning is as follows.
+The edges around the loop are propagators, which are
+bilinear forms.
+The vertices represent polynomials and we are instructed
+to contract the polynomials with the propagators.
+After some contractions we can view the loop as a
+composition of operators, where when we close the loop we
+must take a trace.
+In general, if $V$ is a graded vector space we agree to
+contract $V^*$ and $V$ by letting $V^*$ operate on the
+left.
+An operator on $V$ is identified (without signs) with an
+element of $V\otimes V^*$: \ the operator $T$ corresponds
+to $Te_i\otimes e^i$, where $\{e_i\}$ is a basis of $V$
+and $\{e^i\}$ the dual basis of $V^*$.
+The natural contraction of an operator is the
+composition
+$$
+\End\,V\overset\simeq\to\longrightarrow
+V\otimes V^*\longrightarrow V^*\otimes V
+\longrightarrow\dbC
+$$
+which is the supertrace.
+
+Since we will use dimensional regularization, we compute
+the scaling dimensions of the fields in $d$ dimensional
+space:
+$$
+[B]=\tfrac{d-2}{2},\quad
+[\psi]=\tfrac{d-1}{2},\quad
+[m]=1,\quad
+[e]=\tfrac{4-d}{2}
+$$
+so we replace $e$ by a dimensionless constant $\lam$ and
+a mass parameter $\mu$ (i.e., $[\mu]=[m]=1$):
+$$
+e\to\lam\mu^{\frac{4-d}{2}}.
+$$
+It is convenient to define
+$$
+\epsilon=\tfrac{4-d}{2},
+$$
+so that the interaction term in the lagrangian density is
+$$
+\lam\mu^\epsilon(\Gamma\cdot B\psi,\psi).
+$$
+
+Now the $1$-loop correction to the $2$-point function of
+$B$ comes by evaluating the graph shown.
+Denote its value as $-\Sigma_{ij}(k)$.
+Summing over all chains made out of this one particle
+irreducible graph we see that the corrected $2$-point
+function is $D_{ij}^{-1}$, where
+$$
+D_{ij}=D_{ij}^0+\Sigma_{ij}.\tag7
+$$
+(See Witten's lectures for an explanation.)
+$$
+\vbox{\beginpicture
+\setcoordinatesystem units < .50cm, .50cm>
+\setlinear
+%
+% Fig ELLIPSE
+%
+\linethickness= 0.500pt
+\ellipticalarc axes ratio  1.492:1.492  360 degrees 
+	from 12.732 17.431 center at 11.239 17.431
+%
+% Fig POLYLINE object
+%
+\linethickness= 0.500pt
+\plot 11.303 18.923 11.208 19.082 /
+%
+% Fig POLYLINE object
+%
+\linethickness= 0.500pt
+\plot 11.144 18.796 11.303 18.891 /
+%
+% Fig POLYLINE object
+%
+\linethickness= 0.500pt
+\plot 11.303 16.002 11.462 16.097 /
+%
+% Fig POLYLINE object
+%
+\linethickness= 0.500pt
+\plot 11.335 15.939 11.494 15.843 /
+\linethickness= 0.500pt
+%
+% Fig CONTROL PT SPLINE
+%
+% open spline
+%
+\plot	 8.509 17.335  8.620 17.367
+ 	 8.747 17.375
+	 8.823 17.361
+	 8.906 17.335
+	 8.992 17.312
+	 9.077 17.304
+	 9.159 17.312
+	 9.239 17.335
+	 9.320 17.358
+	 9.402 17.363
+	 9.486 17.350
+	 9.573 17.320
+	 /
+\plot  9.573 17.320  9.747 17.240 /
+\linethickness= 0.500pt
+%
+% Fig CONTROL PT SPLINE
+%
+% open spline
+%
+\plot	 7.017 17.272  7.176 17.335
+ 	 7.257 17.359
+	 7.342 17.367
+	 7.431 17.359
+	 7.525 17.335
+	 7.620 17.313
+	 7.715 17.308
+	 7.811 17.321
+	 7.906 17.351
+	 8.001 17.381
+	 8.096 17.391
+	 8.192 17.381
+	 8.287 17.351
+	 /
+\plot  8.287 17.351  8.477 17.272 /
+%
+% arrow head
+%
+\plot  8.218 17.311  8.477 17.272  8.267 17.428 /
+%
+\linethickness= 0.500pt
+%
+% Fig CONTROL PT SPLINE
+%
+% open spline
+%
+\plot	12.700 17.209 12.859 17.272
+ 	12.940 17.296
+	13.025 17.304
+	13.115 17.296
+	13.208 17.272
+	13.303 17.249
+	13.399 17.244
+	13.494 17.257
+	13.589 17.288
+	13.684 17.318
+	13.779 17.328
+	13.875 17.318
+	13.970 17.288
+	 /
+\plot 13.970 17.288 14.161 17.209 /
+%
+% arrow head
+%
+\plot 13.902 17.248 14.161 17.209 13.950 17.365 /
+%
+\linethickness= 0.500pt
+%
+% Fig CONTROL PT SPLINE
+%
+% open spline
+%
+\plot	14.129 17.240 14.240 17.272
+ 	14.299 17.282
+	14.367 17.280
+	14.442 17.266
+	14.526 17.240
+	14.612 17.216
+	14.696 17.209
+	14.779 17.216
+	14.859 17.240
+	14.939 17.263
+	15.022 17.268
+	15.106 17.255
+	15.192 17.224
+	 /
+\plot 15.192 17.224 15.367 17.145 /
+%
+% Fig TEXT object
+%
+\put{$\ssize q-k$} [lB] at 11.144 15.208
+%
+% Fig TEXT object
+%
+\put{$\ssize q$} [lB] at 11.113 19.494
+%
+% Fig TEXT object
+%
+\put{$\ssize k$} [lB] at  8.255 17.716
+%
+% Fig TEXT object
+%
+\put{$\ssize i$} [lB] at  6.953 16.605
+%
+% Fig TEXT object
+%
+\put{$\ssize i$} [lB] at  9.557 16.732
+%
+% Fig TEXT object
+%
+\put{$\ssize j$} [lB] at 12.827 16.701
+%
+% Fig TEXT object
+%
+\put{$\ssize j$} [lB] at 15.335 16.605
+%
+% Fig TEXT object
+%
+\put{$\ssize k$} [lB] at 14.065 17.621
+\linethickness=0pt
+\putrectangle corners at  6.953 20.003 and 15.367 15.208
+\endpicture}
+$$
+
+We remark that if $V$ is an inner product space and
+$Q\colon\,V\to\Sym^2V^*$ a quadratic form which is
+equivariant under the orthogonal group $O(V)$, then
+$$
+Q_v(\xi_1,\xi_2)=E(\vert v\vert^2)(\xi_1,\xi_2)+
+  F(\vert v\vert^2)(v,\xi_1)(v,\xi_2),\quad
+  v,\xi_1,\xi_2\in V,
+$$
+for some functions $E$, $F$.
+Also, if $Q_v(v,\xi)=0$ for all $\xi$, then
+$$
+Q_v(\xi_1,\xi_2)=F(\vert
+v\vert^2)\{(v,\xi_1)(v,\xi_2)-
+  \vert v\vert^2(\xi_1,\xi_2)\}.
+$$
+This is the form taken by $\sum$.
+(This is proved using the Ward identities, which we have
+not yet discussed in lectures.)
+
+At last we evaluate the diagram in $d$ dimensions as
+$$
+-\Sigma_{ij}(k)=\lam^2\mu^{2\eps}\int
+\tfrac{d^dq}{(2\pi)^d}\left[-\Tr\left\{
+\Gamma^i\tfrac{\Gamma\cdot(q-k)-im}
+{(q-k)^2+m^2}\Gamma^j
+\tfrac{\Gamma\cdot q-im}{q^2+m^2}\right\}\right].
+\tag8
+$$
+We first expand the numerator of the expression in
+braces:
+$$
+\split
+\Tr\Bigl[\Gamma^i(\Gamma^\mu &(q_\mu-k_\mu) -im)\Gamma^j
+  (\Gamma^\nu q_\nu-im)\Bigr]\\
+&=\Tr\Bigl[(q_\mu-k_\mu)q_\nu\Gamma^i
+  \Gamma^\mu\Gamma^j
+\Gamma^\nu-m^2\Gamma^i\Gamma^j\Bigr]
+\endsplit
+\tag9
+$$
+Here we use the fact that the trace of an odd product of
+$\Gamma$ matrices vanishes.\footnote"*"{We evaluate the
+$\Gamma$ matrices in $4$ dimensions before continuing the
+integral to $d$ dimensions.}
+(Note that $\Tr(1)=4$ and
+$\Tr\Gamma^i=\Tr\Gamma^i\Gamma^j=\Tr\Gamma^i\Gamma^j\Gamma^k
+=\Tr\Gamma^1\Gamma^2\Gamma^3\Gamma^4=0$ if $i$, $j$,$k$
+are distinct.)
+For the moment we leave (9) unevaluated and introduce
+Feynman parameters into (8):
+$$
+\align
+\tfrac{1}{(q-k)^2+m^2}\tfrac{1}{q^2+m^2} &=\int_0^1
+d\alpha\tfrac{1}{[\alpha(q-k)^2+(1-\alpha)q^2+m^2]^2}\\
+&=\int_0^1d\alpha
+  \tfrac{1}{[(q-\alpha k)^2+m^2+\alpha(1-\alpha)k^2]^2}
+\endalign
+$$
+Let
+$$
+M^2=m^2+\alpha(1-\alpha)k^2\tag10
+$$
+and make the shift of integration $q\to q+\alpha k$ in
+(8).
+Then using (9) we obtain
+$$
+\split
+-\Sigma_{ij}(k)= -\lam^2 &\mu^{2\eps}\int_0^1dx
+\int\tfrac{d^dq}{(2\pi)^d}\\
+&\tfrac{\Tr\left[(q_\mu+(\alpha-1)k_\mu)(q_\nu+\alpha
+k_\nu)
+\Gamma^i\Gamma^\mu
+\Gamma^j\Gamma^\nu-m^2\Gamma^i\Gamma^j\right]}
+{(q^2+M^2)^2}
+\endsplit
+\tag11
+$$
+Now it is easy to compute that for any (co)vectors $v$ and
+$w$,
+$$
+v_\mu w_\nu\Tr(\Gamma^i\Gamma^\mu\Gamma^j\Gamma^\nu)=
+4(v_iw_j+v_jw_i-\delta_{ij}v\cdot w),
+$$
+and
+$$
+\Tr(\Gamma^i\Gamma^j)=4\delta_{ij}.
+$$
+Observe that $\int d^dqF(q)=0$ for an odd function of $q$,
+simply by changing variables $q\to -q$.
+Thus the $\int d^dq$ in (11) reduces to
+$$
+\aligned
+4\int\tfrac{d^dq}{(2\pi)^d} &\tfrac{(2q_iq_j-\delta_{ij}q^2)+
+\alpha(\alpha-1)(2 k_i
+k_j-\delta_{ij}k^2)-\delta_{ij}m^2}
+{(q^2+M^2)^2}\\
+&=-8\alpha(1-\alpha)(k_ik_j-\delta_{ij}k^2)\int
+  \tfrac{d^dq}{(2\pi)^d}\tfrac{1}{(q^2+M^2)^2}\\
+&\qquad\qquad +4\int\tfrac{d^dq}{(2\pi)^d}\left\{
+\tfrac{2q_iq_j}{(q^2+M^2)^2}-\tfrac{\delta_{ij}}{q^2+M^2}
+\right\}
+\endaligned
+\tag12
+$$
+The last integral vanishes for $i\not=j$ (take $q_j\to
+-q_j$) and is independent of $i$ for $i=j$, so reduces to
+$$
+4\delta_{ij}\int\tfrac{d^dq}{(2\pi)^d}\left\{\tfrac{\frac2d
+q^2}{(q^2+M^2)^2}-\tfrac{1}{q^2+M^2}\right\}.\tag13
+$$
+We claim that under dimensional regularization (13)
+vanishes.
+To see this consider
+$$
+I(\lam)=\int\tfrac{d^dq}{(2\pi)^d}\tfrac{1}{(\lam
+q^2+M^2)}.
+$$
+Then by scaling $I(\lam)=\lam^{-d/2}I(1)$, and differentiating
+in $\lam$ and $\lam=1$ we find $I'(1)=-d/2I(1)$.
+This implies (13) vanishes.
+Now we evaluate the remaining integral in (12) in $d$
+dimensions as
+$$
+\int\tfrac{d^dq}{(2\pi)^d}\tfrac{1}{(q^2+M^2)^2}=
+\tfrac{\Gamma(\epsilon)}{(4\pi)^{d/2}}
+\tfrac{1}{(M^2)^\epsilon}.
+$$
+(See problem set 4, problem 2 for the derivation of a
+similar formula.)
+
+Finally, plugging back into (11) we have
+$$
+-\Sigma_{ij}(k)=(k_ik_j-\delta_{ij}k^2)F(k^2),\tag14
+$$
+where
+$$
+F(k^2)=\tfrac{\lam^2}{2\pi^2}
+\Gamma(\epsilon)(4\pi\mu^2)^\epsilon
+\int_0^1
+d\alpha\,\alpha(1-\alpha)
+(m^2+\alpha(1-\alpha)k^2)^{-\epsilon}.
+$$
+This is finite for $\epsilon>0$ (which is $d<4$) and has
+a simple pole at $\epsilon=0$.
+Using the expansion
+$$
+\Gamma(\epsilon)=\tfrac1\epsilon -\gamma+O(\epsilon),
+\qquad \gamma=\text{ Euler's constant},
+$$
+we have
+$$
+F(k^2)=\tfrac{\lam^2}{2\pi^2}\left\{\tfrac{1}{6\epsilon}-
+\tfrac\gamma6-\int_0^1d\alpha\,\alpha(1-\alpha)
+\ln\left(\tfrac{m^2+\alpha(1-\alpha)k^2}{4\pi\mu^2}\right)
+  +O(\epsilon)\right\}.\tag15
+$$
+The $\int_0^1d\alpha$ can be evaluated in terms of
+elementary functions, but the result is complicated and
+unilluminating.
+
+To renormalize we must adjust the fields and parameters
+in the lagrangian (3), which we write now including the
+gauge fixing term:
+$$
+\scrL=\left\{\tfrac12 \Sigma_{i,j}\vert\partial_i
+  B_j\vert^2+\tfrac{\alpha-1}{2}\left\vert\Sigma_{i}
+ \partial_i B_i\right\vert^2+(i(\Gamma\cdot\partial+m)
+  \psi,\psi)+e(\Gamma\cdot B\psi,\psi)\right\}dx^4.
+\tag16
+$$
+The inverse propagator, written in terms of the Fourier
+variable $k$, is
+$$
+D_{ij}=k^2\delta_{ij}+(\alpha-1)k_ik_j.
+$$
+The renormalization scheme defines the bare field $B_0$
+and bare coupling $\alpha_0$ as
+$$
+\aligned
+B_0 &=(1+P)^{1/2}B\\
+\alpha_0 &=\tfrac{\alpha}{1+P}
+\endaligned
+\tag17
+$$
+so that the bare inverse propagator is
+$$
+\align
+D_{ij}^0 &=(1+P)k^2\delta_{ij}+(\alpha-1-P)k_ik_j\\
+&=D_{ij}-\Sigma_{ij}
+\endalign
+$$
+Comparing to (14) we have for $\alpha=1$ to $1$-loop
+accuracy, using (15),
+$$
+P=-\tfrac{\lam^2}{12\pi^2}\tfrac1\epsilon+\text{ finite}.
+$$
+Finally, we renormalize the charge $e=\lam\mu^\epsilon$ in
+(16) by setting
+$$
+\aligned
+e_0 &=\lam\mu^\epsilon\cdot(1+P)^{-1/2}\\
+&\approx \lam\mu^\epsilon\left(1+\tfrac{\lam^2}{24\pi^2}
+  \tfrac1\epsilon+\text{ finite}\right).
+\endaligned
+\tag18
+$$
+The $\beta$-function is
+$$
+\beta
+=\mu\tfrac{\partial\lam}{\partial\mu}\vrulesub{\epsilon=0}
+$$
+with $e_0$ fixed.
+Using minimal subtraction we set the finite part to zero
+and\break
+differentiate (18):
+$$
+0=\epsilon\left(\lam+\tfrac{\lam^3}{24\pi^2}
+\tfrac1\epsilon\right)+\beta\left(1+\tfrac{\lam^2}{8\pi^2}
+\tfrac1\epsilon\right)\tag19
+$$
+So to leading order in $\epsilon$ we have
+$\beta=-\epsilon\lam$, and then taking the regular part
+of (19) at $\epsilon=0$ we find
+$$
+\mu\tfrac{d\lam}{d\mu}=\beta=\tfrac{\lam^3}{12\pi^2}.
+\tag20
+$$
+This ODE has solution
+$$
+\tfrac{1}{\lam^2(\mu)}-\tfrac{1}{\lam^2(\mu_0)}=-
+\tfrac{1}{6\pi^2}\ln(\mu/\mu_0)
+$$
+for some constant $\mu_0$.
+Equivalently,
+$$
+\lam^2(\mu)
+=\tfrac{\lam^2(\mu_0)}{1-\frac{\lam^2(\mu_0)}{6\pi^2}
+\ln(\mu/\mu_0)}
+$$
+which exhibits a (Landau) pole at
+$$
+\mu=\mu_0\,\exp\left(\tfrac{6\pi^2}{\lam^2(\mu_0)}\right).
+$$
+
+Finally, we given an {\it a priori} argument that the
+coefficient of the divergence in $F(k^2)$ is positive
+(see (15)).
+The same argument in a simpler situation appears in
+Problem 1 of Problem Set 7.
+Here we identify the one particle irreducible diagram we
+computed as minus the two point function of the {\it current}
+$J_i$ in the free theory:
+$$
+-\mathop{\mathop{\Sigma}\limits^{\sssize\vee}}
+\nolimits_{ij}(x) =-\lam^2
+\left<J_i(x)\overline{J_j(0)}\,\right>_{\free}.
+$$
+Here $\mathop{\mathop{\Sigma}\limits^{\sssize\vee}}\nolimits_{ij}$
+is the inverse Fourier transform of $\Sigma_{ij}$, and the
+current is
+$$
+J_i(x)=\Gamma^i\psi_{(x)}\overline{\psi_{(x)}},
+$$
+where the product of the spinors is taken to be a vector.
+The minus sign is due to the fact that
+conjugation reverses the sign of $J_i$, since
+we interchange $\psi$ and $\psibar$. 
+Now reflection positivity implies that
+$\left<J_i(x)\overline{J_j(0)}\,\right>_{\free}$
+is a nonnegative quadratic form for $x\not=0$.
+The behavior of the Fourier transform
+$-\Sigma_{ij}(k)$ as $k\to\infty$ is determined by the
+behavior of $-\mathop{\mathop{\Sigma}\limits^{\sssize\vee}}
+\nolimits_{ij}(x)$ as $x\to 0$, and it follows easily
+that $-\Sigma_{ij}(k)$ is nonpositive for large $k$.
+Using (14) this translates into $F(k^2)>0$ for large
+$k$.
+This is consistent with (15).
+
+
+
+\enddocument
+
+
+
+

@@ -1,0 +1,1952 @@
+%% This is a plain TeX file
+%%
+\magnification=1200
+\hsize=6.5 true in
+\vsize=8.7 true in
+\input epsf.tex
+
+\input amssym.def
+\input amssym.tex
+%\input eight.tex
+% beginning of file eight.tex
+
+\font\eightrm=cmr8
+\font\sevenrm=cmr7
+\font\sixrm=cmr6
+\font\fiverm=cmr5
+\font\eighti=cmmi8
+\font\sixi=cmmi6
+\font\fivei=cmmi5
+\font\eightsy=cmsy8
+\font\sixsy=cmsy6
+\font\fivesy=cmsy5
+\font\tenex=cmex10
+\font\eightit=cmti8
+\font\eightsl=cmsl8
+\font\eighttt=cmtt8
+\font\eightbf=cmbx8
+\font\sixbf=cmbx6
+\font\fivebf=cmbx5
+% Cindy's attempt:
+\font\eightmsb=msbm8
+\font\sixmsb=msbm6
+
+\def\eightpoint{\def\rm{\fam0\eightrm}% switch to 8-point type
+  \textfont0=\eightrm \scriptfont0=\sixrm \scriptscriptfont0=\fiverm
+  \textfont1=\eighti \scriptfont1=\sixi \scriptscriptfont1=\fivei
+  \textfont2=\eightsy \scriptfont2=\sixsy \scriptscriptfont2=\fivesy
+  \textfont3=\tenex \scriptfont3=\tenex \scriptscriptfont3=\tenex
+  \textfont\itfam=\eightit  \def\it{\fam\itfam\eightit}%
+  \textfont\slfam=\eightsl  \def\sl{\fam\slfam\eightsl}%
+  \textfont\ttfam=\eighttt  \def\tt{\fam\ttfam\eighttt}%
+  \textfont\bffam=\eightbf  \scriptfont\bffam=\sixbf
+   \scriptscriptfont\bffam=\fivebf  \def\bf{\fam\bffam\eightbf}%
+% Cindy's attempt:%
+%\textfont\msbfam=\eightmsb%
+%\scriptfont\msbfam=\sixmsb%
+%  \textfont4=\eightmsb%         %=\msbfam =\eightmsb%
+%  \scriptfont4=\sixmsb%         %=\msbfam=\sixmsb%
+%  \textfont\msbfam=\eightmsb%
+%  \scriptfont\msbfam=\sixmsb%
+%  \def\msb{\fam\msbfam\eightmsb}%
+% end of Cindy's attempt%
+  \normalbaselineskip=9pt
+  \setbox\strutbox=\hbox{\vrule height7pt depth2pt width0pt}%
+  \let\sc=\sixrm  \normalbaselines\rm}
+
+% end of file eight.tex
+
+\font\dotless=cmr10 %for the roman i or j to be
+                    %used with accents on top.
+                    %(\dotless\char'020=i)
+                    %(\dotless\char'021=j)
+\font\itdotless=cmti10
+\def\itumi{{\"{\itdotless\char'020}}}
+\def\itumj{{\"{\itdotless\char'021}}}
+\def\umi{{\"{\dotless\char'020}}}
+\def\umj{{\"{\dotless\char'021}}}
+\font\smaller=cmr5
+\font\boldtitlefont=cmb10 scaled\magstep2
+\font\smallboldtitle=cmb10 scaled \magstep1
+\font\ninerm=cmr9
+\font\dun=cmdunh10 %scaled\magstep1
+\font\Rfont=cmss10
+
+\footline={\hfil {\tenrm IX.\folio}\hfil}
+
+\def\eps{{\varepsilon}}
+\def\Eps{{\epsilon}}
+\def\kap{{\kappa}}
+\def\lam{{\lambda}}
+\def\Lam{{\Lambda}}
+\def\mynabla{{\nabla\!}}
+
+\def\underNS{\underline{\NS}}
+\def\underR{\underline{\R}}
+
+\def\Bmu{{B_{\mu\nu}}}
+\def\Gmu{{G_{\mu\nu}}}
+
+\def\xdot{{\dot x}}
+\def\xddot{{\ddot x}}
+
+\def\undertext#1{$\underline{\vphantom{y}\hbox{#1}}$}
+\def\nspace{\lineskip=1pt\baselineskip=12pt%
+     \lineskiplimit=0pt}
+\def\dspace{\lineskip=2pt\baselineskip=18pt%
+     \lineskiplimit=0pt}
+
+\def\Half{\raise4.5pt\hbox{{\vtop{\ialign{##\crcr
+\hfil\rm ${\scriptstyle 1}$\hfil\crcr
+  \noalign{\nointerlineskip\vskip1.5pt}%
+   \hbox to 4pt{\hrulefill}\crcr
+\noalign{\nointerlineskip\vskip1.5pt}%
+   ${\scriptstyle 2}$\crcr}}}}}
+%\def\Half{{{\scriptstyle 1}\over{\scriptstyle 2}}}
+
+\def\half{\raise4.5pt\hbox{{\vtop{\ialign{##\crcr
+  \hfil\rm $1$\hfil\crcr
+   \noalign{\nointerlineskip}--\crcr
+   \noalign{\nointerlineskip\vskip-1pt}$2$\crcr}}}}}
+\def\third{\raise4.5pt\hbox{{\vtop{\ialign{##\crcr
+  \hfil\rm $1$\hfil\crcr
+  \noalign{\nointerlineskip}--\crcr
+  \noalign{\nointerlineskip\vskip-1pt}$3$\crcr}}}}}
+\def\fourth{\raise4.5pt\hbox{{\vtop{\ialign{##\crcr
+  \hfil\rm $1$\hfil\crcr
+  \noalign{\nointerlineskip}--\crcr
+  \noalign{\nointerlineskip\vskip-1pt}$4$\crcr}}}}}
+\def\sixth{\raise4.5pt\hbox{{\vtop{\ialign{##\crcr
+  \hfil\rm $1$\hfil\crcr
+  \noalign{\nointerlineskip}--\crcr
+  \noalign{\nointerlineskip\vskip-1pt}$6$\crcr}}}}}
+\def\eighth{\raise4.5pt\hbox{{\vtop{\ialign{##\crcr
+  \hfil\rm $1$\hfil\crcr
+  \noalign{\nointerlineskip}--\crcr
+  \noalign{\nointerlineskip\vskip-1pt}$8$\crcr}}}}}
+
+\def\oplusop{\mathop{\oplus}\limits}
+\def\w{{\mathchoice{\,{\scriptstyle\wedge}\,}
+  {{\scriptstyle\wedge}}
+  {{\scriptscriptstyle\wedge}}{{\scriptscriptstyle\wedge}}}}
+\def\Le{{\mathchoice{\,{\scriptstyle\le}\,}
+{\,{\scriptstyle\le}\,}
+{\,{\scriptscriptstyle\le}\,}{\,{\scriptscriptstyle\le}\,}}}
+\def\Ge{{\mathchoice{\,{\scriptstyle\ge}\,}
+{\,{\scriptstyle\ge}\,}
+{\,{\scriptscriptstyle\ge}\,}{\,{\scriptscriptstyle\ge}\,}}}
+\def\plus{{\hbox{$\scriptscriptstyle +$}}}
+\def\xdot{\dot{x}}
+\def\Condition#1{\item{#1}}
+\def\Firstcondition#1{\hangindent\parindent{#1}\enspace
+     \ignorespaces}
+\def\Proclaim#1{\medbreak
+  \medskip\noindent{\bf#1\enspace}\it\ignorespaces}
+  %the way to use this is:
+  %"\Proclaim{Theorem 1.1.}" for instance.
+\def\finishproclaim{\par\rm
+     \ifdim\lastskip<\smallskipamount\removelastskip
+     \penalty55\medskip\fi}
+\def\Item#1{\par\smallskip\hang\indent%
+  \llap{\hbox to\parindent {#1\hfill\enspace}}\ignorespaces}
+\def\ItemItem#1{\par\indent\hangindent2\parindent
+     \hbox to \parindent{#1\hfill\enspace}\ignorespaces}
+\def\vrulesub#1{{\,\vrule height7pt depth5pt}_{\,#1}}
+\def\underbrake#1#2{\mathop{#1}\limits_{\raise3pt
+  \hbox{%
+\vrule height 3pt depth 0pt
+  %\kern.1pt
+  \hbox to #2{\hrulefill}
+  \kern-3.4pt
+  \vrule height 3pt depth 0pt}}}
+\def\notD{{\slash\kern-7pt D}}
+
+\def\ominus{{$-$\kern-9pt $\bigcirc$}}
+\def\Oplus{{+\kern-9pt $\bigcirc$}}
+\def\ssbullet{{\scriptstyle\bullet\,\,\,}}
+
+\def\im{{\rm Im}}  
+\def\A{{\rm A}}
+\def\P{{\rm P}}
+\def\EL{{\rm L}}
+\def\Open{{\rm open}}
+\def\osc{{\rm osc}}
+%\def\Pic{{\rm Pic}} 
+\def\Sp{{\rm Sp}}
+\def\R{{\rm R}}  \def\NS{{\rm NS}}
+\def\RNS{{\rm RNS}}
+\def\Diff{{\rm Diff}}  \def\expt{{\rm expt}}
+\def\cylinder{{\rm cylinder}}
+\def\Closed{{\rm closed}}
+\def\Map{{\rm Map}}  
+%\def\spurious{{\rm spurious}}
+\def\Met{{\rm Met}} 
+\def\Spin{{\rm Spin}}
+\def\spin{{\rm spin}} 
+\def\phys{{\rm phys}}
+\def\diag{{\rm diag}}  
+%\def\Vir{{\rm Vir}}
+%\def\Res{{\rm Res}}
+\def\Null{{\rm null}} 
+\def\mass{{\rm mass}}
+\def\SO{{\rm SO}} 
+\def\GSO{{\rm GSO}}
+\def\Tr{{\rm Tr\,}}
+%\def\SU{{\rm SU}} 
+\def\tr{{\rm tr}}
+\def\Weyl{{\rm Weyl}} 
+\def\Lorentz{{\rm Lorentz}}
+\def\Ker{{\rm Ker}}
+\def\Range{{\rm Range}} 
+%\def\SL{{\rm SL}} \def\prim{{\rm primitive}}
+\def\Det{{\rm Det}} 
+\def\re{{\rm Re}}
+%\def\dist{{\rm dist}} \def\PSL{{\rm PSL}}
+\def\Vol{{\rm Vol}} 
+%\def\ghosts{{\rm ghosts}}
+%\def\Fock{{\rm Fock}} 
+\def\BRST{{\rm BRST}}
+%\def\Weil-Peterson{{\rm Weil-Peterson}}
+\def\IIA{{\rm II~A}}
+\def\IIB{{\rm II~B}}
+
+\def\1bar{\bar{1}}
+\def\2bar{\bar{2}}
+\def\3bar{\bar{3}}
+\def\4bar{\bar{4}}
+%\def\fbar{\bar{f}}  
+\def\mubar{\bar{\mu}}
+\def\nubar{{\bar{\nu}}}
+\def\taubar{{\bar{\tau}}}
+%\def\barh{\bar{h}}  
+\def\gammabar{\bar{\gamma}}
+\def\betabar{\bar{\beta}}
+%\def\kbar{\bar{k}}   
+\def\psibar{\bar{\psi}}
+\def\lambar{\bar{\lambda}} \def\xibar{{\bar{\xi}}}
+\def\mbar{\bar{m}}   \def\Lambar{\bar{\Lambda}}
+\def\thetabar{{\bar{\theta}}}
+\def\zetabar{{\bar{\zeta}}}
+%\def\phibar{\bar{\phi}}
+%\def\wbar{\bar{w}}  \def\etabar{\bar{\eta}}
+%\def\vbar{\bar{v}}  \def\partialbar{\bar{\partial}}
+%\def\xbar{\bar{x}}  
+\def\cbar{\bar{c}}
+\def\bbar{\bar{b}}
+%\def\epsbar{\bar{\epsilon}}
+\def\Gambar{\bar{\Gamma}}
+\def\rbar{\bar{r}}
+\def\zbar{\bar{z}}  
+%\def\Abar{\bar{A}}
+\def\Bbar{{\bar{B}}}  \def\Cbar{{\bar{C}}}
+\def\Fbar{{\bar{F}}}
+\def\Gbar{\bar{G}}
+\def\Kbar{\bar{K}}
+\def\Mbar{\bar{M}}
+%\def\Pbar{\bar{P}}
+\def\Sbar{\bar{S}}
+\def\Tbar{\bar{T}}
+\def\scrFbar{\bar{\scrF}}
+\def\scrCbar{\bar{\scrC}}
+
+%\def\scrFbc{{\scrF^{(bc)}}}
+%\def\scrFbcbar{{\scrF^{(\bbar\cbar)}}}
+
+\def\chat{\hat{c}}
+%\def\ghat{\hat{g}}
+%\def\muhat{\hat{\mu}}
+\def\Rhat{{\widehat{R}}}
+\def\scrDhat{{\widehat{\scrD}}}
+
+\def\Atil{\tilde{A}}
+\def\Btil{\widetilde{B}}
+\def\atil{\tilde{a}}
+\def\btil{\tilde{b}}
+\def\dtil{\tilde{d}}
+\def\xtil{\tilde{x}}
+%\def\htil{\tilde{h}}
+%\def\Ctil{\widetilde{C}}
+%\def\Dtil{\widetilde{D}}
+\def\Ltil{\tilde{L}}
+\def\Ntil{\widetilde{N}}
+\def\Ptil{\widetilde{P}}
+\def\Wtil{\widetilde{W}}
+\def\betatil{\tilde{\beta}}
+%\def\Ttil{\widetilde{T}}
+\def\scrFtil{\widetilde{\scrF}}
+%\def\epstil{\tilde{\eps}}
+%\def\psitil{\tilde{\psi}}
+
+\def\dbR{{\Bbb R}}
+%\def\dbZ{{\Bbb Z}}
+
+%These two files (in this order!!) are necessary
+%in order to use AMS Fonts 2.0 with Plain TeX
+
+\input amssym.def
+\input amssym.tex
+
+%Capital roman double letters(Blackboard bold)
+\def\db#1{{\fam\msbfam\relax#1}}
+
+\def\dbA{{\db A}} \def\dbB{{\db B}}
+\def\dbC{{\db C}} \def\dbD{{\db D}}
+\def\dbE{{\db E}} \def\dbF{{\db F}}
+\def\dbG{{\db G}} \def\dbH{{\db H}}
+\def\dbI{{\db I}} \def\dbJ{{\db J}}
+\def\dbK{{\db K}} \def\dbL{{\db L}}
+\def\dbM{{\db M}} \def\dbN{{\db N}}
+\def\dbO{{\db O}} \def\dbP{{\db P}}
+\def\dbQ{{\db Q}} \def\dbR{{\db R}}
+\def\dbS{{\db S}} \def\dbT{{\db T}}
+\def\dbU{{\db U}} \def\dbV{{\db V}}
+\def\dbW{{\db W}} \def\dbX{{\db X}}
+\def\dbY{{\db Y}} \def\dbZ{{\db Z}}
+
+\font\teneusm=eusm10  \font\seveneusm=eusm7 
+\font\fiveeusm=eusm5 
+\newfam\eusmfam 
+\textfont\eusmfam=\teneusm 
+\scriptfont\eusmfam=\seveneusm 
+\scriptscriptfont\eusmfam=\fiveeufm 
+\def\scr#1{{\fam\eusmfam\relax#1}}
+
+
+%Upper-case Script Letters:
+
+\def\scrA{{\scr A}}   \def\scrB{{\scr B}}
+\def\scrC{{\scr C}}   \def\scrD{{\scr D}}
+\def\scrE{{\scr E}}   \def\scrF{{\scr F}}
+\def\scrG{{\scr G}}   \def\scrH{{\scr H}}
+\def\scrI{{\scr I}}   \def\scrJ{{\scr J}}
+\def\scrK{{\scr K}}   \def\scrL{{\scr L}}
+\def\scrM{{\scr M}}   \def\scrN{{\scr N}}
+\def\scrO{{\scr O}}   \def\scrP{{\scr P}}
+\def\scrQ{{\scr Q}}   \def\scrR{{\scr R}}
+\def\scrS{{\scr S}}   \def\scrT{{\scr T}}
+\def\scrU{{\scr U}}   \def\scrV{{\scr V}}
+\def\scrW{{\scr W}}   \def\scrX{{\scr X}}
+\def\scrY{{\scr Y}}   \def\scrZ{{\scr Z}}
+
+\def\gr#1{{\fam\eufmfam\relax#1}}
+
+%Euler Fraktur letters (German)
+\def\grA{{\gr A}}	\def\gra{{\gr a}}
+\def\grB{{\gr B}}	\def\grb{{\gr b}}
+\def\grC{{\gr C}}	\def\grc{{\gr c}}
+\def\grD{{\gr D}}	\def\grd{{\gr d}}
+\def\grE{{\gr E}}	\def\gre{{\gr e}}
+\def\grF{{\gr F}}	\def\grf{{\gr f}}
+\def\grG{{\gr G}}	\def\grg{{\gr g}}
+\def\grH{{\gr H}}	\def\grh{{\gr h}}
+\def\grI{{\gr I}}	\def\gri{{\gr i}}
+\def\grJ{{\gr J}}	\def\grj{{\gr j}}
+\def\grK{{\gr K}}	\def\grk{{\gr k}}
+\def\grL{{\gr L}}	\def\grl{{\gr l}}
+\def\grM{{\gr M}}	\def\grm{{\gr m}}
+\def\grN{{\gr N}}	\def\grn{{\gr n}}
+\def\grO{{\gr O}}	\def\gro{{\gr o}}
+\def\grP{{\gr P}}	\def\grp{{\gr p}}
+\def\grQ{{\gr Q}}	\def\grq{{\gr q}}
+\def\grR{{\gr R}}	\def\grr{{\gr r}}
+\def\grS{{\gr S}}	\def\grs{{\gr s}}
+\def\grT{{\gr T}}	\def\grt{{\gr t}}
+\def\grU{{\gr U}}	\def\gru{{\gr u}}
+\def\grV{{\gr V}}	\def\grv{{\gr v}}
+\def\grW{{\gr W}}	\def\grw{{\gr w}}
+\def\grX{{\gr X}}	\def\grx{{\gr x}}
+\def\grY{{\gr Y}}	\def\gry{{\gr y}}
+\def\grZ{{\gr Z}}	\def\grz{{\gr z}}
+
+\def\epsbar{\bar{\epsilon}}
+\def\thetadot{{\dot{\theta}}}
+\def\Pidot{{\dot{\Pi}}}
+\def\GS{\hbox{\rm GS}}
+\def\Ebar{\bar{E}}
+\def\twosquares{\hbox{$\square\kern-2.255pt\square$}}
+\def\splitsquare{\hbox{$\square$}\kern-7.79pt%
+  \raise6pt\hbox{$\square$}}
+\def\threesquares{\hbox{$\square$}\kern-7.79pt%
+  \raise6pt\hbox{$\square$}\kern-7.79pt%
+  \raise12pt\hbox{$\square$}}
+\def\rhobar{{\bar{\rho}}} 
+\def\abar{\bar{a}}
+\def\chibar{\bar{\chi}}
+\def\sigmabar{\bar{\sigma}}
+\def\omebar{\bar{\omega}} 
+\def\Fhat{\widehat{F}}
+\def\omehat{\widehat{\omega}}
+\def\etabar{\bar{\eta}}
+\def\SU{\hbox{\rm SU}}
+\def\Htil{\widetilde{H}}
+
+%\overfullrule=0pt
+
+\parindent=25pt
+\line{\dun --- DRAFT --- \hfill{\rm IASSNS-HEP-97/72}}
+
+\bigskip\bigskip
+\centerline{\boldtitlefont Lecture 15}
+\bigskip
+\centerline{\smallboldtitle X. Supersymmetry and Supergravity}
+
+\medskip
+\centerline{Eric D'Hoker}
+
+\frenchspacing
+
+\dspace
+\bigskip
+On many occasions during the discussion of superstring
+theory we have obtained results that are consistent
+with the presence of space-time supersymmetry.
+These include the counting of the number of bosonic
+versus fermionic states at all mass levels, as well as
+the study of the spectrum at zero mass.
+In this section, we shall exhibit supersymmetry on the
+spectrum and on the scattering amplitudes in an
+explicit fashion.
+We begin by completing the study of the RNS formulation of
+ string theory, and
+use the Ramond (fermion) vertex operator to produce a
+conserved supercharge that generates space-time
+supersymmetry.
+Next, we introduce and study the Green-Schwarz
+formulation of superstring theory, in which space-time
+supersymmetry is manifestly realized.
+Finally, we exhibit the low energy field theory
+approximations to the various superstring theories we have
+introduced, and
+identify them with known supergravity theories, in
+which we have local or gauged supersymmetry.
+We show how the Green-Schwarz formulation of
+superstrings may be used to couple strings to
+supergravity in a  covariant way.
+
+\bigskip\noindent
+{\bf \S 10.1.} {\bf Global space-time supersymmetry in 
+the $\RNS$ Formulation}
+
+In the previous chapter, we have provided a complete
+prescription for the vertex operators and for the calculation
+of transition amplitudes in the $\RNS$ formulation of
+superstrings.
+The $\RNS$ formulation does not exhibit space-time
+supersymmetry in a manifest fashion however:
+the construction of bosonic and fermionic vertex
+operators is asymmetrical.
+
+Nonetheless, it is possible to construct a conserved
+current $j_\alpha(z)$ on the worldsheet, whose charge
+$Q_\alpha$, defined by
+$$
+Q_\alpha=\oint\,{dz\over 2\pi}\,j_\alpha(z)\leqno{(10.1)}
+$$
+obeys the supersymmetry algebra of $10$-dimensional
+space-time:
+$$
+\eqalign{
+[P_\mu, P_\nu] &=[P_\mu,Q_\alpha]=0\cr
+\{Q_\alpha,Q_\beta\} &=2\,\Gamma_{\alpha\gamma}^\mu
+(C^{-1})^\gamma{}_\beta\,
+P_\mu=2\,\gamma_{\alpha\beta}^\mu\,P_\mu\cr}
+\leqno{(10.2)}
+$$
+Here $P_\mu$ is the translation operator, and we use
+the Dirac algebra defined in Lecture~9.
+For $N=2$ supersymmetric theories such as Type II A, B,
+there will be an independent supercharge $Q'$ arising
+from the $\zbar$ sector of the theory, whose discussion is
+analogous to that of $Q$.
+The current $j_\alpha(z)$ is related to the Ramond
+vertex operator.
+To see this, we notice that $Q_\alpha$ should map states
+of given $M^2$ into states of the same $M^2$, and should
+transform as a spinor.
+The $\R$ vertex operator, at zero space-time momentum,
+precisely has these properties.
+Thus, we identify $j_\alpha(z)$ with
+$$
+\leqalignno{
+j_\alpha(z) &=e^{-\phi/2}(z) S_\alpha(z) &(10.3)\cr
+\noalign{\hbox{of ghost number $-1/2$ or}}
+j_\alpha(z) &=e^{\phi/2}(\gamma_\mu)_{\alpha\beta}
+S'{^{\beta}}(z)\partial_z x^\mu &(10.4)\cr}
+$$
+of ghost number $1/2$.
+Both are holomorphic and, with the help of
+$$
+\leqalignno{
+e^{-\phi/2}(z) e^{\phi/2}(w) &\sim
+  {1\over (z-w)^{-1/4}} &(10.5)\cr
+S_\alpha(z) S'{^{\beta}} &\sim
+  {\delta_\alpha^\beta\over(z-w)^{5/4}}\cr
+\noalign{\hbox{we find}}
+j_\alpha(z) j_\beta(w) &\sim
+(\gamma_\mu)_{\alpha\beta}\partial_z x^\mu{1\over
+z-w} &(10.6)\cr}
+$$
+and recover the superalgebra of $Q_\alpha$ and $P_\mu$
+upon integration.
+
+Under the action of $Q_\alpha$, vertex operators in the
+NS and R sectors are mapped into one another.
+Considering left moving vertex operators for massless
+states, for example, 
+$$
+\eqalign{
+W_{\NS}(z,\eps,k) &=\eps_\mu\partial_z
+  x^\mu e^{ik\cdot x}\cr
+W_{\R}(z,u,k) &=e^{-\phi/2}S_\alpha u^\alpha
+  e^{ik\cdot x}\cr}
+\leqno{(10.7)}
+$$
+where we have considered $W_{\NS}$ in the picture with
+zero ghost number and $W_{\R}$ in the picture with ghost
+number $-1/2$.
+We have 
+$$
+\eqalign{
+[\zeta^\alpha Q_\alpha, W_{\NS}(z,\eps,k)]
+&=W_{\R}(z,u,k)\cr
+[\zeta^\alpha Q_\alpha,W_{\R}(z,v,k)]
+&=W_{\NS}(z,\eta,k)\cr}
+\leqno{(10.8)}
+$$
+with
+$$
+\eqalign{
+u^\alpha &=k^\mu\Eps^\nu(\gamma_{\mu\nu})^\alpha
+{}_\beta \zeta^\beta\cr
+\eta^\mu
+&=v^\alpha(\gamma^\mu)_{\alpha\beta}\zeta^\beta\cr}
+\leqno{(10.9)}
+$$
+Pictorially, we may represent this action by
+$$
+\vbox{\epsfxsize=3.0in\epsfbox{fig10.1.eps}}
+$$
+and similarly for $W_{\R}$ insertions.
+
+{}From the action of supersymmetry, we obtain several
+important relations between transition amplitudes.
+For the one-point function, we have
+$$
+\vbox{\epsfxsize=3.0in\epsfbox{fig10.2.eps}}
+$$
+by conservation of the current $j_\alpha(z)$.
+The only vertex operator that enters is the dilaton at
+zero momentum, and the above argument now shows
+directly that this amplitude must vanish, as we have
+indeed established to tree and one-loop level, by explicit
+calculation.
+
+For the two point function, we obtain
+$$
+\vbox{\epsfxsize=4.5in\epsfbox{fig10.3.eps}}
+$$
+By chiral symmetry, the $W_F$ two point function must
+vanish for massless fermions, 
+and hence the $W_B$ two point function must
+also vanish, as we have indeed established to tree and
+one-loop level, by explicit calculation.
+
+It is hoped that the use of the supersymmetry currents
+will ultimately allow one to show that superstring
+theory in the $\RNS$ formulation is finite ot all
+orders, but subtleties with the superghost system have
+prevented us so far from carrying out this program in
+full.
+
+\bigskip\noindent
+{\bf \S 10.2.} {\bf The Green-Schwarz formulation}
+
+The string degrees of freedom in the Green-Schwarz (GS)
+formulation of superstring theory (in $D$ space-time
+dimensions) are
+
+\medskip
+\item{(1)}
+the bosonic coordinate $x^\mu$,\quad
+$\mu=0,1,\ldots,D-1$
+
+\smallskip
+\item{(2)}
+the fermionic coordinate $\theta^{\alpha I}$
+
+\medskip\noindent
+The $x^\mu$ coordinates are as before.
+The $\theta^{\alpha I}$ coordinates are spinors under
+$\Spin(1,D-1)$, labeled by the spin index $\alpha$, with
+$I=1,2,\ldots,N$ describing the degree of extension of
+the supersymmetry algebra of the Poincar\'e group.
+$\theta^{\alpha I}$ are Grassmann valued worldsheet
+scalars.
+For simplicity, we shall assume that $\Spin(1,D-1)$
+admits Majorana spinors, and we shall use Majorana
+notation.
+(For $D=10$, $\theta^{\alpha I}$ are Majorana-Weyl
+spinors, with $N=1$ for Type I and heterotic and $N=2$ for
+Type II.)
+
+Poincar\'e supersymmetry acts on the coordinates
+$x^\mu$ and $\theta^{\alpha I}$ as follows
+(we use the conventions of \S9):
+$$
+\left\{
+\eqalign{
+\delta\theta^I &=\eps^I\cr
+\delta\thetabar^I &=\epsbar^I\cr
+\delta x^\mu &=i\epsbar^I\Gamma^\mu\theta^I\cr}
+\right.
+\leqno{(10.10)}
+$$
+where $\eps^I$ is a constant set of Majorana spinors,
+labeled by $I=1,\ldots,N$.
+
+We seek a worldsheet action in terms of $x^\mu$ and
+$\theta^I$ for the various superstring theories, that
+possesses manifest space-time supersymmetry as defined
+above.
+
+As a warm-up, we obtain the action for a massless point
+particle, propagating on a worldline $L$, parametrized
+by $\tau$ (and $\,\,\,\dot{}={d\over d\tau}$).
+To do so, we need a generalization of $\xdot^\mu$ that
+has good supersymmetry transformation properties.
+The following combination is easily seen to be {\it
+invariant} under supersymmetry
+$$
+\Pi^\mu\equiv \xdot^\mu-i\thetabar^I\Gamma^\mu
+\thetadot^I
+\leqno{(10.11)}
+$$
+and the following worldline action is susy invariant as
+well as $Diff(L)$-invariant:
+$$
+S=\int\nolimits_{L}d\tau\,e^{-1}(\tau)(\xdot^\mu-
+i\thetabar^I\Gamma^\mu\thetadot^I)^2
+\leqno{(10.12)}
+$$
+Here, $e$ is the worldline metric.
+The variational equations are
+$$
+\Pi^2=0,\quad
+\Pidot^\mu=0,\quad
+\Gamma_\mu\Pi^\mu\thetadot^I=0
+\leqno{(10.13)}
+$$
+Interpreting $\Pi^\mu$ as particle momentum, we find
+that the particle propagates with constant momentum,
+that it is massless, and that because
+$(\Gamma\cdot\Pi)^2=0$, half of the $\theta^J$'s are
+unconstrained.
+This last property is due to the fact that $S$ exhibits
+a further symmetry, called {\it $\kap$-symmetry}:
+$$
+\cases{
+\delta\theta^I i\Gamma\cdot\Pi\kap^I &\cr
+\delta x^\mu =i\thetabar^I\Gamma^\mu\delta\theta^I &\cr
+\delta e =4e\dot{\thetabar}^I \kap^I &\cr}
+\leqno{(10.14)}
+$$
+The presence of $\kap$-symmetry guarantees that only half of
+the $\theta$'s are physical degrees of freedom of the particle.
+
+We now generalize the above construction to obtain a
+worldsheet action with space-time supersymmetry.
+There is an obvious generalization of momentum, which
+is space-time supersymmetric: 
+$$
+\Pi_m{}^\mu\equiv\partial_m x^\mu-i
+\thetabar^I\Gamma^\mu\partial_m\theta^I
+\leqno{(10.15)}
+$$
+Thus there is an obvious worldsheet action (with
+worldsheet metric $g$, which does not transform under
+supersymmetry)
+$$
+S_1[x,\theta]={1\over 8\pi}\int\nolimits_{\Sigma}
+d\mu_g g^{mn}\Pi_m{}^\mu\Pi_n{}^\nu
+\eta_{\mu\nu}
+\leqno{(10.16)}
+$$
+invariant under $Diff(\Sigma)$, $Weyl(\Sigma)$ and
+space-time supersymmetry.
+However, the $\kap$-symmetry of the point particle does
+not extend to $S_1$.
+This is a problem, because in $D=10$, $N=1$
+superstrings, e.g. we will now have $8$ physical
+degrees of freedom of $x^\mu$, but $16$ for $\theta$.
+The $\kap$-symmetry is required to have the correct
+on-shell particle content of the string spectrum.
+
+When $N=1,2$ or $N=1$, the action $S_1$ may be
+modified to
+$S=S_1+S_2$ in such a way that $S$ is $Diff(\Sigma)$,
+$Weyl(\Sigma)$, space-time supersymmetric, but also
+invariant under $\kap$-supersymmetry.
+The additional part $S_2$ is found to be
+$$
+\eqalign{
+S_2[x,\theta]={1\over 4\pi}\int\nolimits_{\Sigma}
+\bigl\{ &-i\,dx^\mu\w(\thetabar^1\Gamma_\mu d\theta^1-
+\thetabar^2\Gamma_\mu d\theta^2)\cr
+&\thetabar^1\Gamma_\mu d\theta^1\w
+\thetabar^2\Gamma^\mu d\thetabar^2\bigr\}\cr}
+\leqno{(10.17)}
+$$
+Actually, the space-time supersymmetry of $S_2$ is not
+automatic.
+Restricting to $N=1$ only for simplicity, the
+$\eps$-transform of $S_2$ yields
+$$
+\delta S_2={1\over 4\pi}\int\nolimits_{\Sigma}
+(\epsbar\Gamma^\mu d\theta\w\thetabar\Gamma_\mu
+d\theta-i\,dx^\mu\w\epsbar\Gamma_\mu d\theta)
+\leqno{(10.18)}
+$$
+The second term in $\delta S_2$ is a total derivative and
+leads to no further requirements.
+The vanishing of the first term in $\delta S_2$
+requires that a certain
+$\Gamma$-matrix identity be satisfied:
+$$
+\Gamma^\mu \psi_1(\psibar_2\Gamma_\mu\psi_3)
++\Gamma^\mu\psi_2(\psibar_3\Gamma_\mu\psi_1)
++\Gamma^\mu\psi_3(\psibar_1\Gamma_\mu\psi_2)=0
+\leqno{(10.19)}
+$$
+This identity can be realized in the following situations:
+$$
+\matrix{
+\displaystyle
+\hbox{(i)}\qquad \hfill &D=10,\hfill &\quad\theta\qquad 
+&\hbox{Majorana-Weyl}\hfill 
+  &\hbox{8 $\theta$'s, 8 $x$'s}\hfill\cr
+\noalign{\medskip}
+\hbox{(ii)}\qquad \hfill &D=6,\hfill &\quad\theta\qquad 
+  &\hbox{Weyl}\hfill &\hbox{4 $\theta$'s, 4 $x$'s}\hfill\cr
+\noalign{\medskip}
+\hbox{(iii)}\qquad \hfill &D=4,\hfill &\quad\theta\qquad 
+  &\hbox{Majorana}\hfill &\hbox{2 $\theta$'s,
+  2 $x$'s}\hfill\cr
+\noalign{\medskip}
+\hbox{(iv)}\qquad \hfill &D=3,\hfill &\quad\theta\qquad  
+&\hbox{Majorana}\hfill &\hbox{1 $\theta$, 1 $x$}\hfill\,\,.
+}
+\leqno{(10.20)}
+$$
+(Note, for $D=6$, certain formulas must be adapted,
+since the corresponding spinors $\theta$ are not Majorana.)
+
+The $\kap$-symmetry may be expressed in terms of a
+worldsheet vector $\kap_m^J$, which is also a
+space-time spinor:
+$$
+\left\{
+\eqalign{
+\delta\theta^I &=2i\,\Gamma\cdot\Pi_m\kap^{Im}\cr
+\delta x^\mu &=\thetabar^I \Gamma^\mu\delta\theta^I\cr
+\delta g_{mn} &=\qquad\ldots\cr}
+\right.
+\leqno{(10.21)}
+$$
+The worldsheet vector $\kap_m^I$ produces a $1$-form
+$\kap^I\equiv \kap_m^Id\xi^m$ with the following
+self-duality properties
+$$
+\left\{
+\eqalign{
+{}^*\kap^1 &=-i\,\kap^1\cr
+{}^*\kap^2 &=i\,\kap^2\cr}
+\right.
+\leqno{(10.22)}
+$$
+The $\kap$-symmetry closes onto a combination involving a
+$\kap$-symmetry, a
+$ Diff(\Sigma)$, $Weyl(\Sigma)$ transformation, and an
+additional bosonic symmetry that has no dynamical
+consequences.
+
+On a worldsheet with flat metric $g$, the field
+equations for $g$, $x$ and $\theta$ are
+$$
+\matrix{
+{\scriptscriptstyle \bullet} 
+  &\quad \Pi_z{}^2=\Pi_{\zbar}{}^2=0\hfill\cr
+\noalign{\medskip}
+{\scriptscriptstyle \bullet} 
+  &\quad \partial_z(\partial_{\zbar}x^\mu
+  -2i\thetabar^1\Gamma^\mu\partial_{\zbar}\theta^1)
+  +\partial_{\zbar}(\partial_z x^\mu-2i\thetabar^2
+  \Gamma^\mu\partial_z\theta^2)=0\hfill\cr
+\noalign{\medskip}
+{\scriptscriptstyle \bullet} 
+  &\quad\Gamma_\mu\Pi_z^\mu\partial_{\zbar}
+  \theta^1=\Gamma_\mu\Pi_{\zbar}^\mu\partial_z
+  \theta^2=0\,\,.\hfill
+}
+\leqno{(10.23)}
+$$
+These equations of motion are highly non-linear.
+As a result, quantization of the $\GS$ string in
+covariant form is fraught with difficulties, arising in
+particular from the fact that $\theta$'s do not have a
+standard kinetic term.
+No satisfactory approach exists to date.
+
+
+\bigskip\noindent
+{\bf \S 10.3.} {\bf Lightcone gauge quantization of the $\GS$ Formulation}
+
+In the lightcone gauge, the non-linearities of the
+$\GS$ field equations disappear, and quantization may
+be carried out in complete parallel with the lightcone
+quantization of the $\RNS$ string (Problem Set \#9).
+As usual, we impose
+$$
+x^+=q^+ +p^+(z+\zbar)
+\leqno{(10.24)}
+$$
+and assume that $p^+\not=0$.
+(If $p^+=0$, then by positivity of energy, we must have
+$p=0$, and we only have the vacuum state.)
+Hence
+$$
+\Pi_z^+=\Pi_{\zbar}^+=p^+
+\leqno{(10.25)}
+$$
+On-shell, we have $\Pi_z^2=\Pi_{\zbar}^2=0$, so at a
+given point on the worldsheet, we may rotate $\Pi$ so
+that $\Pi^-=\Pi^i=0$, with only $p^+$ remaining as the
+only non-vanishing component.
+At that point, the $\kap$-transformation on $\theta^I$
+becomes
+$$
+\delta\theta^I=2i\,\Gamma^-p^+(\kap^{Iz}+\kap^{I\zbar})\,\,.
+\leqno{(10.26)}
+$$
+Thus, by suitable $\kap$-transformation, all
+$\theta^I$'s in the image of $\Gamma^-$ may be rotated
+away.
+Thus, by $\kap$-symmetry, we may impose the additional
+gauge choice
+$$
+\Gamma^+\theta^I=0
+\leqno{(10.27)}
+$$
+This choice implies that the equations for
+$\partial_{\zbar}\theta^1$ and $\partial_z\theta^2$
+simplify; to see this, multiply each to the left by
+$\Gamma^+$, and use $\{\Gamma^+,\Gamma^-\}=2$:
+$$
+\partial_{\zbar}\theta^1=\partial_z\theta^2=0
+\leqno{(10.28)}
+$$
+As a result, the equation for $x^\mu$ linearizes as well
+$$
+\partial_z \partial_{\zbar}x^\mu=0\,\,.
+\leqno{(10.29)}
+$$
+The only remaining non-linearity is the mass-shell
+constraint, given by
+$$
+\eqalign{
+\Pi_z^2 &=2p^+\Pi_z^-+\Pi_z^i\Pi_z^i=0\cr
+\Pi_{\zbar}^2 &=2p^+\Pi_{\zbar}^-+\Pi_{\zbar}^i
+  \Pi_{\zbar}^i=0\,\,.\cr}
+\leqno{(10.30)}
+$$
+
+As always in the lightcone gauge, the Lorentz group is
+reduced (in $D=10$) to $\SO(8)$, under which $x^i$
+transforms as a vector $8_v$, while $\theta^I$ (or
+more precisely, its eight dimensional restriction
+$S^I$) transforms as a spinor of $\SO(8)$: \ $8_s$ or
+$8_c$.
+These representations are permuted into one another
+under {\it triality} of $\SO(8)$.
+
+The lightcone quantization of the $\GS$ string is
+equivalent to the lightcone quantization of the $\RNS$
+superstring.
+Let us exhibit how this works on a cylinder, where the
+$\RNS$ field $\psi_+^\mu$ has periodic boundary
+conditions, suitable to a space-time spinor state.
+In complete parallel with the covariant construction of
+the Ramond vertex operator, we may construct $S^{\alpha
+1}(z)$ from $\psi_+^i(z)$ (and $S^{\alpha 2}(\zbar)$
+out of $\psi_-^i(\zbar)$).
+One begins by bosonizing the Cartan generators of
+$\SO(8)$ in the $\RNS$ representation:
+$$
+\psi_+^{2i-1}(z)\psi_+^{2i}(z)=-i\partial_z
+\phi^i\qquad i=1,2,3,4
+\leqno{(10.31)}
+$$
+Recall that the fields $\psi_+^i$ then have an
+exponential form in terms of $\phi^i$, with $\pm$
+weights
+$$
+{1\over\sqrt{2\,\,}}\,(\psi_+^{2i-1}\pm i\psi_+^{2i})
+(z)=e^{\pm i\phi^i}
+\leqno{(10.32)}
+$$
+and the spin fields are also exponentials with 
+$\pm\,{1\over 2}$ weights:
+$$
+\eqalign{
+S_\alpha^1(z) &=e^{i\alpha\cdot\phi(z)}\cr
+\alpha &=\left(\pm\,\Half,\,\,\pm\,\Half,\,\,\pm\,
+\Half,\,\,\pm\,\Half\right)\,\,
+}
+\leqno{(10.33)}
+$$
+The conformal weight of $S_\alpha^1(z)$ is now ${1\over 2}\,
+\alpha^2={1\over 2}\,$!
+This means that the lightcone gauge has made
+$S_\alpha^1(z)$ into a worldsheet spinor.
+
+\bigskip\noindent
+{\bf \S 10.4.} {\bf Flat superspace $\GS$ formulation}
+
+A more intrinsic formulation of the $\GS$ worldsheet
+action is obtained by expressing it in superspace
+We concentrate on the $D=10$, $N=2$ case, for which
+superspace is of dimension $(10\vert 32)$, with $32$
+Majorana spinor components.
+Coordinates are $X^M=(x^m,\theta^{\mu I})$, where
+$m=0,1,\ldots,9$ and $\mu=1,\ldots,16$ while $I=1,2$
+labels the two irreducible Majorana-Weyl (MW) multiplets.
+
+Flat superspace is characterized by a frame $E^A=dX^M
+E_M{}^A$ where $A=(a,\alpha I)$ are frame indices,
+with $a=0,1,\ldots,9$ labeling the defining
+representation of $\SO(1,9)$, $\alpha$ labeling the
+MW spinor of $\Spin(1,9)$ and $I=1,2$.
+The $\Spin(1,9)$ connection vanishes in flat
+superspace, and the superderivatives are
+$$
+\scrD_A=E_A{}^M\partial_M\qquad\qquad
+\partial_M\equiv{\partial\over \partial X^M}
+\leqno{(10.34)}
+$$
+and they satisfy
+$$
+\{\scrD_{\alpha I},\scrD_{\beta
+J}\}=2(\Gamma^a)_{\alpha\gamma}(C^{-1})^\gamma{}_\beta
+\scrD_a\delta_{IJ}
+\leqno{(10.35)}
+$$
+with all others commuting.
+The combination $\Pi_m^r$, encountered previously, has
+a very natural interpretation as a pull-back of the
+superspace frame $E^A$ to the worldsheet.
+Indeed
+$$
+\eqalign{
+X^*(E^a) &\equiv E_p{}^a d\xi^p=(\partial_p
+  x^a-i\thetabar^I\Gamma^a\partial_p\theta^I)d\xi^p\cr
+X^*(E^{\alpha I}) &\equiv E_p{}^{\alpha I}d\xi^p
+  =\partial_p\theta^{\alpha I}d\xi^p\cr}
+\leqno{(10.36)}
+$$
+so that $\Pi_p{}^a=E_p{}^a$.
+This identification readily allows us to write the first part
+of the GS superstring action in superspace:
+$$
+S_1[X]={1\over 8\pi}\int\nolimits_{\Sigma}
+d\mu_g g^{pq}E_p{}^a E_q{}^b \eta_{ab}
+\leqno{(10.37)}
+$$
+
+The second part of the $\GS$ action may be recast in
+the form of a Wess-Zumino-Witten action.
+To show that this is indeed the case, we consider the
+following $3$-form
+$$
+H\equiv E^a\w(\Ebar^1\Gamma_a\w E^1-\Ebar^2\Gamma_a \w E^2)
+\leqno{(10.38)}
+$$
+where we have used the notation $\Ebar^I\equiv (E^I)^T
+\Gamma^0$ and suppressed spinor index contraction.
+To construct a Wess-Zumino-Witten action, we require as
+usual that the form $H$ be closed $dH=0$.
+This condition implies
+$$
+\eqalign{
+0=dH &=dE^a\w(\Ebar^1\Gamma_a\w E^1-\Ebar^2\Gamma_a\w E^2)\cr
+&=-i \thetabar^I \Gamma^a
+d\theta^I(\Ebar^1\Gamma_a\w E^1-\Ebar^2\Gamma_a\w E^2)\cr
+&=-i(\Ebar^1\Gamma^a E^1+\Ebar^2\Gamma^a E^2)
+  (\Ebar^1\Gamma_a\w E^1-\Ebar^2\Gamma_a E^2)\cr
+&=-i(\Ebar^1\Gamma^a E^1\Ebar^1\Gamma_a E^1-(1\to 2))\cr
+&=-(\Gamma^0\Gamma^a)_{\alpha\beta}
+  (\Gamma^0\Gamma_a)_{\gamma\delta}E^{1\alpha}
+E^{1\beta}E^{1\delta}-(1\to 2)\,\,\cr}
+\leqno{(10.39)}
+$$
+The last line vanishes since the wedge product of the
+$E^1$'s is symmetry in $(\alpha\beta\gamma\delta)$ in
+view of the identity (10.19) we used to show that the
+$S_2$ action is supersymmetric.
+
+It is easy to show that $H=db$, where $b$ is the
+$2$-dimensional integrand of $S_2$.
+Indeed,
+$$
+\eqalign{
+H &=(dx^a-i\thetabar^j \Gamma^a d\theta^j)\w
+  (d\thetabar^1\Gamma_a d\theta^1-d\thetabar^2\Gamma_a
+ d\theta^2)\cr
+&=d(dx^a(\thetabar^1\Gamma_a d\theta^1-\thetabar^2
+  \Gamma_a d\theta^2))\cr
+&\quad -i(\thetabar^1\Gamma^a \theta^1
+  d\thetabar^1\Gamma_a d\theta^1-\thetabar^2\Gamma^a
+d\theta^2 d\thetabar^2\Gamma_a d\theta^2)\cr
+&\quad -i\thetabar^2\Gamma^a d\theta^2 d\thetabar^1
+\Gamma_a d\theta^1+\thetabar^1\Gamma^a d\theta^1
+  d\thetabar^2\Gamma_a d\theta^2\cr}
+\leqno{(10.40)}
+$$
+Now, the second line again vanishes by the
+$\Gamma$-identity (10.19), and the last term is a
+total differential:
+$$
+H=d\{dx^a(\theta^1\Gamma_a
+d\theta^1-\thetabar^2\Gamma_a d\theta^2)+i\thetabar^1
+\Gamma^a d\theta^1\thetabar^2\Gamma_a d\theta^2\}
+\leqno{(10.41)}
+$$
+Identifying with the term in $S_2$, we find
+$$
+S_2[x]={-i\over 4\pi}\int\nolimits_{B}
+X^*(H)\,\,.
+\leqno{(10.42)}
+$$
+
+Finally, it is very instructive to exhibit the action
+of the $\kap$-symmetry in the superspace formulation.
+It turns out that the $\kap$-symmetry is most easily
+expressed in terms of a worldsheet scalar (space-time
+spinor)
+$$
+\kap\equiv i\,E_p^a\,\Gamma_a(\kap^{p1}+\kap^{p2})
+\leqno{(10.43)}
+$$
+In terms of this parameter, one has
+$$
+\eqalign{
+\delta X^M E_M{}^a &\equiv \delta X^a=0\cr
+\noalign{\bigskip}
+\delta X^M E_M{}^1 &=(1+\Gamma)\kap\cr
+\delta X^M E_M{}^2 &=(1-\Gamma)\kap
+}\leqno{(10.44)}
+$$
+where the operator $\Gamma$ is defined by
+$$
+\Gamma\equiv{1\over 2\sqrt{h\,\,}}\Eps^{pq}E_p{}^a
+E_q{}^b \Eps_{ab}
+\leqno{(10.45)}
+$$
+and $h$ is such that $\Gamma^2=I$.
+
+\bigskip\noindent
+{\bf \S 10.5.} {\bf Supergravity and low energy superstrings}
+
+We have shown in the first part of this chapter that
+the $\RNS$ and $\GS$ formulations of superstring
+theory exhibit $10$-dimensional (global) Poincar\'e
+supersymmetry, in flat Minkowski
+space-time $M=\dbR^{10}$.
+
+Actually, superstring theory also exhibits $ Diff(M)$
+invariance when formulated on a general manifold $M$.
+For the bosonic string, we had shown this in \S{VI} by coupling
+bosonic string theory to background fields, including
+the metric $G_{\mu\nu}$, the anti-symmetry tensor
+field $B_{\mu\nu}$ and the dilaton $\Phi$, in a
+$ Diff(M)$ covariant fashion.
+For the superstring, we may again couple superstring
+theory to $G_{\mu\nu}$, $B_{\mu\nu}$ and $\Phi$ in a
+$ Diff(M)$ covariant way.
+The relevant ($N=1$ on the worldsheet) supersymmetric
+non-linear sigma model for the type II superstrings is
+given by
+$$
+\eqalign{
+S[X;G,B,\Phi] &={1\over 4\pi}\int_\Sigma
+d\mu_E\scrD_-X^\mu\scrD_+X^\nu
+(G_{\mu\nu}(X)+iB_{\mu\nu}(X))\cr
+&+{1\over 4\pi}\int_\sigma d\mu_E R_{+-}\Phi(X)\cr}
+\leqno{(10.46)}
+$$
+This worldsheet action defines the $\RNS$ superstring
+in an arbitrary space-time manifold $M$, with the
+fields $G_{\mu\nu}$, $B_{\mu\nu}$ and $\Phi$.
+(For the $N=1$ theories, this sigma model must be
+modified: for heterotic theories, one replaces
+$\scrD_-$ by $\partial_{\zbar}$ and $R_{+-}$ by
+$R_{+\zbar}$, while for Type I theories, the
+$B_{\mu\nu}$ coupling will not occur here, but will
+result from the $\R$-$\R$ sector.)
+
+Of course, it must be realized that for any of the superstrings,
+the fields
+$\Gmu$, $\Bmu$ and $\Phi$ do {\it not} correspond to
+the full set of massless states discussed in \S{VII} and
+VIII.
+First of all, there are additional space-time fermions:
+the gravitino and the dilatino.
+But, there are also additional boson fields: in Type II
+theories, these are the $\R$-$\R$ gauge fields; in
+heterotic and Type I theories these are the Yang--Mills
+bosons.
+Following the discussion provided for the study of
+bosonic strings, on general manifolds, with general
+background fields, we should include in the non-linear
+sigma model all space-time background fields
+corresponding to massless string states.
+The inclusion of fermions or $\R$-$\R$ bose fields is
+complicated by the fact that it requires the use of the
+Ramond vertex operator.
+Nonetheless, let us imagine that such a formulation
+were used.
+(We shall exhibit it explicitly later, with the use of
+the $\GS$ formulation.)
+
+Now, since the superstring theory is covariant under
+$ Diff(M)$ as well as under global Poincar\'e
+supersymmetry, it is fully expected that it will in
+fact be invariant under {\it local supersymmetry
+transformations} (also called supergravity
+transformations).
+This is expected because the composition of $ Diff(M)$
+and Poincar\'e supersymmetry transformations does {\it
+not} close onto these, but does close onto local
+supersymmetry.
+(We have already examined in \S{9} how this happens in $D=2$
+within the context of super-Riemann surfaces.)
+Field theories that are invariant under local
+supersymmetry transformations are so-called {\it
+supergravities}.
+
+In the low energy approximation, superstring theory can
+be approximated by the spectrum and dynamics of its
+massless states only, summarized in terms of a {\it
+local field theory}.
+The massless sector of superstring theory will inherit
+invariance under local supersymmetry, and will then be
+a supergravity.
+
+The dynamics of the $\NS$-$\NS$ sector of Type \IIA, B
+superstrings, in the massless sector, will yield the
+part of the corresponding supergravity involving only
+the fields $\Gmu$, $\Bmu$ and $\Phi$ (with the fermion
+fields and $\R$-$\R$ fields set to zero).
+This dynamics may be deduced directly from the above
+non-linear sigma model, and results from demanding that
+its quantum dynamics be superconformal invariant.
+It turns out that the conditions of superconformal
+invariance of $S[X;G,B,\Phi]$ to leading order (i.e.
+two derivatives or fewer on fermion fields) are
+precisely the same as the condition found for the
+bosonic string, except that $D=10$ now.
+The field equations for $G$, $B$ and $\Phi$ could be
+deduced from an action for those fields on the
+space-time manifold $M$:
+$$
+I_1(G,B,\Phi)=-{1\over 2K^2}\int_M
+d\mu_G\left\{R_G-4D_\mu\Phi D^\mu\Phi+{1\over 12}H^2
+\right\}e^{-2\Phi}
+\leqno{(10.47)}
+$$
+Here, we have expressed the metric $\Gmu$ in the {\it
+string} convention, so that an extra overall factor of
+the dilaton coupling appears.
+
+For the heterotic strings, the fields $G$, $B$ and
+$\Phi$ result from the $\NS$ sector of the left-movers
+coupled to the space-time part of the right movers, and
+the resulting action is still given by $I_1$.
+
+\bigskip\noindent
+{\bf \S 10.6.} {\bf Type II$\,$A, $D=10$, $N=2$ and
+$D=11$, $N=1$ supergravities}
+
+We begin by discussing the low energy field theory (at
+most 2 derivatives on bose fields, at most $1$ on
+fermion fields) associated with Type \IIA superstring
+theory, i.e. Type \IIA, $N=2$, $D=10$ supergravity.
+The existence of this theory was predicted by Nahm,
+based on representation theory of supersymmetry algebras
+and was constructed by Cremmer, Julia and Scherk, by
+dimensional reduction from the $D=11$, $N=1$
+supergravity.
+The Type \IIA field content is readily identified from
+\S{VII}, 4:
+$$
+\halign{#\hfill &\quad#\hfill &\quad#\hfill\cr
+\null\kern20pt
+$\left.\matrix{
+\ssbullet\quad \Gmu\hfill\cr
+\ssbullet\quad \Bmu\hfill\cr
+\ssbullet\quad\Phi\hfill}\,\right\}$ &$\NS$-$\NS$
+&\raise15pt\hbox{\vtop{\hbox{space-time metric 
+  (equivalently frame $e_m{}^a$)}
+ \hbox{anti-symmetric $\NS$-$\NS$ tensor}
+\hbox{dilaton}}}\cr
+\noalign{\bigskip}
+\null\kern20pt
+$\left.\matrix{
+\ssbullet\quad A_\mu^{(1)}\hfill\cr
+\ssbullet\quad A_{\mu\nu\rho}^{(3)}\hfill}\right\}$ 
+  &$\R$-$\R$ 
+  &\raise10pt\hbox{\vtop{\hbox{graviphoton}
+  \hbox{rank $3$ anti-symmetric tensor}}}\cr
+\noalign{\bigskip}
+\null\kern20pt
+$\left.\matrix{
+\ssbullet\quad \chi_\mu{}^\alpha\hfill\cr
+\ssbullet\quad \lam_\alpha\hfill}\,\,\,\right\}$ 
+  &$\R$-$\NS$ and $\NS$-$\R$ 
+&\raise15pt\hbox{\vtop{\hbox{$32$ component Majorana gravitino}
+\hbox{$32$ component Majorana dilatino}
+\hbox{(both contain both chiralities.)}}}\cr}
+$$
+The action $I_1$ corresponds to the dynamics in which
+$A^{(1)}=A^{(3)}=\chi=\lam=0$, and we now seek the
+generalization of $I_1$ that also describes the
+remaining fields.
+
+It turns out that the easiest way to do this is to
+reorganize the field contents in such a way that it
+manifestly results from dimensional reduction of an
+$D=11$ supergravity theory with $N=1$ supersymmetry.
+The precise statement is that the low energy limit of
+the $D=11$ supergravity, compactified on a circle with
+small radius, is precisely the Type \IIA supergravity.
+This  re-organization of field variables is advantageous
+because it will turn out that the $N=1$, $D=11$ supergravity
+is described by a relatively simple Lagrangian in terms of
+relatively few fields.
+
+We begin by showing that the field contents may be
+organized according to multiplets of $\Spin(1,10)$.
+We use space-time indices $\mu,\nu,\ldots=0,1,\ldots,9$
+and $\mubar,\nubar=0,1,\ldots,9,10$.
+We denote the compactified coordinate by $x^{10}$.
+Upon dimensional reduction on a circle, the only parts
+that survive to the low energy approximation of the
+$D=10$ theory are the fields that are independent of
+$x^{10}$.
+Indeed, $x^{10}$-dependence renders the fields massive,
+with mass on the order of $1/R$.
+
+A metric tensor in $D=11$ decomposes as follows:
+$$
+G_{\mubar\nubar}(x^\mu,x^{10})\longrightarrow
+G_{\mubar\nubar}(x^\mu)
+\leqno{(10.48)}
+$$
+Under the action of $\SO(1,10)$, this multiplet is
+irreducible, but under $\SO(1,9)$, we find
+$\twosquares\to\twosquares\oplus\square\oplus\cdot\,\,$, 
+so that the
+objects of Type \IIA theory that naturally fit into
+the $D=11$ metric multiplet are
+$$
+(\Gmu,A_\mu^{(1)},\Phi)\to G_{\mubar\nubar}
+\leqno{(10.49)}
+$$
+Proceeding analogously for an anti-symmetric rank $3$
+tensor
+$$
+A_{\mubar\nubar\rhobar}(x^\mu,x^{10})\to
+A_{\mubar\nubar\rhobar}(x^\mu)
+\leqno{(10.50)}
+$$
+and under $\SO(1,10)$, this tensor is again
+irreducible, but decomposes under $\SO(1,9)$ as
+$$
+\hbox{\threesquares}\,\,
+\raise6pt\hbox{$\to$}\,\,
+\hbox{\threesquares}\,\,\raise6pt\hbox{$\oplus$}\,\,
+\hbox{\splitsquare}\,\,,
+$$
+so that 
+$$
+(A_{\mu\nu\rho}^{(3)},\Bmu)\to A_{\mubar\nubar\rhobar}
+\leqno{(10.51)}
+$$
+Thus, all the $\NS$-$\NS$ and $\R$-$\R$ bosons fit into
+two fields: $G_{\mubar\nubar}$ and
+$A_{\mubar\nubar\rhobar}$.
+
+The spinors also fit together.
+The smallest dimensional representation of a spinor of
+$\Spin(1,10)$ is a Majorana spinor of dimension $32$.
+Under $\Spin(1,9)$, it will reduce into $2$ Majorana-Weyl
+spinors of opposite  chirality, and this is precisely
+what we need for Type \IIA, where the gravitino as well
+as the dilatino are non-chiral Majorana spinors.
+Furthermore, the dilatino may be appended to
+$\chi_\mu{}^\alpha$ as its $11$-th component:
+$$
+(\chi_\mu{}^\alpha,\lam_\alpha)\to\chi_{\mubar}^\alpha\,\,.
+\leqno{(10.52)}
+$$
+
+\medskip
+
+\noindent{\bf \S 10.6.1} {\bf $N=1$, $D=11$ supergravity}
+
+Based upon general arguments by Nahm, the largest
+possible dimension $D$ in which supersymmetric
+multiplets can exist with $spin\Le 2$ only is $D=11$,
+with a single local supersymmetry.
+Its field contents are precisely the ones that we have
+described above:
+$$
+\matrix{ 
+\displaystyle
+\ssbullet\quad G_{\mubar\nubar}\hfill
+  &\hfill \hbox{(equiv. } e_{\mubar}{}^{\abar})
+  &\hbox{graviton:}\hfill &\hfill\hbox{44 states}\cr
+\noalign{\bigskip}
+\ssbullet\quad A_{\mubar\nubar\rhobar}\hfill
+  &&U(1) \hbox{\rm gauge field:} &\hfill\hbox{84 states}\cr
+\noalign{\bigskip}
+\ssbullet\quad 
+\chi_{\mubar}^\alpha\hfill &&\hbox{gravitino:}\hfill
+  &\hbox{128 states}.
+}
+$$
+The dimensional reduction is carried out by setting
+$x^{10}$ dependence to zero, and by letting
+$G_{\mubar\nubar}$ decompose as
+$$
+\Gmu\,;\qquad
+G_{\mu10}=G_{10\mu}=A_\mu^{(1)}\qquad
+G_{10\,10}=e^{-2\Phi}
+\leqno{(10.53)}
+$$
+which yields the action $I_1$ when $A_\mu^{(1)}=0$, and
+$A_{\mu\nu\rho}^{(3)}=\chi_\mu^\alpha=\lam_\alpha=0$.
+The normalization of the field strength $H=dB$ of $B$
+in $I_1$ provides a normalization of the field strength
+$F=dA$ in the $D=11$ supergravity theory.
+The remaining terms are fixed by local supersymmetry
+invariance.
+
+The full Lagrangian is obtained by seeking $N=1$ local
+supersymmetry and was established by Cremmer, Julia and
+Scherk:
+$$
+I(G,A,\chi)=-{1\over 2\kap^2}\int_{\Mbar}d\mu_G
+\scrL-{\sqrt{2\,\,}\kap\over 3^456}\int_{\Mbar}A\w F\w F
+\leqno{(10.54)}
+$$
+where $\scrL$ is given by
+$$
+\eqalign{
+\scrL &=R_G+{1\over 12}\kap^2F^2+\kap^2\chibar_{\mubar}
+\Gamma^{\mubar\nubar\rhobar}D_{\nubar}\chi_{\rhobar}\cr
+&+{\sqrt{2\,\,}\kap^3\over 384}\left(
+\chibar_{\mubar}\Gamma^{\mubar\nubar\rhobar\sigmabar
+\taubar\omebar}\chi_{\omebar}+12\chibar^{\nubar}
+\Gamma^{\rhobar\nubar\sigmabar}\chi^{\taubar}\right)
+(F+\Fhat)_{\nubar\rhobar\sigmabar\taubar}\cr}
+\leqno{(10.55)}
+$$
+In this action, we have used the standard notation
+$$
+\Gamma^{\mu_1\ldots\mu_\rho}\equiv
+\Gamma^{[\mu_1}\Gamma^{\mu_2}\ldots
+\Gamma^{\mu_\rho]}
+$$
+where the square brackets stand for complete
+anti-symmetrization of the indices.
+$F=dA$ was defined previously, and
+$$
+\Fhat=F+\chi\hbox{-terms}
+$$
+such that the supersymmetry variation of $\Fhat$ does
+not contain derivatives of $\eta$ --- the susy
+parameter.
+$D_{\nubar}$ is the covariant derivative with respect
+to ${1\over 2}(\omega_{\Mbar}+\omehat_{\Mbar})$ where
+$$
+\omehat_{\mubar\abar\bbar}=\omega_{\mubar\abar\bbar}+
+{1\over 8}\chibar^{\nubar}
+\Gamma_{\nubar\mubar\abar\bbar\rhobar}\chi^{\rhobar}
+\leqno{(10.58)}
+$$
+and $\omega_{\mubar}$ is the spin connection, which is
+determined by its equation of motion.
+For completeness, we record the supergravity
+transformations:
+$$
+\eqalign{
+\delta e_{\mubar}{}^{\abar} &={\kap\over 2}\etabar
+  \Gamma^{\abar}\chi_{\mubar}\cr
+\delta A_{\mubar\nubar\rhobar} &=-{\sqrt{2\,\,}\over 8}
+ \etabar\Gamma_{[\mubar\nubar}\chi_{\rhobar]}\cr
+\delta\chi_{\mubar} &={1\over \kap}D'_{\mubar}\eta+
+{\sqrt{2\,\,}\over 288}\left(\Gamma_{\mubar}{}^{\nubar
+\rhobar\sigmabar\taubar}-8\delta_{\mubar}{}^{\nubar}
+\Gamma^{\rhobar\sigmabar\taubar}\right)\Fhat_{\nubar
+\rhobar\sigmabar\taubar}\cr}
+\leqno{(10.59)}
+$$
+The covariant derivative $D'$ is here defined with the
+connections $\omehat$.
+
+\medskip
+
+\noindent{\bf \S 10.6.2} {\bf Type \IIA supergravity}
+
+The Type \IIA supergravity Lagrangian may now be deduced
+from $D=11$ supergravity by the compactification and
+dimensional reduction discussed previously.
+The reduction of the metric $G_{\mubar\nubar}$ was
+already given; the reduction of the
+$A_{\mubar\nubar\bar{\kap}}$ field proceeds by
+$$
+\eqalign{
+A_{\mu\nu \kap} &=\kap^{{1\over 4}}A_{\mu\nu \kap}^{(3)}\cr
+A_{\mu\nu 10} &={1\over \kap}\,\Bmu\cr}
+\leqno{(10.60)}
+$$
+The bosonic part of the Type \IIA supergravity is then
+$$
+\eqalign{
+I_{\hbox{\rm II A}} &(G,B,\Phi; A^{(1)},A^{(3)})\cr
+&=-{1\over 2\kap^2}\int_M d\mu_G\Bigl\{e^{-2\Phi}
+  \Bigl(R_G-4D_\mu\Phi D^\mu\Phi+{1\over 12}\,H^2\Bigr)\cr
+&\qquad\qquad\qquad\qquad
++\sqrt{\kap\,\,}\,G_A^2+\sqrt{\kap\,\,}\,
+{1\over 12}\,F^2\Bigr\}\cr
+&-{\sqrt{\kap\,\,}\over 288 \kap^2}\int_M B\w F\w F\cr}
+\leqno{(10.61)}
+$$
+here $G_A=dA^{(1)}$, $H=dB$, $F=dA^{(3)}$.
+Notice that the R-R part of the action does
+not occur with the dilaton rescaling factor
+$e^{-2\Phi}$; thus, these contributions are in some
+sense of order $1$ in the string loop expansion.
+
+\bigskip\noindent
+{\bf \S 10.7.} {\bf Type \IIB, $D=10$, $N=2$ supergravity}
+
+The Type \IIB field contents are as follows
+(see Lecture~7).
+$$
+\matrix{
+\ssbullet\hfill &\Gmu \hbox{(equiv. } e_\mu{}^a)\hfill
+  &\hbox{graviton.}\hfill\cr
+\ssbullet\hfill &\Bmu+i\,A_{\mu\nu}^{(2)} \hfill
+  &\hbox{complex rank 2 antisymmetric tensor.}\hfill\cr
+\ssbullet\hfill &\Phi+i\,A^{(0)}\hfill
+  &\hbox{complex dilaton-axion.}\hfill\cr
+\ssbullet\hfill &A_{\mu\nu K\lam}^{(4)}\hfill 
+  &\hbox{real, self-dual } F=dA^{(4)}.\hfill\cr
+\noalign{\bigskip}
+\ssbullet\hfill &\chi_\mu^\alpha\qquad
+  \hbox{(chirality} +) \hfill
+  &\hbox{complex Majorana-Weyl spinor gravitino}.\hfill\cr
+\ssbullet\hfill &\lam_\alpha \qquad
+  \hbox{(chirality} -)\hfill
+  &\hbox{complex Majorana-Weyl spinor dilatino}.\hfill
+}
+$$
+Clearly, the field contents do not arise from a simple
+dimensional reduction, since the spinor content is
+chiral here.
+In fact, since the theory contains a self-dual field,
+$F$, no off-shell Lorentz-covariant formulation is
+known for this theory.
+
+The field equations may be written covariantly though,
+either in components or in superspace.
+The gauge group is $\Spin(1,9)\times U(1)_R$ and the
+complex dilaton-axion field $\Phi+i\,A^{(0)}$ lives in
+$\SU(1,1)/U(1)_R$.
+
+\bigskip\noindent
+{\bf \S 10.8.} {\bf Type I -- Heterotic, $D=10$, $N=1$
+supergravities}
+
+Both for the Type I and for the heterotic theories, 
+we have only a single space-time supersymmetry: $N=1$.
+However, both theories now also have an $N=1$
+super-Yang--Mills multiplet, which we shall have to
+include.
+
+The field contents of the $N=1$ {\it
+supergravity multiplet} are obtained (say for the
+heterotic string) by considering the left-moving part
+of Type II, tensored with the right-moving
+$10$-dimensional part of the bosonic string.
+The corresponding fields are
+$$
+\matrix{
+\ssbullet &\Gmu\hfill
+&\kern50pt \hbox{space-time metric}\hfill\cr
+\ssbullet &\Bmu\hfill 
+&\kern50pt \hbox{real rank $2$ anti-symmetric tensor}\hfill\cr
+\ssbullet &\Phi\hfill
+&\kern50pt \hbox{real dilaton}\hfill\cr
+\ssbullet &\chi_\mu{}^\alpha\hfill
+&\kern50pt \hbox{$1$ Majorana-Weyl (real) gravitino
+($+$ chirality)}\hfill\cr
+\ssbullet &\lam_\alpha\hfill
+&\kern50pt \hbox{$1$ Majorana-Weyl (real) dilatino 
+($-$ chirality)}\hfill
+}
+$$
+the Lagrangian for this theory exists (since there are
+no fields with self-dual field strength) and may be
+obtained from the Type \IIA theory by setting
+$$
+A_\mu^{(1)}=A_{\mu\nu\rho}^{(3)}=0\qquad\qquad
+\chi_\mu^\alpha\vrulesub{-}=\lam_\alpha\vrulesub{+}=0
+\leqno{(10.62)}
+$$
+where the $\vrulesub{\pm}$ indicates the chirality.
+This truncation is consistent with the field equations of
+Type \IIA, since both $A^{(1)}$ and $A^{(3)}$ occur
+quadratically in the bosonic Lagrangian, and since the
+fermionic Lagrangian does not mix between chiralities.
+We limit ourselves to examining only the bosonic
+action of the supergravity multiplet, and notice
+immediately that it must be just $I_1$.
+The fermionic part may be deduced from the $D=11$
+supergravity Lagrangian by the above dimensional
+reductions and restrictions.
+
+The field contents of the $N=1$ {\it super Yang--Mills
+multiplet} are obtained (again for the heterotic
+string) by considering the left-moving part of the Type
+II string, tensored with the right-moving internal part
+of the bosonic string.
+The corresponding fields are
+$$
+\matrix{
+\ssbullet\hfill &A &\kern50pt \hbox{gauge field of
+$E_8\times E_8$ or $\Spin(32)/Z_2=G$}\hfill\cr
+&&\qquad\qquad\qquad\qquad\hbox{(adjoint rep.)}\hfill\cr
+\noalign{\bigskip}
+\ssbullet\hfill &\psi &\kern50pt \hbox{gaugino of
+$E_8\times E_8$ or $\Spin(32)/Z_2=G$}\hfill\cr
+&&\qquad\qquad\qquad\qquad\hbox{(adjoint rep.)}\hfill
+}
+$$
+The dynamics are governed by the action (in flat $M$,
+with $G=\eta$)
+$$
+I_{YM}^0=\int_M d\mu_G\left(-{1\over 4}\,
+F_{\mu\nu}^a\,F^{a\mu\nu}-{1\over
+2}\,\psibar^a\Gamma^\mu(D_\mu\psi)^a\right)
+\leqno{(10.63)}
+$$
+which is {\it global} $N=1$ Poincar\'e supersymmetry
+invariant.
+Here, we use the notation ($a=1,\ldots,\dim\,G$) and
+$$
+A=A_\mu^a\,t^a\,dx^\mu\qquad\qquad
+F=dA+gA\w A={1\over 2}\,F_{\mu\nu}^a\,
+t^a\,dx^\mu\,dx^\nu\,\,.
+\leqno{(10.64)}
+$$
+
+It remains to construct an action with $N=1$ local
+supersymmetry, that combines both the supergravity
+multiplet and the super-Yang--Mills multiplet.
+First, the action $I_{YM}^0$ is adapted as follows.
+$$
+I_{YM}={1\over \kap}\int_M d\mu_G e^{-2\Phi}
+\left\{-{1\over 4}\,F_{\mu\nu}^a\,F^{a\mu\nu}-{1\over 2}
+\,\psibar^a\Gamma^\mu D_\mu\psi^a\right\}
+\leqno{(10.65)}
+$$
+For $G=U(1)$ gauge theory, $I_1+I_{YM}+$ the fermionic
+terms of the supergravity multiplet yield an $N=1$ susy
+action.
+For non-Abelian $G$, this is not so, and the form of
+the $B$-field strength $H$ in $I_1$ must be modified as
+follows:
+$$
+\Htil=dB-{\kap\over\sqrt{2\,\,}}\,\omega_3(A)
+\leqno{(10.66)}
+$$
+Here, $\omega_3(A)$ is the so-called Chern-Simons form
+of degree $3$:
+$$
+\omega_3(A)\equiv\tr\left(A\w dA+{2\over 3}
+\,gA\w A\w A\right)\,\,, \leqno{(10.67)}
+$$
+with the properties that
+$$
+\eqalign{&d\omega_3(A)=\tr\,F\w F\cr
+&\delta_\Lam \omega_3(A)=\tr(d\Lam\w dA)\qquad
+\hbox{under $\delta_\Lam A=d\Lam+[A,\Lam]$}\,\,.}
+\leqno{(10.68)}
+$$
+To render $\Htil$ gauge invariant under non-Abelian
+transformation in $G$, $B$ must transform as
+$$
+\delta_\Lam B={\kap\over\sqrt{2\,\,}}\,\tr\Lam dA
+$$
+The supergravity $+$ super Yang--Mills action is now (for
+bosons)
+$$
+I=-{1\over 2K^2}\int_M d\mu_G
+\left\{e^{-2\Phi}\left(R_G+4 D_\mu \Phi D^\mu\Phi-
+{1\over 12}\,\Htil^2\right)+e^{-2\Phi}
+\left(-{1\over 4}\,F_{\mu\nu}^a
+F^{a\mu\nu}\right)\right\}
+\leqno{(10.69)}
+$$
+where the first part coincides with $I_1$, except for
+the fact that $H$ has been replaced with its
+$G$-invariant version $\Htil$.
+
+\bigskip\noindent
+{\bf \S 10.9.} {\bf Superspace formulation of
+supergravities in $D=11$ and $D=10$}
+
+In \S{10.6}, \S{10.7} and \S{10.8},
+we have discussed supergravities in
+$D=11$ and $D=10$ in the component formulation.
+While supersymmetry invariance transformations of these
+actions are known, there is the problem that the
+composition of two supergravity transformations closes
+onto $Diff(M)$ only upon the use of the equations of
+motion.
+Also, the supergravity invariance is not manifest.
+
+The superspace approach provides a formulation in which
+$Diff(M)$ and local supersymmetry transformations
+appear on the same footing and are united into the
+group of diffeomorphisms of superspace.
+However, the superspace formulation in $D=11$ and
+$D=10$ supergravity --- and super Yang-Mills-theory ---
+is known only for the equations of motion.
+No superspace action is known that describes the
+off-shell configurations as well.
+
+To exhibit local supersymmetric covariant coupling of
+superstrings to supergravity, it is most convenient to
+make use of the superspace formulation of supergravity,
+as we shall show in the next section.
+For this issue, the fact that only the on-shell
+formulation is available causes no problem.
+In fact, already superstring theory itself, and as we
+showed previously, Type \IIB supergravity, do not admit
+an off-shell formulation; it is thus perhaps not so
+surprising that superspace supergravity does not
+either.
+
+\medskip\noindent
+{\it $N=1$, $D=11$ supergravity in superspace}
+
+{}From many points of view, the $D=11$ theory is the
+simplest theory, and we shall begin by giving its formulation.
+The superspace data are as follows:
+local supercoordinates $X^M=(x^m,\theta^\mu)$, with
+$m=0,1,\ldots,10$ and $\mu=1,\ldots,32$ parametrize a
+real supermanifold $M$ of dimension $(11\vert 32)$.
+The fields are most conveniently expressed as
+$$
+\eqalign{
+\ssbullet\hfill &\quad E^A=dX^ME_M{}^A\cr
+\ssbullet\hfill &\quad \Omega_A{}^B=dX^M\Omega_{MA}
+  {}^B \cr
+\ssbullet\hfill &\quad X={1\over 3!}E^C\w E^B\w 
+E^A X_{ABC} 
+}
+\leqno{(10.70)}
+$$
+
+\medskip\noindent
+Here, $A$, $B$, $C$ sum over frame indices: 
+$(a,\alpha)$, $(b,\beta)$, $(c,\gamma)$
+$a,b,c=0,1,\ldots 10$;
+$\alpha,\beta,\gamma=1,\ldots,32$, and transform under
+the defining representation and the Majorana spinor
+representations of $\Spin(1,10)$, respectively.
+The field $E^A$ is a frame, belonging to $\Omega^1(M)$;
+the field $\Omega_A{}^B$ is a $\Spin(1,10)$ connection,
+which admits the following decomposition under
+$\Spin(1,10)$:
+$$
+\matrix{ 
+\displaystyle
+\Omega_{ab}=-\Omega_{ba}\hfill &\Omega_{\alpha b}=
+  \Omega_{\alpha\beta}=0\hfill\cr
+\noalign{\medskip}
+\Omega_{\alpha\beta}=\fourth(\Gamma^{ab})_{\alpha\beta}
+\Omega_{ab} \hfill
+}
+\leqno{(10.71)}
+$$
+Finally $X$ is a $3$ form in superspace, and a
+$\Spin(1,10)$ invariant.
+It contains the rank $3$ field
+$A_{\mubar\nubar\rhobar}^{(3)}$.
+
+Curvature, torsion and $X$ field strength are defined
+by
+$$
+\matrix{
+T^A &\equiv dE^A+E^B\w\Omega_B{}^A
+&\quad &\left(\equiv \half\,E^c\w E^BT_{BC}{}^A\right)\cr
+R_A{}^B &\equiv d\Omega_A{}^B+\Omega_A{}^C\w\Omega_C{}^B
+  &\quad&\left(\equiv\half\,E^D\w E^c R_{CD,A}{}^B\right)\cr
+H &\equiv d X &\quad&\left(\equiv{1\over 4!}\,E^D\w E^C\w 
+E^B\w E^A\w H_{ABCD}\right)\,\,.
+}
+\leqno{(10.72)}
+$$
+These fields satisfy Bianchi identities
+
+$$
+\matrix{
+&\hbox{\rm (a)} &\quad &DT^A=E^B\w R_B{}^A 
+  &\qquad\qquad & &\qquad\qquad\qquad &\cr
+&\hbox{\rm (b)}   &\quad &DR_A{}^B=0 &\qquad\qquad & 
+  &\qquad\qquad\qquad& \cr
+&\hbox{\rm (c)}   &\quad &dH=0. &\qquad\qquad & &\qquad\qquad\qquad &
+}
+\leqno{(10.73)}
+$$
+written in differential form notation.
+It is most convenient to write these Bianchi identities
+out in terms of the $\Spin(1,10)$ tensors $T_{AB}{}^C$,
+$R_{AB,C}{}^D$ and $H_{ABCD}$; (parentheses
+$(ABC\ldots\,\,)$ stand for cyclic, graded summation of
+indices)
+$$
+\matrix{
+&\hbox{\rm (a)}
+&\quad &\sum\limits_{(ABC)}(R_{ABC}{}^D-D_A T_{BC}{}^D
+-T_{AB}{}^E T_{EC}{}^D)=0\cr
+&\hbox{\rm (b)}
+&\quad &\sum\limits_{(ABC)} (D_A R_{BCD}{}^E+
+T_{AB}{}^F R_{FCD}{}^E)=0\cr
+&\hbox{\rm (c)}
+&\quad &\sum\limits_{(ABCDE)}(D_A H_{BCDE}
++T_{AB}{}^F H_{FCDE})\cr
+& & &\qquad\qquad\qquad
+  -\sum\limits_{(ADBEC)}(-)^{BC+BD+CE}T_{AD}{}^F H_{FBEC}=0
+}
+\leqno{(10.74)}
+$$
+
+\medskip\noindent
+This geometry is too general, and contains many more
+fields than are necessary for the $D=11$ supergravity theory
+that we constructed in components.
+We must impose suitable ``constraint equations''.
+(We already encountered this problem in $D=2$, $N=1$
+supergravity, where certain constraints were also to be
+imposed, see \S{9.1}.)
+The choice of constraints is dictated by the structure
+of the component fields that one expects to remain
+after the constraints have been imposed, by
+dimensional analysis, and of course by Lorentz
+invariance.
+We shall limit ourselves here to quoting the results
+from Brink and Howe (1980):
+$$
+\eqalign{
+T_{\alpha\beta}{}^\gamma &=T_{\alpha b}{}^c
+=T_{ab}{}^c=0;\,\,
+T_{\alpha\beta}{}^c=-i(\Gamma^c)_{\alpha\beta}\cr
+H_{\alpha\beta\gamma\delta} &=H_{\alpha\beta\gamma
+c}=H_{\alpha bcd}=0;\,\,
+H_{\alpha\beta cd}=i(\Gamma_{cd})_{\alpha\beta}\cr}
+\leqno{(10.75)}
+$$
+It can be shown that all the torsion constraints can be
+solved in terms of a single superfield $H_{abcd}$.
+We shall not list out the various components here, but
+limit ourselves to providing the two field equations
+that result.
+We introduce
+$$
+R_{ab}=\eta^{cd}R_{acbd}\qquad
+R=\eta^{ab}R_{ab}
+\leqno{(10.76)}
+$$
+and have the equations of motion
+$$
+\matrix{ 
+\displaystyle
+R_{ab}={1\over 2}\,\eta_{ab}R &=-{1\over 12}\,
+H_{acde}H_b{}^{cde}+{1\over 96}\,\eta_{ab}
+H_{cdef}H^{cdef}\cr
+\noalign{\medskip}
+D^a H_{abcd}\hfill &=-{1\over 1728}\Eps_{bcde_1\ldots
+e_4f_1\ldots f_4}
+HJ^{e_1\ldots e_4}H^{f_1\ldots f_4}
+}
+\leqno{(10.77)}
+$$
+Retaining only the $\theta=0$ part of these equations, we
+readily observe that they are the bosonic field
+equations that would also have been obtained from the
+component formulation.
+
+We conclude by remarking that the $D=10$, $N=2$ Type
+\IIA supergravity may be obtained again by dimensional
+reduction.
+The resulting formulation is rather involved.
+There also exist a superspace formulation for Type \IIB
+supergravity.
+
+\medskip\noindent
+{\it $N=1$, $D=10$ supergravity in superspace}
+
+The superspace data are as follows: local
+supercoordinates $X^M=(x^m,\theta^\mu)$, with
+$m=0,1,\ldots,9$ and $\mu=1,\ldots 16$, parametrize a
+real supermanifold of dimension $(10\vert 16)$.
+The fundamental fields are
+
+$$
+\matrix{
+&\ssbullet &\quad &E^A=dX^M E_M{}^A &\qquad\qquad &
+  &\qquad\qquad &\cr
+&\ssbullet &\quad &\Omega_A{}^B=dX^M\Omega_{MA}{}^B
+  &\qquad\qquad & &\qquad\qquad &
+}
+\leqno{(10.78)}
+$$
+
+\medskip\noindent
+where $A$,$B$ run over frame indices: $(a,\alpha)$,
+$(b,\beta)$, $a,b=0,1,\ldots,9$ and
+$\alpha,\beta=1,\ldots,16$.
+The spinors here transform under a single Majorana-Weyl
+representation of $\Spin(1,9)$.
+Notice that there is {\bf no} further anti-symmetric
+tensor as there was in $D=11$.
+The $\Bmu$ field that occurs in $D=10$, $N=1$
+supergravity is contained in the fields $E^A$ and
+$\Omega_A{}^B$.
+The field $\Omega_A{}^B$ is again a spin connection,
+but now for $\Spin(1,9)$, acting on the direct sum of
+the defining representation and the Majorana-Weyl
+representation:
+$$
+\matrix{ \displaystyle
+\Omega_{ab}=-\Omega_{ba}\hfill &\Omega_{\alpha b}=
+  \Omega_{a\beta}=0\cr
+\noalign{\medskip}
+\Omega_{\alpha\beta}={1\over 4}(\Gamma^{ab})_{\alpha\beta}
+\Omega_{ab}\hfill &}
+\leqno{(10.79)}
+$$
+
+Torsion and curvature are defined by
+$$
+\matrix{ 
+\displaystyle
+T^A\equiv dE^A+E^B\w\Omega_B{}^A\hfill
+&\left(\equiv {1\over 2}\,E^C\w E^B T_{BC}{}^A\right)\hfill\cr
+\noalign{\medskip}
+R_A{}^B\equiv d\Omega_A{}^B+\Omega_A{}^C\w
+  \Omega_C{}^B\hfill &\left(\equiv {1\over 2}\,
+  E^D\w E^C R_{CDA}{}^B\right)\,\,.
+}
+\leqno{(10.80)}
+$$
+As in the case of $D=11$, $N=1$, these quantities
+satisfy Bianchi identities
+$$
+DT^A=E^B\w R_B{}^A\qquad\qquad
+DR_A{}^B=0\,\,.
+\leqno{(10.81)}
+$$
+(A component decomposition for these equations is given
+in (10.74).)
+
+Again, this geometry is too general, and torsion
+constraints should be imposed.
+The choice of constraints is not unique, and depends
+upon the choice of connection, among others.
+The constraints here were first derived by 
+Nilsson, and
+reformulated by Witten:
+$$
+\matrix{ 
+\displaystyle
+T_{\alpha\beta}{}^\gamma=T_{\alpha b}{}^c=0\hfill
+  &\hfill\qquad
+T_{\alpha\beta}{}^c=2\Gamma_{\alpha\beta}^c\cr
+\noalign{\medskip}
+T_{\alpha\beta}{}^\gamma=(\Gamma_a)_{\beta\delta}
+  \phi^{\delta\gamma}\hfill &\hbox{for some }
+\phi^{\delta\gamma}\hfill
+}
+\leqno{(10.82)}
+$$
+One may show that the resulting fields, after
+elimination of all auxiliary fields, are precisely
+those of the $N=1$ supergravity multiplet in $D=10$,
+with the same equations of motion as those that we
+obtained from the component formulation.
+
+\bigskip\noindent
+{\bf \S 10.10.} {\bf Local supersymmetric coupling of
+superstrings to supergravity} 
+
+It is now very easy to produce a $\GS$ worldsheet
+action, formulated in superspace, that couples in a
+manifestly locally supersymmetric way to the superspace
+fields of supergravity in $D=10$.
+For simplicity, we consider the case with $N=1$
+supersymmetry only.
+
+Recall that the flat superspace action was
+$$
+S[X]={1\over 8\pi}\int_\Sigma d\mu_g g^{pq}E_p{}^a
+E_a{}^b
+\eta_{ab}-{i\over 4\pi}\int_B
+X^*(H)
+$$
+where $E_p{}^a d\xi^p\equiv X^*(E^a)$ is the pullback
+to $X$ of $E^a$, and where $\partial B=\Sigma$, and $H$
+was a closed $3$-form on $M$.
+The form of $H$ was dictated by the condition that we
+had to have $\kap$-symmetry in order to obtain the correct
+spectrum.
+
+In general curved superspace backgrounds, we may again
+propose $S[X]$ as a suitable action, provided the
+superspace geometry admits a closed $3$-form $H$, and
+upon inserting a factor of a scalar superfield $k$:
+$$
+S[X]={1\over 8\pi}\int_\Sigma d\mu_g
+g^{pq}E_p{}^a E_q{}^b\eta_{ab}e^{4k}-{i\over 4\pi}
+\int_B X^*(H)
+$$
+where $E_p{}^a d\xi^p=X^*(E^a)$, just as in the flat
+superspace case.
+The superfield $k$ cannot be arbitrary, of course.
+
+It can be shown that when the torsion constraints for
+$N=1$, $D=10$ supergravity are satisfied, then there
+exists a natural closed $3$-form $H$, such that $S[X]$
+is invariant under $\kap$-symmetry.
+In other words, if we assume (locally) that $H=dB$,
+then the requirement of $\kap$-invariance demands that
+certain torsion constraints are satisfied.
+Up to equivalences, these constraints are precisely the
+torsion constraints.
+
+
+\bye

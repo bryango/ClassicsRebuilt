@@ -1,0 +1,236 @@
+%Date: Mon, 20 Apr 1998 16:20:45 -0400 (EDT)
+%From: Pavel Etingof <etingof@abel.math.harvard.edu>
+
+\input amstex
+\documentstyle{amsppt}
+\magnification 1200
+\NoRunningHeads
+\NoBlackBoxes
+\document
+
+\def\bb{\overline{\beta}}
+\def\bga{\overline{\gamma}}
+\def\bg{\overline{g}}
+\def\eps{\epsilon}
+\def\tW{\tilde W}
+\def\Aut{\text{Aut}}
+\def\tr{{\text{tr}}}
+\def\ell{{\text{ell}}}
+\def\Ad{\text{Ad}}
+\def\u{\bold u}
+\def\m{\frak m}
+\def\O{\Cal O}
+\def\tA{\tilde A}
+\def\qdet{\text{qdet}}
+\def\k{\kappa}
+\def\RR{\Bbb R}
+\def\be{\bold e}
+\def\bR{\overline{R}}
+\def\tR{\tilde{\Cal R}}
+\def\hY{\hat Y}
+\def\tDY{\widetilde{DY}(\g)}
+\def\R{\Bbb R}
+\def\h1{\hat{\bold 1}}
+\def\hV{\hat V}
+\def\deg{\text{deg}}
+\def\hz{\hat \z}
+\def\hV{\hat V}
+\def\Uz{U_h(\g_\z)}
+\def\Uzi{U_h(\g_{\z,\infty})}
+\def\Uhz{U_h(\g_{\hz_i})}
+\def\Uhzi{U_h(\g_{\hz_i,\infty})}
+\def\tUz{U_h(\tg_\z)}
+\def\tUzi{U_h(\tg_{\z,\infty})}
+\def\tUhz{U_h(\tg_{\hz_i})}
+\def\tUhzi{U_h(\tg_{\hz_i,\infty})}
+\def\hUz{U_h(\hg_\z)}
+\def\hUzi{U_h(\hg_{\z,\infty})}
+\def\Uoz{U_h(\g^0_\z)}
+\def\Uozi{U_h(\g^0_{\z,\infty})}
+\def\Uohz{U_h(\g^0_{\hz_i})}
+\def\Uohzi{U_h(\g^0_{\hz_i,\infty})}
+\def\tUoz{U_h(\tg^0_\z)}
+\def\tUozi{U_h(\tg^0_{\z,\infty})}
+\def\tUohz{U_h(\tg^0_{\hz_i})}
+\def\tUohzi{U_h(\tg^0_{\hz_i,\infty})}
+\def\hUoz{U_h(\hg^0_\z)}
+\def\hUozi{U_h(\hg^0_{\z,\infty})}
+\def\hg{\hat\g}
+\def\tg{\tilde\g}
+\def\Ind{\text{Ind}}
+\def\pF{F^{\prime}}
+\def\hR{\hat R}
+\def\tF{\tilde F}
+\def\tg{\tilde \g}
+\def\tG{\tilde G}
+\def\hF{\hat F}
+\def\bG{\overline{G}}
+\def\Spec{\text{Spec}}
+\def\tlo{\hat\otimes}
+\def\hgr{\hat Gr}
+\def\tio{\tilde\otimes}
+\def\ho{\hat\otimes}
+\def\ad{\text{ad}}
+\def\Hom{\text{Hom}}
+\def\hh{\hat\h}
+\def\a{\frak a}
+\def\t{\hat t}
+\def\Ua{U_q(\tilde\g)}
+\def\U2{{\Ua}_2}
+\def\g{\frak g}
+\def\n{\frak n}
+\def\hh{\frak h}
+\def\sltwo{\frak s\frak l _2 }
+\def\Z{\Bbb Z}
+\def\C{\Bbb C}
+\def\d{\partial}
+\def\i{\text{i}}
+\def\ghat{\hat\frak g}
+\def\gtwisted{\hat{\frak g}_{\gamma}}
+\def\gtilde{\tilde{\frak g}_{\gamma}}
+\def\Tr{\text{\rm Tr}}
+\def\l{\lambda}
+\def\I{I_{\l,\nu,-g}(V)}
+\def\z{\bold z}
+\def\Id{\text{Id}}
+\def\<{\langle}
+\def\>{\rangle}
+\def\o{\otimes}
+\def\e{\varepsilon}
+\def\RE{\text{Re}}
+\def\Ug{U_q({\frak g})}
+\def\Id{\text{Id}}
+\def\End{\text{End}}
+\def\gg{\tilde\g}
+\def\b{\frak b}
+\def\S{\Cal S}
+\def\L{\Lambda}
+
+\topmatter
+\title Lecture 5: Renormalization groups (continued)
+\endtitle
+\author {\rm {\bf David Gross} }\endauthor
+\endtopmatter
+
+\centerline{Notes by P.Etingof and D.Kazhdan}
+\vskip .1in
+
+In this lecture we will return to the Wilsonian point of view 
+on the method of renormalization group, which was discussed in the first 
+lecture. Namely, we will discuss the exact renormalization group equation, 
+which describes the renormalization group flow in the space of all 
+Lagrangians. This equation together with asymptotic freedom 
+provides a tool for constructing nonperturbative field theories. 
+
+We follow J.Polchinski's paper ``Renormalization and effective 
+Lagrangians'', Nuclear Physics B231, 1984, p. 269-295. 
+
+For simplicity we will consider the theory of a scalar bosonic field
+in 4 dimensions, as 
+in the first lecture. We consider the theory with a cutoff propagator 
+$\frac{P(p^2/\Lambda^2)}{p^2+m^2}$, where $P$ is a smooth 
+positive nonincreasing function, such that $P(a)=1$ for 
+$a\le 1$ and $P(a)\to 0$ sufficiently fast as $a\to \infty$. 
+
+The free action for a massive scalar associated to this cutoff
+can be written in momentum space as
+$$
+S_0(\phi,\L_0)=\frac{1}{2}
+\int\hat\phi(p)\hat\phi(-p)\frac{p^2+m^2}{P(p^2/\Lambda_0^2)}\frac{d^4p}{(2\pi)^4}
+\tag 5.1
+$$
+(hat denotes the Fourier transform).
+This action is very big if high Fourier modes in $\phi$ are present, so 
+it ``suppresses'' high Fourier modes in the path integral. 
+Also, when $\L_0\to\infty$, 
+this action obviously tends to the standard action for a massive scalar.
+
+Introduce a perturbation of the action $S_0$ by ``interaction'' terms: 
+$$
+S_I^0(\phi)=\int(\frac{1}{2}g_1^0\phi^2+\frac{1}{2}g_2^0(\nabla\phi)^2
++\frac{g_3^0}{4!}\phi^4)d^4x,\tag 5.2
+$$
+where $g_i^0$ are formal variables, and consider 
+the total action $S(\phi,\L_0)=S_0(\phi,\L_0)+S_I^0(\phi)$. 
+Consider the theory whose Green's functions are defined by the 
+path integral 
+$$
+Z(J)=\int D\phi\ e^{-S(\phi,\L_0)+\int J\phi d^4x}.\tag 5.3
+$$
+Because we are considering a cutoff theory, all Feynman diagrams are well 
+defined, so we get a perturbation series. 
+
+Now consider some smaller scale $\L_R<\L_0$. 
+We are interested in physics at the scale $\L_R$. 
+This means, we assume that $m<<\L_R$ and we are interested in values of 
+$Z(J)$ for such $J$ that $\hat J(p)=0$ for $p^2>\L_R^2$. 
+
+The physics at the scale $\L_R$ will be described by an effective 
+Lagrangian, which is obtained from the original Lagrangian by 
+``integrating out'' degrees of freedom between $\L_R$ and $\L_0$. 
+
+To study the effective Legrangian, 
+we introduce an arbitrary interaction term  
+$S_I(\phi,\L)$ and consider the integral
+$$
+Z(J,S,\L)=\int D\phi\ e^{-S_0(\phi,\L)+S_I(\phi,\L)+\int J\phi d^4x}\tag 5.4
+$$
+
+Let us look for such $S_I(\phi,\L)$ that $Z(J,S,\L)$ is independent 
+on $\L$, and write down a differential equation for such $S_I(\phi,\L)$. 
+
+The independence of $Z$ of $\L$ yields 
+$$
+\frac{d}{d\L}\int D\phi e^{-S_0(\phi,\L)+S_I(\phi,\L)+\int J\phi d^4x}=0.\tag 5.5
+$$
+Differentiating, we get
+$$
+\gather
+\int D\phi \biggl(\frac{1}{2}
+\int\hat\phi(p)\hat\phi(-p)(p^2+m^2)\frac{d}{d\L}P(p^2/\Lambda^2)\frac{d^4p}{(2\pi)^4}
+-\frac{dS_I(\phi,\L)}{d\L}\biggr)\times\\
+e^{-S_0(\phi,\L)-S_I(\phi,\L)+\int \hat J(p)\hat\phi(-p)\frac{d^4p}{(2\pi)^4}}=0.\tag 5.6
+\endgather
+$$
+
+>From this one can get
+$$
+\gather
+\frac{\d S_I}{\d \L}=-\frac{1}{2}\int d^4p (2\pi)^4
+(p^2+m^2)^{-1}\frac{\d P(p^2/\L^2)}
+{\d \L}\times \\
+\left(\frac{\delta S_I}{\delta \phi(-p)}
+\frac{\delta S_I}{\delta \phi(p)}+\frac{\delta^2S_I}{\delta \phi(-p)\delta 
+\phi(p)}\right). \tag 5.7
+\endgather
+$$
+Indeed, substituting (5.7) into (5.6), we get the integral of a complete 
+derivative, i.e. zero; 
+here we heavily use the fact that $\hat J(p)$ has disjoint 
+support with $\frac{\d P (p^2/\L^2}{\d\L}$. And it can be shown that 
+(5.7) follows from (5.6).
+
+Note that equation (5.7) corresponds to a linear equation 
+for $e^{S_I}$:  
+$$
+\frac{\d e^{S_I}}{\d \L}=-\frac{1}{2}\int d^4p (2\pi)^4
+(p^2+m^2)^{-1}\frac{\d P(p^2/\L^2)}
+{\d \L}\frac{\delta^2e^{S_I}}{\delta \phi(-p)\delta 
+\phi(p)}. \tag 5.8
+$$
+Equation (5.8) can be regarded as an infinite-dimensional heat equation. 
+It is called the exact renormalization group equation. If 
+$S_I(\phi,\L)$ is the solution of this equation such that 
+$S_I(\phi,\L_0)=S_I^0(\phi)$, then $S_I(\phi,\L_R)$ is the effective action 
+at the scale $\L_R$. This equation allows to prove the renormalizability 
+of $\phi^4$ theory without use of graph techniques, in particular of 
+Weinberg's theorem (see Polchinski's paper). 
+
+
+\end
+
+
+
+
+
+

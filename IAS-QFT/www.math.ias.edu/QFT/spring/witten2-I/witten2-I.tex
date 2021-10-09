@@ -1,0 +1,618 @@
+\documentstyle[12pt,epsf]{amsart}
+
+\setlength{\textwidth}{450pt}
+\setlength{\textheight}{600pt}
+\setlength{\topmargin}{0pt}
+\setlength{\oddsidemargin}{0pt}
+\setlength{\evensidemargin}{0pt}
+
+% automatic loading of rsfs fonts, if present
+\batchmode
+  \newfont{\footscrfont}{rsfs10}
+  \newfont{\footbbbfont}{msbm10}
+\errorstopmode
+
+\newif\ifscrf\scrftrue
+\ifx\footscrfont\nullfont
+  \scrffalse
+\fi
+
+\ifscrf
+  \newfont{\scrfont}{rsfs10 scaled\magstep1}  % rsfs12 does not exist
+  \newfont{\smallscrfont}{rsfs7}
+  \newfont{\tinyscrfont}{rsfs7}
+% \newfont{\footscrfont}{rsfs10}
+  \newfont{\smallfootscrfont}{rsfs7}
+  \newfont{\tinyfootscrfont}{rsfs7}
+\fi
+
+\makeatletter
+
+\newif\iffn\fnfalse
+
+\@ifundefined{reset@font}{\let\reset@font\empty}{} %needed for ancient LaTeX
+\long\def\@footnotetext#1{\insert\footins{\reset@font\footnotesize
+    \interlinepenalty\interfootnotelinepenalty
+    \splittopskip\footnotesep
+    \splitmaxdepth \dp\strutbox \floatingpenalty \@MM
+    \hsize\columnwidth \@parboxrestore
+   \edef\@currentlabel{\csname p@footnote\endcsname\@thefnmark}\@makefntext
+    {\rule{\z@}{\footnotesep}\ignorespaces
+      \fntrue#1\fnfalse\strut}}}
+\makeatother
+
+\ifscrf
+  \newcommand{\Scr}[1]{\iffn
+    \mathchoice{\mbox{\footscrfont #1}}{\mbox{\footscrfont #1}}
+    {\mbox{\smallfootscrfont #1}}{\mbox{\tinyfootscrfont #1}}\else
+    \mathchoice{\mbox{\scrfont #1}}{\mbox{\scrfont #1}}
+    {\mbox{\smallscrfont #1}}{\mbox{\tinyscrfont #1}}\fi}
+\else
+  \def\Scr{\cal}
+\fi
+
+
+%integral sign with cirlce is \oint
+
+%GIT quotient
+\newcommand{\catquot}{\mathchoice
+{\mathrel{\mskip-4.5mu/\!/\mskip-4.5mu}}
+{\mathrel{\mskip-4.5mu/\!/\mskip-4.5mu}}
+{\mathrel{\mskip-3mu/\mskip-4.5mu/\mskip-3mu}}
+{\mathrel{\mskip-3mu/\mskip-4.5mu/\mskip-3mu}}
+}
+
+%Hodge star (hstar) should probably not be \star
+\newcommand{\hstar}{\mathop{*}}
+
+% a wedgeproduct of a more reasonable size and spacing (from Robert Bryant)
+\def\wdg{{\mathchoice{\,{\scriptstyle\wedge}\,}{{\scriptstyle\wedge}}
+{{\scriptscriptstyle\wedge}}{{\scriptscriptstyle\wedge}}}}
+%should it be a mathbin?
+
+%line bundle (lb) and Lagrangian (lg) -- should have distinct fonts
+\newcommand{\lb}{{\Scr L}}
+\renewcommand{\lg}{{\cal L}}
+
+%same font for circle bundles
+\newcommand{\cb}{{\Scr S}}
+
+%coupling constant in gauge theory (\ee) should not be in mathitalic, to avoid
+%confusion with exponential
+\newcommand{\ee}{\text{e}}
+\newcommand{\gee}{\text{g}}
+
+%script A, the space of connections
+\newcommand{\cA}{{\cal A}}
+
+%script D, for use in pathspace measures
+\newcommand{\cD}{{\cal D}}
+
+%script H, for Hilbert space
+\newcommand{\cH}{{\cal H}}
+
+%notation for operators
+\newcommand{\cO}{{\cal O}}
+
+%standard blackboard bold items
+\newcommand{\IR}{{\Bbb R}}
+\newcommand{\IZ}{{\Bbb Z}}
+
+%operatornames
+\newcommand{\Hol}{\operatorname{\rm Hol}}
+\newcommand{\Maps}{\operatorname{\rm Maps}}
+\renewcommand{\Re}{\operatorname{\rm Re}}
+\newcommand{\Tr}{\operatorname{\rm Tr}}
+\newcommand{\vol}{\operatorname{\rm vol}}
+
+\numberwithin{equation}{section}
+
+%\addtolength{\marginparwidth}{-.32in}
+\addtolength{\marginparwidth}{-.4in}
+\newcommand{\note}[1]{\marginpar{\scriptsize #1 }} 
+
+\begin{document}
+
+\title[]{Lecture II-2, part I: Infrared Behavior of Quantum Field Theories}
+\author[]{Edward Witten$^*$}
+\thanks{$^*$Notes by David R. Morrison}
+\date{23 \& 29 January 1997}
+\maketitle
+
+
+Given a quantum field theory $X$, we want to solve it, that is, to learn the 
+most interesting
+things about it.  A big piece of ``solving'' a theory
+is determining what it flows to
+in the infrared.  Fairly often, the answer is: ``nothing,'' that is, $X$
+flows to a trivial theory.  This happens precisely when $X$ has a mass gap,
+for then all (Euclidean) correlation functions decay exponentially.
+Showing that a given theory flows to a trivial theory may, however,
+be a rather deep result.
+
+Very often, the infrared limit is not trivial but is 
+a free theory of massless particles, together
+with an irrelevant interaction which goes to zero in the infrared.  
+In fact, this happens in most of the simplest examples that we will meet.
+Note that an irrelevant interaction would, in the ultraviolet, be considered
+``unrenormalizable''; the perturbations that are ill-behaved in the
+ultraviolet are just the ones that vanish as one flows to the infrared limit.
+
+When a theory is free in the infrared, the question then becomes: {\it
+which}\/ massless particles is it a free theory of?  They might not be related
+to the ones in the original Lagrangian.  In fact, as we shall see in the second
+part of the lecture,
+the answer to this
+question may depend on the vacuum state we are in.
+
+For the infrared limit to be trivial is a special case of the infrared limit
+being free; it is the case that there are no massless particles at all in the
+physical spectrum.  
+
+
+We begin with an example, and then discuss several general features of infrared
+limits.
+
+\section{Example from last time}
+
+Consider a theory which breaks $SO(3)$ to $SO(2)=U(1)$.  We have three real
+scalars which can be combined to a $3$-component object
+$\vec{\phi}$ which transforms in the
+$3$-dimensional representation of $SO(3)$.  The Lagrangian is
+$$\lg=\frac1{\lambda}\int
+d^nx\,\left[\frac12(\partial_\mu\vec{\phi})^2+V(|\vec{\phi}|)\right],$$
+where, letting $\rho=|\vec{\phi}|$, $V(\rho)$ is a potential which has a
+nondegenerate minimum away from the origin.  
+
+\centerline{\epsfxsize=1in\epsfbox{plot3.eps}}
+\centerline{\quad}
+
+\noindent
+The simplest such potential is $V(\rho)=\frac18(\rho^2-\rho_0^2)^2$, with a
+minimum at $\rho_0$.  If we let
+ $\Omega=\phi/\rho\in S^2$, we can rewrite the Lagrangian as
+$$\lg=\frac1{\lambda}\int
+d^nx\, \left[\frac12(\partial_\mu\rho)^2 +\frac12\rho^2(\partial_\mu\Omega)^2
++V(\rho)\right].$$ 
+The term $\frac12\rho^2(\partial\Omega)^2$ represents the round metric on
+$S^2$.
+
+When $\lambda$ is small, we can hope that the classical approximation will be
+good.  Since $\rho$ is a massive field, we can integrate it out of the theory
+by setting it equal to its minimum value $\rho_0$ and studying fluctuations
+$$\rho=\rho_0+w,$$
+ where $w$ is now
+the quantum field which will appear in our path integrals.
+To first approximation, we would have an effective Lagrangian
+$$\lg_{\text{eff}}(\Omega)=\frac{\rho_0^2}{2\lambda}\int
+d^nx\,(\partial\Omega)^2,$$ 
+describing
+a nonlinear sigma model of maps to $G/H$, which in the present case is $S^2$. 
+The massless fields are described by $\Omega$.   
+
+Can this be an answer?  In other words, could {\it any}\/ quantum field theory
+flow to this sigma model in the infrared?
+In fact, it {\it is}\/ a possible answer for spacetime dimension
+$n>2$, because the nonlinear
+sigma-model is non-renormalizable above two dimensions, so the interaction we
+get is irrelevant.  That is, if $a_i$ are Riemann normal
+coordinates on near a point  $P\in S^2$, we can expand
+schematically near $P$
+$$(\partial\Omega)^2=(da)^2+R a^2 (da)^2 +\dots$$
+with $R$ being the Riemann tensor of $S^2$.
+{}From this we see that the interaction is irrelevant 
+ above two dimensions.  In fact, to give $(da)^2$ dimension $n$, 
+ we must assign dimension $(n-2)/2$ to $a$, whence the interaction
+ has dimension $2n-2$, which exceeds $n$ for $n>2$.  The fact that the
+ sigma model is a possible  answer for $n>2$ but not for $n\leq 2$ is
+ an aspect of the fact, already discussed last week, that spontaneous
+ breaking of a continuous symmetry is possible for $n>2$ but not for 
+ $n\leq 2$.
+
+Is the sigma model the {\it correct}\/ answer for the infrared behavior
+of our particular problem, at least for sufficiently small $\lambda$?  
+We claim that it is.  To study this point, let us
+treat the effects of $w$ perturbatively.  The interactions of $w$
+with the Goldstone
+boson come from the interaction term in the Lagrangian:
+$$\frac1{2\lambda}\rho^2(
+\partial\Omega)
+^2=\frac1{2\lambda}(\rho_0+w)^2(\partial\Omega)^2= 
+\frac1{2\lambda}(\rho_0^2+2\rho_0w+w^2)(\partial\Omega)^2.$$ 
+The operator $\partial\Omega$ is highly nonlinear, and can be thought of as  
+emitting an arbitrary number of Goldstone bosons.  We need to calculate
+Feynman diagrams involving $w$'s, in order to find the effective Lagrangian.  
+A typical
+diagram is
+
+\centerline{\epsfxsize=2in\epsfbox{feyn1.eps}}
+\centerline{\quad}
+
+\noindent
+representing $w$ with a solid line and $a$'s with dotted lines.  The 
+$w$-propagator is $\frac1{k^2+m_w^2}$; since we are interested in small momenta
+$k$, we expand in powers of $k$.  The leading term is
+$$\text{const}\,(\partial\Omega)^2\frac1{m_w^2}(\partial\Omega)^2.$$
+This has $SO(3)$ symmetry and is an irrelevant interaction.
+It is even more irrelevant than the terms, sketched above, that
+come by expanding $(\partial \Omega)^2$ in powers of $a$.
+
+
+In fact, while it is instructive to study these diagrams, just to show
+that the sigma model is infrared-stable, we do not need the details
+of the diagrams.  All we need to know is that the effective action
+has $SO(3)$ symmetry.
+So what possible terms could be generated in the effective action?
+\begin{itemize}
+
+\item A potential $V(\Omega)$  is not possible, because there is no
+$SO(3)$-invariant function on $S^2$.  This is the basic reason that, given
+the $SO(3)$ symmetry, the sigma model is infrared stable.  A potential
+function would change the picture completely.  For instance, a generic
+potential would have an isolated, nondegenerate minimum, giving us
+a unique vacuum with an infrared-trivial massive theory, in contrast
+to a continuous family of vacua associated with spontaneously broken $SO(3)$.
+
+\item
+The only term with only two derivatives that respects all the symmetries
+of the problem is $(\partial\Omega)^2$ itself.  So quantum corrections
+due to diagrams with $w$ fields should definitely be expected to modify
+the coefficient of this term.
+
+\item Other possible terms like $((\partial\Omega^2)^2$ and
+$\partial\Omega\,\nabla^2(\partial\Omega)$ have more than two derivatives
+and are more and more irrelevant.
+\end{itemize}
+
+So the leading infrared behavior is determined by an effective action of 
+the form
+$\frac1{f^2}(\partial\Omega)^2$ with
+$$\frac1{f^2}=\frac{\rho_0^2}{2\lambda}+\text{ loop corrections}.$$
+When this is expanded in Riemann normal coordinates about a given
+vacuum, that is a given point $P\in G/H$, one gets interactions
+(of which the first was sketched above) that involve the Riemann tensor
+of $G/H$ and its covariant derivatives.
+If one uses these interactions to compute scattering amplitudes
+involving Goldstone bosons with small momenta of order $k$, the
+tree level amplitudes are all proportional to $k^2$ for $k$ near zero,
+as the interaction terms all contain precisely two derivatives.  
+Loop contributions are smaller for $k\to 0$, since the interactions
+are irrelevant in the infrared.  To be more precise,
+loop
+amplitudes all either (i) renormalize the constant $f$ in the
+$SO(3)$-invariant Lagrangian, or (ii) give corrections to the scattering
+amplitudes that vanish faster than $k^2$ for $k\to 0$.
+
+Hence, the terms of order $k^2$ in the Goldstone boson scattering
+are all completely determined by the one constant $f$ (or more generally
+by the choice of a $G$-invariant metric on the homogeneous space $G/H$).
+In the 1960's, it was discovered that the low energy scattering of pions
+beautifully fits such a description, with $G=SU(2)\times SU(2)$ and
+$H$ a diagonal $SU(2)$.  This is how it was discovered that the strong
+interactions have a spontaneously broken approximate chiral symmetry;
+the discovery played a very major role in the subsequent development of
+physics.
+
+What happens if one wants to compute terms in the Goldstone boson
+scattering of higher order than $k^2$?  It is clear that in order $k^4$,
+new constants will enter that can only be determined from microscopic
+calculations (or experiment), since there are $G$-invariant interactions
+with four derivatives (such as the $((\partial\Omega)^2)^2$ term found
+above from the explicit tree diagram considered).  However, interestingly,
+in four spacetime dimensions, the lowest order correction to the $k^2$
+amplitude for Goldstone bosons is not of order $k^4$ but of order
+$k^4\ln k$.
+It comes from a loop diagram 
+
+\centerline{\epsfxsize=2in\epsfbox{feyn2.eps}}
+\centerline{\quad}
+
+\noindent
+with vertices drawn from the two-derivative part of the Lagrangian,
+and hence is uniquely detemined in terms of the same constant $f$ that
+controls the $k^2$ terms in the scattering amplitudes.  The analysis
+of low-energy Goldstone boson interactions via the ideas I have explained
+is known as ``current algebra.''  In particular, via current algebra
+relations, one can deduce from experiment what is the broken symmetry
+group $G$, and many of the parameters in the $G$-invariant effective 
+Lagrangian.
+
+One final comment about symmetry-breaking examples such as this one: 
+if we begin with a $G$-invariant microscopic Lagrangian
+$\lg_{\text{micro}}$ which we perturb to
+$$\lg_{\text{micro}}+\varepsilon(\delta\lg)$$
+with the term $\delta\lg$ not being $G$-invariant, then  in the infrared we
+will get
+$${1\over f^2}(\partial\Omega)^2+\varepsilon V(\Omega)+O(\varepsilon^2),$$
+with $V(\Omega)$ being a non-$G$-invariant operator -- of which the most
+relevant part is of course a potential with no derivatives, as suggested
+in the notation $V$.
+$V(\Omega)$ is highly constrained by the fact that it must transform
+under $G$ the same way that $\delta\lg$ does.  For example, in the case
+of strong interactions, a small $\delta\lg$ term, breaking $SU(2)\times SU(2)$
+to a diagonal $SU(2)$, is actually present; it selects a unique vacuum
+from what would otherwise be a continuous family, and gives small masses
+to the pions.  In current algebra studies of pions, one really takes the
+momentum $k$ to be of order the pion mass.
+
+\section{Which spins?}
+
+Now we consider in a general way
+infrared-free theories in $4$ dimensions.
+(The considerations that follow generalize above 4 dimensions but
+become trivial below dimension 4).  The general discussion seems to suggest
+that infrared-free theories might have massless particles of any spin.
+But in practice, in all interesting examples I am familiar with, one
+can argue {\it a priori}
+that any massless particles will have 
+spins $0$, $1/2$ or $1$.
+
+
+Most theories of interest can be formulated not just on flat ${\bf R}^4$,
+but on a more general curved $4$-manifold $M^4$ with a general metric $g$.
+In fact, any theory that is part of the description of nature has this
+property, since general relativity is part of nature and in nature,
+space-time is curved!
+In quantum field theory, the ability to work on a curved space-time
+implies the existence of a very special operator,
+called the stress tensor or energy-momentum tensor $T_{\mu\nu}(x)$.
+It measures the response to a change in the metric tensor $g$.
+We suppose that  a theory is formulated with a general $g$ by a Lagrangian
+$\lg(\phi_i;g)$, 
+which  is invariant under diffeomorphisms acting both on the $\phi_i$ and on
+$g$. $g$ is not one of the fields of the theory -- it is arbitrary
+but is held fixed in studying the classical or quantum dynamics of the $\phi_i$
+-- and this diffeomorphism invariance means that the theory,
+if formulated in a spacetime $(M,g)$, really depends on $g$ only up to
+diffeomorphism. In this setup,
+the stress tensor is
+defined as 
+$$T_{\mu\nu}={\delta \lg\over \delta g^{\mu\nu}}.$$
+This implies obviously that $T$ is a symmetric tensor
+$$ T^{\mu\nu}=T^{\nu\mu}.$$
+$T$ can also be shown to obey
+$${D_\mu}T^{\mu\nu}=0$$
+by virtue of diffeomorphism invariance.
+If our theory is actually {\it conformally invariant}, then
+$T$ is traceless, that is $g^{\mu\nu}T_{\mu\nu}=0$.
+
+Having such a stress tensor leads to powerful statements even if
+one specializes to the case that $M$ is flat Euclidean space. For instance,
+last fall, when we axiomatized quantum field theory, we required
+Poincar\'e invariance, with conserved charges $Q(K)$ for every Killing
+vector field $K$ in spacetime.  The existence of a conserved, symmetric
+stress tensor is a local statement that leads to Poincar\'e invariance
+globally.  Given any Killing vector field $K$, one uses the Killing
+vector equation (which reads $D_\mu K_\nu+D_\nu K_\mu=0$) plus symmetry
+and conservation of $T$ to prove that the current
+$$J^\nu(K)=K_\mu T^{\mu\nu}$$
+is conserved.  Then one obtains the conserved charge
+$$Q(K)=\int_{\Sigma^{n-1}}\hstar J(K)$$
+where the integral is taken over an initial value  hypersurface
+(such as time zero).
+
+I have presented this as if one needs to have a Lagrangian
+so as to deduce the existence of a stress tensor $T=\delta\lg/\delta g$.
+Though this is  a powerful approach, one can also argue more abstractly.
+Consider any theory which can be formulated for any metric on $M$.
+To define an operator $T(y)$, we must give a definition,
+for any   specified $n$
+points $x_1$, \dots, $x_n$ on $M^4$ distinct from each other and from $y$
+and operators $\cO_1,\dots, \cO_n$,
+the correlation function $\langle\cO_1(x_1)\cdots\cO_n(x_n)T(y)\rangle_g$
+(here the subscript serves to emphasize that the correlation function depends 
+on 
+a metric $g$).
+We define this as the derivative of  $\cO_1(x_1)\cdots\cO_n(x_n)\rangle_g$
+with respect to $g$:
+$$
+\frac{\delta}{\delta g(y)}\langle \cO_1(x_1)\cdots\cO_n(x_n)\rangle_g
+=\langle\cO_1(x_1)\cdots\cO_n(x_n)T(y)\rangle_g.
+$$
+The reader should verify that this definition agrees
+with the previous one in case a Lagrangian exists. $T$ as defined in this
+way is obviously symmetric; it is conserved if the theory depends only
+on the diffeomorphism class of the metric $g$.  Many of the properties
+of a local quantum field operator follow readily from this definition
+of $T$, and it is plausible to believe that they all do in general.
+
+
+In any event,\footnote{Except in studying quantum gravity, which
+has a very different flavor from quantum field theory in 
+a fixed spacetime, which is the subject of our lectures this spring.} 
+one normally considers in practice theories that have a local,
+conserved, symmetric (and of course gauge-invariant)
+stress tensor.  As I have essentially already
+noted, any theory that appears in nature has this property, since $T$
+appears directly in the Einstein equations!
+
+Existence of $T$ leads\footnote{S. Weinberg and E. Witten,
+{\it Limits on massless particles}, Phys. Lett. B {\bf 96} (1980), 59--62.}
+to sharp restrictions on possible massless particles.
+The possible spins of a massless particle in a theory with a stress tensor
+are $0,1/2$, and $1$.
+A further and analogous restriction is the following.  Let $J^\mu$ be
+a conserved current associated with a ``global symmetry.''  Thus,
+$J$ transforms as a vector under Poincar\'e, and the conserved charge
+$$Q(J)=\int *J$$
+is Poincar\'e invariant.  Then $Q$ annihilates any massless particle of spin
+1.   
+
+The proofs are so similar that we consider the two cases together.  
+In four dimensions, 
+denote by $|p,j\rangle$, a massless one-particle
+state of momentum $p$ and spin $j$
+(in general $j\in {\bf Z}/2$, and let $|p',j\rangle$ be a state of different
+momentum in the same Poincar\'e representation.
+ Let $|p,j\rangle$  be an eigenstate of $Q$ with
+eigenvalue $q$.   Consider the matrix elements
+$\langle p',j|J^\nu|j,p\rangle $ and
+$\langle p',j|T^{\mu\nu}|j,p\rangle$.  The latter cannot vanish
+at all, and the former cannot vanish unless $q=0$.
+For  in the limit that $p'\to p$,
+ we have by Lorentz invariance
+\begin{enumerate}
+\item $\langle p',j|J^\nu|j,p\rangle \sim  p^\nu$, and
+
+\item $\langle p',j|T^{\mu\nu}|j,p\rangle \sim p^\mu p^\nu$
+\end{enumerate}
+The  proportionality constant is $q$ in the first case and 1 in the second, 
+since
+(as $Q$ and the momentum operators are obtained by integration of
+$J$ or $T$) matrix elements of $J$ or $T$ with identical initial
+and final states measure the charge or momentum of the state.
+
+
+On the other hand, one can prove using Lorentz invariance that for all
+$p'\not= p$, these matrix elements vanish in the first case for spin greater
+than $1/2$, and in the second case for spin greater than 1.
+The proof goes by noting first for for $p'\not= p$, the subgroup
+of the Lorentz group that leaves fixed both $p$ and $p'$ is a copy
+of $SO(2)$ (or $SO(n-2)$ if we are in $n$ spacetime dimensions;
+the present considerations degenerate below four dimensions as $SO(n-2)$
+is then trivial).  One simply shows that  $SO(2)$ invariance of 
+$\langle p',j|J^\nu|j,p\rangle \sim Q p^\nu$ and 
+ $\langle p',j|T^{\mu\nu}|j,p\rangle$,
+  assuming that these matrix elements are nonzero, implies that 
+  the spin is in absolute value $\leq 1/2$ or $\leq 1$, in the two cases.
+ A convenient way to perform this computation is to go to a Lorentz
+ frame in which (writing the time coordinate first), $p=(1,1,0,0)$
+ and $p'=(1,-1,0,0)$.  The $SO(2)$ that leaves fixed both $p$ and $p'$
+ is the rotation of the last two coordinates.  Under the generator
+ of this $SO(2)$, the states $|j,p\rangle$ and $|j,p'\rangle$ have
+ respectively eigenvalue $j$ and $-j$.  The minus sign for the $|j,p'\rangle$
+ state,
+ which is crucial, arises because it describes a particle
+  moving in the opposite direction
+ from $|j,p\rangle$; they each have the same spin relative to their
+ own directions of motion, but opposite spins if referred to a fixed axis.
+ So $\langle p',j|J^\nu|j,p\rangle $ or 
+ $\langle p',j|T^{\mu\nu}|j,p\rangle$
+ can be nonzero only if, in the $SO(2)$ action on $J$ or $T$, there is
+ a term with spin or eigenvalue $-2j$.  As the components of $J$
+ transform under $SO(2)$ with
+  spin $\leq 1$ in absolute value, while for $T$
+ one has components of spin $\leq 2$, we get $|j|\leq 1/2$ or
+ $|j|\leq 1$ in the two cases, as was claimed above.
+
+We can actually be somewhat more precise about this result.
+  We have so far used only representation
+theory, but in quantum field theory one has also a CPT theorem, which
+implies in four dimensions
+ that every massless particle of spin $j$ is accompanied by one of
+spin $-j$.  So spins $\pm 1/2$ will go together, and likewise spins $\pm 1$.
+
+In general dimension $n$, similar reasoning gives the following
+result.  The spin of a massless particle is classified by
+a representation of the ``little group''  $SO(n-2)$.  If a stress
+tensor exists, the allowed
+representations  for massless particles are
+ the 
+spinor representation(s), and exterior powers of the fundamental
+$n-2$-dimensional
+representation (including the trivial representation).\footnote{
+For $n-2$ divisible by four, the middle exterior power can
+be decomposed into self-dual or anti-self-dual pieces which are each
+{\it real}; one can be present without the other.}
+Global charges vanish except for massless particles transforming in the trivial
+or spinor representation.
+This $n$-dimensional
+ formulation is related to the statement in four dimensions
+as follows: $j=\pm 1/2$ correspond to the two spinor representations,
+while $j=0$ and $j=\pm 1$ come from the exterior powers of the fundamental
+representation.
+
+
+\section{Why are particles massless?}
+
+If the couplings in a theory are generic, massless particles must be massless
+for a reason.  One possible reason is supersymmetry, but we won't discuss that
+now.  Other possible reasons 
+are as follows.
+
+Spin $0$ particles are massless when they are Goldstone bosons, that is, when
+there is a broken symmetry.  Spin $1/2$ particles are massless when they are
+chiral fermions; their masslessness is due to an {\it unbroken}\/ chiral
+symmetry.  This means simply the following:
+the CPT theorem says that if one has $n$ massless particles of spin $1/2$,
+one also has $n$ such particles of spin $-1/2$.  If there is an
+unbroken
+symmetry group $G$ and the massless particles of spin $1/2$ transform
+in a representation $R$ of $G$, then the massless particles of spin $-1/2$
+transform, by the CPT theorem, in the representation $\overline R$ (the
+complex  conjugate of $R$).  If $R$ and $\overline R$ are distinct.
+this spectrum cannot be perturbed in a $G$-invariant way to a give
+masses to the fermions.
+
+The reasons just mentioned are really the only known reasons to have
+massless particles of spin 0 or 1/2 without supersymmetry and without
+adjusting some parameters to make particles massless.  For spin 1 the
+situation is somewhat different.
+The Poincar\'e representation
+of a  massless spin 1 particle, in four (or more) dimensions, simply cannot
+be perturbed to give a mass to the particle, unless there is 
+a massless spin 0 particle that can combine with it in a Higgs mechanism
+as will be discussed in the second half of
+lecture.  If our massless spin 0 particles
+are Goldstone bosons, then the broken symmetries that shift  them
+ensure that they cannot participate and disappear from the massless spectrum
+in a Higgs mechanism.  So as long as the massless spin 0 particles
+are Goldstone bosons, and {\it as long as the theory is infrared-free},
+the existence of massless spin 1 particles is stable just from Poincar\'e
+symmetry.
+
+This
+ depends heavily on the theory being infrared-free
+since we applied group theory to one-particle states.  If interactions
+are important even at low energies, the states with different numbers of
+particles can ``mix,'' and we cannot draw a conclusion just by applying
+Poincar\'e invariance to the one-particle states.
+
+What interactions can massless particles of these types have?
+In the case of spin $0$ particles, which we assume to be Goldstone bosons,
+there are no relevant interactions.   We have already seen at the beginning
+of this lecture that there are no relevant or marginal
+interactions of Goldstone
+bosons only.  There are likewise no relevant or marginal 
+interactions of fermions
+only above two dimensions -- we explored such questions in the fall term --
+and with similar arguments and a little more care, one can show that
+there are no relevant or marginal couplings of Goldstone bosons to
+fermions.
+
+
+
+Spin $1$ particles are of a different nature, since they correspond to
+gauge fields, and gauge fields {\it can}\/ have relevant interactions in
+the infrared.  If $G$ is the gauge group and $A$ is the connection, the
+Lagrangian
+$$\int\frac1{\gee^2}\,|F_A|^2d^4x$$ is nonlinear.
+It contains couplings that in four dimensions
+are marginal classically. Whether the interactions
+are  relevant or
+irrelevant quantum mechanically
+depends on the behavior of the $\beta$-function.  An irrelevant
+nonlinearity in the infrared will allow the gauge theory to function as an
+effective description.  On the other hand, if the nonlinearity is relevant
+in the infrared, then the gauge theory is {\it not}\/ the answer.  (In the
+intermediate case when $\beta=0$ we would get a non-free theory in the
+infrared.)
+
+Goldstone bosons are always invariant under gauge symmetries -- a gauge
+group acting on them would violate the global symmetry that leads to
+having Goldstone bosons in the first place.
+So if we see massless spin $1$ fields in the infrared without adjusting
+parameters to make it so, we should expect that  either $G$ must be
+abelian, or else there must be enough  fermions in large enough
+representations of $G$ so that $\beta>0$.
+To explain their masslessness, the 
+ fermions are chiral (that is, the states of $j=1/2$ and $j=-1/2$
+transform differently) either under the gauge group itself,
+or under some unbroken global symmetry group that commutes with the
+gauge group.
+\end{document}
+
+
+
+
+

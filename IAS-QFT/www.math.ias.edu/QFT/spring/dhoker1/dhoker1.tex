@@ -1,0 +1,783 @@
+%% This is a plain TeX file
+%%
+\magnification=1200
+\input epsf
+
+\font\dotless=cmr10 %for the roman i or j to be
+                    %used with accents on top.
+                    %(\dotless\char'020=i)
+                    %(\dotless\char'021=j)
+\font\itdotless=cmti10
+\def\itumi{{\"{\itdotless\char'020}}}
+\def\itumj{{\"{\itdotless\char'021}}}
+\def\umi{{\"{\dotless\char'020}}}
+\def\umj{{\"{\dotless\char'021}}}
+\font\smaller=cmr5
+\font\boldtitlefont=cmb10 scaled\magstep2
+\font\ninerm=cmr9
+\font\dun=cmdunh10 scaled\magstep1
+
+\footline={\hfil {\tenrm I.\folio}\hfil}
+
+\def\eps{{\varepsilon}}
+\def\kap{{\kappa}}
+\def\lam{{\lambda}}
+
+\def\undertext#1{$\underline{\vphantom{y}\hbox{#1}}$}
+\def\nspace{\lineskip=1pt\baselineskip=12pt%
+     \lineskiplimit=0pt}
+\def\dspace{\lineskip=2pt\baselineskip=18pt%
+     \lineskiplimit=0pt}
+
+\def\w{{\mathchoice{\,{\scriptstyle\wedge}\,}
+  {{\scriptstyle\wedge}}
+  {{\scriptscriptstyle\wedge}}{{\scriptscriptstyle\wedge}}}}
+\def\plus{{\scriptscriptstyle +}}
+\def\xdot{\dot{x}}
+
+\def\Diff{\rm Diff} \def\Area{\hbox{\rm Area}}
+\def\Map{\rm Diff}  \def\Met{\rm Met}
+\def\Maps{\rm Maps} \def\Vol{\rm Vol}
+\def\SU{\rm SU}
+
+\def\fbar{\bar{f}}
+\def\kbar{\bar{k}}
+\def\zbar{\bar{z}}
+\def\Abar{\bar{A}}
+\def\Sbar{\bar{S}}
+
+%These two files (in this order!!) are necessary
+%in order to use AMS Fonts 2.0 with Plain TeX
+
+\input amssym.def
+\input amssym.tex
+
+%Capital roman double letters(Blackboard bold)
+\def\db#1{{\fam\msbfam\relax#1}}
+
+\def\dbA{{\db A}} \def\dbB{{\db B}}
+\def\dbC{{\db C}} \def\dbD{{\db D}}
+\def\dbE{{\db E}} \def\dbF{{\db F}}
+\def\dbG{{\db G}} \def\dbH{{\db H}}
+\def\dbI{{\db I}} \def\dbJ{{\db J}}
+\def\dbK{{\db K}} \def\dbL{{\db L}}
+\def\dbM{{\db M}} \def\dbN{{\db N}}
+\def\dbO{{\db O}} \def\dbP{{\db P}}
+\def\dbQ{{\db Q}} \def\dbR{{\db R}}
+\def\dbS{{\db S}} \def\dbT{{\db T}}
+\def\dbU{{\db U}} \def\dbV{{\db V}}
+\def\dbW{{\db W}} \def\dbX{{\db X}}
+\def\dbY{{\db Y}} \def\dbZ{{\db Z}}
+
+\font\teneusm=eusm10  \font\seveneusm=eusm7 
+\font\fiveeusm=eusm5 
+\newfam\eusmfam 
+\textfont\eusmfam=\teneusm 
+\scriptfont\eusmfam=\seveneusm 
+\scriptscriptfont\eusmfam=\fiveeufm 
+\def\scr#1{{\fam\eusmfam\relax#1}}
+
+
+%Upper-case Script Letters:
+%\def\scr#1{{\fam\eusmfam\relax#1}}
+
+\def\scrA{{\scr A}}   \def\scrB{{\scr B}}
+\def\scrC{{\scr C}}   \def\scrD{{\scr D}}
+\def\scrE{{\scr E}}   \def\scrF{{\scr F}}
+\def\scrG{{\scr G}}   \def\scrH{{\scr H}}
+\def\scrI{{\scr I}}   \def\scrJ{{\scr J}}
+\def\scrK{{\scr K}}   \def\scrL{{\scr L}}
+\def\scrM{{\scr M}}   \def\scrN{{\scr N}}
+\def\scrO{{\scr O}}   \def\scrP{{\scr P}}
+\def\scrQ{{\scr Q}}   \def\scrR{{\scr R}}
+\def\scrS{{\scr S}}   \def\scrT{{\scr T}}
+\def\scrU{{\scr U}}   \def\scrV{{\scr V}}
+\def\scrW{{\scr W}}   \def\scrX{{\scr X}}
+\def\scrY{{\scr Y}}   \def\scrZ{{\scr Z}}
+
+
+
+\def\scr#1{{\fam\eusmfam\relax#1}}
+
+\def\scrH{{\scr H}}
+\def\scrL{{\scr L}}
+
+\line{\dun --- DRAFT ---\hfill{\rm IASSNS-HEP-97/72}}
+
+\bigskip\bigskip
+\centerline{\boldtitlefont Lecture I}
+\bigskip
+\centerline{\boldtitlefont Point Particles 
+ {\ninerm vs} Strings}
+
+\medskip
+\centerline{Eric D'Hoker}
+
+\frenchspacing
+
+\dspace
+\bigskip
+In physics, the structure of matter is understood in
+terms of the dynamics of smaller constitutents.
+Atoms are composed of nuclei and electrons, nuclei are
+made up of protons and neutrons, which in turn are
+bound states of quarks.
+To the present day limit of distance scales up to
+approximately
+$10^{-15}$ cm, electrons and quarks do not show any
+substructure, and are viewed as ``elementary
+particles''.
+(Which particles are elementary in this way may change
+over time, since at smaller distance scales
+substructure may be found in terms of more elementary
+particles.)
+In quantum field theory, such elementary particles are
+described as {\it points} in space.
+
+Forces between particles result from exchanges between
+them of other elementary particles, and the
+fundamental interactions occur in a {\it local} way,
+at coincident time at the same point in space.
+For example electro-magnetic interaction forces
+between charged particles result from the exchange of
+photons, with local couplings to the charged
+particles.
+$$
+\vbox{\epsfxsize=2in\epsfbox{fig1.eps}}
+$$
+
+\noindent
+The photon thereby transfers momentum and produces a
+force, the Coulomb force.
+
+Quantum field theory of point particles (QFT) has been
+extremely successful in describing quantitatively
+three out of the four fundamental forces of Nature by
+{\it Yang-Mills theory}: electro-magnetic, weak and
+strong interactions.
+However, no consistent quantum field theory
+description appears to be available (or to exist?) for
+the force of gravity.
+One thus seeks an enlargement of the framework of QFT
+in which all forces of nature fit consistently with
+the known physical principles of quantum mechanics and
+(special and general) relativity.
+
+String theory to date seems to be the only such
+candidate.
+In fact my task will be to show that consistent string
+theories automatically contain gravity, supersymmetry
+and under certain circumstances Yang-Mills.
+
+\bigskip\noindent
+A. {\bf Strings}
+
+In string theory, particles are not described as
+points, but instead as strings: one-dimensional extended
+objects.
+If $M_s$ and $M(\sim\dbR\times M_s)$ denote the space and
+space-time manifolds respectively, then we picture
+strings as follows:
+
+\centerline{\null\qquad\epsfxsize=5.25in\epsfbox{fig2.eps}}
+
+While the point particle sweeps out a one-dimensional {\it
+worldline}, the string sweeps out a {\it worldsheet},
+i.e. a $2$-dim real surface.
+For a {\it free string}, the topology of the
+worldsheet is a {\it cylinder} (in the case of a
+closed string) or a {\it sheet} (for an open string).
+
+Roughly, different elementary particles correspond to
+different vibration modes of the string jus as
+different minimal notes correspond to different
+vibrational modes of musical string instruments.
+
+It will turn out that the physical size of strings is
+set by gravity, more precisely the Planch length 
+$\ell_P=\sqrt{G_N\hslash c^{-3}}\sim 10^{-33}$ cm.
+This scale is so small that we effectively only see
+point particles at our distance scales.
+Thus, for length scales much larger than $\ell P$, we
+expect to recover a quantum field theory description
+of point particles, plus typical string corrections
+that represent physics at the Planck scale.
+
+Extended objects arise in many areas of physics.
+For examples {\it flux tubes} arise in superconductivity, 
+and are used to describe the physics of
+cosmic strings and vortices.
+However, those objects do have a transverse size, and
+are only {\it approximately one dimensional}.
+String theory considered here will always involve
+strictly one-dimensional objects, suitable for
+the problems of quantum gravity and particle physics.
+In certain instances, it may be possible to use the
+strictly one-dimensional string modules as
+approximations to the dynamics of flux tubes.
+
+\bigskip\noindent
+B. {\bf Interactions}
+
+While the string itself is extended, the fundamental
+interactions are {\it local}, just as for point
+particles.
+The interaction takes place when strings overlap in
+space at the same time.
+
+For {\it closed} strings
+$$
+\vbox{\epsfxsize=4in\epsfbox{fig3.eps}}
+$$
+
+For {\it open} strings, end points can join
+$$
+\vbox{\epsfxsize=4in\epsfbox{fig4.eps}}
+$$
+
+%\vfill\supereject
+
+For consistency, as soon as an interacting theory
+contains open strings, it must also contain closed
+strings, since end points can join.
+Such theories are ``{\it open string theories}''.
+$$
+\vbox{\epsfxsize=4.5in\epsfbox{fig5.eps}}
+$$
+On the other hand, it is consistent to have a theory
+of only closed strings, called  {\it closed string
+theories}.
+Other interactions result from combining the interactions
+defined above
+$$
+\vbox{\epsfxsize=4.5in\epsfbox{fig6.eps}}
+$$
+
+In point particle theories, the fundamental
+interactions are read off from the QFT Lagrangian.
+An interaction occurs at a {\it geometrical point},
+where the worldlines join and cease to be a manifold.
+In Lorentz invariant theories (with $M$ flat Minkowski
+space-time), the interaction point is Lorentz
+invariant.
+To specify how the point particles interact,
+additional data must be supplied at the interaction
+point, giving rise to {\it many possible} distinct
+quantum field theories.
+
+\centerline{\null\qquad\epsfxsize=5.0in\epsfbox{fig7.eps}}
+
+In string theory, the interaction point {\it depends}
+upon the Lorentz frame chosen to observe the process.
+In the figure above, equal time slices are indicated
+from the point of view of two different Lorentz
+frames, schematially indicated by $t$ and $t'$.
+The closed string interaction, as seen from frames $t$
+and $t'$, occurs at times $t_2$ and $t'_2$ and at
+(distinct) points $P$ and $P'$ respectively.
+
+Lorentz invariance of interaction forbids that any 
+point on the worldsheet be singled out as interaction
+point. 
+Instead, the interaction results purely from the
+joining and splitting of strings.
+While free closed
+strings are characterized by their topology being
+that of a cylinder, interacting strings are
+characterized by the fact that their associated
+worldsheet is connected to at least 3 strings,
+incoming and/or outgoing.
+
+As a result, the free string determines the nature of
+the interactions completely, leaving only the string
+coupling constant undetermined.
+
+\vfill\eject
+
+\noindent
+%\medskip\noindent
+{\it Additional structure}
+
+\item{$\scriptstyle\bullet$}
+Oriented strings: \ all worldsheets are assumed to be 
+orientable.
+
+\medskip
+\item{$\scriptstyle\bullet$}
+Non-oriented strings: \ worldsheets that are
+non-orientable such as the M\"obius strip, Klein
+bottle,  are included as  possible
+configurations, as well. 
+
+\medskip\noindent
+We shall almost exclusively deal with {\it oriented}
+strings only.
+
+\bigskip\noindent
+C. {\bf Loop expansion -- Topology of closed surfaces}
+
+For simplicity consider closed oriented strings only,
+so that the associated worldsheet is also oriented.
+A general string configuration describing the process
+in which $M$ incoming strings interact and produce $N$
+outgoing strings looks at the topological level like
+a closed surface with $M+N=E$ boundary components and
+any number of handles.
+$$
+\vbox{\epsfysize=2.0in\epsfbox{fig8.eps}}
+$$
+
+\bigskip
+The internal loops may arise when virtual particle
+pairs are produced, just as in quantum field theory.
+For example, a Feynman diagram in quantum field theory
+that involves a loop is shown below together with its
+ corresponding in  string theory:
+$$
+\vbox{\epsfysize=1.0in\epsfbox{fig9.eps}}
+$$
+
+Surfaces associated with closed oriented strings have
+two topological invariants: the {\it number of
+boundary components $E$} (as we shall see later,
+boundary components may be shrunk to punctures, under certain
+conditions), and the number $h$ of {\it handles} on
+the surface, which equals the {\it genus}.
+
+When $E=0$, we just have the topological
+classification of compact oriented surfaces without
+boundary:
+$$
+\vbox{\epsfysize=1.5in\epsfbox{fig10.eps}}
+$$
+
+\noindent
+Rendering $E>0$ is achieved by removing $E$ discs
+from the surface.
+
+Recall that in quantum field theory an expansion in
+powers of Planck's constant $\hslash$ yields an
+expansion in the number of {\it loops} of the
+associated Feynman diagram, for a given number of
+external states:
+$$
+\hslash^{E+h-1}
+\left\{ \eqalign{
+\hslash &\quad \hbox{for every propagator}\cr
+\hslash^{-1} &\quad \hbox{for every vertex}\cr
+-1 &\quad \hbox{for overall momentum conservation.}\cr}
+\right.
+$$
+Thus, in string theory we expect that, for a given
+number of external strings $E$, the topological
+expansion genus by genus should correspond to a {\it
+loop} expansion as well.
+(See Kazhdan's 4-th lecture.)
+
+In quantum field theory, there are in general many
+Feynman graphs that correspond to an amplitude with a
+given number of external particles and a given number
+of loops,
+e.g. for $E=4$
+ external particles and $h=1$ loop in $\phi^3$ theory
+we have
+$$
+\vbox{\epsfysize=1.5in\epsfbox{fig11.eps}}
+$$
+The same process in string theory (for closed oriented
+strings) is described by just a single diagram
+$$
+\vbox{\epsfysize=1.0in\epsfbox{fig12.eps}}
+$$
+Later on in the lectures we will show that the single
+string diagram reproduces all the field theory
+diagrams.
+The different field theory diagrams arise from
+different cells in a {\it cell-decomposition of the
+moduli space of surfaces}.
+
+\bigskip\noindent
+D. {\bf Transition Amplitudes for Strings}
+
+The fundamental quantities we are interested in
+examining in a quantum field theory are the transition
+amplitudes for processes in which a number of $M$
+incoming particles scatter to produce $N$ outgoing
+particles.
+(The square modulus of the amplitude yields the
+probability for this process to take place.)
+
+The only way we have today to define string theory is
+by giving a {\it rule}  for the evaluation of
+transition amplitudes, order by order in the loop
+expansion, i.e. genus by genus.
+The rule is to assign a relative weight to a 
+given configuration and then to sum over all
+configurations.
+To make this more precise, we first describe the space
+of configurations.
+$$
+\vbox{\epsfysize=1.75in\epsfbox{fig13.eps}}
+$$
+\bigskip
+We assume that $\Sigma$ and $M$ are differentiable
+manifolds, of dimensions $2$ and $D$ respectively, and
+that $x$ is a continuous map from $\Sigma$ to $M$.
+If $\xi^m$, $m=1,2$, are local coordinates on $\Sigma$
+and $x^\mu$, $\mu=1,\ldots,D$, are local coordinates on
+$M$ then the map $x$ may be described by functions
+$x^\mu(\xi^m)$ which are continuous.
+
+To each configuration is associated a weight
+$$
+e^{-S[x,\Sigma,M]},\qquad\qquad S\in\dbC
+$$
+and the transition amplitude for specified external
+strings (incoming and outgoing) is obtained by summing
+over all surfaces $\Sigma$ and all possible maps
+$x$.
+$$
+A=\sum\limits_{{\rm surfaces}~\Sigma} \sum\limits_{x}
+e^{-S[x,\Sigma,M]}
+$$
+
+We now need to specify each of these ingredients:
+
+\medskip\noindent
+1) \
+We assume $M$ to be a $D$-dimensional  Riemannian manifold,
+with metric $(\,\,,\,\,)_G$.
+A special case is flat Euclidean space-time $\dbR^D$.
+The space-time metric is assumed {\it fixed}.
+$$
+ds^2=(dx,dx)_G=\mathop{\Sigma}\limits_{\mu,\nu=1}^D
+G_{\mu\nu}(x)dx^\mu\otimes dx^\nu\eqno{(1.1)}
+$$
+
+\medskip
+The physical world is of course not described by a Riemann
+manifold, but rather by a pseudo-Riemann space, such
+as Minkowski space-time.
+We shall always take as a starting definition the
+Riemannian situation, and analytically continue to
+pseudo-Riemannia spaces to obtain physical transition
+amplitudes.
+For flat Euclidean space-time, this continuation is
+analogous to the correspondence between Schwinger and
+Wightman functions in QFT (see Kazhdan's lectures).
+
+\medskip\noindent
+2) \
+The metric $G$ on $M$ induces a metric on $\Sigma$:
+$\gamma=x^*(G)$
+$$
+\eqalign{
+\gamma &=\gamma_{mn}d\xi^m\otimes d\xi^n\cr
+\gamma_{mn} &=G_{\mu\nu}{\partial x^\mu\over\partial
+\xi^m}{\partial x^\nu\over\partial\xi^n}\cr}
+$$
+This metric is non-negative, but depends upon $x$.
+It is advantageous to introduce an intrinsic
+Riemannian metric $g$ on
+$\Sigma$, independently of $x$; in local coordinates,
+we have
+$$
+g=g_{mn}(\xi)d\xi^m\otimes d\xi^n.\eqno{(1.2)}
+$$
+
+\medskip\noindent
+3) \ 
+The worldsheet action $S[x,\Sigma,M]$ will in general
+depend on the map $x$.
+We choose $S$ to be intrinsic, with the following
+properties
+$$
+\cases{
+\Diff^{\plus}(\Sigma) \quad\,\,\,\hbox{\rm invariant} &\cr
+\Diff(M) \qquad\hbox{\rm invariant} &\cr
+\hbox{\rm local in its dependence on } x,g, 
+\hbox{ \rm and } G &\cr
+\hbox{\rm renormalizable as a QFT.}\cr}
+$$
+
+A natural intrinsic candidate for $S$ is the area of
+$x(\Sigma)$, which gives the {\it Nambu-Goto action}
+$$
+\Area\left(x\left(\Sigma\right)\right)=
+\int\nolimits_{\Sigma}d\mu_\gamma=\int\nolimits_{\Sigma}
+d^2\xi\sqrt{\det\,\gamma_{mn}}\eqno{(1.3)}
+$$
+It depends only upon $G$ and $x$, but not on $g$.
+The difficulty with this action is that it is
+non-polynomial in $x$ and its derivatives, even in flat
+space-time.
+Its quantization is difficult to define unambiguously.
+
+Instead, we take as starting point the {\it Polyakov
+action}
+$$
+\eqalign{
+S[x,g,G] &=\kap\int\nolimits_{\Sigma}(dx,*dx)_G\cr
+&=\kap\int\nolimits_{\Sigma}d\mu_g
+g^{mn}\partial_m x^\mu \partial_n
+x^\nu G_{\mu\nu}(x)\cr}
+\eqno{(1.4)}
+$$
+Here $\kap$ is the {\it string tension}, which is a
+positive constant with dimension of inverse length
+square.
+The stationary points of $S$ with respect to $g$ are
+at $g^0=e^\phi \gamma$ for some function $\phi$ on
+$\Sigma$,
+and thus $S[x,g^0,G]\sim\Area\left(x(\Sigma)\right)$.
+
+The Polyakov action leads to well-defined transition
+amplitudes, obtained by integration over the space 
+$\Met(\Sigma)$ of all positive metrics on $\Sigma$ 
+for a given topology, as well as over the space of all
+maps $\hbox{Map }(\Sigma,M)$: We {\it define}
+$$
+A=\sum\limits_{{\scriptstyle\rm topologies}\atop
+{\scriptstyle \Sigma}}\int\nolimits_{{\rm
+Met}(\Sigma)}{1\over\scrN(g)}\int\nolimits_{{\rm
+Map}(\Sigma,M)}Dx\,e^{-S[x,g,G]},\eqno{(1.5)}
+$$
+and make the following remarks.
+
+\medskip
+\item{$\scriptstyle\bullet$}
+$\scrN$ is a normalization factor, to be determined
+later.
+
+\smallskip
+\item{$\scriptstyle\bullet$}
+The measures $Dg$ and $Dx$ are constructed from 
+$\Diff^{\plus}(\Sigma)$ and $\Diff(M)$ invariant $L^2$
+norms on $\Sigma$ and $M$.
+
+\smallskip
+\item{$\scriptstyle\bullet$}
+For fixed metric $g$, the action $S$ is
+well-known: \ its stationary points are the harmonic
+maps $x\colon\,\Sigma\to M$.
+Here, however, $g$ varies and in fact is to be
+integrated over.
+
+\item{}(This is a reflection of the difference between
+quantum field theory and strings.)
+
+\smallskip
+\item{$\scriptstyle\bullet$}
+For a general metric $G$, the action $S$ defines a
+{\it non-linear sigma model}, which is renormalizable
+because the dimension of $\Sigma$ is $2$.
+It would not in general be renormalizable in dimension
+higher than $2$, which is usually regarded as an
+argument against the existence of fundamental membrane
+theories.
+
+\bigskip\noindent
+E. {\bf Weyl Invariance and Vertex Operator
+Formulation}
+
+The action $S$ is also invariant under {\it Weyl
+rescalings} of the metric $g$ by a positive function
+on $\Sigma$:
+$$
+g\to e^{2\sigma}g\qquad\qquad
+\sigma\colon\,\Sigma\to\dbR.
+$$
+In general, Weyl invariance of the full amplitude
+may be spoiled by anomalies.
+We shall establish later on that Weyl invariance is a
+crucial ingredient to obtain a consistent theory.
+
+Assuming Weyl invariance of the full amplitude, the
+integral defining $A$ may be {\it simplified} in two ways.
+
+\medskip\noindent
+1)\enspace
+The integration over ${\rm Met}(\Sigma)$ effectively
+collapses to an integration over the {\it moduli space
+of surfaces}, which is finite dimensional, for each
+genus $h$.
+
+\smallskip\noindent
+2)\enspace
+The boundary components of $\Sigma$ --- characterizing
+external string states --- may be mapped to regular
+points on an underlying compact surface without
+boundary by conformal transformations.
+The {\it data}, such as momenta and other quantum
+numbers of the external states, are mapped into {\it
+vertex operators}.
+The amplitudes are now
+$$
+A=\sum\limits_{h=0}^\infty\int\nolimits_{\Met(\Sigma)}
+Dg{1\over\scrN(g)}\int\nolimits_{\Maps(\Sigma,M)}
+Dx\,V_1\ldots V_N e^{-S}\eqno{(1.6)}
+$$
+for suitable vertex operators $V_1,\ldots V_N$.
+We shall construct such vertex operators explicitly in
+Lecture 3.
+
+\bigskip\noindent
+F. {\bf More general actions}
+
+The action $S$ given above is not the most general one
+that satisfies the criteria we listed.
+Generalizations are possible when $M$ carries extra
+structure.
+
+\medskip
+\item{1)}
+$M$ carries a $2$-form $B\in\Omega^{(2)}(M)$, the
+so-called {it anti-symmetric tensor field}.
+The resulting contribution to the action is also that
+of a ``non-linear sigma model''"
+$$
+S_B[x,B]=\int\nolimits_{\Sigma}x^*(B)=
+\int\nolimits_{\Sigma}dx^\mu\w dx^\nu B_{\mu\nu}(x)
+\eqno{(1.7)}
+$$
+
+\smallskip
+\item{2)}
+$M$ may carry a {\it dilaton field}
+$\Phi\in\Omega^{(0)}(M)$ so that
+$$
+S_\Phi[x,\Phi]=\int\nolimits_{\Sigma}d\mu_g R_g\Phi(x).
+\eqno{(1.8)}
+$$
+where $R_g$ is the Gaussian curvature of $\Sigma$ for
+the metric $g$.
+
+\smallskip
+\item{3)}
+There may be a {\it tachyon field}
+$T\in\Omega^{(0)}(M)$ contributing
+$$
+S_T[x,T]=\int\nolimits_{\Sigma}d\mu_g T(x).
+\eqno{(1.9)}
+$$
+
+\bigskip\noindent
+G. {\bf Transition Amplitude for a single point particle}
+
+The transition amplitude for a single point particle
+could in fact be obtained in a  way analogous to how
+we prescribed string amplitudes.
+Let space-time be again a Riemannian manifold $M$, with
+metric $(\,\,,\,\,)_G$.
+The prescription for the transition amplitude of a
+particle travelling
+from a point $y\in M$ to a point $y'$ to $M$ is 
+expressible in terms
+of a sum over all (continuous) paths connecting $y$
+to $y'$:
+$$
+A(y,y')=\sum\limits_{{{\scriptstyle\rm paths}}\atop
+\scriptstyle{{\rm joining}~y~{\rm and}~y'}}e^{-S {\rm
+[path]}}
+$$
+Paths may be parametrized by maps from $C=[0,1]$ into $M$
+with $x(0)=y$, $x(1)=y'$.
+A simple worldline action for a massless
+particle is obtained by introducing a metric $g$ on
+$[0,1]$
+$$
+S[x,g]={1\over 2}\int\nolimits_{C}d\tau\,g(\tau)^{-1}
+\xdot^\mu\xdot^\nu G_{\mu\nu}(x)
+\qquad\qquad\xdot={dx\over d\tau}
+$$
+which is invariant under $\Diff^{\plus}(C)$ and
+$\Diff(M)$.
+
+The analogous prescription for the point particle
+transition amplitude is
+$$
+A(y,y')=\int\limits_{\Met(C)}Dg{1\over\scrN}
+\int\limits_{\Map(C,M)}Dx\,e^{-S[x,g]}
+$$
+
+\medskip
+Notice that for string theory, we had a prescription for
+transition
+amplitudes valid for all topologies of the worldsheet.
+For point particles, there is only the topology of the
+interval $C$, and we can only describe a single point
+particle, but not interactions with other point
+particles.
+To put those in, we would have to supply additional
+information.
+
+\medskip\noindent
+It is very instructive to work out the amplitude $A$
+by carrying out the integrations.
+The only $\Diff^{\plus}(C)$ invariant of $g$ is the
+length $L=\int_0^1d\tau\,g(\tau)$; all else is
+generated by $\Diff^{\plus}(C)$, and may be gauge-fixed 
+following the standard Faddeev-Popov procedure.
+Defining the normalization factor to be the volume
+of $\Diff(C)$: 
+$\scrN=\Vol(\Diff(C))$ we have $Dg=Dv\,dL$ and the
+transition amplitude becomes
+$$
+\eqalign{A(y,y') &=\int\nolimits_0^\infty dL\int
+  Dx\,e^{-{1\over 2L}\int\nolimits_0^1
+d\tau(\xdot,\xdot)_G}\cr
+&=\int\nolimits_0^\infty dL\Bigl<y'\vert
+e^{-L\square}\vert y\Bigr>=\Bigl<y'\vert
+{1\over\square}\vert y\Bigl>.\cr}
+$$
+Thus, the amplitude is just the Green function at
+$(y,y')$ for the Laplacian  (for Euclidean space-time)
+or the d'Alembertian (in the Minkowski case),
+and corresponds to the propagation of a massless particle.
+
+\bigskip\noindent
+H. {\bf Generalized Point Particle Propagation}
+
+The manifold $M$ may carry structure in addition to
+the metric $(\,\,,\,\,)_G$, which is reflected in the
+point particle action.
+
+\medskip
+\item{1.}
+An $U(1)$ line bundle on $M$ with connection $A$ gives rise to
+$$
+S_A=ie\int\nolimits_{C}x^*(A)=ie\int\nolimits_{C}
+d\tau\,\xdot^\mu\,A_\mu(x),
+\eqno{(1.10)}
+$$
+i.e.  point particle with charge $e$ in the presence
+of a $U(1)$ gauge field.
+
+\smallskip
+\item{2.}
+An $\SU(N)$ vector bundle on $M$ with connection $A$.
+To describe a particle in the defining
+representation $\rho$ of $\SU(N)$, introduce worldline
+fermions $\lam^i(\tau)$ $i=1,\ldots,N$ and the action
+$$
+S_{A_\rho}=\int\nolimits_{C}\bar{\lam}(d+x^*(A_\rho))\lam
+\eqno{(1.11)}
+$$
+
+\smallskip
+\item{3.}
+The spin bundle over $M$ with spin connection $\partial$,
+describes space-time spinors of $M$.
+Introduce worldline fermions $\psi$ and the action
+$$
+S_\omega=\int\nolimits_{C}(\psi,\partial\psi)_G
+\eqno{(1.12)}
+$$
+The total particle worldline action $S+S_\omega$ has
+worldline supersymmetry.
+(See Witten's problem sets.)
+
+
+
+\bye
+

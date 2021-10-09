@@ -1,0 +1,26 @@
+Date: Thu, 8 May 1997 08:14:35 -0400
+From: Nathan Seiberg <seiberg@physics.rutgers.edu>
+Subject: background for my lectures
+
+
+My lectures will cover a subset of the material reviewed in
+
+1. LECTURES ON SUPERSYMMETRIC GAUGE THEORIES AND ELECTRIC -
+MAGNETIC DUALITY.
+By K. Intriligator, N. Seiberg (Rutgers U., Piscataway & Princeton,
+Inst. Advanced Study).
+RU-95-48, Mar 1995. 44pp. Presented at Tasi 95, Boulder, Colo., Jun
+4-26, 1995 and Trieste Spring
+School, Trieste, Italy, Mar 27 - Apr 15, 1995 and Trieste Summer School,
+Trieste, Italy, Jun 12 - Jul
+23, 1995 and Cargese Summer School, Cargese, France, Jul 11-24, 1995. 
+Published in Nucl.Phys.Proc.Suppl.45BC:1-28,1996 
+e-Print Archive: hep-th/9509066 
+
+2. DUALITY IN SUPERSYMMETRIC YANG-MILLS THEORY.
+By Michael E. Peskin (SLAC). SLAC-PUB-7393, Feb 1997. 80pp. Lectures
+given at Theoretical Advanced Study Institute in Elementary Particle
+Physics (TASI 96): Fields, Strings, and Duality,
+Boulder, CO, 2-28 Jun 1996. 
+e-Print Archive: hep-th/9702094 
+

@@ -1,0 +1,279 @@
+%From: Pierre Deligne <deligne@math.ias.edu>
+%Date: Thu, 31 Oct 1996 16:38:52 -0500
+%Subject: Witten's Set one, No. 1
+
+%Below is the AMS-TeX file for the
+%solution written by D. Freed to Witten's Problems, Set one,
+%No. 1, to be put on the web page.
+
+\input amstex
+\documentstyle{amsppt}
+\magnification=1200
+\pagewidth{6.5 true in}
+\pageheight{8.9 true in}
+\loadeusm
+
+\catcode`\@=11
+\def\logo@{}
+\catcode`\@=13
+
+\NoRunningHeads
+
+\font\boldtitlefont=cmb10 scaled\magstep1
+
+\def\dspace{\lineskip=2pt\baselineskip=18pt\lineskiplimit=0pt}
+\def\wedgeop{\operatornamewithlimits{\wedge}\limits}
+\def\w{{\mathchoice{\,{\scriptstyle\wedge}\,}
+  {{\scriptstyle\wedge}}
+  {{\scriptscriptstyle\wedge}}{{\scriptscriptstyle\wedge}}}}
+\def\Le{{\mathchoice{\,{\scriptstyle\le}\,}
+  {\,{\scriptstyle\le}\,}
+  {\,{\scriptscriptstyle\le}\,}{\,{\scriptscriptstyle\le}\,}}}
+\def\Ge{{\mathchoice{\,{\scriptstyle\ge}\,}
+  {\,{\scriptstyle\ge}\,}
+  {\,{\scriptscriptstyle\ge}\,}{\,{\scriptscriptstyle\ge}\,}}}
+\def\vrulesub#1{\hbox{\vrule height7pt depth5pt\,}_{#1}}
+\def\mapright#1{\smash{\mathop{\,\longrightarrow\,}%
+     \limits^{#1}}}
+
+\def\eps{{\varepsilon}}
+
+\def\Adot{\Dot{A}}
+\def\Bdot{\Dot{B}}
+\def\Xdot{\Dot{X}}
+
+\def\dbR{{\Bbb R}}
+
+\def\GL{\text{\rm GL}} \def\Hom{\text{\rm Hom}}
+\def\aff{\text{\rm aff}} \def\red{\text{\rm red}}
+
+
+\def\scr#1{{\fam\eusmfam\relax#1}}
+
+\def\scrA{{\scr A}}   \def\scrB{{\scr B}}
+\def\scrC{{\scr C}}   \def\scrD{{\scr D}}
+\def\scrE{{\scr E}}   \def\scrF{{\scr F}}
+\def\scrG{{\scr G}}   \def\scrH{{\scr H}}
+\def\scrI{{\scr I}}   \def\scrJ{{\scr J}}
+\def\scrK{{\scr K}}   \def\scrL{{\scr L}}
+\def\scrM{{\scr M}}   \def\scrN{{\scr N}}
+\def\scrO{{\scr O}}   \def\scrP{{\scr P}}
+\def\scrQ{{\scr Q}}   \def\scrR{{\scr R}}
+\def\scrS{{\scr S}}   \def\scrT{{\scr T}}
+\def\scrU{{\scr U}}   \def\scrV{{\scr V}}
+\def\scrW{{\scr W}}   \def\scrX{{\scr X}}
+\def\scrY{{\scr Y}}   \def\scrZ{{\scr Z}}
+
+
+
+\document
+\line{{\boldtitlefont Witten's Problems}, Set One --- 
+N$^{\text{o}}$. 1 
+\hfill (solution written by D. Freed)}
+\smallskip
+\hbox to \hsize{\hrulefill}
+
+\bigskip
+\dspace
+\subhead
+1
+\endsubhead
+We denote the Riemannian metric on $M$ by
+$(-\,\,,\,\,-)$ and so write the lagrangian density as
+$$
+\scrL=\tfrac12(\Xdot,\Xdot)dt\,\,.
+$$
+Here $\Xdot=\frac{dX}{dt}$ is the tangent to the curve.
+
+\medskip\noindent
+(a)\enspace
+We compute the variation by considering a path of $X$'s,
+denoted $X_u$, $u\in(-\eps,\eps)$.
+The computation takes place on $(-\eps,\eps)\times\dbR$:
+There is a map $X\colon\,(-\eps,\eps)\times\dbR\to
+M$ and we use the pullback metric, the pullback tangent
+bundle, and the pullback of the Levi-Civita connection,
+which we denote $\nabla$.
+We use the notation $\delta=\frac{\partial}{\partial
+u}$.
+
+Since $[\partial_t, \delta]=0$ and $\nabla$
+is torsion free, we have\footnote"$^*\,$"{If $x^i$ are
+local coordinates, and $\Gamma_{jk}^i$ the corresponding
+Christoffel symbols on $M$, then the pullback by $X$
+makes the $x^i$ functions of $t$, $u$ and equation (1.1)
+follows, since
+$$
+\tfrac{\partial^2x^i}{\partial t\partial u}+
+\Gamma_{jk}^i\tfrac{\partial X}{\partial t}\tfrac{\partial
+X}{\partial u}
+$$
+is symmetric in $t$, $u$.
+(In other words, $\Gamma_{jk}^i$ is symmetric in $j$,
+$k$).
+A derivation without local coordinates is given at the
+end of the exercise in an appendix.}
+$$
+\nabla_t\delta X=\nabla_\delta \Xdot\,\,.
+\tag1.1
+$$
+So we make the computation
+$$
+\aligned
+\delta\scrL &=\tfrac12\delta(\Xdot,\Xdot)dt\\
+&=\left(\nabla_{\delta}\Xdot,\Xdot\right)dt\\
+&=\left(\nabla_{t}\delta X,\Xdot\right)dt\\
+&=d\left(\delta X,\Xdot\right)-\left(\delta
+X,\nabla_{t}\Xdot\right)dt
+\endaligned
+\tag1.2
+$$
+Now the first term in the final line is a total
+derivative, and the second is linear over the functions 
+(as a function of $\delta X$).
+So the variational derivative is
+$$
+\tfrac{\delta\scrL}{\delta X(t)}=-\nabla_t \Xdot\,dt
+$$
+The space of critical points is then
+$$
+W=\left\{X\colon\,\, \nabla_{t}\Xdot=0\right\}\,\,.
+$$
+The image of any such $X$ is a geodesic; it is
+parametrized at constant speed.
+
+\medskip\noindent
+(b)\enspace
+We assume that $M$ is complete.
+Then the standard theory of ordinary differential
+equations shows that there is a unique solution $X$ to
+$\nabla_{t}\Xdot$ given an initial position and
+velocity, i.e., a point of $TM$.
+
+\medskip\noindent
+(c)\enspace
+To compute the symplectic structure we use the exact
+term in formula (1.2).
+Set
+$$
+\gamma=\left(\delta X,\Xdot\right)\vrulesub{t_0}\,\,,
+\tag1.3
+$$
+where $t_0$ is some fixed time.
+Then the symplectic structure is computed as the
+differential of $\gamma$ in the space of paths:
+$$
+\omega=\delta\gamma=-\left(\delta X,\nabla_{\delta}
+\Xdot\right)\vrulesub{t=t_0}=
+\left(\nabla_{\delta}\Xdot,\delta
+X\right)\vrulesub{t=t_0}
+\tag1.4
+$$
+We elaborate: \ If $\xi_1$, $\xi_2$ are sections of
+$X^*(TM)$ --- in other words, are tangent at $X$ to the
+space of paths --- then
+$$
+\omega(\xi_1,\xi_2)=\left(\nabla_{\xi_1}\Xdot(t_0),
+\xi_2(t_0)\right)-\left(\nabla_{\xi_2}\Xdot(t_0),
+\xi_1(t_0)\right)\,\,.
+$$
+
+Now the standard symplectic structure on $T^*M$ is the
+differential of the $1$-form
+$$
+\theta_\alpha(\eta)=\alpha(\pi_*\eta),\qquad
+\alpha\in T^*M,\,\,\eta\in T_\alpha(T^*M),\tag1.5
+$$
+where $\pi\colon\, T^*M\to M$ is projection.
+We identify $X\in W$ with the tangent vector\break
+$\left<X(t_0),\Xdot(t_0)\right>\in TM$.
+Then
+$$
+\gamma(\eta)=\left(\pi_*\eta,\Xdot(t_0)\right)\,,\qquad
+\eta\in T_{X(t_0)}(TM).
+\tag1.6
+$$
+Under the map $TM\to T^*M$ given by the metric, it is
+easy to see that (1.5) pulls back to (1.6) at the point
+$\left<X(t_0),\Xdot(t_0)\right>\in TM$.
+
+\medskip\noindent
+(d)\enspace
+The vector field $v$ on $W$ may be described by the
+equation
+$$
+v_X=\Xdot\in C^\infty(\dbR,X^*(TM))\,\,.
+$$
+To compute $\iota_v\omega$ we substitute $\delta X=\Xdot$
+into (1.4):
+$$
+\align
+\iota_v\omega &=\left(\nabla_{t}\Xdot,\delta X\right)
+\vrulesub{t_0}-\left(\nabla_{\delta}\Xdot,\Xdot\right)
+\vrulesub{t_0}\\
+&=-\left(\nabla_{\delta}\Xdot,\Xdot\right)
+  \vrulesub{t_0}\,\,,
+\endalign
+$$
+since $X$ satisfies the eqution of motion
+$\nabla_{t}\Xdot=0$.
+It is easy to see that $\iota_v\omega=dH$ where $H$ is the
+function
+$$
+H(X)=-\tfrac12\,\vert\Xdot(t_0)\vert^2\,\,.
+$$
+(Of course, this is independent of $t_0$.)
+
+\newpage
+
+\subhead
+Remark on {\rm Equation (1.1) (by P. Deligne)}
+\endsubhead
+
+An affine space $A$ gives rise to a vector space $V$,
+the translations of $A$, and it is convenient
+(barycentric calculus) to view $A$ and $V$ as living in
+the same vector space $B$ of dimension one more:
+$$
+0@>>> V@>>> B@>{m}>> \dbR@>>> 0,\qquad
+A=m^{-1}(1)\,\,.
+$$
+
+If $A$ is an affine space bundle over a manifold $M$
+(structural group the affine group
+$\GL(n)\ltimes\dbR^n$), a connection $\nabla$ on $A$
+allows us to define $\nabla_X a$, for $a$ a section of
+$A$, as a section of the associated vector bundle (vector
+bundle of translations of $A$), structural group
+$\GL(n)$, obtained by applying $\GL(n)\ltimes \dbR^n\to
+\GL(n)$.
+
+Let  $T^{\aff}$ be the tangent bundle $T$ to $M$, viewed
+as a bundle of affine space.
+The vector bundle $T$ is the vector bundle associated to
+$T^{\aff}$.
+A connection $\nabla$ on $T$ defines as follows a
+connection $\nabla^{\aff}$ on $T^{\aff}$: \
+$\nabla^{\aff}$ induces $\nabla$ on $T$ and
+ for $z$ the
+zero section of $T^{\aff}$, one has
+$\nabla_X^{\aff}z=-X$ [connexion sans glissement].
+
+The torsion of $\nabla$ is the translation part of the
+curvature of $\nabla^{\aff}$.
+View $X$ as a map of $\dbR^2$ to the zero section of th
+tangent bundle of $M$.
+If $\nabla$ is torsion free, vanishing of the
+translation part of the curvature gives
+$$
+\gather
+\nabla_t\nabla_u^{\aff}X-\nabla_u\nabla_t^{\aff}X=0\,\,,\qquad
+\text{i.e.}\\
+-\nabla_t\partial_u X+\nabla_u\partial_t X=0
+\endgather
+$$
+
+\enddocument
+
+
+

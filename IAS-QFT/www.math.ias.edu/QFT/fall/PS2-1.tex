@@ -1,0 +1,376 @@
+%From: Pierre Deligne <deligne@math.ias.edu>
+%Date: Wed, 23 Oct 1996 16:44:28 -0400
+%Subject: Set Two, No. 1
+
+\input amstex
+\documentstyle{amsppt}
+\magnification=1200
+\pagewidth{6.5 true in}
+\pageheight{8.9 true in}
+\loadeusm
+
+\catcode`\@=11
+\def\logo@{}
+\catcode`\@=13
+
+\NoRunningHeads
+
+\font\boldtitlefont=cmb10 scaled\magstep1
+
+\def\dspace{\lineskip=2pt\baselineskip=18pt\lineskiplimit=0pt}
+\def\wedgeop{\operatornamewithlimits{\wedge}\limits}
+\def\w{{\mathchoice{\,{\scriptstyle\wedge}\,}
+  {{\scriptstyle\wedge}}
+  {{\scriptscriptstyle\wedge}}{{\scriptscriptstyle\wedge}}}}
+\def\Le{{\mathchoice{\,{\scriptstyle\le}\,}
+  {\,{\scriptstyle\le}\,}
+  {\,{\scriptscriptstyle\le}\,}{\,{\scriptscriptstyle\le}\,}}}
+\def\Ge{{\mathchoice{\,{\scriptstyle\ge}\,}
+  {\,{\scriptstyle\ge}\,}
+  {\,{\scriptscriptstyle\ge}\,}{\,{\scriptscriptstyle\ge}\,}}}
+\def\vrulesub#1{\hbox{\,\vrule height7pt depth5pt\,}_{#1}}
+\def\mapright#1{\smash{\mathop{\,\longrightarrow\,}%
+     \limits^{#1}}}
+
+\def\Adot{\Dot{A}}
+\def\Bdot{\Dot{B}}
+\def\phidot{\Dot{\phi}}
+
+\def\dbR{{\Bbb R}}
+\def\dbZ{{\Bbb Z}} 
+
+
+\def\scr#1{{\fam\eusmfam\relax#1}}
+
+\def\scrA{{\scr A}}   \def\scrB{{\scr B}}
+\def\scrC{{\scr C}}   \def\scrD{{\scr D}}
+\def\scrE{{\scr E}}   \def\scrF{{\scr F}}
+\def\scrG{{\scr G}}   \def\scrH{{\scr H}}
+\def\scrI{{\scr I}}   \def\scrJ{{\scr J}}
+\def\scrK{{\scr K}}   \def\scrL{{\scr L}}
+\def\scrM{{\scr M}}   \def\scrN{{\scr N}}
+\def\scrO{{\scr O}}   \def\scrP{{\scr P}}
+\def\scrQ{{\scr Q}}   \def\scrR{{\scr R}}
+\def\scrS{{\scr S}}   \def\scrT{{\scr T}}
+\def\scrU{{\scr U}}   \def\scrV{{\scr V}}
+\def\scrW{{\scr W}}   \def\scrX{{\scr X}}
+\def\scrY{{\scr Y}}   \def\scrZ{{\scr Z}}
+
+
+
+\document
+\line{{\boldtitlefont Witten's Problems}, Set Two --- 
+N$^{\text{o}}$. 1
+\hfill (solution written by P. Deligne)}
+\smallskip
+\hbox to \hsize{\hrulefill}
+
+\bigskip
+\dspace
+We will write $\dbR^{d+1}$ for $\dbR^n$, coordinates
+$t=x_0,x_1,\dotsc,x_d$.
+
+\medskip\noindent
+(a)\enspace
+In the Minkowski signature, $*$ is defined as follows:
+
+1.\enspace
+Extend the given bilinear form on $V$ to $\wedgeop^{p}$
+$V$, by
+$$
+(v_1\w\ldots\w v_p, w_1\w\ldots\w w_p)= \det(v_i,w_j).
+$$
+Same for $V^*$, identified with $V$.
+
+\smallskip
+2.\enspace
+An orientation has to be chosen. 
+Together with the metric, it defines a form $\omega$
+of maximal degree: in standard coordinates, $dt\w dx_1\w
+\ldots\w dx_d$.
+
+\smallskip
+3.\enspace
+The operation $*$ is defined by $\alpha\w
+*\beta=(\alpha,\beta).\omega$.
+
+\bigskip
+The lagrangian density $\scrL$ is
+$$
+-\tfrac{1}{4e^2}\,(F,F).\text{(standard density $dv$)}
+$$
+In this way of writing, no orientation is needed.
+However, in the computations which follow, we choose an
+orientation to identify densities and forms of maximal
+degree.
+The variation of the lagrangian density by $A\mapsto
+A+\delta A$ is
+$$
+\align
+&-\tfrac{1}{2e^2}\,(d\delta A, dA)dv =-\tfrac{1}{2e^2}\,
+ d\delta A\w * dA\\
+= &d\left(-\tfrac{1}{2e^2}\,\delta A\w *dA\right)-
+  \tfrac{1}{2e^2}\,\delta A\w d* dA;
+\endalign
+$$
+the variational derivative $\delta\scrL$ is $-1/2e^2$
+$\delta A\w d * dA$, giving as Euler-Lagrange equation
+for the extremals (a.k.a. equation of motion)
+$$
+d*dA=0,
+$$
+i.e., for $d^*$ the adjoint of $d$, $d^*dA=0$.
+
+\bigskip\noindent
+(b)\enspace
+The general rule for defining $\omega_0$ is as follows:
+
+1.\enspace
+Pick a space like hypersurface $\Gamma$ (e.g. $t=0$).
+
+\smallskip
+2.\enspace
+Let $a$ be the $d$-form whose exterior derivative is
+used to justify the integration by part leading to
+Euler-Lagrange equations.
+Here,
+$$
+a=-\tfrac{1}{2e^2}\,\delta A\w *dA.
+$$
+it is a $1$-form on the space of fields, with values in
+$d$-forms, and $\delta A\mapsto a(\delta A)$ is linear
+over $C^\infty$-functions.
+
+\smallskip
+3.\enspace
+Define a $1$-form $\alpha_\Gamma$ on the space of fields
+by integrating $a$ on $\Gamma$.
+
+\smallskip
+4.\enspace
+Restrict $\alpha_\Gamma$ to the space of extremals, and
+define
+$$
+\omega_0=d\alpha_\Gamma\,\,.
+$$
+
+For this to make sense, one needs some control at
+spatial infinity.
+it is not unreasonable to consider only $A$ which vanish
+at spatial infinity: we will see in (c) that if at $t=0$,
+$A$ and $\Adot$ vanish for $\left(\sum x_i^2\right)^{1/2}>R$,
+and if $A$ obeys the equations of motion $d*dA=0$, then
+some gauge transform of $A$ vanishes for $\left(\sum
+x_i^2\right)^{1/2}>R+\vert t\vert$.
+
+On the space of extremals vanishing at spatial infinity,
+the $1$-form $\alpha_\Gamma$ makes sense.
+Its exterior derivative is
+$$
+\omega_0(\delta_1 A, \delta_2A)=\int_{\Gamma}
+-\tfrac{1}{2e^2}\,(\delta_2 A\w *d\delta_1 A-
+\delta_1 A\w *d\delta_2 A).
+$$
+The space of extremals is an affine space, and
+$\omega_0$ is translation invariant.
+The general lagrangian formalism ensures that this
+$2$-form is independent of $\Gamma$.
+
+\bigskip\noindent
+(c)\enspace
+Gauge transformations $A\mapsto A+d\phi$ preserve the
+lagrangian density, hence the space of extremals.
+Of course, if one imposes to $A$ to vanish at spatial
+infinity, one has to impose to $\phi$ to be locally
+constant at infinity (hence constant at spatial infinity
+if $d+1\not=2$).
+Suppose $d+1\not=2$: one can impose to $\phi$ to be zero
+at spatial infinity, by subtracting a constant.
+The formula for $\omega_0$ makes it clear that if
+$A\mapsto A+\delta_1 A$ is an infinitesimal gauge
+transformation with support disjoint from $\Gamma$, then
+$\omega_0(\delta_1 A, \delta_2 A)=0$.
+As $\Gamma$ can be chosen as it pleases, it follows that
+$\omega_0$ comes from the quotient by gauge
+transformations: decompose an infinitesimal gauge
+transformation $\delta A_1$ in gauge transformations
+with support in $t<1$, $-1<t<1$ and $-1<t$, and for each
+evaluate $\omega_0(\delta_1 A, \delta_2 A)$ using a
+$\Gamma$ for which it obviously vanishes.
+
+\bigskip
+Direct proof: if $B$ is a tangent vector to the space of
+extremals: $d*d B=0$ and $B$ vanishing at spatial
+infinity, then
+$$
+\int_{\Gamma} (d\phi)\w *dB+B\w *d(d\phi)=
+\int_{\Gamma}d(\phi. *dB)=0\,\,.
+$$
+
+To investigate the quotient of the space of extremals by
+the group of gauge transformation, we now fix a
+decomposition of space-time as space $\times$ time.
+Coordinates $x_0=t,\,x_i$.
+Using $\phi=\int_0^t A_0(x,\tau)d\tau$ (vanishing at
+spatial infinity if $A$ does), one gauge transforms $A$
+into a new $A$ with $A_0=0$.
+The equation $d*dA$ becomes
+$$
+\align
+&\partial_0\left(\sum \partial_i A_i\right)=0\tag1\\
+&\square\,A=-d\,\sum \partial_i A_i\tag2
+\endalign
+$$
+if one gives $A$ at $t=0$, (1) gives
+$f:=\sum\partial_i A_i$ at all times:
+it is independent of $t$.
+If $\Adot$ is given at $t=0$, one can then solve
+$\square\,A=-df$ with the given Cauchy data $(A,\Adot)$
+at $t=0$ (hyperbolicity of $\square$).
+The support of the resulting $A$ is contained in what
+can be reached by a time-like vector from the support of
+$(A,\Adot)$ at $t=0$.
+
+We have
+$$
+\align
+&\sum \partial_i A_i=f\quad\text{at $t=0$, $f$
+independent of $t$}\\
+&\square\,A_i=-\partial_i f
+\endalign
+$$
+It follows that
+$$
+\square\left(\sum \partial_i A_i-f\right)=\sum
+\partial_i \square A_i-\square f=\sum
+-\partial_i\partial_i f-\square f=Df-Df=0
+$$
+and if $\frac{d}{dt}\,\left(\sum \partial_i A_i-f\right)=0$ at
+$t=0$, i.e. if (1) holds at $t=0$, then $\sum \partial_i
+A_i-f=0$ always, i.e. (1) holds.
+
+It follows that we have a bijection
+$$
+A\longmapsto (A,\Adot)\quad\text{at}\quad t=0
+$$
+from the space of extremals $A$ (vanishing at spatial
+infinity), with $A_0=0$, to the space of Cauchy data
+$(A,\Adot)$ at $t=0$, vanishing at infinity with
+$A_0=0$, $\Adot_0=0$, $\sum\partial_i \Adot_i=0$.
+The last condition is what keeps making sense, on the
+Cauchy data, of the equation of motion $d*dA=0$.
+
+Transported to the affine space of Cauchy data, the
+$2$-form $\omega_0$ becomes the translation invariant
+$2$-form
+$$
+(A,\Adot),(B,\Bdot)\longmapsto \int (A,\Bdot)-(\Adot,B)
+\tag3
+$$
+(up to a constant).
+It is degenerate, as we still have to divide by the time
+independent gauge transformations $\phi$:
+we have vanishing for $(A,\Adot)=(d\phi,0)$.
+Conversely, if $(A,\Adot)$ is in the kernel, we have
+$\int(\Adot,B)=0$ for any compactly supported
+$B$, hence $\Adot=0$, and $\int(A,\Bdot)=0$ if $d^*\Bdot=0$.
+One can take $\Bdot=d^*C$ and integration by part gives
+$\int (dA,C)=0$, hence $dA=0$ and $A=d\phi$ for some
+$\phi$.
+
+This can be presented as follows:
+one the space of all $(A,\Adot)$ at $t=0$ ($d^*\Adot=0$
+not required), we have the symplectic structure (3).
+We took the symplectic quotient $L^\bot/L$ by the
+isotropic linear subspace $L$ of the $(d\phi,0)$.
+
+Geometrically, the hyperbolicity modulo gauge of the
+equation of motion $d*dA=0$ has the following meaning.
+
+One thinks of the $1$-form $A$ as being a connection
+$\nabla$ on the trivial $\dbR$-torsor ($=$ principal
+$\dbR$-bundle) $T$.
+For electromagnetism, it might be better to use rather
+$\dbR/\dbZ=U^1$, but if one wants a change of
+trivializations to be given by a function $\phi$ with
+values in $\dbR$, not $\dbR/\dbZ$, one needs $\dbR$.
+The gauge transform $A+d\phi$ of $A$ is the $1$-form
+describing the same connection $\nabla$, in the
+trivialization $\phi$ of the torsor $T$.
+
+Call ``space'' the hypersurface $t=0$ and let $U$ be a
+region of space. 
+Suppose given a $1$-jet $P_1$ of $\dbR$-torsor along
+$U$.
+If $s_1$ is a trivialization of $P_1$, any other
+trivialization can be written as $s_1+\phi_1$, for
+$\phi_1$ a $1$-jet of function along
+$U\colon\,\phi_1=(\phi,\phidot)$ on $U$.
+Suppose a connection $\nabla_1$ is given on $P_1$.
+Given a trivialization of $P_1$, it is the data of
+$A_0$, $A_i$, 
+$A_i^{\raise1pt\hbox{$\bold{\cdot}$}}$ ($i\not=0$) in $U$
+(hence at $t=0$).
+Suppose lastly that what makes sense of the equation of
+motion holds.
+In coordinates:
+$$
+\sum\limits_{i\not=0}\partial_i^2 A_0-\partial_i
+\Adot_i=0
+$$
+This is the ``Cauchy data''.
+
+Let $V$ be the region of space time which, in terms of
+causality
+
+\item{} for $t>0$: is influence only by $U$;
+
+\item{} for $t<0$: influences only $U$.
+
+\noindent
+Otherwise said: $v$ is in $V$ if all time like
+trajectories through $v$ hit $t=0$ in $U$.
+For $U$ the ball $\left(\sum x_i^2\right)^{1/2}<R$, of space,
+i.e. at $t=0$, $V$ is the region $\left(\sum
+x_i^2\right)^{1/2}<R-\vert t\vert$.
+
+Hyperbolicity gives that the Cauchy data
+$(P_1,\nabla_1)$ extends uniquely to a torsor with
+connection obeying the equation of motion on $V$:
+an extension exists, any two extensions are isomorphic
+by an isomorphism whose first jet along $U$ is the
+identity, and such an isomorphism is unique.
+
+\example{Example}
+If $U$ is the region $\sum x_i^2>R$, then $V$ is the
+region $\sum x_i^2>R+\vert t\vert$.
+If $(P,\nabla)$ obeys the equation of motion and has a
+$1$-jet along $U$ isomorphic ot the trivial flat torsor,
+it follows that $(P,\nabla)$ is isomorphic to the
+trivial flat torsor on $V$.
+
+In the preceding stories, one can replace ``space''
+$t=0$ by a space like hypersurface.
+Proofs are similar.
+One begins by mapping $V$ to $U$ by sending $v=(t,x)$ to
+the point of $U$ with the same $x$-coordinates, and by
+using the connection along the time-lines to write the
+torsors with connection on $V$ as pull back, as torsors,
+of a torsor on $U$ (``gauge transformation making
+$A_0=0$'').
+
+In this geometric language, the restriction to $A$ which
+vanish at spatial infinity, means considering only
+$(P,\nabla)$ such that $P$ admits a trivialization which
+is horizontal at spatial infinity: flatness at spatial
+infinity, and, for $d=2$, trivial monodromy at spatial
+infinity and vanishing of the integral of the curvature
+on a space like hypersurface, hence on all of them.
+\endexample
+
+
+\enddocument
+
+
+
+

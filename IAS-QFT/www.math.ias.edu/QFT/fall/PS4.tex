@@ -1,0 +1,131 @@
+%Date: Thu, 24 Oct 1996 15:32:29 EDT
+%From: Edward Witten <witten@sns.ias.edu>
+
+\input harvmac
+
+{\it ``Problem Set Four''}
+
+
+
+(1) Consider a simple harmonic oscillator in one dimension.
+The Lagrangian is
+\eqn\normo{ L= \int dt\left({m\over 2}\left({dx\over dt}\right)^2
+-{1\over 2}m\omega^2x^2\right).}
+The Hamiltonian is accordingly
+\eqn\pippo{H={p^2\over 2m}+{1\over 2}m\omega^2x^2}
+where
+\eqn\ippo{p=-i{d\over dx}}
+acting on ${\bf L}^2({\bf R})$.
+
+
+Calculate the kernel of the operator $e^{-itH}$, that is
+the matrix element
+\eqn\nopo{ \langle b |e^{-iHt}|a\rangle,}
+using path integrals.
+
+That is, find the classical path $x_0(t)$ that starts at $a$ at time
+0 and ends at $b$ at time $t$.  Write $x(t)=x_0(t)+\tilde x(t)$.
+By substituting $x(t)$ in $L$, write the action as
+a quadratic function of $\tilde x(t)$ plus a known function
+of $a,b$ and $t$.  Do the path integral over $\tilde x(t)$ by
+interpreting it as a determinant which you must study somehow.
+
+In fact after dividing out formally by an infinite but $t$-independent
+constant - or if you prefer, upon using something like a zeta
+function definition of the determinant - you should be able
+to reduce to an infinite sum that will look something like
+\eqn\gippo{\prod_{n=1}^\infty\left(1+{p^2\over n^2}\right)}
+for some $p$.  This product in fact defines a certain elementary
+function of $p$.  
+
+(2) Consider the scalar field theory with Lagrangian
+\eqn\goppo{L=\int d^nx\left({1\over 2}|d\phi|^2
++{1\over 2}m^2\phi^2+{g\over 3!}\phi^3\right)}
+in $n$-dimensional Euclidean space.
+
+Calculate the contribution of order $g^3$ to the
+three-point function $\langle\phi(x)\phi(y)\phi(z)\rangle.$
+(It is best to work in momentum space, that is to set $z=0$
+and take the Fourier transform with respect to $x$ and $y$.)
+
+(a) Demonstate that the result is finite in $n\leq 6$, and
+for $n=6$, describe the precise form of the divergence -- that
+is, introduce a cutoff $\Lambda$, and describe just what sort
+of $\Lambda$-dependence you get for large $\Lambda$.
+
+Renormalize the result for $n=6$.  That is, carry out the
+necessary renormalization and write down the renormalized,
+finite correction to the three point function.
+
+
+(b) For $n<6$ make the result as explicit as you can.
+Use Feynman's identity
+\eqn\loopo{{1\over ABC}=\int_0^1d\alpha\,d\beta\,d\gamma\,
+\delta(\alpha+\beta+\gamma-1)
+{1\over (\alpha A+\beta B+\gamma C)^3}.}
+After completing the square, you should be able to reduce the
+integral over the loop momentum $q$ to
+\eqn\obbo{\int d\alpha\,d\beta\,d\gamma\,\delta(\alpha+\beta+\gamma
+-1)\int d^nq\,{1\over (q^2+b^2)^3}}
+for some $b$ (which is a polynomial in the three external momenta
+and in $\alpha$ and $\beta$).
+Set $n=4$ and carry out the $q$ integral explicitly.
+
+For extra credit, get as far as you reasonably can with the $\alpha$
+and $\beta$ integrals.
+
+(3) Now consider a theory in $n$-dimensional Euclidean space
+of a scalar $\phi$ and a spinor $\psi$ with Lagrangian
+\eqn\jogo{L=\int d^nx\left({1\over 2}|d\phi|^2+{1\over 2}M^2\phi^2
++{i\over 2}
+\left(\psi, i(D+m)\psi\right) +{g\over 2}\phi (\psi,\psi)\right).}
+($\psi$ takes values in a representation of $Spin(n)$ that
+is associated with a real representation of $Spin(1,n-1)$.  The
+precise details depend a bit on $n$, but this should not
+affect the calculation you will have to do. $(~,~)$ is a quadratic
+form on the spin representation. $D$ is the Dirac operator.)
+
+The free propagator of the $\psi$ field is
+in momentum space $1/(\Gamma\cdot k+im)$, where $\Gamma\cdot k$
+is physicist's notation for Clifford multiplication by $k$.  
+
+
+The free propagator of $\phi$ is $1/(k^2+M^2)$.
+
+$L$ is written so that there is only one interaction vertex,
+a cubic vertex with two $\psi$'s and one $\phi$.
+The factor to be included at such a vertex in  a Feynman
+diagram is just $-g$ (times the identity matrix or natural
+bilinear form $(~,~)$ on the fermion $\psi$, depending on how you
+look at it).
+
+Compute the correction of order $g^2$ to the fermion
+two point function $\langle \psi(x) \psi(0)\rangle$.  (Again,
+it is best to take the Fourier transform.  Also, it is best
+to write the two point function as $1/(\Gamma\cdot k+im+i\Sigma)$
+and think of computing a correction to $\Sigma$, which will
+be given by an ``amputated one loop diagram.''  $\Sigma$
+will be of the form $w(k^2) \Gamma\cdot k +iv(k^2)$ and the problem
+is to study both functions $w$ and $v$.)  
+
+(a) Show that the result is finite for $n<4$. 
+
+(b) Show
+that (for $n<4$) the result is analytic in $k^2$ for $k^2>-(m+M)^2$.
+(We are writing the formulas in Euclidean signature here;
+in Lorentz signature with metric $+-----$ this would
+read $k^2<(m+M)^2$.)  How does this compare to what you would
+have expected?  In particular, your result is holomorphic
+near $k^2=-m^2$, so that the correction changes the value
+of the fermion mass (by an amount that is small if $g$ is small)
+but not the existence of a discrete state.
+
+
+(c) For $n=4$, what renormalizations are necessary to remove the
+infinity that you have found?  Write a formula for the renormalized,
+finite, correction to the two point function, that is, to $\Sigma$.
+For $n=4$, does the renormalized two point function have
+the same analytic behavior found in (b) for $n<4$?
+\end
+
+

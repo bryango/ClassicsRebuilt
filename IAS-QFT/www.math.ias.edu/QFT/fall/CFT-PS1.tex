@@ -1,0 +1,558 @@
+%From: Krzysztof M Gawedzki <bongo@math.ias.edu>
+%Date: Fri, 25 Oct 1996 18:58:14 -0400
+
+%Here is the version with corrections.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%                                                     %%%%%%%%
+%%%%%%             Conformal Field Theory                  %%%%%%%%
+%%%%%%                                                     %%%%%%%%
+%%%%%%                  Problem set 1                      %%%%%%%%
+%%%%%%                                                     %%%%%%%%
+%%%%%%                Krzysztof Gawedzki                   %%%%%%%%
+%%%%%%                                                     %%%%%%%%
+%%%%%%                   (latex file)                      %%%%%%%%
+%%%%%%                                                     %%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\documentstyle[12pt]{article}
+\setlength{\textwidth}{17.3cm}
+\setlength{\textheight}{21.82cm}
+\hoffset -20mm
+\topmargin= -1cm
+\raggedbottom
+\raggedbottom
+\newcommand{\be}{\begin{eqnarray}}
+\newcommand{\en}{\end{eqnarray}\vs 0.5 cm}
+\newcommand{\non}{\nonumber}
+\newcommand{\no}{\noindent}
+\newcommand{\vs}{\vskip}
+\newcommand{\hs}{\hspace}
+\newcommand{\e}{\'{e}}
+\newcommand{\ef}{\`{e}}
+\newcommand{\dd}{d\hspace{-0.16cm}{}^-}
+\newcommand{\hh}{h\hspace{-0.23cm}{}^-}
+\newcommand{\p}{\partial}
+\newcommand{\pp}{-\hspace{-0.28truecm}-\hspace{-0.67truecm}o}
+\newcommand{\un}{\underline}
+\newcommand{\Nt}{{{\bf t}}}
+\newcommand{\Nn}{{{\bf n}}}
+\newcommand{\NR}{{{\bf R}}}
+\newcommand{\NA}{{{\bf A}}}
+\newcommand{\NP}{{{\bf P}}}
+\newcommand{\NC}{{{\bf C}}}
+\newcommand{\NT}{{{\bf T}}}
+\newcommand{\NZ}{{{\bf Z}}}
+\newcommand{\NQ}{{{\bf Q}}}
+\newcommand{\NE}{{{\bf E}}}
+\newcommand{\NH}{{{\bf H}}}
+\newcommand{\NN}{{{\bf N}}}
+\newcommand{\Nx}{{{\bf x}}}
+\newcommand{\Nk}{{{\bf k}}}
+\newcommand{\Nm}{{{\bf m}}}
+\newcommand{\qq}{\begin{eqnarray}}
+\newcommand{\de}{\bar\partial}
+\newcommand{\da}{\partial}
+\newcommand{\ee}{{\rm e}}
+\newcommand{\Ker}{{\rm Ker}}
+\newcommand{\qqq}{\end{eqnarray}}
+\newcommand{\llambda}{\mbox{\boldmath $\lambda$}}
+\newcommand{\aalpha}{\mbox{\boldmath $\alpha$}}
+\newcommand{\xx}{\mbox{\boldmath $x$}}
+\newcommand{\xxi}{\mbox{\boldmath $\xi$}}
+\newcommand{\kk}{\mbox{\boldmath $k$}}
+\newcommand{\tr}{\hbox{tr}}
+\newcommand{\ch}{\hbox{ch}}
+\newcommand{\ad}{\hbox{ad}}
+\newcommand{\Lie}{\hbox{Lie}}
+\newcommand{\w}{{\rm w}}
+\newcommand{\R}{{\bf R}}
+\newcommand{\CA}{{\cal A}}
+\newcommand{\CB}{{\cal B}}
+\newcommand{\CC}{{\cal C}}
+\newcommand{\CD}{{\cal D}}
+\newcommand{\CE}{{\cal E}}
+\newcommand{\CF}{{\cal F}}
+\newcommand{\CG}{{\cal G}}
+\newcommand{\CH}{{\cal H}}
+\newcommand{\CI}{{\cal I}}
+\newcommand{\CJ}{{\cal J}}
+\newcommand{\CK}{{\cal K}}
+\newcommand{\CL}{{\cal L}}
+\newcommand{\CM}{{\cal M}}
+\newcommand{\CN}{{\cal N}}
+\newcommand{\CO}{{\cal O}}
+\newcommand{\CP}{{\cal P}}
+\newcommand{\CQ}{{\cal Q}}
+\newcommand{\CR}{{\cal R}}
+\newcommand{\CS}{{\cal S}}
+\newcommand{\CT}{{\cal T}}
+\newcommand{\CU}{{\cal U}}
+\newcommand{\CV}{{\cal V}}
+\newcommand{\CX}{{\cal X}}
+\newcommand{\CY}{{\cal Y}}
+\newcommand{\CZ}{{\cal Z}}
+\newcommand{\s}{\hspace{0.05cm}}
+\newcommand{\m}{\hspace{0.025cm}}
+\newcommand{\La}{\Lambda}
+\newcommand{\la}{\lambda}
+\newcommand{\hf}{{_1\over^2}}
+\newcommand{\hslash}{{h\hspace{-0.23cm}^-}}
+\newcommand{\Di}{{\slash\hs{-0.21cm}\partial}}
+\pagestyle{plain}
+\renewcommand{\baselinestretch}{0.3}
+\begin{document}
+
+
+\ 
+\hspace*{12.8cm}Krzysztof Gaw\c{e}dzki
+
+
+\vskip 0.8cm
+
+\noindent{\large{\bf Problem Set for Lecture 1.\ \ 
+Simple functional integrals}}
+\vskip 1.3cm
+
+
+\no PROBLEM 1. \ {\un{Feynman-Kac formula for harmonic oscillator}}
+\vskip 0.4cm
+
+\no The Feynman Kac formula in the one-dimensional
+case ($d=0,\ \Sigma=[0,L]_{periodic}$) asserts for the 2-point 
+function that, for $x_1\leq x_2\s$,
+\qq
+\left(\int\limits_{_{\CC_{per}([0,L])}}\hs{-0.2cm}
+\phi(x_1)\s\m\phi(x_2)\s\s d\mu_G(\phi)\s=\right)\s
+G(x_1,x_2)\ =\ {\tr\s\s\ee^{-x_1H}\s\varphi\s\ee^{\m(x_1-x_2)H}\s
+\varphi\s\ee^{\m(x_2-L)H}\over\tr\s\s\ee^{-LH}}\s.
+\label{1}
+\qqq
+In the normalizations from the lecture,
+\s$G={_{2\pi}\over^\beta}\s(-{d^2\over dx^2}+m^2)^{-1}\s$ 
+with \s${d^2\over dx^2}\s$ with periodic b.c. on $[0,L]$
+and \s$H\s$ is the Hamiltonian of a harmonic oscillator,
+\qq
+H\s=\s-{_\pi\over^\beta}\s{_{d^2}\over^{d\varphi^2}}\s+\s{_
+{\beta m^2}\over^{4\pi^2}}\s\varphi^2\s-\s{_m\over^2}\s=\s
+m\s a^*a
+\non
+\qqq
+where 
+\qq
+a^*\s=\s-\sqrt{{_\pi\over^{\beta m}}}\s{_{d}\over^{d\varphi}}
+\s+\s\sqrt{{_{\beta m}\over^{4\pi}}}\s\varphi\s,\quad\ \ 
+a=\s\sqrt{{_\pi\over^{\beta m}}}\s{_{d}\over^{d\varphi}}
+\s+\s\sqrt{{_{\beta m}\over^{4\pi}}}\s\varphi\s,\quad\ \ [a,a^*]=1\s,
+\non
+\qqq
+are operators in \s$L^2(\NR,d\varphi)$. Recall that the spectrum
+of $H$ is \s$m\{0,1,\dots\}\s$.
+\vskip 0.2cm
+
+\no (a). Use the Fourier transform to write the left hand side.
+Show that its limit $G_\infty(x_1,x_2)$ when $L\to\infty$ exists. 
+\vskip 0.2cm
+
+\no (b). Prove that for $x_1,\dots,x_n>0$ and complex numbers
+$\lambda_1,\dots,\lambda_n$
+\vskip 0.2cm
+\qq
+\sum\limits_{k,l=1}^n\bar\lambda_k\s\lambda_l \s\s G_\infty(-x_k,x_l)
+\ \geq\ 0\s.
+\non
+\qqq
+
+\no (c). What is the limit of the right hand side of Eq.\s\s(\ref{1})
+when $L\to\infty$?
+\vskip 0.2cm
+
+\no (d). Show that both sides of Eq.\s\s(\ref{1}) coincide at $L=\infty$. 
+Prove (b) using this result.
+\vskip 0.2cm
+
+\no (e). Prove the relation (\ref{1}) for finite $L$.
+\vskip 1cm
+
+
+\no PROBLEM 2. \ {\un{Zeta-regularized determinants}} (for calculators)
+\vskip 0.4cm
+
+\no (a). \ Using the identity \s$\la^{-s}=\Gamma(s)^{-1}\int_0^\infty
+t^{s-1}\s\ee^{-\la\m t}\s dt\s$ show that \s$\zeta(0)=-{_1\over^2}$
+where $\zeta$ is the Riemann zeta function \s$\zeta(s)=
+\sum\limits_{n=1}^\infty n^{-s}\s$ (for \s${\rm Re}\m s>1$,
+analytically continued elsewhere).
+\vskip 0.2cm
+
+\no (b). \ For $\tau=\tau_1+i\tau_2$ with $\tau_i$ real, $\tau_2>0$
+show using the identity from (a) and the Poisson resummation
+that for ${\rm Re}\m s$ sufficiently large
+\qq
+\sum\limits_{n=-\infty}^\infty|\tau+n|^{-2s}\ =\ 
+{\sqrt{_\pi}\over^{\Gamma(s)}}\left(\sum\limits_{n\not=0}
+\ee^{\m2\pi in\tau_1}\int_0^\infty t^{s-3/2}\s\m\ee^{-\tau_2^2 t
+-\pi^2n^2/t}\s\s dt\ +\ \tau_2^{-2s+1}\s\Gamma(s-1/2)\right)\s.
+\non
+\qqq
+Note that the right hand side is analytic in $s$ around $s=0$.
+Using (easy) relations \s$\Gamma(s)^{-1}=s+\CO(s^2)\s,$\ \s$
+\Gamma(-\m{_1\over^2})=-2\sqrt{\pi}\s$ and
+\s$\int_0^\infty t^{-3/2}\s\ee^{-x(t+t^{-1})}\s dt\s=\s\sqrt{\pi}\s 
+x^{-1/2}\s\ee^{-2x}\s$ obtain:
+\qq
+{_d\over^{ds}}\bigg|_{_{s=0}}\sum\limits_n|\tau+n|^{-2s}\ =\ -\s
+\ln{|1-q|^2}\s-\s 2\pi\tau_2
+\non
+\qqq
+with the standard notation \s$q\equiv\ee^{\m 2\pi i\tau}\s$.
+\vskip 0.1cm
+
+\no (c). \ By taking $\tau\to 0$ in the last formula show that
+ \s$\zeta'(0)=-\m{_1\over^2}\s\ln(2\pi)\s$. 
+\vskip 0.2cm
+
+\no (d). \ Prove that for the periodic b.c. operator 
+\s${{d^2}\over{dx^2}}\s$ on $[0,L]$ the zeta-regularized
+determinant 
+\qq
+{\rm det}'(-\m{_\beta\over^{2\pi}}\s{_{d^2}\over^{dx^2}})\s=\s2\pi L^2\s.
+\non
+\qqq
+\vskip 0.2cm
+
+\no (c). \ Show that the spectrum of the Laplacian $\Delta_\tau$
+on the torus $\NC/(\NZ+\tau\NZ)$ in the metric $|dz|^2$ is given 
+by \s$\la_{m,n}=-({2\pi\over\tau_2})^2\s|\tau m+n|^2\s$ for $n,m\in\NZ$.
+\vskip 0.2cm
+
+\no (d). \ Proceeding as in (b) decompose
+\qq
+\sum\limits_{(m,n)\not=(0,0)}|\tau m+n|^{-2s}\s=\s
+\sum\limits_{m\not=0,\ n}|\tau m+n|^{-2s}\s+\s 2\m\zeta(2s)\hs{3cm}\cr
+=\s{_{\sqrt{\pi}}\over^{\Gamma(s)}}\left(\sum\limits_{m,n\not=0}
+\ee^{\m 2\pi imn\tau_1}\int_0^\infty t^{s-3/2}\s
+\m\ee^{-m^2\tau_2^2 t-\pi^2 n^2/t}\s\m dt\s+\s\sum\limits_{m\not=0}
+m^{-2s+1}\s\tau_2^{-2s+1}\s\Gamma(s-1/2)\right)\s+\s 2\m\zeta(2s)
+\non
+\qqq
+and show that (after analytic continuation)
+\qq
+\zeta_{-\Delta'_\tau}(s)\s\equiv\s
+\sum\limits_{(m,n)\not=(0,0)}(-\la_{m,n})^{-s}\s=\s
+-1\s-\s2s\s\ln{|\prod\limits_{m=1}^\infty(1-q^m)|^2}
+\s-2s\s\ln{\tau_2}\s+\s{_1\over^3}\m\pi\s\tau_2\m s\s.
+\non
+\qqq
+Infer that 
+\qq
+\zeta_{-\Delta'_\tau}(0)\s=\s-1\s,\quad\quad\zeta'_{-\Delta'_\tau}(0)=
+-2\s\ln{|\prod\limits_{m=1}^\infty(1-q^m)|^2}
+\s-2\s\ln{\tau_2}\s+\s{_1\over^3}\m\pi\s\tau_2\s,&\label{2}
+\non
+\qqq
+and that
+\qq
+{\det}'(-\Delta_\tau)\s=\s\tau_2^2\s|\eta(\tau)|^4\label{3}
+\non
+\qqq
+where the Dedekind eta function \s$\eta(\tau)=q^{\m 1/24}
+\m\prod\limits_{n=1}^\infty(1-q^n)\s$.
+\vskip 1cm
+
+
+\no PROBLEM 3. \ {\un{Rationality of the free field with values
+in $S^1$}}
+\vskip 0.4cm
+
+\no The toroidal partition function
+of the free field compactified on the circle
+of radius squared $r^2$ is 
+\qq
+Z_{r^2}(\tau)\s=\s\sum\limits_{n,m\in\NZ}\ee^{\m\pi i\tau\m(mr+n/r)^2/2\s
+-\s\pi i\bar\tau\m(mr-n/r)^2/2}\s\m|\eta(\tau)|^{-2}\s.
+\label{tpf}
+\qqq
+Show that for rational $r^2$ it is a finite sesqui-linear combination
+of functions analytic in $\tau$.
+\vskip 1cm
+
+
+\no PROBLEM 4. {\un{Toroidal compactification to a complex torus}}
+\vskip 0.4cm
+
+\no Let $(\Sigma,\gamma)$ be a Riemann surface.
+Let $R=R_1+i R_2$ and $T_1+ i T_2$ be two numbers
+in the upper half plane. Consider on the torus
+\s$(\NR/2\pi\NZ)^2\s$ the complex structure given
+by the coordinate \s$\psi=\phi^1+T\phi^2\s$, the metric
+\s$g={R_2\over T_2}|d\psi|^2\s$ and the 2-form \s$\omega=
+i{R_1\over T_2}d\psi\wedge d\bar\psi\s$. \s Show that the partition 
+functions $Z_{R,T}$ of the free field on $\Sigma$ with values in 
+$(\NR/2\pi\NZ)^2$ with action \s$S(\phi)={1\over 4\pi}
+(\|d\phi\|_{L^2}^2+\m i\int_\Sigma\phi^*\omega)\s$
+satisfy the identities:
+\qq
+Z_{R,T}\s=\s Z_{R+1,T}\s=\s Z_{R, T+1}\s
+=\s Z_{R,-T^{-1}}\s=\s Z_{-R^{-1},-T^{-1}}\s.
+\non
+\qqq
+additionally to the mirror symmetry \s$Z_{R,T}=Z_{T,R}\s$ shown
+in the lecture.
+\vskip 1cm
+
+\no PROBLEM 9. \ {\un{Conformal anomaly}}
+\vskip 0.4cm
+
+\no Using the short time expansion of the heat kernel of the Laplacian
+$-\Delta$ on a Riemann surface \s$(\Sigma,\gamma)\s$
+\qq
+\ee^{\m t\Delta}(x,x)\s=\s{_1\over^{4\pi t}}
+\s+\s{_1\over^{12\pi}}\s r(x)\s+\s\CO(t)
+\non
+\qqq
+where \s$r\s$ stands for the scalar curvature, prove that
+under the infinitesimal local rescaling of the metric
+\s$\gamma\mapsto\ee^\sigma\gamma\s$
+\qq
+{_{\delta}\over^{\delta\sigma(x)}}\bigg|_{_{\sigma=0}}
+\ln{\left({_{{\det}'(-\Delta)}\over^{{\rm vol}_\Sigma}}\right)}
+\ =\ -\m{{_1\over^{12\pi}}}\s\m r(x)\s.
+\label{coa}
+\qqq
+Show that this infinitesimal relation is equivalent
+to the global one
+\qq
+{_{{\det}'(-\Delta)}\over^{{\rm vol}_\Sigma}}\bigg|_{_{\ee^\sigma\gamma}}
+\s =\ 
+\ee^{-{1\over 48\pi}\s(\m\Vert d\sigma\Vert^2_{L^2}
+\s+\s4\int_\Sigma\sigma\m r\s dv\m)}\ 
+{_{{\det}'(-\Delta)}\over^{{\rm vol}_\Sigma}}\bigg|_{_{\gamma}}\s.
+\non
+\qqq
+\vskip 1cm
+
+\no PROBLEM 10. \ {\un{Massless Fermions on Riemann surface}}
+\vskip 0.4cm
+
+\no Let \s$(\Sigma,\gamma)\s$ be a Riemann surface.
+Spin structure on \s$\Sigma\s$ may be identified with 
+the square root \s$L\s$ of the canonical 
+bundle $K={T^*}^{1,0}(\Sigma)\s$. \s A Dirac spinor
+\s$\Psi=(\psi,\tilde\psi)\s$ is an element of 
+\s$\Gamma(L\oplus\bar L)\s$ where $\bar L$ is the bundle
+complex conjugate to $L$. The conjugate spinor is 
+\s$\bar\Psi=(\tilde\chi,\chi)\in\Gamma(\bar L\oplus L)\s$
+and in the euclidean Dirac theory it should be treated as an 
+independent field
+($\chi=\psi,\ \tilde\chi=\tilde\psi\s$ for Majorana fermions).
+Denote by \s$\bar\da_L\s$ the $\bar\da$ operator of $L$
+and by \s$\da_{\bar L}\s$ its complex conjugate
+which may be naturally identified with \s$\de_L^{\s*}\s$.
+The action is a function on the odd vector space
+\s$\Pi(\Gamma(L\oplus\bar L)\oplus\Gamma(\bar L\oplus L))\s$:
+\qq
+S(\Psi,\bar\Psi)\s=\s{_1\over^\pi}\int_{_\Sigma}(\chi\bar\da_{\bar L}
+\psi\s+\s\tilde\chi\da_L\tilde\psi)\s
+\non
+\qqq
+(note that the integrand is naturally a 2-form).
+Partition functions of the Dirac fermions are given by
+the formal Berezin integral
+\qq
+Z_L\s=\s\int\ee^{-S(\Psi,\bar\Psi)}\s D\bar\Psi\s D\Psi
+\s=\s\det(\da_{\bar L})\s\det(\bar\da_L)\s=\s\det(\bar\da_L^{\s*}
+\bar\da_L)\s.
+\non
+\qqq
+The last determinant may be 
+zeta-regularized giving a precise sense to the partition function 
+\s$Z_L\s$ of the Dirac field on $\Sigma$.
+\vskip 0.2cm
+
+On the elliptic curve \s$\NC/(\NZ+\tau\NZ)\s$ with $\tau$ 
+in the upper half-plane,
+the canonical bundle \s$K\s$ may be trivialized by the section \s$dz\s$
+and spin structures correspond to the choice of periodic or
+anti-periodic boundary conditions under 
+\s$z\to z+1\s$ and \s$z\to z+\tau\s$:
+\qq
+L\s=\s pp,\ pa,\ ap,\ aa\s.
+\non
+\qqq
+\vskip 0.1cm
+
+\no (a). \ Show that the eigenvalues of \s$\bar\da_L^{\s*}
+\bar\da_L\s$ are
+\qq
+\lambda_{m,n}\s=\s({_\pi\over^{\tau_2}})^2\m|\tau m+n|^2
+\non
+\qqq
+with
+\qq
+\hbox to 5cm{\hspace{2cm}$m\in\NZ\s,$\hfill}
+\hbox to 2cm{$n\in\NZ$\hfill}
+\quad\quad{\rm for}\quad L=pp\s,\cr
+\hbox to 5cm{\hspace{2cm}$m\in\NZ\s,$\hfill}
+\hbox to 2cm{$n\in\NZ+{_1\over^2}$\hfill}
+\quad\quad{\rm for}\quad L=pa\s,\cr
+\hbox to 5cm{\hspace{2cm}$m\in\NZ+{_1\over^2}\s,$\hfill}
+\hbox to 2cm{$n\in\NZ$\hfill}
+\quad\quad{\rm for}\quad L=ap\s,\cr
+\hbox to 5cm{\hspace{2cm}$m\in\NZ+{_1\over^2}\s,$\hfill}
+\hbox to 2cm{$n\in\NZ+{_1\over^2}$\hfill}
+\quad\quad{\rm for}\quad L=aa\s.
+\non
+\qqq
+\vskip 0.1cm
+
+\no (b). \ Infer that 
+\qq
+Z_{pp}(\tau)\s=\s 0\s.
+\non
+\qqq
+\vskip 0.1cm
+
+\no (c). \ Show that
+\qq
+\zeta_{\bar\da_{pa}^{\s*}\de_{pa}}(s)\s=\s2^{2s}\s(\m
+\zeta_{-\Delta'_{2\tau}}(s)
+\s-\s\zeta_{-\Delta'_\tau}(s)\m)\s.
+\non
+\qqq
+Infer from Eq.\s\s(\ref{2}) that
+\qq
+Z_{pa}(\tau)\s=\s4\m|q^{\m 1/24}\prod\limits_{n=1}^\infty
+(1+q^n)|^4\s.
+\non
+\qqq
+In the Hilbert space picture 
+\qq
+Z_{pa}(\tau)\s=\s\tr_{\CH_R\otimes\tilde\CH_R}
+\s\s q^{L_0-1/24}\bar q^{\tilde L_0-1/24}\s.
+\qqq
+The ``Ramond sector'' Hilbert space 
+is \s$\CH_R\otimes\tilde\CH_R\s$ with
+\qq
+\CH_R\s=\s\NC^2\otimes\left(
+\wedge(\mathop{\oplus}\limits_{n=1}^\infty\NC)
+\right)^{\otimes 2}
+\qqq
+and \s$\tilde\CH_R\s$ is another copy of \s$\CH_R\s$.
+\s$L_0$ acts in the first copy. It has eigenvalue 
+\s${1\over 8}\s$ on \s$\NC^2\s$ (the ``Ramond ground states'')
+and the occupied $n^{\s\rm th}$ mode in the fermionic Fock space
+adds \s$n\s$ to it.
+\vskip 0.1cm
+
+\no The periodic partition function is
+\qq
+Z_{pp}(\tau)\s=\s\tr_{\CH_R\otimes\tilde\CH_R}
+\s\s(-1)^{F+\tilde F}\s\s q^{L_0-1/24}\bar q^{\tilde L_0-1/24}
+\ \equiv\ {\rm str}_{\CH_R\otimes\tilde\CH_R}
+\s\s\s\s q^{L_0-1/24}\bar q^{\tilde L_0-1/24}
+\qqq
+where \s$(1,0),(0,1)\in\NC^2\s$ correspond to the eigenvalues
+\s$+1,-1\s$ of \s$(-1)^F\s$
+and each occupied fermionic Fock space mode
+adds \s$1\s$ to \s$F\s$. \s$Z_{pp}(\tau)\s$ vanishes since
+modes with odd and even Fermi numbers are paired.
+\vskip 0.2cm
+
+\no (d). \ Show that
+\qq
+\zeta_{\bar\da_{ap}^{\s*}\de_{ap}}(s)\s=\s2^{4s}\m
+\zeta_{-\Delta'_{\tau/2}}(s)
+\s-\s2^{2s}\m\zeta_{-\Delta'_\tau}(s)\ \ \quad
+{\rm and}\quad\ \ 
+Z_{ap}(\tau)\s=\s|q^{-1/48}\prod\limits_{n=0}^\infty
+(1-q^{n+1/2})|^4\s.
+\non
+\qqq
+The Hilbert space interpretation is
+\qq
+Z_{ap}(\tau)\s={\rm str}_{\CH_{NS}\otimes\tilde\CH_{NS}}
+\s\s\s\s q^{L_0-1/24}\bar q^{\tilde L_0-1/24}
+\qqq
+where the ``Neveu-Schwarz sector'' Hilbert space is
+\qq
+\CH_{NS}\s=\s\left(
+\wedge(\mathop{\oplus}\limits_{n=0}^\infty\NC)
+\right)^{\otimes 2}\s.
+\qqq
+The ``Neveu-Schwarz ground state'' has eigenvalue zero of $L_0$
+and the \s$n^{\s\rm th}\s$ occupied zero mode contributes 
+\s$(n+{1\over2})\s$ to it. The fermion number of the NS-ground state 
+vanishes and each occupied fermionic mode adds \s$1\s$ to it.
+\vskip 0.2cm
+
+\no (e). \ Show that
+\qq
+\zeta_{\bar\da_{aa}^{\s*}\de_{aa}}(s)\s=\s2^{2s}\m
+\zeta_{\bar\da_{pa}^{\s*}\de_{pa}}(s)\bigg|_{_{\tau/2}}
+\s-\s\m\zeta_{\bar\da_{pa}^{\s*}\de_{pa}}(s)\bigg|_{_{\tau}}\ \ 
+\quad{\rm and}\quad\ \ 
+Z_{aa}(\tau)\s=\s|q^{-1/48}\prod\limits_{n=0}^\infty
+(1+q^{n+1/2})|^4\s
+\non
+\qqq
+and that
+\qq
+Z_{aa}(\tau)\s={\rm tr}_{\CH_{NS}\otimes\tilde\CH_{NS}}
+\s\s\s\s q^{L_0-1/24}\bar q^{\tilde L_0-1/24}\s.
+\qqq
+\vskip 0.1cm
+
+\no (f). \ Prove the modular properties:
+\qq
+Z_{pa}(\tau+1)\s=\s Z_{pa}(\tau)\s,\quad\quad Z_{ap}(\tau+1)\s=\s 
+Z_{aa}(\tau)\s,\quad\quad Z_{aa}(\tau+1)\s=\s Z_{ap}(\tau)\s,\cr
+Z_{pa}(-1/\tau)\s=\s Z_{ap}(\tau)\s,\quad\quad Z_{ap}(-1/\tau)\s=\s 
+Z_{pa}(\tau)\s,\quad\quad Z_{aa}(-1/\tau)\s=\s Z_{aa}(\tau)\s.
+\non
+\qqq
+\vskip 0.9cm
+
+\no PROBLEM 10. \ {\un{Bosonization}}
+\vskip 0.4cm
+
+\no 
+The spin structure is called even (odd)
+if the dimension of the kernel of $\de_L$ is even (odd).
+Denote by $\sigma(L)\s$ the parity of $L$.
+The bosonization formula asserts that
+\qq
+\sum\limits_L(-1)^{\,\sigma(L)}\s\s Z_L\s=\s C^{h-1}\s Z_{1/2}
+\label{4}
+\qqq
+where on the right hand side we have the partition function
+of the bosonic free field with values in the circle of radius
+squared $1\over 2$, $C$ is a constant and \s$h$ the genus of 
+the Riemann surface $\Sigma$. These equalities extend to correlations.
+For example, the fermionic fields \s$(\psi\tilde\psi)(x)\s$
+correspond to bosonic fields \s$:\ee^{\m i\phi(x)}:\s$
+and \s$(\tilde\chi\chi)(x)\s$ to \s$:\ee^{-i\phi(x)}:\s$.
+What are their conformal weights?
+Prove identity (\ref{4}) for \s$\Sigma=\NC/(\NZ+\tau\NZ)\s$
+using the expression (\ref{tpf}) for \s$Z_{1/2}(\tau)\s$ and 
+the classical product expressions for the theta functions
+\qq
+\vartheta(z|\tau)\equiv\sum\limits_{n\in\NZ}\ee^{\m\pi i\tau n^2\s+\s
+2\pi in z}\s=\s\prod\limits_{n=1}^\infty(1-q^n)\s(1+\ee^{\m 2\pi i z}
+\s q^{\m n-1/2})\s(1+\ee^{-2\pi i z}\m q^{\m n-1/2})\s.
+\non
+\qqq
+What is the Hilbert space interpretation of the left hand side
+of Eq.\s\s(\ref{4}) on the elliptic curve?
+
+
+\end{document}
+
+
+
+
+
+
+

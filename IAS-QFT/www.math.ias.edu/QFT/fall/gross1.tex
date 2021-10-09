@@ -1,0 +1,797 @@
+%Date: Tue, 24 Dec 1996 12:55:34 -0500 (EST)
+%From: Pavel Etingof <etingof@abel.math.harvard.edu>
+
+\input amstex
+\documentstyle{amsppt}
+\magnification 1200
+\NoRunningHeads
+\NoBlackBoxes
+\document
+
+\def\tW{\tilde W}
+\def\Aut{\text{Aut}}
+\def\tr{{\text{tr}}}
+\def\ell{{\text{ell}}}
+\def\Ad{\text{Ad}}
+\def\u{\bold u}
+\def\m{\frak m}
+\def\O{\Cal O}
+\def\tA{\tilde A}
+\def\qdet{\text{qdet}}
+\def\k{\kappa}
+\def\RR{\Bbb R}
+\def\be{\bold e}
+\def\bR{\overline{R}}
+\def\tR{\tilde{\Cal R}}
+\def\hY{\hat Y}
+\def\tDY{\widetilde{DY}(\g)}
+\def\R{\Bbb R}
+\def\h1{\hat{\bold 1}}
+\def\hV{\hat V}
+\def\deg{\text{deg}}
+\def\hz{\hat \z}
+\def\hV{\hat V}
+\def\Uz{U_h(\g_\z)}
+\def\Uzi{U_h(\g_{\z,\infty})}
+\def\Uhz{U_h(\g_{\hz_i})}
+\def\Uhzi{U_h(\g_{\hz_i,\infty})}
+\def\tUz{U_h(\tg_\z)}
+\def\tUzi{U_h(\tg_{\z,\infty})}
+\def\tUhz{U_h(\tg_{\hz_i})}
+\def\tUhzi{U_h(\tg_{\hz_i,\infty})}
+\def\hUz{U_h(\hg_\z)}
+\def\hUzi{U_h(\hg_{\z,\infty})}
+\def\Uoz{U_h(\g^0_\z)}
+\def\Uozi{U_h(\g^0_{\z,\infty})}
+\def\Uohz{U_h(\g^0_{\hz_i})}
+\def\Uohzi{U_h(\g^0_{\hz_i,\infty})}
+\def\tUoz{U_h(\tg^0_\z)}
+\def\tUozi{U_h(\tg^0_{\z,\infty})}
+\def\tUohz{U_h(\tg^0_{\hz_i})}
+\def\tUohzi{U_h(\tg^0_{\hz_i,\infty})}
+\def\hUoz{U_h(\hg^0_\z)}
+\def\hUozi{U_h(\hg^0_{\z,\infty})}
+\def\hg{\hat\g}
+\def\tg{\tilde\g}
+\def\Ind{\text{Ind}}
+\def\pF{F^{\prime}}
+\def\hR{\hat R}
+\def\tF{\tilde F}
+\def\tg{\tilde \g}
+\def\tG{\tilde G}
+\def\hF{\hat F}
+\def\bg{\overline{\g}}
+\def\bG{\overline{G}}
+\def\Spec{\text{Spec}}
+\def\tlo{\hat\otimes}
+\def\hgr{\hat Gr}
+\def\tio{\tilde\otimes}
+\def\ho{\hat\otimes}
+\def\ad{\text{ad}}
+\def\Hom{\text{Hom}}
+\def\hh{\hat\h}
+\def\a{\frak a}
+\def\t{\hat t}
+\def\Ua{U_q(\tilde\g)}
+\def\U2{{\Ua}_2}
+\def\g{\frak g}
+\def\n{\frak n}
+\def\hh{\frak h}
+\def\sltwo{\frak s\frak l _2 }
+\def\Z{\Bbb Z}
+\def\C{\Bbb C}
+\def\d{\partial}
+\def\i{\text{i}}
+\def\ghat{\hat\frak g}
+\def\gtwisted{\hat{\frak g}_{\gamma}}
+\def\gtilde{\tilde{\frak g}_{\gamma}}
+\def\Tr{\text{\rm Tr}}
+\def\l{\lambda}
+\def\I{I_{\l,\nu,-g}(V)}
+\def\z{\bold z}
+\def\Id{\text{Id}}
+\def\<{\langle}
+\def\>{\rangle}
+\def\o{\otimes}
+\def\e{\varepsilon}
+\def\RE{\text{Re}}
+\def\Ug{U_q({\frak g})}
+\def\Id{\text{Id}}
+\def\End{\text{End}}
+\def\gg{\tilde\g}
+\def\b{\frak b}
+\def\S{\Cal S}
+\def\L{\Lambda}
+
+\topmatter
+\title Lecture 1: Renormalization groups 
+\endtitle
+\author {\rm {\bf David Gross} }\endauthor
+\endtopmatter
+
+\centerline{notes by Pavel Etingof and David Kazhdan}
+
+{\bf 1.1. What is renormalization group?}
+
+In these lectures we will consider the method of renormalization 
+group and its applications to quantum field theory. 
+
+Very generally speaking, the method of renormalization group is 
+a method designed to describe how the dynamics of some system changes
+when we change the scale (distances, energies) at which we probe it. 
+
+Before describing more precisely what exactly this method does, recall 
+two basic facts about physics:
+
+{\it 1. Scale dependence.} Physics is scale-dependent.
+For example, consider a fluid. At each scale of
+distances, we need a different theory to describe its behavior:
+
+At $\sim 1$cm -- classical continuum mechanics (Navier-Stokes equations)
+
+At $\sim 10^{-5}$cm -- theory of granular structure
+
+At $\sim 10^{-8}$cm -- theory of atom (nucleus + electronic cloud)
+
+At $\sim 10^{-13}$cm -- nuclear physics (nucleons)
+
+At $\sim 10^{-13}-10^{-18}$cm quantum chromodynamics (quarks)
+
+At $\sim 10^{-33}$ string theory
+
+At each scale, we have different degrees of freedom and different 
+dynamics.
+
+{\it 2. Decoupling.} Physics at a larger scale (largely) decouples
+from the physics at a smaller scale. 
+For example, to describe the behavior of fluid at the scale $\sim 1$cm,
+we don't need to know about the granular structure, nor about atoms 
+or nucleons. The only things we need to know is the viscosity 
+and the density of the fluid. Of course, these values can be computed 
+from the physics at a smaller scale, but if we found them out in some 
+way (for example, measurement), we can do without smaller scale theories at
+all. Similarly, if we want to describe atoms, we don't need to know
+anything about the nucleus except its mass and electric charge. 
+
+Thus, a theory at a larger scale remembers only finitely many parameters
+from the theories at smaller scales, and throws the rest 
+of the details away. More precisely, when we pass from a smaller scale
+to a larger scale, we average over irrelevant degrees of freedom.
+Mathematically this means that they become integration variables and
+thus disappear in the answer. 
+
+This decoupling is the reason why we are able to do physics. If 
+there was no decoupling, it would be necessary for Newton to 
+know string theory to describe the motion of a viscous fluid. 
+
+{\bf Remark.} This transition of information 
+from smaller scale theories 
+to larger scale theories through finitely many parameters 
+is of course irreversible, since in such transition we forget 
+(=integrate out) 
+many irrelevant degrees of freedom. For example, it is possible 
+to reconstruct the thermodynamics of gas from molecular theory
+(by averaging over all configurations), but it is impossible to
+reconstruct the behavior of molecules from the macroscopic behavior
+of gas itself. 
+
+The general aim of renormalization group method is to explain how 
+this decoupling takes place and why exactly information 
+is transmitted from scale to scale through finitely many parameters.
+
+{\bf Remark 1.} In quantum theory, decoupling of scales is not at all
+obvious. Indeed, because of the uncertainty principle, we have to work
+at all scales at a time. Renormalization group explains why 
+decoupling survives in quantum theory. 
+
+{\bf Remark 2.} In classical mechanics, there are 3 basic units 
+of measurement (distance $D$, time $T$, mass $M$), and all others can be 
+expressed through them. Thus, in classical mechanics
+we deal with three scales. In nonrelativistic quantum theory
+and in classical relativity there remains only two of them, as in the first
+case we can express $M$ through $T$ and $D$ using the Planck constant, and
+in the second $T$ can be expressed via $D$ using the speed of light. 
+Thus, in relativistic quantum theory we only have one 
+scale -- the scale of distances. 
+Equivalently we can use the inverse scale -- the scale 
+of momenta. Thus we have:
+
+SMALL distances, times = LARGE momenta, energies, masses.
+
+{\bf 1.2. The general scheme of the method
+of renormalization group.}
+
+As we already mentioned,
+in quantum physics in general, in particular in any quantum field theory,
+we must consider arbitrarily short scales. Thus, in order to understand
+the theory at a given scale, we should know something about its behavior
+at smaller scales. The theory is called renormalizable if all the
+information we need from smaller scales can be absorbed in finitely many
+parameters (renormalized masses and couplings). In this case, we can
+measure these parameters (or some functions of them), and thus have a 
+complete picture of the theory. However, if the theory is not
+renormalizable, the number of parameters coming from smaller scales 
+is infinite, so the theory is unmanageable. This is why we can 
+successfully work only with renormalizable theories. 
+
+Now we make a general review of renormalization group theory. 
+To think about renormalization group, one can use 
+the following general picture, due to Wilson.
+
+The central object in Wilson's picture is ``the space of theories'' $S$.
+In general, this object is extremely ill-defined. However, in special cases
+it may be possible to give a precise definition of $S$.
+In quantum field theory 
+we can model this space as the space of all possible Lagrangians  
+of certain types of fields. 
+
+Wilson's procedure is the following. Let $M$ be the set of 
+scales of momenta. Mathematically, $M$ is a principal 
+homogeneous space (torsor) of $\R_+$.
+(This means, $M$ is isomorphic to $\R_+$, but noncanonically; 
+in particular, there is no distinguished element in $M$).
+Let $\Lambda,\mu\in M$ be scales of momenta,
+and $\mu<\Lambda$. 
+For each theory $\Cal L\in S$, one finds another theory, 
+$R_{\Lambda\mu}\Cal L\in S$ which is the 
+effective theory, 
+at the scale $\mu$, for the original theory $\Cal L$ at 
+the scale $\Lambda$. Thus, we have a map $R_{\Lambda\mu}:S\to S$,
+and $R_{\Lambda_1\Lambda_2}R_{\Lambda_2\Lambda_3}=R_{\Lambda_1\Lambda_3}$. Thus, we have an action 
+of the semigroup $\Bbb R_+^{\le 1}$ on the space $S\times M$,
+by $\l\circ (\Cal L,\Lambda)=
+(R_{\Lambda,\l \Lambda}\Cal L,\l \Lambda)$. Abusing mathematical
+terminology, physicists call this semigroup 
+the renormalization group. 
+
+{\bf 1.3. Wilsonian scheme for the theory of a scalar field:
+a mathematical description} (an interpretation of D.Gross' lectures
+by the preparers of these lecture notes). 
+
+Let us give a precise mathematical description of renormalization group
+in the special case of theories of a scalar bosonic field in 4 dimensions. 
+
+Let $V$ be a 4-dimensional Euclidean space, 
+and $\Cal S(V)$ the space of Schwarz functions 
+on $V$. By a homogeneous interaction of degree $k$ we mean 
+a continuous, homogeneous,
+Poincare invariant polynomial functional $J: \Cal S(V)\to\C$.
+That is, 
+$$
+J(\phi)=\int K_J(x_1,...,x_k)\phi(x_1)...\phi(x_k)dx_1...dx_k,
+$$
+where $K_J$ is a Poincare invariant tempered distribution. 
+
+\proclaim{Definition} (i) A homogeneous interaction $J$ 
+is called
+local if $K_J$ is supported on the diagonal. 
+ 
+(ii) $J$ is called quasilocal if
+$K_J$ has rapid decay at infinity, i.e. if  
+the Fourier transform $\tilde K_J$ of $K_J$ has the form
+$$
+\tilde K_J(p_1,...,p_k)=\delta(p_1+...+p_k)\tilde F_J(p_1,...,p_{k-1}),
+$$
+where $\tilde F_J$ is a smooth function.
+
+(iii) We say that a quasilocal interaction $J$ is 
+of order $\ge s$ if the function $\tilde F_J$ has order 
+$\ge s$ at the origin. We will write $O(\nabla^s)$
+for a quasilocal interaction of order
+$\ge s$.     
+\endproclaim
+
+It is clear a local interaction is the same thing as a differential 
+polynomial in $\phi$, and the order of a differential 
+monomial is the number of derivatives in it. 
+This statement can be generalized to
+the case of quasilocal interactions, as follows. 
+
+\proclaim{Proposition 1} Let $J$ be a quasilocal interaction
+of degree $k\ge 1$. Then for any $j\ge 0$ there exists a unique 
+homogeneous differential operator $D_j$ of order $j$ on $V^{k-1}$
+with constant coefficients, 
+such that for any $\phi\in \Cal S(V)$, and any
+$s\ge 0$ the functional $J(\phi)$ is given by
+a Taylor formula
+$$
+J(\phi)=\sum_{j=0}^{s-1}\int_V
+D_j[\phi(x_1)...\phi(x_{k-1})]|_{x_1=...=x_{k-1}=x}\phi(x)dx+
+J^{s}(\phi),\ J^{s}(\phi)=
+O(\nabla^s).
+$$
+\endproclaim
+
+\demo{Proof} We have 
+$$
+J(\phi)=\int_{(V^*)^(k-1)}\tilde F_J(p_1,...,p_{k-1})
+\tilde\phi_1(p_1)...\tilde \phi(p_{k-1})\tilde\phi_k(-p_1-...-p_{k-1})
+dp_1...dp_{k-1},
+$$
+where $\tilde \phi$ is the Fourier transform of $\phi$. 
+Since $\tilde F_J$ is smooth, it has a unique  Taylor expansion 
+$$
+\tilde F_J(p_1,...,p_{k-1})=\sum_{j=0}^{s-1}D_j(p_1,...,p_{k-1})
++O(|p|^s).
+$$
+This implies the proposition. 
+\enddemo
+
+Now let $\tau$ be a formal variable. 
+We will work over the ring $\R[[\tau]]$. 
+
+Let $X$ be the space of all Lagrangians 
+of $\phi$ with coefficients in $\R[[\tau]]$, 
+invariant under $\phi\to -\phi$, of the form
+$$
+\Cal L=
+\int (\frac{1}{2}(a(\nabla\phi)^2+m^2\phi^2)+I(\phi))d^4x,\tag 1.2
+$$
+where 
+$I(\phi)=\sum_{k\ge 2} I_k(\phi)$ 
+are interaction terms ($I_k$ has degree $k$), such that
+
+(i) $a,m^2\in \R_+$ and $I_k=O(\tau)$ for all $k$;
+
+(ii) For any $N\ge 0$ $I_k=O(\tau^N)$ for almost all $k$;
+
+(iii) $I_k$ are quasilocal. 
+
+Consider the space $S=X\times M$.  
+The space $S$ is the relevant space of theories in which Wilson's 
+flow will be defined. 
+
+Let $F_k$ be the space of smooth functions on 
+the hyperplane $\sum_{i=1}^k v_i=0$ in $(V^*)^{\oplus k}$
+(we identify this hyperplane with $(V^*)^{(k-1)}$
+by throwing out the last component $v_k$).
+Let $F=\prod_{i=1}^\infty F_{2i}$. 
+
+In the next few paragraphs we will define a map ${\Cal G}: S\to F$,
+${\Cal G}=({\Cal G}_2,{\Cal G}_4,...)$.
+The value of ${\Cal G}_k$ at $(\Cal L,\Lambda)$ is called
+the $k$-point correlation function of the Lagrangian $\Cal L$ 
+at scale (cutoff) $\L$.  
+
+Let $P(r)$ be a smooth function on $\R_+$ that equals 
+$1$ for $r\le 1/2$, $0$ for $r>2$, and varies between $0$ and $1$ in
+between. Define the cutoff propagator (in momentum space) to be
+$\tilde G_\L(p)=\frac{P(p^2/\L^2)}{p^2+m^2}$. 
+
+Let $(\Cal L,\L)\in S$. 
+By definition, the algorithm of computing ${\Cal G}_k(\Cal L,\L)$ 
+is as follows. ${\Cal G}_k$ is the sum of amplitudes of all Feynman 
+diagrams with $k$ external edges. Computation of the amplitude
+is as usual (by Feynman rules), except that on each internal edge
+instead of the free propagator $1/(p^2+m^2)$ one should put the cutoff 
+propagator $\tilde G_\L(p)$. On external edges one should put the free 
+propagator.  
+
+One can also define connected and 1-particle irreducible 
+correlation functions, which are obtained by summing 
+the amplitudes of connected and 1-particle irreducible 
+diagrams, respectively (see Kazhdan's lectures). 
+
+For example, if $\Lambda=0$, 
+the cutoff propagator vanishes, so that 
+connected correlation functions are 
+the same as interactions. 
+
+Now let $\mu,\L$ be arbitrary scales.
+Then one can make the following definition.
+
+\proclaim{Definition} A Lagrangian $\Cal L_e$ of the form (1.2) 
+is called an effective Lagrangian at the scale $\mu$ of
+a Lagrangian $\Cal L$ at the scale $\L$ if 
+${\Cal G}(\Cal L_e,\mu)={\Cal G}(\Cal L,\Lambda)$.
+\endproclaim
+
+\proclaim{Proposition 2} For any $\Cal L\in X$ 
+and any $\mu,\Lambda$ there exists a unique 
+effective Lagrangian
+$\Cal L_e$ 
+at the scale $\mu$ of $\Cal L$ at the scale $\L$. 
+\endproclaim
+
+\demo{Proof}
+It is easy to check that a Lagrangian is uniquely 
+determined by its correlation functions. 
+This implies the uniqueness of $\Cal L_e$, if it exists. 
+The existence of $\Cal L_e$ is proved by giving an explicit 
+construction. The construction: the function $\tilde F_{J_k}$
+for $\Cal L_e$ is defined to be the sum of amplitudes of all 
+connected Feynman diagrams with $k$ external edges, computed 
+for $\Cal L$ with
+the propagator $\tilde G_{\Lambda\mu}(p):=\tilde G_\L(p)-\tilde G_\mu(p)$.
+It is not difficult to check 
+that $\Cal L_e$ is an effective Lagrangian at $\mu$
+for $\Cal L$ at $\L$. 
+\enddemo
+
+We will denote the Lagrangian $\Cal L_e$ by $R_{\L\mu}\Cal L$.
+This defines a map $R_{\L\mu}: X\to X$ for any two scales 
+$\L,\mu$. It is clear that $R_{\L_1\L_2}R_{\L_2\L_3}=R_{\L_1\L_3}$,
+and $R_{\L\L}=1$.
+
+Thus, we have a flow on the space
+$S$ given by the formula
+$t(\Cal L,\L)=(R_{\L,t\L}\Cal L,t\L)$, 
+$t\in \R^+$. This flow is called the renormalization group flow. 
+
+{\bf Remark 1.} It is easy to see that if a Lagrangian $\Cal L$ 
+is free (i.e. $I_k=0$) then $R_{\L\mu}\Cal L=\Cal L$, since in this case
+we have no internal vertices and no nontrivial diagrams. 
+
+{\bf Remark 2.} In principle, instead of the described ``smeared cutoff'', 
+we could use the
+most obvious cutoff,
+i.e. define a cutoff propagator $\tilde G^*_\L(p):=\frac{1_\L}{p^2+m^2}$,
+where $1_\L$ is
+the characteristic function of the ball $|p|<\L$.
+In the language of functional integral, this means the following:
+the $k$-point correlation function (in position space) 
+is obtained by integration of $\phi(x_1)...\phi(x_n)$ 
+not over all fields $\phi(x)$, but only 
+over fields whose Fourier tranform is supported in the region $|p|<\L$. 
+Similarly, the effective Lagrangian $\Cal L_e$ 
+at $\mu$ for $\Cal L$ at $\L$ is given (for $\mu<\L$) by the formula
+$$
+e^{-\Cal L_e(\phi)}=\int e^{-\Cal L(\phi+\eta)}D\eta \tag 1.3
+$$
+where $\phi$ is a field whose Fourier transform is supported in the ball 
+$|p|\le \mu$, and the functional integral is taken over all 
+fields $\eta$ whose Fourier transform is supported in $\mu\le |p|\le \L$.
+
+This picture has a nice physical interpretation: 
+in order to compute $R_{\Lambda\mu}$, 
+we integrate out degrees of freedom -- the amplitudes of harmonics with
+frequencies between $\Lambda$ and $\mu$. 
+
+{\bf Remark 3.} 
+The map $R_{\L\mu}$, although 
+it is formally defined (by Feynman rules) for any $\L,\mu$, makes physical
+sense only for $\L>\mu$. This is well illustrated by
+Remark 2, as there $R_{\L\mu}$ by the definition reduces to 
+integrating out degrees of freedom.
+In fact, beyond perturbation theory the map
+$R_{\L\mu}$ is usually not defined for $\L<\mu$. 
+
+{\bf Remark 4.} Unfortunately, the sharp cutoff $\tilde G^*_\L$
+defined in Remark 2 is not quite satisfactory, since 
+the corresponding renormalization group flow on the space
+of Lagrangians does not preserve quasilocality
+(quasilocality is necessary for formulation of Theorem 4). 
+Indeed, let us consider 
+a Lagrangian
+$$
+\Cal L=\int
+(\frac{1}{2}(a(\nabla\phi)^2+m^2\phi^2)+\frac{g}{4!}\phi^4)d^4x,
+\tag 1.4
+$$
+where $g\sim \tau$. 
+It is easy to see that in the order $\tau^2$ we will get a correction
+to the quadratic term of the form
+$$
+\int \phi(x)\phi(y)(G^*_{\L}(x-y)-G^*_{\mu}(x-y))dxdy,
+$$
+where $G^*_{\L}(x)$ is the cutoff propagator in position space. 
+Since the cutoff propagator in momentum space is not smooth, 
+this term is not quasilocal. 
+
+This is why it is better to use the smooth cutoff $\tilde G_\L$
+instead of the sharp cutoff $\tilde G^*_\L$.
+ 
+Now we will describe the main property of the renormalization group.  
+Very roughly, this property is that 
+the operator $R_{\L\mu}$ 
+for small $\mu/\L$ makes all non-renormalizable terms in the Lagrangian
+irrelevant, so in the limit $\L\to \infty$ only renormalizable terms matter.
+If there is only finitely many renormalizable terms (which is usually 
+the case), this means that the renormalization group flow
+has a finite dimensional attractor in the space of theories -- 
+the space of renormalizable, or critical theories.  
+This property is the reason why we actually never have to consider
+non-renormalizable theories in the perturbative setting. 
+
+Let us describe this property more carefully.
+First recall that in the theory of a scalar field, the only
+renormalizable Lagrangians are of the form (1.4).
+Let us denote the set of all renormalizable 
+Lagrangians by $X_r$.
+
+Let $T_0(X)$ be the tangent space to $X$ at any point
+(all of them are naturally isomorphic). 
+
+For any $\Cal L\in T_0(X)$, denote by $P_s(\Cal L)$ the part of the Lagrangian
+$\Cal L$ whose coeffients have scaling dimension $\le -s$. 
+That is, if $\Cal L(\phi)=\sum_k J_{2k}(\phi)$,
+then by definition $P_s(\Cal L)(\phi)=\sum J_{2k}^{s-2k+4}(\phi)$,
+where $J^l$ for $l>0$ was defined in Proposition 1, and
+by convention for nonpositive $l$ $J^{l}(\phi)=J(\phi)$.
+
+We will call a Lagrangian $\Cal L\in T_0(X)$ 
+purely non-renormalizable if $\Cal L=P_1(\Cal L)$. 
+It is clear that $\Cal L$ is purely nonrenormalizable if and only if
+$\tilde F_{J_2}(0)=0$,
+$\frac{\d \tilde F_{J_2}}{\d p^2}|_{p=0}=0$,
+and $\tilde F_{J_4}(0,0,0)=0$. 
+Denote by $X_n$ the set of all purely non-remormalizable 
+Lagrangians. 
+
+It is obvious that 
+any Lagrangian can be written uniquely as a sum
+$\Cal L=\Cal L_r+\Cal L_n$, where 
+$\Cal L_r\in X_r$, $\Cal L_n\in X_n$. Thus, $X=X_r\times X_n$. 
+
+
+Now fix an element $\Cal L\in X_r$, and
+consider the intersection $(\Cal L+X_n)\cap R_{\L\mu} X_r\subset X$.
+
+\proclaim{Lemma 3} The intersection 
+$(\Cal L+X_n)\cap R_{\L\mu} X_r$ consists of 1 point. 
+\endproclaim
+
+\demo{Proof} The Lemma is obvious modulo $\tau$, 
+and in higher orders in $\tau$ it is established by
+induction (the implicit function theorem).
+\enddemo
+
+Let $B_{\L\mu}(\Cal L)$ be the unique point in $(\Cal L+X_n)\cap 
+R_{\L\mu} X_r$.
+
+For any $\nu \in \R^+$,
+define the linear rescaling map $Q_\nu: T_0(X)\to T_0(X)$ 
+by $Q_\nu(\Cal L)(\phi(x))=\Cal L(\nu^{-1}\phi(\nu^{-1} x))$. 
+For example, $Q_\nu(\int \phi^6(x)d^4x)=\nu^{-2}\int \phi^6(x)d^4x$. 
+
+The following theorem represents the main properties of
+the renormalization group. 
+
+\proclaim{Theorem 4} 
+
+(i) (Convergence) There exists a limit $B_\mu(\Cal L)=\lim_{\L\to\infty}
+B_{\L\mu}(\Cal L)$. That is, all interactions converge 
+(in the weak sense). 
+
+(ii) (Rate of convergence) 
+The rate of this convergence is determined by the formula
+$$
+P_s(B_{\L\mu}(\Cal L))-P_s(B_\mu(\Cal L))=O(\L^{-s+\e}), \L\to\infty.
+$$
+for any $s\ge 1$ and $\e>0$. 
+
+(iii) (Stability)
+Let $Y_r(\mu)=B_\mu(X_r)$. Let $\Delta\Cal L\in X_n$,  
+Then there set $(\Cal L+X_n)\cap R_{\L\mu}(X_r+Q_{\L/\mu}(\Delta\Cal L))$ consists 
+of only one point, $B_{\L\mu}^{\Delta\Cal L}(\Cal L)$. 
+Moreover, there  
+exists a limit $\lim_{\L\to\infty} B_{\Lambda\mu}^{\Delta
+L}(\Cal L)=B_\mu^{\Delta\Cal L}(\Cal L)$, which belongs to $Y_r(\mu)$. 
+
+(iv) (Set convergence) Let $X(s)\subset X$ be the set of 
+Lagrangians which are polynomials of degree $\le s$ in $\phi$. 
+Then for $s\ge 4$ $Y_r(\mu)=\lim_{\L\to \infty}R_{\L\mu}(X_s)$. 
+\endproclaim
+
+The proof of this theorem will be partially discussed later.  
+It is essentially contained in the paper by 
+J. Polchinski ``Renormalization and effective Lagrangians'',
+Nucl. Phys. B231(1984) 269-295.
+
+Theorem 4 shows
+that in our case the renormalization group flow has an attractor --
+a three-dimensional family of trajectories $Y_r$, which can be parametrized
+by the values of critical and subcritical coefficients in the Lagrangian.
+Thus, the only things we 
+(effectively) inherit from smaller scales 
+are the values of these 3 parameters.  
+
+We see that the space $Y_r(\mu)$ is defined
+completely canonically, and $R_{\mu_1\mu_2}Y_r(\mu_1)=
+Y_r(\mu_2)$. The space $Y_r(\mu)$ has the meaning of the space of
+exact (renormalized) quantum field theories, i.e. those which are obtained 
+by perturbative renormalization as described in Witten's lectures.
+These are the only theories that we will care about. 
+ 
+This very simple example demonstrates the main principle of the method
+of renormalization group. 
+
+
+{\bf 1.4. Applications of renormalization theory to phase transitions.}
+
+As we mentioned, one of the main applications of renormalization group
+in quantum field theory is that it allows to absorb all short-scale
+information in finitely many constants. However, there are other
+applications as well. One of them is to the theory of phase transitions
+in many-body systems (statistical mechanics). 
+For example, consider a magnetic chain on a lattice $L$. 
+Each vertex $v$ of the lattice has a spin $s(v)$, $1$ or $-1$. 
+The Lagrangian of the theory, for example, can be 
+$$
+\Cal L=\frac{c}{T}\sum_{v--v'}(s(v)-s(v'))^2,
+$$
+where $T$ is the temperature, and $v--v'$ means thet $v$ is a neighbor of
+$v'$. 
+For low $T$ the correlation is very strong, so there are 
+large (macroscopic) clusters of aligned spin (magnetism)
+For high $T$ the spins are almost 
+uncorrelated, so there are only very small clusters of aligned spins
+(no magnetism). The transition from one situation to the other is happening
+at some fixed temperature $T_c$ called the critical temperature. 
+At this temperature we expect to see clusters of all sizes,
+and the theory to be scale invariant (conformal). 
+Hence this theory should correspond to a ``fixed point'' 
+(=an attracting trajectory) of the renormalization group 
+flow on the relevant space of theories. We may try to find this trajectory
+if we have some description of the relevant space of theories and of the
+renormalization group flow, and thus understand the behaviour of the magnet
+at the critical temperature. 
+
+{\bf Remark.} In general (for example, in the 
+theory of a scalar field), the renormalization group does not have 
+a attracting trajectory, but has an attracting
+finite-dimensional family of trajectories
+-- the space of critical (renormalizable) theories. In this
+case we have to make finitely many measurements, in order to determine at 
+which point of this space we are. For instance, in the theory of
+a scalar field we would have to measure three parameters,
+which determine a point on the 3-dimensional variety $Y_r$.  
+All other physical quantities can then be 
+computed, i.e. expressed via the results of these measurements.  
+
+{\bf 1.5. Reminder of renormalization theory.}
+
+Before we discuss how renormalization group works in quantum field theory, 
+we recall the basics of classical renormalization theory.
+Since there were other lectures on this subject, we will do it briefly.
+
+In quantum field theory, we consider Lagrangians depending on certain
+kinds of fields (scalar fields, fermionic fields, gauge fields).
+For example, we can consider a Lagrangian of the form (1.1). 
+We are interested in correlation functions of the form
+$\<T(\phi_1(x_1)...\phi_N(x_N))\>$, where $T$ means time ordering.
+It is usually easier to compute the Fourier transform of this function. 
+Feynman rules allow us to do it perturbatively, i.e. to obtain the answer
+in the form of a power series in coupling constants.  
+This answer comes with two problems:
+
+1. Every term of the series is given by a divergent integral.
+
+2. Even if all terms are convergent, the series is divergent in 
+any neighborhood of zero. 
+
+Renormalization theory helps to overcome the first problem.
+The second problem has to do with the (difficult) question 
+whether the theory actually exists nonperturbatively. 
+If it does, this problem can be solved by regarding the series 
+expansion not as a Taylor expansion but as an asymptotic
+expansion of a certain function. 
+
+Renormalization theory works in two steps:
+1) regularization; 2) renormalization. 
+
+Regularization is introducing some kind of cutoff, which makes 
+the integral convergent. After regularization, the integral 
+is convergent, but depends on the regularization parameter $\L$. 
+If $\L$ tends to $\infty$ (i.e. when the cutoff is removed), 
+the integral tends to infinity. This problem is removed by the second step
+-- renormalization. Namely, we find a way to change the parameters in the 
+Lagrangian in such a $\L$-dependent way that when $\L$ and the parameters 
+in the Lagrangian are varied simultaneously, with $\L\to\infty$, 
+the integral converges to a finite limit. 
+This limit is then proclaimed to be the value of the integral.
+
+The most naive cutoff scheme is suppressing large momenta
+by changing the propagator, for example
+$\frac{1}{k^2+m^2}\to \frac{1_{|k|\le \L}}{k^2+m^2}$ (where
+$1_A$ is the characteristic function of a set $A$), or
+$\frac{1}{k^2+m^2}\to \frac{1}{k^2+m^2}\left(\frac{\L^2}{k^2+\L^2}\right)^l$.
+This scheme ha s some nice features (e.g. it can be applied in a
+non-perturbative setting), but
+is not always good enough (for example, in gauge theory), 
+as it does not preserve 
+all symmetries. Namely, it preserves Lorenz symmetry but does not preserve 
+gauge symmetries or conformal symmetries. So if we use 
+this scheme, we have no gauge or conformal symmetry for each finite $\L$,
+and may not recover this symmetry even in the limit. 
+
+There is a more ingenious regularization scheme, which is called
+dimensional regularization. This scheme preserves all symmetries, 
+but it is only valid in the perturbation expansion. 
+Now we will describe what dimensional regularization is.
+
+{\bf 1.6. Dimensional regularization.}
+
+The idea of dimensional regularization is 
+to compute the integral corresponding to each Feynman graph
+in the ``space'' of dimension $D$, where $D$ is a generic complex number. 
+If the graph is divergent, the answer turns out to be a meromorphic function 
+of $D$, usually having a pole at $D$ equal to the physical dimension $d$.
+The renormalization techique usually used with this kind of regularization
+is minimal subtraction: we subtract the pole part 
+(this is called ``minimal subtraction'') and proclaim the rest 
+(evaluated at $D=d$) to be the value of the integral.
+
+Let us now describe the algorithm of dimensional regularization.
+For simplicity 
+we assume that our theory includes only scalar massive fields.
+
+Suppose we have a Feynman graph $G$ with $N$ external edges, and momenta
+$k_1,...,k_M$ at them ($k_1+...+k_M=0$).  
+Let $q_1,...,q_{N-M}$ be the loop variables over which we are integrating.
+To uniformize the notation, we set $q_{N-M+i}=k_i$.  
+Then the amplitude of the graph is (up to a factor) given by the formula
+$$
+\Sigma^G(q_{N-M+1},...,q_N)=\int_{V^{N-M}}g(q)dq_1...dq_{N-M},\
+g(q)=\frac{Q(q)}{\prod_j(l_j(q)^2+m_j^2)},\tag 1.5
+$$
+where $Q$ is a polynomial, $q=(q_1,...,q_N)$ and $l_j:V^N\to V$ are 
+given by linear forms
+on $\R^N$.
+
+Unfortunately, integral (1.5) is divergent, so we will explain 
+how to regularize it using dimensional regularization.
+As any regularization scheme, dimensional regularization
+works inductively in the number of loops (or internal vertices)
+of the graph. So we assume that the coefficients in the Lagrangian 
+have been adjusted at the previous step of the process 
+in such a way that all proper subgraphs of $G$ are convergent. 
+ 
+In order to regularize the integral corresponding to $G$, we 
+pretend that it exists and, using the formula
+$\int_0^\infty e^{-at}dt=a^{-1}$, transform it to the form
+$$
+\gather
+\Sigma^G=\int Q(q)\biggl[\int_{t_j\in [0,\infty)}e^{-\sum t_jl_j(q)^2-\sum
+t_jm_j^2}dt\biggr]dq=\\
+\int_{t_j\in [0,\infty)}e^{-\sum
+t_jm_j^2} \biggl[\int Q(q)e^{-\sum t_jl_j(q)^2}dq\biggr]
+dt.\tag 1.7\endgather
+$$
+The q-integral in brackets in the last expression is a Gaussian integral, 
+so it can be computed according to the standard rules.
+Namely, 
+from Poincare invariance it is clear that 
+the answer is of the form $\psi(t,A,d)\det(B(t))^{-d/2}$, 
+where $B(t)$ is a quadratic form on $\Bbb R^{N-M}$ such that
+$B(t)_{ij}=(\sum t_sl_s^2)_{ij}$, 
+$A=(a_{ij})=(k_i\cdot k_j)$, and
+$\psi$ is a polynomial in $d$. 
+
+Thus we get
+$$
+\Sigma^G=\Sigma^G(A)=
+\int_{t_j\in [0,\infty)}e^{-\sum
+t_jm_j^2}\psi(t,A,d)(\det B(t))^{-d/2}
+dt.\tag 1.8
+$$
+Of course, this integral is also divergent.
+However, since it does not contain integration with respect to $q$, so 
+we can replace $d$ in it with a generic complex number $D$. 
+It is easy to see that the obtained integral $\Sigma^G_D(A)$ is convergent 
+for $\text{Re} D<<0$, and one can prove that it continues meromorphically 
+to the whole complex plane (this is a nontrivial theorem).
+
+{\bf Definition.} $\Sigma^G(A)$ is the value of the regular part of
+$\Sigma^G_D(A)$ at $D=d$. That is, 
+$$
+\Sigma^G(A)=\frac{1}{2\pi i}\oint_{|D-d|=\e}\Sigma^G_D(A)d\ln(D-d).\tag 1.9
+$$
+
+Now, if the analytic continuation of integral (1.8) is singular at 
+$D=d$, we should adjust the Lagrangian by adding 
+to it a counterterm $C_G(D)$ (infinite at $D=d$) in such a way
+that the singular part cancels and the regular part remains unchanged. 
+After this we can go to the next step of the process.
+
+{\bf Remark.} The only divergences that produce a pole at $D=d$ are
+logarithmic divergences. Pure power divergences produce poles at 
+smaller values of $D$, and do not produce a singularity at $D=d$. 
+  
+For a more detailed description of the general theory of integration
+in a D-dimension space, where D is a complex number, see the notes 
+``On integration in a space with complex dimension'' by Pavel Etingof. 
+
+\end
+
+

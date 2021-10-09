@@ -1,0 +1,1414 @@
+%From: John W Morgan <jmorgan@math.ias.edu>
+%Date: Thu, 13 Feb 1997 15:25:20 -0500
+%Subject: Witten Lecture notes
+
+\documentstyle[10pt]{article}
+
+
+%These are the macros which are in common with all of the
+% sections in the paper mmr
+% Each section, for now, should begin with \documentstyle[11pt,cd]{article}
+% and then have \input{mmrmacros} followed by \begin{document}
+% The only exception is that the \Label macro is slightly different
+% in each file and should be put in separately.
+%New CD macros
+\newcommand{\cdrl}{\cd\rightleftarrows}
+\newcommand{\cdlr}{\cd\leftrightarrows}
+\newcommand{\cdr}{\cd\rightarrow}
+\newcommand{\cdl}{\cd\leftarrow}
+\newcommand{\cdu}{\cd\uparrow}
+\newcommand{\cdd}{\cd\downarrow}
+\newcommand{\cdud}{\cd\updownarrows}
+\newcommand{\cddu}{\cd\downuparrows}
+% (S) Proofs.
+% (S-1) Head is automatically supplied by \proof.
+
+\def\proof{\vspace{2ex}\noindent{\bf Proof.} }
+\def\tproof#1{\vspace{2ex}\noindent{\bf Proof of Theorem #1.} }
+\def\pproof#1{\vspace{2ex}\noindent{\bf Proof of Proposition #1.} }
+\def\lproof#1{\vspace{2ex}\noindent{\bf Proof of Lemma #1.} }
+\def\cproof#1{\vspace{2ex}\noindent{\bf Proof of Corollary #1.} }
+\def\clproof#1{\vspace{2ex}\noindent{\bf Proof of Claim #1.} }
+% End of Proof Symbol at the end of an equation must precede $$.
+
+\def\endproof{\relax\ifmmode\expandafter\endproofmath\else
+  \unskip\nobreak\hfil\penalty50\hskip.75em\hbox{}\nobreak\hfil\bull
+  {\parfillskip=0pt \finalhyphendemerits=0 \bigbreak}\fi}
+\def\endproofmath$${\eqno\bull$$\bigbreak}
+\def\bull{\vbox{\hrule\hbox{\vrule\kern3pt\vbox{\kern6pt}\kern3pt\vrule}\hrule}}
+\addtolength{\textwidth}{1in}                  % Margin-setting commands
+\addtolength{\oddsidemargin}{-.5in}
+\addtolength{\evensidemargin}{.5in}
+\addtolength{\textheight}{.5in}
+\addtolength{\topmargin}{-.3in}
+\addtolength{\marginparwidth}{-.32in}
+\renewcommand{\baselinestretch}{1.6}
+\def\hu#1#2#3{\hbox{$H^{#1}(#2;{\bf #3})$}}          % #1-Cohomology of #2
+\def\hl#1#2#3{\hbox{$H_{#1}(#2;{\bf #3})$}}          % #1-Homology of #2
+\def\md#1{\ifmmode{\cal M}_\delta(#1)\else  % moduli space, delta decay of #1
+{${\cal M}_\delta(#1)$}\fi}
+\def\mb#1{\ifmmode{\cal M}_\delta^0(#1)\else  %moduli space, based, delta
+					      %decay of #1
+{${\cal M}_\delta^0(#1)$}\fi}
+\def\mdc#1#2{\ifmmode{\cal M}_{\delta,#1}(#2)\else    %moduli space, delta
+						      %decay, chern class #1
+						      %of #2
+{${\cal M}_{\delta,#1}(#2)$}\fi}
+\def\mbc#1#2{\ifmmode{\cal M}_{\delta,#1}^0(#2)\else   %as before, based
+{${\cal M}_{\delta,#1}^0(#2)$}\fi}
+\def\mm{\ifmmode{\cal M}\else {${\cal M}$}\fi}
+\def\ad{{\rm ad}}
+\def\msigma{\ifmmode{\cal M}^\sigma\else {${\cal M}^\sigma$}\fi}
+\def\cancel#1#2{\ooalign{$\hfil#1\mkern1mu/\hfil$\crcr$#1#2$}}
+\def\dirac{\mathpalette\cancel\partial}
+\newtheorem{thm}{Theorem}
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{D}[theorem]{Definition}
+\newenvironment{defn}{\begin{D} \rm }{\end{D}}
+\newtheorem{addendum}[theorem]{Addendum}
+\newtheorem{R}[theorem]{Remark}
+\newenvironment{remark}{\begin{R}\rm }{\end{R}}
+\newcommand{\note}[1]{\marginpar{\scriptsize #1 }} 
+\newenvironment{comments}{\smallskip\noindent{\bf Comments:}\begin{enumerate}}{\end{enumerate}\smallskip}
+
+\renewcommand{\thesection}{\Roman{section}}
+\def\eqlabel#1{\addtocounter{theorem}{1}
+\write1{\string\newlabel{#1}{{\thetheorem}{\thepage}}}
+\leqno(\rm\thetheorem)}
+\def\cS{{\cal S}}
+\def\ov{\overline}
+
+
+
+
+
+
+
+
+
+
+
+
+\title{The Dirac Index on Manifolds and Loop Spaces: Part I}
+\author{Edward Witten\thanks{\tt{Lecture notes by John Morgan}}}
+\date{December 10, 1997}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+
+One mathematical approach
+to the proof of the Hirzebruch index theorem 
+is through the  heat equation.  One considers, for each $t>0$, the
+operator $e^{-t\Delta}$ acting on the differential forms on a closed,
+oriented riemannian manifold $Y$. A direct spectral argument shows
+that the trace of this operator (or more precisely the difference of
+its trace on the self-dual forms and on the antiself-dual forms) is
+independent of $t$ and limits as $t\mapsto \infty$ to the index of the
+manifold. On the other hand, the limit as $t\mapsto 0$ of this
+operator can be computed in terms of local invariants, curvature, of
+the manifold.  One can even explicitly evaluate these local
+expressions, and in this manner recover  the result that the signature
+of the manifold is given by $L$-polynomials of Hirzebruch.  In a
+related context, that of equivariant signatures when there is a group
+action, one sees a localization taking place in the Atiyah-Hirzebruch
+formula for the equivariant signature in terms of local data
+(characteristic classes) at the fixed points.
+These localizations are reminiscent of localizations in quantum field
+theory, e.g., perturbation expansions around the classical solutions
+of Lagrange's equations, and raise the question of whether there are
+quantum field theory arguments establishing these and similar
+results. 
+
+The answer to this question is yes, and 
+it is our purpose here to show how to establish results  of a similar
+nature (for Dirac operators on a spin manifold) by
+doing a perturbation expansion of an 
+appropriate path integral or Hamiltonian eigenstates.  The explanation
+of the quantum field theories that do indeed lead 
+to index theorems for the Dirac operator on a
+spin manifold (an its equivariant analogue) are the first subject of
+these lectures. Once these classical cases are been covered, we turn
+to more sophisticated applications of the same techniques.  This
+involves the index of Dirac operators on the loop spaces of spin
+manifolds. While the results on loop spaces were first discovered by
+the path integral approach that we take here,  eventually,
+mathematical proofs were also found for these results [Bott-Taubes].
+
+
+Before we get into the details of the computations, one general
+comment is in order. So far the perturbative expansions we have
+encountered have been around an isolated, non-degenerate critical
+point.
+That is to say the space of classical solutions (the space
+of minima of the Lagrangian) is a single point and the Hessian 
+(the quadratic term in the Lagrangian) is positive definite at that point.  
+The expansions that we encounter here will be of a more general
+type. The set of classical solutions  will be a compact, finite dimensional 
+smooth manifold (or super-manifold) and the
+quadratic term in the Lagrangian restricted to the
+normal bundle to the critical set is positive definite.
+The same techniques will work for oscillatory integrals as long as the
+Hessian  in the normal directions is non-degenerate (the Chern-Simons
+functional in three dimensions gives examples of this type).
+  Of course, one
+could meet situations where the critical set is singular and
+the Hessian has null-space which is not of constant rank.  Such
+situations require techniques that are not discussed here.
+
+In the situation where the critical set is a super-manifold $M$ and at
+each point of the critical set the Hessian has null space equal to the
+tangent space of the critical set, the basic approach is to apply the
+usual perturbative expansion using Feynman diagrams and regularization
+in the normal direction where there is an isolated, non-degenerate
+critical point to  
+obtain a  result, and then integrate this result over the critical
+set. Of course, it may well happen that the individual expansions over
+the normal spaces have no intrinsic meaning and depend on choices
+but we expect the resulting
+integral over $M$ to be well-defined. We will also be computing only
+the constant term in the expansions.  These of course will depend only on
+the quadratic term in the Lagrangian and will be written in terms of
+the determinant of the propagator for the Bosons and
+Pfaffian of the
+propagator of the fermions integrated over the normal directions.
+
+
+
+\section{The Dirac Operator on a Spin Manifold}
+
+
+In this section we shall give a path integral derivation of the index
+theorem for the Dirac operator on a spin manifold. Fix for this
+section 
+$Y$ a compact, oriented, $2n$-dimensional spin manifold.
+
+\subsection{The Lagranian Formulation}
+
+Let ${\bf R}^{1,1}$ denote the super Euclidean space with one even
+variable and one odd variable; i.e., $C^\infty({\bf
+R}^{1,1})=C^\infty({\bf R})\otimes \wedge^*({\bf R})$.  We denote by
+$t,\theta\in C^\infty({\bf R}^{1,1})$ the natural even and odd
+variables, respectively.
+We consider a quantum theory of maps
+$$X\colon {\bf R}^{1,1}\to Y,$$
+where $Y$ is a compact spin manifold of dimension $2n$.
+The Lagrangian we take is
+$${\cal L}=-\int_{{\bf R}^{1,1}}dtd\theta^{-1}
+\frac{1}{2}g_{I,J}(X)\frac{dX^I}{dt}DX^J=-\int_{{\bf
+R}^{1,1}}\frac{1}{2}\langle \dot X,DX\rangle ,$$ 
+where as usual $g_{I,J}$ denotes the metric tensor on $Y$ and $D$ is
+the vector field 
+$$D=\frac{\partial}{\partial\theta}-\theta\frac{\partial}{\partial
+t}$$
+on ${\bf R}^{1,1}$.
+
+Let us recall some of the material from Problem 2 in Problem
+Set One. 
+We can view $X$ as a map $x$ from
+${\bf R}^1$ to $Y$ together with a section $\psi$ of the odd vector
+bundle $\Pi(x^*TY)$ over ${\bf R}^1$. 
+We write $X=x(t)+\theta \psi(t)$ with this understanding as to the
+meanings of $x$ and $\psi$.
+Then we can re-write the
+Lagrangian as
+\begin{equation}\label{rewrite}
+{\cal L}=
+-\int_{{\bf R}^{1,1}}\frac{1}{2}\langle \dot
+x(t)+\theta\nabla_t(\psi(t)) ,\psi(t)-\theta  
+\dot x(t)\rangle dtd\theta^{-1}.
+\end{equation}
+If one prefers an expression in local coordinates,
+doing the $\theta$-integration yields:
+$${\cal L}=\frac{1}{2}\int_{{\bf R}^1}\langle \dot x(t) ,
+\dot x(t) \rangle -\langle \nabla_t\psi(t),\psi(t)\rangle dt.$$
+
+
+The classical solutions to this Lagrangian form a
+supermanifold of maps $X\colon {\bf R}^{1,1}\to Y$ satisfying
+$$\nabla_tDX=0.$$
+We can also write this equation as a pair of equations:
+$$\nabla_t\psi=0$$
+$$F(\psi,\dot x)(\psi)=\nabla_t(\dot x),$$
+where $F$ is the curvature of $Y$.
+Fixing a time $t_0$ and evaluating at this time identifies this
+supermanifold with space of ``initial conditions'' at time $t=t_0$.
+The initial conditions are simply a pair -- a tangent vector $\dot x_0$
+at some point $x_0$ of $Y$ and an element $\psi_0$ in a copy of
+$TY_{x_0}$ considered as an odd vector bundle. That
+is to say, the space of initial conditions is identified  with the odd
+vector bundle 
+$p^* \Pi (TY)$ over $TY$,
+where $p\colon TY\to Y$ is the natural projection mapping.
+The symplectic structure on this space of classical solutions is given
+by (see Problem 2 of Problem Set One)
+$$\omega =
+\omega_{T^*Y}+\frac{1}{2}(\nabla\psi,\nabla\psi)
+-\frac{1}{2}\left(F(\psi),\psi\right),$$
+where the first term is the canonical symplectic form on the cotangent
+bundle which is identified with the tangent bundle using the
+riemannian metric on $Y$.
+
+
+\subsection{The Quantization}
+
+We wish to apply canonical quantization to this super-manifold of
+classical solutions.  Were the space of classical solutions simply
+$TY$ with the usual symplectic structure, then canonical quantization
+would yield the Hilbert space $L^2(Y)$ of complex-valued $L^2$-functions on
+$Y$. (More precisely, we would get the space of $L^2$ half-densities.)
+The functions on $Y$ act by multiplication and sections of $TY$
+(i.e., vector fields) act by 
+differentiation. But in our case where the space of classical
+solutions is a super-manifold, we must mix this canonical quantization
+of $TY$ with a quantization of the vector spaces which are the fibers
+of the odd bundle $p^*(\Pi TY)\to TY$.
+
+Let us consider a real, even dimensional super vector space $V$ which is
+purely odd  with respect to the ${\bf Z}/2{\bf Z}$-grading.
+Suppose further that $V$ has  a positive
+definite inner product and an orientation and a spin structure.
+We quantize this space by taking as the Hilbert superspace
+the complex spin bundle $S(V)$, with the ${\bf Z}/2{\bf Z}$-grading given by
+the usual decomposition of $S(V)$ into $S^+(V)\oplus S^-(V)$.  The
+linear forms on $V$ are quantized to 
+operators  on this space which act by Clifford multiplication:
+$$V^*\otimes S(V)\to S(V).$$ 
+
+Now we must mix together the two constructions.
+We have the odd vector bundle $p^*(\Pi TY)$ over the symplectic
+manifold $TY$. The Hilbert space is the 
+space of $L^2(S(Y))$, the space of $L^2$-sections of the spin bundle
+ $S(Y)$, again tensored by the half-densities on $Y$.
+The functions on $Y$ act as usual by multiplication; the linear forms
+in $TY$ act by covariant differentiation, and the linear forms on $\Pi
+TY$ act by Clifford multiplication.
+This space of sections of $S(Y)$ is  a super Hilbert space -- the
+${\bf Z}/2{\bf Z}$-grading 
+is induced with the usual decomposition of spinors in
+even dimensions $S(Y)=S^+(Y)\oplus S^-(Y)$.
+
+The Hamiltonian operator for this quantization is given by quantizing
+the Hamiltonian function $h$ 
+associated with the flow $\partial/\partial t$ on the theory:
+$$dh= -i_{\partial/\partial t}\omega.$$
+In this case it is easy to see (cf, Problem 2 in Problem Set 1)
+that 
+$$h=\frac{1}{2} |\dot x|^2.$$
+In quantizing this function
+there is in general an ambiguity in the resulting second order
+operator (adding zero and first order operators), but
+one representative for it is the Laplacian $\nabla^*\circ\nabla$ on
+spinor fields.
+In our situation the vector field 
+$$Q=\frac{\partial}{\partial \theta}+\theta\frac{\partial}{\partial
+t}$$ on ${\bf R}^{1,1}$ (whose square is $\partial/\partial t$)
+yields a vector field acting on the theory.
+The Hamiltonian function for this vector field, when quantized,
+yields a naturally defined first-order operator whose square is the
+Laplacian $\nabla^*\circ\nabla$ on spinor fields, up to lower order
+terms. 
+This first-order operator is in fact the Dirac operator $\dirac$ on
+the spinor bundle. 
+Thus, it is fairly natural to use the square of the Dirac operator on
+the spin bundle as the Hamiltonian operator.  (Of course, all the various
+operators we could use will have the same symbol and hence give the
+same answers in the computations we do below.)
+
+For any $\beta>0$, let us denote by $[0,\beta]^{1,1}$ the pre-image in
+${\bf R}^{1,1}$ under the natural projection mapping of the interval
+$[0,\beta]\subset {\bf R}$. Quantize as above.
+The Hamiltonian operator associated with infinitessimal
+time evolution  is given by 
+$$H= \dirac^2$$
+acting on the $L^2$-sections of spin bundle  $S(Y)$ thought of as a
+super vector bundle over $Y$.
+Let  $S^{1,1}$ denote the supercircle of length $\beta$
+obtained by dividing ${\bf R}^{1,1}$ by a translation of distance
+$\beta$.
+The partition function for the resulting supersymmetric sigma model of
+maps of $S^{1,1}$ into $Y$
+is  the supertrace of the operator of time evolution from $t=0$ to
+$t=\beta$; that is to say with 
+\begin{equation}\label{strform}
+{\rm tr_s}rm exp(-\beta H)={\rm tr_s}\left({\rm exp}(-\beta
+\dirac^2)\right) 
+\end{equation}
+acting on the $L^2$-sections of the spin bundle $S(Y)$.
+Of course, by the usual spectral analysis (as  alluded to int the
+introduction in the case of the heat equation proof of the HirzeCruch
+signature theorem), we see that the supertrace
+of this operator is independent of 
+$\beta>0$ and as $\beta\mapsto \infty$ it
+approaches 
+$${\rm dim}\left({\rm Ker}\ \dirac^2|\Gamma(S^+(Y))\right)-{\rm
+dim}\left({\rm Ker}\ \dirac^2|\Gamma(S^-(Y))\right)$$
+which is the index of
+$$\dirac^+\colon \Gamma(S^+(Y))\to \Gamma(S^-(Y)).$$
+Our strategy is to compute a perturbative expansion for this partition
+function near $\beta=0$.  In fact, as we mentioned above, we will only
+compute the constant term in this expansion.
+
+
+\subsection{The Path Integral}
+
+Now we wish to compute a power series expansion near $\beta=0$ for
+the supertrace in Equation~\ref{strform}.
+Of course, as was explaned in Fadde'ev's lectures, the basic
+connection between the Lagrangian and Hamiltonian 
+formulations is given by the Feynman-Kac formula.  For the current
+application, the formula must be worked out in the context of spinor
+fields instead of scalar fields.  This was done in detail in [Bismut].
+In any event, the perturbative power series expansion that we shall
+compute by path integrals over Feynman diagrams is in fact a
+power series that is asymptotic
+to the above supertrace. 
+We shall ignore all terms which are positive powers of $\beta$, thus
+computing the constant term in this power series.  Since we know that
+the series is asymptotic to a constant function, this will suffice to
+compute the constant term in the series.
+
+Recall that we are considering the space of maps of the supercircle
+$S^{1,1}$ of length $\beta$ into $ Y$.
+The super Lagrangian  is
+$${\cal L}(X)=-\int_{{\bf S}^{1,1}}dtd\theta^{-1}
+\frac{1}{2}g_{I,J}(X)\frac{dX^I}{dt}DX^J,$$ 
+The supermanifold of classical solutions is the
+supermanifold  of maps of
+$S^{1,1}\to Y$,
+which are critical points for this Lagrangian.
+The underlying geometric manifold of this super-manifold is the space
+of closed geodesics in $Y$. The supermanifold $M$ of critical points that
+minimize the Lagrangian is identified with  $\Pi TY\to Y$, an odd
+vector bundle over the space of 
+constants maps from $S^1$ to $Y$.
+We shall do our perturbation expansion around $M$.
+Other critical points give contributions which are exponentially small
+in $\beta$. 
+(In fact, one can prove directly
+that the non-constant maps contribute zero to the final answer.)
+
+
+By Equation~\ref{rewrite} we can re-write this path integral
+as
+$$\int_{x\in {\rm Maps}( S^1,Y);\psi\in \Gamma(x^*\Pi TY)}{\cal D}x{\cal
+D}\psi\ {\rm exp}\left(-\int_0^\beta 
+dt\left[\frac{g_{I,J}}{2}\left(\frac{dx^I}{dt}\frac{dx^J}{dt}-\psi^I
+\frac{D\psi^J}{Dt}\right)\right]\right).$$
+
+Rescale by setting $t'=\beta t$ and
+$\psi'=\frac{1}{\sqrt{\beta}}\psi$.
+Doing this and then rewriting the equation dropping the primes from
+the notation yields
+\begin{equation}\label{eqno}
+\int_{x\in{\rm Maps}(S^1,Y);\psi\in \Pi x^*TY}{\cal D}x{\cal
+D}\psi\ {\rm exp}\left(-\frac{1}{\beta}\int_0^1 
+dt\left[\frac{g_{I,J}}{2}\left(\frac{dx^I}{dt}\frac{dx^J}{dt}
+-\psi^I\frac{D\psi^J}{Dt}\right)\right]\right).
+\end{equation}
+This change of variables on the circle introduces a change in the
+measure of integration by a formally infinite constant. The
+regularization procedure will determine a finite value for this
+constant which depends only on the dimension of $Y$.  In fact it is of
+the form $C^{2n}$ for some universal constant. (Recall that the
+dimension of $Y$ is $2n$.) We shall not try to
+explicitly evaluate this constant  
+nor others like it which arise later in the argument, though it is
+possible to do so.  Thus, our final answer must be taken up to a
+multiplicative constant of the form $C^{{\rm dim} Y}$.
+
+
+As we have already remarked a minimum for the Lagrangian is a pair
+$(x_0,\psi_0)$  where $x_0\in Y$ is regarded as the constant map of
+$S^1$ to $Y$ and 
+$\psi_0(t)$ is a constant section of $\Pi T(Y)_{x_0}$.
+We expand to first order around this point by taking $x=x_0+a$
+where $a(t)\in TY_{x_0}$ satisfies
+\begin{equation}\label{ave1}
+\int_0^1a(t)=0
+\end{equation}
+ and
+$\psi=\psi_0+\eta$ where $\eta(t)\in \Pi TY|_{x_0}$ satisfies
+\begin{equation}\label{ave2}
+\int_0^1\eta dt=0.
+\end{equation}
+ These variations describe the normal bundle to
+M at $(x_0,\psi_0)$.
+To project this parametrization of the normal bundle  to a submanifold
+in the space of maps transverse to $M$ we consider
+$$x(s,t)={\rm exp}_{x_0}(s a(t))$$
+as a map of $S^1\times (-\epsilon,\epsilon)$ into $Y$ and 
+$$\psi(s,t)=P_{(s,t)}\left(\psi_0+\eta(t)\right)$$
+where $P_{s,t}$ denotes parallel translation in $\Pi TY$ from $x_0$
+along the path $x(s',t)$ as $s'$ runs from $0$ to $s$.
+Thus, $\psi(s,t)\in \Pi TY_{x(s,t)}$, so that
+$x(s,t)+\theta\psi(s,t)$ is a map from $S^{1,1}$ to $Y$. 
+
+Since we are at a critical point, the first-order variation of the
+Lagranian with respect to $a$ and $\eta$ is zero.
+We are interested in the quadratic term, which is all that is needed
+to compute the constant term in the $\beta$-expansion of
+the path integral in Equation~\ref{eqno}.
+To compute the quadratic term with respect to $a$ and $\eta$ 
+in the Lagrangian we take the second 
+derivative at a minimum $(x_0,\psi_0)$.
+We find that the quadratic term
+is
+$$I=-\frac{1}{2\beta}\int_0^1dt\left[|\dot a|^2+\langle
+\eta,\dot\eta\rangle-\frac{1}{2}\psi_0^I\psi_0^JR_{IJKL}a^K\dot
+a^L\right].$$
+As noted above the higher order terms in $a$ and $\eta$ in the action
+will contribute to positive powers of 
+$\beta$ in the asymptotic expansion.
+In this expression the term $\dot \eta$ is the ordinary derivative of
+$\eta$ with respect to $t$, which makes sense because for all $t$, the
+image $\eta(t)$ is
+contained in the vector space $\Pi TY_{x_0}$.
+The term $R_{IJKL}$ is the curvature of $Y$.
+Notice that in this integral there is no mixing in the quadratic terms
+between the $a$'s and the $\eta$'s. 
+Thus, $I$ is a sum  $I_1+I_2$
+where
+$$I_1(x,\psi)=-\frac{1}{2\beta}\int_0^1|\dot a|^2-\frac{1}{2} \langle
+a,\psi_0^I\psi_0^J R_{I,J}\dot a\rangle $$
+and
+$$I_2=-\frac{1}{2\beta}\int_0^1\langle \eta,\dot \eta\rangle.$$
+Hence,  the path integral
+is a product 
+$$\int_a{\cal D}a\ {\rm exp}\left(-I_1\right)\cdot
+\int_\eta{\cal D}\eta\  
+{\rm exp}\left(-I_2 \right).$$
+Also notice that the $\eta$ integral
+$$\int_\eta{\cal D}\eta{\rm exp}\left(-\frac{1}{2\beta}\langle
+\eta,\dot\eta\rangle\right) $$
+ is independent of $x_0,a$ and
+$\psi$, since this integral depends only on $TY_{x_0}$ with its inner
+product and the isomorphism class of this finite dimensional positive
+definite inner product space depends only on the dimension of $Y$.
+This path integral is purely quadratic and is identified
+with the Pfaffian of $\frac{d}{dt}$ acting on the Hilbert space
+of maps $\eta$. 
+This is a constant which depends only on the dimension.
+In fact it is of the form $C^{2n}$ for some universal constant $C$.
+Notice also that in the regularization that we are performing, these
+purely quadratic integrals are independent of $\beta$.
+
+Thus, ignoring such multiplicative constants, to compute the constant term
+of the expansion in $\beta$, we must compute
+$$\int_a{\cal D}a\ {\exp}\left(-\frac{1}{2}\int_0^1|\dot
+a|^2-\frac{1}{2}\langle a,\psi_0^I\psi_0^JR_{I,J}\dot a\rangle\right)$$
+By integrating by parts from $0$ to $1$ we can re-write the integrand
+of the functional integral as the exponential of
+$$-\frac{1}{2}\int_0^1\langle D_B(a),a\rangle$$
+where the propagator $D_B$ depends on $(x_0,\psi_0)$ and is given by
+$$D_B(x_0,\psi_0)=-\frac{d^2}{dt^2}-\frac{1}{2}
+\psi_0^I\psi_0^JR_{I,J}\frac{d}{dt}.$$ 
+Thus, modulo $\beta$,  the path
+integral over the normal  space to 
+the super manifold $M$ of minima at the point $(x_0,\psi_0)$
+of $I_a$ gives
+$$\frac{1}{\sqrt{{\rm det}_a\ {D_B(x_0,\psi_0)}}}$$
+where the determinant is computed over the space of $a$ for fixed
+$(x_0,\psi_0)$ and is regularized using the $\zeta$-function
+regularization. 
+The final formula for the path integral is then
+\begin{equation}\label{formula}
+\int{\cal D}x{\cal D}\psi\ {\rm exp}(-I_a-I_\eta)\equiv
+C^{2n}\int_{\Pi TY}
+\frac{1}{\sqrt{{\rm det}\ D_B(x,\psi)}} \pmod\beta.
+\end{equation}
+Here $C$ is a universal constant (explicitly calculable given enough
+patience). 
+
+It is convenient to realize that this integral over the  supermanifold
+$\Pi TY$ can be re-interpreted 
+as an ordinary integral of a top dimensional form
+over the underlying manifold $Y$.
+To see this note  that, as explaned in Berstein's lectures,  the
+$C^\infty$-functions on $\Pi TY$ are simply the 
+$C^\infty$-sections of the bundle $\wedge^*(T^*Y)$ over $Y$ with the
+usual ${\bf Z}/2{\bf Z}$-grading; that is to
+say the $C^\infty$-functions on $\Pi TY$ are exactly the
+$C^\infty$-differential forms on $Y$ with the ${\bf Z}/2{\bf
+Z}$-grading being the degree modulo two.
+Let $f$ be such a $C^\infty$-function and let $\omega$ be the
+corresponding differential form on $Y$.
+We have  an orientation on $Y$.
+For a function $f\in C^\infty(\Pi TY)$ the integral
+$$\int_{\Pi TY}f$$
+is simply the integral over the fundamental cycle of $Y$ of the 
+the corresponding form $\omega$.
+The point is ${\rm Ber}(TY)$ and ${\rm Ber}(T^*Y)$ are naturally dual
+line bundles so that their product is canonically trivial.
+
+
+
+Thus, we have the path
+integral expression for the index of the Dirac operator: 
+$${\rm index}(\dirac^+)=\left(C'\right)^n\int_Y
+\frac{1}{\sqrt{{\rm det}\ D_B(x,\psi)}},$$
+where the determinant is computed using the $\zeta$-function
+regularization, where $C'$ is a universal constant, and, as discussed
+above, the $\psi$-dependence 
+turns the integrand into a differential form (with compnents of
+various degrees).  
+
+
+\subsection{Evaluation of the Determinant}
+
+Our next task is to compute this determinant as a differential form.
+Let us fix first a element $g\in so(TY_{x_0})$ and consider 
+the operator 
+$$D_g=-\frac{d^2}{dt^2}-\frac{1}{2}g\frac{d}{dt}$$
+acting on the space of maps $a\colon S^1\to TY_{x_0}$ which satisfy
+the constraint given in Equationi~\ref{ave1}.
+We can decompose $TY_{x_0}$ into two-dimensional spaces invariant
+under $g$ such that on the $i^{th}$-space $g$ is given by the matrix 
+$$\pmatrix{0 & x_i \cr -x_i & 0}$$
+with respect to an orthonormal basis.
+The determinant of $D_g$ will be the product over the blocks in this
+decomposition  of the determinants associated to the
+individual two-dimensional pieces associated with each block.
+This allows us to reduce to the two-dimensional case.  (This step is
+similar in spirit to the reduction step to riemann surfaces in some
+other proofs of the same result.)
+Fix a two-dimensional subspace $V$ of $TY_{x_0}$ on which $g$ has the form
+$$g=\pmatrix{0 & x \cr -x & 0}.$$
+We use the metric and  orientation of $TY_{x_0}$ to induce a complex
+stucture on $V$. With respect to this structure $g$ is simply
+multiplication by $-ix$.
+We can decompose the complexification of the space of maps of $S^1$
+into $V$ into  
+two-dimensional spaces of the form  
+${\rm exp}(2\pi ikt)a$ for $a\in V$.
+Notice that by Condition~\ref{ave1}, this decomposition is over $k\not= 0$.
+It is easy to see that the eigenvalues of $D_g$ on the two-dimensional
+subspace indexed by $k$ are
+$$(2\pi k)^2\pm (2\pi k)ix/2.$$
+Thus,
+$$\sqrt{{\rm det}D_g}=\prod_{\pm}\prod_{k\not= 0}\sqrt{\left((2\pi
+k)^2\pm i(2\pi k)x/2\right)}.$$ 
+Grouping together the four terms for each pair $k, -k$ we get
+$$\sqrt{{\rm det}D_g}=\prod_{k=1}^\infty(2\pi k)^4\left(1+\left(\frac{x}{4\pi
+k}\right)^2\right).$$ 
+As in Problem 2 of Problem Set Five, the $\zeta$-function
+regularization sets the 
+infinite factor
+$$\prod_{k=1}^\infty(2\pi k)^4$$
+equal to  $C^2$ for some universal constant $C$.
+Thus, the  result is that
+$$\sqrt{{\rm det} D_g}=C^2\prod_{k=1}^\infty\left(1+\left(\frac{x}{4\pi 
+k}\right)^2\right)=C^2\left(\frac{x/2}{{\rm sinh}(x/2)}\right)^{-1}.$$ 
+This computation was done under the assumption that $TY$ was
+two-dimensional.
+In the general case when $TY$ is a sum of two-dimensional spaces of
+the above form we find
+$$\sqrt{{\rm det D_g}}=C^{2n}\prod_{i=1}^n\left(\frac{x_i/2}{{\rm
+sinh}(x_i/2)}\right)^{-1} .$$
+This power series can be re-written using the elementary symmetric
+functions of the $x_i$. When we do so by the definition of $\hat A$ we
+obtain 
+$$({\rm det}D_g)^{-1/2}=C^{2n}\hat A(g).$$
+
+Now let us return to ${\rm det}D_B^{-1/2}$ as a function on $\Pi TY$,
+or as we have seen as a differential form on $Y$. Consider  the
+function $\sum_{I,J}R_{I,J}(x_0)\psi_0^I\psi_0^J$ on $\Pi TY$ with values in
+${\rm ad}(TY)$. As indicated above this function is identified with a
+two-form on $Y$ with values in ${\rm ad}(TY)$. Not suprisingly 
+under this identification the sum becomes the curvature two-form $R(Y)$
+of $Y$.
+Thus, 
+$${\rm det}(D_B)^{-1/2}=C^{2n}\hat A(R(Y)).$$
+
+
+
+We have now established that 
+$${\rm index}\ (\dirac^+)=C^{2n}\int_Y
+\hat A(R(Y))$$
+where $C$ is a  universal constant.
+Of course, the usual formula of Atiyah-Singer is
+$${\rm index}\ \dirac^+)=\int_Y\hat A(R(Y)).$$
+
+
+
+In this derivation we have been careless with universal constants
+depending only on dimension
+(infinite but regularized in some manner).
+To evaluate the constant $C$ one can either follow through the
+regularization procedure or simply evaluate it on one example where
+the index is non-trivial.
+
+\section{The Case of a Circle Action}
+
+In this section $Y$ is a compact $2n$-dimensional spin manifold with
+an isometry 
+$g\colon Y\to Y$. We suppose that this automorphism lifts to
+the bundle of spinors. We define the $g$-index of
+the Dirac operator to be
+$${\rm Tr}_{{\cal H}_+}g-{\rm Tr}_{{\cal H}_-}g$$
+where ${\cal H}_{\pm}$ are the plus and minus harmonic spinors.
+Equivalently, we can compute this  as 
+$${\rm tr_s}\left(g\ {\rm exp}(-\beta H)\right),$$
+where $H$ is the square of the Dirac operator.
+As before, there is a path integral computation of a power series
+expansion in $\beta$ 
+aysmptotic to this supertrace at $\beta=0$.
+The constant term in this series computes
+this $g$-index.
+In fact, this procedure works for any isometry $g$ which lifts to the
+spin bundle, (see the first problem in the final exam for the Fall
+Semester).  But here we shall suppose that $g$ lies in a connected,
+compact 
+group of isometries, which is equivalent to assuming that it lies in a
+circle of symmetries.
+
+So we consider an action $S^1\times Y\to Y$ by isometries. At the
+expense of doubling the circle, this action
+automatically lifts to the bundle of spinors.
+We take a Killing vector field $V$ for this action (the vector field
+generating the action), and denote by ${\cal L}_V$ the Lie derivative
+of this vector field on the spinors.  We consider 
+$$F(\theta)={\rm tr_s}\left({\rm exp}(i\theta{\cal L}_V){\rm exp}(-\beta
+H)\right)=\sum_{n\in {\bf Z}}{\rm exp}(in\theta){\rm ind}_n\dirac^+,$$  
+where ${\rm ind}_n\dirac^+$ is the index of the Dirac operator from
+subspace ${\cal H}_n^+$ of plus spinors on which the character of
+$S^1$ is the 
+$n^{th}$-power to the corresponding subspace ${\cal H}_n^-$ of the
+minus spinors. 
+In what follows we denote ${\rm ind}_n\dirac^+$ by $a_n$.
+
+Our goal is to prove the theorem of Atiyah-Hirzebruch [AH];
+
+\begin{theorem}
+If $S^1\times Y\to Y$ is a non-trivial isometric circle action on a
+spin manifold 
+$Y$ then ${\rm index}_n(\dirac)^+=a_n=0$ for all $n$.
+\end{theorem}
+
+\subsection{Proof of Atiyah-Hirzebruch Theorem using the Hamiltonian
+Formalism}
+
+Instead of computing this via path integrals as we did in the case of
+trivial action above, we introduce a Hamiltonian approach.  We perturb
+the Dirac 
+operator to an operator depending on a real parameter $t$ defined by
+$$\dirac_t(\psi )=\dirac(\psi)+tV\cdot \psi$$
+on spinors. (Here, $V\cdot\psi$ is Clifford
+multiplication.)
+It is a formally self-adjoint operator. 
+The Hamiltonian is 
+$$H_t=(\dirac_t)^2=(\dirac)^2+t^2|V|^2+t\left(2\nabla_V+{\rm
+div}(V)+dV^*\cdot \psi\right),$$
+where $V^*$ is the one-form dual under the metric to $V$ and the last
+term is Clifford multiplication by $dV^*$.
+Once again this is a formally self-adjoint operator.
+Since the circle action perserves the metric, ${\rm div}(V)=0$.
+Thus, we have
+$$H_t=(\dirac_t)^2=(\dirac)^2+t^2|V|^2+t\left(2\nabla_V+dV^*\cdot
+\psi \right).$$
+We also have a formula for the Lie derivative ${\cal L}_V$ as follows 
+$${\cal L}_V=\nabla_V+\frac{1}{4}dV^*\cdot(\ ),$$
+so that we can re-write the Hamiltonian as
+$$H_t= (\dirac_t)^2=(\dirac)^2+t^2|V|^2+t\left(2{\cal
+L}_V+\frac{1}{2} dV^*\cdot(\ )\right).$$
+
+Since ${\cal L}_V$ generates a circle action on the spin bundle, its
+eigenvalues are integers.
+We denote by ${\cal H}_n$ the eigenspace for ${\cal L}_V$ of
+eigenvalue $n$ in the Hilbert space of all
+$L^2$-sections of the spin bundle. 
+The vector field $V$ generates a symmetry of $H$ and in fact of $H_t$
+for every $t\in {\bf R}$.  Hence, ${\cal
+L}_V$ commutes with $H_t$. The index $a_n$ we are trying compute is simply
+the index of the restriction of the operator defined by  $H$ (or
+$H_t$)  from the invariant space  
+${\cal H}^+_n$ to the invariant subspace ${\cal H}^-_n$; or put 
+another way, using self-adjointness of $H_t$ it is the dimension 
+of the kernel of $H_t$ on ${\cal H}^+_n$ minus the
+dimension of the kernel of $H_t$ on ${\cal H}^-_n$.
+We shall prove the theorem by showing that if $tn\ge 0$ and $|t|>>1$ then
+$H_t$ is positive on
+${\cal H}_n$ and in particular has no kernel on this subspace.
+It follows immediately that $a_n=0$.
+
+For large $|t|$ the spectrum of $H_t$ restricted to the subspace
+${\cal H}_n$ can be calculated in an asymptotic expansion in powers of
+$1/|t|$ by expanding near the minima of the potential.
+These minima are the zeros of $V$.
+We shall work first in the case when the $S^1$-action has isolated
+fixed points.  We consider the more general case briefly at the end of
+this section.
+Let us consider an isolated fixed point $\alpha\in Y$.  We decompose the
+linearization of the $S^1$-action at this fixed point into a sum of
+two-planes: 
+$$TY_\alpha=\sum_jW_j$$
+where the restriction of  $V$  on $W_j$ is given in orthonormal
+coordinates $(x_{2j-1},x_{2j})$ by
+$$k_j\left(x_{2j-1}\frac{\partial}{\partial
+x_{2j}}-x_{2j}\frac{\partial}{\partial x_{2j-1}}\right), k_j\in{\bf Z}^+.$$ 
+We use the orientation induced on $W_j$ by these coordinates.
+The conditition that the $S^1$-action lifts to the spin bundle implies
+that 
+\begin{equation}\label{even}
+\sum_jk_j\equiv 0\pmod 2.
+\end{equation}
+
+
+To leading approximation in $1/|t|$ the restriction of $H_t$ near
+$\alpha$ is given by 
+$$H_t^{\rm
+loc}(\alpha)=-\sum_{j=1}^{2n}\frac{\partial ^2}{\partial x_j^2}+
+\sum_{j=1}^nt^2k_j^2(|x_{2j-1}|^2+|x_{2j}|^2)-t\sum_{j=1}^nk_j\pmatrix{ 1
+& 0 \cr 0 & -1}+2t{\cal L}_V. $$
+Ignoring the last term and splitting along the two-dimensional
+subspaces for the monent we consider the operator 
+\begin{equation}\label{local}
+H^{{\rm
+loc},j}_t(\alpha)=-\frac{\partial ^2}{\partial
+x_{2j-1}^2}-\frac{\partial ^2}{\partial x_{2j}^2}+ 
+t^2k_j^2(|x_{2j-1}|^2+|x_{2j}|^2) -tk_j\pmatrix{1 & 0 \cr 0 & -1}, \ \
+\ 1\le j\le n.  
+\end{equation}
+With these definitions we have
+$$H_t^{\rm loc}(\alpha)=\sum_{j=1}^nH_t^{{\rm loc},j}(\alpha)+2t{\cal
+L}_V.$$ 
+
+Let us consider the spectrum of the harmonic oscillator which is the
+sum of all but the last term in the expression for   $H_t^{{\rm
+loc},j}(\alpha)$:
+$$-\frac{\partial ^2}{\partial x_{2j-1}^2}-\frac{\partial ^2}{\partial
+x_{2j}^2}+t^2k_j^2(|x_{2j-1}|^2+|x_{2j}|^2).$$ 
+Its ground state $\Omega$ has eigenvalue $2|t||k_j|$, and its spectrum is
+$$\{(4\ell+2)|t||k_j\}\,\ \ell=0,1,2,\cdots$$
+with each eigenvalue being of multiplicity two.
+
+The last term in Expansion~\ref{local} commutes with the harmonic
+ocsillator and has eigenvalues $\pm 
+tk_j$. Thus, it splits each of the two-dimensional eigenspaces into
+two one-dimensional spaces with distinct eigenvalues.
+Thus, the lowest eigenvalue for $H_t^{{\rm loc},j}(\alpha)$ is $|t||k_j|$, and
+its spectrum is 
+$$\{(2r+1)|t||k_j|\},\ r=0,1,2,\cdots.$$
+Though we do not need it now, it will be important later to understand
+how ${\cal L}_V$ acts on these eigenstates.
+A direct computation in these local coordinates shows that
+the eigenstate of $H_t^{{\rm loc},j}(\alpha)$ with eigenvalue
+$(2r+1)k_j|t|$ is  an eigenstate for  ${\cal L}_V$ with eigenvalue 
+$(r+1/2)k_j$.
+Also notice that if $n>0$ then ${\rm Ker}H_t\cap {\cal H}_n$ consists
+of plus spinors  and if $n<0$ it consists of minus spinors.
+
+Summing up over the two-planes and using the definition of ${\cal
+H}_n$, we see that the lowest eigenvalue for
+$H_t^{\rm loc}(\alpha)$ on ${\cal H}_n$ is
+$$\sum_j|t||k_j|+2tn .$$  
+As $|t|\mapsto \infty$, any element of norm one in the kernel of
+the global Hamiltonian operator must localize around the fixed
+points. In fact it must converge at each fixed point an element in the
+kernel of  $H_t^{\rm loc}(\alpha)$.
+But we have already seen that for $tn\ge 0$ the local operators are
+positive and have no kernel.
+It follows that  if $t>>0$ and $tn\ge 0$ there is no kernel for the
+restriction of $H_t$  to ${\cal H}_n$. 
+
+
+This proves the Atiyah-Hirzebruch theorem stated above at least in the
+case when the  circle action has isolated fixed points.
+The case of non-isolated fixed points is briefly discussed at the end
+of this section.
+
+Notice that in proving this result for all $n$ we had to use
+both $t>0$ and $t<0$. 
+ When we get to 
+the loop space setting in the next lecture, we will not be able to
+take $t=0$ and hence we can not pass from $t>0$ to $t<0$.  The
+consequence of this is that we will only establish that half the
+$S^1$-indices  vanish.
+
+\subsection{A local integral for the index of the Dirac operator}
+
+Even though we have established the Atiyah-Hirzebruch theorem that the
+$a_n$ vanish, it is still interesting to give a different computation
+of the $a_n$ in terms of local data around the fixed points of the
+circle action.
+This computation is particularly relevant when we get to the case of
+twisted Dirac operators where the equivariant indices do not all vanish.
+
+The function $F(\theta)=\sum_na_ne^{in\theta}$ is computed as
+supertrace of the circle 
+action  on the kernel of the operator $H_t$ for any $t$.
+The convergence of the operators $H_t$ to the sum of the local operators
+$H_t^{\rm loc}$ for large $|t|$ implies that in fact we can do the
+computation by using the kernels of the local operators at the fixed points.
+Let us fix $t<0$ and compute the kernel of $H_t^{\rm
+loc}(\alpha)$. Note that the
+argument in the last subsection did not show that this kernel
+vanished, only that the restriction 
+of $H_t$ to the ${\cal H}_n$ with $tn\ge 0$ had no kernel.
+
+
+As we have already seen, the spectrum of the operator $H_t^{{\rm
+loc},j}(\alpha)$  
+is $\{(2r+1)k_j||t|\},\ r=0,1,\cdots$, with the eigenspaces of
+dimension one, generated by $\lambda_r$, say.
+Furthermore,  the vector field $V$ is the infinitessimal generator of
+an $S^1$-action on the 
+state  $/lambda_r$ is given by 
+$$e^{(r+1/2)k_j\theta}.$$
+Thus, $V$ is the infinitessimal generator of an $S^1$-action whose character
+on the sum of the states given by 
+\begin{equation}\label{thetaform}
+e^{k_ji\theta/2}+e^{3k_ji\theta/2}+\cdots
+=\frac{e^{k_ji\theta/2}}{1-e^{-i\theta k_j}}= \frac{i}{2}\frac{1}{{\rm
+sin}(k_j\theta/2)}. 
+\end{equation}
+Nex we consider the sum of all possible tensor products over $j$ of 
+eigenspaces of the $H_t^{{\rm loc},j}$:
+The  vector field $V$ is the infinitessimal generator of an $S^1$-action on
+this sum of tensor products whose character is given by 
+\begin{equation}\label{product}
+F_\alpha(\theta)=\prod_{j=1}^n\frac{i}{2}\frac{1}{{\rm sin}(k_ji\theta/2)}.
+\end{equation}
+Notice also that since $t<0$, the computation above of the action of
+${\cal L}_V$ on the eigenstates of the $H_t^{{\rm loc},j}$ immediately
+implies taht  all these tensor product states are in the kernel of our
+local operator $H_t^{\rm loc}(\alpha)$ and are plus spinors.
+It is clear that this accounts for the entire kernel of the local
+operator. 
+Notice that even though the $k_j$ are not necessarily even, all the
+exponents that appear in the above product expansion are of the form
+$$\left((2r_1+1)k_1+\cdots+(2r_d+1)k_d\right)/theta/2,$$
+and by the spin condition (Equation~\ref{even}) are integral multiples
+of $\theta$.  Hence, $F_/alpha(\theta)$ is a character of an action of
+the original $S^1$, not some covering of it.
+It is the character of the action of the circle on  the kernel of
+$H_t^{\rm loc}(\alpha)$. Thus, $F_\alpha(\theta)$ 
+is the local contribution at $\alpha$ of the 
+$S^1$-equivariant index.
+ 
+Summing up over  the various isolated fixed
+points  $\alpha$ gives
+\begin{eqnarray*}
+F(\theta) = {\rm tr_s}\left(e^{i\theta{\cal L}_V}e^{-\beta
+H}\right)
+& = & \left(\frac{i}{2}\right)^n\sum_{\alpha}
+(-1)^{\sigma_\alpha}\prod_{j=1}^n\frac{1}{{\rm
+sin}(k_{\alpha,j}\theta/2)}. 
+\end{eqnarray*}
+ where $\alpha$ ranges over the fixed points of the circle action
+(still assumed to be isolated), and $\sigma_\alpha$ compares the
+orientation on $TY_\alpha$ coming 
+from the ambient orientation of $Y$ with the orientation induced from
+the direct sum of the orientations on the various two-planes $V_{\alpha,j}$.
+(The $k_{\alpha,j},\ j=1,\ldots n$ are the rotation numbers of the
+circle action at the fixed point $\alpha$.)
+
+Of course, in this case we have shown that this sum is in fact zero.
+This  is a non-trivial statement about the nature of the $S^1$-action
+at the fixed points.
+(Recall that we are assuming in the discussion so far that the
+$S^1$-action has only isolated fixed points.)
+
+
+
+
+\subsection{Dirac Operators with Values in  a Bundle}
+
+
+If we pass from the case considered above of the pure Dirac operator
+to the case of a Dirac operator twisted by a bundle with a connection,
+then the vanishing theorem of Atiyah-Hirzebruch does not generalize.
+Nevertheless, the second argument computing the equivariant index in
+terms of local data at the fixed points does generalize. It produces
+the Atiyah-Bott formula [AB].
+
+Let $\xi\to Y$ be a vector bundle over a compact, even dimensional
+spin manifold. We consider the Dirac operator twisted by this bundle.
+The local analysis around the fixed points $\alpha$
+involves the two-plane bundles
+$W_{\alpha, j}$ at $\alpha$ as well as the restriction  $\xi|_{\alpha}$. 
+The formula is (assuming that the $S^1$-action has only isolated fixed
+points) 
+$$F_\xi(\theta)={\rm ind}_{S^1}(\dirac\otimes
+\xi)=\sum_{\alpha}(-1)^{\sigma_\alpha} \prod_j
+\prod_{j=1}^n\frac{1}{{\rm
+sin}(k_{\alpha,j}\theta/2)}{\rm Tr}_{\xi|\alpha}\left(e^{i\theta{\cal
+L}_V}\right).$$ 
+If $\xi$ is a trivial bundle then we are back to the case of the pure
+Dirac operator and we know that the $S^1$-index $F_\xi(\theta)$ is
+identically
+$0$. There is an important generalization of this result for a certain
+class of spin bundles $\xi\to Y$.
+Let us consider the case when 
+$\xi= S(Y)$, the spin bundle of $Y$.  While  it is no longer true that 
+$F_\xi(\theta)=0$, it is true is that
+$F_\xi(\theta)$ is a constant function.  The reason is that
+$S(Y)\otimes S(Y)$
+can be identified with the differential forms and hence the kernel
+spaces are identified with the harmonic forms. Of course, ${\cal L}_V$
+acts trivially on these spaces. 
+One could ask a more general question here:  Let $P_Y\to Y$ be the
+principal ${\rm Spin}(2n)$-bundle of $Y$ and let ${\cal R}$ be (finite
+dimensional) representation of ${\rm Spin}(2n)$.  We define
+$$\xi=P \times_{{\rm Spin}(2n)} {\cal R}$$
+and consider the character-valued index function $F_\xi(\theta)$ as
+above.
+The question is:
+For which $W$ constructed in this manner is the function $F_\xi(\theta)$
+equal to a constant? We shall see in the next lecture that there is an
+infinite series of such representations ${\cal R}$ with this
+property. By constructing enough examples Landweber and Stong [LS]
+showed that the infinite series that we construct includes all the
+representations with this property.
+
+\subsection{The Case of Non-isolated Fixed Points}
+
+Let us finish this section with a brief discussion of the case when
+the $S^1$-action does not have isolated fixed points.  Suppose that
+the fixed point set is $\coprod_rM_r$, with the $M_r$ being
+connected. Again we consider the 
+deformation
+$$\dirac_t(\ )=\dirac(\ )+tV\cdot(\ ).$$
+Exactly as before, taking $|t|\mapsto \infty$ localizes the low
+eigenstates of $H_t$ around the fixed 
+components $M_r$ of the circle action. The local Hamiltonian
+$H_t^{{\rm loc},M_r}$ at the 
+fixed component $M_r$ has harmonic ocsillators  in the normal
+direction, analogous to the one encountered when the fixed points were
+isolated, and is the square of the Dirac operator along $M_r$.  
+The decomposition of $TY_\alpha$ into two-dimensional spaces  
+$V_{\alpha,j}$, which occurred in the
+case of isolated fixed points,  is replaced in this case by a
+decomposition of the normal bundle $V_r$ to $M_r$ as a  direct sum of
+sub-bundles $V_{r,j}\to M_r$ of dimension $2d_j$, say, on which the 
+circle action is given by the character which is raising to the
+$k_j^{th}$-power. We orient the $V_{r,j}$ so that $k_j>0$, hence inducing
+an orientation on $V_r$ and consequently on $M_r$.  (If $M_r$ is a
+point, then this orientation differs from the natural one on the point
+by the sign $(-1)^{\sigma_\alpha}$ encountered before.)
+The argument given above generalizes easily to this case to show that
+for $tn\ge 0$ there is no kernel for $H^{{\rm loc},M_r}_t$ on the
+subspace ${\cal 
+H}_n$. 
+Thus, we see in this case as well, that $H_t$ has no kernel on ${\cal H}_n$
+for $|t|>>1$ and $tn\ge 0$, establishing the Atiyah-Hirzebruch theorem
+in the case of general circle actions.
+
+
+One can also generalize the second argument to produce a formula in
+terms of fixed point data for the equivariant index.
+Once again it suffices to consider $|t|>>1$ and to find the kernel of
+$H^{{\rm loc},M_r}_t$.
+Let us suppose first, for the purposes of illustration, that the component
+$M_r$ is of codimension two and is a spin submanifold.
+Let $k$ be the character of the circle action in the normal direction.
+Of course, our spin hypotheses imply that $k\equiv 0\pmod 2$.
+For $t<0$ we find, exactly as before,  one state in the kernel of the
+normal operator restricted to ${\cal H}_n$ for $n=(2s+1)k/2\
+,s=0,1,2,\ldots$. 
+Each of these states varies with the point of $M_r$
+and hence forms a complex  bundle over $M_r$.
+We then have  line bundles $L_1,L_3,\ldots$ with
+$L_{2s+1}$ having $S^1$-character $(2s+1)k/2$.
+ Let us relate the $L_{2s+1}$ to the normal bundle $V_r$ (which is a
+complex line bundle).
+Since the eigenstate $\varphi_s$ with character $(2s+1)k/2$ is
+homogeneous of degree $2s+1$ in the spin bundle associated to $V_r$,
+it follows that $L_{2s+1}=
+\sqrt{V_r}^{\otimes (2s+1)}$, the $2s+1$
+tensor power of the square root of the normal bundle of $M_r$. 
+(The fact that $M_r$ is spin implies that $V_r$ has a square root and
+even picks out one, so that these bundles are
+well-defined.) 
+Thus,  the spaces of vacua in the normal direction fit together to
+form  a sum of 
+$S^1$-equivariant complex line bundles.
+The local contribution around this component of the fixed point set is
+given by a sum like the one given by Equation~\ref{thetaform} with
+$ik\theta/2$ replaced by $(x+ik\theta)/2$ where $x=c_1(V_r)$.
+Of course, along the fixed point set $M_r$, the operator $H_t^{{\rm
+loc},M_r}$ is the square of the Dirac operator.
+The usual index theorem for the Dirac operator then computes the local
+contribution at this component $M_r$ to the equivariant index to be
+$$\int_{M_r}\hat A(M_r)\frac{1}{2}\frac{1}{{\rm
+sinh}((x+ik\theta)/2)}.$$ 
+
+
+If $M_r$ is codimension-two but not spin, then two things breakdown in
+the above argument:  There are no spin bundles on $M_r$ and hence  no
+Dirac operator on $M_r$,  and  we cannot form the square root line
+bundle to $V_r$.  Nevertheless, the description of the kernel states
+in the normal direction is still valid locally.  What happens is that
+the obstruction to defining the spin bundles and Dirac operator
+globally on $M_r$ is exactly cancelled by the obstruction to forming
+the square root line bundle to $V_r$.  Thus, the local descriptions
+fit together to define an operator which is locally described as a
+Dirac operator with values in a line bundle but is globally twisted.
+The index theorem still 
+applies in this twisted situation and gives the same formula.
+(Though of course, $x/2$ is only a rational cohomology class.)
+
+More generally, when the normal bundle $V_r$ to $M_r$ splits as a sum
+of complex line bundles invariant under the $S^1$-action, the space of
+vacua is a sum of terms which are tensor products of the above type,
+and the normal contribution is a  product 
+of terms of the above type:
+$$\prod_j\frac{e^{(x_j+ik_j\theta)/2}}{1-e^{x_j+ik_j\theta}}=\prod_j
+\frac{1}{2{\rm sinh}((x_j+ik_j\theta)/2)},$$
+where $x_j$ is the first Chern class of the $j^{th}$-line bundle and 
+$k_j$ is the weight of the $S^1$-action on this line bundle.
+In the more general case when $V_r$
+does not split as a sum of complex line bundles invariant under the
+$S^1$-action case we get
+the expression for normal contribution is obtained using the splitting
+principal. 
+Suppose that the normal bundle $V_r$  to $M_r$ splits as $\oplus_j
+V_{r,j}$ as described before.
+Recall that $d_j={\rm dim}_{\bf C}(V_{r,j})$.
+The resulting $S^1$-equivariant Chern character is
+$$\hat A_\theta(V_r)=2^{-{\rm dim}(V_r)/2}\prod_{j}\prod_{\ell=1}^{d_j}
+\frac{1}{{\rm sinh}((x_{\ell,j}+ik_j\theta)/2) }$$
+with the $x_{\ell,j}$ being the formal roots whose elementary
+symmetric functions are the Chern classes of $V_{r,j}$.
+(Of course, as always, this expression must be re-written in terms of
+the elementary symmetric functions in order to find the expression in
+terms of the Chern classes of $V_{r,j}$.)
+This describes the  bundle of
+vacua over $M_r$ for the operator $H_t^{{\rm loc},M_r}$. 
+Of course, so far we have been describing this operator  only in the
+normal directions to $M_r$.  Along $M_r$ it is the square of the usual
+Dirac operator.  Thus, the  index of $H_t^{{\rm loc}, M_r}$ is simply
+that of the Dirac operator with values in the bundle of vacua
+in the normal direction. (As before, if $M_r$ is not a spin
+submanifold, then neither the spin bundles along $M_r$ nor the spin
+bundle in the normal direction can be independently defined, but the
+index formula works exactly as if they could.
+The usual index theorem now evaluates the $S^1$-index of this operator  to
+be
+$$F_{M_r}(\theta)=\int_{M_r}\hat A(M_r)\hat A_{\theta}(V_r).$$
+
+Adding up the above
+expression for the local $S^1$-indices
+over all the components of the fixed point set
+yields the following  formula for the $S^1$-index of $H$:
+\begin{equation}\label{genform}
+F(\theta)=\sum_r\int_{M_r}\hat A(M_r)\hat A_{\theta}(V_r).
+\end{equation}
+
+This formula together with the  Atityah-Hirzebruch theorem that the
+equivariant signature vanishes can then be viewed as giving
+non-trivial information about the nature of the fixed points
+submanifolds of the $S^1$-action.
+
+
+More generally, if we are considering a Dirac operator coupled to a
+connection on an $S^1$-vector bundle $\xi\to Y$ then we replace ${\cal
+V}_r$ in Equation~\ref{genform} by 
+$$\left(\oplus_j(V_{r,j}\right)\otimes\left(\oplus_be^{i\theta b}
+\xi_{r,b}\right)$$  
+where
+$$\xi|M_r=\oplus_b\xi_{r,b}$$
+and the character of the circle on $\xi_{r,b}$ is the $b^{th}$-power. 
+With this substitution for ${\cal V}_r$, the same equation gives the
+index of the coupled Dirac operator as a function on $S^1$.
+
+
+\section{$\sigma$-models in $1+1$ dimensions}
+
+Let us study in a rough qualitative way the case of maps of a
+two-dimensional supermanifold into  a compact manifold $Y$ of
+dimension $2n$.  We shall consider several contexts, but always with an
+action given by the same formula.
+First, let us
+consider the super-manifold 
+$${\rm Maps}({\bf R}^{2,2},Y),$$
+with the action given by 
+$${\cal L}=\int_{{\bf
+R}^{2,2}}dudv(d\theta_+)^{-1}(d\theta_-)^{-1}g_{I,J}D_+X^ID_-X^J$$
+where the even coordinates on ${\bf R}^{2,2}$ are $(u,v)$, the odd
+coordinates are $\theta_+,\theta_-$, and
+$$D_+=\frac{\partial}{\partial\theta_+}-\theta_+\frac{\partial}{\partial
+u}$$
+$$D_-=\frac{\partial}{\partial\theta_-}-\theta_-\frac{\partial}{\partial
+v}$$
+are vector fields on ${\bf R}^{2,2}$.
+Notice that  a map of $X\colon {\bf R}^{2,2}\to Y$ 
+can be written as
+$$x+\psi_+\theta_++\psi_-\theta_-+F\theta_+\theta_-$$
+wher $x$ is  a map
+$x\colon {\bf R}^2\to Y$, $\psi_+,\psi_-$ are sections of the
+pullback $x^*\Pi TY$ of the  tangent bundle of $Y$, considered as an
+odd bundle and a section $F$ of $x^*TY$ considered as an even bundle.
+For any superriemann surface $\Sigma$ (supermanifold of type
+$(2,2)$) we have this action, but invariantly the $\psi_\pm$ are
+sections  of
+$S^\pm(\Sigma)\otimes x^*TY$. 
+With this identification,
+we can re-write the action as
+$${\cal L}=\int_{{\bf
+R}^2}dudv\left[g_{I,J}\partial_uX^I\partial_vX^J+i\psi_+\partial_v
+\psi_++i\psi_-\partial_u\psi_-+
+R_{I,J,K,L}\psi_+^I\psi_+^J\psi_-^K\psi_-^L+g_{I,J}F^IF^J\right].$$ 
+Since the field $F$ enters the Lagrangian purely quadratically and
+only algebraically (no derivatives of $F$ appear), it is easy to
+integrate out the $F$ dependence.  When we do this gaussian
+integration in $F$ we are left with the constraint $F=0$ and the same
+action (without the $|F|^2$-term to integrate over the space  of
+fields $x,\psi_\pm$. 
+
+We shall study to some degree this Lagranian formulation of this
+supersymmetric $\sigma$-model, but we shall
+also need a Hamiltonian formulation.
+In the Hamiltonian formulation  we study 
+a quantum theory of maps of the super cylinder ${\bf R}^{1}/S\times
+{\bf R}^{1,2}$ into $Y$ where $S$ is translation by a fixed amount.
+Equivalently, we consider the space of maps of  ${\bf R}^{1,2}$ into
+the loop space ${\cal L}Y$ of $Y$.
+Letting $t$ be the geometric variable in ${\bf R}^{1,2}$ and letting
+$s$ be the loop variable in ${\cal L}Y$, we identify $t=u+v$ and
+$s=u-v$. Under this identification
+the action above becomes a flow equation in this context: it is not
+the usual analogue of the geodesic flow equation for ${\bf R}^{1,2}$
+in ${\cal L}Y$ 
+since there are extra potential terms. Nevertheless, the space of
+classical solutions is given by the initial conditions at $t=0$, where
+as before $F=0$ is a constraint.  That
+is to say, the space of classical solutions is identified with the odd
+vector bundle $\Pi T{\cal L}Y\oplus \Pi T{\cal L}Y$ over $T{\cal L}Y$
+which is two
+copies of the tangent bundle to the loop space.
+Quantizing this bundle yields  the super-Hilbert space of
+sections of ${\rm Sym}^*\Pi T({\cal L}Y)$ which should be viewed as
+the differential forms on ${\cal L}Y$.
+
+There is one important feature we wish to discuss.  There is a
+${\bf Z}/2{\bf Z}\times {\bf Z}/2{\bf Z}$-symmetry of the Lagrangian
+given by  
+$$\sigma\cdot\pmatrix{ \psi_+ \cr \psi_-}\mapsto \pmatrix{-\psi_+ \cr
+\psi_-}$$
+and
+$$\tau\cdot \pmatrix{\psi_+ \cr \psi_-} \mapsto \pmatrix{\psi_+ \cr
+-\psi_-}.$$
+We wish to discuss whether these symmetries lift to the quantum field
+theory. 
+
+
+
+
+
+Before addressing this problem directly, 
+let us consider the analogous question for the space of maps of ${\bf
+R}^{1,1}$ into a finite, even dimensional  spin manifold $Z$.
+Quantizing the odd vector bundle $\Pi TZ$ over an even dimensional
+spin manifold $Z$ yields the Hilbert space of $L^2$-sections of the
+spin bundle $S(Z)$, and the field $\psi$ (analogous to say $\psi_+$
+above) acts by Clifford
+multiplication.  The analogue of the symmetry $\sigma$ above is then
+implemented  
+on this Hilbert space by the involution $\epsilon$ whose $\pm
+1$-eigenspaces are 
+the sections of $S^\pm(Z)$.  By this we mean 
+$${\rm Cl}(-\psi_+)=\epsilon\circ {\rm Cl}(\psi_+)\circ \epsilon,$$
+where ${\rm Cl}(\chi)$ denotes Clifford multiplication by $\chi$.
+Now in the case of maps of ${\bf R}^{1,2}\to Z$ one can implement both
+of the symmetries $\sigma$ and $\tau$ using the two copies of the spin
+bundle associated to the fields $\psi_\pm$. 
+Thus, it is clear that in this finite dimensional analogue the
+symmetries $\sigma$ and $\tau$ lift to the quantum level when $Z$ is
+an even dimensional spin manifold.
+
+Let consider the case of mapping ${\bf R}^{1,2}$ into an finite, even
+dimensional manifold $Z$, no longer assumed to be spin.
+Even though the manifold is not spin, as we indicated above, we can
+quantize the direct sum of the two copies 
+of $\Pi TZ$ resulting in the differential forms on $Z$ with their
+mod $2$ grading. (Of course, if $Z$ is spin we got the space of
+$L^2$-sections of the tensor product of $S(Z)\otimes S(Z)$, but this
+is naturally identified with the space of $L^2$ differential forms on $Z$.)
+With this quantization, it turns out that, provided that $Z$ is
+oriented, it is still the case that  the symmetries $\sigma$ and
+$\tau$ lift to the realization.  They are given by 
+$$(-1)^{\rm deg}=\sigma\tau$$
+and 
+$$*=\sigma,$$
+where $*$ is the Hodge $*$-operator multiplied by a factor of $i^{\rm
+deg}$ in order to make it an involution.
+Thus, in this finite dimensional analogue, the ${\bf Z}/2{\bf Z}\times
+{\bf Z}/2{\bf Z}$-symmetry group lifts to the quantum theory of maps
+of ${\bf R}^{1,2}$ into $Z$ as long as $Z$ is orientable.
+
+We claim that the answer in the infinite dimensional case is the same,
+with a fairly natural definition of the notion of ${\cal L}Y$ being
+orientable. 
+We shall examine this question via path integrals considering the
+theory of all maps of super riemann surfaces $\Sigma$ (supermanifolds
+of type $(2,2)$) into $Y$.
+Since $\sigma$ and $\tau$ are symmetries of the Lagrangian, the
+question of whether they lift is
+the same as asking whether the symmetries are symmetries of the
+formal measure of integration ${\cal D}X{\cal D}\psi_+{\cal D}\psi_-$.
+It turns out that just as in the finite dimensional case  $\sigma\tau$
+always lifts to a symmetry of the quantum theory.
+Let us consider $\sigma$. 
+First, we claim that $\sigma$ is a symmetry of the measure of integration
+if and only if ${\rm dim}\ {\rm Ker}{\cal D}_+\equiv 0\pmod 2$
+for all
+maps $x\colon \Sigma\to Y$ for any riemann surface $\Sigma$.
+The reason is that  $\sigma$ clearly preserves the ${\cal D}X{\cal
+D}_-$ and $\sigma$ will be a symmetry of ${\cal D}_+$ provided that
+the space of sections of the pullback bundle $S^+(\Sigma)\otimes x^*TY$
+is even dimensional.
+The idea is that $\sigma$ is acting by $-1$ on these fields and thus
+is preserving the orthogonal form. The    issue is whether formally
+$\sigma$ preserves the orientation.  (In finite dimensions $-1$ is a
+symmetry of the integration measure if and only if it is
+orientation-preserving which is equivalent to the statement that the
+space is even-dimenional.)
+Of course, in our context the space is  infinite dimensiona, so in
+order to determine its dimension we have to regularize 
+it. The way this is done is the following.  We have a 
+skew-symmetric pairing on this bundle of sections given by 
+$$\langle \chi_1,\chi_2\rangle=\int_\Sigma \langle
+\chi_1,{\cal D_+}(\chi_2)\rangle.$$
+Here ${\cal D}_+$ is the dirac operator on $S^+(\Sigma)$ coupled with
+covariant differentiation on the pullback
+$x^*TY$. 
+This pairing has a finite dimensional null space which is exactly the
+kernel of the Dirac operator ${\cal D}_+$.
+Given a skew-pairing $A$ on a finite dimensional
+vector space $V$ we know that ${\rm dim}(V)\equiv {\rm dim}({\rm
+Ker}(A))\pmod 2$.
+In the infinite dimensional theory that we are studying here, this is
+true for the pairing given above.  Thus, we see that for the dimension
+of the space of sections of $S^+(\Sigma)\otimes x^*(TY)$  modulo two
+we use the dimension of the kernel of ${\cal D}_+$.
+Since $TY$  real this coupled Dirac operator is skew-adjoint.
+Its spectrum is purely imaginary and symmetric about zero.
+Thus, its algebraic spectral flow is zero, and the dimension of its
+kernel modulo two is a topological invariant (unchanged under
+deformation of the operators through ellipic skew-adjoint operators).
+In fact, there is a mod two index theorem for the dimension of the
+kernel.  Since $TY$ is even 
+dimensional, the mod two index theorem identifies the dimension of the
+kernel with $w_2(x^*TY)$.
+Thus, we see that $\sigma$ will lift to an involution on the quantum
+field theory for all maps of all superriemann surfaces $\Sigma$ into
+$Y$ if and only if $w_2(TY)=0$. 
+
+At least in the case when $\pi_1(Y)=\{1\}$,
+it is natural to view the condition that $w_2(Y)=0$  as
+the statement that the loop space ${\cal L}(Y)$ is orientable.  
+(Of course, in analogy with finite dimensions, we do not expect to
+implement the Hodge star operator unless the manifold in question is
+orientable. Or put another way, we are attemping to use this theory of
+maps of ${\bf R}^{1,2}$ into ${\cal L}Y$ to compute equivariant
+signatures of the tautological circle action on ${\cal L}Y$.  In order
+for these signatures to be defined, we must assume that ${\cal L}Y$ is
+orientable.) 
+Let us explain how $w_2(Y)=0$ should be viewed as equivalent to the
+orientability of ${\cal L}Y$.
+The tangent space of ${\cal L}(Y)$ at a map $x\colon S^1\to Y$ is the
+space of sections of $x^*(TY)$. This vector bundle has a natural skew
+pairing on it given by 
+$$\omega_x(\alpha,\beta)=\langle
+\alpha,\beta\rangle=\int_0^1(\alpha,\nabla_\theta\beta)d\theta$$
+where the inner product on the right-hand-side is induced from the
+metric on $Y$. It is clear that the radical of this pairing is the
+space of covariantly constant sections of $x^*(TY)$.  In particular,
+the radical of this pairing is always finite-dimensional.
+As before with the coupled Dirac operator, it is easy to see that the
+spectrum of the skew-adjoint operator associated to  this 
+pairing is discrete with all eigenvalues of finite multiplicity.
+Furthermore,
+the eigenvalues are purely imaginary and symmetric with repect to the
+origin. 
+Given a closed path $x_t$ in ${\cal L}(Y)$, then a local orientation
+of ${\cal L}(Y)$ at the initial point $x_0$ will be preserved around
+the loop if and only if the spectral flow of the family $T_{x_t}$ from
+negative to positive is even.  (By skew symmetry the full spectral
+flow is algebraically zero: here we are looking at half of it -- the
+half from negative to positive.)
+This spectral flow modulo two is easily identified with $w_2(Y)$
+evaluated on map of the torus 
+$S^1\times S^1$ into $Y$ given by $(t,s)\mapsto x_t(s)$.  Thus,
+provided that $Y$ is simply connected, we have that $w_2(Y)=0$ if and
+only if ${\cal L}Y$ is orientable if and only if the kernel of ${\cal
+D}_+$ is even dimensional for every map of a superriemann surface into
+$Y$. 
+
+
+
+
+
+If $w_2(Y)\not= 0$ this doesn't mean that we can not perform path
+integrals for maps $X$ with $X^*w_2(Y)\not=0$. It simply means that
+the results of such path integrals will be odd under $\sigma$, as the
+measure is. To get something non-zero  we need  an
+operator which is a product of  local operators
+${\cal O}_1(x_1)\cdots {\cal O}_n(x_n), \ x_i\in \Sigma$, which is
+$\sigma\tau$ 
+invariant but $\sigma$ anti-invariant. Then we can calculate the
+expectation value
+$$\langle {\cal O}_1(x_1)\cdots{\cal O}_n(x_n)\rangle.$$
+The symmetry $\sigma$ tells us that we get zero contribution at the
+minima (constant maps) and 
+the non-zero contributions come only from maps $x\colon \Sigma\to Y$ with
+the property that $x^*(w_2(Y))\not= 0$.
+Fix a homotopy class of maps with this property.
+Of course, since the maps must be homotopically non-trivial, we see
+that
+$$\int_\Sigma|dx|^2$$
+is bounded away from zero. Furthermore, the  maps minimizing this
+integral are exactly the harmonic maps in the given homotopy class.
+That is to say we need to find minimal area surfaces $S\subset Y$
+and then take holomorphic maps
+$\Sigma \to S\subset Y$.
+We consider $\Sigma={\bf C}P^1$, or better delete a point and consider
+$\Sigma ={\bf R}^2$.  Thus we are considering maps
+$X\colon {\bf R}^2\to Y$ which converge at infinity to a constant map.
+The expectation value
+$$\langle {\cal O}_1(x_1)\cdots{\cal O}_n(x_n)\rangle$$
+will be of the order ${\rm
+exp}(-tM)$ where $M$ is the energy of the harmonic map.
+(Notice that we have not normalized this expectation value by dividing
+by the partition function $Z$.  If we were to do that we must take the
+partition function which is the sum over all maps $x\colon \Sigma\to
+Y$ not just those that pullback $w_2$ non-trivially.  The leading
+order term in this partition function will come from the constant
+maps.)
+The critical points of the Lagrangian will not be isolated:
+  Even with the
+boundary condition at infinity of ${\bf R}^2$ there are four obvious
+parameters for 
+such maps: rotation, translation and scaling of ${\bf R}^2$. 
+There may well be others in addition to these universal ones.
+Thus, we
+will be computing an expression of the form
+$$\int_{\cal M}({\rm perturbation\ expansion)}$$
+where ${\cal M}$ is the instanton moduli space, i.e., the space of
+harmonic maps in the given homotopy class.
+This time the propagator is more complicated and the linearization
+around the instanton moduli space gives only an asymptotic
+expansion.
+
+
+\end{document}
+
+
+An element in the kernel of $H^{\rm loc}_t(\alpha)$ will a tensor
+product over $j$ of eigenstates of $H_t^{{\rm loc},j}(\alpha)$.>>>>>>>>>>>>>>>
+also lies in ${\cal H}_n$ with $2nt$ being minus the sum of the eigenvalues
+Consider the formal sum
+$$e^{k_ji\theta/2}+e^{3k_ji\theta/2}+\cdots=\frac{e^{k_ji\theta/2}}
+{1-e^{-i\theta k_j}}. $$
+
+
+
+
+

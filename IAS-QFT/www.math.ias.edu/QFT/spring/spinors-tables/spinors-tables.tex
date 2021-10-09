@@ -1,0 +1,281 @@
+\documentstyle{amsppt}
+\magnification=1200
+\input epsf.tex
+\loadeufm
+
+\font\boldtitlefont=cmb10 scaled\magstep2
+
+\NoRunningHeads
+\pagewidth{6.5 true in}
+\pageheight{8.9 true in}
+\loadeusm
+
+\catcode`\@=11
+\def\logo@{}
+\catcode`\@=13
+
+\def\eps{{\varepsilon}}
+
+\def\nspace{\lineskip=1pt\baselineskip=12pt%
+     \lineskiplimit=0pt}
+\def\dspace{\lineskip=2pt\baselineskip=18pt%
+     \lineskiplimit=0pt}
+
+\def\plus{{\sssize +}}
+\def\wedgeop{\operatornamewithlimits{\wedge}\limits}
+\def\w{{\mathchoice{\,{\scriptstyle\wedge}\,}
+  {{\scriptstyle\wedge}}
+  {{\scriptscriptstyle\wedge}}{{\scriptscriptstyle\wedge}}}}
+\def\bulletsatop{{\overset{\sssize\bullet}\to{\sssize\bullet}}}
+
+\def\Spin{\text{\rm Spin}}
+\def\Sp{\text{\rm Sp}}
+\def\SO{\text{\rm SO}}
+\def\Sym{\text{\rm Sym}} 
+\def\SL{\text{\rm SL}}
+\def\End{\text{\rm End}}
+\def\Tr{\text{\rm Tr}}
+
+
+\def\dbC{{\Bbb C}}
+\def\dbG{{\Bbb G}}
+\def\dbH{{\Bbb H}}
+\def\dbR{{\Bbb R}}
+\def\dbZ{{\Bbb Z}}
+
+
+\topmatter
+\title\nofrills
+{\boldtitlefont Spinors: tables}
+\endtitle
+\author
+P. Deligne
+\endauthor
+\endtopmatter
+
+
+\NoBlackBoxes
+\parindent=20pt
+\frenchspacing
+\document
+\dspace
+
+\bigskip
+\subhead
+1. Complex story
+\endsubhead
+
+The Dynkin diagram of the group $\Spin(n)$ is:
+$$
+\vbox{\epsfxsize=3.0in\epsfbox{fig1.eps}}
+$$
+where $r$ is the rank.
+The spin or semi-spin representations are the fundamental
+representations corresponding to the vertex, or vertices,
+at the right of the diagram.
+If one restricts the spin representation of $\Spin(2r+1)$
+to $\Spin(2r)$, one obtains the sum of the two
+semi-spin representations of $\Spin(2r)$.
+Each of the two semi-spin representations of $\Spin(2r)$
+restricts as the spin representation of $\Spin(2r-1)$.
+
+The Dynkin diagram makes clear the low rank exceptional
+isomorphisms.
+We list in the next table $n=2,3,4,5$ or $6$, the Dynkin
+diagram, a group $G$ to which $\Spin(n)$ is isomorphic,
+the description of spin or semi-spin representations as
+representations of $G$, and the description of the
+defining representation of $\SO(n)=\Spin(n)/(\dbZ/(2))$
+as representation of $G$.
+\def\bulletsatop{{\overset{\sssize\bullet}\to{\sssize\bullet}}}
+$$
+\vbox{
+\tabskip=14pt
+\halign to 6.5 true in{#\hfill &\hfill #\hfill  &\hfill #\hfill  
+     &#\hfill &\hfill #\hfill \cr
+$n$ &diagram &$G$  &(semi)spin &defining orthogonal\cr
+\noalign{\bigskip}
+$2$ &none &$\dbG_m$ &characters $z$, $z^{-1}$ 
+  &$z^2\oplus z^{-2}$\cr
+\noalign{\medskip}
+$3$ &${\sssize\bullet}$ &$\SL(2)$ &defining $V$ &adjoint
+$=\Sym^2(V)$\cr
+\noalign{\medskip}
+$4$ &$\bulletsatop$ &$\SL(2)\times \SL(2)$
+     &defining $V_1$, $V_2$ &$V_1\otimes V_2$\cr
+\noalign{\medskip}
+$5$ &\vbox{\epsfxsize=.75in\epsfbox{table-figa.eps}}
+  &$\Sp(4)$ &defining $V$ &$\wedgeop^{2}\,V$\cr
+\noalign{\medskip}
+6  &\vbox{\epsfxsize=.75in\epsfbox{table-figb.eps}}
+  &$\SL(4)$ &defining $V$, and $V^*$
+  &$\wedgeop^{2}\,V$\cr}}
+$$
+The symmetric bilinear form on the defining orthogonal
+representation is given by
+
+\medskip\noindent
+$n=3$: \ Killing form $\Tr(adx\,ady)$, or
+
+$\left<v^2,w^2\right>=\psi(v,w)^2$, for $\psi$ symplectic
+ ($=$ volume) form of $V$.
+
+\medskip\noindent
+$n=4$: \ $\left<v_1\otimes v_2,\,w_1\otimes
+w_2\right>=\psi(v_1,w_1)\psi_2(v_2,w_2)$.
+
+\medskip\noindent
+$n=5$: \ $\left<v_1\w v_2,\,w_1\w w_2\right>=
+ \psi(v_1,w_1)\psi(v_2,w_2)-\psi(v_1,w_2)\psi(v_2,w_1)$.
+
+\medskip\noindent
+$n=6$: \ $\left<v_1\w v_2,\,w_1\w w_2\right>=
+  v_1\w v_2\w w_1\w w_2\in\wedgeop^{4}\,V=\dbC$.
+
+\medskip
+For $n$ odd, the spin representation $S$ of $\Spin(n)$ is
+orhtogonal or symplectic.
+There is a morphism of representations from $S\otimes S$
+to the defining representation $V$; it is symmetric or
+antisymmetric.
+
+For $n$ even, the semi-spin representations $S^{\plus}$
+and $S^-$ are orthogonal, symplectic, or dual of each
+other.
+There is either a morphism of representations
+$S^{\plus}\otimes S^-\to V$, or morphisms
+$S^{\plus}\otimes S^{\plus}\to V$ and $S^-\otimes S^-\to
+V$, symmetric or antisymmetric.
+Which is the case depends only on $n\bmod{8}$.
+The next table gives $n\bmod{8}$, the kind of bilinear
+form on spinors, and the kind of bilinear forms (spinors)
+$\otimes$ (spinors) $\to V$.
+$$
+\vbox{
+\tabskip=20pt
+\halign{\hfill #\hfill  &#\hfill &#\hfill\cr
+$n\bmod{8}$ &forms on spinors &symmetry of spinors,
+  spinors $\to V$\cr
+\noalign{\bigskip}
+1 &orthogonal &symmetric\cr
+2 &$S^{\plus}$ dual to $S^-$ &symmetric (on $S^{\plus}$, 
+  and on $S^-$)\cr
+3 &symplectic &symmetric\cr
+4 &$S^{\plus}$ and $S^-$ sympletic 
+  &$S^{\plus}\otimes S^-\to V$\cr
+5 &symplectic &antisymmetric\cr
+6 &$S^{\plus}$ dual to $S^-$ &antisymmetric (on
+  $S^{\plus}$, and on $S^-$)\cr
+7 &orthogonal &antisymmetric\cr
+8 &$S^{\plus}$ and $S^-$ orthogonal 
+     &$S^{\plus}\otimes S^-\to V$\cr}}
+$$
+
+\bigskip
+\subhead
+2. Real story
+\endsubhead
+
+An irreducible representation (over $\dbR)$ of
+$\Spin(p,q)$ is said to be spinorial if, after extensioin
+of scalars to $\dbC$, it becomes a sum of spinorial or
+semi-spinorial representations.
+If $p-q$ is odd (equivalent to $p+q$ odd), there is a
+unique spinorial irreducible representation.
+It is either real or quaternionic.
+if $p+q$ is even, either there is only one such
+representation, in which case it is complex, giving over
+$\dbC$ the sum of the two semi-spinorial representations,
+or there are two of them, both real or both quaternionic.
+If real, they remain irreducible over $\dbC$: \
+$S^{\plus}$ and $S^-$ have a real form.
+If they are quaternionic, after extension of scalars to
+$\dbC$, one becomes $2S^{\plus}$, the other becomes
+$2S^-$.
+In which case we are depends only on the signature
+$p-q\bmod{8}$.
+Table:
+$$
+\vbox{\tabskip=50pt
+\halign{\hfill #\hfill &\hfill #\hfill\cr
+$p-q$ &real, complex or quaternionic\cr
+\noalign{\bigskip}
+$1$ or $7$ &$\dbR$\cr
+$2$ or $6$ &$\dbC$\cr
+$3$ or $5$ &$\dbH$\cr
+$4$ &$\dbH$, $\dbH$\cr
+$8$ &$\dbR$, $\dbR$\cr}}
+$$
+
+\bigskip
+\subhead
+3. Minkowski signature
+\endsubhead
+
+In Minkowski signature, $(+, -, -, \ldots)$, and with a
+positive light cone chosen on $V$, if $S$ is an
+irreducible spinorial representation, there is up to a
+real factor a unique symmetric bilinear maps $B\colon\,
+S\otimes S\to V$.
+It can be normalized so that $Q(s):= \frac12\,B(s,s)$ is
+with values in the closed positive cone.
+Such a $Q$  is now unique up to a positive real factor.
+
+If $S$ is complex, $B$ is the real part of an hermitian
+bilinear form with values in $V_{\dbC}$: \ if $J$ is the
+complex structure, $Q$ is invariant by the $J$, as well
+as by the circle group of $\exp(\theta J)$.
+After extension of scalars to $\dbC$, $S$ becomes the sum
+of the two semi-spinorial representations, and $B$
+corresponds to a pairing $S^{\plus}\otimes S^-\to V$.
+
+If $S$ is quaternionic, the quaternions with absolute
+value one preserve $Q$.
+After extension of scalors to $\dbC$, $S$ becomes the sum
+$S_0\otimes T$ of two copies of a spinorial or
+semi-spinorial representation $S_0$, and $B$ the tensor
+product of an antisymmetric pairing $S_0\otimes S_0\to
+V_{\dbC}$ with a scalar alternating form $T\otimes
+T\to\dbC$.
+The quaternions become $\End(T)$.
+
+The next table gives the nature of irreducible spinorial
+representations, as a function of $n\bmod{8}$, for
+$\Spin(1,n-1)$.
+If $\Spin(1,n-1)$ has two irreducible spinorial
+representations, they have isomorphic restrictions to
+$\Spin(1,n-2)$.
+The last column of the table describes the restriction of
+an irreducible representation of $\Spin(1,n-1)$ to
+$\Spin(1,n-2)$.
+It is either an irreducible spinorial representation, or
+twice it, or the sum of two distinct spinorial
+representations.
+Noted: \ $S$, $2S$, $S^{\plus}+S^-$.
+$$
+\vbox{\offinterlineskip\tabskip=15pt
+\halign{\hfill #\hfill &\hfill #\hfill
+  &\hfill #\hfill\cr
+$n\bmod{8}$ &nature &restriction to $\SO(1,n-2)$\cr
+\noalign{\bigskip}
+$1$ &$\dbR$ &$S$\cr
+\noalign{\medskip}
+$2$ &$\dbR$, $\dbR$ &$S$\cr
+    &($S^{\plus}$ and $S^-$, in duality) &\cr
+\noalign{\medskip}
+$3$ &$\dbR$ &$S^{\plus}+S^-$\cr
+\noalign{\medskip}
+$4$ &$\dbC$ &$2S$\cr
+\noalign{\medskip}
+$5$ &$\dbH$ &$2S$\cr
+\noalign{\medskip}
+$6$ &$\dbH$, $\dbH$ &$S$\cr
+    &($S^{\plus}$ and $S^-$, in duality) &\cr
+\noalign{\medskip}
+$7$ &$\dbH$ &$S^{\plus}+S^-$\cr
+\noalign{\medskip}
+$8$ &$\dbC$ &$S$\cr}}
+$$
+
+\enddocument
+

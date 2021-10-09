@@ -1,0 +1,287 @@
+%From: Elly Gustafsson <gustafss@math.ias.edu>
+%Date: Wed, 26 Mar 1997 09:05:26 -0500
+
+\input amstex
+\documentstyle{amsppt}
+\magnification=1200
+\pagewidth{6.5 true in}
+\pageheight{8.9 true in}
+\loadeusm
+\NoPageNumbers
+\input pictex
+
+\def\operatorname{ln}
+
+\catcode`\@=11
+\def\logo@{}
+\catcode`\@=13
+
+\NoRunningHeads
+
+
+\font\boldtitlefont=cmb10 scaled\magstep2
+
+\def\lam{{\lambda}}
+\def\eps{{\varepsilon}}
+
+\def\psibar{\bar{\psi}}
+\def\Lbar{\bar{L}}
+\def\Sbar{\bar{S}}
+
+\def\Ghat{\hat{G}}
+
+\def\halfspace{\lineskip=1pt\baselineskip=15pt
+     \lineskiplimit=0pt}
+\def\vrulesub#1{\hbox{\vrule height7pt depth5pt\,}_{#1}}
+\def\Ge{{\mathchoice{\,{\scriptstyle\ge}\,}
+  {\,{\scriptstyle\ge}\,}
+  {\,{\scriptscriptstyle\ge}\,}{\,{\scriptscriptstyle\ge}\,}}}
+
+\def\eps{{\varepsilon}}
+\def\Lam{{\Lambda}}
+
+
+\def\dbC{{\Bbb C}}
+
+\def\Tr{\text{\rm Tr}} \def\ln{\text{\rm ln}}
+\def\End{\text{\rm End}} \def\Sym{\text{\rm Sym}}
+\def\I{\text{\rm I}} \def\free{\text{\rm free}}
+\def\II{\text{\rm II}}
+\def\III{\text{\rm III}}
+
+
+\def\scr#1{{\fam\eusmfam\relax#1}}
+
+\def\scrL{{\scr L}}
+
+
+\document
+
+\line{{\boldtitlefont Witten's
+Problems}, Set Four N$^{\text {o}}$. 1
+\hfill(solution written by D.~Freed)}
+\hbox to \hsize{\hrulefill}
+
+\bigskip
+
+\noindent
+{\bf Problem:}
+\smallskip
+
+(1) In the two-dimensional sigma model with target
+space a sphere $S^n$, for large $n$, we introduced a
+Lagrange multiplier field $\sigma$ in order to
+quantize the theory.
+
+(a) By using the equations of motion, identify
+$\sigma$ as an operator in terms of the original
+variables.
+
+(b) What is the dimension of the $\sigma$ field and
+therefore what would you expect to be the large $q$
+behavior (with Euclidean $q$) of $\langle \sigma
+(q)\sigma (-q)\rangle$.
+Compare to the actual behavior.
+\bigskip\bigskip
+
+\noindent
+{\bf Solution:}
+\smallskip
+(a) This model has two bosonic fields: a map
+$\phi:\Bbb R^2 \rightarrow \Bbb R^{n+1}$
+and a ``Lagrange multiplier'' $\sigma:\Bbb R^2
+\rightarrow \Bbb R$.
+The action is
+$$
+\Cal L =\frac 1{2\lambda} \, |d\phi|^2 -\frac
+{i\sigma}{2} (|\phi|^2 -1).
+$$
+It is easy to compute the classical equations of
+motion
+$$
+\align
+|\phi|^2&= 1\\
+\frac {\Delta}{\lambda} \phi &=i\sigma \phi.
+\endalign
+$$
+Our Laplacian '$\Delta$' is nonnegative.
+The first says that $\phi$ maps into the $n$-sphere
+$S^n$ and the second that the Laplacian of $\phi$ is
+perpendicular to $S^n$.
+This means that $\phi$ is a harmonic map into
+$S^n$.
+We express $\sigma$ in terms of $\phi$ as
+$$
+\sigma =\frac {1}{i\lambda} (\Delta \phi, \phi).\tag
+1
+$$
+Up to a total derivative
+ $\sigma = \frac 1{i\lambda} |d\phi|^2$.
+
+\smallskip
+(b) According to equation (1) the $\sigma$ field has
+dimension 2, since $\phi$ is a scalar field in two
+dimensions and so has dimension $0$.
+We expect the behaviour of the 2-point function in
+position space to be
+$$
+\langle \sigma(x) \sigma(0)\rangle
+\sim \frac 1{|x|^4} \text { as } x\rightarrow 0,
+$$
+or equivalently in momentum space to be
+$$
+\langle\sigma(q) \sigma(-q)\rangle \sim q^2 \quad
+\text { on } \quad q\rightarrow \infty,
+\tag 2
+$$
+with possible logarithmic connections due to
+anomalous dimensions.
+We could integrate out the $\sigma$ field first,
+thereby obtaining the $\sigma$-model into $S^n$, and
+since this theory is asymptotically free the 2-point
+function of $|d\phi|^2$ does exhibit the behaviour
+(2) (up to logarithms).
+Instead, we integrate out $\phi$ first and compute
+the effective action for $\sigma$, at least in the
+large $n$ limit.
+
+The computation of the effective action appears in
+Witten's lecture II-3:
+$$
+\Gamma (\tilde\sigma)= \frac n2 \{Tr \, \ln \, (\Delta
+-i \tilde \sigma\tilde \lambda)+ i\tilde
+\sigma\}.\tag 3
+$$
+where $\tilde\sigma=\sigma/n$ and $\tilde
+\lambda=\lambda n$.
+We know that we should expand around the value $-i
+\tilde \sigma_0 \tilde \lambda=M^2$ for a positive
+constant $M^2$.
+The $\tilde \sigma$ propagator is the inverse of the
+second derivative of the action (3), which we
+evaluate at the constant $\tilde\sigma_0=
+iM^2/\tilde\lambda$:
+$$
+\aligned
+\frac {\delta^2\Gamma}{\delta\tilde
+\sigma^2}\bigg|_{\tilde \sigma_0} &=
+\frac {n\tilde \lambda^2}2
+Tr \big((\Delta+M^2)^{-1} \delta \tilde\sigma
+(\Delta+M^2)^{-1} \delta \tilde\sigma\big)
+\\
+&= \frac {n\tilde \lambda^2}{2} \int dxdy \, G(x, y)
+\, \delta \tilde \sigma(y) \, G(y, x) \, \delta
+\tilde\sigma(x)\\
+&=\frac {n\tilde\lambda^2}{2} \int dxdy \, G(x, y)^2
+\, \delta \tilde\sigma(x) \, \delta \tilde\sigma (y),
+\endaligned
+\tag 4
+$$
+where $G$ is the kernel of the Greens function
+$(\Delta +M^2)^{-1}$.
+So the kernel of the inverse $\tilde
+\sigma$-propagator is $\frac {n\tilde \lambda^2}{2}
+G(x, y)^2$.
+In momentum space the square goes over to convolution,
+and so the kernel of the inverse
+$\tilde\sigma$-propagator is
+$$
+\align
+K(q, -q)&= \frac {n\tilde\lambda^2}{2} \int \frac
+{d^2p}{(2\pi)^2} \  \frac 1{p^2+M^2} \ \frac 1
+{(q-p)^2+M^2}.\tag 5\\
+&=\frac {n\tilde\lambda^2}{8\pi^2} \int_0^1 d\alpha
+\int d^2p \ \frac
+{1}{[p^2+M^2+\alpha(1-\alpha)q^2]^2}\\
+&=\frac {n\tilde \lambda^2}{8\pi} \int_0^1 \, \frac
+{d\alpha}{M^2+\alpha (1-\alpha)q^2}\\
+&= \frac {n\tilde \lambda^2}{4\pi} 
+\ \frac
+{\ln \bigg(\frac{\sqrt{1+4M^2/q^2}+1}{\sqrt
+{1+4M^2/q^2}-1}\bigg)}{q^2\sqrt{1+4M^2/q^2}}\\
+&\sim \frac {n\tilde\lambda^2}{2\pi} \ \frac{\ln
+(q^2/M^2)}{q^2} \quad \text { as } \quad q
+\rightarrow \infty.
+\endalign
+$$
+So the $\tilde\sigma$-propagator behaves as
+$$
+\langle \tilde\sigma(q) \tilde \sigma(-q)\rangle \sim
+\frac {2\pi}{n\tilde \lambda^2} \ \frac {q^2}{\ln
+(q^2/M^2)} \quad \text { as } \quad
+q\rightarrow\infty.
+$$
+Since $\tilde\sigma =\sigma/n$, we have finally
+$$
+\langle \sigma(q) \sigma(-q)\rangle \sim \frac {2\pi
+n}{\tilde \lambda^2} \, \frac {q^2}{\ln (q^2/M^2)}
+\quad \text { as } \quad q\rightarrow \infty.\tag 6
+$$
+Notice that the behaviour in $n$ could have been
+predicted from (1), since the 2-point function of
+ $(\Delta \phi, \, \phi)$ is $n+1$ times the 2-point
+function of a single scalar field.
+The large $q$ behavior is as predicted in (2),
+but corrected by a logarithm.
+
+Notice that the inverse propagator (5) can be computed
+by diagrams.
+The effective action obtained by integrating our
+$\phi$ is computed by diagrams with external $\sigma$
+lines and internal $\phi$ lines.
+We should expand around $\sigma = i M^2/\lambda$, of
+course.
+For the quadratic term there is a single diagram, as
+shown, where the solid line
+%\input circ.tex
+%%% beginning of file circ.tex
+%\input pictex
+\font\thinlinefont=cmr5
+$$
+\hbox{\beginpicture
+\setcoordinatesystem units < 1.000cm, 1.000cm>
+%\unitlength= 1.000cm
+\linethickness=1pt
+%\setplotsymbol ({\makebox(0,0)[l]{\tencirc\symbol{'160}}})
+\setshadesymbol ({\thinlinefont .})
+\setlinear
+%
+% Fig ELLIPSE
+%
+\linethickness= 0.500pt
+\setplotsymbol ({\thinlinefont .})
+\ellipticalarc axes ratio  0.953:0.953  360 degrees 
+	from  6.001 24.479 center at  5.048 24.479
+%
+% Fig POLYLINE object
+%
+\linethickness= 0.500pt
+\setplotsymbol ({\thinlinefont .})
+\setdots < 0.0953cm>
+\plot  6.159 24.479  7.588 24.479 /
+%
+% Fig POLYLINE object
+%
+\linethickness= 0.500pt
+\setplotsymbol ({\thinlinefont .})
+\plot  3.937 24.479  2.508 24.479 /
+\linethickness=0pt
+\putrectangle corners at  2.508 25.432 and  7.588 23.527
+\endpicture}
+$$
+
+%%% end of file circ.tex
+represents $\phi$ and the dotted line represents
+$\sigma$.
+Note the $\phi$ propagator is massive due to the
+shift in $\sigma$.
+This diagram is evaluated by (5).
+
+$$
+$$
+
+
+
+\end
+
+

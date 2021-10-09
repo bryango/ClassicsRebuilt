@@ -1,0 +1,2192 @@
+%From: Pierre Deligne <deligne@math.ias.edu>
+%Date: Fri, 11 Oct 1996 15:49:17 -0400
+
+%From: Pierre Deligne <deligne@math.ias.edu>
+%Date: Fri, 4 Oct 1996 16:18:43 -0400
+%Subject: spinors.tex
+
+\input amstex
+\documentstyle{amsppt}
+\magnification=1200
+\input pictex
+\loadeufm
+
+\font\dotless=cmr10 %for the roman i or j to be
+                    %used with accents on top.
+                    %(\dotless\char'020=i)
+                    %(\dotless\char'021=j)
+\font\itdotless=cmti10
+\def\itumi{{\"{\itdotless\char'020}}}
+\def\itumj{{\"{\itdotless\char'021}}}
+\def\umi{{\"{\dotless\char'020}}}
+\def\umj{{\"{\dotless\char'021}}}
+\font\thinlinefont=cmr5
+\font\smaller=cmr5
+\font\boldtitlefont=cmb10 scaled\magstep2
+
+\NoRunningHeads
+\pagewidth{6.5 true in}
+\pageheight{8.9 true in}
+\loadeusm
+
+\catcode`\@=11
+\def\logo@{}
+\catcode`\@=13
+
+\def\eps{{\varepsilon}}
+
+\def\undertext#1{$\underline{\vphantom{y}\hbox{#1}}$}
+\def\nspace{\lineskip=1pt\baselineskip=12pt%
+     \lineskiplimit=0pt}
+\def\dspace{\lineskip=2pt\baselineskip=18pt%
+     \lineskiplimit=0pt}
+
+\def\wedgeop{\operatornamewithlimits{\wedge}\limits}
+\def\oplusop{\operatornamewithlimits{\oplus}\limits}
+\def\simover#1{\overset\sim\to#1}
+\def\w{{\mathchoice{\,{\scriptstyle\wedge}\,}
+  {{\scriptstyle\wedge}}
+  {{\scriptscriptstyle\wedge}}{{\scriptscriptstyle\wedge}}}}
+\def\Le{{\mathchoice{\,{\scriptstyle\le}\,}
+{\,{\scriptstyle\le}\,}
+{\,{\scriptscriptstyle\le}\,}{\,{\scriptscriptstyle\le}\,}}}
+\def\Ge{{\mathchoice{\,{\scriptstyle\ge}\,}
+{\,{\scriptstyle\ge}\,}
+{\,{\scriptscriptstyle\ge}\,}{\,{\scriptscriptstyle\ge}\,}}}
+\def\doubleheaddownarrow#1{\hbox{$\Big\downarrow%
+     \kern-5.96pt\lower2pt\hbox{$\downarrow$}$}%
+     \rlap{$\vcenter{$\kern-18pt\scriptstyle#1$}$}}
+\def\rmapdown#1{\Big\downarrow\kern-1.0pt\vcenter{
+     \hbox{$\scriptstyle#1$}}}
+
+\def\Gal{\text{\rm Gal}}  \def\sign{\text{\rm sign}}
+\def\Br{\text{\rm Br}}  \def\im{\text{\rm Im}}
+\def\sBr{\text{\rm sBr}} \def\Spin{\text{\rm Spin}}
+\def\sgn{\text{\rm sgn}} \def\pr{\text{\rm pr}}
+\def\Id{\text{\rm Id}} \def\Sp{\text{\rm Sp}}
+\def\Gr{\text{Gr}} \def\SO{\text{\rm SO}}
+\def\Sym{\text{\rm Sym}} \def\SL{\text{\rm SL}}
+\def\End{\text{\rm End}}
+\def\Hom{\text{\rm Hom}} 
+\def\Ker{\text{\rm Ker}}
+\def\Tr{\text{\rm Tr}}
+\def\Lie{\text{\rm Lie}} 
+
+\def\fbar{\bar{f}}
+\def\kbar{\bar{k}}
+\def\zbar{\bar{z}}
+\def\Abar{\bar{A}}
+\def\Sbar{\bar{S}}
+
+\def\dbC{{\Bbb C}}
+\def\dbG{{\Bbb G}}
+\def\dbH{{\Bbb H}}
+\def\dbR{{\Bbb R}}
+\def\dbZ{{\Bbb Z}}
+
+
+\def\scr#1{{\fam\eusmfam\relax#1}}
+
+\def\scrD{{\scr D}}
+\def\scrL{{\scr L}}
+\def\scrS{{\scr S}}   
+\def\scrU{{\scr U}}   
+
+\def\gr#1{{\fam\eufmfam\relax#1}}
+
+%Euler Fraktur letters (German)
+\def\gro{{\gr o}}
+\def\grs{{\gr s}}
+
+\def\grso{{\grs\gro}}
+
+
+\topmatter
+\title\nofrills
+{\boldtitlefont Notes on spinors}
+\endtitle
+\author
+P. Deligne
+\endauthor
+\endtopmatter
+
+%\bigskip
+\centerline{School of Mathematics}
+\centerline{Institute for Advanced Study}
+\centerline{Princeton, NJ \ 08540}
+
+\smallskip
+\centerline{e-mail: deligne\@math.ias.edu}
+
+\smallskip
+\centerline{(corrected October 11, 1996)}
+
+\NoBlackBoxes
+\parindent=20pt
+\frenchspacing
+\document
+\dspace
+\bigskip
+The present notes owe a lot to Bourbaki's treatment in
+Alg., Ch. 9.
+I have learned of the analogy between spinorial and
+oscillator representations (see 3.5, 3.8, 3.10) from a
+lecture R. Howe gave in 1978.
+The \S5 has been inspired by a conversation with
+Witten.
+
+\bigskip\bigskip
+\subhead
+1. Super Brauer group
+\endsubhead
+
+Our aim is to explain and investigate the super
+analogues of the notions of division algebra,
+semi-simple algebra, central simple algebra and Brauer
+group.
+
+The super Brauer group has been introduced by
+C.~T.~C.~Wall: Graded Brauer Groups, J. Reine Angew.
+Math. 213 (1963-64), p. 187--199.
+In loc. cit., Theorem 3 p. 194, a description of its
+structure more precise than our 1.21 is given.
+
+\subhead
+1.1 
+\endsubhead
+The sign rule forces the following definitions.
+The {\it opposite} $A^0$ of a super ring $A$ has the
+same underlying additive group, and its multiplication
+law is given by
+$$
+(x,y)\longmapsto (-1)^{p(x)p(y)}y\,x
+$$
+for $x$, $y$ homogeneous, with parity
+$p(x),p(y)\in\dbZ/2$.
+A left super $A$-module is turned into a right super
+$A^0$-module by
+$$
+m\,a=(-1)^{p(m)p(a)}a\,m.
+$$
+
+If $M$ an $N$ are two left super modules,
+$\underline{\Hom}_A(M,N)$ is $\mod{2}$ graded, with even
+(resp. odd) part the additive group of even (resp odd)
+additive morphisms $f\colon\,M\to N$ such that
+$f(a\,m)=(-1)^{p(f)p(a)}a,f(m)$.
+The even part of $\underline{\Hom}_A(M,N)$ is the group
+$\Hom_A(M,N)$ of morphisms from $M$ to $N$ in the
+category of left super modules .
+
+If $f\colon\,A\to B$ is a morphism of super rings, the
+{\it commutant} of $A$  in $B$ is the super ring of
+$b\in B$ for which the super commutator
+$ab-(-1)^{p(a)p(b)}ba$ vanishes for $a\in f(A)$.
+The {\it commutant} $A'$ of a left super $A$-module $M$
+is the commutant
+$\underline{\End}_A(M)=\underline{\Hom}_A(M,M)$ of $A$
+in $\underline{\End}_\dbZ(M)$.
+Example:
+for $M$ the left module $A$, $A'=\underline{\End}_A(A)$
+is identified with $A^0$ by $f\mapsto f(1)$.
+If we view $M$ as a right $A'{^0}$-module, the ring of
+right multiplications by elements of $A'{^0}$ is the
+commutant in the ordinary, ungraded, sense.
+The bicommutant, i.e. the commutant of $M$ viewed as an
+$A'$-module, coincide with its ungraded analogue.
+
+The {\it center} of $A$ is the commutant of $A$ in $A$.
+
+If $Z$ is super commutative and $A$, $B$ are super
+algebras over $Z$, i.e. are provided with
+$a\colon\,Z\to A$ and $b\colon\,Z\to B$, the tensor
+product algebra $A\otimes_Z B$ is $A\otimes_Z B$ with
+the product law $(a\otimes b)$.
+$(a'\otimes b')=(-1)^{p(b)p(a')}(aa')\otimes(bb')$:
+the image of $A$ and $B$ in $A\otimes_Z B$ super
+commute.
+
+A divisor ring ($=$ field, possibly non commutative) is
+a ring $D$ such that the left $D$-module $D$ is simple.
+Adding ``super'' everywhere, one obtains the notion of
+super division ring.
+Equivalent definition: $D\not=0$ and every homogeneous
+element $x\not=0$ is invertible.
+The usual proof gives:
+
+\proclaim{Proposition 1.2}
+The commutant of a simple super module is a super
+division ring.
+\endproclaim
+
+\demo{Proof}
+If $a'\in A'$ is homogeneous, its kernel and image are
+graded submodules$\ldots$
+\enddemo
+
+A left super module $M$ is {\it semi-simple} if it is a
+sum of simple super modules.
+
+\proclaim{Proposition 1.3}
+Assume that $2$ is invertible in $A$.
+Then, a left super-module $M$ is semi-simple if and
+only if the underlying ungraded module $\vert M\vert$
+is.
+\endproclaim
+
+\demo{Proof}
+Only if: it suffices to see that if  $M$ is simple, the
+underlying ungraded module $\vert M\vert$ is
+semi-simple.
+Let $M_1$ be the sum of the simple submodules of $\vert
+M\vert$.
+The parity map $\alpha\colon\,x\mapsto(-1)^{p(x)}x$ is
+an automorphism of $(A,M)$.
+By transport of structures, $M_1$ is stable by $\alpha$.
+It is hence a graded submodule (we use here that $2$ is
+invertible).
+The simplicity of $M$ forces $M=M_1$ and $\vert
+M\vert=M_1$ is semi-simple.
+\enddemo
+
+If: It suffices to see that any super submodule $N$ of $M$
+is a direct factor.
+By assumption, $\vert N\vert$ is a direct factor of
+$\vert M\vert$, meaning that there is a retraction
+$f\colon\,\vert M\vert\to\vert N\vert$.
+The map $(f+\alpha(f))/2$ is a graded retraction; it
+makes $N$ a direct factor of $M$.
+
+{\it From now on in this {\rm \S}, $k$ is a field of
+characteristic $\not=2$.
+We say \undertext{algebra} and \undertext{module} for
+super algebra and super left module.
+Non super objects will be called ungraded.
+Algebras and modules are assumed finite dimensional
+over the ground field {\rm (}usually $k${\rm )}.}
+
+\subhead
+1.4
+\endsubhead
+An algebra $A$ is {\it semi-simple} if the category of
+its modules is semi-simple.
+Equivalent conditions: the $A$ module $A$ is
+semi-simple; $A$ admits a faithful semi-simple module
+$M$.
+
+\demo{Proof}
+We write $\prod$ for the parity change functor
+$X\mapsto X\otimes k$, for $k$ viewed as an odd
+$k$-vector space, with basis noted $1^-$.
+The equivalence of the conditions follows from:
+any module is a quotient of some $A^n\oplus\left(\prod
+A\right)^m$; if $M$ is faithful, $A$ is a submodule of
+some $M^n\oplus\left(\prod M\right)^m$.
+\enddemo
+
+Corollaries of 1.3:
+
+\proclaim{Corollary 1.5}
+An algebra is semi-simple if and only if the underlying
+ungraded algebra is.
+\endproclaim
+
+\proclaim{Corollary 1.6}
+If $M$ is a semi-simple module, $A$ maps onto its
+bicommutant $A''$.
+\endproclaim
+
+By 1.3 and the identity 1.1 of the bicommutant with its
+ungraded analog, we are reduced to the ungraded case
+(Bourbaki Alg. Ch. 8, \S4 n$^o$ 2, Th. 1)
+
+\proclaim{Corollary 1.7}
+If $k'$ is a separable extension of $k$, $A$ is
+semi-simple if and only if the $k'$-algebra $A\otimes_k
+k'$ is.
+\endproclaim
+
+By 1.5, we are reduced to the ungraded case (Bourbaki
+Alg. Ch. 8, \S7 n$^o$ 3, cor. 2 to prop. 3).
+
+\subhead
+1.8
+\endsubhead
+An algebra $A$ is {\it central simple} if it is
+semi-simple with center $k$.
+The condition ``center $k$'' implies that $A\not=0$.
+It does not imply that the underlying ungraded algebra
+$\vert A\vert$ has a center reduced to $k$.
+Example: the algebra $k[\eps]$ with $\eps$ odd,
+$\eps^2=1$ is a (super) division algebra, hence is
+semi-simple.
+The non vanishing of the super commutator
+$[\eps,\eps]=2\eps^2$ shows that its center is reduced
+to $k$: it is central simple, but $\vert A\vert$ is not.
+
+\proclaim{Corollary 1.9}
+If $k'$ is a separable extension of $k$, $A$ is central
+simple if and only if the $k'$-algebra $A\otimes_k k'$
+is.
+\endproclaim
+
+\demo{Proof}
+Results from 1.7, and from the fact that taking the center
+is compatible with extension of scalars.
+Indeed, the center is the intersection of the kernel of
+the super commutators maps $adx$, for $x$ running over a
+system of generators of the algebra.
+\enddemo
+
+\remark{\bf Remark}
+The conclusion of 1.9 holds for any field extension
+$k'/k$.
+This results from 1.14.
+\endremark
+
+\subhead
+1.10
+\endsubhead
+Let $D$ be a division algebra.
+If $D$ is purely even, $D$ has two isomorphism classes
+of simple modules: $D$, viewed as purely even, or as
+purely odd.
+If $D$ is not purely even, $D$ has only one isomorphism
+class of simple modules.
+In the purely even case, $M_{r,s}(D)$ is
+correspondingly isomorphic to $M_{r+s}(D)$.
+By ``matrix algebra over $D$'', we mean in all cases an
+algebra $M_{r,s}(D)$, with $r+s>0$.
+
+\proclaim{Proposition 1.11}
+An algebra $A$ is central simple if and only if it is
+isomorphic to a matrix algebra over some division
+algebra $D$ with center $k$.
+\endproclaim
+
+\demo{Proof}
+Let $A$ be a $k$-algebra.
+If $F$ is a composition series of the $A$-module $A$,
+any simple $A$-module occurs, up to parity change, in
+the successive quotients of $F$.
+It follows that they are only a finite number of
+isomorphism classes of simple modules.
+Let $S_1,\dotsc,S_n$ be a system of representatives of
+them, up to parity change.
+Let $D_i$ be the commutant of $S_i$.
+If $D_i$ is not purely even, the $D_i$-module $S_i$ is
+isomorphic to $D_i^n$ for some $n\not=0$.
+if $D_i$ is purely even, $D_i^{n\vert m}$ occurs as
+well.
+By 1.6,
+$$
+A\longrightarrow \prod\,\underline{\End}_{D_i}(S_i)
+$$
+is onto.
+It is an isomorphism if $A$ is semi-simple.
+\enddemo
+
+If $A$ is central simple, we have $n=1$:
+up to parity change, $A$ has exactly one isomorphism
+class of simple modules $S$.
+If $D$ is its commutant, we have
+$$
+\align
+A\simover{\longrightarrow}\underline{\End}_D(S)=
+&M_n(D^0)\quad\text{or}\\
+&M_{n,m}(D^0)
+\endalign
+$$
+for $D^0$ the opposite algebra.
+Indeed, $\End_D(D)=D^0$.
+By 1.6, the center $A\cap D$ of $A$ is also the center
+of $D$: if $A$ is central simple, the center of $D$ is
+reduced to $k$ and $A$ has the required form.
+The converse is left to the reader.
+The proof gave the
+
+\remark{\bf Complement 1.12}
+The algebra $D$ of 1.11 is $(\End_A(S))^0$ for $S$ the
+unique simple $A$-module (up to isomorphism and parity
+change).
+It is hence determined, up to isomorphism, by $A$.
+\endremark
+
+\proclaim{Proposition 1.13}
+If $k$ is separably closed, the only division algebras
+$D$ with center $k$ are, up to isomorphism, $k$ and
+$k[\eps]$ with $\eps$ odd and $\eps^2=1$.
+\endproclaim
+
+\demo{Proof}
+The even part $D^+$ of $D$ is an ordinary division
+algebra.
+Let $Z$ be its center.
+The center of $D$ being reduced to $k$, it follows that
+the fixed point set of the automorphisms $xzx^{-1}$
+($x\in D^-$, $x\not=0$) of $Z$ is $k$.
+We see that $Z$ is a Galois extension of $k$.
+As $k$ is separably closed, $Z=k$ and $D^+=Z=k$, because
+$\Br(k)=0$.
+
+If $D$ is purely even, we get $D=k$.
+If not, pick $\eps\not=0$ in $D^-$.
+It is invertible.
+It follows that $D^-=\eps D^+$ and that $\eps^2\not=0$.
+As $k$ is separably closed of characteristic $\not=2$,
+$\eps^2$ has a square root $\lambda$ in $k$.
+Replacing $\eps$ by $\lambda^{-1}\eps$, we obtain that
+$D$ is isomorphic to the $k[\eps]$ of 1.13.
+\enddemo
+
+\proclaim{Corollary 1.14}
+An algebra $A\not=0$ is central simple if and only if 
+$$
+A\otimes A^0 \simover{\longrightarrow} \End_k(A).
+\tag1.14.1
+$$
+\endproclaim
+
+The map is defined by the commuting $A$ and
+$A^0$-module structures of $A$, the $A^0$-module
+structure coming from $A^0=\End_A(A)$.
+
+If $A$ is not semi-simple (resp. with center $k$), the
+image of $A\otimes A^0$ in $\End_k(A)$ respects the
+radical of $A$ (resp. commutes with the center), hence
+cannot be all of $\End_k(A)$.
+
+We now assume $A$ central simple and prove that
+$A\otimes A^0\simover{\longrightarrow} \End_k(A)$.
+Extending the scalars, we may assume that $k$ is
+separably closed.
+By 1.11 and 1.13, one has then $A\sim M_{r,s}\otimes D$,
+with $D$ as in 1.13.
+this reduces us to the cases of $M_{r,s}$, left to the
+reader, and $D$.
+If $D=k$, the statement is clear.
+For $K=k[\eps]$, in the basis $(1,\eps)$, the left
+multiplication by $\eps\in D$ (resp. $\eps\in D^0$) is
+$$
+\pmatrix\format \c &\quad\c\\
+0 &1\\
+1 &0
+\endpmatrix
+\qquad\qquad \text{(resp. $\pmatrix\format \c &\quad\r\\
+0 &-1\\
+1 &0
+\endpmatrix\,\,$)}
+$$
+which suffices to generate the $2\times 2$ matrix
+algebra.
+
+\proclaim{Corollary 1.15}
+The tensor product of two non zero algebras is central
+simple if and only if each is.
+\endproclaim
+
+\demo{Proof}
+The map (1.14.1) for a tensor product is the tensor
+product of the maps (1.14.1) for each factor.
+\enddemo
+
+\proclaim{Definition 1.16}
+\roster
+\runinitem"(i)"
+Two central simple algebras are {\rm similar} if they
+are matrix algebras over isomorphic division algebras
+(cf. 1.11, 1.12).
+\endroster
+
+\noindent
+{\rm (ii)}\enspace
+The {\rm super Brauer group} $\sBr(k)$ is the set of 
+similarity classes of central simple algebras over $k$,
+with composition law induced by $\otimes$.
+\endproclaim
+
+The composition law is associative and commutative, by
+associativity and commutativity of the tensor product.
+It has a unit: the class of matrix algebras.
+By 1.14, the class of $A^0$ is inverse to that of $A$:
+$\sBr(k)$ is a commutative group.
+
+\subhead
+1.17 Example
+\endsubhead
+By 1.13, if $k$ is separably closed, then
+$\sBr(k)=\dbZ/2$.
+
+The trivial element in $\sBr(k)$ corresponds to the
+central simple algebras $A=\underline{\End}_k(S)$, for
+$S$ a (super) vector space.
+The commutant $Z$ of $A^+$ in $A$ is contained in
+$A^+$:
+it is the center $Z$ of $A^+$ and consists of those
+endomorphisms of $S$ which act as scalars on 
+$S^+$ and on $S^-$.
+If $A$ is not purely even, i.e. if $S$ is not
+homogeneous, $Z\simeq k\times k$, and the two
+homomorphisms $\chi\colon\,Z\to k$ correspond to the
+two isomorphism classes of simple $A$-modules $T$ (permuted
+by parity change) by $T\mapsto \chi$ such that $zv=\chi(z)v$
+for $v\in T^+$.
+
+The non trivial element in $\sBr(k)$ corresponds to the
+central simple algebras $A=M_n(D)$, $D=k[\eps]$ as
+above.
+Here, $A^+$ is central simple and its commutant $Z$ in
+$A$ is of dimension $(1,1)$ (isomorphic to $D$).
+One has $A^+\otimes Z\simover{\rightarrow} A$.
+
+\proclaim{Proposition 1.18}
+the super Brauer group of $\dbR$ is $\dbZ/8$.
+It is generated by the super division algebra
+$\dbR[\eps]$ with $\eps$ odd and $\eps^2=1$.
+\endproclaim
+
+\demo{Proof}
+We first enumerate all super division algebras $D$ over
+$\dbR$.
+If, after extending scalars to $\dbC$, $D$ becomes
+isomorphic to a matrix algebra over $\dbC[\eps]$ (non
+trivial class in $\sBr(\dbC)$), then $D^+$ is a
+division algebra, its commutant $Z$ is a division
+algebra of dimension $(1,1)$ and $D^+\otimes
+Z\simover{\rightarrow}D$.
+Indeed, all those assertions hold after extension of
+scalars to $\dbC$, and are invariant by extension of
+scalars.
+This gives four possibilities: $D^+=\dbR$ or $\dbH$,
+and $Z=\dbR[\eps]$ with $\eps$ odd and $\eps^2=\pm 1$.
+It follows already that $\sBr(\dbR)$ is of order $8$.
+
+For $D$ purely even, we get the usual Brauer group:
+$D=\dbR$ or $\dbH$.
+
+If $D$ is not purely even and becomes a matrix algebra
+over $\dbC$, the center of $D^+$ is a non trivial
+extension $Z$ of $\dbR$, as one checks after extension
+of scalars to $\dbC$.
+It follows that one has $C\simeq \dbC$ and $D^+$,
+central simple over $Z$, is reduced to $\dbC$ as well.
+Fix $\eps\not=0$ in $D^-$.
+One has $D^-=D^+.\eps$.
+the center of $D$ being reduced to $\dbR$, the
+automorphism $\eps z\eps^{-1}$ of $\dbC$ must be non
+trivial: $\eps z\eps^{-1}=\zbar$.
+It fixes  $\eps^2\colon\,\eps^2\in\dbR$.
+Changing $\eps$ to $\eps z$ changes $\eps^2$ to
+$\eps^2 z\zbar$.
+This gives the two last cases
+$$
+D=\dbC[\eps]\quad\text{with $\eps$ odd, $\eps
+z\eps^{-1}=\zbar$ and $\eps^2=\pm1$}.
+$$
+\enddemo
+
+We now check that the map from $\dbZ/8$ to the group
+$\sBr(\dbR)$ defined by $1\mapsto$ (class of
+$\dbR[\eps]$, $\eps$ odd, $\eps^2=1$), is as follows:
+$$
+\alignat4
+&0 &&\longmapsto \dbR &\qquad &4 &&\longmapsto \dbH\\
+&1 &&\longmapsto \dbR[\eps], \eps^2=1
+      && 5 &&\longmapsto\dbH[\eps], \eps h=h\eps, \eps^2=1\\
+&2 &&\longmapsto \dbC[\eps], \eps z=\zbar\eps,
+     \eps^2=1 &&6 &&\longmapsto\dbC[\eps],
+     \eps z=\zbar\eps, \eps^2=-1\\
+&3 &&\longmapsto \dbH[\eps], \eps h=h\eps, \eps^2=-1
+  &&7 &&\longmapsto\dbR[\eps], \eps^2=-1
+\endalignat
+$$
+
+The image of $2$ is the class of $\dbR[\eps_1,\eps_2]$
+with $\eps_i^2=1$, $\eps_1\eps_2=-\eps_2\eps_1$.
+One has $(\eps_1\eps_2)^2=-1$ and the claim for $2$
+ follows.
+Passing to the opposite algebra, we get the image of
+$6$.
+It is not the same as the image of $2$, and it follows
+that $\sBr(\dbR)$ is indeed cyclic of order $8$.
+As the class of $\dbH$ is of order $2$, it must be the
+image of $4$.
+One concludes by using that $5=4+1$ and using passages
+to the opposite algebra.
+
+\remark{\bf Remark 1.19}
+Let $A$ be a central simple algebra over $\dbR$ with a
+class $n$ in $2.\dbZ/8$, i.e. such that $D_\dbC$,
+deduced from $A$ by extension of scalars, is a matrix
+algebra.
+The algebra $A_\dbC$ has two isomorphism classes of
+simple modules, permuted by parity change.
+
+Each class is defined over $\dbR$, i.e. is fixed by
+$\Gal(\dbC/\dbR)$, if and only if the center $Z$ of
+$A^+$ is $\dbR$ (if $A$ is purely even) or
+$\dbR\times\dbR$.
+This happens if and only if $n\equiv 0(4)$.
+if $n\equiv 0(8)$, each isomorphism class can be
+realized over $\dbR$: $A$ is a matrix algebra.
+If $n\equiv 4(8)$, it cannot: $A$ admits only a module
+$M$ which by extension of scalars becomes twice a
+simple module over $A_\dbC$.
+Its commutant is $\dbH$.
+
+If $n=2(8)$, the ungraded algebra $A$ admits an
+ungraded module $M$ which, after extension of scalars,
+becomes the underlying ungraded module to a simple
+$A_\dbC$-module.
+The even and odd components of $M_\dbC$ are permuted by
+complex conjugation.
+
+If $n\equiv 6(8)$, one can only find $M$ which, after
+extension of scalars, becomes twice such a module.
+Again, the even and odd part are permuted by complex
+conjugation.
+The commutant of $M$ (as ungraded module) is $\dbH$.
+\endremark
+
+If $A$ is central simple with a class $n$ in $\dbZ/8$
+which is odd, $A^+$ is a matrix algebra if $n=1$ or
+$7\mod 8$, and a matrix algebra over $\dbH$ otherwise.
+In the first case, the unique simple $A_\dbC^+$-module
+can be realized over $\dbR$.
+In the second, it cannot.
+The centralizer $Z$ of $A^+$ in $A$ is isomorphic to
+$\dbR\times\dbR$ if $n\equiv 1$ or $5(8)$, to $\dbC$
+otherwise.
+
+\remark{\bf 1.20 Remark}
+For $A$ a central simple algebra over $\dbR$, let $t$
+be the trace for the underlying ungraded algebra,
+$\sgn^+$ and $\sgn^-$ be the signatures of the
+quadratic forms $t(xy)$ on $A^+$ and $A^-$,
+respectively, and define
+$$
+s(A):= \sgn^+ + \sgn^- i\in\dbZ[i]\subset\dbC
+$$
+For a tensor product $A_1\otimes A_2$, $t$ vanishes on
+the $A_1^{\pm}\otimes A_2^{\pm}$ other than
+$A_1^+\otimes A_2^+$, where it is the tensor product of
+$t$ for $A_1$ and $A_2$.
+On $A_1^{\pm}\otimes A_2^{\pm}$, $t(xy)$ is related to
+the tensor product of the bilinear forms $t_1(x_1y_1)$
+and $t_2(x_2y_2)$ by
+$$
+\alignat3
+&A_1^+ &&\otimes A_2^+:\,\,\,\, &&t(xy)=t_1(x_1y_1)\otimes
+     t_2(x_2y_2)\\
+&A_1^+ &&\otimes A_2^-: &&\text{same}\\
+&A_1^- &&\otimes A_2^+: &&\text{same}\\
+&A_1^- &&\otimes A_2^-: &&t(xy)=-t_1(x_1y_1)
+     \otimes t_2(x_2y_2),
+\endalignat
+$$
+the latter because $(x_1\otimes y_1)\cdot(x_2\otimes
+y_2)=-(x_1x_2)\otimes(y_1y_2)$.
+\endremark
+
+The signature being multiplicative, and changing sign
+when the bilinear form is replaced by its opposite,
+we get
+$$
+s(A_1\otimes A_2)=s(A_1)s(A_2).
+$$
+
+For a matrix algebra $M_{r,s}$, off diagonals
+contribute an isotropic form, and
+$$
+s(M_{r,s})=r+s
+$$
+
+For $\dbR[\eps]$ with $\eps$ odd and $\eps^2=1$, one
+has $s=1+i$, of order $8$ in $\dbC^*/(\dbR^+)^*$.
+This shows again that the group $\sBr(\dbR)$, being of
+order $8$, is cyclic with generator the division
+algebra $\dbR[\eps]$ with $\eps$ odd and $\eps^2=1$.
+
+\proclaim{1.21 Construction}
+The super Brauer group $\sBr(k)$ is an extension of
+$H^0(\Gal(\kbar/k), \dbZ/2)=\dbZ/2$ by
+$H^1(\Gal(\kbar/k),\dbZ/2)=k^*/k^{*2}$ by
+$H^2(\Gal(\kbar/k)\kbar{^*})=\Br(k)$.
+\endproclaim
+
+In 1.21, $\kbar$ is a separable closure of $k$.
+
+The map to $\dbZ/2$ is extension of scalars to $\kbar$,
+see 1.17.
+We now consider the kernel.
+
+Let $A$ be a central simple algebra whose class in
+$\sBr(k)$ is in the kernel of the map to $\dbZ/2$.
+Extending scalars to $\kbar$, we obtain $\Abar$,
+isomorphic to some $M_{r,s}$.
+As such, it has two isomorphism classes of simple
+modules, permuted by parity change.
+Let $\scrS(\Abar)$ be the set of those isomorphisms
+classes.
+Having two elements, it can be viewed as a torsor over
+$\dbZ/2$.
+The Galois group $\Gal(\kbar/k)$ acts on $\scrS(\Abar)$
+by transport of structures, defining an homomorphism
+$$
+h_A\colon\,\Gal(\kbar/k)\longrightarrow \dbZ/2,
+$$
+i.e. an element $h_A\in H^1(\Gal(\kbar/k),\dbZ/2)$:
+the class of the equivariant $\dbZ/2$-torsor
+$\scrS(\Abar)$.
+
+For a tensor product $A_1\otimes A_2$, simple
+$(A_1\otimes A_2\otimes \kbar)$-modules are the tensor
+products over $\kbar$ of simple
+$A_1\otimes\kbar$-modules and simple
+$A_2\otimes\kbar$-modules, giving
+$$
+\scrS(A_1\otimes A_2^-)=\scrS(\Abar_1)+\scrS(\Abar_2)
+$$
+(addition of torsors) and $h_A=h_{A_1}+h_{A_2}$.
+
+For $A$ a matrix algebra $M_{r,s}$, $\Gal(\kbar/k)$
+acts trivially on $\scrS(\Abar)$.
+it follows that $A\mapsto h_A$ factors through an
+homomorphism
+$$
+h\colon\,\Ker(\sBr(k)\to\dbZ/2)\longrightarrow
+H^1(\Gal(\kbar/k),\dbZ/2).
+$$
+
+Let us show that $h$ is onto.
+By 1.17, if $A$ is not purely even, $\scrS(\Abar)$ is 
+identified with the set of homomorphisms
+$$
+\Hom(Z,\kbar)
+$$
+for $Z$ the center of $A^+$.
+We need to show that any quadratic extension of $k$ can
+be obtained as a $Z$.
+Indeed, for
+$$
+(k[\eps]\text{ with $\eps^2=a$})\otimes
+(k[\eps]\text{ with $\eps^2=-1$}),
+$$
+$Z=A^+$ is $k\left(\sqrt{a}\,\right)$.
+
+It remains to compute the kernel of $h$.
+It corresponds to algebras $A$, with $\Abar\simeq
+M_{r,s}$, for which an isomorphism class of simple
+$\Abar$-module $\Sbar$  can be defined over $k$.
+The automorphism group of $\Sbar$ is $\kbar{^*}$.
+The obstruction to finding $S$ giving $\Sbar$ by
+extension of scalars is hence in
+$H^2(\Gal(\kbar/k)\kbar^*)$.
+
+It is additive in $A$, and vanishes only if $A\simeq
+M_{r,s}$.
+This gives an injective morphism
+$$
+\Ker(h)\longrightarrow H^2(\Gal(\kbar/k),\kbar^*).
+$$
+It is onto, as shown by taking $A$ to be purely even
+(usual Brauer group).
+
+\newpage
+
+\subhead
+2. Variant
+\endsubhead
+
+The case of Clifford algebras suggests to consider a
+variant of the super Brauer group.
+
+\subhead
+2.1
+\endsubhead
+One considers central simple super algebras $A$,
+together with an even involution $\beta\colon\,A\to A$
+which is an antiautomorphism of the underlying ungraded
+algebra:
+$$
+\beta(xy)=\beta(y)\beta(x).\tag2.1.1
+$$
+
+The tensor product is defined as follows:
+take the tensor product of super algebras, and define
+$\beta$ as extending the involutions of the factors:
+$$
+\beta(a\otimes b)=(-1)^{p(a)p(b)}\beta(a)
+\otimes\beta(b).
+\tag2.1.2
+$$
+Tensor product is associative and commutative.
+
+\example{2.2 Example}
+Let $S$ be a super vector space, and
+$A:=\underline{\End}(S)$.
+Antiautomorphisms $\beta$ of the underlying ungraded
+algebra correspond to non degenerate bilinear forms on
+$S$ taken up to a factor by
+$$
+(ax,y)=(x,\beta(a)y).
+$$
+Involutive $\beta$ correspond to symmetric or
+antisymmetric forms.
+Even $\beta$ correspond to even or odd forms.
+\endexample
+
+ Suppose given two super vector spaces $S_i$ ($i=1,2$)
+provided with even or odd, symmetric or antisymmetric
+bilinear forms.
+Let $(A,\beta)$ be the tensor product of the
+corresponding $(A_i,\beta)$.
+One has
+$$
+A=A_1\otimes A_2=\underline{\End}(S_1)\otimes
+\underline{\End}(S_2)\simover{\longrightarrow}
+\underline{\End}(S_1\otimes S_2).
+$$
+We leave it to the reader to check that the involution
+$\beta$ of $A$ correspond to the following bilinear
+form on $S_1\otimes S_2$:
+$$
+(s_1\otimes s_2,t_1\otimes t_2)+(-1)^{(p(s_1)+p(t_1))p(s_2)}
+(s_1,s_2)(t_1,t_2).
+\tag2.2.1
+$$
+Its parity is the sum of the parities of the forms
+$(\quad,\quad)_i$ on the $S_i$.
+Its sign ($+$ for symmetric, $-$ for antisymmetric) is
+the product of the signs of the $(\quad,\quad)_i$, times
+$(-1)$ at the power the product of the parities.
+
+\subhead
+2.3
+\endsubhead
+Let us call $(A,\beta)$ neutral if $A$ is of the form
+$\End(S)$ and if $\beta$ is given by an even symmetric
+form $(\quad,\quad)$ on $S$: the sum of symmetric forms
+on $S^+$ and $S^-$.
+
+Define $(A,\beta)$ and $(B,\beta)$ to be {\it similar}
+if for suitable neutrals $(M,\beta)$ and $(N,\beta)$,
+one has
+$$
+(A,\beta)\otimes (M,\beta)\simeq
+(B,\beta)\otimes(N,\beta).
+$$
+Similarity is an equivalence relation, and is stable
+by tensor product.
+let $C(k)$ be the set of similarity classes.
+Tensor product induces on $C(k)$ a composition law
+associative, commutative and with unit.
+The following proposition shows it is group.
+
+\proclaim{Proposition 2.4}
+Let $(A,\beta)$ be as in 2.1, and let $\Tr$ be the
+trace of the underlying ungraded algebra.
+Let $\alpha$ be the parity automorphism $a\mapsto
+(-1)^{p(a)}a$.
+Then, $(A,\beta)\otimes(A^0,\alpha\beta)$ is neutral.
+More precisely,
+$$
+A\otimes A^0\simover{\longrightarrow}
+\underline{\End}(A)
+$$
+and its involution corresponds to the even symmetric
+form $\Tr(x\beta(y))$ on $A$.
+\endproclaim
+
+\demo{Proof}
+We have
+$$
+\Tr((a\otimes b\cdot x)\beta(y))=(-1)^{p(b)p(x)}
+\Tr(axb\beta(y));
+$$
+as
+$$
+\split
+\Tr(axb&\beta(y))=\Tr(xb\beta(y)a)\quad\text{and that}\\
+ &b\beta(y)a=\beta(\beta(a)y\beta(b))=
+  (-1)^{p(b)p(y)}\beta(\beta(a)\otimes\beta(b).y),
+\endsplit
+$$
+this equals
+$$
+=(-1)^{p(b)(p(x)+p(y))}\Tr(x.\beta(\beta(a)\otimes\beta
+(b)y).
+$$
+Both sides are zero if $p(a)+p(b)+p(x)+p(y)$ is odd.
+We hence may replace $p(b)(p(x)+p(y))$ by
+$p(b)(p(x)+p(b))$, giving
+$$
+=\Tr(x.\beta((-1)^{p(a)p(b)}\beta(a)\otimes
+\alpha\beta(b).y),
+$$
+$a\otimes b\mapsto
+(-1)^{pa\,pb}\beta(a)\otimes\alpha\beta(b)$ is the
+tensor product of $\beta$ and $\alpha\beta$.
+\enddemo
+
+\proclaim{Proposition 2.5}
+The kernel of the ``forgetting $\beta$'' map from $C(k)$
+to $\sBr(k)$ is cyclic of order $4$.
+\endproclaim
+
+\demo{Proof}
+The $(A,\beta)$ whose class is in the kernel are of the
+form $\End(S)$ of 2.2, with $\beta$ given by a non
+degenerate bilinear form on $S$ which is even or odd,
+as well as symmetric or antisymmetric.
+We label those cases by $2.\dbZ/8$ as follows:
+$$
+\align
+0 &\,\colon\,\,\text{ even symmetric}\\
+2 &\,\colon\,\,\text{ odd symmetric}\\
+4 &\,\colon\,\,\text{ even antisymmetric}\\
+6 &\,\colon\,\,\text{ odd antisymmetric.}
+\endalign
+$$
+
+By 2.2, the tensor product of algebras of type $i$ and
+$j$ in $2.\dbZ/8$ is of type $i+j$.
+It follows that each type is a similarity class, and
+2.5 follows.
+\enddemo
+
+\proclaim{Proposition 2.6}
+If $k$ is separably closed, $C(k)=\dbZ/8$, with
+generator the class of $(k[\eps],\Id)$ with $\eps$ odd
+and $\eps^2=1$.
+\endproclaim
+
+The proposed generator maps to the non trivial element
+of $\sBr(k)$.
+It remains to see that its square is a generator of the
+kernel of $C(k)\to \sBr(k)$, computed in 2.5.
+More precisely,
+
+\proclaim{Lemma 2.7}
+For $k$ separably closed,
+$(k[\eps],\Id)\otimes(k[\eps],\Id)$ is of the type $2$ of
+2.5.
+\endproclaim
+
+The algebra $k[\eps]$ is isomorphic to the opposite
+algebra $k[\eta]$, with $\eta^2=-1$, and 2.6 follows
+from the more general lemma, valid over any $k$
+
+\proclaim{Lemma 2.8}
+The tensor product of $k[\eps],\Id)$ and
+$(k[\eta],\Id)$, with $\beta$ the identity, is of the
+type $2$ of 2.5.
+\endproclaim
+
+We identify the tensor product with the $2\times 2$
+matrix algebra, by taking $\eps=\left(\smallmatrix
+0 &1\\ 1 &0\endsmallmatrix\right)$ and 
+$\eta=\left(\smallmatrix 0 &-1\\ 1
+&\,\,\,\,\,0\endsmallmatrix\right)$.
+Those matrices are fixed by the transposition rel. the
+quadratic form $xy$, which corresponds to an odd
+symmetric form.
+
+\remark{\bf 2.9 Remark}
+Suppose $(A,\beta)$ over $k$ separably closed is non
+trivial in $\sBr(k)$.
+The simple $A$-modules are then obtained as follows:
+start from a $A^+$-simple module $S^+$, and extend
+scalars to $A$.
+The involution $\beta$, restricted to $A$, corresponds
+to a non degenerate bilinear form $(\quad,\quad)$ on
+$S^+$, symmetric or antisymmetric, 
+unique up to a scalar factor.
+It is even or odd depending on the class of $A$ in
+$\dbZ/8$.
+The class of $(A,\beta)$ in $\dbZ/8$ detect if it is
+even or odd, and if the restriction of $\beta$ to the
+($2$-dimensional) centralizer $Z$ of $A^+$ is the
+identity or not:
+$$
+\alignat4
+1 &\,\colon\,\, &&\text{ symmetric} &\,\,,&  
+     &\quad &\beta\vert Z=\Id\\
+3 &\,\colon\,\, &&\text{ antisymmetric}  &\,\,,&  
+     &\quad &\beta\vert Z\not=\Id\\
+5 &\,\colon\,\, &&\text{ antisymmetric}  &\,\,, & 
+     &\quad &\beta\vert Z=\Id\\
+7 &\,\colon\,\, &&\text{ symmetric} &\,\,,& 
+     &\quad &\beta\vert Z\not=\Id
+\endalignat
+$$
+\endremark
+
+\noindent
+Determination of $\beta\vert Z$:\enspace
+As $(Z,\beta\vert Z)$ is unchanged by tensoring with a
+$(B,\beta)$ with $B$ a matrix algebra, if suffices to
+consider the case of the tensor product of $n$
+$k[\eps]$ with $\beta=\Id$.
+In this case, $Z$ is generated by the product $\eta$ of
+the $\eps$, and $\beta(\eta)=(-1)^{n(n-1)/2}\eta$.
+
+\medskip\noindent
+Parity of $(\quad,\quad)$:\enspace
+Let $(B,\beta)$ be the tensor product of $(A,\beta)$
+with $(k[\eps],\Id)$ (resp. $(k[\eps],\beta)$ with
+$\beta(\eps)=-\eps$).
+Its invariant is respectively $2$, $4$, $6$, $0$ (resp.
+$0$, $2$, $6$, $6$).
+If $S$ is a simple $B$-module, its restriction to $A$
+continues to be simple.
+If the restriction to $S^+$ of the form $(\quad,\quad)$
+on $S$ is non degenerate, it is the form
+$(\quad,\quad)$ we are looking for, and the table above
+results from that of 2.5
+
+\subhead
+2.10
+\endsubhead
+For a general field $k$, extension of scalars to a
+separable closure and 2.6 gives a commutative diagram
+with exact rows
+$$
+\spreadmatrixlines{2\jot}
+\matrix
+0 &\longrightarrow &\dbZ/4 &\longrightarrow &C(k)
+     &\longrightarrow &\sBr(k) & &\\
+&&\Big\Vert && \doubleheaddownarrow{} &&\Big\downarrow & &\\
+0 &\longrightarrow &\dbZ/4 &\longrightarrow  &\dbZ/8
+  &\longrightarrow &\dbZ/2 &\longrightarrow &0
+\endmatrix
+\tag2.10.1
+$$
+For $k=\dbR$, (1.18) shows that $C(\dbR)$ maps onto
+$\sBr(k)$ and (2.10.1) shows that the maps
+$$
+\align
+C(\dbR) &\longrightarrow \dbZ/8=C(\dbC)\qquad\text{and}\\
+C(\dbR) &\longrightarrow \dbZ/8=\sBr(\dbR)
+\endalign
+$$
+induce an isomorphism from $C(\dbR)$ to the fiber
+product of $\dbZ/8$ and $\dbZ/8$ over $\dbZ/2$:
+$$
+0\to C(\dbR)\to\dbZ/8\times\dbZ/8\to\dbZ/2\to 0.
+$$
+
+\newpage
+
+\subhead
+3. The Clifford algebra and spin-modules
+\endsubhead
+
+\subhead
+3.1
+\endsubhead
+Let $k$ be a commutative ring, $V$ be a $k$-module
+and $Q$ be a quadratic form on $V$.
+The {\it Clifford algebra} $C(Q)$ is the $k$-algebra
+generated by the $k$-module $V$ with the relations
+$$
+x^2=Q(x).1
+\tag3.1.1
+$$
+for $x\in V$.
+This is Bourbaki's definition (Alg. Ch. 9 \S9,
+n$^o$ 1).
+Some authors prefer to use as defining relations
+$x^2=-Q(x).1$.
+We will sometimes write $C(V)$, or $C(V,Q)$, instead
+of $C(Q)$.
+
+It results immediately from this definition that 
+
+\smallskip\noindent
+{\bf (A)}\enspace
+$C(Q)$ is $\mod 2$-graded, the image of $V$ being
+odd.
+In other words: $C(Q)$ is a super algebra.
+Indeed, the defining relations are in the even part
+of the tensor algebra on $V$.
+
+\smallskip\noindent
+{\bf (B)}\enspace
+The algebra $C(Q)$ admits a unique antiinvolution
+$\beta$ which is the identity on the image of $V$.
+Indeed, the opposite algebra $C(Q)^0$ is a solution
+to the same universal problem as $C(Q)$ is.
+Bourbaki's terminology: $\beta$ is the principal
+antiautomorphism of $C(Q)$.
+By definition, $\beta(xy)=\beta(y)\beta(x)$.
+That there is no sign $(-1)^{p(x)p(y)}$ is not a
+misprint.
+
+If we apply (3.1.1) to $x+y$, $x$ and $y$ and take a
+difference, we obtain the polarized form of (3.1.1):
+$$
+xy+yx=\phi(x,y).1
+\tag3.1.2
+$$
+for $\phi$ the bilinear form $Q(x+y)-Q(x)-Q(y)$
+associated to $Q$.
+
+When $2$ is invertible in $k$, (3.1.1) is equivalent
+to (3.1.2): take $x=y$ in (3.1.2).
+In general, if $X\subset V$ generates $V$, (3.1.1)
+is implied by (3.1.1) for $x\in X$, and (3.1.2) for
+$x\not=y$ in $X$.
+This makes it clear that
+
+\smallskip\noindent
+{\bf (C)}\enspace
+The formation of $C(Q)$ is compatible with extension
+of scalars.
+
+\smallskip\noindent
+{\bf (D)}\enspace
+If $(V,Q)$ is the orthogonal direct sum of $(V',Q')$
+and $(V'',Q'')$, the Clifford algebra $C(Q)$ is the
+tensor product, in the sense of super algebras, of
+$C(Q')$ and $C(Q'')$.
+the principal antiautomorphism $\beta$ of $C(Q)$ is
+the tensor product, in the sense of 2.1, of those of
+$C(Q')$ and $C(Q'')$.
+
+Indeed, $C(Q)$ is generated by the $k$-modules $V'$
+and $V''$, with the relations (3.1.1) for $x\in V'$
+or $x\in V''$ and the relations (3.1.2) for $x\in
+V'$ and $y\in V''$.
+For $x\in V'$ and $y\in V''$, (3.1.2) reduces to a
+commutation relation (in the super sense)
+$$
+xy=(-1)^{\deg(x)\,\deg(y)}yx
+$$
+and (D) follows.
+
+\smallskip\noindent
+{\bf (E)}\enspace
+The identity of $V$ extends to an isomorphism from
+the opposite of the super algebra $C(Q)$ to the
+super algebra $C(-Q)$.
+
+\smallskip
+Indeed, each defining relation $x.x=Q(x).1$ is
+replaced by its opposite $x.x=-Q(x).1$.
+
+\proclaim{Proposition 3.2}
+Assume that $V$ is finite dimensional over a field
+$k$ of characteristic $\not=2$.
+If the form $Q$ is non degenerate, the super algebra
+$C(Q)$ is central simple (in the super-sense).
+\endproclaim
+
+\demo{Proof}
+$V$ is the orthogonal direct sum of $1$-dimensional
+subspace.
+By 3.1 (D) and 1.15, we are reduced to the case
+where $\dim(V)=1$.
+In that case, $C(Q)$ is a super division algebra
+with center $k$.
+\enddemo
+
+\proclaim{Corollary 3.3}
+The construction $(V,Q)\mapsto C(Q)$ induces a
+morphism from the Witt group of $k$ to its super
+Brauer group.
+\endproclaim
+
+\demo{Proof}
+By 3.2 and 3.1 (D), it remains only to check that if
+$V$ is hyperbolic, then $C(Q)$ is a matrix algebra.
+Indeed, an hyperbolic quadratic space of
+characteristic $\not=2$ can be presented as an
+orthogonal direct sum $(W,Q)\oplus(W,-Q)$ and one
+uses 3.1 (E) and 1.14.
+Another proof will be given in 3.7.
+\enddemo
+
+\proclaim{Corollary 3.4}
+The class of $(C(Q),\beta)$ in the variant $C(k)$
+(2.3) of $\sBr(k)$ depends only on $\dim(V)\mod 8$
+and the class of $(V,Q)$ in the Witt group $W(k)$.
+\endproclaim
+
+This results from 2.10.1, as $\dim(V)\mod 8$
+determines the similarity class of $(C(Q),\beta)$ on
+the separable closure.
+The class in $W(k)$ determines the dimension of
+$V\mod 2$, and 3.3, 3.4 give rise to a commutative
+diagram with exact rows
+$$
+\minCDarrowwidth{20pt}
+\CD
+0 @>>> 2.\dbZ/8 @>>>\Ker(W(k)\times
+     \dbZ/8 \to \dbZ/2) @>>> W(k) @>>> 0\\
+@. @\vert @VVV  @VVV\\
+0 @>>> 2.\dbZ/8 
+@>>> C(k) @>>> \sBr(k) @.\\
+@. @\vert @VVV @VVV\\
+0 @>>> 2.\dbZ/8 @>>> C(\kbar)=\dbZ/8 @>>>
+     \dbZ/2 @>>> 0\,\,.
+\endCD
+$$
+
+\subhead
+3.5
+\endsubhead
+Let $F$ be the filtration of $C(Q)$ defined by
+$$
+F_n=\text{image of }\bigoplus\limits_{0\Le i\Le n}
+V^{\otimes i}.
+$$
+If $V$ is a free $k$-module, one has (Bourbaki Alg.
+Ch. 9 \S9, n$^o$ 3, Th. 1)
+$$
+\wedgeop^{*} V\simover{\longrightarrow} \Gr^F C(Q).
+\tag3.5.1
+$$
+
+We now give an ``explanation'' of (3.5.1), assuming
+that $k$ is a field of characteristic $\not=2$.
+As $2$ is invertible, $C(Q)$ is generated by $V$
+with the relations (3.1.2) (instead of (3.1.1)).
+
+If $\scrL$ is a super Lie algebra, the
+Poincar\'e-Birkhoff-Witt theorem says that if $F$ is
+the filtration of the universal enveloping algebra
+$\scrU(\scrL)$ given by
+$$
+\gather
+F_n=\text{image of }\bigoplus\limits_{0\Le i\Le n}
+\scrL^{\otimes i},\\
+\intertext{then}
+\Sym^*(\scrL)\simover{\longrightarrow}
+\Gr^F\scrU(\scrL)
+\endgather
+$$
+where $\Sym^*$ is taken in its super sense: it is
+$\Sym^*(\scrL^+)\otimes\wedgeop^{*}(\scrL^-)$.
+If $i\colon\,k\hookrightarrow\scrL$ is central, we
+have a variant of $\scrU(\scrL)$:
+$$
+\scrU_0(\scrL):=\scrU(\scrL)/\text{relation
+$i(1)=1$}.
+$$
+A $\scrU_0(\scrL)$-module can be identified with a
+super Lie algebra module on which $i(1)$ acts as the
+identity.
+A variant of Poincar\'e-Birkhoff-Witt says that for
+the quotient filtration $F$ of $\scrU_0(\scrL)$,
+$$
+\Sym^*(\scrL/k)\simover{\longrightarrow}\Gr^F
+\scrU_0(\scrL)\tag3.5.2
+$$
+
+The Theorem (3.5.1) is a particular case of (3.5.2):
+take $\scrL:=k\oplus V$, with $V$ odd, $k$ even and
+central, and the super commutator
+$$
+[x,y]=\phi(x,y).1
+$$
+for $x,y\in V$.
+The definition of $C(Q)$ using (3.1.2) amounts to
+$$
+C(Q)=\scrU_0(\scrL),
+$$
+making (3.5.1) a particular case of (3.5.2).
+
+\subhead
+3.6
+\endsubhead
+Suppose $(V,Q)$ is isotropic: $V$is a direct sum
+$L^*\oplus L$ with
+$$
+Q(\omega+\ell)=\left<\omega,\ell\right>.
+$$
+The exterior algebra $\wedgeop^{*}L$ is then turned
+into a $C(Q)$-module by requiring $\ell\in L$ (resp.
+$\omega\in L^*$) to act by exterior multiplication 
+$\ell\w$ (resp. contraction by $\omega$).
+It is a super module, if we take the parity of
+$\wedgeop^{i}L$ to be that of $i$.
+
+\proclaim{Proposition 3.7}
+With the notations of 3.4, if $L$ is a free module
+of finite rank, one has
+$$
+C(Q)\simover{\longrightarrow}\underline{\End}
+\left(\wedgeop^{*}L\right).\tag3.7.1
+$$
+\endproclaim
+
+\demo{Proof}
+Let $L=\oplus L_i$ be a decomposition of $L$ as a
+direct sum of free modules of rank one.
+It defines a corresponding decomposition of $V$ in
+the orthogonal direct sum of the $(L_i^*\oplus L_i)$.
+Both sides of (3.7.1) are the tensor product of the
+corresponding $C(L_i^*\oplus L_i)$ and
+$\underline{\End}\,(\wedgeop^{*}L_i)$.
+This reduces (3.7.1) to the case $L=k$, which is
+left to the reader.
+\enddemo
+
+\subhead
+3.8
+\endsubhead
+One can view 3.7 as an odd analogue of the
+Schr\"odinger representation of Heisenberg groups.
+Indeed, let $(V,\psi)$ be a symplectic, rather than
+orthogonal, finite dimensional vector space over
+$k$, assumed of characteristic zero.
+Provide $k\oplus V$ with the Lie algebra structure
+for which $k$ is central and
+$[v_1,v_2]=\psi(v_1,v_2)$ for $v_1$, $v_2$ in $V$:
+the Heisenberg Lie algebra attached to $V$.
+If $V$ is a direct sum $L^*\oplus L$, with
+$\psi((\omega',\ell'),(\omega'',\ell''))=\omega'(\ell'')
+-\omega''(\ell')$, the symmetric algebra $\Sym^*(L)$
+is turned into a $\scrU_0(k\oplus V)$-module by
+requiring $\ell$ in $L$ to act by multiplication, and
+$\omega\in L^*$ to act by contraction.
+If $L$ is the dual of $E$, $\Sym^*(L)$ is the ring
+of polynomial functions on $E$, the action of
+$\ell\in L$ is multiplication by a linear function,
+and that of $\omega\in L^*$ --- identified with a
+constant vector field on $E$ --- is $\partial_\omega$.
+This representation identifies $\scrU_0(k\oplus V)$
+with the ring $\scrD_E$ of all linear differential
+operators on $E$ with polynomial coefficients.
+
+In 3.6, $\wedgeop^{*}L$ is similarly the ring of
+function on the odd super affine space defined by
+$E$, with $\ell\w$ and $\omega{\sssize\bot}$ multiplication
+and derivation operators, respectively.
+
+\subhead
+3.9
+\endsubhead
+Under the assumptions of 3.7, with $k$ a field, and
+$V\not=0$, the algebra $C(Q)$ is a matrix algebra by
+3.7, hence has up to isomorphism a unique simple
+module $S$.
+The automorphism group of $S$ is $k^*$.
+This module is even a super module over the super
+algebra $C(Q)$.
+Its grading is, however, unique only up to parity
+change.
+
+It follows that any automorphism $g$ of $C(Q)$ can
+be extended to an automorphism of ($C(Q)$, module
+$S$).
+the extension is unique up to an automorphism
+$\lambda\in k^*$ of $S$.
+If $g$ respects the grading of $C(Q)$, the extension
+respects or permutes the homogeneous components
+$S^{\pm}$ of $S$, depending on the action of $g$ on
+the center of $C^+(Q)$.
+
+In particular, $O(Q)$ acts projectively on $S$.
+The parity respecting subgroup is $\SO(Q)$.
+
+Similar arguments can be made for $k$ any local
+ring.
+Taking the dual numbers $k[x]/(x^2)$, and interpreting
+the Lie algebra $\grso(Q)$ as $\ker(O(Q)(k[x]/(x^2))
+\to O(Q)(k))$, one gets a
+projective action of the Lie algebra $\grso(Q)$ on $S$.
+As $C(Q)\simover{\longrightarrow}\End_k(S)$, this
+action is given by a Lie algebra morphism
+$$
+\fbar\colon\,\grso(Q)\longrightarrow
+C(Q)/k
+$$
+with $[\fbar(x),v]$ being the Lie algebra action of
+$\grso(Q)$ on $V$.
+As $C(Q)$ is the Lie algebra product of $k$ and
+$[C(Q),C(Q)]$ (usual brackets), $\fbar$ lifts 
+uniquely to a morphism $f$ from $\grso(Q)$ to
+$[C(Q),C(Q)]\subset C(Q)$.
+Here is a direct construction of this lifting.
+Identify $\grso(Q)$ to $\wedgeop^{2}V$ by
+$$
+x\w y\longmapsto\text{ endomorphism }
+\phi(y,v)x-\phi(x,v)y.
+$$
+Map $x\w y$ to $\tfrac12\,(xy-yx)$.
+
+\noindent
+Check:\enspace
+as $xy+yx$ is scalar,
+$$
+\left[\tfrac12\,(xy-yx),v\right]=
+[xy,v]=x\{y,v\}-\{x,v\}y
+$$
+for $\{\qquad\}$ the super bracket
+$$
+=\phi(y,v)x-\phi(x,v)y.
+$$
+
+The argument we used to see the existence and
+unicity of $f$ used that $V$ is split and even
+dimensional.
+The actual construction used neither, and holds for
+any non degenerate quadratic form.
+It turns any $C(Q)$-module into a $\grso(Q)$-module.
+
+\subhead
+3.10
+\endsubhead
+The argument used in 3.9 is analogue to the one by
+which, using the unicity of an irreducible
+representation of the Heisenberg commutation
+relations, one gets on the representation space a
+projective action of a real symplectic group --- or
+an actual representation of its double covering, the
+metaplectic group.
+This is, however, an analytic story, involving
+infinite dimensional Hilbert space, as evidenced by
+the fact that the metaplectic double covering of the
+real symplectic group is not algebraic.
+The Lie algebra story, however, has a purely
+algebraic analogue.
+With the notations of 3.8, the symmetrized product
+gives a vector space isomorphism
+$$
+\Sym^*(V)\simover{\longrightarrow}\scrU_0(k\oplus V)
+\tag3.10.1
+$$
+The image of $\Sym^2(V)$ by this map is a Lie
+algebra normalizing $V$, identified by its action on
+$V$ with the Lie algebra of the symplectic group.
+
+Assume $V$ is the dual of $E$, so that $\Sym^*(V)$
+is the polynomial functions on $E$.
+If we replace $\psi$ by $t\psi$, and transport the
+product on the corresponding $\scrU_0(k\oplus V)$ to
+$\Sym^*(V)$ by (3.10.1), we obtain on $\Sym^*(V)$ a
+product $*_t$ depending on $t$.
+It comes from a $k[t]$-algebra structure on
+$\Sym^*(V)\otimes k[t]$.
+
+One has
+$$
+f*_t g=fg+\tfrac12\,\{f,g\}t+O(t^2),
+$$
+for $\{\qquad\}$ the Poisson bracket on the
+symplectic manifold $E$.
+A weakened version of the fact that
+$\Sym^*(V)\subset\scrU_0(k\oplus V)$ acts on $V$ as
+Lie $\Sp(V)$ is the fact that the hamiltonian vector
+fields on $E$ given by quadratic functions are the
+infinitesimal symplectic transformations.
+
+{\it We now assume that $k$ is a field of
+characteristic $\not=2$, that $V$ is a finite
+dimensional vector space, and $Q$ a non degenerate
+quadratic form on $V$}.
+
+\proclaim{Proposition 3.11}
+The sub Lie algebra of $C^+(Q)$ normalizing $V\subset
+C(Q)$ is $k\oplus f(\grso(Q))$, and $f(\grso(Q))$
+the subspace on which the principal antiautomorphism
+of $C(Q)$ acts by $-1$.
+\endproclaim
+
+\demo{Proof}
+If $x$ in $C^+(Q)$ normalizes $V$, $adx\vert V$ is
+an infinitesimal orthogonal transformation:
+$$
+\phi([xv],v)=[xv]v+v[xv]=[x,v^2]=
+[x,Q(v)]=0.
+$$
+Let us write $x=y+f(z)$ with $z\in \grso(V)$.
+By construction, $y$ centralizes $V$, hence is in the
+center of $C(V)$.
+Being even, it is in the center of the super algebra
+$C(V)$, hence a scalar by 2.2.
+This proves the first assertion.
+
+The principal antiautomorphism $\beta$ transform
+$\tfrac12\,(vw-wv)$ ($v,w\in V$) into $\tfrac12\,(wv-vw)$.
+This checks the second assertion.
+\enddemo
+
+\proclaim{Corollary 3.12}
+Let $S$ be a $C^+(Q)$-module and $(\quad,\quad)$ a
+bilinear form on $S$ for which
+$$
+(xs,t)=(s,\beta(x)t)\tag3.12.1
+$$
+for $x$ in $C^+(Q)$ and $s$, $t$ in $S$.
+For the induced structure of $\grso(Q)$-module, the
+bilinear form $(\quad,\quad)$ is invariant.
+\endproclaim
+
+\proclaim{Proposition 3.13}
+Let $S$ be an absolutely simple super
+$C(Q)$-modules.
+
+\smallskip\noindent
+{\rm (i)}\enspace
+If $\dim(V)$ is even, the representations $S^+$ and
+$S^-$ of $\grso(Q)\subset C^+(V)$ are non isomorphic
+irreducible representations.
+
+\smallskip\noindent
+{\rm (ii)}\enspace
+If $\dim(V)$ is odd, the representations $S^+$ and
+$S^-$ are irreducible and isomorphic.
+\endproclaim
+
+Isomorphy in (ii) result from the decomposition
+$$
+C(Q)=C^+(Q)\otimes(\text{centralizer $Z$ of
+$C^+(Q)$ in $C(Q)$}):
+$$
+an odd generator of $Z$ provides an isomorphism.
+
+As $\grso(Q)=\wedgeop^{2}V\subset C^+(Q)$ generates
+the algebra $C^+(Q)$, (i) and (ii) results from the
+structure of $C^+(Q)$ when $k$ is separably closed:
+a matrix algebra over $k\times k$ in case (i), a
+matrix algebra over $k$ in case (ii).
+
+\remark{\bf 3.14}
+Whether there exist an absolutely simple super
+$C(Q)$-module $S$ (i.e. $S$ remains simple after
+extension of scalar to $\kbar$) depends on the class
+of $C(Q)$ in $\sBr(k)$, itself depending only on the
+class of $Q$ in the Witt group.
+The kind of bilinear forms on $S$ for which $\beta$
+is the transposition depends on the class of
+$(C(Q),\beta)$ in the variant $C(k)$ (2.3) of
+$\sBr(k)$.
+\endremark
+
+\medskip\noindent
+{\it Until the end of this {\rm \S}, we assume $k$
+separably closed}.
+
+\medskip
+For $\dim(V)$ even (resp. odd), $C(Q)$ (resp. $C^+(Q)$)
+is a matrix algebra, with involution $\beta$.
+If $S$ is a simple $C(Q)$- (resp. $C^+(Q)$-) module,
+there is up to a scalar factor a unique bilinear form
+$(\quad,\quad)$ on $S$ such that
+$$
+(as,t)=(s,\beta(a)t).
+\tag3.14.1
+$$
+For $\dim\,V$ even, there is on $S$ a $\dbZ/2$-grading,
+unique up to parity change, turning $S$ into a super
+module.
+
+A space of {\it spinors} is a super $C(Q)$-module
+(resp. a $C^+(Q)$-module) $S$ provided with
+$(\quad,\quad)$ obeying (3.14.1).
+it is unique up to isomorphism, with $\pm 1$ as the
+only automorphisms.
+The $\Lie$ algebra of infinitesimal automorphisms of
+$(V,S)$ provided  with $Q$, the module structure of $S$
+and $(\quad,\quad)$ is $\grso(Q)$.
+
+For $\dim(V)$ even, $S^+$ and $S^-$ are the spaces of
+{\it semi-spinors}.
+By 3.7, if $L$ is a maximal isotropic subspace of $V$,
+there is up to a scalar factor a unique semi-spinor
+$s(L)$ such that $L.s(L)=0$ for the $C(Q)$-module
+structure of $S$.
+The two types of maximal isotropic subspaces are
+distinguished by whether $s(L)$ is in $S^+$ or in $S^-$.
+For the semi-spinors $s(L)$, one can check that the
+vanishing of $(\quad,\quad)$ has a simple interpretation
+$$
+(s(L'),s(L''))=0 \Leftrightarrow L'\cap L''\not=0
+\tag3.14.2
+$$
+(C. Chevalley, the algebraic theory of spinors,
+Columbia Univ. Press 1954, III 2.4, p. 79).
+
+The class of $(C(Q),\beta)$ in the group $C(k)=\dbZ/8$
+of 2.6 is the dimension of $V$ modulo $8$: write $V$ as
+an orthogonal direct sum of lines, and apply 3.1 (D).
+By the tables of 2.5 and 2.7, the form $(\quad,\quad)$
+is hence as follows, according to the vaue of
+$\dim(V)\mod 8$:
+$$
+\alignat3
+&0 &\quad &\colon\quad \text{ even} &&\text{ symmetric} \\
+&1 &&\colon\quad && \text{ symmetric}\\
+&2 &&\colon\quad \text{ odd}  && \text{ symmetric}\\
+&3 &&\colon\quad &&\text{ antisymmetric}\\
+&4 &&\colon\quad \text{ even} &&\text{ antisymmetric}\\
+&5 &&\colon\quad  &&\text{ antisymmetric}\\
+&6 &&\colon\quad \text{ odd} &&\text{ antisymmetric}\\
+&7 &&\colon\quad  &&\text{ symmetric}\,.
+\endalignat
+$$
+
+If $\dim(V)$ is even, the even or odd character of
+$(\quad,\quad)$ can be read from (3.14.2), using that
+$L
+$ and $L''$ are of the same type if and only if $L'\cap
+L''$ is of even codimension in $L'$ (and $L''$): if
+$\dim(V)/2$ is even (resp. odd), and $L'$, $L''$ of
+different (resp. same) type, $L'\cap L''\not=0$ and
+$(s(L'),s(L''))=0$.
+
+If $e_1,\dotsc,e_n$ is an orthogonal basis of $V$, the
+product $z=e_1\ldots e_n$ generates the commutant $Z$
+of $C^+(Q)$.
+One has
+$$
+\beta(z)=(-1)^{n(n-1)/2}z\tag3.14.3
+$$
+If $\dim(V)$ is even, $\beta\vert Z$ is trivial if and
+only if $(\quad,\quad)$ is even.
+By (3.14.3),
+this shows again that the parity of $(\quad,\quad)$ is
+that of $\dim(V)/2$.
+
+\subhead
+3.15
+\endsubhead
+Consider $(k[\eps],\beta)$ with $\eps$ odd, $\eps^2=1$ and
+$\beta(\eps)=\pm\eps:\,\,\sign\,\pm$.
+The class of $(A,\eta):=(C(V),\beta)\otimes(k[\eps],\beta)$
+is $\dim\,V\pm 1\mod 8$.
+If $V$ is odd dimensional, and $S$ a simple super
+module over $A$, $S$ remains a simple super module over
+$C(V)$, and $S^+$ is a simple $C^+(V)$-module.
+If the form $(\quad,\quad)$ on the $A$-module $S$
+obeying (3.14.1) is even (resp. odd), a form
+$(\quad,\quad)$ on the $C^+(V)$-module $S^+$ obeying
+(3.14.1) is
+$$
+\alignat3
+&(s,t) &\,\,&=&\,\,&(s,t), \text{ respectively}\\
+& &&=&&(s,\eps t)
+\endalignat
+$$
+with sign that of $(\quad,\quad)$ (resp. $\pm$ that of
+$(\quad,\quad)$).
+This shows again that if $2n\in\dbZ/8$ corresponds to
+even forms, then the forms for $2n$ and $2n\pm1$ have
+the same sign.
+If $2n$ corresponds to odd forms, the sign is the same
+for $2n-1$, opposite for $2n+1$.
+
+\subhead
+3.16
+\endsubhead
+Let $S$ be a space of spinors.
+If $\dim\,V$ is even, the morphism of
+$\grso(Q)$-modules
+$$
+V\otimes S\longrightarrow S
+$$
+given by the $C(V)$-module structures transposes to a
+morphism
+$$
+\{\quad\}:\,\,S\otimes S\longrightarrow V
+$$
+characterized by the equality of inner products
+$$
+(w,\{s,t\})=(ws,t)\tag3.16.1
+$$
+in $V$, resp. $S$.
+The parity of $\{\quad\}$ is opposite to that of
+$(\quad,\quad)$ on $S$.
+The sign is the same.
+Depending on $\dim\,V\mod 8$, $\{\quad\}$ is
+$$
+\alignat2
+&0 &\qquad &\text{odd symmetric}\\
+&2 &&\text{even symmetric}\\
+&4 &&\text{odd antisymmetric}\\
+&6 &&\text{even antisymmetric}
+\endalignat
+$$
+
+If $\dim(V)$ is odd, choosing an odd generator $z$ of
+the centralizer $Z$ of $C^+(Q)$, one similarly defines
+$\{\quad\}:\,\,S\otimes S\to V$ by
+$$
+(w,\{s,t\})=(zws,t).\tag3.16.2
+$$
+The sign of $\{\quad\}$ is that of $(\quad,\quad)$ on
+$S$, times that of $\beta$ acting on $z$: by 2.9, it is
+depending on $\dim(V)\mod 8$:
+$$
+\alignat2
+&1 &\qquad &\text{symmetric}\\
+&3 &&\text{symmetric}\\
+&5 &&\text{antisymmetric}\\
+&7 &&\text{antisymmetric}.
+\endalignat
+$$
+
+\subhead
+3.17
+\endsubhead
+If $V_1$ and $V_2$ are even dimensional, and if $S_1$
+and $S_2$ are spaces of spinors for $V_1$ and $V_2$,
+then $S_1\otimes S_2$ is a space of spinors for the
+orthogonal direct sum of $V_1$ and $V_2$.
+its module structure is given by the tensor product, in
+the super sense, of those of $S_1$ and $S_2$, and the
+form $(\quad,\quad)$ is given by (2.2.1).
+
+Suppose now that $v\not=0$ is an isotropic vector in
+$V$, supposed to be even dimensional.
+Define
+$$
+V_1:= v^\bot/kv,
+$$
+of dimensional two less.
+If $S$ is a space of spinors for $V$, $v$ acting on $S$
+supercommutes with $v^\bot$.
+The kernel $\Ker(v)$ is hence stable by $v^\bot$.
+The action of $v^\bot$ factors through $V_1$ and turns
+$\Ker(v)$ into a $C(V_1)$-module.
+
+\proclaim{Proposition 3.18}
+With the notations of 3.17
+
+\smallskip
+\roster
+\item"{\rm (i)}"
+$\Ker(v)=\im(v)$ is an irreducible $C(V_1)$-module.
+
+\item"{\rm (ii)}"
+The form $(\quad,\quad)$ vanishes on $\Ker(v)$.
+
+\item"{\rm (iii)}"
+The form $(\quad,\quad)_1$ on $\Ker(v)$ defined by
+$(s,vt)_1=(-1)^{p(s)}(s,t)$ turns $\Ker(v)$ into a
+space of spinors for $V_1$.
+\endroster
+\endproclaim
+
+\demo{Proof}
+(i)\enspace
+Lift $V_1$ in $v^\bot$ and let $H$ be the orthogonal
+complement of the lifting: $V$ becomes the orthogonal
+direct sum of $V_1$ and $H$, with $\dim(H)=2$ and $v\in H$.
+The space of spinors for $V_1$ becomes the tensor
+product of one for $V_1$ and one for  $H$, with the
+action of $v$ coming from its action on spinors for
+$H$.
+This reduces us to the two dimensional case, where $v$
+acts as $\left(\smallmatrix 0 &1\\ 0
+&0\endsmallmatrix\right)$ in a suitable basis.
+The claim follows.
+
+\noindent
+(ii)\enspace
+results from $\Ker(v)=\im(v)$:
+$$
+(vs,vt)=(s,vvt)=0
+$$
+as $v^2=Q(v)=0$.
+In (iii), $t\mod \Ker(v)$ is determined by $vt$, so
+that, by (i) and (ii), $(\quad,\quad)$ is well defined.
+
+\noindent
+(iii)\enspace
+It remains to check that $(\quad,\quad)_1$ obeys
+(3.14.1).
+Indeed, if $t_1=vt$ and $w\in v^\bot$, one has
+$wt_1=-vwt$ and
+$$
+(ws,t_1)_1=(-1)^{p(ws)}(ws,t)=(-1)^{p(ws)}(s,wt)
+=(s,wt_1)_1
+$$
+\enddemo
+
+\proclaim{Proposition 3.19}
+Under the same assumptions, if $s,t\in\Ker(v)$, one has
+in $V$
+$$
+\{s,t\}=(-1)^{p(s)}(s,t)_1v.\tag3.19.1
+$$
+\endproclaim
+
+\demo{Proof}
+We check that both sides have the same inner product
+with any $w\in V$.
+If $t=vx$, the left side indeed gives
+$$
+\align
+(w,\{s,x\}) &=(ws,vx)=(vws,x)=((vw+wv)s,x)\\
+&=(v,w)(s,x)=(-1)^{p(s)}(v,w)(s,t)_1
+\endalign
+$$
+\enddemo
+
+\newpage
+
+\subhead
+4. The group $\Spin$
+\endsubhead
+
+\subhead
+4.1
+\endsubhead
+Let $V,Q)$ be a finite dimensional quadratic vector
+space over $k$ of characteristic $\not=2$.
+Let $G$ be the group of invertible elements in $C^+(Q)$
+or $C^-(Q)$ which normalize $V$.
+We let it act on $V$ by
+$$
+\rho(g):\,\,v\longmapsto (-1)^{p(g)}gvg^{-1}.
+$$
+This action respects the quadratic form $Q(v)=v^2$ on
+$V$.
+If $g$ fixes $V$, $g$ is in the center (in the super
+sense) of $C(Q)$, hence is a scalar: we have an exact
+sequence
+$$
+1\longrightarrow k^*\longrightarrow G\longrightarrow 
+O(V).\tag4.1.1
+$$
+
+Elements $w\in V$ with $Q(w)\not=0$ are in $G^-:= G\cap
+C^-(Q)$, and $\rho(w)$ is the reflection relative to
+the hyperplane orthogonal to $w$.
+As each element of $O(V)$ is a product of reflections,
+the sequence (4.1.1) is exact ot the right.
+As a product of  $k$ reflections has determinant
+$(-1)^k$, it follows from (4.1.1) that $G^+:=G\cap
+C^+(Q)$ maps onto $\SO(V)$, while $G^-$ maps onto
+$O(V)-\SO(V)$.
+We have
+$$
+1\longrightarrow k^*\longrightarrow G^+\longrightarrow
+\SO(V)\longrightarrow 1.\tag4.1.2
+$$
+
+\subhead
+4.2
+\endsubhead
+If $g\in G$, applying $\beta$ to the defining relation
+$$
+gv=(-1)^{p(g)}vg,
+$$
+we see that $\beta(g)\in G$ with
+$\rho(\beta(g))=\rho(g)^{-1}$:
+$g\beta(g)$ is in $k^*$.
+The {\it Spin group} is the kernel of
+$$
+g\beta(g):\,\, G^+\longrightarrow k^*.\tag4.2.1
+$$
+On $k^*\subset G^+$, $g\beta(g)$ is squaring.
+The sequence (4.1.2) is an exact sequence of algebraic
+groups, and it follows that it induces a commutative
+diagram
+$$
+\spreadmatrixlines{1\jot}
+\matrix
+1 &\to &\mu_2 &\to &\Spin &\to &\SO &\to &1\\
+&&\Big\downarrow &&\Big\downarrow &&\Big\Vert &&\\
+1 &\to &\dbG_m &\to &G^+ &\to &\SO &\to &1\\
+\\
+&&&\vbox{\beginpicture
+\setcoordinatesystem units < .50cm, .50cm>
+\linethickness=1pt
+\setlinear
+%
+% Fig POLYLINE object
+%
+\linethickness= 0.500pt
+\plot  7.620 21.590  9.335 20.574 /
+%
+% arrow head
+%
+\plot  9.084 20.649  9.335 20.574  9.148 20.758 /
+%
+%
+% Fig TEXT object
+%
+\put{\lower2pt\hbox{$\ssize \lambda^2$}} [lB] at  7.683 20.733
+\linethickness=0pt
+\putrectangle corners at  7.620 21.590 and  9.335 20.574
+\endpicture}
+&\null\quad\rmapdown{g\beta(g)} &&&&\\
+&&&&\dbG_m &&&&
+\endmatrix
+\tag4.2.2
+$$
+with $\dbG_m=$ multiplicative group, $\mu_2=\{\pm1\}$.
+In (4.2.2), the first two rows are exact sequences of
+algebraic groups.
+On the level of points, the first row may not be exact:
+it gives rise to a coboundary with values in
+$H^1(\Gal(\kbar/k),\mu_2)$.
+
+\subhead
+4.3
+\endsubhead
+If $S$ is a $C^+(Q)$-module, and $(\quad,\quad)$ a
+bilinear form on $S$ obeying (3.14.1), the action of
+$\Spin\subset C^+(Q)^*$ on $S$ respects the form
+$(\quad,\quad)$:
+$$
+(gs,gt)=(s,\beta(g)gt)=(s,t).
+$$
+This is the counterpart of 3.12 for groups.
+
+For $k$ separably closed, and $S$ a space of spinors,
+the group $\Spin$ is the group of automorphisms of
+$(V,S)$ provided with the following structure:
+
+\smallskip\noindent
+For $\dim(V)$ even: \enspace
+the map $V\otimes S\to S$, the $\mod 2$ grading of $S$
+and $(\quad,\quad)$ on $S$.
+
+Indeed, from $V\otimes S\to S$ one recovers $Q(v)=v^2$
+and the $C(V)$-module structure, the $\mod 2$ grading
+of $S$ cuts $O(V)$ down to $\SO$, and the group of
+automorphisms, contained in $C(Q)^{+*}$, is a double
+covering of $\SO(Q)$.
+
+\smallskip\noindent
+For $\dim(V)$ odd:\enspace
+$Q$, a volume element, the $C^+(Q)$-module structure on
+$S$ and $(\quad,\quad)$.
+The proof is similar.
+
+This is a counterpart of 3.14 for groups.
+
+\newpage
+
+\subhead
+5. The Minkowski case
+\endsubhead
+
+\proclaim{Theorem}
+Let $(V,Q)$ over $\dbR$ be of signature
+$(+,-,\dotsc,-)$.
+Let $S_\dbR$ be a real representation of $\Spin(V,Q)$,
+irreducible as a real representation.
+Assume that after extension of scalars to $\dbC$, it
+becomes a sum of spinorial or semi-spinorial
+representations.
+The commutant $Z$ of $S_\dbR$ is $\dbR$, $\dbC$ or
+$\dbH$.
+Let $\overline{\phantom{x}}$ be the standard
+anti-involution of $Z$.
+
+\medskip\noindent
+{\rm (i)}\enspace
+Up to a real factor, there exists a unique symmetric
+morphism $\{\quad,\quad\}
+\colon\,S_\dbR\otimes S_\dbR\to V$ such that
+$\{zs,t\}=\{x,\zbar t\}$, i.e. which is
+invariant by the group of elements of norm $1$ of $Z$.
+
+\smallskip\noindent
+{\rm (ii)}\enspace
+For $v\in V$, if $Q(v)>0$, the form
+$\left<v,\{s,t\}\right>$ on $S_\dbR$ is positive or
+negative defined.
+\endproclaim
+
+The set of $v$ for which $Q(v)>0$ has two connected
+components.
+It follows from (ii) that for $v$ in one of them, call
+it $C$, the form $<v,\{s,t\}>$ is positive defined and
+that for $v$ in the other, i.e. for $-v$ in $C$, it is
+negative defined.
+
+The class of $C(V)$ in $\sBr(\dbR)=\dbZ/8$ (1.18) is
+the signature modulo $8$ (3.3), i.e. is $2-d$ if $V$ is
+of dimension $d$.
+The representation $S_\dbR$ is a simple $C^+(V)$-module
+and, by the table 1.18, depending on $d$ modulo $8$, 
+$Z$ and the
+complexification of $S_\dbR$ are given as follows.
+For $d$ even, $S^+$ and $S^-$ denote the semi-spinorial
+representations.
+For $d$ odd, $S$ denotes the spin representation.
+$$
+\alignat4
+&0 &\,\,&\colon &\quad &\dbC\,\,, &\quad &S^++S^-\\
+&1 &&\colon &&\dbR\,\,, &&S\\
+&2 &&\colon &&\dbR\,\,, &&S^+\text{ or }S^-\\
+&3 &&\colon &&\dbR\,\,, &&S\\
+&4 &&\colon &&\dbC\,\,, &&S^++S^-\\
+&5 &&\colon &&\dbH\,\,, &&2S\\
+&6 &&\colon &&\dbH\,\,, &&2S^+\text{ or }2S^-\\
+&7 &&\colon &&\dbH\,\,, &&2S
+\endalignat
+$$
+
+\demo{Proof}
+We first show that if $d$ is congruent
+to $2$ modulo $8$, a morphism $\{\quad\}$ with the
+listed properties exists.
+In this case, the signature is $0$ modulo $8$, so that
+$C(V)$ is a matrix algebra.
+Let $S=S^+\oplus S^-$ be a simple $C(V)$-module.
+The possible $S_\dbR$ are $S^+$ and $S^-$.
+The pairing $(\quad,\quad)$ on $S$ (relative to which
+the principal antiautomorphism $\beta$ is transposition)
+is odd (3.14).
+The corresponding $\{\quad\}\colon\,S\otimes S\to V$ is
+even and symmetric (3.16).
+\enddemo
+
+Fix $v$ with $Q(v)>0$ and its orthogonal $V_1$.
+The graded module $S$ remains simple as a graded
+$C(V_1)$-module, and $S^+$ remains absolutely
+irreducible as a representation of the group
+$\Spin(V_1)$.
+The bilinear form $\left<v,\{s,t\}\right>$ on $S^+$  is not
+identically zero: if it were zero for one $v$, it would be
+zero for all $v$
+ by $\Spin(V)$-invariance, and $\{\quad,\quad\}$
+would be zero.
+This form is invariant by the compact group
+$\Spin(V_1)$.
+As $S^+$ is an irreducible representation of
+$\Spin(V_1)$, it must be definite.
+The same applies to $S^-$.
+
+We now show, in all dimensions, the existence of a
+morphism $S_\dbR\otimes S_\dbR\to V$ with the listed
+properties.
+Embed $V$ in a Minkowski space $V_0$ of dimension 
+congruent to $2$ modulo $8$:
+$V$ is the orthogonal direct sum of $V$ and of a
+negative defined quadratic space of a suitable
+dimension.
+Let $\pr$ be the orthogonal projection of $V_0$ onto
+$V$.
+
+Let $S_0=S_0^+\oplus S_0^-$ be a simple
+$C(V_0)$-module.
+We dispose of $\{\quad\}_0\colon\,S_0^\pm\otimes
+S_0^\pm\to V_0$, with the required properties for
+$V_0$.
+As $\Spin(V)\subset\Spin(V_0)$, we can also by
+restriction consider $S_0$ as a
+$\Spin(V)$-representation.
+The action of $\Spin(V)$ comes from the structure of
+$C(V)$-module of $S_0$, deduced from its structure of 
+$C(V)$-module by $C(V_0)\hookrightarrow C(V)$.
+It follows that the irreducible constituents of $S_0$,
+as a $\Spin(V)$-representation, are of the type
+considered in the theorem.
+Further, $S$ being a faithful $C(V_0)$-module, and
+hence a faithful $C(V_0)$-module, all representations of
+the type considered occur as a direct factor.
+There exists a morphism of $\Spin(V_0)$-representations
+$S_\dbR\hookrightarrow S_0^+$ or $S_\dbR\hookrightarrow
+S_0^-$.
+On $S_\dbR$, we now define $\{\quad\}_1$ as the
+orthogonal projection
+$$
+\{s,t\}_1=\pr\{s,t\}_0
+$$
+of $\{\quad\}_0$ on $V$.
+{}From the same properties of $\{\quad\}_0$, the form
+$\{\quad\}_1$ is symmetric and if $Q(v)>0$ with $v$ in
+$V$, the form $\left<v,\{s,t\}_1\right>=
+\left<v,\{s,t\}_0\right>$ on $S_\dbR$
+is positive or negative defined.
+It remains to average $\{\quad\}_1$ over the compact
+group $K$ of elements of norm $1$ in $Z$ to obtain the
+required
+$$
+\{s,t\}=\int_{K}\{ks,kt\}_1 dk
+$$
+
+We now prove the unicity, up to a real factor, of
+$\{\quad\}$.
+
+\subhead
+{\rm Case 1}
+\endsubhead
+$Z=\dbR$,i.e. the complexification $S_\dbC:=
+S_\dbR\otimes\dbC$ of $S_\dbR$ is an irreducible
+representation.
+We note it $S_0$.
+It is spinorial for $d$ odd, semi-spinorial for $d$
+even.
+If we exclude the case $d=2$, $V$ is an absolutely irreducible
+representation, and it suffices to see that, over
+$\dbC$, $V_\dbC$ occurs at most once in $S_0\otimes S_0$.
+
+The case $d=2$ is easy to treat directly:
+$V$ decomposes as $D_1\oplus D_2$, for $D_1$ and $D_2$
+the two isotropic lines, and the $S^\pm$ are of
+dimension one with tensor square isomorphic,
+respectively, to $D_1$ and $D_2$.
+
+\subhead
+{\rm Case 2}
+\endsubhead
+$Z=\dbH$, i.e. $S_\dbC$ is twice an irreducible
+representation $S_0$: $S_\dbC=S_0\otimes_\dbC W$ with
+$\dim(W)=2$.
+The invariance condition on $\{\quad\}$ amounts, after
+complexification, to $\SL(2,W)$-invariance:
+$\{\quad\}$ is to be the tensor product of
+$\{\quad\}_0\colon\,S_0\otimes S_0\to V_\dbC$ and of the
+unique (up to a factor) antisymmetric $\psi\colon\,
+W\otimes W\to\dbC$.
+Symmetry of $\{\quad\}$ amounts to antisymmetry of
+$\{\quad\}_0$.
+Again, it suffices to see that $V_\dbC$ occurs at most once
+in $S_0\otimes S_0$.
+
+\subhead
+{\rm Case 3}
+\endsubhead
+$Z=\dbC$, i.e. $S_\dbC$ is the sum of two inequivalent
+(complex conjugate) representations.
+This can happen only for $d$ even, with
+$S_\dbC=S^+\oplus S^-$ the sum of the two
+semi-spinorial representations.
+The invariance condition on $\{\quad\}$ amounts to
+say that, after complexification, $\{\quad\}$ is the
+sum of $S^+\otimes S^-\to V$ and of its symmetric.
+It suffices to see that $V$ occurs at most twice
+in$(S^+\oplus S^-)\otimes(S^+\oplus S^-)$.
+
+Let us check those multiplicity statements, over
+$\dbC$.
+If $d$ is odd, and for $S$ the spinorial
+representation, $S\otimes S\simeq
+\underline{\End}(S)\simeq C^+(V)\simeq \wedgeop^{2*} V$.
+As $\wedgeop^{i} V\simeq \wedgeop^{d-i} V$ as a
+representation of the special orthogonal group, this can be
+rewritten
+$$
+S\otimes S\simeq \bigoplus \wedgeop^{i} V
+\qquad\text{(sum for $0\Le i\Le (d-1)/2$) }.
+$$
+The $\wedgeop^{i} V$ for $i\le (d-1)/2$ are
+irreducible, non isomorphic (fundamental)
+representations, and $V$ occurs only once.
+
+If $d$ is even, let $S=S^+\oplus S^-$ be the sum of the
+semi-spinorial representations.
+We have now
+$$
+S\otimes S\simeq \bigoplus \wedgeop^{i} V\qquad
+(0\Le i\Le d)
+$$
+and $V$ occurs exactly twice.
+The unicity claim follows.
+
+
+\enddocument
+
+
+

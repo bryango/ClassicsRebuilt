@@ -1,0 +1,742 @@
+%From: John W Morgan <jmorgan@math.ias.edu>
+%Date: Mon, 19 May 1997 16:51:58 -0400
+%Subject: Lecture I
+
+\documentstyle[11pt]{article}
+
+
+%These are the macros which are in common with all of the
+% sections in the paper mmr
+% Each section, for now, should begin with \documentstyle[11pt,cd]{article}
+% and then have \input{mmrmacros} followed by \begin{document}
+% The only exception is that the \Label macro is slightly different
+% in each file and should be put in separately.
+%New CD macros
+\newcommand{\cdrl}{\cd\rightleftarrows}
+\newcommand{\cdlr}{\cd\leftrightarrows}
+\newcommand{\cdr}{\cd\rightarrow}
+\newcommand{\cdl}{\cd\leftarrow}
+\newcommand{\cdu}{\cd\uparrow}
+\newcommand{\cdd}{\cd\downarrow}
+\newcommand{\cdud}{\cd\updownarrows}
+\newcommand{\cddu}{\cd\downuparrows}
+% (S) Proofs.
+% (S-1) Head is automatically supplied by \proof.
+
+\def\proof{\vspace{2ex}\noindent{\bf Proof.} }
+\def\tproof#1{\vspace{2ex}\noindent{\bf Proof of Theorem #1.} }
+\def\pproof#1{\vspace{2ex}\noindent{\bf Proof of Proposition #1.} }
+\def\lproof#1{\vspace{2ex}\noindent{\bf Proof of Lemma #1.} }
+\def\cproof#1{\vspace{2ex}\noindent{\bf Proof of Corollary #1.} }
+\def\clproof#1{\vspace{2ex}\noindent{\bf Proof of Claim #1.} }
+% End of Proof Symbol at the end of an equation must precede $$.
+
+\def\endproof{\relax\ifmmode\expandafter\endproofmath\else
+  \unskip\nobreak\hfil\penalty50\hskip.75em\hbox{}\nobreak\hfil\bull
+  {\parfillskip=0pt \finalhyphendemerits=0 \bigbreak}\fi}
+\def\endproofmath$${\eqno\bull$$\bigbreak}
+\def\bull{\vbox{\hrule\hbox{\vrule\kern3pt\vbox{\kern6pt}\kern3pt\vrule}\hrule}}
+\addtolength{\textwidth}{1in}                  % Margin-setting commands
+\addtolength{\oddsidemargin}{-.5in}
+\addtolength{\evensidemargin}{.5in}
+\addtolength{\textheight}{.5in}
+\addtolength{\topmargin}{-.3in}
+\addtolength{\marginparwidth}{-.32in}
+\renewcommand{\baselinestretch}{1.6}
+\def\hu#1#2#3{\hbox{$H^{#1}(#2;{\bf #3})$}}          % #1-Cohomology of #2
+\def\hl#1#2#3{\hbox{$H_{#1}(#2;{\bf #3})$}}          % #1-Homology of #2
+\def\md#1{\ifmmode{\cal M}_\delta(#1)\else  % moduli space, delta decay of #1
+{${\cal M}_\delta(#1)$}\fi}
+\def\mb#1{\ifmmode{\cal M}_\delta^0(#1)\else  %moduli space, based, delta
+					      %decay of #1
+{${\cal M}_\delta^0(#1)$}\fi}
+\def\mdc#1#2{\ifmmode{\cal M}_{\delta,#1}(#2)\else    %moduli space, delta
+						      %decay, chern class #1
+						      %of #2
+{${\cal M}_{\delta,#1}(#2)$}\fi}
+\def\mbc#1#2{\ifmmode{\cal M}_{\delta,#1}^0(#2)\else   %as before, based
+{${\cal M}_{\delta,#1}^0(#2)$}\fi}
+\def\mm{\ifmmode{\cal M}\else {${\cal M}$}\fi}
+\def\ad{{\rm ad}}
+\def\msigma{\ifmmode{\cal M}^\sigma\else {${\cal M}^\sigma$}\fi}
+\def\cancel#1#2{\ooalign{$\hfil#1\mkern1mu/\hfil$\crcr$#1#2$}}
+\def\dirac{D\hskip-.67em\slash}
+\newtheorem{thm}{Theorem}
+\newtheorem{theorem}{Theorem}[subsection]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{D}[theorem]{Definition}
+\newenvironment{defn}{\begin{D} \rm }{\end{D}}
+\newtheorem{addendum}[theorem]{Addendum}
+\newtheorem{R}[theorem]{Remark}
+\newenvironment{remark}{\begin{R}\rm }{\end{R}}
+\newcommand{\note}[1]{\marginpar{\scriptsize #1 }} 
+\newenvironment{comments}{\smallskip\noindent{\bf Comments:}\begin{enumerate}}{\end{enumerate}\smallskip}
+
+\renewcommand{\thesection}{\Roman{section}}
+\def\eqlabel#1{\addtocounter{theorem}{1}
+\write1{\string\newlabel{#1}{{\thetheorem}{\thepage}}}
+\leqno(\rm\thetheorem)}
+\def\cS{{\cal S}}
+\def\ov{\overline}
+
+
+
+
+
+
+
+
+
+
+
+
+\title{Kaluza-Klein compactifications, supersymmetry, and Calabi-Yau
+spaces: I}  
+\author{Andrew Strominger\thanks{Notes by John Morgan}}
+\date{}
+\begin{document}
+\maketitle
+
+\section{Introduction}
+
+As we have seen in d'Hoker's lectures,
+study of the ten-dimensional 
+heterotic string dynamics leads us to a low energy effective action
+of the form:
+$$S_{\rm eff}[g,A,\phi,\ldots]
+=\frac{1}{2\kappa^2}\int_{X^{10}}d^{10}x\sqrt{-{\rm 
+det}(g)}e^{-2\phi}\left(R(g)+\frac{\alpha'}{30}{\rm Tr}F_A^2+\cdots\right)$$ 
+for a metric $g$ of signature $(-,+,+,\cdots,+)$ on a ten-dimensional
+manifold $X^{10}$,  a connection
+$A$ on a principal $G$-bundle over $X^{10}$,  a  scalar field
+$\phi$, called the {\sl dilaton field}, and other fields including the
+supersymmetric partners of these that we have not written here.  Here
+$R(g)$ is the  
+scalar curvature of $g$, $G$ is compact, semisimple, $F_A$ is the
+curvature of $A$ and $Tr F_A^2$ represents a $G$-invariant metric on the
+Lie algebra of $G$.  The study of the heterotic string shows
+that it must be the case that the Cartan matrix
+of the Dynkin diagram for $G$ is an even unimodular lattice in
+dimension $16$.  The only two possibilities for $G$ are $E_8\times E_8$
+or $Spin(32)/({\bf Z}/2{\bf Z})$ for a central ${\bf Z}/2{\bf Z}$ which
+is not in the kernel of the projection to $SO(32)$.
+At the level we are working in these lectures, the delicate
+distinction between various groups with Lie algebra $SO(32)$ cannot be
+seen. 
+For this reason, and also to simplify the notation,
+we shall consider $SO(32)$ instead of the more exotic form. 
+Lastly, the expression $d^{10}x\sqrt{-{\rm det}(g)}$ is the volume
+element associated to the metric. The minus sign arises from the fact
+that the metric is of signature $(1,9)$ so that the sign is necessary
+to have a positive quantity under the square root.
+
+Our goal in these lectures is to study and analyse this Lagranian in
+its own right, not considering the small coreections
+arising from string theory.
+It turns out that, because of the topological nature of the analysis,
+our conclusions remain largely valid in the exact string theory. 
+In fact, this Lagrangian was written down as a Lagrangian for
+supergravity before string theory was  invented, and so is of interest
+in its own right.
+There are  two basic problems that any such analysis should
+resolve if this theory is to be a reasonable model of nature.
+
+\smallskip
+\noindent{\bf Problem 1.} This action  exists for metrics,
+connections, etc. on a ten-dimensional manifold $X^{10}$, yet 
+it seems fairly apparent that any theory of nature must have  to do
+with four-dimensional space-time of our universe.  There must be an
+explanation of the `collapsing' of ten space-time dimensions to four. 
+
+\smallskip
+\noindent{\bf Problem 2.} The two gauge groups that occur for this
+action, $E_8\times E_8$ and $SO(32)$, are not
+appropriate ones for the 
+observed matter content of the universe. Somehow  by a
+mechanism of spontaneous symmetry-breaking, we must get down to a
+smaller group which is suitable for describing observed matter. 
+
+
+Our approach will be to first look for classical ground states
+(solutions) minimizing the action and
+study their features. 
+At a later stage one should consider quantum corrections.
+
+Motivated by the two problems we listed above, here are the properties
+that we want our ground states (or classical solutions) to have:
+
+\smallskip
+\noindent
+1.  The effective theory looks four-dimensional instead of
+ten-dimensional. 
+
+\smallskip
+\noindent
+2. The gauge group $G$ should be broken down to a `good' gauge group,
+one that fits with the GUT (grand unification theory) scheme, so that
+it produces matter content observed in nature.  The gauge group of the
+standard model is $SU(3)\times SU(2)\times U(1)$ and accounts for all
+the matter that we know of, in the sense that all the `elementary'
+particles are grouped together into a representation of this reductive
+group. 
+The GUT schemes are to
+embed this group in a larger  group, $SU(3)\times SU(2)\times
+U(1)\subset G$, so that the  
+representations that occur in the standard model occur among
+those arising in the restriction of an irreducible representation of
+$G$ to the subgroup $SU(3)\times SU(2)\times U(1)$. This scheme
+(among others) 
+allows the following set of groups for $G$:
+$$SU(3)\times SU(2)\times U(1)\subset SU(5)\subset SO(10)\subset
+E_6.$$
+Of course, on the level of groups on can continue the series with
+$$E_6\subset E_7\subset E_8,$$
+but the irreducible representations that we must use have to be chiral
+and hence 
+not isomorphic to their duals.  This rules out $E_7$ and $E_8$ where
+the relevant representations are real.
+Somehow we must break either $E_8\times E_8$ or $SO(32)$ down to one
+of these groups, most likely $E_6$. 
+
+
+\smallskip
+\noindent
+3. Our solution should have $N=1$  supersymmetry in dimension $4$ (the
+$N=1$  super Poincar\'e group).
+We do not observe in supersymmetry in nature, so whatever supersymmetry
+exists in our effective four-dimensional gravity theory must be capable
+of being entirely broken to $N=0$, hopefully by small quantum
+corrections, which we shall not discuss here.  There are no
+mechanisms for breaking $N\ge 2$  
+supersymmetry down to a chiral theory. This implies that we can have
+at most $N=1$ 
+supersymmetry in our model.  On the other hand, we desire nontrivial
+supersymmetry in our model because it is the best  mechanism we
+know which is capable of accounting for the very small ratios of
+masses of the observed low energy particles, i.e., for solving the
+`hierarchy problem' as it is known to physicists.
+
+\smallskip
+\noindent
+4. Our solution should yield a realistic matter content.
+
+\bigskip
+The story that we shall describe was worked out in the mid 1980's (see
+[Candelas, Horowitz, Strominger, and Witten, Nucl. Phys. B
+{\bf 258} (1985)] and [Green, Schwarz, Witten: Chapters 12 --
+16]). More recently, with the  
+advent of dualities, there are new wrinkles, but the basic story as it
+was understood ten years ago remains relevant.
+
+
+\section{Kaluza-Klein Model}
+
+Let us begin with a much simpler and much older example, which goes
+back to the work of Kaluza-Klein in 1926. We consider the 
+five-dimensional Einstein-Hilbert action
+$$S[\widehat{g}]=\frac{1}{2\pi\kappa^2}\int_Yd^5z\sqrt{-{\rm
+det}(\widehat{g})}R(\widehat{g}).$$
+(The variable $z$ is real.)
+The action is for  a metric  $\widehat{g}$ on a
+five-dimensional space, and $R(\widehat{g})$ is the scalar curvature
+of $g$. 
+Lastly, $\kappa$ is Newton's constant.  (The hats are simply to
+distinguish this from other metrics which will arise later.)
+The classical equations of motion for this action are Einstein's
+equations 
+$$R_{MN}(\widehat{g})=0,$$
+the vanishing of the Ricci curvature tensor of $\widehat{g}$.
+
+One solution $\widehat{\overline{g}}$ is on the manifold $Y={\bf R}^4\times S^1$ where the
+metric is
+$$\widehat{\overline{g}}_{MN}(z)dz^M dz^N=\eta_{\mu\nu}dx^\mu
+dx^\nu+r^2d\theta^2;\ \ \  
+\ {\rm where}\ \ z=(x,\theta).$$
+Here we have introduced several conventions which we shall use
+consistently. The indices
+$\mu,\nu$ range from $0$ to $3$ and are indices for coordinates
+$x^\mu$ in Minkowski four-dimensional space time.  The metric tensor
+$\eta_{\mu\nu}$ is the standard diagonal form $(-,+,+,+)$. 
+The indices $M,N$ range from $0$ to $4$ and index the  coordinates
+$z^M$ on $Y$. Here, $r$ is a constant which determines the radius of
+the internal circle.
+
+We begin with this basic solution and study the situation near this
+solution. 
+It is convenient to write metrics (or symmetric two-tensors) in a
+slightly different basis: 
+$$\widehat{g}_{MN}(z)dz^M
+dz^N=e^{-\rho/3}\left(e^\rho\left(d\theta+\kappa A_\mu 
+dx^\mu\right)^2+g_{\mu\nu} dx^\mu dx^\nu\right).$$
+In this description the metric on the five-dimensional space has
+become three fields: a four-dimensional metric tensor $g_{\mu\nu}$, a
+one form on four-space $A_\mu dx^\mu$, and a scalar field $\rho$.  Of 
+course, at this point all these fields depend not only on the point in
+the four-space but also on the auxiliary (or {\sl internal}) variable
+$\theta$. 
+
+
+Now let us consider the expansion in Fourier modes with respect to the
+variable $\theta$ on the circle:
+$$g_{\mu\nu}(z)=\sum_{n=-\infty}^\infty g_{\mu\nu;n}(x)e^{in\theta},$$ 
+$$A_\mu(z)=\sum_{n=-\infty}^\infty A_{\mu;n}(x)e^{in\theta},$$
+$$\rho(z)=\sum_{n=-\infty}^\infty\rho_n(x)e^{in\theta}.$$
+At this point what we have done is to rewrite the five-dimensional
+metric as an infinite collection of purely four-dimensional fields
+(metrics, one-forms, scalars). As we shall see shortly, when taking
+the low energy effective limit we can ignore all but finitely many of
+these fields. (We keep only the zero modes in the above  Fourier
+expansions.) 
+
+Now we are ready to consider excitations (or linearized
+fluctuations) 
+around our solution $\widehat{\overline{g}}$.  Consider a general metric
+$\widehat{g}_{MN}(z)dz^Mdz^N$  near $\widehat{\overline{g}}$. The
+linearized fluctuation is 
+$$\tilde h_{MN}(z)=\widehat{g}_{MN}(z)-\widehat{\overline{g}}_{MN}.$$ 
+It is convenient to define
+$$h_{MN}=\tilde h_{MN}-\frac{1}{2} \widehat{\overline{g}}^{MN}\tilde
+h_{MN} \widehat{\overline{g}}_{MN}.$$
+
+We view the symmetric two-tensor $h=h_{MN}(z)dz^M dz^N$ as
+parametrizing the fluctuations of the metric. 
+We must take some care here for there are gauge symmetries,
+the group of diffeomorphisms of $Y$. Metrics lying on the same orbit
+of this group action must
+be considered as equivalent since they differ simply
+reparametrizing the space.
+The standard way around this problem is to pick a gauge (a slice
+perpendicular to the orbit of the gauge symmetries). In the current
+context the simplest gauge to pick is called the {\sl transverse
+gauge}.  It consists of considering metrics 
+satisfying
+$$
+\nabla^Mh_{MN}   =  0.
+$$
+Now, as we observed above, the equations of motion are the
+Einstein equations
+$$R_{MN}(\widehat{g})=0.$$
+Expanding $R_{MN}(\widehat{\overline{g}}+h)=0$ to first order in $h$ yields
+$$\Box^5_{\widehat{\overline{g}}}h_{MN}(z)=
+\left(\eta^{\mu\nu}\partial_\mu\partial_\nu
++\frac{1}{r^2}\partial_\theta^2\right)h_{MN}(x,\theta)=0.$$  
+
+Combining this equation with the Fourier mode expansion we see that
+$$\Box^4_{\widehat{\overline{g}}}h_{MN;n}(x)-\frac{n^2}{r^2}h_{MN;n}(x)=0.$$
+That is to say $h_{MN;n}(x)$ satisfies the wave equation
+in four-space for a field of
+mass $|n|/r$.  Invoking a basic result from quantum mechanics we
+know that the lowest energy excitation of a field of mass $|n|/r$ has
+energy at least $|n|/r$.
+Now it is time to say more about the size of the circle factor in $Y$.
+So far it has been a free parameter in the theory. We shall take $r$
+to be our roughly the Planck length, which is $10^{-33}$ cm. At this
+length scale, all the excitations of $h_{MN;n}(x)$ have huge energy
+provided that $n\not= 0$. Since we are interested in the low energy
+effective theory, we can safely ignore all the modes $h_{MN;n}(x)$
+except the zero modes.
+Thus, at  energy scales below $1/r$, our effective theory is purely
+four-dimensional.  It has three fields on four-space which are now   
+independent of the internal variable $\theta$. The fields are: a
+metric $g_0=g_{\mu\nu;0}(x)dx^\mu dx^\nu$ on ${\bf R}^4$, a one-form
+$A_{0}=A_{\mu;0}(x) dx^\mu$ on four-space and a scalar field $\rho_0(x)$ on
+four-space.    
+
+Next, let us plug these fields into the Kaluza-Klein action  and write
+the resulting  effective four-dimensional action. 
+ It is actually a somewhat complicated, if routine, computation to
+carry out the substitution; what comes out is:
+\begin{eqnarray*}
+\lefteqn{S_{\rm eff}[g_{0},A_{0},\rho_0] = } &  & \\
+\quad & & =r\int_{{\bf
+R}^4}d^4x\sqrt{-g_{0}}\left(
+\frac{1}{\kappa^2}R(g_{0})-\frac{1}{4}e^{\rho_0}
+F_{\mu\nu}^0F^{\mu\nu}_{0}
+-\frac{1}{6\kappa^2}(\nabla\rho_0)^2
++\left((\nabla\rho_1)^2+ \frac{1}{r^2}\rho_1^2+\cdots
+\right)\right), 
+\end{eqnarray*}
+where $F^0_{\mu\nu}dx^\mu dx^\nu$ is the curvature of the connection
+$A_{0}$.  
+All the terms enclosed in the last pair of parentheses represent massive
+particles and can be ignored in our low energy effective action.
+Thus, we are left with
+$$S_{\rm eff}[g_{0},A_{0},\rho_0]=r\int_{{\bf
+R}^4}d^4x\sqrt{-g_{0}}\left(
+\frac{1}{\kappa^2}R(g_{0})-\frac{1}{4}e^{\rho_0}
+F_{\mu\nu}^0F^{\mu\nu}_{0}
+-\frac{1}{6\kappa^2}(\nabla\rho_0)^2\right).$$
+ 
+
+
+We began with a five-dimensional gravity theory and for sufficiently
+small radius $r$ we have found the low energy effective four-dimensional
+action and written this action in terms of three four-dimensional
+fields: a metric, a connection which is related to the Killing vector 
+field on the five-manifold tangent to the circle directions, and a
+scalar field $\rho$ which is related 
+to the free parameter $r$ in the five-dimensional theory.
+
+
+
+
+Let us now consider the symmetries of this effective four-dimensional
+action. 
+We claim that these are simply the symmetries of the original
+five-manifold $Y={\bf R}^4\times S^1$ which 
+commute with the 
+natural $S^1$-action coming from this product structure of $Y$.
+This group is generated by two types of diffeomorphisms. The first are
+simply diffeomorphisms of ${\bf R}^4$. 
+These are 
+generated by vector fields $\zeta$ on ${\bf R}^4$, independent of
+$\theta$.  It is easy to see 
+that the action of these on our fields  are given by:
+$$\delta_\zeta g_{\mu\nu}={\cal L}_\zeta(g_{\mu\nu}),$$
+$$\delta_\zeta A_\mu={\cal L}_\zeta(A_\mu),$$
+$$\delta_\zeta\rho={\cal L}_\zeta(\rho).$$
+Here, in all cases ${\cal L}_\zeta$ denotes the Lie derivative in the
+$\zeta$-direction. 
+The second type of diffeomorphisms are those generated by vector
+fields of the form
+$$x^\mu\mapsto x^\mu;\ \ \ \theta\mapsto \theta+\zeta^5(x).$$
+Under these vector fields we have
+$$\delta_\zeta(A_\mu)=-\frac{1}{\kappa}\partial_\mu\zeta^5,$$ 
+$$\delta_\zeta g=\delta_\zeta\rho=0.$$
+Notice, in particular, that $A=A_\mu dx^\mu$ transforms like an
+abelian (i.e., $U(1)$) gauge field.
+
+
+Of course, there are other diffeomorphisms of the  five-manifold $Y$,
+which do not preserve the $S^1$-action. But these diffeomorphism mix
+the massive and low energy modes.  Since we have thrown away the
+massive modes in forming our effective four-dimensional Lagrangian,
+these symmetries are broken in the limiting process, leaving the
+unbroken group for the four-dimensional effective action exactly the
+one described in the previous paragraph. 
+
+\section{Compactifying Einstein's Equation from ten dimensions to four
+dimensions} 
+
+Now let us consider  ten-dimensional pure gravity.
+The action is
+$$S[\widehat{g}]=\int_{X^{10}}d^{10}x\sqrt{-{\rm
+det}(\widehat{g})}R(\widehat{g}),$$ 
+where $\widehat{g}$ is a metric on $X^{10}$ with signature
+$(-,+,\cdots,+)$. 
+The classical solutions extremizing this Einstein-Hilbert action are
+Ricci-flat metrics 
+$$R_{MN}(\widehat{g})=0.$$
+In analogy with the Kaluza-Klein model, let us study ground states
+(classical solutions) of the following form:
+The manifold $X^{10}$ is a product ${\bf R}^4\times K^6$ where $K^6$ is
+compact, and the metric is of the form
+$\widehat{g}_0=(\widehat{g}_0)_{MN}dz^Mdz^N$ where
+$$(\widehat{g}_0)_{MN}=\pmatrix{\eta_{\mu\nu}  & 0 \cr 0 & 
+(g_0)_{mn}(y)},$$ 
+where $g_0$ is a positive definite metric on $K^6$.
+Our notation is similar to the five-dimensional case.  The indices
+$\mu,\nu$ run 
+from $0$ to $3$ and index the coordinates $x^\mu$ on Minkowski space. The
+indices $m,n$ index the internal coordinates $y^m$ which are local
+coordinates on $K$. The indices $M,N$ run from $0$ to $9$ and index
+local coordinates $z=(x,y)$ on the product ${\bf R}^4\times K^6$.
+The split metric $\widehat{g}_0$ is Ricci-flat if and only if $g_0$ is
+a Ricci flat metric on 
+$K^6$. The existence of such a metric, of course, imposes a topological
+condition on $Y$. We fix now a classical solution of this form.
+
+As in the Kaluza-Klein model, let us study small fluctuations about
+this classical solution:
+$$h_{MN}(z)=\widehat{g}_{MN}(z)-(\widehat{g}_0)_{MN}.$$
+Again, there is the gauge symmetry of the diffeomorphism of $X^{10}$
+to deal with, and again we use the transverse
+gauge.  The Ricci-flat condition to first order in $h_{MN}$ is
+$$\left(\Box^4+\Box^6\right)h_{MN}(z)=0,$$
+where
+$$\Box^4h_{\mu\nu}=\eta^{\mu\nu}\partial_\mu\partial_\nu h_{\mu\nu}$$
+and
+$$\Box^6(h_{mn}) =
+(g_0)^{ab}\nabla_a\nabla_bh_{mn}+2{{{R^a}_m}^b}_nh_{ab} .$$
+Following the same line of reasoning as before, we expand in Fourier
+modes in harmonics of $K^6$.
+We write
+$$h_{\mu\nu}(z)=\sum_kh_{\mu\nu;k}(x)Y_k(y)$$
+where
+$$\Box^6Y_k(y)=-\lambda_kY_k(y).$$
+Here since the metric on $Y$ is positive definite, this D'Alembertian
+on scalar functions on $Y$ and is the (negative of the) usual 
+Laplacian. It is a non-positive operator, so that $\lambda_k\ge 0$ for
+all $k$.
+The equation satisfied by $h_{\mu\nu;k}$ is
+$$(\Box^4-\lambda_k)h_{\mu\nu;k}(x)=0.$$
+Once again we find that $h_{\mu\nu;k}$ is a solution to the wave
+equation in four-space for a field of mass $\lambda_k$. If we scale
+the metric on $K^6$ by multiplying it by $1/r$, then $\lambda_k$
+scales by $1/r^2$. In particular, if we scale by $1/r$ for $r$ very
+small, then for all $k$ for which $\lambda_k\not=0$, all
+excitations of the field $h_{\mu\nu;k}(x)$ become extremely massive,
+and hence can be ignored in our low energy effective action.
+
+There is a similar analysis for the fields $h_{mn}(z)$.  We impose
+the transverse gauge condition on the metric in the $K^6$-direction
+and we expand the equations of motion in
+the harmonics of $K^6$:
+$$h_{mn}(z)=\sum_k\varphi_k(x)Y_{mn;k}(y),$$
+where this time $Y_{mn;k}(y)dy^m dy^n$ are sections of the
+symmetric square of the cotangent bundle of $Y$ which are eigenvectors with
+eigenvalue $\lambda'_k$ for the D'Alembertian:
+$$\Box^6Y_{mn;k}(y)=g^{ab}\nabla_a\nabla_bY_{mn;k}(y)
++2{{{R^a}_m}^b}_nY_{ab;k}(y)=-\lambda'_kY_{mn;k}(y).$$
+Thus, we obtain
+$$\Box^4\varphi_k(x)-\lambda'_k\varphi_k(x)=0.$$
+As before, this is  the wave equation for a wave of mass $\lambda'_k$. 
+ 
+
+Here, though, it is not necessarily the case that $\lambda'_k\ge 0$
+for all 
+$k$. There can be a finite number of negative eigenvalues for the
+operator on $Y$. A negative eigenvalue means that our solution $g_0$
+is a critical point for the Einstein-Hilbert action for positive
+definite metrics on $Y$ which is not a local minimum for this action,
+i.e., an unstable critical point.
+We wish to avoid this possibility, so for now we simply assume that
+our operator $\Box^6$ on $Y$ has no negative eigenvalues.
+(This will be automatic by supersymmetry in the Calabi-Yau case.)
+As long as $\lambda'_k>0$, all excitations of this field will have mass
+on the order of $1/r^2$ and can be ignored in our low energy limit.
+Thus, we keep only those $\varphi_k(x)$ for which $\lambda'_k=0$, i.e.,
+we keep only those $\varphi_k(x)$ for which the corresponding
+$Y_{mn;k}(y)dy^m dy^n$ is a harmonic section of the symmetric square
+of the co-tangent bundle of $K^6$.  This space of harmonic forms is
+the formal tangent space at $g_0$ to the moduli space of Ricci-flat
+metrics on $K^6$.
+So, for each parameter in the moduli space of solutions to the Einstein
+equations on the internal space $K^6$ we have a massless scalar for
+the effective action on four-space. 
+These fields are the analogues of the massless field $\rho$ we found
+in the Kaluza-Klein model, a field which came from the one parameter,
+the radius, describing the metric on the internal space in that
+theory. 
+
+
+\section{Adding Matter to the Mix}
+
+We have made a fairly complete analysis of pure gravity compactified
+from ten dimensions to four dimensions by using a compact
+six-dimensional manifold $K^6$ with a Ricci-flat metric. It is time
+now to add other terms to the action so as to create a theory that has
+matter as well as gravity.
+Our goal here is to give the general nature of the terms that will add
+matter, both bosons and fermions, to the action that we have been
+studying. In the next section we will be more explicit as to the exact
+nature of the terms we are adding. Here the analysis is quite general
+and will be  sketched only since much of it is similar to
+what we have done in great detail above for the metric.
+
+First of all we can add boson fields by adding to the action a term of
+the form $S(\varphi)$ where $\varphi$ is a scalar or vector-valued
+function on ten-dimensional space-time.
+Once again, we expand $\varphi$ in Fourier modes using the harmonics
+of $Y$, and we can disregard all but the zero modes. In this way,
+after compactification $\varphi$  becomes a boson field on four-space.
+
+Let us consider fermions.  We fix a spin structure on ${\bf R}^4\times
+Y^6$ leading to spinor fields $\psi$ which can be sections of the spin
+bundles tensored with other auxiliary bundles with connections. 
+The Clifford algebra for an inner product space of type $(1,9)$ is
+${\bf R}[32]$, the $32\times 32$ real matrix algebra.  The even
+component of the 
+Clifford algebra is the block $16\times 16$ real matrices. 
+This means that the spin bundle over $Y$ has a real structure and
+decomposes as $S^+_{\bf R}(Y)\oplus S^-_{\bf R}(Y)$, each factor being a
+$16$-dimensional real bundle.  A section of $S^+_{\bf
+R}(Y)$ or $S^-_{\bf R}(Y)$ is called a Majorana-Weyl spinor.
+Its chirality is by definition which of these two spin bundles it is a
+section of. 
+The
+metric $\widehat{g}_0$ leads to a spinor connection and thus to the
+real Dirac operator 
+$$\dirac\colon \Gamma(S^\pm_{\bf R}(Y))\to \Gamma(S^\mp_{\bf R}(Y)).$$
+In terms of the gamma-matrices for Clifford multiplication
+we can write
+$$\dirac=\gamma^mD_m$$
+where $D_m$ is the spin covariant derivative in the direction of the
+$m^{th}$ coordinate.  The Dirac equation on the ten-dimensional
+manifold is then written as
+$$i\dirac^{(10)}\psi=0.$$
+Since the metric $\widehat{g}_0$ is split, so is the Dirac operator,
+and in fact the Dirac equation is
+$$i(\dirac^4+\dirac^6)\psi=0,$$
+where $\dirac^4$ and $\dirac^6$ are the Dirac operators on Minkowski
+four-space and $K^6$ respectively.
+The solutions to this equation can be written as a sum
+$$\psi(z)=\sum_k\psi_k(x)\psi'_k(y)$$
+with
+$$i\dirac^4\psi_k(x)=\lambda'_k\psi_k(x)$$ and
+$$i\dirac^6\psi_k'(y)=-\lambda'_k\psi'_k(y).$$
+Again, throwing away massive fluctuations, means keeping only the zero
+modes of the Dirac equation on the internal space $K^6$.
+
+\section{The Effective action from ten-dimensional heterotic string
+theory} 
+
+The effective action that heterotic string theory in ten dimensions
+gives us is
+\begin{eqnarray*}
+\lefteqn{S_{\rm eff}[g,\varphi,\psi,\lambda,\chi,A,H] =} & &   \\
+\quad & &= \frac{1}{2\kappa^2}\int_Y d^{10}x\sqrt{-{\rm
+det}(g)}e^{-2\varphi}\left(R(g)+4(\nabla\varphi)^2-\frac{1}{3}H^2\right.  \\ 
+& & \left. +\frac{\alpha'}{30}Tr\,
+F_A^2-\overline\psi_M\gamma^{MNP}D_N\psi_P -\overline{\lambda}\dirac
+\lambda -Tr\,\overline{\chi}\dirac\chi+\left(\cdots\right)\right).
+\end{eqnarray*}
+The fields in question are as follows:
+There is a metric $g$ of signature $(-,+,\cdots+)$ on $Y$.
+There is the dilaton field $\varphi$ which is a real scalar field.
+There is a connection $A$
+on a principal $E_8\times E_8$ or $SO(32)$ bundle
+$P$ over $Y$. Its curvature is denoted $F_A$.
+The axion form $H$ is a three-form with the property that
+$$dH=\alpha'(tr\,R\wedge R-\frac{1}{30}Tr\, F_A\wedge F_A).$$
+This means that we can write $H$ at least locally in the
+form
+$$H=dB+\alpha'\left(CS(\nabla_g)-\frac{1}{30}CS(A)\right),$$
+where $B$ is a two-form and $CS(A)$ is the Chern-Simons three-form of
+the connection $A$.
+The boson fields $g,B,\varphi$ are grouped together in a multiplet (i.e.,
+they are various components of an irreducible representation).  This
+multiplet has a supersymmetric partner which is a multiplet given by a
+pair of spinors $(\psi,\lambda)$. 
+The spinor $\psi$  is a Majorana-Weyl spinor with values in the cotangent
+bundle of $Y$; that is to say, it is  a section of
+$S^+_{\bf R}(Y)\otimes T^*(Y)$.  It  is called the
+{\sl gravitino}.
+The spinor $\lambda$ is a Majorana-Weyl spinor of opposite
+chirality to that of $\psi$.  That is to say, it is a section of
+$S^-_{\bf R}(Y)$. It is  called the {\sl dilatino}.
+The gauge field $A$ has its 
+supersymmetric partner $\chi$, called the {\sl
+gaugino}.  This field  is a Majorana-Weyl
+spinor with values in the adjoint bundle of $P$
+and is of the same chirality as $\psi$. That is to say, it is a
+section of $S^+_{\bf R}(Y)\otimes {\rm ad} P$.
+
+
+
+Having discussed the fields that occur,  let us turn to
+the functions of them that appear in the action.
+As usual, $R(g)$ is the scalar curvature of $g$ and $TrF_A^2$ 
+is the norm of $F_A$ in the $G$-invariant metric in the adjoint
+bundle. 
+Lastly, $\gamma^{MNP}$ is obtained from the gamma-matrices by
+skew-symmetrizing: 
+$$\gamma^{MNP}=\gamma^{[M}\gamma^N\gamma^{P]}.$$
+These are the gamma-matrices that give the representation of
+three-forms on spinors.  
+In language more familiar to mathematicians, all the spinor pairings in
+the action 
+arise from the two basic pairings: the nondegenerate inner product
+between spinors of the opposite chirality:
+$$\langle\ \ \rangle\colon S^+_{\bf R}(Y)\otimes S^-_{\bf R}(Y)\to {\bf R}$$
+and the adjoint of Clifford multiplication
+\begin{equation}\label{cm}
+S^+_{\bf R}(Y)\otimes S^+_{\bf R}(Y)\to T(Y).
+\end{equation}
+(Here we are viewing Clifford multiplication as a pairing
+$T(Y)\otimes S^+_{\bf R}(Y)\to S^-_{\bf R}(Y)$. To write its adjoint
+as we have above, we use the isomorphisms $T(Y)\cong T^*(Y)$, given by
+the metric, and $S^+_{\bf R}(Y)\cong S^-_{\bf R}(Y)^*$, given by the
+inner product.)
+The term $\overline\lambda\dirac\lambda$ in the action is simply the
+inner product
+$\langle \lambda,\dirac\lambda\rangle$. 
+Likewise, $Tr\overline\chi\dirac\chi$ is $Tr\langle
+\chi,\dirac\chi\rangle$ defined from the inner product on spinors and
+the trace in the adjoint representation.  Lastly, the pairing
+$\overline\psi_M\gamma^{MNP}D_N\psi_P$ in the action means 
+the pairing $\langle \psi,\nabla\psi\rangle$, where the pairing is
+between a one-form with values in the positive spin bundle and a
+two-form with values in the same spin bundle. The pairing is given by wedging
+together the forms to produce a three-form and then letting that
+three-form  operate by
+Clifford multiplication on one of the spinors to produce a spinor of
+minus chirality which can then be paired with the plus chirality
+spinor to produce a real number.
+
+
+In addition, there are other terms (indicated by $(\cdots)$) that we
+have not explicitly written 
+down and which are not important for the analysis that we shall make.
+These extra terms come in two types.  Some are required by
+supersymmetry.  There are, for example, terms which are 
+fourth power in the spinor fields such as
+$(\overline{\psi}\psi)^2$. There are also terms which are higher order
+in $\alpha'$, which is a dimensionful parameter.  These can be ignored
+if we assume that, even though $K^6$ is on the Planck scale, it is 
+much larger that the string length.
+
+
+This action clearly has a group of symmetries: the group of
+orientation-preserving diffeomorphisms of the underlying manifold. 
+But in addition, we have gone to great lengths to build it so that it
+has supersymmetry, $N=1$ local supersymmetry to be more precise.  For
+example,  our boson fields form two multiplets 
+$(g,B,\varphi)$ and $A$, and each multiplet  has its fermionic partner
+$(\psi,\lambda)$ and $\chi$,  respectively. 
+This of course, is only a necessary condition for the existence of
+supersymmetry. But in fact the $N=1$ local supersymmetry algebra is
+generated by sections $\epsilon$ of the Majorana-Weyl spin bundle
+$S^+_{\bf R}(Y)$. These generators  are odd elements  in the super Lie
+algebra. 
+The infinitessimal transformation laws are partially given by:
+\begin{eqnarray*}
+\delta_\epsilon\chi & = & F_{MN}\gamma^{MN}\epsilon+({\rm fermions}^2 \\
+\delta_\epsilon\psi_M  &  =  &  \nabla_M\epsilon -\frac{1}{4}
+H_{MAB}\gamma^{AB}\epsilon +({\rm fermions})^2 \\
+\delta_\epsilon\lambda  &  =  & (\gamma^M \nabla_M\varphi)\epsilon
++\frac{1}{24}H_{MNP}\gamma^{MNP}\epsilon +({\rm fermions})^2 \\
+\delta_\epsilon g_{MN}  &  =  &  \overline\epsilon
+\gamma_N\psi_M+\overline\epsilon\gamma_M \psi_N+({\rm fermions})^2 \\
+\delta_\epsilon A_M  &  =  &  \overline\epsilon \gamma_M\chi +({\rm
+fermions})^2 \\
+\delta_\epsilon B & = &  \cdots \\
+\delta_\epsilon \phi & = & \cdots 
+\end{eqnarray*}
+The complete laws can be written down, but we shall not do that here
+as we will not need them. 
+
+The space of classical solutions is invariant under the supersymmetry
+algebra generated by these infinitessimal (odd) symmetries, and on the
+space of solutions the algebra generated by these infinitessimal
+symmetries closes to yield the $N=1$ local supersymmetry algebra.
+In fact, one has the following formula for the supercommutator: 
+$$[\delta_\epsilon,\delta_{\epsilon'}]=\delta_v+ T$$
+where $v$ is the vector field obtained by pairing $\epsilon$ and
+$\epsilon'$ under the pairing given in Equation~\ref{cm}.  Written in
+terms of Clifford matrices we have
+$$v^m=\overline{\epsilon'}\gamma^m\epsilon.$$
+The term  $T$ is an expression which includes gauge transformations
+and terms which vanish when one imposes the
+equations of motion. 
+
+
+All of this was done without worrying about the compactification.
+The next step in the study is to show under what conditions  we can
+compactify down to four-dimensions. In doing this compactification
+much of  the $N=1$ local supersymmetry will be broken, but in special
+circumstances we will be able to retain $N=1$ super Poincar\'e
+symmetry in dimension four.
+This is where the next lecture will begin.
+\end{document}
+
+
+
+
+
+
+
