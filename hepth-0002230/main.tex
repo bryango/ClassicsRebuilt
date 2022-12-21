@@ -1,4 +1,11 @@
-\documentstyle{article}
+\documentclass{article}
+
+%%% hyperref workaround found in `hyperref-doc'
+\makeatletter
+\def\NAT@parse{\typeout{This is a fake Natbib command to fool Hyperref.}}
+\makeatother
+\usepackage{hyperref}
+
 \def\baselinestretch{1.2}
 \parskip 6 pt
 
